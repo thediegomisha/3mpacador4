@@ -55,6 +55,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.datalistado = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
+            this.txtnumlote = new System.Windows.Forms.TextBox();
             this.BtnBuscar = new System.Windows.Forms.Button();
             this.totalneto = new System.Windows.Forms.Label();
             this.Label15 = new System.Windows.Forms.Label();
@@ -312,7 +313,7 @@
             this.panel1.Controls.Add(this.datalistado);
             this.panel1.Location = new System.Drawing.Point(22, 235);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(872, 346);
+            this.panel1.Size = new System.Drawing.Size(995, 346);
             this.panel1.TabIndex = 37;
             // 
             // datalistado
@@ -321,20 +322,28 @@
             this.datalistado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.datalistado.Location = new System.Drawing.Point(0, 0);
             this.datalistado.Name = "datalistado";
-            this.datalistado.Size = new System.Drawing.Size(872, 346);
+            this.datalistado.Size = new System.Drawing.Size(995, 346);
             this.datalistado.TabIndex = 0;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(157, 7);
+            this.label12.Location = new System.Drawing.Point(256, 9);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(445, 24);
+            this.label12.Size = new System.Drawing.Size(318, 24);
             this.label12.TabIndex = 38;
-            this.label12.Text = "DETALLE BOLETA DE PESADO LOTE / OPR :";
+            this.label12.Text = "BOLETA DE PESADO DETALLE:";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txtnumlote
+            // 
+            this.txtnumlote.Location = new System.Drawing.Point(591, 9);
+            this.txtnumlote.Name = "txtnumlote";
+            this.txtnumlote.Size = new System.Drawing.Size(100, 20);
+            this.txtnumlote.TabIndex = 39;
+            this.txtnumlote.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnumlote_KeyPress);
             // 
             // BtnBuscar
             // 
@@ -408,7 +417,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(787, 36);
+            this.button1.Location = new System.Drawing.Point(930, 48);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 72;
@@ -420,7 +429,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 624);
+            this.ClientSize = new System.Drawing.Size(1029, 624);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblcantjabas);
             this.Controls.Add(this.label17);
@@ -429,6 +438,7 @@
             this.Controls.Add(this.totalneto);
             this.Controls.Add(this.Label15);
             this.Controls.Add(this.BtnBuscar);
+            this.Controls.Add(this.txtnumlote);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblhoraingreso);
@@ -493,6 +503,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView datalistado;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtnumlote;
         private System.Windows.Forms.Button BtnBuscar;
         internal System.Windows.Forms.Label totalneto;
         internal System.Windows.Forms.Label Label15;
