@@ -454,6 +454,7 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label3);
             this.Name = "RptBoletaPesadoDetalle";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.RptBoletaPesado_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).EndInit();

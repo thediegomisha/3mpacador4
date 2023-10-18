@@ -1,4 +1,5 @@
 ﻿using _3mpacador4.Logica;
+using _3mpacador4.Presentacion.Mantenimiento;
 using Devart.Data.MySql;
 using Microsoft.VisualBasic;
 using NPOI.POIFS.NIO;
@@ -1192,6 +1193,12 @@ namespace _3mpacador4.Presentacion.Reporte
                 datalistado2.DataSource = null;
                 datalistado3.DataSource = null;
             }
+        }
+
+        private void datalistado_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            RptBoletaPesadoDetalle form = new RptBoletaPesadoDetalle();
+            form.ShowDialog();
         }
     }
 }

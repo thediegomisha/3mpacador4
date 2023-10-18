@@ -507,6 +507,7 @@
             this.datalistado.Size = new System.Drawing.Size(1213, 329);
             this.datalistado.TabIndex = 0;
             this.datalistado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datalistado_CellClick);
+            this.datalistado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datalistado_CellDoubleClick);
             // 
             // panel3
             // 
