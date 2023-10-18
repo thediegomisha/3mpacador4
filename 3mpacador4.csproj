@@ -1,0 +1,518 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4472BD41-AAD3-47B4-B414-2739CECBB85A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>_3mpacador4</RootNamespace>
+    <AssemblyName>3mpacador4</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Juan Luis Diaz Aylas\Desktop\Website\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>true</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://100.26.19.185/ftp/</InstallUrl>
+    <MinimumRequiredVersion>1.0.0.5</MinimumRequiredVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>19</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>9EC2DC3FCBAD169E8B6CE7C111EFF3C52FE6B185</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>3mpacador4_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>palta.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CircularProgressBar, Version=2.8.0.16, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
+      <HintPath>packages\CircularProgressBar.2.8.0.16\lib\net40\CircularProgressBar.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data, Version=5.0.2938.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <HintPath>packages\Devart.Data.5.0.2938\lib\netstandard2.0\Devart.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data.MySql, Version=9.0.0.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <HintPath>packages\Devart.Data.MySql.9.0.0\lib\netstandard2.0\Devart.Data.MySql.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.Win32.Registry, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Win32.Registry.4.5.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DotNetCore.NPOI.Core.1.2.3\lib\net461\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DotNetCore.NPOI.1.2.3\lib\net461\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DotNetCore.NPOI.OpenXml4Net.1.2.3\lib\net461\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DotNetCore.NPOI.OpenXmlFormats.1.2.3\lib\net461\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Configuration.ConfigurationManager.7.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Diagnostics.PerformanceCounter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.PerformanceCounter.4.5.0\lib\net461\System.Diagnostics.PerformanceCounter.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Drawing.Common.4.5.0\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Permissions.7.0.0\lib\net462\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encoding.CodePages.4.5.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WinFormAnimation, Version=1.6.0.4, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
+      <HintPath>packages\WinFormAnimation.1.6.0.4\lib\net40\WinFormAnimation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Logica\ClConexion.cs" />
+    <Compile Include="Logica\ConexionGral.cs" />
+    <Compile Include="Logica\ConnectionStringManager.cs" />
+    <Compile Include="Presentacion\Mantenimiento\frmAcopiador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmAcopiador.Designer.cs">
+      <DependentUpon>frmAcopiador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmAcopiador2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmAcopiador2.Designer.cs">
+      <DependentUpon>frmAcopiador2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmMatCosecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmMatCosecha.Designer.cs">
+      <DependentUpon>frmMatCosecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmServicio.Designer.cs">
+      <DependentUpon>frmServicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmPresentacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmPresentacion.Designer.cs">
+      <DependentUpon>frmPresentacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmLote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmLote.Designer.cs">
+      <DependentUpon>frmLote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmJabas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmJabas.Designer.cs">
+      <DependentUpon>frmJabas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmCliente.Designer.cs">
+      <DependentUpon>frmCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmCliente2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmCliente2.Designer.cs">
+      <DependentUpon>frmCliente2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmCultivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmCultivo.Designer.cs">
+      <DependentUpon>frmCultivo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmProductorCLP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmProductorCLP.Designer.cs">
+      <DependentUpon>frmProductorCLP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmProductor2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmProductor2.Designer.cs">
+      <DependentUpon>frmProductor2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmProductor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmProductor.Designer.cs">
+      <DependentUpon>frmProductor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\MantoProductor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\MantoProductor.Designer.cs">
+      <DependentUpon>MantoProductor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\MantoVariedad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\MantoVariedad.Designer.cs">
+      <DependentUpon>MantoVariedad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Pesos\IngresoDescarte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Pesos\IngresoDescarte.Designer.cs">
+      <DependentUpon>IngresoDescarte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Pesos\IngresoPesos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Pesos\IngresoPesos.Designer.cs">
+      <DependentUpon>IngresoPesos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Principal\FrmBienvenida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Principal\FrmBienvenida.Designer.cs">
+      <DependentUpon>FrmBienvenida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Principal\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Principal\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Principal\FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Principal\FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\ImprimirPesos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\ImprimirPesos.Designer.cs">
+      <DependentUpon>ImprimirPesos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\RptBoletaPesadoDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\RptBoletaPesadoDetalle.Designer.cs">
+      <DependentUpon>RptBoletaPesadoDetalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\TicketCajas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\TicketCajas.Designer.cs">
+      <DependentUpon>TicketCajas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\RptTrazabilidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\RptTrazabilidad.Designer.cs">
+      <DependentUpon>RptTrazabilidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\RptGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\RptGeneral.Designer.cs">
+      <DependentUpon>RptGeneral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\RptBoletaPesado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\RptBoletaPesado.Designer.cs">
+      <DependentUpon>RptBoletaPesado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Sistema\FrmConexion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Sistema\FrmConexion.Designer.cs">
+      <DependentUpon>FrmConexion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Sistema\FrmPesosDiversos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Sistema\FrmPesosDiversos.Designer.cs">
+      <DependentUpon>FrmPesosDiversos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Sistema\FrmPuertos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Sistema\FrmPuertos.Designer.cs">
+      <DependentUpon>FrmPuertos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmAcopiador.resx">
+      <DependentUpon>frmAcopiador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmAcopiador2.resx">
+      <DependentUpon>frmAcopiador2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmMatCosecha.resx">
+      <DependentUpon>frmMatCosecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmServicio.resx">
+      <DependentUpon>frmServicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmPresentacion.resx">
+      <DependentUpon>frmPresentacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmLote.resx">
+      <DependentUpon>frmLote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmJabas.resx">
+      <DependentUpon>frmJabas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmCliente.resx">
+      <DependentUpon>frmCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmCliente2.resx">
+      <DependentUpon>frmCliente2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmCultivo.resx">
+      <DependentUpon>frmCultivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmProductorCLP.resx">
+      <DependentUpon>frmProductorCLP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmProductor2.resx">
+      <DependentUpon>frmProductor2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmProductor.resx">
+      <DependentUpon>frmProductor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\MantoProductor.resx">
+      <DependentUpon>MantoProductor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Pesos\IngresoDescarte.resx">
+      <DependentUpon>IngresoDescarte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Pesos\IngresoPesos.resx">
+      <DependentUpon>IngresoPesos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Principal\FrmBienvenida.resx">
+      <DependentUpon>FrmBienvenida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Principal\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Principal\FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Reporte\ImprimirPesos.resx">
+      <DependentUpon>ImprimirPesos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Reporte\RptBoletaPesadoDetalle.resx">
+      <DependentUpon>RptBoletaPesadoDetalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Reporte\TicketCajas.resx">
+      <DependentUpon>TicketCajas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Reporte\RptTrazabilidad.resx">
+      <DependentUpon>RptTrazabilidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Reporte\RptGeneral.resx">
+      <DependentUpon>RptGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Reporte\RptBoletaPesado.resx">
+      <DependentUpon>RptBoletaPesado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Sistema\FrmConexion.resx">
+      <DependentUpon>FrmConexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Sistema\FrmPesosDiversos.resx">
+      <DependentUpon>FrmPesosDiversos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Sistema\FrmPuertos.resx">
+      <DependentUpon>FrmPuertos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="3mpacador4_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Datos\" />
+    <Folder Include="Recursos\NewFolder1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Recursos\ICUSB2322F.C.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ticketagricola.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ticketagricola1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ticketagricola2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TickeAgricolaPesos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TickeAgricolaPesos1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TickeAgricolaPesos2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NOTICE.TXT" />
+    <Content Include="palta.ico" />
+    <None Include="Resources\cargando.gif" />
+    <None Include="Resources\Image1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
