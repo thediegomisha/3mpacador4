@@ -55,8 +55,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.datalistado = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtnumlote = new System.Windows.Forms.TextBox();
-            this.BtnBuscar = new System.Windows.Forms.Button();
             this.totalneto = new System.Windows.Forms.Label();
             this.Label15 = new System.Windows.Forms.Label();
             this.LBLCONTAR = new System.Windows.Forms.Label();
@@ -336,24 +334,6 @@
             this.label12.Text = "BOLETA DE PESADO DETALLE:";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // txtnumlote
-            // 
-            this.txtnumlote.Location = new System.Drawing.Point(455, 10);
-            this.txtnumlote.Name = "txtnumlote";
-            this.txtnumlote.Size = new System.Drawing.Size(100, 20);
-            this.txtnumlote.TabIndex = 39;
-            this.txtnumlote.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnumlote_KeyPress);
-            // 
-            // BtnBuscar
-            // 
-            this.BtnBuscar.Location = new System.Drawing.Point(585, 7);
-            this.BtnBuscar.Name = "BtnBuscar";
-            this.BtnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.BtnBuscar.TabIndex = 40;
-            this.BtnBuscar.Text = "Buscar";
-            this.BtnBuscar.UseVisualStyleBackColor = true;
-            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
-            // 
             // totalneto
             // 
             this.totalneto.AutoSize = true;
@@ -425,8 +405,6 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.totalneto);
             this.Controls.Add(this.Label15);
-            this.Controls.Add(this.BtnBuscar);
-            this.Controls.Add(this.txtnumlote);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblhoraingreso);
@@ -492,8 +470,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView datalistado;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtnumlote;
-        private System.Windows.Forms.Button BtnBuscar;
         internal System.Windows.Forms.Label totalneto;
         internal System.Windows.Forms.Label Label15;
         internal System.Windows.Forms.Label LBLCONTAR;

@@ -47,51 +47,51 @@ namespace _3mpacador4.Presentacion.Reporte
 
         }
 
-        private void mostrarconsulta()
-        {
+        //private void mostrarconsulta()
+        //{
 
-            MySqlCommand comando;
-            try
-            {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+        //    MySqlCommand comando;
+        //    try
+        //    {
+        //        if (ConexionGral.conexion.State == ConnectionState.Closed)
+        //        {
+        //            ConexionGral.conectar();
+        //        }
 
-                comando = new MySqlCommand("usp_tblticketpesaje_RptBoletaPesado", ConexionGral.conexion);
-                comando.CommandType = (CommandType)4;
+        //        comando = new MySqlCommand("usp_tblticketpesaje_RptBoletaPesado", ConexionGral.conexion);
+        //        comando.CommandType = (CommandType)4;
 
-                comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = txtnumlote.Text;
+        //        comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = txtnumlote.Text;
            
-                var adaptador = new MySqlDataAdapter(comando);
-                var datos = new System.Data.DataTable();
-                adaptador.Fill(datos);
+        //        var adaptador = new MySqlDataAdapter(comando);
+        //        var datos = new System.Data.DataTable();
+        //        adaptador.Fill(datos);
 
-                {
-                    var withBlock = this.datalistado;
-                    if (datos.Rows.Count != 0)
-                    {
-                        var dr = datos.NewRow();
-                        withBlock.DataSource = datos;
-                        tamanio();
-                        ocultar_columnas();
-                        actualizardatos();
-                        sumaneto();
-                        contar();
-                    }
-                    else
-                    {
-                        withBlock.DataSource = null;
-                    }
-                }
+        //        {
+        //            var withBlock = this.datalistado;
+        //            if (datos.Rows.Count != 0)
+        //            {
+        //                var dr = datos.NewRow();
+        //                withBlock.DataSource = datos;
+        //                tamanio();
+        //                ocultar_columnas();
+        //                actualizardatos();
+        //                sumaneto();
+        //                contar();
+        //            }
+        //            else
+        //            {
+        //                withBlock.DataSource = null;
+        //            }
+        //        }
 
-                ConexionGral.desconectar();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        //        ConexionGral.desconectar();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
 
         private void actualizardatos()
         {
@@ -115,7 +115,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            mostrarconsulta();
+          //  mostrarconsulta();
 
         }
 
@@ -314,24 +314,7 @@ namespace _3mpacador4.Presentacion.Reporte
             }
         }
 
-        private void txtnumlote_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((int)e.KeyChar == (int)Keys.Enter)
-            {
-                if (!String.IsNullOrEmpty(txtnumlote.Text))
-                {
-                    BtnBuscar.PerformClick();
-                }
-                else
-                {
-                    MessageBox.Show("Ingrese el Peso Correcto");
-                }
-
-
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+              private void button1_Click(object sender, EventArgs e)
         {
             ExportarExcel( nombreArchivo);
         }
