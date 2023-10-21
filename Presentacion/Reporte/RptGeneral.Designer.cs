@@ -502,6 +502,7 @@
             this.datalistado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.datalistado.Location = new System.Drawing.Point(0, 0);
             this.datalistado.Name = "datalistado";
+            this.datalistado.ReadOnly = true;
             this.datalistado.RowHeadersVisible = false;
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datalistado.Size = new System.Drawing.Size(1213, 329);
@@ -532,10 +533,15 @@
             // 
             // datalistado2
             // 
+            this.datalistado2.AllowUserToAddRows = false;
+            this.datalistado2.AllowUserToDeleteRows = false;
+            this.datalistado2.AllowUserToResizeColumns = false;
+            this.datalistado2.AllowUserToResizeRows = false;
             this.datalistado2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datalistado2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.datalistado2.Location = new System.Drawing.Point(0, 0);
             this.datalistado2.Name = "datalistado2";
+            this.datalistado2.ReadOnly = true;
             this.datalistado2.RowHeadersVisible = false;
             this.datalistado2.Size = new System.Drawing.Size(722, 156);
             this.datalistado2.TabIndex = 1;

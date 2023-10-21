@@ -391,6 +391,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Principal\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\ImprimirPesos.resx">
       <DependentUpon>ImprimirPesos.cs</DependentUpon>

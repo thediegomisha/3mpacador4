@@ -1197,8 +1197,37 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void datalistado_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            RptBoletaPesadoDetalle form = new RptBoletaPesadoDetalle();
-            form.ShowDialog();
+            //Hace un chequeo si se hizo click en una fila
+            if (e.RowIndex >= 0)
+            {
+                // EVALUA la fila que se clickeo
+                DataGridViewRow row = datalistado.Rows[e.RowIndex];
+
+                // Aqui obtiene los valores de las celdas en la fila
+                string guiaRemision = row.Cells[0].Value.ToString();
+                string numdoc = row.Cells[1].Value.ToString();
+                string lote = row.Cells[2].Value.ToString();
+                string fechapesaje = row.Cells[3].Value.ToString();
+                string hllegada = row.Cells[4].Value.ToString();
+                string producto = row.Cells[5].Value.ToString();
+                string variedad = row.Cells[6].Value.ToString();
+                string exportador = row.Cells[7].Value.ToString();
+                string productor = row.Cells[8].Value.ToString();
+                string codigoproduccion = row.Cells[9].Value.ToString();
+                string canjabas = row.Cells[10].Value.ToString();
+                string pesobruto = row.Cells[11].Value.ToString();
+                string pesojabas = row.Cells[12].Value.ToString();
+                string pesoneto = row.Cells[13].Value.ToString();
+                string prom = row.Cells[14].Value.ToString();
+
+                //Pasa los datos al Formulario RptBoletaPesadoDetalle
+                RptBoletaPesadoDetalle segundoForm = new RptBoletaPesadoDetalle(guiaRemision, numdoc, lote, fechapesaje, hllegada, producto, variedad, exportador, productor, codigoproduccion, canjabas, pesobruto, pesojabas, pesoneto, prom);
+                //Hace aparecer el Formulario RptBoletaPesadoDetalle
+                segundoForm.Show();
+            }
+
         }
+
+
     }
 }
