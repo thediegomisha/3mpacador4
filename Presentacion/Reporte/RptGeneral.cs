@@ -758,6 +758,16 @@ namespace _3mpacador4.Presentacion.Reporte
             }
         }
 
+        private void buttonEnviarDatos_Click(object sender, EventArgs e)
+        {
+            // Obtén las filas seleccionadas del DataGridView en el formulario principal
+            DataGridViewSelectedRowCollection filasseleccionadas = datalistado2.SelectedRows;
+
+            // Crea una instancia del formulario secundario (Form2) y pásale las filas seleccionadas
+            RptBoletaPesadoDetalle form2 = new RptBoletaPesadoDetalle(filasseleccionadas);
+            form2.Show(); // Muestra el formulario secundario
+        }
+
         private void mostrarconsulta2()
         {
 
@@ -1220,10 +1230,24 @@ namespace _3mpacador4.Presentacion.Reporte
                 string pesoneto = row.Cells[13].Value.ToString();
                 string prom = row.Cells[14].Value.ToString();
 
+                // Obtén las filas seleccionadas del DataGridView en el formulario principal
+                DataGridViewSelectedRowCollection filasseleccionadas = datalistado2.SelectedRows;
+
+
                 //Pasa los datos al Formulario RptBoletaPesadoDetalle
                 RptBoletaPesadoDetalle segundoForm = new RptBoletaPesadoDetalle(guiaRemision, numdoc, lote, fechapesaje, hllegada, producto, variedad, exportador, productor, codigoproduccion, canjabas, pesobruto, pesojabas, pesoneto, prom);
+
+                // Crea una instancia del formulario secundario (Form2) y pásale las filas seleccionadas
+                RptBoletaPesadoDetalle form2 = new RptBoletaPesadoDetalle(filasseleccionadas);
+
                 //Hace aparecer el Formulario RptBoletaPesadoDetalle
                 segundoForm.Show();
+
+
+               
+
+              
+               // form2.Show(); // Muestra el formulario secundario
             }
 
         }

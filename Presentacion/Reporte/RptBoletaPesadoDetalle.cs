@@ -42,7 +42,15 @@ namespace _3mpacador4.Presentacion.Reporte
             PrepGrid();
             MostrarDatosEnLabels(guiaRemision, numdoc, lote, fechapesaje, hllegada, producto, variedad, exportador, productor, codigoproduccion, cantjabas, pesobruto, pesojabas, pesoneto, prom);
             
-    }
+        }
+
+        public RptBoletaPesadoDetalle(DataGridViewSelectedRowCollection filasseleccionadas)
+        {
+            InitializeComponent();
+            PrepGrid();
+          //  MostrarDatosEnLabels(guiaRemision, numdoc, lote, fechapesaje, hllegada, producto, variedad, exportador, productor, codigoproduccion, cantjabas, pesobruto, pesojabas, pesoneto, prom);
+
+        }
 
         private void RptBoletaPesado_Load(object sender, EventArgs e)
         {
