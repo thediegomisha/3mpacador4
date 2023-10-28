@@ -758,18 +758,11 @@ namespace _3mpacador4.Presentacion.Reporte
             }
         }
 
-        private void buttonEnviarDatos_Click(object sender, EventArgs e)
-        {
-            // Obtén las filas seleccionadas del DataGridView en el formulario principal
-            DataGridViewSelectedRowCollection filasseleccionadas = datalistado2.SelectedRows;
+       
 
-            // Crea una instancia del formulario secundario (Form2) y pásale las filas seleccionadas
-            RptBoletaPesadoDetalle form2 = new RptBoletaPesadoDetalle(filasseleccionadas);
-            form2.Show(); // Muestra el formulario secundario
-        }
-
-        private void mostrarconsulta2()
+        private DataTable mostrarconsulta2()
         {
+            DataTable datos = new DataTable();
 
             MySqlCommand comando;
             try
@@ -785,7 +778,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = lblpuntero.Text;
 
                 var adaptador = new MySqlDataAdapter(comando);
-                var datos = new DataTable();
+                // var datos = new DataTable();
                 adaptador.Fill(datos);
 
                 {
@@ -799,12 +792,12 @@ namespace _3mpacador4.Presentacion.Reporte
                         //actualizardatos();
                         sumaneto();
                         contar();
-                        lblinfo3.Visible = false;
+                        lblinfo3.Visible = false;                        
                     }
                     else
                     {
                         withBlock.DataSource = null;
-                        lblinfo2.Visible = true;
+                        lblinfo2.Visible = true;                       
                     }
                 }
 
@@ -813,7 +806,8 @@ namespace _3mpacador4.Presentacion.Reporte
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }            
+            }
+            return datos;
         }
 
         private void mostrarconsulta3()
@@ -1211,47 +1205,46 @@ namespace _3mpacador4.Presentacion.Reporte
             if (e.RowIndex >= 0)
             {
                 // EVALUA la fila que se clickeo
-                DataGridViewRow row = datalistado.Rows[e.RowIndex];
+                DataGridViewRow filasseleccionada = datalistado.Rows[e.RowIndex];
 
-                // Aqui obtiene los valores de las celdas en la fila
-                string guiaRemision = row.Cells[0].Value.ToString();
-                string numdoc = row.Cells[1].Value.ToString();
-                string lote = row.Cells[2].Value.ToString();
-                string fechapesaje = row.Cells[3].Value.ToString();
-                string hllegada = row.Cells[4].Value.ToString();
-                string producto = row.Cells[5].Value.ToString();
-                string variedad = row.Cells[6].Value.ToString();
-                string exportador = row.Cells[7].Value.ToString();
-                string productor = row.Cells[8].Value.ToString();
-                string codigoproduccion = row.Cells[9].Value.ToString();
-                string canjabas = row.Cells[10].Value.ToString();
-                string pesobruto = row.Cells[11].Value.ToString();
-                string pesojabas = row.Cells[12].Value.ToString();
-                string pesoneto = row.Cells[13].Value.ToString();
-                string prom = row.Cells[14].Value.ToString();
+                string[] filaConDatos = new string[filasseleccionada.Cells.Count];
 
-                // Obtén las filas seleccionadas del DataGridView en el formulario principal
-                DataGridViewSelectedRowCollection filasseleccionadas = datalistado2.SelectedRows;
+                for (int i = 0; i < filasseleccionada.Cells.Count; i++)
+                {
+                    filaConDatos[i] = filasseleccionada.Cells[i].Value.ToString();
+                }
+
+                //// Aqui obtiene los valores de las celdas en la fila
+                //string guiaRemision = row.Cells[0].Value.ToString();
+                //string numdoc = row.Cells[1].Value.ToString();
+                //string lote = row.Cells[2].Value.ToString();
+                //string fechapesaje = row.Cells[3].Value.ToString();
+                //string hllegada = row.Cells[4].Value.ToString();
+                //string producto = row.Cells[5].Value.ToString();
+                //string variedad = row.Cells[6].Value.ToString();
+                //string exportador = row.Cells[7].Value.ToString();
+                //string productor = row.Cells[8].Value.ToString();
+                //string codigoproduccion = row.Cells[9].Value.ToString();
+                //string canjabas = row.Cells[10].Value.ToString();
+                //string pesobruto = row.Cells[11].Value.ToString();
+                //string pesojabas = row.Cells[12].Value.ToString();
+                //string pesoneto = row.Cells[13].Value.ToString();
+                //string prom = row.Cells[14].Value.ToString();
 
 
-                //Pasa los datos al Formulario RptBoletaPesadoDetalle
-                RptBoletaPesadoDetalle segundoForm = new RptBoletaPesadoDetalle(guiaRemision, numdoc, lote, fechapesaje, hllegada, producto, variedad, exportador, productor, codigoproduccion, canjabas, pesobruto, pesojabas, pesoneto, prom);
+                DataTable resultados = mostrarconsulta2();
 
-                // Crea una instancia del formulario secundario (Form2) y pásale las filas seleccionadas
-                RptBoletaPesadoDetalle form2 = new RptBoletaPesadoDetalle(filasseleccionadas);
 
-                //Hace aparecer el Formulario RptBoletaPesadoDetalle
-                segundoForm.Show();
 
+                RptBoletaPesadoDetalle FH = new RptBoletaPesadoDetalle(resultados);
+
+                FH.ShowDialog();
 
                
-
-              
-               // form2.Show(); // Muestra el formulario secundario
             }
 
         }
 
-
+       
     }
 }

@@ -24,6 +24,7 @@ using Label = System.Windows.Forms.Label;
 using IFont = NPOI.SS.UserModel.IFont;
 using HorizontalAlignment = NPOI.SS.UserModel.HorizontalAlignment;
 using NPOI.SS.Util;
+using NPOI.SS.Formula.Functions;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
@@ -36,92 +37,38 @@ namespace _3mpacador4.Presentacion.Reporte
         // Label[] labels = new Label[] { lblciente, label2, label3, label4, label5, label6 };
        
 
-        public RptBoletaPesadoDetalle(string guiaRemision, string numdoc, string lote, string fechapesaje, string hllegada, string producto, string variedad, string exportador, string productor, string codigoproduccion, string cantjabas, string pesobruto, string pesojabas, string pesoneto, string prom)
+        //public RptBoletaPesadoDetalle(string guiaRemision, string numdoc, string lote, string fechapesaje, string hllegada, string producto, string variedad, string exportador, string productor, string codigoproduccion, string cantjabas, string pesobruto, string pesojabas, string pesoneto, string prom)
+        //{
+        //    InitializeComponent();
+        //    PrepGrid();
+        //    MostrarDatosEnLabels(guiaRemision, numdoc, lote, fechapesaje, hllegada, producto, variedad, exportador, productor, codigoproduccion, cantjabas, pesobruto, pesojabas, pesoneto, prom);
+        //   // datalistado.DataSource = 
+        //}
+
+        public RptBoletaPesadoDetalle(DataTable data)
         {
             InitializeComponent();
             PrepGrid();
-            MostrarDatosEnLabels(guiaRemision, numdoc, lote, fechapesaje, hllegada, producto, variedad, exportador, productor, codigoproduccion, cantjabas, pesobruto, pesojabas, pesoneto, prom);
-            
+          //  tamanio();
+            //    MostrarDatosEnLabels();           
+            datalistado.DataSource = data;
+            ocultar_columnas2();
         }
 
-        public RptBoletaPesadoDetalle(DataGridViewSelectedRowCollection filasseleccionadas)
-        {
-            InitializeComponent();
-            PrepGrid();
-          //  MostrarDatosEnLabels(guiaRemision, numdoc, lote, fechapesaje, hllegada, producto, variedad, exportador, productor, codigoproduccion, cantjabas, pesobruto, pesojabas, pesoneto, prom);
+        //public RptBoletaPesadoDetalle(DataGridViewSelectedRowCollection filasseleccionadas)
+        //{
+        //    InitializeComponent();
+        //    PrepGrid();
+        //  //  MostrarDatosEnLabels(guiaRemision, numdoc, lote, fechapesaje, hllegada, producto, variedad, exportador, productor, codigoproduccion, cantjabas, pesobruto, pesojabas, pesoneto, prom);
 
-        }
+        //}
 
         private void RptBoletaPesado_Load(object sender, EventArgs e)
         {
 
         }
 
-        //private void mostrarconsulta()
-        //{
-
-        //    MySqlCommand comando;
-        //    try
-        //    {
-        //        if (ConexionGral.conexion.State == ConnectionState.Closed)
-        //        {
-        //            ConexionGral.conectar();
-        //        }
-
-        //        comando = new MySqlCommand("usp_tblticketpesaje_RptBoletaPesado", ConexionGral.conexion);
-        //        comando.CommandType = (CommandType)4;
-
-        //        comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = txtnumlote.Text;
-           
-        //        var adaptador = new MySqlDataAdapter(comando);
-        //        var datos = new System.Data.DataTable();
-        //        adaptador.Fill(datos);
-
-        //        {
-        //            var withBlock = this.datalistado;
-        //            if (datos.Rows.Count != 0)
-        //            {
-        //                var dr = datos.NewRow();
-        //                withBlock.DataSource = datos;
-        //                tamanio();
-        //                ocultar_columnas();
-        //                actualizardatos();
-        //                sumaneto();
-        //                contar();
-        //            }
-        //            else
-        //            {
-        //                withBlock.DataSource = null;
-        //            }
-        //        }
-
-        //        ConexionGral.desconectar();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-
-        //private void actualizardatos()
-        //{
-        //    try
-        //    {
-        //        lblcliente.Text = this.datalistado.Rows[0].Cells[6].Value .ToString();
-        //        lblproductor.Text = this.datalistado.Rows[0].Cells[7].Value.ToString();
-        //        lblclp.Text  = this.datalistado.Rows[0].Cells[8].Value.ToString();
-        //        lblproducto.Text = this.datalistado.Rows[0].Cells[4].Value.ToString();
-        //        lblvariedad.Text = this.datalistado.Rows[0].Cells[5].Value.ToString();
-        //        lblfechaingreso.Text = this.datalistado.Rows[0].Cells[1].Value.ToString();
-        //        lblhoraingreso.Text = this.datalistado.Rows[0].Cells[2].Value.ToString();
-        //        lblguiaingreso.Text = this.datalistado.Rows[0].Cells[0].Value.ToString();
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        throw;
-        //    }
-        //}
+       
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
@@ -228,10 +175,10 @@ namespace _3mpacador4.Presentacion.Reporte
                 // establecer modo de ajuste
                 // .Columns("NOMBRE_PRODUCTO").DefaultCellStyle.WrapMode = DataGridViewTriState.True
                 withBlock.Columns["T. JABA"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                withBlock.Columns["T. JABA"].Width = 90;
+                withBlock.Columns["T. JABA"].Width = 50;
 
                 withBlock.Columns["T.PARIH"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                withBlock.Columns["T.PARIH"].Width = 130;
+                withBlock.Columns["T.PARIH"].Width = 110;
 
                 withBlock.Columns["CANT JABAS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 // .Columns("PESAJE").DefaultCellStyle.Format = "#.#0"
@@ -427,5 +374,24 @@ namespace _3mpacador4.Presentacion.Reporte
                 this.Close();
             }
         }
+
+        private void ocultar_columnas2()
+        {
+            this.datalistado.Columns[0].Visible = false;
+            this.datalistado.Columns[1].Visible = false;
+            this.datalistado.Columns[2].Visible = false;
+            this.datalistado.Columns[3].Visible = false;
+            this.datalistado.Columns[4].Visible = false;
+            this.datalistado.Columns[5].Visible = false;
+            this.datalistado.Columns[6].Visible = false;
+            this.datalistado.Columns[7].Visible = false;
+            this.datalistado.Columns[8].Visible = false;
+            //this.datalistado.Columns[0].Visible = false;
+            //this.datalistado.Columns[0].Visible = false;
+            //this.datalistado.Columns[0].Visible = false;
+
+            // datalistado.Columns(3).Visible = False
+        }
+
     }
 }
