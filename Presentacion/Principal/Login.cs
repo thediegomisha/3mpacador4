@@ -26,7 +26,7 @@ namespace _3mpacador4.Presentacion
         }
             
         private void cmd_Aceptar_Click(object sender, EventArgs e)
-        {
+       {
             string login = txtlogin.Text; // Obtén el nombre de usuario del TextBox
             string clave = txtpassword.Text; // Obtén la contraseña del TextBox
             int usuarioId;
@@ -45,6 +45,7 @@ namespace _3mpacador4.Presentacion
                 // La autenticación falló.
                 MessageBox.Show("Nombre de usuario o contraseña incorrectos");
             }
+
         }
 
         private bool Validarusuario(string login, string clave, out int usuarioId, out string nombre, out string apaterno)
