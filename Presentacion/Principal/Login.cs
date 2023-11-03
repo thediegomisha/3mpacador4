@@ -70,7 +70,6 @@ namespace _3mpacador4.Presentacion
                 comando.Parameters.AddWithValue("p_valido", MySqlType.Bit);
                 comando.Parameters["p_valido"].Direction = ParameterDirection.Output;
 
-
                 comando.Parameters.AddWithValue("p_usuario_id", MySqlType.Int);
                 comando.Parameters["p_usuario_id"].Direction = ParameterDirection.Output;
 
