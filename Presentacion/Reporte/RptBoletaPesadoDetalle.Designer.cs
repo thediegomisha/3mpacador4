@@ -312,7 +312,7 @@
             this.panel1.Controls.Add(this.datalistado);
             this.panel1.Location = new System.Drawing.Point(22, 235);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(636, 346);
+            this.panel1.Size = new System.Drawing.Size(694, 346);
             this.panel1.TabIndex = 37;
             // 
             // datalistado
@@ -321,7 +321,7 @@
             this.datalistado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.datalistado.Location = new System.Drawing.Point(0, 0);
             this.datalistado.Name = "datalistado";
-            this.datalistado.Size = new System.Drawing.Size(636, 346);
+            this.datalistado.Size = new System.Drawing.Size(694, 346);
             this.datalistado.TabIndex = 0;
             // 
             // label12
@@ -424,7 +424,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(672, 624);
+            this.ClientSize = new System.Drawing.Size(737, 624);
             this.Controls.Add(this.lblcantjabas);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.LBLCONTAR);
@@ -460,6 +460,8 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label3);
             this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "RptBoletaPesadoDetalle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.RptBoletaPesado_Load);

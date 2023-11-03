@@ -36,24 +36,34 @@ namespace _3mpacador4.Presentacion.Reporte
 
         // Label[] labels = new Label[] { lblciente, label2, label3, label4, label5, label6 };
        
-
-        //public RptBoletaPesadoDetalle(string guiaRemision, string numdoc, string lote, string fechapesaje, string hllegada, string producto, string variedad, string exportador, string productor, string codigoproduccion, string cantjabas, string pesobruto, string pesojabas, string pesoneto, string prom)
-        //{
-        //    InitializeComponent();
-        //    PrepGrid();
-        //    MostrarDatosEnLabels(guiaRemision, numdoc, lote, fechapesaje, hllegada, producto, variedad, exportador, productor, codigoproduccion, cantjabas, pesobruto, pesojabas, pesoneto, prom);
-        //   // datalistado.DataSource = 
-        //}
-
-        public RptBoletaPesadoDetalle(DataTable data)
+       
+        public RptBoletaPesadoDetalle(string[] filaConDatos, DataTable data)
         {
             InitializeComponent();
             PrepGrid();
-          //  tamanio();
-            //    MostrarDatosEnLabels();           
-            datalistado.DataSource = data;
-            ocultar_columnas2();
+
+            if (filaConDatos.Length >= 5)
+            {
+                lblguiaingreso .Text = filaConDatos[0];
+             //   lblnumdoc.Text = filaConDatos[1];
+                lblnumlote.Text = filaConDatos[2];
+                lblfechaingreso.Text = filaConDatos[3];
+                lblhoraingreso .Text = filaConDatos[4];                
+                lblproducto.Text = filaConDatos[5];
+                lblvariedad .Text = filaConDatos[6];
+                lblcliente.Text = filaConDatos[7];
+                lblproductor.Text = filaConDatos[8];
+                lblclp.Text = filaConDatos[9];
+             //   lblservicio .Text = filaConDatos[4];
+             //   lblmetodo.Text = filaConDatos[2];
+
+                datalistado.DataSource = data;
+                ocultar_columnas2();
+            }
+
         }
+
+
 
         //public RptBoletaPesadoDetalle(DataGridViewSelectedRowCollection filasseleccionadas)
         //{
@@ -270,27 +280,7 @@ namespace _3mpacador4.Presentacion.Reporte
             }
         }
 
-        private void MostrarDatosEnLabels(string guiaRemision, string numdoc, string lote, string fechapesaje, string hllegada, string producto, string variedad, string exportador, string productor, string codigoproduccion, string cantjabas, string pesobruto, string pesojabas, string pesoneto, string prom)
-        {
-            //Aqui se igualan tanto label como las variables para pasar los datos del Formulario RptGeneral al Formulario RptBoletaPesadoDetalle 
-            lblguiaingreso.Text = guiaRemision;
-            //lbl.Text = numdoc;
-            //lbl.Text = lote;
-            lblfechaingreso .Text = fechapesaje;
-            lblhoraingreso .Text = hllegada;
-            lblproducto.Text = producto;
-            lblvariedad.Text = variedad;
-            lblcliente .Text = exportador;
-            lblproductor.Text = productor;
-            lblclp.Text = codigoproduccion;
-            //lblcantjabas.Text = cantjabas;
-            //lblpesobruto.Text = pesobruto;
-            //lblpesojabas.Text = pesojabas;
-            //lblpesoneto.Text = pesoneto;
-            //lblprom.Text = prom;
-
-        }
-
+      
         private void button1_Click(object sender, EventArgs e)
         {
             ExportarExcel( nombreArchivo);
@@ -386,11 +376,7 @@ namespace _3mpacador4.Presentacion.Reporte
             this.datalistado.Columns[6].Visible = false;
             this.datalistado.Columns[7].Visible = false;
             this.datalistado.Columns[8].Visible = false;
-            //this.datalistado.Columns[0].Visible = false;
-            //this.datalistado.Columns[0].Visible = false;
-            //this.datalistado.Columns[0].Visible = false;
-
-            // datalistado.Columns(3).Visible = False
+            
         }
 
     }
