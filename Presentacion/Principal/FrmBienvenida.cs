@@ -12,6 +12,9 @@ namespace _3mpacador4.Presentacion.Principal
 {
     public partial class FrmBienvenida : Form
     {
+        public string NombreDesdeLogin { get; set; }
+        public string ApaternoDesdeLogin { get; set; }
+
         public FrmBienvenida()
         {
             InitializeComponent();
@@ -30,6 +33,8 @@ namespace _3mpacador4.Presentacion.Principal
             }
         }
 
+
+
         private void timer2_Tick(object sender, EventArgs e)
         {
             this.Opacity -= 0.1;
@@ -47,6 +52,7 @@ namespace _3mpacador4.Presentacion.Principal
             circularProgressBar1.Minimum = 0;
             circularProgressBar1.Maximum = 100;
             timer1.Start();
+            lblusername.Text = NombreDesdeLogin + " " + ApaternoDesdeLogin;
 
         }
     }

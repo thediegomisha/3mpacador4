@@ -18,11 +18,14 @@ using _3mpacador4.Properties;
 using Microsoft.VisualBasic;
 
 using System.Net;
+using _3mpacador4.Presentacion.Principal;
 
 namespace _3mpacador4.Presentacion
 {
     public partial class FrmPrincipal : Form
     {
+        public string NombreDesdeLogin { get; set; }
+        public string ApaternoDesdeLogin { get; set; }
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -88,26 +91,13 @@ namespace _3mpacador4.Presentacion
             {
 
                 string FileVer = FileVersionInfo.GetVersionInfo(Application.ExecutablePath).FileVersion;
-
-
-                // Dim request As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create("https://sites.google.com/site/stprmareadeti/gestor-de-descarga-de-sintesis-gds/GDS.txt?attredirects=0&d=1")
-                // Dim response As System.Net.HttpWebResponse = request.GetResponse()
-                // Dim sr As System.IO.StreamReader = New System.IO.StreamReader(response.GetResponseStream())
-                // Dim newestversion As String = sr.ReadToEnd()
-                // PARA SABER LA VERSION DEL PROGRAMA 
                 string currentversion = Application.ProductVersion;
 
-                // If newestversion.Contains(currentversion) Then
-                // MsgBox("su versión es la mas actual")
-                // Else
-                // MsgBox("Existe una Versión mas actual")
-                // '  System.Diagnostics.Process.Start("https://sites.google.com/site/stprmareadeti/gestor-de-descarga-de-sintesis-gds")
-                // End If
-
-
+               
                 string cadenaconexion = Settings.Default.ConecctionString;
                 string[] nombress = cadenaconexion.Split(';');
 
+                // Obtener dirección IP local
                 IPHostEntry host;
                 string LocalIp = "?";
                 host = Dns.GetHostEntry(Dns.GetHostName());
@@ -116,21 +106,23 @@ namespace _3mpacador4.Presentacion
                     if(ip.AddressFamily.ToString() == "InterNetwork")
                 {
                         LocalIp= ip.ToString();
-                        TxtIp.Text = LocalIp.ToString() +" ";
+                        TxtIp.Text = LocalIp.ToString() + " ";
                 }
-              //  LBLUSUARIO.Text = UCase(Login.datalistado.SelectedCells.Item(2).Value) + "  ";
+               LBLUSUARIO.Text = NombreDesdeLogin + " " + ApaternoDesdeLogin + "  ";
 
                 if (ApplicationDeployment.IsNetworkDeployed)
                 {
-                    System.Deployment.Application.ApplicationDeployment ver;
-                    ver = System.Deployment.Application.ApplicationDeployment.CurrentDeployment;
-                    TxtVersion.Text = ver.CurrentVersion.ToString() + "   ";
+                    ApplicationDeployment deployment = ApplicationDeployment.CurrentDeployment;
+                    TxtVersion.Text = deployment.CurrentVersion.ToString() + "   ";
                     lblDatabase.Text = nombress[4].Substring(9) + "   ";
 
                 }
                 else
-                    TxtVersion.Text = Application.ProductVersion + "   ";
-                lblDatabase.Text = nombress[4].Substring(9) + "   ";
+                //    ApplicationDeployment deployment = ApplicationDeployment.CurrentDeployment;
+                //TxtVersion.Text = deployment.CurrentVersion.ToString() + "   ";
+                //  TxtVersion.Text = Application.ProductVersion + "   ";
+                    TxtVersion.Text = currentversion + "   ";
+                    lblDatabase.Text = nombress[4].Substring(9) + "   ";
 
                 // TxtVersion.Text = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString & "  "
                 txtServer.Text = nombress[0].Substring(7) + "  ";

@@ -1,6 +1,7 @@
 ﻿using _3mpacador4.Logica;
 using _3mpacador4.Presentacion;
 using _3mpacador4.Presentacion.Sistema;
+using _3mpacador4.Presentacion.Principal;
 using Devart.Data.MySql;
 using NPOI.Util;
 using System;
@@ -17,6 +18,10 @@ namespace _3mpacador4.Presentacion
 {
     public partial class Login : Form
     {
+        public string nombre1 { get; private set; }
+        public string apaterno1 { get; private set; }
+        public int usuarioId1 { get; private set; }
+
         public Login()
         {
             InitializeComponent();
@@ -38,7 +43,7 @@ namespace _3mpacador4.Presentacion
             if (autenticado)
             {
                 // El usuario se autenticó con éxito. Puedes realizar acciones adicionales aquí.
-                MessageBox.Show("Inicio de sesión exitoso");
+      //          MessageBox.Show("Inicio de sesión exitoso");
             }
             else
             {
@@ -51,9 +56,9 @@ namespace _3mpacador4.Presentacion
         private bool Validarusuario(string login, string clave, out int usuarioId, out string nombre, out string apaterno)
         {
             MySqlCommand comando = null;
-            usuarioId = 1;
-            nombre = "";
-            apaterno = "";
+            usuarioId = 0;
+            nombre = string.Empty;
+            apaterno = string.Empty;
 
             try
             {
@@ -65,8 +70,8 @@ namespace _3mpacador4.Presentacion
                 comando = new MySqlCommand("usp_validarusuarios", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
 
-                comando.Parameters.AddWithValue("p_login", MySqlType.VarChar).Value = txtlogin.Text;
-                comando.Parameters.AddWithValue("p_clave", MySqlType.VarChar).Value = txtpassword.Text;
+                comando.Parameters.AddWithValue("p_login", MySqlType.VarChar).Value = login;
+                comando.Parameters.AddWithValue("p_clave", MySqlType.VarChar).Value = clave;
 
                 comando.Parameters.AddWithValue("p_valido", MySqlType.Bit);
                 comando.Parameters["p_valido"].Direction = ParameterDirection.Output;
@@ -74,10 +79,10 @@ namespace _3mpacador4.Presentacion
                 comando.Parameters.AddWithValue("p_usuario_id", MySqlType.Int);
                 comando.Parameters["p_usuario_id"].Direction = ParameterDirection.Output;
 
-                comando.Parameters.AddWithValue("p_nombre", MySqlType.VarChar);
+                comando.Parameters.AddWithValue("p_nombre", MySqlType.VarChar.ToString()) ;
                 comando.Parameters["p_nombre"].Direction = ParameterDirection.Output;
 
-                comando.Parameters.AddWithValue("p_apaterno", MySqlType.VarChar);
+                comando.Parameters.AddWithValue("p_apaterno", MySqlType.VarChar.ToString());
                 comando.Parameters["p_apaterno"].Direction = ParameterDirection.Output;
 
 
@@ -87,21 +92,21 @@ namespace _3mpacador4.Presentacion
 
                 if (usuarioValido)
                 {
-                    usuarioId = Convert.ToInt32(comando.Parameters["p_usuario_id"].Value);
-                    nombre = Convert.ToString(comando.Parameters["p_nombre"].Value);
-                    apaterno = Convert.ToString(comando.Parameters["p_apaterno"].Value);
-                    MessageBox.Show("Inicio de sesión exitoso");
-                    cargavalidada();
-                    return usuarioValido;
+                    usuarioId1 = Convert.ToInt32(comando.Parameters["p_usuario_id"].Value);
+                    nombre1 = (comando.Parameters["p_nombre"].Value.ToString());
+                    apaterno1 = (comando.Parameters["p_apaterno"].Value.ToString());
+               //     MessageBox.Show("Inicio de sesión exitoso");
+                    cargavalidada();                 
                 }
                 else
                 {
                     MessageBox.Show("Nombre de usuario o contraseña incorrectos");
-                    txtlogin.Text = "";
-                    txtpassword.Text = "";
-                    return usuarioValido;
+                    txtlogin.Text = string.Empty ;
+                    txtpassword.Text = string.Empty;
+
                 }
-                        }
+                return usuarioValido;
+            }
 
             catch (Exception ex)
             {
@@ -117,17 +122,23 @@ namespace _3mpacador4.Presentacion
 
                 ConexionGral.desconectar();
 
-            }
-
-           
+            }           
         }
 
         private void cargavalidada()
         {
             this.Hide();
             Principal.FrmBienvenida bienvenida = new Principal.FrmBienvenida();
+
+            bienvenida.NombreDesdeLogin = nombre1;
+            bienvenida.ApaternoDesdeLogin = apaterno1;
+
             bienvenida.ShowDialog();
             FrmPrincipal form = new FrmPrincipal();
+
+            form.NombreDesdeLogin = nombre1;
+            form.ApaternoDesdeLogin = apaterno1;
+
             form.Show();
         }
 
