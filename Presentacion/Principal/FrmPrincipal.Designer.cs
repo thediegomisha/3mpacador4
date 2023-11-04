@@ -32,6 +32,9 @@
             this.PanelLadoIzq = new System.Windows.Forms.Panel();
             this.panelMantenimiento = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAcopiador = new System.Windows.Forms.Button();
+            this.btnProductores = new System.Windows.Forms.Button();
+            this.btnClientes = new System.Windows.Forms.Button();
             this.btnMantenimiento = new System.Windows.Forms.Button();
             this.panelSistema = new System.Windows.Forms.Panel();
             this.button16 = new System.Windows.Forms.Button();
@@ -65,9 +68,7 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnClientes = new System.Windows.Forms.Button();
-            this.btnProductores = new System.Windows.Forms.Button();
-            this.btnAcopiador = new System.Windows.Forms.Button();
+            this.btnUsuarios = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -111,6 +112,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panel1.Controls.Add(this.btnUsuarios);
             this.panel1.Controls.Add(this.btnAcopiador);
             this.panel1.Controls.Add(this.btnProductores);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -118,6 +120,57 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(124, 148);
             this.panel1.TabIndex = 12;
+            // 
+            // btnAcopiador
+            // 
+            this.btnAcopiador.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAcopiador.FlatAppearance.BorderSize = 0;
+            this.btnAcopiador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAcopiador.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnAcopiador.ForeColor = System.Drawing.Color.LightGray;
+            this.btnAcopiador.Location = new System.Drawing.Point(0, 33);
+            this.btnAcopiador.Name = "btnAcopiador";
+            this.btnAcopiador.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnAcopiador.Size = new System.Drawing.Size(124, 33);
+            this.btnAcopiador.TabIndex = 14;
+            this.btnAcopiador.Text = "Acopiadores";
+            this.btnAcopiador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAcopiador.UseVisualStyleBackColor = true;
+            this.btnAcopiador.Click += new System.EventHandler(this.btnAcopiador_Click_1);
+            // 
+            // btnProductores
+            // 
+            this.btnProductores.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnProductores.FlatAppearance.BorderSize = 0;
+            this.btnProductores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProductores.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnProductores.ForeColor = System.Drawing.Color.LightGray;
+            this.btnProductores.Location = new System.Drawing.Point(0, 0);
+            this.btnProductores.Name = "btnProductores";
+            this.btnProductores.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnProductores.Size = new System.Drawing.Size(124, 33);
+            this.btnProductores.TabIndex = 12;
+            this.btnProductores.Text = "Productores";
+            this.btnProductores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProductores.UseVisualStyleBackColor = true;
+            this.btnProductores.Click += new System.EventHandler(this.btnProductores_Click_1);
+            // 
+            // btnClientes
+            // 
+            this.btnClientes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClientes.FlatAppearance.BorderSize = 0;
+            this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClientes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnClientes.ForeColor = System.Drawing.Color.LightGray;
+            this.btnClientes.Location = new System.Drawing.Point(0, 0);
+            this.btnClientes.Name = "btnClientes";
+            this.btnClientes.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnClientes.Size = new System.Drawing.Size(124, 33);
+            this.btnClientes.TabIndex = 15;
+            this.btnClientes.Text = "Clientes";
+            this.btnClientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClientes.UseVisualStyleBackColor = true;
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click_1);
             // 
             // btnMantenimiento
             // 
@@ -524,56 +577,22 @@
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
             // 
-            // btnClientes
+            // btnUsuarios
             // 
-            this.btnClientes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnClientes.FlatAppearance.BorderSize = 0;
-            this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClientes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnClientes.ForeColor = System.Drawing.Color.LightGray;
-            this.btnClientes.Location = new System.Drawing.Point(0, 0);
-            this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnClientes.Size = new System.Drawing.Size(124, 33);
-            this.btnClientes.TabIndex = 15;
-            this.btnClientes.Text = "Clientes";
-            this.btnClientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClientes.UseVisualStyleBackColor = true;
-            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click_1);
-            // 
-            // btnProductores
-            // 
-            this.btnProductores.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnProductores.FlatAppearance.BorderSize = 0;
-            this.btnProductores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProductores.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnProductores.ForeColor = System.Drawing.Color.LightGray;
-            this.btnProductores.Location = new System.Drawing.Point(0, 0);
-            this.btnProductores.Name = "btnProductores";
-            this.btnProductores.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnProductores.Size = new System.Drawing.Size(124, 33);
-            this.btnProductores.TabIndex = 12;
-            this.btnProductores.Text = "Productores";
-            this.btnProductores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProductores.UseVisualStyleBackColor = true;
-            this.btnProductores.Click += new System.EventHandler(this.btnProductores_Click_1);
-            // 
-            // btnAcopiador
-            // 
-            this.btnAcopiador.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAcopiador.FlatAppearance.BorderSize = 0;
-            this.btnAcopiador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAcopiador.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnAcopiador.ForeColor = System.Drawing.Color.LightGray;
-            this.btnAcopiador.Location = new System.Drawing.Point(0, 33);
-            this.btnAcopiador.Name = "btnAcopiador";
-            this.btnAcopiador.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnAcopiador.Size = new System.Drawing.Size(124, 33);
-            this.btnAcopiador.TabIndex = 14;
-            this.btnAcopiador.Text = "Acopiadores";
-            this.btnAcopiador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAcopiador.UseVisualStyleBackColor = true;
-            this.btnAcopiador.Click += new System.EventHandler(this.btnAcopiador_Click_1);
+            this.btnUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUsuarios.FlatAppearance.BorderSize = 0;
+            this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsuarios.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnUsuarios.ForeColor = System.Drawing.Color.LightGray;
+            this.btnUsuarios.Location = new System.Drawing.Point(0, 66);
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnUsuarios.Size = new System.Drawing.Size(124, 33);
+            this.btnUsuarios.TabIndex = 15;
+            this.btnUsuarios.Text = "Usuarios";
+            this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUsuarios.UseVisualStyleBackColor = true;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
             // FrmPrincipal
             // 
@@ -643,5 +662,6 @@
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnAcopiador;
         private System.Windows.Forms.Button btnProductores;
+        private System.Windows.Forms.Button btnUsuarios;
     }
 }
