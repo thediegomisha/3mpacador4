@@ -29,8 +29,7 @@ namespace _3mpacador4.Presentacion
         public FrmPrincipal()
         {
             InitializeComponent();
-            personalizado();
-           
+            personalizado();           
         }
 
         private void Principal_Load(object sender, EventArgs e)
@@ -51,7 +50,6 @@ namespace _3mpacador4.Presentacion
             PanelFormularioHijo.Tag = FormularioHijo;
             FormularioHijo.BringToFront();
             FormularioHijo.Show();
-
         }
               
         private void personalizado()
@@ -108,34 +106,27 @@ namespace _3mpacador4.Presentacion
                         LocalIp= ip.ToString();
                         TxtIp.Text = LocalIp.ToString() + " ";
                 }
-               LBLUSUARIO.Text = NombreDesdeLogin + " " + ApaternoDesdeLogin + "  ";
+                        LBLUSUARIO.Text = NombreDesdeLogin + " " + ApaternoDesdeLogin + "  ";
 
                 if (ApplicationDeployment.IsNetworkDeployed)
                 {
                     ApplicationDeployment deployment = ApplicationDeployment.CurrentDeployment;
                     TxtVersion.Text = deployment.CurrentVersion.ToString() + "   ";
                     lblDatabase.Text = nombress[4].Substring(9) + "   ";
-
                 }
                 else
-                //    ApplicationDeployment deployment = ApplicationDeployment.CurrentDeployment;
-                //TxtVersion.Text = deployment.CurrentVersion.ToString() + "   ";
-                //  TxtVersion.Text = Application.ProductVersion + "   ";
+               
                     TxtVersion.Text = currentversion + "   ";
                     lblDatabase.Text = nombress[4].Substring(9) + "   ";
 
-                // TxtVersion.Text = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString & "  "
-                txtServer.Text = nombress[0].Substring(7) + "  ";
-                txtNombreEquipo.Text = Environment.MachineName + "  ";
+                    txtServer.Text = nombress[0].Substring(7) + "  ";
+                    txtNombreEquipo.Text = Environment.MachineName + "  ";
             }
-
-
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-
 
         private void btnSubmenu1_Click(object sender, EventArgs e)
         {
@@ -151,24 +142,21 @@ namespace _3mpacador4.Presentacion
         {
             ocultarSubMenu();
             FrmPuertos form = new FrmPuertos();
-            form.ShowDialog();
-           
+            form.ShowDialog();           
         }
 
         private void btnBD_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
             FrmConexion form = new FrmConexion();
-            form.ShowDialog();
-           
+            form.ShowDialog();           
         }
 
         private void BtnPesosDiversos_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
             FrmPesosDiversos from = new FrmPesosDiversos();
-            from.ShowDialog();
-           
+            from.ShowDialog();           
         }
 
         private void btnRecepcionPesos_Click(object sender, EventArgs e)
@@ -221,9 +209,7 @@ namespace _3mpacador4.Presentacion
             ocultarSubMenu();
             AbrirFormularioHijo(new IngresoDescarte());
         }
-
-       
-       
+                     
         private void btnMantenimiento_Click_1(object sender, EventArgs e)
         {
             MostrarSubMenu(panelMantenimiento);

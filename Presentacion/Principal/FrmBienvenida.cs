@@ -34,7 +34,6 @@ namespace _3mpacador4.Presentacion.Principal
         }
 
 
-
         private void timer2_Tick(object sender, EventArgs e)
         {
             this.Opacity -= 0.1;

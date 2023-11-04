@@ -26,7 +26,6 @@ namespace _3mpacador4.Presentacion
         {
             InitializeComponent();
            // info();
-
           lblversion.Text = Application.ProductVersion + "   ";
         }
             
@@ -39,18 +38,7 @@ namespace _3mpacador4.Presentacion
             string apaterno;
 
             bool autenticado = Validarusuario(login, clave, out usuarioId, out nombre, out apaterno);
-
-            if (autenticado)
-            {
-                // El usuario se autenticó con éxito. Puedes realizar acciones adicionales aquí.
-      //          MessageBox.Show("Inicio de sesión exitoso");
-            }
-            else
-            {
-                // La autenticación falló.
-                MessageBox.Show("Nombre de usuario o contraseña incorrectos");
-            }
-
+           
         }
 
         private bool Validarusuario(string login, string clave, out int usuarioId, out string nombre, out string apaterno)
@@ -85,7 +73,6 @@ namespace _3mpacador4.Presentacion
                 comando.Parameters.AddWithValue("p_apaterno", MySqlType.VarChar.ToString());
                 comando.Parameters["p_apaterno"].Direction = ParameterDirection.Output;
 
-
                 comando.ExecuteNonQuery();
 
                 bool usuarioValido = Convert.ToBoolean(comando.Parameters["p_valido"].Value);
@@ -103,7 +90,6 @@ namespace _3mpacador4.Presentacion
                     MessageBox.Show("Nombre de usuario o contraseña incorrectos");
                     txtlogin.Text = string.Empty ;
                     txtpassword.Text = string.Empty;
-
                 }
                 return usuarioValido;
             }
@@ -121,7 +107,6 @@ namespace _3mpacador4.Presentacion
                 }
 
                 ConexionGral.desconectar();
-
             }           
         }
 
@@ -157,10 +142,7 @@ namespace _3mpacador4.Presentacion
 
         private void Label2_Click(object sender, EventArgs e)
         {
-
-        }
-
-       
+        }       
 
         private void txtlogin_KeyDown(object sender, KeyEventArgs e)
         {
