@@ -55,9 +55,9 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     comando = new MySqlCommand("usp_tbacopiador_Select", ConexionGral.conexion);
                     comando.CommandType = (CommandType)4;
 
-                var adaptador = new MySqlDataAdapter(comando);
-                var datos = new DataTable();
-                adaptador.Fill(datos);
+                    var adaptador = new MySqlDataAdapter(comando);
+                    var datos = new DataTable();
+                    adaptador.Fill(datos);
 
                 {
                     var withBlock = this.datalistado;

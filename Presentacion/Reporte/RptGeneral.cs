@@ -1219,8 +1219,6 @@ namespace _3mpacador4.Presentacion.Reporte
                 RptBoletaPesadoDetalle FH = new RptBoletaPesadoDetalle(filaConDatos, resultados);
 
                 FH.ShowDialog();
-
-               
             }
 
         }
