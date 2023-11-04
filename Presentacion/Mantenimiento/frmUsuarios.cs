@@ -84,17 +84,20 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             mostrarusuario();
         }
 
+        int idUsuario;
         private void datalistado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == datalistado.Columns["Eliminar"].Index)
+            if (datalistado.Columns[e.ColumnIndex].Name == "Eliminar")
             {
-                int idUsuario = Convert.ToInt32(datalistado.Rows[e.RowIndex].Cells["idusuarios"].Value);
-
-                // Llamar a una función que elimine el usuario en la base de datos
-                EliminarUsuario(idUsuario);
-
-                // Volver a cargar la lista de usuarios
-                mostrarusuario();
+                idUsuario = Convert.ToInt32(datalistado.CurrentRow.
+                   Cells["nom_bre"].Value.ToString());
+                MsgBox msg = new MsgBox("question",
+                    "Desea eliminar?\nSe eliminará de forma permanente");
+                msg.ShowDialog();
+                if (msg.DialogResult == DialogResult.OK)
+                {
+                    EliminarUsuario(idUsuario);
+                }
             }
         }
 
