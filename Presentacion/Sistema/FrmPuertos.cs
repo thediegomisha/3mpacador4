@@ -305,6 +305,14 @@ namespace _3mpacador4.Presentacion.Sistema
                 CBParidadDesp.Enabled = false;
             }
         }
+
+        private void FrmPuertos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
     } 
 

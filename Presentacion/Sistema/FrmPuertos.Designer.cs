@@ -75,7 +75,7 @@
             "57600",
             "115200",
             "128000"});
-            this.CBBaudiosDesp.Location = new System.Drawing.Point(87, 286);
+            this.CBBaudiosDesp.Location = new System.Drawing.Point(87, 259);
             this.CBBaudiosDesp.Name = "CBBaudiosDesp";
             this.CBBaudiosDesp.Size = new System.Drawing.Size(68, 21);
             this.CBBaudiosDesp.TabIndex = 96;
@@ -88,7 +88,7 @@
             "1",
             "1.5",
             "2"});
-            this.CBParadaDesp.Location = new System.Drawing.Point(256, 313);
+            this.CBParadaDesp.Location = new System.Drawing.Point(256, 286);
             this.CBParadaDesp.Name = "CBParadaDesp";
             this.CBParadaDesp.Size = new System.Drawing.Size(46, 21);
             this.CBParadaDesp.TabIndex = 94;
@@ -101,7 +101,7 @@
             "Par",
             "Impar",
             "Ninguno"});
-            this.CBParidadDesp.Location = new System.Drawing.Point(87, 313);
+            this.CBParidadDesp.Location = new System.Drawing.Point(87, 286);
             this.CBParidadDesp.Name = "CBParidadDesp";
             this.CBParidadDesp.Size = new System.Drawing.Size(68, 21);
             this.CBParidadDesp.TabIndex = 92;
@@ -116,7 +116,7 @@
             "6",
             "7",
             "8"});
-            this.CBDatosDesp.Location = new System.Drawing.Point(256, 286);
+            this.CBDatosDesp.Location = new System.Drawing.Point(256, 259);
             this.CBDatosDesp.Name = "CBDatosDesp";
             this.CBDatosDesp.Size = new System.Drawing.Size(46, 21);
             this.CBDatosDesp.TabIndex = 90;
@@ -125,7 +125,7 @@
             // 
             this.Label13.AutoSize = true;
             this.Label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label13.Location = new System.Drawing.Point(176, 313);
+            this.Label13.Location = new System.Drawing.Point(176, 286);
             this.Label13.Name = "Label13";
             this.Label13.Size = new System.Drawing.Size(81, 15);
             this.Label13.TabIndex = 89;
@@ -135,7 +135,7 @@
             // 
             this.Label14.AutoSize = true;
             this.Label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label14.Location = new System.Drawing.Point(12, 315);
+            this.Label14.Location = new System.Drawing.Point(12, 288);
             this.Label14.Name = "Label14";
             this.Label14.Size = new System.Drawing.Size(50, 15);
             this.Label14.TabIndex = 86;
@@ -145,7 +145,7 @@
             // 
             this.Label15.AutoSize = true;
             this.Label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label15.Location = new System.Drawing.Point(178, 289);
+            this.Label15.Location = new System.Drawing.Point(178, 262);
             this.Label15.Name = "Label15";
             this.Label15.Size = new System.Drawing.Size(73, 15);
             this.Label15.TabIndex = 84;
@@ -155,7 +155,7 @@
             // 
             this.Label16.AutoSize = true;
             this.Label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label16.Location = new System.Drawing.Point(12, 289);
+            this.Label16.Location = new System.Drawing.Point(12, 262);
             this.Label16.Name = "Label16";
             this.Label16.Size = new System.Drawing.Size(52, 15);
             this.Label16.TabIndex = 82;
@@ -277,7 +277,7 @@
             // chk_Despacho
             // 
             this.chk_Despacho.AutoSize = true;
-            this.chk_Despacho.Location = new System.Drawing.Point(296, 256);
+            this.chk_Despacho.Location = new System.Drawing.Point(296, 229);
             this.chk_Despacho.Name = "chk_Despacho";
             this.chk_Despacho.Size = new System.Drawing.Size(15, 14);
             this.chk_Despacho.TabIndex = 71;
@@ -308,7 +308,7 @@
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(247, 451);
+            this.btnSalir.Location = new System.Drawing.Point(246, 373);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 67;
@@ -319,7 +319,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(60, 451);
+            this.btnGuardar.Location = new System.Drawing.Point(59, 373);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 66;
@@ -331,7 +331,7 @@
             // 
             this.CBDESPACHO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBDESPACHO.FormattingEnabled = true;
-            this.CBDESPACHO.Location = new System.Drawing.Point(160, 253);
+            this.CBDESPACHO.Location = new System.Drawing.Point(160, 226);
             this.CBDESPACHO.Name = "CBDESPACHO";
             this.CBDESPACHO.Size = new System.Drawing.Size(121, 21);
             this.CBDESPACHO.TabIndex = 64;
@@ -349,7 +349,7 @@
             // 
             this.Label2.AutoSize = true;
             this.Label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(12, 256);
+            this.Label2.Location = new System.Drawing.Point(12, 229);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(134, 13);
             this.Label2.TabIndex = 61;
@@ -368,7 +368,7 @@
             // Label7
             // 
             this.Label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label7.Location = new System.Drawing.Point(14, 407);
+            this.Label7.Location = new System.Drawing.Point(12, 326);
             this.Label7.Name = "Label7";
             this.Label7.Size = new System.Drawing.Size(319, 44);
             this.Label7.TabIndex = 69;
@@ -379,7 +379,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(359, 485);
+            this.ClientSize = new System.Drawing.Size(350, 405);
             this.Controls.Add(this.CBBaudiosDesp);
             this.Controls.Add(this.CBParadaDesp);
             this.Controls.Add(this.CBParidadDesp);
@@ -407,12 +407,14 @@
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.Label7);
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmPuertos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPuertos_FormClosing);
             this.Load += new System.EventHandler(this.FrmPuertos_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmPuertos_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -257,5 +257,13 @@ namespace _3mpacador4.Presentacion.Sistema
                 txtcajaplasticablanca.Enabled = false;
             }
         }
+
+        private void FrmPesosDiversos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

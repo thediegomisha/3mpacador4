@@ -48,9 +48,9 @@
             this.txtBd = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_cerrar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtunicode = new System.Windows.Forms.TextBox();
+            this.btn_cerrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.GroupBox1.SuspendLayout();
             this.GroupBox2.SuspendLayout();
@@ -70,7 +70,7 @@
             // btnprobar
             // 
             this.btnprobar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnprobar.Location = new System.Drawing.Point(161, 233);
+            this.btnprobar.Location = new System.Drawing.Point(161, 217);
             this.btnprobar.Name = "btnprobar";
             this.btnprobar.Size = new System.Drawing.Size(137, 24);
             this.btnprobar.TabIndex = 6;
@@ -85,7 +85,7 @@
             this.Label5.ForeColor = System.Drawing.Color.Red;
             this.Label5.Location = new System.Drawing.Point(8, 9);
             this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(180, 33);
+            this.Label5.Size = new System.Drawing.Size(212, 33);
             this.Label5.TabIndex = 6;
             this.Label5.Text = "Cambiar la configuracion del Servidor MySQL";
             // 
@@ -95,7 +95,7 @@
             this.GroupBox1.Controls.Add(this.Label6);
             this.GroupBox1.Location = new System.Drawing.Point(103, 4);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(243, 124);
+            this.GroupBox1.Size = new System.Drawing.Size(220, 124);
             this.GroupBox1.TabIndex = 17;
             this.GroupBox1.TabStop = false;
             // 
@@ -104,7 +104,7 @@
             this.Label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label6.Location = new System.Drawing.Point(6, 41);
             this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(235, 70);
+            this.Label6.Size = new System.Drawing.Size(231, 80);
             this.Label6.TabIndex = 6;
             this.Label6.Text = "Advertencia! :  La modificacion de la configuracion del Servidor MySQL, puede hac" +
     "er que la aplicacion no funcione correctamente. Utilizar con cuidado.";
@@ -222,7 +222,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(110, 403);
+            this.btnGuardar.Location = new System.Drawing.Point(112, 390);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(121, 24);
             this.btnGuardar.TabIndex = 0;
@@ -250,21 +250,10 @@
             this.GroupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GroupBox2.Location = new System.Drawing.Point(9, 134);
             this.GroupBox2.Name = "GroupBox2";
-            this.GroupBox2.Size = new System.Drawing.Size(335, 263);
+            this.GroupBox2.Size = new System.Drawing.Size(314, 250);
             this.GroupBox2.TabIndex = 18;
             this.GroupBox2.TabStop = false;
             this.GroupBox2.Text = "Configuracion Actual";
-            // 
-            // btn_cerrar
-            // 
-            this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cerrar.Location = new System.Drawing.Point(250, 403);
-            this.btn_cerrar.Name = "btn_cerrar";
-            this.btn_cerrar.Size = new System.Drawing.Size(57, 24);
-            this.btn_cerrar.TabIndex = 1;
-            this.btn_cerrar.Text = "&Salir";
-            this.btn_cerrar.UseVisualStyleBackColor = true;
-            this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
             // 
             // label4
             // 
@@ -283,21 +272,34 @@
             this.txtunicode.Size = new System.Drawing.Size(165, 22);
             this.txtunicode.TabIndex = 12;
             // 
+            // btn_cerrar
+            // 
+            this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cerrar.Location = new System.Drawing.Point(250, 390);
+            this.btn_cerrar.Name = "btn_cerrar";
+            this.btn_cerrar.Size = new System.Drawing.Size(57, 24);
+            this.btn_cerrar.TabIndex = 1;
+            this.btn_cerrar.Text = "&Salir";
+            this.btn_cerrar.UseVisualStyleBackColor = true;
+            this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
+            // 
             // FrmConexion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 439);
+            this.ClientSize = new System.Drawing.Size(345, 424);
             this.Controls.Add(this.PictureBox1);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.GroupBox2);
             this.Controls.Add(this.btn_cerrar);
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmConexion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmConexion_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmConexion_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             this.GroupBox1.ResumeLayout(false);
             this.GroupBox2.ResumeLayout(false);
