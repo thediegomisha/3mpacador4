@@ -236,6 +236,24 @@
     <Compile Include="Presentacion\Mantenimiento\frmProductor.Designer.cs">
       <DependentUpon>frmProductor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmUsuarios.Designer.cs">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmEditUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmEditUsuarios.Designer.cs">
+      <DependentUpon>frmEditUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmUsuarios2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmUsuarios2.Designer.cs">
+      <DependentUpon>frmUsuarios2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Mantenimiento\MantoProductor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -373,6 +391,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmProductor.resx">
       <DependentUpon>frmProductor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmUsuarios.resx">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmEditUsuarios.resx">
+      <DependentUpon>frmEditUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmUsuarios2.resx">
+      <DependentUpon>frmUsuarios2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\MantoProductor.resx">
       <DependentUpon>MantoProductor.cs</DependentUpon>

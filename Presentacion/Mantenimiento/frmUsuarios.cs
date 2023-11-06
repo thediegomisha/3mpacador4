@@ -13,22 +13,25 @@ using Microsoft.VisualBasic.CompilerServices;
 using _3mpacador4;
 using _3mpacador4.Logica;
 using Devart.Data.MySql;
+using NPOI.SS.Formula.Functions;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
     public partial class frmUsuarios : Form
     {
+
         public frmUsuarios()
         {
             InitializeComponent();
             mostrarusuario();
+            
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             frmUsuarios2 F = new frmUsuarios2();
             F.ShowDialog();
-
+            mostrarusuario();
         }
        
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -78,31 +81,41 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 }
         }
 
-        private void btnActualizarTbl_Click(object sender, EventArgs e)
-        {
-            
-            mostrarusuario();
-        }
 
         int idUsuario;
         private void datalistado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (datalistado.Columns[e.ColumnIndex].Name == "Editar")
+            {
+                int idUsuario = Convert.ToInt32(datalistado.Rows[e.RowIndex].Cells["idusuarios"].Value);
+
+                frmEditUsuarios editForm = new frmEditUsuarios();
+                editForm.IdUsuario = idUsuario; // Configura la propiedad IdUsuario
+                editForm.Show(); // Muestra el formulario de edición
+            }
+
+
             if (datalistado.Columns[e.ColumnIndex].Name == "Eliminar")
             {
-                idUsuario = Convert.ToInt32(datalistado.CurrentRow.
-                   Cells["nom_bre"].Value.ToString());
-                MsgBox msg = new MsgBox("question",
-                    "Desea eliminar?\nSe eliminará de forma permanente");
-                msg.ShowDialog();
-                if (msg.DialogResult == DialogResult.OK)
+                idUsuario = Convert.ToInt32(datalistado.CurrentRow.Cells["idusuarios"].Value.ToString());
+                DialogResult r = MessageBox.Show("¿Está seguro que desea ELIMINAR este usuario?", "Advertencia", MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation);
+                //MessageBox.Show("¿Está seguro que desea ELIMINAR este usuario?","Advertencia\n");
+                if (r == DialogResult.OK)
                 {
                     EliminarUsuario(idUsuario);
+                    mostrarusuario();
                 }
             }
+
+            //if (datalistado.Columns[e.ColumnIndex].Name == "Editar")
+            //{
+
+            //}
         }
 
         private void EliminarUsuario(int idUsuario)
         {
+            MySqlCommand comando;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed)
@@ -110,7 +123,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     ConexionGral.conectar();
                 }
 
-                MySqlCommand comando = new MySqlCommand("DELETE FROM tblusuarios WHERE idusuarios = @idUsuario", ConexionGral.conexion);
+                comando = new MySqlCommand("DELETE FROM tblusuarios WHERE idusuarios = @idUsuario", ConexionGral.conexion);
                 comando.Parameters.AddWithValue("@idUsuario", idUsuario);
 
                 int filasAfectadas = comando.ExecuteNonQuery();
@@ -123,7 +136,6 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 {
                     MessageBox.Show("No se pudo eliminar el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
                 ConexionGral.desconectar();
             }
             catch (Exception ex)
@@ -131,8 +143,5 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 MessageBox.Show("Error al eliminar el usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
     }
 }

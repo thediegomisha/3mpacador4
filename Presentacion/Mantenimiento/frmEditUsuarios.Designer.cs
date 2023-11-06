@@ -1,6 +1,6 @@
 ﻿namespace _3mpacador4.Presentacion.Mantenimiento
 {
-    partial class frmUsuarios2
+    partial class frmEditUsuarios
     {
         /// <summary>
         /// Required designer variable.
@@ -72,9 +72,10 @@
             this.Label1.ForeColor = System.Drawing.Color.White;
             this.Label1.Location = new System.Drawing.Point(12, 9);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(166, 21);
+            this.Label1.Size = new System.Drawing.Size(125, 21);
             this.Label1.TabIndex = 0;
-            this.Label1.Text = "Registro de Usuarios";
+            this.Label1.Text = "Editar Usuarios";
+            this.Label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // Label4
             // 
@@ -110,7 +111,7 @@
             // 
             this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(332, 391);
+            this.btnGuardar.Location = new System.Drawing.Point(469, 391);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(82, 29);
             this.btnGuardar.TabIndex = 37;
@@ -309,7 +310,7 @@
             this.label5.TabIndex = 43;
             this.label5.Text = "DNI";
             // 
-            // frmUsuarios2
+            // frmEditUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -319,7 +320,7 @@
             this.Controls.Add(this.Panel1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
-            this.Name = "frmUsuarios2";
+            this.Name = "frmEditUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Panel1.ResumeLayout(false);
             this.Panel1.PerformLayout();

@@ -122,6 +122,12 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     comando.ExecuteNonQuery();
                     MessageBox.Show("USUARIO REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     limpiarcampos();
+
+                    // refrescar datagridview
+
+                    //frmUsuarios frmU = new frmUsuarios();
+                    //frmU.mostrarusuario();
+
                     ConexionGral.desconectar();
                     return;
                 }
@@ -137,15 +143,15 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         {
             try
             {
-                txtNombres.Text = String.Empty;
+                txtNombres.Text = string.Empty;
                 txtaPaterno.Text = string.Empty;
-                txtaMaterno.Text = "";
-                txtDni.Text = "";
-                txtTelefono.Text = "";
-                txtLogin.Text = "";
-                txtClave.Text = "";
-                txtAcceso.Text = "";
-                txtNivel.Text = "";
+                txtaMaterno.Text = string.Empty;
+                txtDni.Text = string.Empty;
+                txtTelefono.Text = string.Empty;
+                txtLogin.Text = string.Empty;
+                txtClave.Text = string.Empty;
+                txtAcceso.Text = string.Empty;
+                txtNivel.Text = string.Empty;
             }
             catch (Exception)
             {
@@ -161,9 +167,8 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             InsertarUsuarios();
+            this.Close();
+           
         }
-
-
-
     }
 }

@@ -44,7 +44,6 @@
             this.lblContar = new System.Windows.Forms.Label();
             this.Panel4 = new System.Windows.Forms.Panel();
             this.DataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnActualizarTbl = new System.Windows.Forms.Button();
             this.Panel2.SuspendLayout();
             this.Panel1.SuspendLayout();
             this.Panel3.SuspendLayout();
@@ -62,7 +61,6 @@
             // 
             // Panel2
             // 
-            this.Panel2.Controls.Add(this.btnActualizarTbl);
             this.Panel2.Controls.Add(this.btnCerrar);
             this.Panel2.Controls.Add(this.btnNuevo);
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -215,18 +213,6 @@
             this.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1";
             this.DataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // btnActualizarTbl
-            // 
-            this.btnActualizarTbl.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnActualizarTbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizarTbl.Location = new System.Drawing.Point(628, 12);
-            this.btnActualizarTbl.Name = "btnActualizarTbl";
-            this.btnActualizarTbl.Size = new System.Drawing.Size(89, 29);
-            this.btnActualizarTbl.TabIndex = 11;
-            this.btnActualizarTbl.Text = "Actualizar";
-            this.btnActualizarTbl.UseVisualStyleBackColor = true;
-            this.btnActualizarTbl.Click += new System.EventHandler(this.btnActualizarTbl_Click);
-            // 
             // frmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -266,6 +252,5 @@
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn Eliminar;
         public System.Windows.Forms.DataGridView datalistado;
-        internal System.Windows.Forms.Button btnActualizarTbl;
     }
 }
