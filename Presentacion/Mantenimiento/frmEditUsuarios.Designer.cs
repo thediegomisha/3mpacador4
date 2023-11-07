@@ -33,7 +33,6 @@
             this.Label4 = new System.Windows.Forms.Label();
             this.txtaPaterno = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.txtNombres = new System.Windows.Forms.TextBox();
             this.Label3 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
@@ -51,6 +50,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtDni = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnEditar = new System.Windows.Forms.Button();
             this.Panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -106,18 +106,6 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(469, 391);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(82, 29);
-            this.btnGuardar.TabIndex = 37;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // txtNombres
             // 
@@ -310,16 +298,28 @@
             this.label5.TabIndex = 43;
             this.label5.Text = "DNI";
             // 
+            // btnEditar
+            // 
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.Location = new System.Drawing.Point(464, 391);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(98, 29);
+            this.btnEditar.TabIndex = 60;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
             // frmEditUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(718, 432);
             this.ControlBox = false;
+            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Panel1);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnGuardar);
             this.Name = "frmEditUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Panel1.ResumeLayout(false);
@@ -337,7 +337,6 @@
         internal System.Windows.Forms.Label Label4;
         internal System.Windows.Forms.TextBox txtaPaterno;
         internal System.Windows.Forms.Button btnCancelar;
-        internal System.Windows.Forms.Button btnGuardar;
         internal System.Windows.Forms.TextBox txtNombres;
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Label Label2;
@@ -355,5 +354,6 @@
         internal System.Windows.Forms.Label label7;
         internal System.Windows.Forms.TextBox txtTelefono;
         internal System.Windows.Forms.Label label6;
+        internal System.Windows.Forms.Button btnEditar;
     }
 }

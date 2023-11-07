@@ -145,6 +145,7 @@
             this.btnActualizar.TabIndex = 38;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // txtdireccion
             // 
@@ -204,7 +205,6 @@
             this.Controls.Add(this.btnActualizar);
             this.Name = "frmAcopiador2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-//            this.Load += new System.EventHandler(this.frmPersonaJuridica_Load);
             this.Panel1.ResumeLayout(false);
             this.Panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
