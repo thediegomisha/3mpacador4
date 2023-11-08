@@ -83,33 +83,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         }
 
 
-        //int idUsuario;
-        //private void datalistado_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    if (datalistado.Columns[e.ColumnIndex].Name == "Editar")
-        //    {
-        //        int idUsuario = Convert.ToInt32(datalistado.CurrentRow.Cells["idusuarios"].Value.ToString());
-
-        //        frmEditUsuarios editForm = new frmEditUsuarios();
-        //        editForm.CargarDatosUsuario(idUsuario); // Llama a la función para cargar los datos del usuario
-        //        editForm.ShowDialog();
-        //        mostrarusuario(); // Actualiza la lista de usuarios después de la edición
-        //    }
-
-
-        //    if (datalistado.Columns[e.ColumnIndex].Name == "Eliminar")
-        //    {
-        //        idUsuario = Convert.ToInt32(datalistado.CurrentRow.Cells["idusuarios"].Value.ToString());
-        //        DialogResult r = MessageBox.Show("¿Está seguro que desea ELIMINAR este usuario?", "Advertencia", MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation);
-        //        //MessageBox.Show("¿Está seguro que desea ELIMINAR este usuario?","Advertencia\n");
-        //        if (r == DialogResult.OK)
-        //        {
-        //            EliminarUsuario(idUsuario);
-        //            mostrarusuario();
-        //        }
-        //    }
-
-        //int idUsuario;
+        
         private void datalistado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (datalistado.Columns[e.ColumnIndex].Name == "Editar")

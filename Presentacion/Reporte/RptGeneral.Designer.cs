@@ -101,6 +101,8 @@
             this.totalgeneral = new System.Windows.Forms.Label();
             this.LBLLL = new System.Windows.Forms.Label();
             this.btnBuscarTodos = new System.Windows.Forms.Button();
+            this.btnExportar = new System.Windows.Forms.Button();
+            this.lblMensaje = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
@@ -244,6 +246,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblMensaje);
+            this.panel1.Controls.Add(this.btnExportar);
             this.panel1.Controls.Add(this.cbAcopiador);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.chk_acopiador);
@@ -867,6 +871,27 @@
             this.btnBuscarTodos.UseVisualStyleBackColor = false;
             this.btnBuscarTodos.Click += new System.EventHandler(this.btnBuscarTodos_Click);
             // 
+            // btnExportar
+            // 
+            this.btnExportar.Location = new System.Drawing.Point(1115, 57);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(90, 23);
+            this.btnExportar.TabIndex = 28;
+            this.btnExportar.Text = "Exportar";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
+            // lblMensaje
+            // 
+            this.lblMensaje.AutoSize = true;
+            this.lblMensaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMensaje.Location = new System.Drawing.Point(764, 60);
+            this.lblMensaje.Name = "lblMensaje";
+            this.lblMensaje.Size = new System.Drawing.Size(52, 18);
+            this.lblMensaje.TabIndex = 29;
+            this.lblMensaje.Text = "label8";
+            this.lblMensaje.Visible = false;
+            // 
             // RptGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -998,5 +1023,7 @@
         internal System.Windows.Forms.Label lblinfo1;
         internal System.Windows.Forms.Label lblinfo3;
         internal System.Windows.Forms.Label lblinfo2;
+        private System.Windows.Forms.Button btnExportar;
+        private System.Windows.Forms.Label lblMensaje;
     }
 }
