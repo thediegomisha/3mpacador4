@@ -43,6 +43,8 @@
             this.chkproductor = new System.Windows.Forms.CheckBox();
             this.chkcliente = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblMensaje = new System.Windows.Forms.Label();
+            this.btnExportar = new System.Windows.Forms.Button();
             this.cbAcopiador = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.chk_acopiador = new System.Windows.Forms.CheckBox();
@@ -101,8 +103,7 @@
             this.totalgeneral = new System.Windows.Forms.Label();
             this.LBLLL = new System.Windows.Forms.Label();
             this.btnBuscarTodos = new System.Windows.Forms.Button();
-            this.btnExportar = new System.Windows.Forms.Button();
-            this.lblMensaje = new System.Windows.Forms.Label();
+            this.btnExportarPDF = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
@@ -247,7 +248,6 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.lblMensaje);
-            this.panel1.Controls.Add(this.btnExportar);
             this.panel1.Controls.Add(this.cbAcopiador);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.chk_acopiador);
@@ -287,6 +287,27 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1213, 86);
             this.panel1.TabIndex = 17;
+            // 
+            // lblMensaje
+            // 
+            this.lblMensaje.AutoSize = true;
+            this.lblMensaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMensaje.Location = new System.Drawing.Point(764, 60);
+            this.lblMensaje.Name = "lblMensaje";
+            this.lblMensaje.Size = new System.Drawing.Size(52, 18);
+            this.lblMensaje.TabIndex = 29;
+            this.lblMensaje.Text = "label8";
+            this.lblMensaje.Visible = false;
+            // 
+            // btnExportar
+            // 
+            this.btnExportar.Location = new System.Drawing.Point(1116, 4);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(90, 23);
+            this.btnExportar.TabIndex = 28;
+            this.btnExportar.Text = "ExportarExcel";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // cbAcopiador
             // 
@@ -871,33 +892,24 @@
             this.btnBuscarTodos.UseVisualStyleBackColor = false;
             this.btnBuscarTodos.Click += new System.EventHandler(this.btnBuscarTodos_Click);
             // 
-            // btnExportar
+            // btnExportarPDF
             // 
-            this.btnExportar.Location = new System.Drawing.Point(1115, 57);
-            this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(90, 23);
-            this.btnExportar.TabIndex = 28;
-            this.btnExportar.Text = "Exportar";
-            this.btnExportar.UseVisualStyleBackColor = true;
-            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
-            // 
-            // lblMensaje
-            // 
-            this.lblMensaje.AutoSize = true;
-            this.lblMensaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMensaje.Location = new System.Drawing.Point(764, 60);
-            this.lblMensaje.Name = "lblMensaje";
-            this.lblMensaje.Size = new System.Drawing.Size(52, 18);
-            this.lblMensaje.TabIndex = 29;
-            this.lblMensaje.Text = "label8";
-            this.lblMensaje.Visible = false;
+            this.btnExportarPDF.Location = new System.Drawing.Point(1007, 5);
+            this.btnExportarPDF.Name = "btnExportarPDF";
+            this.btnExportarPDF.Size = new System.Drawing.Size(75, 23);
+            this.btnExportarPDF.TabIndex = 105;
+            this.btnExportarPDF.Text = "ExportarPDF";
+            this.btnExportarPDF.UseVisualStyleBackColor = true;
+            this.btnExportarPDF.Click += new System.EventHandler(this.btnExportarPDF_Click);
             // 
             // RptGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1218, 673);
+            this.Controls.Add(this.btnExportarPDF);
             this.Controls.Add(this.btnBuscarTodos);
+            this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.cantjbasgeneral);
             this.Controls.Add(this.lbll);
             this.Controls.Add(this.itemsconsulta);
@@ -1025,5 +1037,6 @@
         internal System.Windows.Forms.Label lblinfo2;
         private System.Windows.Forms.Button btnExportar;
         private System.Windows.Forms.Label lblMensaje;
+        private System.Windows.Forms.Button btnExportarPDF;
     }
 }

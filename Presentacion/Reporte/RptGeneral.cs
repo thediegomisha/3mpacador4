@@ -10,12 +10,19 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.IO;
 using System.Reflection.Emit;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ICSharpCode.SharpZipLib.Zip.ExtendedUnixData;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Timers;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Kernel.Exceptions;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
@@ -1305,17 +1312,70 @@ namespace _3mpacador4.Presentacion.Reporte
             excel.Visible = true;
         }
 
-
+        private System.Timers.Timer myiempo;
         private void btnExportar_Click(object sender, EventArgs e)
         {
             lblMensaje.Visible = true;
-            lblMensaje.Text = "Un momento, se está preparando en Excel...";
-            Timer temporizador = new Timer();
-            temporizador.Interval = 100000;
-            temporizador.Start();
-            lblMensaje.Text = "Correcto, datos exportados correctamente.";
-            temporizador.Stop();    
+            lblMensaje.Text = "Un momento, se estan exportando los datos.";
+            //retardo();
+
             exportarexcel(datalistado);
         }
+        //Quería lograr que al momento de darle clic al boton ExportarExcel le salga al usuario un MessageBox dentro de unos 50 segundos despues de presionar el botón (no me salio, pero la idea está ahí :)).
+        //private static void OnTimedEvent(object source, ElapsedEventArgs e)
+        //{
+        //    MessageBox.Show("Un momento, se está preparando el Excel.");
+        //}
+
+        //static void retardo()
+        //{
+        //    System.Timers.Timer tiempo = new System.Timers.Timer();
+        //    tiempo.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+        //    tiempo.Interval = 500000;
+        //    tiempo.Enabled = true;
+        //}
+
+        private void btnExportarPDF_Click(object sender, EventArgs e)
+        {
+            ExportarPDF(datalistado);
+        }
+
+        private void ExportarPDF(DataGridView dataGridView)
+        {
+            try
+            {
+                
+                SaveFileDialog dialogoGuardar = new SaveFileDialog();
+                dialogoGuardar.Filter = "Archivo PDF.pdf";
+                dialogoGuardar.Title = "Guardar PDF";
+                dialogoGuardar.ShowDialog();
+
+                if (!string.IsNullOrEmpty(dialogoGuardar.FileName))
+                {
+                    using (FileStream flujoArchivo = new FileStream(dialogoGuardar.FileName, FileMode.Create))
+                    {
+                        using (PdfWriter escritorPDF = new PdfWriter(flujoArchivo))
+                        {
+                            using (PdfDocument documentoPDF = new PdfDocument(escritorPDF))
+                            {
+                                Document documento = new Document(documentoPDF);
+
+
+                                documento.Add(new Paragraph("Datos exportados desde el DataGridView"));
+                            }
+                        }
+                    }
+
+                    MessageBox.Show("Los datos que se exportan a PDF estan correctamente.", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hay un error al exportar el PDF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
     }
 }
