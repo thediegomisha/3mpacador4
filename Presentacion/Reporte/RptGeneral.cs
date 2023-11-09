@@ -1287,7 +1287,6 @@ namespace _3mpacador4.Presentacion.Reporte
                 {
                     IndiceColumna++;
                     excel.Cells[IndeceFila + 1, IndiceColumna] = row.Cells[col.Index].Value.ToString();
-.
                     if (IndeceFila % 2 == 0)
                     {
                         excel.Cells[IndeceFila + 1, IndiceColumna].EntireRow.Interior.Color = ColorTranslator.ToOle(Color.LemonChiffon);
