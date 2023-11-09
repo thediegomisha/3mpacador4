@@ -1264,17 +1264,13 @@ namespace _3mpacador4.Presentacion.Reporte
 
         public void exportarexcel(DataGridView datalistado)
         {
-            // Llamo a la referecencia de la aplicación Excel y la defino como "excel".
             Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-            // Se añade una nueva hoja de Excel y se l hace visible.
             excel.Application.Workbooks.Add(true);
 
-            // Estilo de las columnas en Excel.
             excel.Cells[1, 1].EntireRow.Font.Color = ColorTranslator.ToOle(Color.White);
             excel.Cells[1, 1].EntireRow.Interior.Color = ColorTranslator.ToOle(Color.Black);
 
             int IndiceColumna = 0;
-            // Recorremos las columnas para capturar los encabezados.
             foreach (DataGridViewColumn col in datalistado.Columns)
             {
                 IndiceColumna++;
@@ -1282,25 +1278,21 @@ namespace _3mpacador4.Presentacion.Reporte
             }
 
             int IndeceFila = 0;
-            // Recorremos las filas de la tabla.
             foreach (DataGridViewRow row in datalistado.Rows)
             {
                 IndeceFila++;
                 IndiceColumna = 0;
 
-                // Capturamos los datos de las filas.
                 foreach (DataGridViewColumn col in datalistado.Columns)
                 {
                     IndiceColumna++;
                     excel.Cells[IndeceFila + 1, IndiceColumna] = row.Cells[col.Index].Value.ToString();
-
-                    // Estilo de las filas en Excel para intercalar.
+.
                     if (IndeceFila % 2 == 0)
                     {
                         excel.Cells[IndeceFila + 1, IndiceColumna].EntireRow.Interior.Color = ColorTranslator.ToOle(Color.LemonChiffon);
                         excel.Cells[IndeceFila + 1, IndiceColumna].EntireRow.Font.Color = ColorTranslator.ToOle(Color.Red);
                     }
-                    // Estilo de las filas en Excel para intercalar.
                     else
                     {
                         excel.Cells[IndeceFila + 1, IndiceColumna].EntireRow.Interior.Color = ColorTranslator.ToOle(Color.White);
@@ -1308,7 +1300,6 @@ namespace _3mpacador4.Presentacion.Reporte
                     }
                 }
             }
-            // Hacemos visible la ventana de Excel.
             excel.Visible = true;
         }
 
