@@ -23,6 +23,9 @@ using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Kernel.Exceptions;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+
 
 namespace _3mpacador4.Presentacion.Reporte
 {
@@ -1330,13 +1333,12 @@ namespace _3mpacador4.Presentacion.Reporte
             ExportarPDF(datalistado);
         }
 
-        private void ExportarPDF(DataGridView dataGridView)
+        private void ExportarPDF(DataGridView datalistado)
         {
             try
             {
-                
                 SaveFileDialog dialogoGuardar = new SaveFileDialog();
-                dialogoGuardar.Filter = "Archivo PDF.pdf";
+                dialogoGuardar.Filter = "Archivo PDF|*.pdf";
                 dialogoGuardar.Title = "Guardar PDF";
                 dialogoGuardar.ShowDialog();
 
@@ -1350,20 +1352,37 @@ namespace _3mpacador4.Presentacion.Reporte
                             {
                                 Document documento = new Document(documentoPDF);
 
+                                documento.Add(new Paragraph("Datos exportados desde el datalistado"));
 
-                                documento.Add(new Paragraph("Datos exportados desde el DataGridView"));
+                                Table table = new Table(datalistado.Columns.Count);
+
+                                for (int i = 0; i < datalistado.Columns.Count; i++)
+                                {
+                                    table.AddCell(new Cell().Add(new Paragraph(datalistado.Columns[i].HeaderText)));
+                                }
+
+                                for (int i = 0; i < datalistado.Rows.Count; i++)
+                                {
+                                    for (int j = 0; j < datalistado.Columns.Count; j++)
+                                    {
+                                        table.AddCell(new Cell().Add(new Paragraph(datalistado[j, i].Value.ToString())));
+                                    }
+                                }
+
+                                documento.Add(table);
                             }
                         }
                     }
 
-                    MessageBox.Show("Los datos que se exportan a PDF estan correctamente.", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Los datos se han exportado a PDF correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            catch (Exception ex)
+            catch (PdfException ex)
             {
-                MessageBox.Show("Hay un error al exportar el PDF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al exportar a PDF: {ex.Message}\nDetalles: {ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
 
