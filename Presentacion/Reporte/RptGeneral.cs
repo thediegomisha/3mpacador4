@@ -23,8 +23,10 @@ using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Kernel.Exceptions;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
+using PdfSharp.Pdf;
+using PdfSharp.Drawing;
+//using iTextSharp.text;
+//using iTextSharp.text.pdf;
 
 
 namespace _3mpacador4.Presentacion.Reporte
@@ -1344,44 +1346,47 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 if (!string.IsNullOrEmpty(dialogoGuardar.FileName))
                 {
-                    using (FileStream flujoArchivo = new FileStream(dialogoGuardar.FileName, FileMode.Create))
+                    using (PdfSharp.Pdf.PdfDocument pdf = new PdfSharp.Pdf.PdfDocument())
                     {
-                        using (PdfWriter escritorPDF = new PdfWriter(flujoArchivo))
+                        PdfSharp.Pdf.PdfPage pagina = pdf.AddPage();
+                        XGraphics gfx = XGraphics.FromPdfPage(pagina);
+                        XFont fuente = new XFont("Arial", 10);
+
+                        gfx.DrawString("Los datos son exportados desde el datagrid datalistado", fuente, XBrushes.Black, new XRect(10, 10, pagina.Width, 20), XStringFormats.TopLeft);
+
+                        int anchoColumna = 50;
+                        int espacioColumnas = 35;
+
+                        for (int i = 0; i < datalistado.Columns.Count; i++)
                         {
-                            using (PdfDocument documentoPDF = new PdfDocument(escritorPDF))
+                            gfx.DrawString(datalistado.Columns[i].HeaderText, fuente, XBrushes.Black, new XRect(10 + (anchoColumna + espacioColumnas) * i, 40, anchoColumna, 20), XStringFormats.TopLeft);
+                        }
+
+                        for (int i = 0; i < datalistado.Rows.Count; i++)
+                        {
+                            for (int j = 0; j < datalistado.Columns.Count; j++)
                             {
-                                Document documento = new Document(documentoPDF);
-
-                                documento.Add(new Paragraph("Datos exportados desde el datalistado"));
-
-                                Table table = new Table(datalistado.Columns.Count);
-
-                                for (int i = 0; i < datalistado.Columns.Count; i++)
-                                {
-                                    table.AddCell(new Cell().Add(new Paragraph(datalistado.Columns[i].HeaderText)));
-                                }
-
-                                for (int i = 0; i < datalistado.Rows.Count; i++)
-                                {
-                                    for (int j = 0; j < datalistado.Columns.Count; j++)
-                                    {
-                                        table.AddCell(new Cell().Add(new Paragraph(datalistado[j, i].Value.ToString())));
-                                    }
-                                }
-
-                                documento.Add(table);
+                                gfx.DrawString(datalistado[j, i].Value.ToString(), fuente, XBrushes.Black, new XRect(10 + (anchoColumna + espacioColumnas) * j, 60 + i * 20, anchoColumna, 20), XStringFormats.TopLeft);
                             }
                         }
-                    }
 
-                    MessageBox.Show("Los datos se han exportado a PDF correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        pdf.Save(dialogoGuardar.FileName);
+
+                        MessageBox.Show("Los datos se han exportado a PDF correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
-            catch (PdfException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Error al exportar a PDF: {ex.Message}\nDetalles: {ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
+
+
+
 
 
 
