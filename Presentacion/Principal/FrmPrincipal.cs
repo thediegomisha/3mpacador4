@@ -237,6 +237,12 @@ namespace _3mpacador4.Presentacion
             ocultarSubMenu();
             AbrirFormularioHijo(new frmProductor());
         }
+
+        private void btnColaborador_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new frmColaborador());
+        }
     }
     }
 
