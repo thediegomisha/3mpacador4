@@ -1352,7 +1352,7 @@ namespace _3mpacador4.Presentacion.Reporte
                         XGraphics gfx = XGraphics.FromPdfPage(pagina);
                         XFont fuente = new XFont("Arial", 10);
 
-                        gfx.DrawString("Los datos son exportados desde el datagrid datalistado", fuente, XBrushes.Black, new XRect(10, 10, pagina.Width, 20), XStringFormats.TopLeft);
+                        gfx.DrawString("Los datos son exportados desde el datagrid " + datalistado.ToString() , fuente, XBrushes.Black, new XRect(10, 10, pagina.Width, 20), XStringFormats.TopLeft);
 
                         int anchoColumna = 50;
                         int espacioColumnas = 35;
