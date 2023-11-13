@@ -22,7 +22,6 @@ using System.Timers;
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
-using iText.Kernel.Exceptions;
 using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 //using iTextSharp.text;
@@ -1330,8 +1329,73 @@ namespace _3mpacador4.Presentacion.Reporte
         //    tiempo.Enabled = true;
         //}
 
+        //private void btnExportarPDF_Click(object sender, EventArgs e)
+        //{
+        //    ExportarPDF(datalistado);
+        //}
+
+        //private void ExportarPDF(DataGridView datalistado)
+        //{
+        //    try
+        //    {
+        //        //Primero creamos un cuadro de diálogo.
+        //        SaveFileDialog dialogoGuardar = new SaveFileDialog();
+        //        //Filtramos el formato del archivo a .PDF.
+        //        dialogoGuardar.Filter = "Archivo PDF|*.pdf";
+        //        //Le damos un título a nuestro cuadro de diálogo.
+        //        dialogoGuardar.Title = "Guardar PDF";
+        //        //Mostramos el cuadro de diálogo.
+        //        dialogoGuardar.ShowDialog();
+
+        //        //Creamos un if para que verifique si se ingreso un nombre (si es diferente a nulo o vacio)
+        //        if (!string.IsNullOrEmpty(dialogoGuardar.FileName))
+        //        {
+        //            //Si es así
+        //            using (PdfSharp.Pdf.PdfDocument pdf = new PdfSharp.Pdf.PdfDocument())
+        //            {
+        //                PdfSharp.Pdf.PdfPage pagina = pdf.AddPage();
+        //                XGraphics gfx = XGraphics.FromPdfPage(pagina);
+        //                XFont fuente = new XFont("Arial", 10);
+
+        //                gfx.DrawString("Los datos son exportados desde el datagrid " + datalistado.ToString(), fuente, XBrushes.Black, new XRect(10, 10, pagina.Width, 20), XStringFormats.TopLeft);
+
+        //                int anchoColumna = 50;
+        //                int espacioColumnas = 35;
+
+        //                for (int i = 0; i < datalistado.Columns.Count; i++)
+        //                {
+        //                    gfx.DrawString(datalistado.Columns[i].HeaderText, fuente, XBrushes.Black, new XRect(10 + (anchoColumna + espacioColumnas) * i, 40, anchoColumna, 20), XStringFormats.TopLeft);
+        //                }
+
+        //                for (int i = 0; i < datalistado.Rows.Count; i++)
+        //                {
+        //                    for (int j = 0; j < datalistado.Columns.Count; j++)
+        //                    {
+        //                        gfx.DrawString(datalistado[j, i].Value.ToString(), fuente, XBrushes.Black, new XRect(10 + (anchoColumna + espacioColumnas) * j, 60 + i * 20, anchoColumna, 20), XStringFormats.TopLeft);
+        //                    }
+        //                }
+
+        //                pdf.Save(dialogoGuardar.FileName);
+
+        //                MessageBox.Show("Los datos se han exportado a PDF correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Error al exportar a PDF: {ex.Message}\nDetalles: {ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
+
+
         private void btnExportarPDF_Click(object sender, EventArgs e)
         {
+            if (datalistado.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             ExportarPDF(datalistado);
         }
 
@@ -1350,24 +1414,26 @@ namespace _3mpacador4.Presentacion.Reporte
                     {
                         PdfSharp.Pdf.PdfPage pagina = pdf.AddPage();
                         XGraphics gfx = XGraphics.FromPdfPage(pagina);
-                        XFont fuente = new XFont("Arial", 10);
+                        XFont fuente = new XFont("Arial", 5);
 
-                        gfx.DrawString("Los datos son exportados desde el datagrid " + datalistado.ToString() , fuente, XBrushes.Black, new XRect(10, 10, pagina.Width, 20), XStringFormats.TopLeft);
+                        int posY = 40;
 
-                        int anchoColumna = 50;
-                        int espacioColumnas = 35;
-
+                        
                         for (int i = 0; i < datalistado.Columns.Count; i++)
                         {
-                            gfx.DrawString(datalistado.Columns[i].HeaderText, fuente, XBrushes.Black, new XRect(10 + (anchoColumna + espacioColumnas) * i, 40, anchoColumna, 20), XStringFormats.TopLeft);
+                            gfx.DrawString(datalistado.Columns[i].HeaderText, fuente, XBrushes.Black, new XRect(10 + i * 50, posY, 50, 20), XStringFormats.TopLeft);
                         }
 
-                        for (int i = 0; i < datalistado.Rows.Count; i++)
+                        posY += 20;
+
+                        foreach (DataGridViewRow fila in datalistado.Rows)
                         {
-                            for (int j = 0; j < datalistado.Columns.Count; j++)
+                            for (int i = 0; i < datalistado.Columns.Count; i++)
                             {
-                                gfx.DrawString(datalistado[j, i].Value.ToString(), fuente, XBrushes.Black, new XRect(10 + (anchoColumna + espacioColumnas) * j, 60 + i * 20, anchoColumna, 20), XStringFormats.TopLeft);
+                                gfx.DrawString(fila.Cells[i].Value.ToString(), fuente, XBrushes.Black, new XRect(10 + i * 50, posY, 50, 20), XStringFormats.TopLeft);
                             }
+
+                            posY += 20;
                         }
 
                         pdf.Save(dialogoGuardar.FileName);
@@ -1381,6 +1447,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 MessageBox.Show($"Error al exportar a PDF: {ex.Message}\nDetalles: {ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
 
