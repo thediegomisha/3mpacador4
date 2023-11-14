@@ -628,7 +628,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Devart.Data.MySql">
+    <PackageReference Include="dotConnect.Express.for.MySQL">
       <Version>9.1.151</Version>
     </PackageReference>
   </ItemGroup>

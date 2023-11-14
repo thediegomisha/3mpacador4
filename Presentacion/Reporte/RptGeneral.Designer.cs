@@ -44,7 +44,6 @@
             this.chkcliente = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblMensaje = new System.Windows.Forms.Label();
-            this.btnExportar = new System.Windows.Forms.Button();
             this.cbAcopiador = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.chk_acopiador = new System.Windows.Forms.CheckBox();
@@ -66,6 +65,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnExportar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblinfo1 = new System.Windows.Forms.Label();
             this.datalistado = new System.Windows.Forms.DataGridView();
@@ -84,8 +84,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lblcontardescarte = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblinfo2 = new System.Windows.Forms.Label();
             this.datalistado3 = new System.Windows.Forms.DataGridView();
@@ -299,16 +297,6 @@
             this.lblMensaje.Text = "label8";
             this.lblMensaje.Visible = false;
             // 
-            // btnExportar
-            // 
-            this.btnExportar.Location = new System.Drawing.Point(1116, 4);
-            this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(90, 23);
-            this.btnExportar.TabIndex = 28;
-            this.btnExportar.Text = "ExportarExcel";
-            this.btnExportar.UseVisualStyleBackColor = true;
-            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
-            // 
             // cbAcopiador
             // 
             this.cbAcopiador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -494,6 +482,16 @@
             this.label1.Size = new System.Drawing.Size(96, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Fecha de Ingreso :";
+            // 
+            // btnExportar
+            // 
+            this.btnExportar.Location = new System.Drawing.Point(1116, 4);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(90, 23);
+            this.btnExportar.TabIndex = 28;
+            this.btnExportar.Text = "ExportarExcel";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // panel2
             // 
@@ -689,26 +687,6 @@
             this.label16.Size = new System.Drawing.Size(84, 15);
             this.label16.TabIndex = 89;
             this.label16.Text = "Resultado : ";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(1295, 639);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(19, 20);
-            this.label18.TabIndex = 86;
-            this.label18.Text = "0";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(1296, 623);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(73, 15);
-            this.label19.TabIndex = 87;
-            this.label19.Text = "Total Neto";
             // 
             // panel4
             // 
@@ -906,7 +884,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1218, 673);
+            this.ClientSize = new System.Drawing.Size(1217, 673);
             this.Controls.Add(this.btnExportarPDF);
             this.Controls.Add(this.btnBuscarTodos);
             this.Controls.Add(this.btnExportar);
@@ -927,8 +905,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lblcontardescarte);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.label19);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.lblcantjabas);
             this.Controls.Add(this.label17);
@@ -1011,8 +987,6 @@
         internal System.Windows.Forms.Label label7;
         internal System.Windows.Forms.Label lblcontardescarte;
         internal System.Windows.Forms.Label label16;
-        internal System.Windows.Forms.Label label18;
-        internal System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridView datalistado3;
         internal System.Windows.Forms.Label label21;

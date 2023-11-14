@@ -53,18 +53,32 @@
             this.lblruc_dni = new System.Windows.Forms.Label();
             this.lblguiaingreso = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.datalistado = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
-            this.totalneto = new System.Windows.Forms.Label();
+            this.totalneto2 = new System.Windows.Forms.Label();
             this.Label15 = new System.Windows.Forms.Label();
-            this.LBLCONTAR = new System.Windows.Forms.Label();
+            this.resultado = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.lblcantjabas = new System.Windows.Forms.Label();
+            this.totaljabas2 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.lblnumlote = new System.Windows.Forms.Label();
+            this.datalistado = new System.Windows.Forms.DataGridView();
+            this.lbltotalnetodescarte2 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.lblcantjabasdescarte2 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.lblcontardescarte2 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lblinfo2 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.datalistado3_2 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.datalistado3_2)).BeginInit();
             this.SuspendLayout();
             // 
             // label13
@@ -309,20 +323,13 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label20);
+            this.panel1.Controls.Add(this.label22);
             this.panel1.Controls.Add(this.datalistado);
             this.panel1.Location = new System.Drawing.Point(22, 235);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(694, 346);
+            this.panel1.Size = new System.Drawing.Size(694, 202);
             this.panel1.TabIndex = 37;
-            // 
-            // datalistado
-            // 
-            this.datalistado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datalistado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.datalistado.Location = new System.Drawing.Point(0, 0);
-            this.datalistado.Name = "datalistado";
-            this.datalistado.Size = new System.Drawing.Size(694, 346);
-            this.datalistado.TabIndex = 0;
             // 
             // label12
             // 
@@ -336,65 +343,71 @@
             this.label12.Text = "BOLETA DE PESAJE";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // totalneto
+            // totalneto2
             // 
-            this.totalneto.AutoSize = true;
-            this.totalneto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalneto.Location = new System.Drawing.Point(541, 600);
-            this.totalneto.Name = "totalneto";
-            this.totalneto.Size = new System.Drawing.Size(19, 20);
-            this.totalneto.TabIndex = 66;
-            this.totalneto.Text = "0";
+            this.totalneto2.AutoSize = true;
+            this.totalneto2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalneto2.Location = new System.Drawing.Point(573, 456);
+            this.totalneto2.Name = "totalneto2";
+            this.totalneto2.Size = new System.Drawing.Size(19, 20);
+            this.totalneto2.TabIndex = 66;
+            this.totalneto2.Text = "0";
+            this.totalneto2.Click += new System.EventHandler(this.totalneto_Click);
             // 
             // Label15
             // 
             this.Label15.AutoSize = true;
             this.Label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label15.Location = new System.Drawing.Point(542, 584);
+            this.Label15.Location = new System.Drawing.Point(574, 440);
             this.Label15.Name = "Label15";
             this.Label15.Size = new System.Drawing.Size(73, 15);
             this.Label15.TabIndex = 67;
             this.Label15.Text = "Total Neto";
+            this.Label15.Click += new System.EventHandler(this.Label15_Click);
             // 
-            // LBLCONTAR
+            // resultado
             // 
-            this.LBLCONTAR.AutoSize = true;
-            this.LBLCONTAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBLCONTAR.Location = new System.Drawing.Point(26, 600);
-            this.LBLCONTAR.Name = "LBLCONTAR";
-            this.LBLCONTAR.Size = new System.Drawing.Size(19, 20);
-            this.LBLCONTAR.TabIndex = 68;
-            this.LBLCONTAR.Text = "0";
+            this.resultado.AutoSize = true;
+            this.resultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultado.Location = new System.Drawing.Point(58, 456);
+            this.resultado.Name = "resultado";
+            this.resultado.Size = new System.Drawing.Size(19, 20);
+            this.resultado.TabIndex = 68;
+            this.resultado.Text = "0";
+            this.resultado.Click += new System.EventHandler(this.LBLCONTAR_Click);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(27, 584);
+            this.label14.Location = new System.Drawing.Point(59, 440);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(84, 15);
             this.label14.TabIndex = 69;
             this.label14.Text = "Resultado : ";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
-            // lblcantjabas
+            // totaljabas2
             // 
-            this.lblcantjabas.AutoSize = true;
-            this.lblcantjabas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcantjabas.Location = new System.Drawing.Point(295, 600);
-            this.lblcantjabas.Name = "lblcantjabas";
-            this.lblcantjabas.Size = new System.Drawing.Size(19, 20);
-            this.lblcantjabas.TabIndex = 70;
-            this.lblcantjabas.Text = "0";
+            this.totaljabas2.AutoSize = true;
+            this.totaljabas2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totaljabas2.Location = new System.Drawing.Point(327, 456);
+            this.totaljabas2.Name = "totaljabas2";
+            this.totaljabas2.Size = new System.Drawing.Size(19, 20);
+            this.totaljabas2.TabIndex = 70;
+            this.totaljabas2.Text = "0";
+            this.totaljabas2.Click += new System.EventHandler(this.lblcantjabas_Click);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(296, 584);
+            this.label17.Location = new System.Drawing.Point(328, 440);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(78, 15);
             this.label17.TabIndex = 71;
             this.label17.Text = "Cant Jabas";
+            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // label16
             // 
@@ -420,16 +433,161 @@
             this.lblnumlote.Text = "000";
             this.lblnumlote.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // datalistado
+            // 
+            this.datalistado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datalistado.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.datalistado.Location = new System.Drawing.Point(0, 0);
+            this.datalistado.Name = "datalistado";
+            this.datalistado.Size = new System.Drawing.Size(694, 202);
+            this.datalistado.TabIndex = 1;
+            // 
+            // lbltotalnetodescarte2
+            // 
+            this.lbltotalnetodescarte2.AutoSize = true;
+            this.lbltotalnetodescarte2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltotalnetodescarte2.Location = new System.Drawing.Point(530, 608);
+            this.lbltotalnetodescarte2.Name = "lbltotalnetodescarte2";
+            this.lbltotalnetodescarte2.Size = new System.Drawing.Size(19, 20);
+            this.lbltotalnetodescarte2.TabIndex = 103;
+            this.lbltotalnetodescarte2.Text = "0";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(531, 592);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(73, 15);
+            this.label23.TabIndex = 104;
+            this.label23.Text = "Total Neto";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.Red;
+            this.label21.Location = new System.Drawing.Point(182, 487);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(89, 21);
+            this.label21.TabIndex = 102;
+            this.label21.Text = "DESCARTE";
+            this.label21.Click += new System.EventHandler(this.label21_Click);
+            // 
+            // lblcantjabasdescarte2
+            // 
+            this.lblcantjabasdescarte2.AutoSize = true;
+            this.lblcantjabasdescarte2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcantjabasdescarte2.Location = new System.Drawing.Point(597, 529);
+            this.lblcantjabasdescarte2.Name = "lblcantjabasdescarte2";
+            this.lblcantjabasdescarte2.Size = new System.Drawing.Size(19, 20);
+            this.lblcantjabasdescarte2.TabIndex = 100;
+            this.lblcantjabasdescarte2.Text = "0";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(598, 513);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(78, 15);
+            this.label18.TabIndex = 101;
+            this.label18.Text = "Cant Jabas";
+            // 
+            // lblcontardescarte2
+            // 
+            this.lblcontardescarte2.AutoSize = true;
+            this.lblcontardescarte2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcontardescarte2.Location = new System.Drawing.Point(458, 529);
+            this.lblcontardescarte2.Name = "lblcontardescarte2";
+            this.lblcontardescarte2.Size = new System.Drawing.Size(19, 20);
+            this.lblcontardescarte2.TabIndex = 98;
+            this.lblcontardescarte2.Text = "0";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(459, 513);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(84, 15);
+            this.label19.TabIndex = 99;
+            this.label19.Text = "Resultado : ";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.lblinfo2);
+            this.panel4.Controls.Add(this.datalistado3_2);
+            this.panel4.Location = new System.Drawing.Point(22, 497);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(399, 156);
+            this.panel4.TabIndex = 97;
+            // 
+            // lblinfo2
+            // 
+            this.lblinfo2.AutoSize = true;
+            this.lblinfo2.BackColor = System.Drawing.Color.Black;
+            this.lblinfo2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblinfo2.ForeColor = System.Drawing.Color.Yellow;
+            this.lblinfo2.Location = new System.Drawing.Point(90, 59);
+            this.lblinfo2.Name = "lblinfo2";
+            this.lblinfo2.Size = new System.Drawing.Size(234, 32);
+            this.lblinfo2.TabIndex = 95;
+            this.lblinfo2.Text = "SIN INFORMACION";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Red;
+            this.label22.Location = new System.Drawing.Point(305, -10);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(0, 21);
+            this.label22.TabIndex = 94;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Red;
+            this.label20.Location = new System.Drawing.Point(301, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(98, 21);
+            this.label20.TabIndex = 105;
+            this.label20.Text = "RECEPCIÓN";
+            // 
+            // datalistado3_2
+            // 
+            this.datalistado3_2.AllowUserToAddRows = false;
+            this.datalistado3_2.AllowUserToDeleteRows = false;
+            this.datalistado3_2.AllowUserToResizeColumns = false;
+            this.datalistado3_2.AllowUserToResizeRows = false;
+            this.datalistado3_2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datalistado3_2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.datalistado3_2.Location = new System.Drawing.Point(0, 0);
+            this.datalistado3_2.Name = "datalistado3_2";
+            this.datalistado3_2.RowHeadersVisible = false;
+            this.datalistado3_2.Size = new System.Drawing.Size(399, 156);
+            this.datalistado3_2.TabIndex = 2;
+            // 
             // RptBoletaPesadoDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(737, 624);
-            this.Controls.Add(this.lblcantjabas);
+            this.ClientSize = new System.Drawing.Size(737, 661);
+            this.Controls.Add(this.lbltotalnetodescarte2);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.lblcantjabasdescarte2);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.lblcontardescarte2);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.totaljabas2);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.LBLCONTAR);
+            this.Controls.Add(this.resultado);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.totalneto);
+            this.Controls.Add(this.totalneto2);
             this.Controls.Add(this.Label15);
             this.Controls.Add(this.lblnumlote);
             this.Controls.Add(this.label16);
@@ -467,7 +625,11 @@
             this.Load += new System.EventHandler(this.RptBoletaPesado_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RptBoletaPesadoDetalle_KeyDown);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.datalistado3_2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -500,15 +662,27 @@
         private System.Windows.Forms.Label lblruc_dni;
         private System.Windows.Forms.Label lblguiaingreso;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView datalistado;
         private System.Windows.Forms.Label label12;
-        internal System.Windows.Forms.Label totalneto;
+        internal System.Windows.Forms.Label totalneto2;
         internal System.Windows.Forms.Label Label15;
-        internal System.Windows.Forms.Label LBLCONTAR;
+        internal System.Windows.Forms.Label resultado;
         internal System.Windows.Forms.Label label14;
-        internal System.Windows.Forms.Label lblcantjabas;
+        internal System.Windows.Forms.Label totaljabas2;
         internal System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label lblnumlote;
+        private System.Windows.Forms.DataGridView datalistado;
+        internal System.Windows.Forms.Label lbltotalnetodescarte2;
+        internal System.Windows.Forms.Label label23;
+        internal System.Windows.Forms.Label label21;
+        internal System.Windows.Forms.Label lblcantjabasdescarte2;
+        internal System.Windows.Forms.Label label18;
+        internal System.Windows.Forms.Label lblcontardescarte2;
+        internal System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Panel panel4;
+        internal System.Windows.Forms.Label lblinfo2;
+        internal System.Windows.Forms.Label label22;
+        internal System.Windows.Forms.Label label20;
+        private System.Windows.Forms.DataGridView datalistado3_2;
     }
 }

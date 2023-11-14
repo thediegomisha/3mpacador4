@@ -1229,41 +1229,44 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 RptBoletaPesadoDetalle FH = new RptBoletaPesadoDetalle(filaConDatos, resultados);
 
-                FH.ShowDialog();
-            }
-
-        }
-
-
-        /*
-        public void exportarexcel(DataGridView datalistado)
-        {
-            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-
-            excel.Application.Workbooks.Add(true);
-
-            int IndiceColumna = 0;
-            foreach (DataGridViewColumn col in datalistado.Columns)
-            {
-                IndiceColumna++;
-                excel.Cells[1, IndiceColumna] = col.HeaderText;
-            }
-
-            int IndeceFila = 0;
-            foreach (DataGridViewRow row in datalistado.Rows)
-            {
-                IndeceFila++;
-                IndiceColumna = 0;
-
-                foreach (DataGridViewColumn col in datalistado.Columns)
+                FH.LimpiarDatalistado3_2();
+                foreach (DataGridViewRow row3 in datalistado3.Rows)
                 {
-                    IndiceColumna++;
-                    excel.Cells[IndeceFila + 1, IndiceColumna] = row.Cells[col.Index].Value.ToString();
+                    string cantjabas3 = row3.Cells["CANT JABAS"].Value.ToString();
+                    string pesobruto3 = row3.Cells["PESO BRUTO"].Value.ToString();
+                    string pesoneto3 = row3.Cells["PESO NETO"].Value.ToString();
+
+                    // Llama a la función para agregar fila a datalistado2_2.
+                    FH.AgregarFilaEnDatalistado3_2(cantjabas3, pesobruto3, pesoneto3);
                 }
+
+                //Labels de la tabla 2.
+                string CONTAR = LBLCONTAR.Text;
+                FH.resultado.Text = CONTAR; 
+
+                string totaljabas = lblcantjabas.Text;
+                FH.totaljabas2.Text = totaljabas;
+
+                string TOTALNETO = totalneto.Text;
+                FH.totalneto2.Text = TOTALNETO;
+
+
+                //Labels de la tabla 3.
+                string contardescarte = lblcontardescarte.Text;
+                FH.lblcontardescarte2.Text = contardescarte;
+
+                string jabadescarte = cantjabasdescarte.Text;
+                FH.lblcantjabasdescarte2.Text = jabadescarte;
+
+                string netodescarte = totalnetodescarte.Text;
+                FH.lbltotalnetodescarte2.Text = netodescarte;
+
+                FH.ShowDialog();
+
             }
-            excel.Visible = true;
+
         }
-        /*/
+
 
 
         public void exportarexcel(DataGridView datalistado)
@@ -1315,84 +1318,14 @@ namespace _3mpacador4.Presentacion.Reporte
 
             exportarexcel(datalistado);
         }
-        //Quería lograr que al momento de darle clic al boton ExportarExcel le salga al usuario un MessageBox dentro de unos 50 segundos despues de presionar el botón (no me salio, pero la idea está ahí :)).
-        //private static void OnTimedEvent(object source, ElapsedEventArgs e)
-        //{
-        //    MessageBox.Show("Un momento, se está preparando el Excel.");
-        //}
-
-        //static void retardo()
-        //{
-        //    System.Timers.Timer tiempo = new System.Timers.Timer();
-        //    tiempo.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-        //    tiempo.Interval = 500000;
-        //    tiempo.Enabled = true;
-        //}
-
-        //private void btnExportarPDF_Click(object sender, EventArgs e)
-        //{
-        //    ExportarPDF(datalistado);
-        //}
-
-        //private void ExportarPDF(DataGridView datalistado)
-        //{
-        //    try
-        //    {
-        //        //Primero creamos un cuadro de diálogo.
-        //        SaveFileDialog dialogoGuardar = new SaveFileDialog();
-        //        //Filtramos el formato del archivo a .PDF.
-        //        dialogoGuardar.Filter = "Archivo PDF|*.pdf";
-        //        //Le damos un título a nuestro cuadro de diálogo.
-        //        dialogoGuardar.Title = "Guardar PDF";
-        //        //Mostramos el cuadro de diálogo.
-        //        dialogoGuardar.ShowDialog();
-
-        //        //Creamos un if para que verifique si se ingreso un nombre (si es diferente a nulo o vacio)
-        //        if (!string.IsNullOrEmpty(dialogoGuardar.FileName))
-        //        {
-        //            //Si es así
-        //            using (PdfSharp.Pdf.PdfDocument pdf = new PdfSharp.Pdf.PdfDocument())
-        //            {
-        //                PdfSharp.Pdf.PdfPage pagina = pdf.AddPage();
-        //                XGraphics gfx = XGraphics.FromPdfPage(pagina);
-        //                XFont fuente = new XFont("Arial", 10);
-
-        //                gfx.DrawString("Los datos son exportados desde el datagrid " + datalistado.ToString(), fuente, XBrushes.Black, new XRect(10, 10, pagina.Width, 20), XStringFormats.TopLeft);
-
-        //                int anchoColumna = 50;
-        //                int espacioColumnas = 35;
-
-        //                for (int i = 0; i < datalistado.Columns.Count; i++)
-        //                {
-        //                    gfx.DrawString(datalistado.Columns[i].HeaderText, fuente, XBrushes.Black, new XRect(10 + (anchoColumna + espacioColumnas) * i, 40, anchoColumna, 20), XStringFormats.TopLeft);
-        //                }
-
-        //                for (int i = 0; i < datalistado.Rows.Count; i++)
-        //                {
-        //                    for (int j = 0; j < datalistado.Columns.Count; j++)
-        //                    {
-        //                        gfx.DrawString(datalistado[j, i].Value.ToString(), fuente, XBrushes.Black, new XRect(10 + (anchoColumna + espacioColumnas) * j, 60 + i * 20, anchoColumna, 20), XStringFormats.TopLeft);
-        //                    }
-        //                }
-
-        //                pdf.Save(dialogoGuardar.FileName);
-
-        //                MessageBox.Show("Los datos se han exportado a PDF correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Error al exportar a PDF: {ex.Message}\nDetalles: {ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
+        
 
 
         private void btnExportarPDF_Click(object sender, EventArgs e)
         {
             if (datalistado.Rows.Count == 0)
             {
-                MessageBox.Show("No hay datos para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No hay datos para exportar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -1403,50 +1336,93 @@ namespace _3mpacador4.Presentacion.Reporte
         {
             try
             {
+                //Crea un Cuadro de Diálogo, para que el usuario pueda elegir donde guardar el archivo.
                 SaveFileDialog dialogoGuardar = new SaveFileDialog();
+                //Filtra el formato .PDF.
                 dialogoGuardar.Filter = "Archivo PDF|*.pdf";
+                //Le da un título al Cuadro de Diálogo.
                 dialogoGuardar.Title = "Guardar PDF";
+                //Muestra el Cuadro de Diálogo.
                 dialogoGuardar.ShowDialog();
 
+                //Si el nombre del archivo es direferente a nulo o vacio, entonces agrega una página.
                 if (!string.IsNullOrEmpty(dialogoGuardar.FileName))
                 {
+                    //Si es así crea un nuevo documento PDF utilizando la biblioteca PdfSharp.
                     using (PdfSharp.Pdf.PdfDocument pdf = new PdfSharp.Pdf.PdfDocument())
                     {
-                        PdfSharp.Pdf.PdfPage pagina = pdf.AddPage();
-                        XGraphics gfx = XGraphics.FromPdfPage(pagina);
-                        XFont fuente = new XFont("Arial", 5);
+                        pdf.Info.Title = "Los datos fueron xeportados.";
 
-                        int posY = 40;
+                        int filasPorPagina = FilasMaximas(datalistado);
 
-                        
-                        for (int i = 0; i < datalistado.Columns.Count; i++)
+                        for (int paginaActual = 0; paginaActual < Math.Ceiling((double)datalistado.Rows.Count / filasPorPagina); paginaActual++)
                         {
-                            gfx.DrawString(datalistado.Columns[i].HeaderText, fuente, XBrushes.Black, new XRect(10 + i * 50, posY, 50, 20), XStringFormats.TopLeft);
-                        }
+                            //Se agrega una página al documento.
+                            PdfSharp.Pdf.PdfPage pagina = pdf.AddPage();
+                            pagina.Orientation = PdfSharp.PageOrientation.Landscape;
+                            //Con el método XGraphics habilitamos o podemos escribir en el documento.
+                            XGraphics gfx = XGraphics.FromPdfPage(pagina);
+                            //SE crea una fuente Arial de tamaño 5.
+                            XFont fuente = new XFont("Arial", 5);
 
-                        posY += 20;
+                            //Se agrega un titulo al documento con el método DrawString, agregandole el objeto fuente, color y posición, en la partesuperior izquierda.
+                            gfx.DrawString("Datos exportados de la tabla datalistado:", fuente, XBrushes.Black, new XRect(pagina.Width.Point - 762, 10, 40, 20), XStringFormats.TopRight);
+                            
+                            //Declaro variables y les asigno valores enteros, para especificar su posicionamiento.
+                            int posY = 40;
+                            int derechaY = 20;
 
-                        foreach (DataGridViewRow fila in datalistado.Rows)
-                        {
-                            for (int i = 0; i < datalistado.Columns.Count; i++)
+                            gfx.DrawString($"Página {paginaActual + 1}", fuente, XBrushes.Black, new XRect(pagina.Width.Point - 40, 10, 40, 20), XStringFormats.TopLeft);
+
+                            //Se recorre las columnas de la tabla  y se agrega un encabezado par alas columnas.
+                            for (int c = 0; c < datalistado.Columns.Count; c++)
                             {
-                                gfx.DrawString(fila.Cells[i].Value.ToString(), fuente, XBrushes.Black, new XRect(10 + i * 50, posY, 50, 20), XStringFormats.TopLeft);
+                                gfx.DrawString(datalistado.Columns[c].HeaderText, fuente, XBrushes.Black, new XRect(derechaY + 10 + c * 55, posY, 50, 20), XStringFormats.TopLeft);
                             }
 
-                            posY += 20;
+                            posY += 25;
+
+                            int inicioFila = paginaActual * filasPorPagina;
+                            int finFila = Math.Min((paginaActual + 1) * filasPorPagina, datalistado.Rows.Count);
+
+                            //Se recorre las filas y columnas de la tabla para agregar los datos al PDF, y con el método DrawString le damos posición, fuente y color.
+                            for (int c = inicioFila; c < finFila; c++)
+                            {
+                                for (int f = 0; f < datalistado.Columns.Count; f++)
+                                {
+                                    gfx.DrawString(datalistado.Rows[c].Cells[f].Value.ToString(), fuente, XBrushes.Black, new XRect(derechaY + 10 + f * 55, posY, 50, 20), XStringFormats.TopLeft);
+                                }
+
+                                posY += 20;
+                            }
                         }
 
                         pdf.Save(dialogoGuardar.FileName);
 
-                        MessageBox.Show("Los datos se han exportado a PDF correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Los datos se han exportado a PDF correctamente.", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //Casi al final de guarda el documento PDF y salta un mensaje de caja.
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al exportar a PDF: {ex.Message}\nDetalles: {ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al exportar el PDF: {ex.Message}\nDetalles: {ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //Al final está el catch para controloar posibles excepciones.
             }
         }
+
+        private int FilasMaximas(DataGridView datalistado)
+        {
+            int alturaPagina = 800;
+            int alturaEncabezado = 65;            
+            int espacioDisponible = alturaPagina - alturaEncabezado;
+            int filasPorPagina = espacioDisponible / 20;
+
+            return filasPorPagina;
+        }
+
+
+
 
 
 

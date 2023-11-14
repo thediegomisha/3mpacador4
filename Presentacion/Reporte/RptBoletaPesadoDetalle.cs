@@ -252,7 +252,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 contador = contador + 1;
                 contarfila = contarfila - 1;
             }
-            LBLCONTAR.Text = Strings.FormatNumber(contador, 0);
+            resultado.Text = Strings.FormatNumber(contador, 0);
         }
         public void sumaneto()
         {
@@ -268,8 +268,8 @@ namespace _3mpacador4.Presentacion.Reporte
                     
                    
                 }
-                totalneto.Text = Strings.FormatNumber(total, 2);
-                lblcantjabas.Text = Strings.FormatNumber(cantjabas, 0);
+                totalneto2.Text = Strings.FormatNumber(total, 2);
+                totaljabas2.Text = Strings.FormatNumber(cantjabas, 0);
 
 
             }
@@ -379,5 +379,178 @@ namespace _3mpacador4.Presentacion.Reporte
             
         }
 
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblcantjabas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LBLCONTAR_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void totalneto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void PrepGrid3()
+        {
+            {
+                var withBlock = this.datalistado3_2;
+                withBlock.SuspendLayout();
+
+                // propiedades que establecen el color de fondo del control DataGridView,
+                // 'color del texto y tipo de fuente (tipo, tamaño y estilo)
+                // 
+                withBlock.BackgroundColor = Color.Black;
+                withBlock.ForeColor = Color.Maroon;
+                withBlock.Font = new Font("Tahoma", 10.0f, FontStyle.Regular, GraphicsUnit.Point, 0);
+
+                // 
+                // establecer color de resaltado (opcional)
+                // 
+                withBlock.DefaultCellStyle.SelectionBackColor = Color.Red;
+                withBlock.DefaultCellStyle.SelectionForeColor = Color.Yellow;
+
+                // 
+                // propiedades relacionadas con agregar / eliminar filas
+                // 
+                withBlock.AllowUserToAddRows = false;
+                withBlock.AllowUserToDeleteRows = false;
+
+                // 
+                // propiedades relacionadas con cambiar el tamaño de columnas / filas en la celda tingkal
+                // 
+                withBlock.AllowUserToResizeColumns = false;
+                withBlock.AllowUserToResizeRows = false;
+
+                // 
+                // propiedades que permiten al usuario ordenar columnas
+                // 'haciendo clic en los encabezados de columna
+                withBlock.AllowUserToOrderColumns = false;
+
+                //withBlock.BorderStyle = BorderStyle.None;
+
+                // propiedades que regulan las líneas uniformes de "cosméticos"
+                // 
+                withBlock.AlternatingRowsDefaultCellStyle.BackColor = Color.LemonChiffon;
+
+                // propiedades relacionadas con el formato del encabezado de columna / encabezado de columna
+                // NB. para poder aplicar ForeColor y BackColor al encabezado, luego
+                // La propiedad EnableHeadersVisualStyles debe establecerse en FALSE
+                // 
+                withBlock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+                withBlock.ColumnHeadersHeight = 40;
+                withBlock.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                withBlock.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 10.0f, FontStyle.Bold, GraphicsUnit.Point, 0);
+                withBlock.EnableHeadersVisualStyles = false;
+                withBlock.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                withBlock.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+                withBlock.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+
+                // 
+                // dado que DataGridView es solo para mostrar datos, no para medios de entrada de datos
+                // luego ocultar RowHeader será mejor visto
+                // 
+                withBlock.RowHeadersVisible = false;
+                withBlock.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                // 
+
+                // establecer columnas y filas de cambio de tamaño automático
+                withBlock.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                withBlock.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+
+                // 
+                // determina la altura de todas las filas
+                // 
+                withBlock.RowTemplate.Height = 20;
+
+                // establecer el modo de selección
+                // 
+                withBlock.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+
+                // 'establecer selección múltiple (elija más de 1 fila)  '
+                withBlock.MultiSelect = true;
+
+                // el siguiente es el formato por columna
+                // ajusta la posición del texto en la celda
+
+                withBlock.ResumeLayout();
+                withBlock.PerformLayout();
+
+            }
+        }
+
+        public void LimpiarDatalistado3_2()
+        {
+            // Limpia todas las filas de datalistado2_2.
+            datalistado3_2.Rows.Clear();
+
+            lblinfo2.Visible = true;
+        }
+
+        public void AgregarFilaEnDatalistado3_2(string cantjabas3, string pesobruto3, string pesoneto3)
+        {
+            if (datalistado3_2.Columns.Count == 0)
+            {
+                // Se Crean y agregan columnas a datalistado2_2.
+                datalistado3_2.Columns.Add("cantjabas3", "CANT JABAS");
+                datalistado3_2.Columns.Add("pesobruto3", "PESO BRUTO");
+                datalistado3_2.Columns.Add("pesoneto3", "PESO NETO");
+            }
+            // Agrega una fila con los datos de datalistado2_2.
+            DataGridViewRow row = new DataGridViewRow();
+            row.Cells.Add(new DataGridViewTextBoxCell { Value = cantjabas3 });
+            row.Cells.Add(new DataGridViewTextBoxCell { Value = pesobruto3 });
+            row.Cells.Add(new DataGridViewTextBoxCell { Value = pesoneto3 });
+
+            // Hace agregar filas a datalistado2_2.
+            datalistado3_2.Rows.Add(row);
+
+            // Hace que si hay filas en datalistado3_2 muestra o oculta el label.
+            lblinfo2.Visible = (datalistado3_2.Rows.Count == 0);
+
+            PrepGrid3();
+        }
+
+        public string contardescarte2
+        {
+            get { return lblcontardescarte2.Text; }
+            set { lblcontardescarte2.Text = value; }
+        }
+
+        public string jabasdescarte2
+        {
+            get { return lblcantjabasdescarte2.Text; }
+            set { lblcantjabasdescarte2.Text = value; }
+        }
+
+        public string totalnetodescarte2
+        {
+            get { return lbltotalnetodescarte2.Text; }
+            set { lbltotalnetodescarte2.Text = value; }
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
