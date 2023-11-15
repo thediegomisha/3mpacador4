@@ -19,13 +19,8 @@ using System.Windows.Forms;
 using static ICSharpCode.SharpZipLib.Zip.ExtendedUnixData;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Timers;
-using iText.Kernel.Pdf;
-using iText.Layout;
-using iText.Layout.Element;
 using PdfSharp.Pdf;
 using PdfSharp.Drawing;
-//using iTextSharp.text;
-//using iTextSharp.text.pdf;
 
 
 namespace _3mpacador4.Presentacion.Reporte
@@ -1242,7 +1237,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 //Labels de la tabla 2.
                 string CONTAR = LBLCONTAR.Text;
-                FH.resultado.Text = CONTAR; 
+                FH.resultado.Text = CONTAR;
 
                 string totaljabas = lblcantjabas.Text;
                 FH.totaljabas2.Text = totaljabas;

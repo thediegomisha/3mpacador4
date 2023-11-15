@@ -25,6 +25,7 @@ using IFont = NPOI.SS.UserModel.IFont;
 using HorizontalAlignment = NPOI.SS.UserModel.HorizontalAlignment;
 using NPOI.SS.Util;
 using NPOI.SS.Formula.Functions;
+using PdfSharp.Drawing;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
@@ -57,7 +58,7 @@ namespace _3mpacador4.Presentacion.Reporte
              //   lblservicio .Text = filaConDatos[4];
              //   lblmetodo.Text = filaConDatos[2];
 
-                datalistado.DataSource = data;
+                datalistado2_2.DataSource = data;
                 ocultar_columnas2();
             }
 
@@ -88,7 +89,7 @@ namespace _3mpacador4.Presentacion.Reporte
         private void PrepGrid()
         {
             {
-                var withBlock = this.datalistado;
+                var withBlock = this.datalistado2_2;
                 withBlock.SuspendLayout();
 
                 // propiedades que establecen el color de fondo del control DataGridView,
@@ -177,7 +178,7 @@ namespace _3mpacador4.Presentacion.Reporte
         {
             try
             {
-                var withBlock = datalistado;
+                var withBlock = datalistado2_2;
               
                 //withBlock.Columns["LOTE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 //withBlock.Columns["LOTE"].Width = 0;
@@ -227,25 +228,25 @@ namespace _3mpacador4.Presentacion.Reporte
         }
         private void ocultar_columnas()
         {
-            this.datalistado.Columns[0].Visible = false;
-            this.datalistado.Columns[1].Visible = false;
-            this.datalistado.Columns[2].Visible = false;
-            this.datalistado.Columns[3].Visible = false;
-            this.datalistado.Columns[4].Visible = false;
-            this.datalistado.Columns[5].Visible = false;
-            this.datalistado.Columns[6].Visible = false;
-            this.datalistado.Columns[7].Visible = false;
-            this.datalistado.Columns[8].Visible = false;
-            this.datalistado.Columns[0].Visible = false;
-            this.datalistado.Columns[0].Visible = false;
-            this.datalistado.Columns[0].Visible = false;
+            this.datalistado2_2.Columns[0].Visible = false;
+            this.datalistado2_2.Columns[1].Visible = false;
+            this.datalistado2_2.Columns[2].Visible = false;
+            this.datalistado2_2.Columns[3].Visible = false;
+            this.datalistado2_2.Columns[4].Visible = false;
+            this.datalistado2_2.Columns[5].Visible = false;
+            this.datalistado2_2.Columns[6].Visible = false;
+            this.datalistado2_2.Columns[7].Visible = false;
+            this.datalistado2_2.Columns[8].Visible = false;
+            this.datalistado2_2.Columns[0].Visible = false;
+            this.datalistado2_2.Columns[0].Visible = false;
+            this.datalistado2_2.Columns[0].Visible = false;
 
             // datalistado.Columns(3).Visible = False
         }
 
         public void contar()
         {
-            int contarfila = datalistado.RowCount - 1;
+            int contarfila = datalistado2_2.RowCount - 1;
             int contador = 0;
             while (contarfila >= 0)
             {
@@ -261,7 +262,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 double total = 0;
                 double cantjabas = 0;
 
-                foreach(DataGridViewRow row in datalistado.Rows)
+                foreach(DataGridViewRow row in datalistado2_2.Rows)
                 {
                     total += Convert.ToDouble(row.Cells["PESO NETO"].Value);
                     cantjabas += Convert.ToDouble(row.Cells["CANT JABAS"].Value);
@@ -367,15 +368,15 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void ocultar_columnas2()
         {
-            this.datalistado.Columns[0].Visible = false;
-            this.datalistado.Columns[1].Visible = false;
-            this.datalistado.Columns[2].Visible = false;
-            this.datalistado.Columns[3].Visible = false;
-            this.datalistado.Columns[4].Visible = false;
-            this.datalistado.Columns[5].Visible = false;
-            this.datalistado.Columns[6].Visible = false;
-            this.datalistado.Columns[7].Visible = false;
-            this.datalistado.Columns[8].Visible = false;
+            this.datalistado2_2.Columns[0].Visible = false;
+            this.datalistado2_2.Columns[1].Visible = false;
+            this.datalistado2_2.Columns[2].Visible = false;
+            this.datalistado2_2.Columns[3].Visible = false;
+            this.datalistado2_2.Columns[4].Visible = false;
+            this.datalistado2_2.Columns[5].Visible = false;
+            this.datalistado2_2.Columns[6].Visible = false;
+            this.datalistado2_2.Columns[7].Visible = false;
+            this.datalistado2_2.Columns[8].Visible = false;
             
         }
 
@@ -552,5 +553,73 @@ namespace _3mpacador4.Presentacion.Reporte
         {
 
         }
+
+        private void btnExportarPDF_Click(object sender, EventArgs e)
+        {
+            if (datalistado2_2.Rows.Count == 0 && datalistado3_2.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            ExportarPDF(datalistado2_2, datalistado3_2, label1, label2, label3);
+        }
+
+
+        private void ExportarPDF(DataGridView datalistado2_2, DataGridView datalistado3_2, Label label1, Label label2, Label label3)
+        {
+            try
+            {
+                SaveFileDialog dialogoGuardar = new SaveFileDialog();
+                dialogoGuardar.Filter = "Archivo PDF|*.pdf";
+                dialogoGuardar.Title = "Guardar PDF";
+                dialogoGuardar.ShowDialog();
+
+                if (!string.IsNullOrEmpty(dialogoGuardar.FileName))
+                {
+                    using (PdfSharp.Pdf.PdfDocument pdf = new PdfSharp.Pdf.PdfDocument())
+                    {
+                        pdf.Info.Title = "Los datos fueron exportados.";
+
+                        PdfSharp.Pdf.PdfPage pagina = pdf.AddPage();
+                        pagina.Orientation = PdfSharp.PageOrientation.Portrait;
+                        XGraphics gfx = XGraphics.FromPdfPage(pagina);
+                        XFont fuente = new XFont("Arial", 5);
+
+                        int posY = 40;
+                        int derechaY = 20;
+
+                        gfx.DrawString("Los datos fueron exportados de la tabla datalistado2_2:", fuente, XBrushes.Black, new XRect(derechaY + 10, posY, 500, 20), XStringFormats.TopLeft);
+                        posY += 25;
+
+                        for (int c = 0; c < datalistado2_2.Columns.Count; c++)
+                        {
+                            gfx.DrawString(datalistado2_2.Columns[c].HeaderText, fuente, XBrushes.Black, new XRect(derechaY + 10 + c * 55, posY, 50, 20), XStringFormats.TopLeft);
+                        }
+
+                        posY += 25;
+
+                        for (int c = 0; c < datalistado2_2.Rows.Count; c++)
+                        {
+                            for (int f = 0; f < datalistado2_2.Columns.Count; f++)
+                            {
+                                gfx.DrawString(datalistado2_2.Rows[c].Cells[f].Value.ToString(), fuente, XBrushes.Black, new XRect(derechaY + 10 + f * 55, posY, 50, 20), XStringFormats.TopLeft);
+                            }
+
+                            posY += 20;
+                        }
+
+                        pdf.Save(dialogoGuardar.FileName);
+
+                        MessageBox.Show("Los datos se han exportado a PDF correctamente.", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al exportar el PDF: {ex.Message}\nDetalles: {ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

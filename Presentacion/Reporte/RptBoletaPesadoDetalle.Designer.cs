@@ -53,6 +53,9 @@
             this.lblruc_dni = new System.Windows.Forms.Label();
             this.lblguiaingreso = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.datalistado2_2 = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
             this.totalneto2 = new System.Windows.Forms.Label();
             this.Label15 = new System.Windows.Forms.Label();
@@ -62,7 +65,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.lblnumlote = new System.Windows.Forms.Label();
-            this.datalistado = new System.Windows.Forms.DataGridView();
             this.lbltotalnetodescarte2 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -72,11 +74,10 @@
             this.label19 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblinfo2 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.datalistado3_2 = new System.Windows.Forms.DataGridView();
+            this.btnExportarPDF = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datalistado2_2)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado3_2)).BeginInit();
             this.SuspendLayout();
@@ -325,11 +326,41 @@
             // 
             this.panel1.Controls.Add(this.label20);
             this.panel1.Controls.Add(this.label22);
-            this.panel1.Controls.Add(this.datalistado);
+            this.panel1.Controls.Add(this.datalistado2_2);
             this.panel1.Location = new System.Drawing.Point(22, 235);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(694, 202);
             this.panel1.TabIndex = 37;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Red;
+            this.label20.Location = new System.Drawing.Point(301, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(98, 21);
+            this.label20.TabIndex = 105;
+            this.label20.Text = "RECEPCIÓN";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Red;
+            this.label22.Location = new System.Drawing.Point(305, -10);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(0, 21);
+            this.label22.TabIndex = 94;
+            // 
+            // datalistado2_2
+            // 
+            this.datalistado2_2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datalistado2_2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.datalistado2_2.Location = new System.Drawing.Point(0, 0);
+            this.datalistado2_2.Name = "datalistado2_2";
+            this.datalistado2_2.Size = new System.Drawing.Size(694, 202);
+            this.datalistado2_2.TabIndex = 1;
             // 
             // label12
             // 
@@ -433,20 +464,11 @@
             this.lblnumlote.Text = "000";
             this.lblnumlote.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // datalistado
-            // 
-            this.datalistado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datalistado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.datalistado.Location = new System.Drawing.Point(0, 0);
-            this.datalistado.Name = "datalistado";
-            this.datalistado.Size = new System.Drawing.Size(694, 202);
-            this.datalistado.TabIndex = 1;
-            // 
             // lbltotalnetodescarte2
             // 
             this.lbltotalnetodescarte2.AutoSize = true;
             this.lbltotalnetodescarte2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltotalnetodescarte2.Location = new System.Drawing.Point(530, 608);
+            this.lbltotalnetodescarte2.Location = new System.Drawing.Point(554, 616);
             this.lbltotalnetodescarte2.Name = "lbltotalnetodescarte2";
             this.lbltotalnetodescarte2.Size = new System.Drawing.Size(19, 20);
             this.lbltotalnetodescarte2.TabIndex = 103;
@@ -456,7 +478,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(531, 592);
+            this.label23.Location = new System.Drawing.Point(555, 600);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(73, 15);
             this.label23.TabIndex = 104;
@@ -478,7 +500,7 @@
             // 
             this.lblcantjabasdescarte2.AutoSize = true;
             this.lblcantjabasdescarte2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcantjabasdescarte2.Location = new System.Drawing.Point(597, 529);
+            this.lblcantjabasdescarte2.Location = new System.Drawing.Point(554, 572);
             this.lblcantjabasdescarte2.Name = "lblcantjabasdescarte2";
             this.lblcantjabasdescarte2.Size = new System.Drawing.Size(19, 20);
             this.lblcantjabasdescarte2.TabIndex = 100;
@@ -488,7 +510,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(598, 513);
+            this.label18.Location = new System.Drawing.Point(555, 556);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(78, 15);
             this.label18.TabIndex = 101;
@@ -498,7 +520,7 @@
             // 
             this.lblcontardescarte2.AutoSize = true;
             this.lblcontardescarte2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcontardescarte2.Location = new System.Drawing.Point(458, 529);
+            this.lblcontardescarte2.Location = new System.Drawing.Point(554, 528);
             this.lblcontardescarte2.Name = "lblcontardescarte2";
             this.lblcontardescarte2.Size = new System.Drawing.Size(19, 20);
             this.lblcontardescarte2.TabIndex = 98;
@@ -508,7 +530,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(459, 513);
+            this.label19.Location = new System.Drawing.Point(555, 512);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(84, 15);
             this.label19.TabIndex = 99;
@@ -520,7 +542,7 @@
             this.panel4.Controls.Add(this.datalistado3_2);
             this.panel4.Location = new System.Drawing.Point(22, 497);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(399, 156);
+            this.panel4.Size = new System.Drawing.Size(449, 156);
             this.panel4.TabIndex = 97;
             // 
             // lblinfo2
@@ -529,32 +551,11 @@
             this.lblinfo2.BackColor = System.Drawing.Color.Black;
             this.lblinfo2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblinfo2.ForeColor = System.Drawing.Color.Yellow;
-            this.lblinfo2.Location = new System.Drawing.Point(90, 59);
+            this.lblinfo2.Location = new System.Drawing.Point(111, 59);
             this.lblinfo2.Name = "lblinfo2";
             this.lblinfo2.Size = new System.Drawing.Size(234, 32);
             this.lblinfo2.TabIndex = 95;
             this.lblinfo2.Text = "SIN INFORMACION";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.Red;
-            this.label22.Location = new System.Drawing.Point(305, -10);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(0, 21);
-            this.label22.TabIndex = 94;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.Red;
-            this.label20.Location = new System.Drawing.Point(301, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(98, 21);
-            this.label20.TabIndex = 105;
-            this.label20.Text = "RECEPCIÓN";
             // 
             // datalistado3_2
             // 
@@ -567,14 +568,25 @@
             this.datalistado3_2.Location = new System.Drawing.Point(0, 0);
             this.datalistado3_2.Name = "datalistado3_2";
             this.datalistado3_2.RowHeadersVisible = false;
-            this.datalistado3_2.Size = new System.Drawing.Size(399, 156);
-            this.datalistado3_2.TabIndex = 2;
+            this.datalistado3_2.Size = new System.Drawing.Size(449, 156);
+            this.datalistado3_2.TabIndex = 3;
+            // 
+            // btnExportarPDF
+            // 
+            this.btnExportarPDF.Location = new System.Drawing.Point(621, 9);
+            this.btnExportarPDF.Name = "btnExportarPDF";
+            this.btnExportarPDF.Size = new System.Drawing.Size(94, 23);
+            this.btnExportarPDF.TabIndex = 105;
+            this.btnExportarPDF.Text = "ExportarAPDF";
+            this.btnExportarPDF.UseVisualStyleBackColor = true;
+            this.btnExportarPDF.Click += new System.EventHandler(this.btnExportarPDF_Click);
             // 
             // RptBoletaPesadoDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(737, 661);
+            this.Controls.Add(this.btnExportarPDF);
             this.Controls.Add(this.lbltotalnetodescarte2);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label21);
@@ -626,7 +638,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RptBoletaPesadoDetalle_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datalistado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datalistado2_2)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado3_2)).EndInit();
@@ -671,7 +683,7 @@
         internal System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label lblnumlote;
-        private System.Windows.Forms.DataGridView datalistado;
+        private System.Windows.Forms.DataGridView datalistado2_2;
         internal System.Windows.Forms.Label lbltotalnetodescarte2;
         internal System.Windows.Forms.Label label23;
         internal System.Windows.Forms.Label label21;
@@ -684,5 +696,6 @@
         internal System.Windows.Forms.Label label22;
         internal System.Windows.Forms.Label label20;
         private System.Windows.Forms.DataGridView datalistado3_2;
+        private System.Windows.Forms.Button btnExportarPDF;
     }
 }
