@@ -36,33 +36,68 @@ namespace _3mpacador4.Presentacion.Reporte
         string nombreArchivo = "C:/archivo.xlsx";
 
         // Label[] labels = new Label[] { lblciente, label2, label3, label4, label5, label6 };
-       
-       
-        public RptBoletaPesadoDetalle(string[] filaConDatos, DataTable data)
+
+
+        //public RptBoletaPesadoDetalle(string[] filaConDatos, DataTable data)
+        //{
+        //    InitializeComponent();
+        //    PrepGrid();
+
+        //    if (filaConDatos.Length >= 5)
+        //    {
+        //        lblguiaingreso.Text = filaConDatos[0];
+        //        //   lblnumdoc.Text = filaConDatos[1];
+        //        lblnumlote.Text = filaConDatos[2];
+        //        lblfechaingreso.Text = filaConDatos[3];
+        //        lblhoraingreso.Text = filaConDatos[4];
+        //        lblproducto.Text = filaConDatos[5];
+        //        lblvariedad.Text = filaConDatos[6];
+        //        lblcliente.Text = filaConDatos[7];
+        //        lblproductor.Text = filaConDatos[8];
+        //        lblclp.Text = filaConDatos[9];
+        //        //   lblservicio .Text = filaConDatos[4];
+        //        //   lblmetodo.Text = filaConDatos[2];
+
+        //        datalistado2_2.DataSource = data;
+        //        ocultar_columnas2();
+        //    }
+        //}
+
+
+        public RptBoletaPesadoDetalle(string[] filaConDatos, DataTable data2, DataTable data3)
         {
             InitializeComponent();
             PrepGrid();
+            PrepGrid3();
 
             if (filaConDatos.Length >= 5)
             {
-                lblguiaingreso .Text = filaConDatos[0];
-             //   lblnumdoc.Text = filaConDatos[1];
+                lblguiaingreso.Text = filaConDatos[0];
                 lblnumlote.Text = filaConDatos[2];
                 lblfechaingreso.Text = filaConDatos[3];
-                lblhoraingreso .Text = filaConDatos[4];                
+                lblhoraingreso.Text = filaConDatos[4];
                 lblproducto.Text = filaConDatos[5];
-                lblvariedad .Text = filaConDatos[6];
+                lblvariedad.Text = filaConDatos[6];
                 lblcliente.Text = filaConDatos[7];
                 lblproductor.Text = filaConDatos[8];
                 lblclp.Text = filaConDatos[9];
-             //   lblservicio .Text = filaConDatos[4];
-             //   lblmetodo.Text = filaConDatos[2];
 
-                datalistado2_2.DataSource = data;
+                datalistado2_2.DataSource = data2;
                 ocultar_columnas2();
-            }
 
+                datalistado3_2.DataSource = data3;
+                ocultar_columnas3();
+                lblinfo2.Visible = (datalistado3_2.Rows.Count == 0);
+            }
         }
+
+        private void ocultar_columnas3()
+        {
+            this.datalistado3_2.Columns[0].Visible = true;
+            this.datalistado3_2.Columns[1].Visible = true;
+            this.datalistado3_2.Columns[2].Visible = true;
+        }
+
 
 
 
@@ -377,7 +412,6 @@ namespace _3mpacador4.Presentacion.Reporte
             this.datalistado2_2.Columns[6].Visible = false;
             this.datalistado2_2.Columns[7].Visible = false;
             this.datalistado2_2.Columns[8].Visible = false;
-            
         }
 
         private void label17_Click(object sender, EventArgs e)
@@ -499,37 +533,37 @@ namespace _3mpacador4.Presentacion.Reporte
             }
         }
 
-        public void LimpiarDatalistado3_2()
-        {
-            // Limpia todas las filas de datalistado2_2.
-            datalistado3_2.Rows.Clear();
+        //public void LimpiarDatalistado3_2()
+        //{
+        //    // Limpia todas las filas de datalistado2_2.
+        //    datalistado3_2.Rows.Clear();
 
-            lblinfo2.Visible = true;
-        }
+        //    lblinfo2.Visible = true;
+        //}
 
-        public void AgregarFilaEnDatalistado3_2(string cantjabas3, string pesobruto3, string pesoneto3)
-        {
-            if (datalistado3_2.Columns.Count == 0)
-            {
-                // Se Crean y agregan columnas a datalistado2_2.
-                datalistado3_2.Columns.Add("cantjabas3", "CANT JABAS");
-                datalistado3_2.Columns.Add("pesobruto3", "PESO BRUTO");
-                datalistado3_2.Columns.Add("pesoneto3", "PESO NETO");
-            }
-            // Agrega una fila con los datos de datalistado2_2.
-            DataGridViewRow row = new DataGridViewRow();
-            row.Cells.Add(new DataGridViewTextBoxCell { Value = cantjabas3 });
-            row.Cells.Add(new DataGridViewTextBoxCell { Value = pesobruto3 });
-            row.Cells.Add(new DataGridViewTextBoxCell { Value = pesoneto3 });
+        //public void AgregarFilaEnDatalistado3_2(string cantjabas3, string pesobruto3, string pesoneto3)
+        //{
+        //    if (datalistado3_2.Columns.Count == 0)
+        //    {
+        //        // Se Crean y agregan columnas a datalistado2_2.
+        //        datalistado3_2.Columns.Add("cantjabas3", "CANT JABAS");
+        //        datalistado3_2.Columns.Add("pesobruto3", "PESO BRUTO");
+        //        datalistado3_2.Columns.Add("pesoneto3", "PESO NETO");
+        //    }
+        //    // Agrega una fila con los datos de datalistado2_2.
+        //    DataGridViewRow row = new DataGridViewRow();
+        //    row.Cells.Add(new DataGridViewTextBoxCell { Value = cantjabas3 });
+        //    row.Cells.Add(new DataGridViewTextBoxCell { Value = pesobruto3 });
+        //    row.Cells.Add(new DataGridViewTextBoxCell { Value = pesoneto3 });
 
-            // Hace agregar filas a datalistado2_2.
-            datalistado3_2.Rows.Add(row);
+        //    // Hace agregar filas a datalistado2_2.
+        //    datalistado3_2.Rows.Add(row);
 
-            // Hace que si hay filas en datalistado3_2 muestra o oculta el label.
-            lblinfo2.Visible = (datalistado3_2.Rows.Count == 0);
+        //    // Hace que si hay filas en datalistado3_2 muestra o oculta el label.
+        //    lblinfo2.Visible = (datalistado3_2.Rows.Count == 0);
 
-            PrepGrid3();
-        }
+        //    PrepGrid3();
+        //}
 
         public string contardescarte2
         {
@@ -562,11 +596,11 @@ namespace _3mpacador4.Presentacion.Reporte
                 return;
             }
 
-            ExportarPDF(datalistado2_2, datalistado3_2, label1, label2, label3);
+            ExportarPDF(datalistado2_2, datalistado3_2, lblcliente, lblproductor, lblruc_dni, lblmetodo, lblproducto, lblvariedad, lblservicio, lblfechaingreso, lblhoraingreso, lblacopiador);
         }
 
 
-        private void ExportarPDF(DataGridView datalistado2_2, DataGridView datalistado3_2, Label label1, Label label2, Label label3)
+        private void ExportarPDF(DataGridView datalistado2_2, DataGridView datalistado3_2, Label lblcliente, Label lblproductor, Label lblruc_dni, Label lblmetodo, Label lblproducto, Label lblvariedad, Label lblservicio, Label lblfechaingreso, Label lblhoraingreso, Label lblacopiador)
         {
             try
             {
@@ -584,30 +618,71 @@ namespace _3mpacador4.Presentacion.Reporte
                         PdfSharp.Pdf.PdfPage pagina = pdf.AddPage();
                         pagina.Orientation = PdfSharp.PageOrientation.Portrait;
                         XGraphics gfx = XGraphics.FromPdfPage(pagina);
-                        XFont fuente = new XFont("Arial", 5);
+                        XFont fuente = new XFont("Arial", 8);
 
-                        int posY = 40;
+                        int posY = 20;
                         int derechaY = 20;
 
-                        gfx.DrawString("Los datos fueron exportados de la tabla datalistado2_2:", fuente, XBrushes.Black, new XRect(derechaY + 10, posY, 500, 20), XStringFormats.TopLeft);
+                        // Labels
+                        gfx.DrawString("BOLETA DE PESAJE        Nº ", fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
                         posY += 25;
 
+                        gfx.DrawString(lblcliente.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
+                        posY += 20;
+
+                        gfx.DrawString(lblproductor.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
+                        posY += 20;
+
+                        gfx.DrawString(lblruc_dni.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
+                        posY += 20;
+
+                        gfx.DrawString(lblmetodo.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
+                        posY += 20;
+
+                        gfx.DrawString(lblproducto.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
+                        posY += 20;
+
+                        gfx.DrawString(lblvariedad.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
+                        posY += 20;
+
+                        gfx.DrawString(lblservicio.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
+                        posY += 20;
+
+                        gfx.DrawString(lblfechaingreso.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
+                        posY += 20;
+
+                        gfx.DrawString(lblhoraingreso.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
+                        posY += 20;
+
+                        gfx.DrawString(lblacopiador.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
+                        posY += 20;
+
+                        gfx.DrawString(label3.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
+                        posY += 20;
+
+                        gfx.DrawString(label3.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
+                        posY += 20;
+
+                        // Columnas del datagrid datalistado2_2
                         for (int c = 0; c < datalistado2_2.Columns.Count; c++)
                         {
-                            gfx.DrawString(datalistado2_2.Columns[c].HeaderText, fuente, XBrushes.Black, new XRect(derechaY + 10 + c * 55, posY, 50, 20), XStringFormats.TopLeft);
+                            gfx.DrawString(datalistado2_2.Columns[c].HeaderText, fuente, XBrushes.Black, new XRect(derechaY + c * 55, posY, 50, 20), XStringFormats.TopLeft);
                         }
 
                         posY += 25;
 
+                        // Contenido del datagrid datalistado2_2
                         for (int c = 0; c < datalistado2_2.Rows.Count; c++)
                         {
                             for (int f = 0; f < datalistado2_2.Columns.Count; f++)
                             {
-                                gfx.DrawString(datalistado2_2.Rows[c].Cells[f].Value.ToString(), fuente, XBrushes.Black, new XRect(derechaY + 10 + f * 55, posY, 50, 20), XStringFormats.TopLeft);
+                                gfx.DrawString(datalistado2_2.Rows[c].Cells[f].Value.ToString(), fuente, XBrushes.Black, new XRect(derechaY + f * 55, posY, 50, 20), XStringFormats.TopLeft);
                             }
 
                             posY += 20;
                         }
+
+                        // Repite el proceso para datalistado3_2 si es necesario
 
                         pdf.Save(dialogoGuardar.FileName);
 
@@ -621,5 +696,10 @@ namespace _3mpacador4.Presentacion.Reporte
             }
         }
 
+
+        private void lblinfo2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

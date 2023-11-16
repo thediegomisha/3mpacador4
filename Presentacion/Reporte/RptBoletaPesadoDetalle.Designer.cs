@@ -73,9 +73,9 @@
             this.lblcontardescarte2 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lblinfo2 = new System.Windows.Forms.Label();
             this.datalistado3_2 = new System.Windows.Forms.DataGridView();
             this.btnExportarPDF = new System.Windows.Forms.Button();
+            this.lblinfo2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado2_2)).BeginInit();
             this.panel4.SuspendLayout();
@@ -545,18 +545,6 @@
             this.panel4.Size = new System.Drawing.Size(449, 156);
             this.panel4.TabIndex = 97;
             // 
-            // lblinfo2
-            // 
-            this.lblinfo2.AutoSize = true;
-            this.lblinfo2.BackColor = System.Drawing.Color.Black;
-            this.lblinfo2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblinfo2.ForeColor = System.Drawing.Color.Yellow;
-            this.lblinfo2.Location = new System.Drawing.Point(111, 59);
-            this.lblinfo2.Name = "lblinfo2";
-            this.lblinfo2.Size = new System.Drawing.Size(234, 32);
-            this.lblinfo2.TabIndex = 95;
-            this.lblinfo2.Text = "SIN INFORMACION";
-            // 
             // datalistado3_2
             // 
             this.datalistado3_2.AllowUserToAddRows = false;
@@ -580,6 +568,19 @@
             this.btnExportarPDF.Text = "ExportarAPDF";
             this.btnExportarPDF.UseVisualStyleBackColor = true;
             this.btnExportarPDF.Click += new System.EventHandler(this.btnExportarPDF_Click);
+            // 
+            // lblinfo2
+            // 
+            this.lblinfo2.AutoSize = true;
+            this.lblinfo2.BackColor = System.Drawing.Color.Black;
+            this.lblinfo2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblinfo2.ForeColor = System.Drawing.Color.Yellow;
+            this.lblinfo2.Location = new System.Drawing.Point(90, 65);
+            this.lblinfo2.Name = "lblinfo2";
+            this.lblinfo2.Size = new System.Drawing.Size(234, 32);
+            this.lblinfo2.TabIndex = 106;
+            this.lblinfo2.Text = "SIN INFORMACION";
+            this.lblinfo2.Click += new System.EventHandler(this.lblinfo2_Click);
             // 
             // RptBoletaPesadoDetalle
             // 
@@ -692,10 +693,10 @@
         internal System.Windows.Forms.Label lblcontardescarte2;
         internal System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel panel4;
-        internal System.Windows.Forms.Label lblinfo2;
         internal System.Windows.Forms.Label label22;
         internal System.Windows.Forms.Label label20;
         private System.Windows.Forms.DataGridView datalistado3_2;
         private System.Windows.Forms.Button btnExportarPDF;
+        internal System.Windows.Forms.Label lblinfo2;
     }
 }

@@ -816,8 +816,55 @@ namespace _3mpacador4.Presentacion.Reporte
             return datos;
         }
 
-        private void mostrarconsulta3()
+        //private void mostrarconsulta3()
+        //{
+
+        //    MySqlCommand comando;
+        //    try
+        //    {
+        //        if (ConexionGral.conexion.State == ConnectionState.Closed)
+        //        {
+        //            ConexionGral.conectar();
+        //        }
+
+        //        comando = new MySqlCommand("usp_tblticket_Descarte_Selectlote", ConexionGral.conexion);
+        //        comando.CommandType = (CommandType)4;
+
+        //        comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = lblpuntero.Text;
+
+        //        var adaptador = new MySqlDataAdapter(comando);
+        //        var datos = new DataTable();
+        //        adaptador.Fill(datos);
+
+        //        {
+        //            var withBlock = this.datalistado3;
+        //            if (datos.Rows.Count != 0)
+        //            {
+        //                var dr = datos.NewRow();
+        //                withBlock.DataSource = datos;
+        //                sumanetodescarte();
+        //                contardescarte();
+        //                lblinfo2.Visible = false;
+        //            }
+        //            else
+        //            {
+        //                withBlock.DataSource = null;
+        //                contardescarte();
+        //                lblinfo2.Visible = true;                     
+        //            }
+        //        }
+
+        //        ConexionGral.desconectar();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
+
+        private DataTable mostrarconsulta3()
         {
+            DataTable datos2 = new DataTable();
 
             MySqlCommand comando;
             try
@@ -833,15 +880,15 @@ namespace _3mpacador4.Presentacion.Reporte
                 comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = lblpuntero.Text;
 
                 var adaptador = new MySqlDataAdapter(comando);
-                var datos = new DataTable();
-                adaptador.Fill(datos);
+                // var datos = new DataTable();
+                adaptador.Fill(datos2);
 
                 {
                     var withBlock = this.datalistado3;
-                    if (datos.Rows.Count != 0)
+                    if (datos2.Rows.Count != 0)
                     {
-                        var dr = datos.NewRow();
-                        withBlock.DataSource = datos;
+                        var dr = datos2.NewRow();
+                        withBlock.DataSource = datos2;
                         sumanetodescarte();
                         contardescarte();
                         lblinfo2.Visible = false;
@@ -850,7 +897,7 @@ namespace _3mpacador4.Presentacion.Reporte
                     {
                         withBlock.DataSource = null;
                         contardescarte();
-                        lblinfo2.Visible = true;                     
+                        lblinfo2.Visible = true;
                     }
                 }
 
@@ -861,8 +908,10 @@ namespace _3mpacador4.Presentacion.Reporte
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            return datos2; // Devolver el DataTable con los datos
         }
-        
+
+
         private void mostrarproductor()
         {
             MySqlCommand comando;
@@ -1205,6 +1254,7 @@ namespace _3mpacador4.Presentacion.Reporte
             }
         }
 
+
         private void datalistado_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //Hace un chequeo si se hizo click en una fila
@@ -1220,20 +1270,21 @@ namespace _3mpacador4.Presentacion.Reporte
                     filaConDatos[i] = filasseleccionada.Cells[i].Value.ToString();
                 }
 
-                DataTable resultados = mostrarconsulta2();
+                DataTable resultados2 = mostrarconsulta2();
+                DataTable resultados3 = mostrarconsulta3();
 
-                RptBoletaPesadoDetalle FH = new RptBoletaPesadoDetalle(filaConDatos, resultados);
+                RptBoletaPesadoDetalle FH = new RptBoletaPesadoDetalle(filaConDatos, resultados2, resultados3);
 
-                FH.LimpiarDatalistado3_2();
-                foreach (DataGridViewRow row3 in datalistado3.Rows)
-                {
-                    string cantjabas3 = row3.Cells["CANT JABAS"].Value.ToString();
-                    string pesobruto3 = row3.Cells["PESO BRUTO"].Value.ToString();
-                    string pesoneto3 = row3.Cells["PESO NETO"].Value.ToString();
+                //FH.LimpiarDatalistado3_2();
+                //foreach (DataGridViewRow row3 in datalistado3.Rows)
+                //{
+                //    string cantjabas3 = row3.Cells["CANT JABAS"].Value.ToString();
+                //    string pesobruto3 = row3.Cells["PESO BRUTO"].Value.ToString();
+                //    string pesoneto3 = row3.Cells["PESO NETO"].Value.ToString();
 
-                    // Llama a la función para agregar fila a datalistado2_2.
-                    FH.AgregarFilaEnDatalistado3_2(cantjabas3, pesobruto3, pesoneto3);
-                }
+                //    // Llama a la función para agregar fila a datalistado2_2.
+                //    FH.AgregarFilaEnDatalistado3_2(cantjabas3, pesobruto3, pesoneto3);
+                //}
 
                 //Labels de la tabla 2.
                 string CONTAR = LBLCONTAR.Text;
