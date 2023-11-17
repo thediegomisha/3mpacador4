@@ -40,10 +40,10 @@
             this.btnActualizar = new System.Windows.Forms.Button();
             this.txtapel_paterno = new MetroFramework.Controls.MetroTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbxestado = new System.Windows.Forms.CheckBox();
             this.txtapel_materno = new MetroFramework.Controls.MetroTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.cbxestado = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.Panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -73,25 +73,26 @@
             // 
             this.Label4.AutoSize = true;
             this.Label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.Location = new System.Drawing.Point(28, 123);
+            this.Label4.Location = new System.Drawing.Point(28, 131);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(151, 21);
+            this.Label4.Size = new System.Drawing.Size(158, 21);
             this.Label4.TabIndex = 41;
-            this.Label4.Text = "APELLIDO PATERNO";
+            this.Label4.Text = "APELLIDO PATERNO :";
             // 
             // txtdni
             // 
             this.txtdni.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdni.Location = new System.Drawing.Point(32, 28);
+            this.txtdni.Location = new System.Drawing.Point(31, 36);
+            this.txtdni.MaxLength = 10;
             this.txtdni.Name = "txtdni";
-            this.txtdni.Size = new System.Drawing.Size(311, 29);
-            this.txtdni.TabIndex = 40;
+            this.txtdni.Size = new System.Drawing.Size(189, 29);
+            this.txtdni.TabIndex = 0;
             // 
             // btnCancelar
             // 
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(610, 323);
+            this.btnCancelar.Location = new System.Drawing.Point(610, 321);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(98, 29);
             this.btnCancelar.TabIndex = 36;
@@ -103,7 +104,7 @@
             // 
             this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(331, 323);
+            this.btnGuardar.Location = new System.Drawing.Point(331, 321);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(82, 29);
             this.btnGuardar.TabIndex = 37;
@@ -113,17 +114,18 @@
             // 
             // txtnombres
             // 
+            this.txtnombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtnombres.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnombres.Location = new System.Drawing.Point(31, 88);
+            this.txtnombres.Location = new System.Drawing.Point(31, 96);
             this.txtnombres.Name = "txtnombres";
-            this.txtnombres.Size = new System.Drawing.Size(311, 29);
-            this.txtnombres.TabIndex = 35;
+            this.txtnombres.Size = new System.Drawing.Size(635, 29);
+            this.txtnombres.TabIndex = 1;
             // 
             // Label3
             // 
             this.Label3.AutoSize = true;
             this.Label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(28, 4);
+            this.Label3.Location = new System.Drawing.Point(27, 12);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(44, 21);
             this.Label3.TabIndex = 33;
@@ -133,17 +135,17 @@
             // 
             this.Label2.AutoSize = true;
             this.Label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(27, 64);
+            this.Label2.Location = new System.Drawing.Point(28, 72);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(84, 21);
+            this.Label2.Size = new System.Drawing.Size(91, 21);
             this.Label2.TabIndex = 34;
-            this.Label2.Text = "NOMBRES";
+            this.Label2.Text = "NOMBRES :";
             // 
             // btnActualizar
             // 
             this.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnActualizar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.Location = new System.Drawing.Point(449, 323);
+            this.btnActualizar.Location = new System.Drawing.Point(449, 321);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(82, 29);
             this.btnActualizar.TabIndex = 38;
@@ -152,6 +154,7 @@
             // 
             // txtapel_paterno
             // 
+            this.txtapel_paterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // 
             // 
@@ -165,20 +168,18 @@
             this.txtapel_paterno.CustomButton.UseSelectable = true;
             this.txtapel_paterno.CustomButton.Visible = false;
             this.txtapel_paterno.Lines = new string[0];
-            this.txtapel_paterno.Location = new System.Drawing.Point(31, 147);
+            this.txtapel_paterno.Location = new System.Drawing.Point(31, 155);
             this.txtapel_paterno.MaxLength = 32767;
             this.txtapel_paterno.Name = "txtapel_paterno";
             this.txtapel_paterno.PasswordChar = '\0';
-            this.txtapel_paterno.PromptText = "Ej: Jiron Santa Rosa 711";
             this.txtapel_paterno.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtapel_paterno.SelectedText = "";
             this.txtapel_paterno.SelectionLength = 0;
             this.txtapel_paterno.SelectionStart = 0;
             this.txtapel_paterno.ShortcutsEnabled = true;
             this.txtapel_paterno.Size = new System.Drawing.Size(310, 30);
-            this.txtapel_paterno.TabIndex = 42;
+            this.txtapel_paterno.TabIndex = 2;
             this.txtapel_paterno.UseSelectable = true;
-            this.txtapel_paterno.WaterMark = "Ej: Jiron Santa Rosa 711";
             this.txtapel_paterno.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtapel_paterno.WaterMarkFont = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
@@ -196,11 +197,35 @@
             this.panel2.Controls.Add(this.Label2);
             this.panel2.Location = new System.Drawing.Point(-1, 48);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(718, 269);
+            this.panel2.Size = new System.Drawing.Size(718, 242);
             this.panel2.TabIndex = 59;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(28, 194);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 21);
+            this.label6.TabIndex = 46;
+            this.label6.Text = "ESTADO :";
+            // 
+            // cbxestado
+            // 
+            this.cbxestado.AutoSize = true;
+            this.cbxestado.Checked = true;
+            this.cbxestado.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbxestado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxestado.Location = new System.Drawing.Point(118, 200);
+            this.cbxestado.Name = "cbxestado";
+            this.cbxestado.Size = new System.Drawing.Size(15, 14);
+            this.cbxestado.TabIndex = 4;
+            this.cbxestado.UseVisualStyleBackColor = true;
+            this.cbxestado.CheckedChanged += new System.EventHandler(this.cbxestado_CheckedChanged);
             // 
             // txtapel_materno
             // 
+            this.txtapel_materno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // 
             // 
@@ -214,20 +239,18 @@
             this.txtapel_materno.CustomButton.UseSelectable = true;
             this.txtapel_materno.CustomButton.Visible = false;
             this.txtapel_materno.Lines = new string[0];
-            this.txtapel_materno.Location = new System.Drawing.Point(356, 147);
+            this.txtapel_materno.Location = new System.Drawing.Point(356, 155);
             this.txtapel_materno.MaxLength = 32767;
             this.txtapel_materno.Name = "txtapel_materno";
             this.txtapel_materno.PasswordChar = '\0';
-            this.txtapel_materno.PromptText = "Ej: Jiron Santa Rosa 711";
             this.txtapel_materno.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtapel_materno.SelectedText = "";
             this.txtapel_materno.SelectionLength = 0;
             this.txtapel_materno.SelectionStart = 0;
             this.txtapel_materno.ShortcutsEnabled = true;
             this.txtapel_materno.Size = new System.Drawing.Size(310, 30);
-            this.txtapel_materno.TabIndex = 44;
+            this.txtapel_materno.TabIndex = 3;
             this.txtapel_materno.UseSelectable = true;
-            this.txtapel_materno.WaterMark = "Ej: Jiron Santa Rosa 711";
             this.txtapel_materno.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtapel_materno.WaterMarkFont = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
@@ -235,31 +258,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(353, 123);
+            this.label5.Location = new System.Drawing.Point(353, 131);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(157, 21);
+            this.label5.Size = new System.Drawing.Size(164, 21);
             this.label5.TabIndex = 43;
-            this.label5.Text = "APELLIDO MATERNO";
-            // 
-            // cbxestado
-            // 
-            this.cbxestado.AutoSize = true;
-            this.cbxestado.Location = new System.Drawing.Point(32, 214);
-            this.cbxestado.Name = "cbxestado";
-            this.cbxestado.Size = new System.Drawing.Size(15, 14);
-            this.cbxestado.TabIndex = 45;
-            this.cbxestado.UseVisualStyleBackColor = true;
-            this.cbxestado.CheckedChanged += new System.EventHandler(this.cbxestado_CheckedChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(28, 186);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 21);
-            this.label6.TabIndex = 46;
-            this.label6.Text = "ESTADO";
+            this.label5.Text = "APELLIDO MATERNO :";
             // 
             // frmColaborador2
             // 

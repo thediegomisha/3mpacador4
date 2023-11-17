@@ -11,6 +11,7 @@ using _3mpacador4.Presentacion.Mantenimiento;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 using _3mpacador4;
+using _3mpacador4.Entidad;
 using _3mpacador4.Logica;
 using Devart.Data.MySql;
 
@@ -53,25 +54,23 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     }
 
                     comando = new MySqlCommand("usp_tblcolaborador_select", ConexionGral.conexion);
-                    comando.CommandType = (CommandType)4;
+                    comando.CommandType = CommandType.StoredProcedure;
 
-                var adaptador = new MySqlDataAdapter(comando);
-                var datos = new DataTable();
-                adaptador.Fill(datos);
-
-                {
-                    var withBlock = this.datalistado;
-                    if (datos.Rows.Count != 0)
+                    using (MySqlDataReader reader = comando.ExecuteReader())
                     {
-                        var dr = datos.NewRow();
-                        withBlock.DataSource = datos;                       
+                        while (reader.Read())
+                        {
+                            Colaborador c = new Colaborador();
+                            c.idcolaborador = Convert.ToInt32(reader["idcolaborador"]);
+                            c.dni = reader["dni"].ToString();
+                            c.nombres = reader["nombres"].ToString();
+                            c.apel_paterno = reader["apel_paterno"].ToString();
+                            c.apel_materno = reader["apel_materno"].ToString();
+                            c.flag_estado = reader["flag_estado"].ToString();
+                            datalistado.Rows.Add(null, null, c.idcolaborador, c.dni, c.nombres, c.apel_paterno, c.apel_materno, c.flag_estado == "1" ? true : false);
+                        }
+                    lblnro_reg.Text = datalistado.RowCount.ToString();
                     }
-                    else
-                    {
-                        withBlock.DataSource = null;
-                    }
-                }
-
                 ConexionGral.desconectar();
             }
             catch (Exception ex)
@@ -81,5 +80,13 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         }
 
+        private void datalistado_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (datalistado.Columns[e.ColumnIndex].Index == 0)
+            {
+                var f = new frmColaborador2();
+                f.ShowDialog();
+            }
+        }
     }
 }
