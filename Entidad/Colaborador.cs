@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _3mpacador4.Entidad
 {
-    class Colaborador
+    public class Colaborador
     {
         public int idcolaborador { get; set; }
         public string dni { get; set; }

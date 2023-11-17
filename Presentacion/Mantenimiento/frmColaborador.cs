@@ -17,19 +17,27 @@ using Devart.Data.MySql;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
+    
+
     public partial class frmColaborador : Form
-    {
+    {     
+
         public frmColaborador()
         {
             InitializeComponent();
             MostrarColaborador();
         }
 
+        public static bool editar;
+        public static Colaborador cl = null;
+
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            var aux = new Colaborador();
+
             frmColaborador2 F = new frmColaborador2();
             F.ShowDialog();
-
+            datalistado.Refresh();
         }
        
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -48,6 +56,8 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 MySqlCommand comando;
                 try
                 {
+                datalistado.Rows.Clear();
+
                     if (ConexionGral.conexion.State == ConnectionState.Closed)
                     {
                         ConexionGral.conectar();
@@ -69,7 +79,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                             c.flag_estado = reader["flag_estado"].ToString();
                             datalistado.Rows.Add(null, null, c.idcolaborador, c.dni, c.nombres, c.apel_paterno, c.apel_materno, c.flag_estado == "1" ? true : false);
                         }
-                    lblnro_reg.Text = datalistado.RowCount.ToString();
+                        lblnro_reg.Text = datalistado.RowCount.ToString();
                     }
                 ConexionGral.desconectar();
             }
@@ -82,10 +92,50 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void datalistado_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (datalistado.Columns[e.ColumnIndex].Index == 0)
+            if (datalistado.Columns[e.ColumnIndex].Index == 0) //EDITAR
             {
+                editar = true;
+
+                cl = new Colaborador();
+                cl.idcolaborador = Convert.ToInt32(datalistado.CurrentRow.Cells[2].Value);
+                cl.dni = datalistado.CurrentRow.Cells[3].Value.ToString();
+                cl.nombres = datalistado.CurrentRow.Cells[4].Value.ToString();
+                cl.apel_paterno = datalistado.CurrentRow.Cells[5].Value.ToString();
+                cl.apel_materno = datalistado.CurrentRow.Cells[6].Value.ToString();
+                cl.flag_estado = datalistado.CurrentRow.Cells[7].Value.ToString();
+
                 var f = new frmColaborador2();
                 f.ShowDialog();
+
+                editar = false;
+            }
+            else if (datalistado.Columns[e.ColumnIndex].Index == 1) // ELIMINAR
+            {
+                var rpta = MessageBox.Show( "¿ ESTA SEGURO DE ELIMINAR AL TRABAJADOR CON DNI " + datalistado.CurrentRow.Cells[3].Value.ToString() + " ?"
+                    , "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (rpta == DialogResult.Yes)
+                {
+                    MySqlCommand comando;
+                    try
+                    {
+                        if (ConexionGral.conexion.State == ConnectionState.Closed)
+                        {
+                            ConexionGral.conectar();
+                        }
+                        comando = new MySqlCommand("usp_tblcolaborador_delete", ConexionGral.conexion);
+                        comando.CommandType = CommandType.StoredProcedure;
+                        comando.Parameters.AddWithValue("p_id", Convert.ToInt32(datalistado.CurrentRow.Cells[2].Value));
+                        comando.ExecuteNonQuery();
+                        MessageBox.Show("COLABORADOR SE ELIMINO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MostrarColaborador();
+
+                        ConexionGral.desconectar();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
     }
