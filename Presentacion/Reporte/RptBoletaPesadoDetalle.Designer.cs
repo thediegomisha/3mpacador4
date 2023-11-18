@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label13 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.labproductor = new System.Windows.Forms.Label();
+            this.labcliente = new System.Windows.Forms.Label();
+            this.labmetodo = new System.Windows.Forms.Label();
+            this.labservicio = new System.Windows.Forms.Label();
+            this.labacopiador = new System.Windows.Forms.Label();
+            this.labfechaingreso = new System.Windows.Forms.Label();
+            this.labvariedad = new System.Windows.Forms.Label();
+            this.labclp = new System.Windows.Forms.Label();
+            this.labruc_dni = new System.Windows.Forms.Label();
+            this.labguiaingreso = new System.Windows.Forms.Label();
+            this.labhoraingreso = new System.Windows.Forms.Label();
+            this.labproducto = new System.Windows.Forms.Label();
             this.lblproducto = new System.Windows.Forms.Label();
             this.lblacopiador = new System.Windows.Forms.Label();
             this.lblservicio = new System.Windows.Forms.Label();
@@ -58,11 +58,11 @@
             this.datalistado2_2 = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
             this.totalneto2 = new System.Windows.Forms.Label();
-            this.Label15 = new System.Windows.Forms.Label();
+            this.labtotalneto = new System.Windows.Forms.Label();
             this.resultado = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.labresultado = new System.Windows.Forms.Label();
             this.totaljabas2 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.labcantjabas = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.lblnumlote = new System.Windows.Forms.Label();
             this.lbltotalnetodescarte2 = new System.Windows.Forms.Label();
@@ -73,134 +73,134 @@
             this.lblcontardescarte2 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lblinfo2 = new System.Windows.Forms.Label();
             this.datalistado3_2 = new System.Windows.Forms.DataGridView();
             this.btnExportarPDF = new System.Windows.Forms.Button();
-            this.lblinfo2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado2_2)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado3_2)).BeginInit();
             this.SuspendLayout();
             // 
-            // label13
+            // labproductor
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(19, 87);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(66, 17);
-            this.label13.TabIndex = 14;
-            this.label13.Text = "Productor";
+            this.labproductor.AutoSize = true;
+            this.labproductor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labproductor.Location = new System.Drawing.Point(19, 87);
+            this.labproductor.Name = "labproductor";
+            this.labproductor.Size = new System.Drawing.Size(66, 17);
+            this.labproductor.TabIndex = 14;
+            this.labproductor.Text = "Productor";
             // 
-            // label3
+            // labcliente
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(19, 59);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 17);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Cliente";
+            this.labcliente.AutoSize = true;
+            this.labcliente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labcliente.Location = new System.Drawing.Point(19, 59);
+            this.labcliente.Name = "labcliente";
+            this.labcliente.Size = new System.Drawing.Size(47, 17);
+            this.labcliente.TabIndex = 13;
+            this.labcliente.Text = "Cliente";
             // 
-            // label1
+            // labmetodo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 115);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 17);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Metodo de Cultivo";
+            this.labmetodo.AutoSize = true;
+            this.labmetodo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labmetodo.Location = new System.Drawing.Point(19, 115);
+            this.labmetodo.Name = "labmetodo";
+            this.labmetodo.Size = new System.Drawing.Size(117, 17);
+            this.labmetodo.TabIndex = 15;
+            this.labmetodo.Text = "Metodo de Cultivo";
             // 
-            // label2
+            // labservicio
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 171);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 17);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Tipo de Servicio";
+            this.labservicio.AutoSize = true;
+            this.labservicio.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labservicio.Location = new System.Drawing.Point(19, 171);
+            this.labservicio.Name = "labservicio";
+            this.labservicio.Size = new System.Drawing.Size(102, 17);
+            this.labservicio.TabIndex = 16;
+            this.labservicio.Text = "Tipo de Servicio";
             // 
-            // label4
+            // labacopiador
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(19, 198);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 17);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Acopiador";
+            this.labacopiador.AutoSize = true;
+            this.labacopiador.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labacopiador.Location = new System.Drawing.Point(19, 198);
+            this.labacopiador.Name = "labacopiador";
+            this.labacopiador.Size = new System.Drawing.Size(69, 17);
+            this.labacopiador.TabIndex = 17;
+            this.labacopiador.Text = "Acopiador";
             // 
-            // label5
+            // labfechaingreso
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(411, 167);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(108, 17);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Fecha de Ingreso";
+            this.labfechaingreso.AutoSize = true;
+            this.labfechaingreso.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labfechaingreso.Location = new System.Drawing.Point(411, 167);
+            this.labfechaingreso.Name = "labfechaingreso";
+            this.labfechaingreso.Size = new System.Drawing.Size(108, 17);
+            this.labfechaingreso.TabIndex = 22;
+            this.labfechaingreso.Text = "Fecha de Ingreso";
             // 
-            // label6
+            // labvariedad
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(411, 140);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 17);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Variedad";
+            this.labvariedad.AutoSize = true;
+            this.labvariedad.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labvariedad.Location = new System.Drawing.Point(411, 140);
+            this.labvariedad.Name = "labvariedad";
+            this.labvariedad.Size = new System.Drawing.Size(60, 17);
+            this.labvariedad.TabIndex = 21;
+            this.labvariedad.Text = "Variedad";
             // 
-            // label7
+            // labclp
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(411, 111);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(29, 17);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "CLP";
+            this.labclp.AutoSize = true;
+            this.labclp.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labclp.Location = new System.Drawing.Point(411, 111);
+            this.labclp.Name = "labclp";
+            this.labclp.Size = new System.Drawing.Size(29, 17);
+            this.labclp.TabIndex = 20;
+            this.labclp.Text = "CLP";
             // 
-            // label8
+            // labruc_dni
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(411, 83);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 17);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "RUC / DNI";
+            this.labruc_dni.AutoSize = true;
+            this.labruc_dni.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labruc_dni.Location = new System.Drawing.Point(411, 83);
+            this.labruc_dni.Name = "labruc_dni";
+            this.labruc_dni.Size = new System.Drawing.Size(68, 17);
+            this.labruc_dni.TabIndex = 19;
+            this.labruc_dni.Text = "RUC / DNI";
             // 
-            // label9
+            // labguiaingreso
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(411, 55);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(101, 17);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "Guia de Ingreso";
+            this.labguiaingreso.AutoSize = true;
+            this.labguiaingreso.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labguiaingreso.Location = new System.Drawing.Point(411, 55);
+            this.labguiaingreso.Name = "labguiaingreso";
+            this.labguiaingreso.Size = new System.Drawing.Size(101, 17);
+            this.labguiaingreso.TabIndex = 18;
+            this.labguiaingreso.Text = "Guia de Ingreso";
             // 
-            // label10
+            // labhoraingreso
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(411, 198);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(104, 17);
-            this.label10.TabIndex = 23;
-            this.label10.Text = "Hora de Ingreso";
+            this.labhoraingreso.AutoSize = true;
+            this.labhoraingreso.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labhoraingreso.Location = new System.Drawing.Point(411, 198);
+            this.labhoraingreso.Name = "labhoraingreso";
+            this.labhoraingreso.Size = new System.Drawing.Size(104, 17);
+            this.labhoraingreso.TabIndex = 23;
+            this.labhoraingreso.Text = "Hora de Ingreso";
             // 
-            // label11
+            // labproducto
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(19, 144);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(61, 17);
-            this.label11.TabIndex = 24;
-            this.label11.Text = "Producto";
+            this.labproducto.AutoSize = true;
+            this.labproducto.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labproducto.Location = new System.Drawing.Point(19, 144);
+            this.labproducto.Name = "labproducto";
+            this.labproducto.Size = new System.Drawing.Size(61, 17);
+            this.labproducto.TabIndex = 24;
+            this.labproducto.Text = "Producto";
             // 
             // lblproducto
             // 
@@ -385,16 +385,16 @@
             this.totalneto2.Text = "0";
             this.totalneto2.Click += new System.EventHandler(this.totalneto_Click);
             // 
-            // Label15
+            // labtotalneto
             // 
-            this.Label15.AutoSize = true;
-            this.Label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label15.Location = new System.Drawing.Point(574, 440);
-            this.Label15.Name = "Label15";
-            this.Label15.Size = new System.Drawing.Size(73, 15);
-            this.Label15.TabIndex = 67;
-            this.Label15.Text = "Total Neto";
-            this.Label15.Click += new System.EventHandler(this.Label15_Click);
+            this.labtotalneto.AutoSize = true;
+            this.labtotalneto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labtotalneto.Location = new System.Drawing.Point(574, 440);
+            this.labtotalneto.Name = "labtotalneto";
+            this.labtotalneto.Size = new System.Drawing.Size(73, 15);
+            this.labtotalneto.TabIndex = 67;
+            this.labtotalneto.Text = "Total Neto";
+            this.labtotalneto.Click += new System.EventHandler(this.Label15_Click);
             // 
             // resultado
             // 
@@ -407,16 +407,16 @@
             this.resultado.Text = "0";
             this.resultado.Click += new System.EventHandler(this.LBLCONTAR_Click);
             // 
-            // label14
+            // labresultado
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(59, 440);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(84, 15);
-            this.label14.TabIndex = 69;
-            this.label14.Text = "Resultado : ";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
+            this.labresultado.AutoSize = true;
+            this.labresultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labresultado.Location = new System.Drawing.Point(59, 440);
+            this.labresultado.Name = "labresultado";
+            this.labresultado.Size = new System.Drawing.Size(84, 15);
+            this.labresultado.TabIndex = 69;
+            this.labresultado.Text = "Resultado : ";
+            this.labresultado.Click += new System.EventHandler(this.label14_Click);
             // 
             // totaljabas2
             // 
@@ -429,16 +429,16 @@
             this.totaljabas2.Text = "0";
             this.totaljabas2.Click += new System.EventHandler(this.lblcantjabas_Click);
             // 
-            // label17
+            // labcantjabas
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(328, 440);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(78, 15);
-            this.label17.TabIndex = 71;
-            this.label17.Text = "Cant Jabas";
-            this.label17.Click += new System.EventHandler(this.label17_Click);
+            this.labcantjabas.AutoSize = true;
+            this.labcantjabas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labcantjabas.Location = new System.Drawing.Point(328, 440);
+            this.labcantjabas.Name = "labcantjabas";
+            this.labcantjabas.Size = new System.Drawing.Size(78, 15);
+            this.labcantjabas.TabIndex = 71;
+            this.labcantjabas.Text = "Cant Jabas";
+            this.labcantjabas.Click += new System.EventHandler(this.label17_Click);
             // 
             // label16
             // 
@@ -545,6 +545,19 @@
             this.panel4.Size = new System.Drawing.Size(449, 156);
             this.panel4.TabIndex = 97;
             // 
+            // lblinfo2
+            // 
+            this.lblinfo2.AutoSize = true;
+            this.lblinfo2.BackColor = System.Drawing.Color.Black;
+            this.lblinfo2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblinfo2.ForeColor = System.Drawing.Color.Yellow;
+            this.lblinfo2.Location = new System.Drawing.Point(90, 65);
+            this.lblinfo2.Name = "lblinfo2";
+            this.lblinfo2.Size = new System.Drawing.Size(234, 32);
+            this.lblinfo2.TabIndex = 106;
+            this.lblinfo2.Text = "SIN INFORMACION";
+            this.lblinfo2.Click += new System.EventHandler(this.lblinfo2_Click);
+            // 
             // datalistado3_2
             // 
             this.datalistado3_2.AllowUserToAddRows = false;
@@ -569,19 +582,6 @@
             this.btnExportarPDF.UseVisualStyleBackColor = true;
             this.btnExportarPDF.Click += new System.EventHandler(this.btnExportarPDF_Click);
             // 
-            // lblinfo2
-            // 
-            this.lblinfo2.AutoSize = true;
-            this.lblinfo2.BackColor = System.Drawing.Color.Black;
-            this.lblinfo2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblinfo2.ForeColor = System.Drawing.Color.Yellow;
-            this.lblinfo2.Location = new System.Drawing.Point(90, 65);
-            this.lblinfo2.Name = "lblinfo2";
-            this.lblinfo2.Size = new System.Drawing.Size(234, 32);
-            this.lblinfo2.TabIndex = 106;
-            this.lblinfo2.Text = "SIN INFORMACION";
-            this.lblinfo2.Click += new System.EventHandler(this.lblinfo2_Click);
-            // 
             // RptBoletaPesadoDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -597,11 +597,11 @@
             this.Controls.Add(this.label19);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.totaljabas2);
-            this.Controls.Add(this.label17);
+            this.Controls.Add(this.labcantjabas);
             this.Controls.Add(this.resultado);
-            this.Controls.Add(this.label14);
+            this.Controls.Add(this.labresultado);
             this.Controls.Add(this.totalneto2);
-            this.Controls.Add(this.Label15);
+            this.Controls.Add(this.labtotalneto);
             this.Controls.Add(this.lblnumlote);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label12);
@@ -618,18 +618,18 @@
             this.Controls.Add(this.lblmetodo);
             this.Controls.Add(this.lblproductor);
             this.Controls.Add(this.lblcliente);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labproducto);
+            this.Controls.Add(this.labhoraingreso);
+            this.Controls.Add(this.labfechaingreso);
+            this.Controls.Add(this.labvariedad);
+            this.Controls.Add(this.labclp);
+            this.Controls.Add(this.labruc_dni);
+            this.Controls.Add(this.labguiaingreso);
+            this.Controls.Add(this.labacopiador);
+            this.Controls.Add(this.labservicio);
+            this.Controls.Add(this.labmetodo);
+            this.Controls.Add(this.labproductor);
+            this.Controls.Add(this.labcliente);
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -650,18 +650,18 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label labproductor;
+        private System.Windows.Forms.Label labcliente;
+        private System.Windows.Forms.Label labmetodo;
+        private System.Windows.Forms.Label labservicio;
+        private System.Windows.Forms.Label labacopiador;
+        private System.Windows.Forms.Label labfechaingreso;
+        private System.Windows.Forms.Label labvariedad;
+        private System.Windows.Forms.Label labclp;
+        private System.Windows.Forms.Label labruc_dni;
+        private System.Windows.Forms.Label labguiaingreso;
+        private System.Windows.Forms.Label labhoraingreso;
+        private System.Windows.Forms.Label labproducto;
         private System.Windows.Forms.Label lblproducto;
         private System.Windows.Forms.Label lblacopiador;
         private System.Windows.Forms.Label lblservicio;
@@ -677,11 +677,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label12;
         internal System.Windows.Forms.Label totalneto2;
-        internal System.Windows.Forms.Label Label15;
+        internal System.Windows.Forms.Label labtotalneto;
         internal System.Windows.Forms.Label resultado;
-        internal System.Windows.Forms.Label label14;
+        internal System.Windows.Forms.Label labresultado;
         internal System.Windows.Forms.Label totaljabas2;
-        internal System.Windows.Forms.Label label17;
+        internal System.Windows.Forms.Label labcantjabas;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label lblnumlote;
         private System.Windows.Forms.DataGridView datalistado2_2;

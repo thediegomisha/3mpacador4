@@ -590,17 +590,25 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void btnExportarPDF_Click(object sender, EventArgs e)
         {
-            if (datalistado2_2.Rows.Count == 0 && datalistado3_2.Rows.Count == 0)
+            if (datalistado2_2.Rows.Count == 0)
             {
                 MessageBox.Show("No hay datos para exportar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            ExportarPDF(datalistado2_2, datalistado3_2, lblcliente, lblproductor, lblruc_dni, lblmetodo, lblproducto, lblvariedad, lblservicio, lblfechaingreso, lblhoraingreso, lblacopiador);
+            ExportarPDF(datalistado2_2, datalistado3_2, lblnumlote, labcliente, lblcliente, labproductor, lblproductor, labmetodo, lblmetodo,
+                labproducto, lblproducto, labservicio, lblservicio, labacopiador, lblacopiador, labguiaingreso, lblguiaingreso,
+                labruc_dni, lblruc_dni, labclp, lblclp, labvariedad, lblvariedad, labfechaingreso, lblfechaingreso, labhoraingreso,
+                lblhoraingreso, labresultado, resultado, labcantjabas, totaljabas2, labtotalneto, totalneto2);
         }
 
 
-        private void ExportarPDF(DataGridView datalistado2_2, DataGridView datalistado3_2, Label lblcliente, Label lblproductor, Label lblruc_dni, Label lblmetodo, Label lblproducto, Label lblvariedad, Label lblservicio, Label lblfechaingreso, Label lblhoraingreso, Label lblacopiador)
+        private void ExportarPDF(DataGridView datalistado2_2, DataGridView datalistado3_2, Label lblnumlote, Label labcliente, Label lblcliente,
+            Label labproductor, Label lblproductor, Label labmetodo, Label lblmetodo, Label labproducto, Label lblproducto, 
+            Label labservicio, Label lblservicio, Label labacopiador, Label lblacopiador, Label labguiaingreso, Label lblguiaingreso, 
+            Label labruc_dni, Label lblruc_dni, Label labclp, Label lblclp, Label labvariedad, Label lblvariedad, 
+            Label labfechaingreso, Label lblfechaingreso, Label labhoraingreso, Label lblhoraingreso, Label labresultado, Label resultado,
+            Label labcantjabas, Label totaljabas2, Label labtotalneto, Label totalneto2)
         {
             try
             {
@@ -618,71 +626,182 @@ namespace _3mpacador4.Presentacion.Reporte
                         PdfSharp.Pdf.PdfPage pagina = pdf.AddPage();
                         pagina.Orientation = PdfSharp.PageOrientation.Portrait;
                         XGraphics gfx = XGraphics.FromPdfPage(pagina);
-                        XFont fuente = new XFont("Arial", 8);
-
+                        XFont fuente = new XFont("Arial", 7);
+                        XFont fuentetitulo = new XFont("Arial", 12);
+                        
+                        int posX = 20;
                         int posY = 20;
-                        int derechaY = 20;
 
-                        // Labels
-                        gfx.DrawString("BOLETA DE PESAJE        Nº ", fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
+                        //Título del PDF.
+                        gfx.DrawString($"BOLETA DE PESAJE        Nº {lblnumlote.Text}", fuentetitulo, XBrushes.Black, new XRect(posX, posY, 500, 20), XStringFormats.TopLeft);
+                        posY += 35;
+
+                        //Labels.
+                        gfx.DrawString(labcliente.Text, fuente, XBrushes.Black, new XRect(posX, posY, 650, 40), XStringFormats.TopLeft);
+                        posX += 65;
+                        gfx.DrawString(lblcliente.Text, fuente, XBrushes.Black, new XRect(posX, posY, 650, 40), XStringFormats.TopLeft);
+                        posX += -65;
+                        posY += 20;
+
+                        gfx.DrawString(labproductor.Text, fuente, XBrushes.Black, new XRect(posX, posY, 800, 500), XStringFormats.TopLeft);
+                        posX += 65;
+                        gfx.DrawString(lblproductor.Text, fuente, XBrushes.Black, new XRect(posX, posY, 800, 500), XStringFormats.TopLeft);
+                        posX += -65;
+                        posY += 20;
+
+                        gfx.DrawString(labmetodo.Text, fuente, XBrushes.Black, new XRect(posX, posY, 800, 500), XStringFormats.TopLeft);
+                        posX += 65;
+                        gfx.DrawString(lblmetodo.Text, fuente, XBrushes.Black, new XRect(posX, posY, 500, 20), XStringFormats.TopLeft);
+                        posX += -65;
+                        posY += 20;
+
+                        gfx.DrawString(labproducto.Text, fuente, XBrushes.Black, new XRect(posX, posY, 800, 500), XStringFormats.TopLeft);
+                        posX += 65;
+                        gfx.DrawString(lblproducto.Text, fuente, XBrushes.Black, new XRect(posX, posY, 500, 20), XStringFormats.TopLeft);
+                        posX += -65;
+                        posY += 20;
+
+                        gfx.DrawString(labservicio.Text, fuente, XBrushes.Black, new XRect(posX, posY, 800, 500), XStringFormats.TopLeft);
+                        posX += 65;
+                        gfx.DrawString(lblservicio.Text, fuente, XBrushes.Black, new XRect(posX, posY, 500, 20), XStringFormats.TopLeft);
+                        posX += -65;
+                        posY += 20;
+
+                        gfx.DrawString(labacopiador.Text, fuente, XBrushes.Black, new XRect(posX, posY, 800, 500), XStringFormats.TopLeft);
+                        posX += 65;
+                        gfx.DrawString(lblacopiador.Text, fuente, XBrushes.Black, new XRect(posX, posY, 500, 20), XStringFormats.TopLeft);
+                        posY += -100;
+                        posX += 400;
+
+                        //Segunda columna de labels.
+                        gfx.DrawString(lblguiaingreso.Text, fuente, XBrushes.Black, new XRect(posX, posY, 800, 500), XStringFormats.TopLeft);
+                        posX += -65;
+                        gfx.DrawString(labguiaingreso.Text, fuente, XBrushes.Black, new XRect(posX, posY, 500, 20), XStringFormats.TopLeft);
+                        posX += 65;
+                        posY += 20;
+
+                        gfx.DrawString(lblruc_dni.Text, fuente, XBrushes.Black, new XRect(posX, posY, 500, 20), XStringFormats.TopLeft);
+                        posX += -65;
+                        gfx.DrawString(labruc_dni.Text, fuente, XBrushes.Black, new XRect(posX, posY, 800, 500), XStringFormats.TopLeft);
+                        posX += 65;
+                        posY += 20;
+
+                        gfx.DrawString(lblclp.Text, fuente, XBrushes.Black, new XRect(posX, posY, 500, 20), XStringFormats.TopLeft);
+                        posX += -65;
+                        gfx.DrawString(labclp.Text, fuente, XBrushes.Black, new XRect(posX, posY, 800, 500), XStringFormats.TopLeft);
+                        posX += 65;
+                        posY += 20;
+
+                        gfx.DrawString(lblvariedad.Text, fuente, XBrushes.Black, new XRect(posX, posY, 500, 20), XStringFormats.TopLeft);
+                        posX += -65;
+                        gfx.DrawString(labvariedad.Text, fuente, XBrushes.Black, new XRect(posX, posY, 800, 500), XStringFormats.TopLeft);
+                        posX += 65;
+                        posY += 20;
+
+                        gfx.DrawString(lblfechaingreso.Text, fuente, XBrushes.Black, new XRect(posX, posY, 500, 20), XStringFormats.TopLeft);
+                        posX += -65;
+                        gfx.DrawString(labfechaingreso.Text, fuente, XBrushes.Black, new XRect(posX, posY, 800, 500), XStringFormats.TopLeft);
+                        posX += 65;
+                        posY += 20;
+
+                        gfx.DrawString(lblhoraingreso.Text, fuente, XBrushes.Black, new XRect(posX, posY, 500, 20), XStringFormats.TopLeft);
+                        posX += -65;
+                        gfx.DrawString(labhoraingreso.Text, fuente, XBrushes.Black, new XRect(posX, posY, 800, 500), XStringFormats.TopLeft);
                         posY += 25;
 
-                        gfx.DrawString(lblcliente.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
-                        posY += 20;
+                        //Labels del datagrid datalistado2_2
+                        //posY += 300;
+                        //gfx.DrawString(labresultado.Text, fuente, XBrushes.Black, new XRect(posX, posY, 650, 40), XStringFormats.TopLeft);
+                        //posY += 5;
+                        //gfx.DrawString(resultado.Text, fuente, XBrushes.Black, new XRect(posX, posY, 650, 40), XStringFormats.TopLeft);
+                        //posY += 20;
+                        posX += -800;
+                        /*posY += -250*/;
 
-                        gfx.DrawString(lblproductor.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
-                        posY += 20;
+                        string[] columnasMostrar = { "T. JABA", "T.PARIH", "CANT JABAS", "PESO BRUTO", "PESO JABAS", "PESO NETO", "PROMEDIO" };
 
-                        gfx.DrawString(lblruc_dni.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
-                        posY += 20;
+                        HashSet<string> columnasDeseadas = new HashSet<string>(columnasMostrar);
 
-                        gfx.DrawString(lblmetodo.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
-                        posY += 20;
-
-                        gfx.DrawString(lblproducto.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
-                        posY += 20;
-
-                        gfx.DrawString(lblvariedad.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
-                        posY += 20;
-
-                        gfx.DrawString(lblservicio.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
-                        posY += 20;
-
-                        gfx.DrawString(lblfechaingreso.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
-                        posY += 20;
-
-                        gfx.DrawString(lblhoraingreso.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
-                        posY += 20;
-
-                        gfx.DrawString(lblacopiador.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
-                        posY += 20;
-
-                        gfx.DrawString(label3.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
-                        posY += 20;
-
-                        gfx.DrawString(label3.Text, fuente, XBrushes.Black, new XRect(derechaY, posY, 500, 20), XStringFormats.TopLeft);
-                        posY += 20;
-
-                        // Columnas del datagrid datalistado2_2
+                        //Columnas del datagrid datalistado2_2
                         for (int c = 0; c < datalistado2_2.Columns.Count; c++)
                         {
-                            gfx.DrawString(datalistado2_2.Columns[c].HeaderText, fuente, XBrushes.Black, new XRect(derechaY + c * 55, posY, 50, 20), XStringFormats.TopLeft);
+                            if (columnasDeseadas.Contains(datalistado2_2.Columns[c].HeaderText))
+                            {
+                                gfx.DrawString(datalistado2_2.Columns[c].HeaderText, fuente, XBrushes.Black, new XRect(posX + c * 55, posY, 50, 20), XStringFormats.TopLeft);
+                            }
                         }
 
                         posY += 25;
 
-                        // Contenido del datagrid datalistado2_2
+                        //Datos del datagrid datalistado2_2
                         for (int c = 0; c < datalistado2_2.Rows.Count; c++)
                         {
                             for (int f = 0; f < datalistado2_2.Columns.Count; f++)
                             {
-                                gfx.DrawString(datalistado2_2.Rows[c].Cells[f].Value.ToString(), fuente, XBrushes.Black, new XRect(derechaY + f * 55, posY, 50, 20), XStringFormats.TopLeft);
+                                if (columnasDeseadas.Contains(datalistado2_2.Columns[f].HeaderText))
+                                {
+                                    gfx.DrawString(datalistado2_2.Rows[c].Cells[f].Value.ToString(), fuente, XBrushes.Black, new XRect(posX + f * 55, posY, 50, 20), XStringFormats.TopLeft);
+                                }
+                                else
+                                {
+                                    //Si las columnas no estan las deseadas, borra los datos.
+                                    gfx.DrawString("", fuente, XBrushes.Black, new XRect(posX + f * 55, posY, 50, 20), XStringFormats.TopLeft);
+                                }
                             }
 
                             posY += 20;
                         }
 
-                        // Repite el proceso para datalistado3_2 si es necesario
+                        //Nueva posición de labels.
+                        int posiX = 20;
+                        int posiY = 389;
+
+                        //Labels del datagrid datalistado2_2.
+                        posiX += 120;
+                        posiY += 50;
+                        gfx.DrawString(labresultado.Text, fuente, XBrushes.Black, new XRect(posiX, posiY, 650, 20), XStringFormats.TopLeft);
+                        posiY += 10;
+                        gfx.DrawString(resultado.Text, fuente, XBrushes.Black, new XRect(posiX, posiY, 650, 20), XStringFormats.TopLeft);
+
+                        posiX += 150;
+                        posiY += -10;
+                        gfx.DrawString(labcantjabas.Text, fuente, XBrushes.Black, new XRect(posiX, posiY, 650, 20), XStringFormats.TopLeft);
+                        posiY += 10;
+                        gfx.DrawString(totaljabas2.Text, fuente, XBrushes.Black, new XRect(posiX, posiY, 650, 20), XStringFormats.TopLeft);
+
+                        posiX += 150;
+                        posiY += -10;
+                        gfx.DrawString(labtotalneto.Text, fuente, XBrushes.Black, new XRect(posiX, posiY, 650, 20), XStringFormats.TopLeft);
+                        posiY += 10;
+                        gfx.DrawString(totalneto2.Text, fuente, XBrushes.Black, new XRect(posiX, posiY, 650, 20), XStringFormats.TopLeft);
+                        posiY += 45;
+
+                        posiX -= 400;
+                        gfx.DrawString("TABLA DE DESCARTE:", fuente, XBrushes.Black, new XRect(posiX, posiY, 500, 20), XStringFormats.TopLeft);
+                        
+                        posiY += 20;
+                        posiX += 100;
+                        // Columnas del datagrid datalistado3_2
+                        for (int c = 0; c < datalistado3_2.Columns.Count; c++)
+                        {
+                            gfx.DrawString(datalistado3_2.Columns[c].HeaderText, fuente, XBrushes.Black, new XRect(posiX + c * 55, posiY, 50, 20), XStringFormats.TopLeft);
+                        }
+
+                        posiY += 25;
+
+                        // Contenido del datagrid datalistado3_2
+                        for (int c = 0; c < datalistado3_2.Rows.Count; c++)
+                        {
+                            for (int f = 0; f < datalistado3_2.Columns.Count; f++)
+                            {
+                                gfx.DrawString(datalistado3_2.Rows[c].Cells[f].Value.ToString(), fuente, XBrushes.Black, new XRect(posiX + f * 55, posiY, 50, 20), XStringFormats.TopLeft);
+                            }
+
+                            posiY += 20;  // Ajusta según sea necesario
+                        }
+
+
+                        //H!ace de nuevo el proceso para datalistado3_2 si se necesita.
 
                         pdf.Save(dialogoGuardar.FileName);
 
