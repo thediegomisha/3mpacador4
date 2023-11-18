@@ -54,7 +54,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                Interaction.MsgBox("ERROR DATOS INTERRUPCION", Constants.vbCritical);
+                Interaction.MsgBox("ERROR DATOS INTERRUPCION " + ex.Message, Constants.vbCritical);
             }
         }
         
@@ -306,7 +306,7 @@ catch (Exception ex)
             }
             catch (Exception ex)
             {
-                Interaction.MsgBox("AUN NO SE HA CONFIGURADO EL PUERTO SERIE !!!", MsgBoxStyle.Critical);
+                Interaction.MsgBox("AUN NO SE HA CONFIGURADO EL PUERTO SERIE !!! " + ex.Message, MsgBoxStyle.Critical);
             }
         }
 

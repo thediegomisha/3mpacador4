@@ -50,7 +50,7 @@ namespace _3mpacador4.Presentacion.Sistema
             }
             catch (Exception ex)
             {
-             //   MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 

@@ -165,7 +165,7 @@
             this.txtdireccion.MaxLength = 32767;
             this.txtdireccion.Name = "txtdireccion";
             this.txtdireccion.PasswordChar = '\0';
-            this.txtdireccion.PromptText = "Ej: Jiron Santa Rosa 711";
+            this.txtdireccion.WaterMark = "Ej: Jiron Santa Rosa 711";
             this.txtdireccion.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtdireccion.SelectedText = "";
             this.txtdireccion.SelectionLength = 0;
