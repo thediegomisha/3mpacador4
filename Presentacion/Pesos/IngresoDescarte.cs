@@ -262,11 +262,14 @@ catch (Exception ex)
                 mostrarjabas();
                 mostrarturno();
                
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -291,7 +294,7 @@ catch (Exception ex)
 
                 {
                     var withBlock = this.cboLote;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
 
                         lblcliente.Text = datos.Rows[0]["RAZON SOCIAL"].ToString();
@@ -315,12 +318,15 @@ catch (Exception ex)
                     {
                         withBlock.DataSource = null;
                     }
-                }
-                ConexionGral.desconectar();
+                }               
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -345,7 +351,7 @@ catch (Exception ex)
 
                 {
                     var withBlock = this.cbjabas;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
                         dr["idjabas"] = 0;
@@ -362,11 +368,14 @@ catch (Exception ex)
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -406,7 +415,7 @@ catch (Exception ex)
 
                 {
                     var withBlock = this.cboturno;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         withBlock.DataSource = datos;
                         withBlock.DisplayMember = "nombre";
@@ -418,11 +427,14 @@ catch (Exception ex)
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
      
@@ -548,11 +560,15 @@ catch (Exception ex)
                 MessageBox.Show("PESO REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
                 // limpiarcampos()
             //    this.chkcapturapeso.Checked = false;
-                ConexionGral.desconectar();
+               // ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
             // cuentacorrelativo_BG()
         }
@@ -645,7 +661,7 @@ catch (Exception ex)
 
                 {
                     var withBlock = this.datalistado;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
                         withBlock.DataSource = datos;
@@ -660,12 +676,14 @@ catch (Exception ex)
                         withBlock.DataSource = null;
                     }
                 }
-
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -760,12 +778,14 @@ catch (Exception ex)
                     //    withBlock.DataSource = null;
                     //}
                 }
-
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
 
         }

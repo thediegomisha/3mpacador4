@@ -58,11 +58,14 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     MessageBox.Show("Error, La cantidad tiene que ser mayor que 0", "CANTIDAD JABA");
                     return;
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
     }

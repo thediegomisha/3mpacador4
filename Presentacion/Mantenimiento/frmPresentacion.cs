@@ -67,11 +67,15 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 //        withBlock.DataSource = null;
                 //    }
                 //}
-                ConexionGral.desconectar();
+               
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 

@@ -46,11 +46,15 @@ namespace _3mpacador4.Presentacion.Sistema
             this.txttime.Text = nombress[5].Substring(16);
             this.txtunicode.Text = nombress[6].Substring(8);
 
-            ConexionGral.desconectar();
+           
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -75,12 +79,16 @@ namespace _3mpacador4.Presentacion.Sistema
                 {
                     MessageBox.Show(ex.Message);
                 }
-                ConexionGral.desconectar();
+                finally
+                {
+                    ConexionGral.desconectar();
+                }
             }
             else
             {
                 MessageBox.Show("Todos los datos son necesarios", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
         }
 
         private void btn_cerrar_Click(object sender, EventArgs e)

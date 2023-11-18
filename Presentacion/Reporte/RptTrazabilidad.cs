@@ -51,7 +51,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.cboLote;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         //var dr = datos.NewRow();
                         //dr["idlote"] = 0;
@@ -69,11 +69,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -119,7 +122,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.cboDestino;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
                         dr["iddestino"] = 0;
@@ -137,11 +140,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -164,7 +170,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.cbCalibre;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         //var dr = datos.NewRow();
                         //dr["idcalibre"] = 0;
@@ -182,11 +188,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -210,7 +219,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.cbCategoria;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         //var dr = datos.NewRow();
                         //dr["idcalibre"] = 0;
@@ -228,11 +237,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -257,7 +269,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.cbpresentacion ;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
                         dr["idpresentacion"] = 0;
@@ -274,11 +286,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -305,7 +320,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.datalistado;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
                         withBlock.DataSource = datos;
@@ -321,12 +336,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = null;
                     }
                 }
-
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
 
         }
@@ -353,7 +370,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.cboLote;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
 
                         lblcliente.Text = datos.Rows[0]["RAZON SOCIAL"].ToString();
@@ -377,11 +394,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -445,12 +465,16 @@ namespace _3mpacador4.Presentacion.Reporte
                 MessageBox.Show("PESO REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
                 // limpiarcampos()
                 //    this.chkcapturapeso.Checked = false;
-                ConexionGral.desconectar();
+               
               
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
             // cuentacorrelativo_BG()
         }

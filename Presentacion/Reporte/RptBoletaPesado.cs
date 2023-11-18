@@ -69,7 +69,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.datalistado;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
                         withBlock.DataSource = datos;
@@ -84,12 +84,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = null;
                     }
                 }
-
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 

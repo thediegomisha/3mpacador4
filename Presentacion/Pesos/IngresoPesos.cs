@@ -334,7 +334,7 @@ catch (Exception ex)
 
                 {
                     var withBlock = this.cbProducto;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
                         dr["idproducto"] = 0;
@@ -351,12 +351,14 @@ catch (Exception ex)
                         withBlock.DataSource = null;
                     }
                 }
-
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
 
         }
@@ -381,7 +383,7 @@ catch (Exception ex)
 
                {
                     var withBlock = this.cbProductor;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
                         dr["clp"] = 0;
@@ -400,11 +402,14 @@ catch (Exception ex)
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -429,7 +434,7 @@ catch (Exception ex)
 
                 {
                     var withBlock = this.cbcliente;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
                         dr["ruc"] = 0;
@@ -447,11 +452,14 @@ catch (Exception ex)
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -493,12 +501,14 @@ catch (Exception ex)
                     //    withBlock.DataSource = null;
                     //}
                 }
-               
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -675,7 +685,7 @@ catch (Exception ex)
 
                 {
                     var withBlock = this.cbvariedad;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
                         dr["ID"] = 0;
@@ -692,11 +702,14 @@ catch (Exception ex)
                         withBlock.DataSource = null;
                     }
                 }
-               ConexionGral.desconectar();
             }
             catch (MySqlException  ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
         private void mostrarturno()
@@ -721,7 +734,7 @@ catch (Exception ex)
 
                 {
                     var withBlock = this.cboturno;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         withBlock.DataSource = datos;
                         withBlock.DisplayMember = "nombre";
@@ -733,13 +746,15 @@ catch (Exception ex)
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            finally
+            {
+                ConexionGral.desconectar();
+            }
         }
         private void mostrarMetCultivo()
         {
@@ -762,7 +777,7 @@ catch (Exception ex)
 
                 {
                     var withBlock = this.cbMetodoCultivo;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
                         dr["idmetodocultivo"] = 0;
@@ -779,11 +794,14 @@ catch (Exception ex)
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
 
         }
@@ -824,7 +842,7 @@ catch (Exception ex)
 
                 {
                     var withBlock = this.cbTipoServicio;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
                         dr["idtiposervicio"] = 0;
@@ -841,11 +859,14 @@ catch (Exception ex)
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
 
         }
@@ -882,7 +903,7 @@ catch (Exception ex)
 
                 {
                     var withBlock = this.cbjabas;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
                         dr["idjabas"] = 0;
@@ -899,11 +920,14 @@ catch (Exception ex)
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -1017,11 +1041,15 @@ catch (Exception ex)
                 MessageBox.Show("PESO REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
                 // limpiarcampos()
             //    this.chkcapturapeso.Checked = false;
-                ConexionGral.desconectar();
+               
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
             // cuentacorrelativo_BG()
         }
@@ -1187,7 +1215,7 @@ catch (Exception ex)
 
                 {
                     var withBlock = this.datalistado;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
                         withBlock.DataSource = datos;
@@ -1203,12 +1231,14 @@ catch (Exception ex)
                         withBlock.DataSource = null;
                     }
                 }
-
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
 
         }
@@ -1268,8 +1298,8 @@ catch (Exception ex)
 
                 {
                     //var withBlock = this.cboLote;
-                    if (datos.Rows.Count != 0)
-                   {
+                    if (datos != null && datos.Rows.Count > 0)
+                    {
 
                     lblpais1.Text = datos.Rows[0]["ORIGEN"].ToString();
 
@@ -1296,11 +1326,14 @@ catch (Exception ex)
                         lblpais1.Text =  "No Existe en la Lista !!!";
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -1358,11 +1391,14 @@ catch (Exception ex)
                     //    withBlock.DataSource = null;
                     //}
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -1397,11 +1433,14 @@ catch (Exception ex)
                     withBlock.ValueMember = "idmatcosecha";
                     withBlock.SelectedIndex = -1;                  
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
         private void cerrarlote()
@@ -1441,14 +1480,15 @@ catch (Exception ex)
                     //    withBlock.DataSource = null;
                     //}
                 }
-
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            finally
+            {
+                ConexionGral.desconectar();
+            }
         }
 
 
