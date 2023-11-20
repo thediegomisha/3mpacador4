@@ -589,8 +589,8 @@
     <PackageReference Include="dotConnect.Express.for.MySQL">
       <Version>9.1.151</Version>
     </PackageReference>
-    <PackageReference Include="PDFSharp.Standard">
-      <Version>1.51.15</Version>
+    <PackageReference Include="itext7">
+      <Version>8.0.2</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -19,8 +19,14 @@ using System.Windows.Forms;
 using static ICSharpCode.SharpZipLib.Zip.ExtendedUnixData;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Timers;
-using PdfSharp.Pdf;
-using PdfSharp.Drawing;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Kernel.Geom;
+using iText.Kernel.Font;
+using iText.IO.Font;
+using iText.IO.Image;
+using iText.Kernel.Pdf.Canvas.Draw;
 
 
 namespace _3mpacador4.Presentacion.Reporte
@@ -1382,85 +1388,71 @@ namespace _3mpacador4.Presentacion.Reporte
         {
             try
             {
-                //Crea un Cuadro de Diálogo, para que el usuario pueda elegir donde guardar el archivo.
                 SaveFileDialog dialogoGuardar = new SaveFileDialog();
-                //Filtra el formato .PDF.
                 dialogoGuardar.Filter = "Archivo PDF|*.pdf";
-                //Le da un título al Cuadro de Diálogo.
                 dialogoGuardar.Title = "Guardar PDF";
-                //Muestra el Cuadro de Diálogo.
                 dialogoGuardar.ShowDialog();
 
-                //Si el nombre del archivo es direferente a nulo o vacio, entonces agrega una página.
                 if (!string.IsNullOrEmpty(dialogoGuardar.FileName))
                 {
-                    //Si es así crea un nuevo documento PDF utilizando la biblioteca PdfSharp.
-                    using (PdfSharp.Pdf.PdfDocument pdf = new PdfSharp.Pdf.PdfDocument())
+                    using (var stream = new FileStream(dialogoGuardar.FileName, FileMode.Create))
                     {
-                        pdf.Info.Title = "Los datos fueron xeportados.";
-
-                        int filasPorPagina = FilasMaximas(datalistado);
-
-                        for (int paginaActual = 0; paginaActual < Math.Ceiling((double)datalistado.Rows.Count / filasPorPagina); paginaActual++)
+                        using (PdfWriter writer = new PdfWriter(stream))
                         {
-                            //Se agrega una página al documento.
-                            PdfSharp.Pdf.PdfPage pagina = pdf.AddPage();
-                            pagina.Orientation = PdfSharp.PageOrientation.Landscape;
-                            //Con el método XGraphics habilitamos o podemos escribir en el documento.
-                            XGraphics gfx = XGraphics.FromPdfPage(pagina);
-                            //SE crea una fuente Arial de tamaño 5.
-                            XFont fuente = new XFont("Arial", 5);
-
-                            //Se agrega un titulo al documento con el método DrawString, agregandole el objeto fuente, color y posición, en la partesuperior izquierda.
-                            gfx.DrawString("Datos exportados de la tabla datalistado:", fuente, XBrushes.Black, new XRect(pagina.Width.Point - 762, 10, 40, 20), XStringFormats.TopRight);
-                            
-                            //Declaro variables y les asigno valores enteros, para especificar su posicionamiento.
-                            int posY = 40;
-                            int derechaY = 20;
-
-                            gfx.DrawString($"Página {paginaActual + 1}", fuente, XBrushes.Black, new XRect(pagina.Width.Point - 40, 10, 40, 20), XStringFormats.TopLeft);
-
-                            //Se recorre las columnas de la tabla  y se agrega un encabezado par alas columnas.
-                            for (int c = 0; c < datalistado.Columns.Count; c++)
+                            using (PdfDocument pdf = new PdfDocument(writer))
                             {
-                                gfx.DrawString(datalistado.Columns[c].HeaderText, fuente, XBrushes.Black, new XRect(derechaY + 10 + c * 55, posY, 50, 20), XStringFormats.TopLeft);
-                            }
+                                Document document = new Document(pdf, PageSize.A4.Rotate());
+                                document.SetMargins(20, 20, 20, 20);
 
-                            posY += 25;
+                                PdfFont font = PdfFontFactory.CreateFont();
+                                float fontSize = 8;
 
-                            int inicioFila = paginaActual * filasPorPagina;
-                            int finFila = Math.Min((paginaActual + 1) * filasPorPagina, datalistado.Rows.Count);
+                                int filasPorPagina = FilasMaximas(datalistado);
 
-                            //Se recorre las filas y columnas de la tabla para agregar los datos al PDF, y con el método DrawString le damos posición, fuente y color.
-                            for (int c = inicioFila; c < finFila; c++)
-                            {
-                                for (int f = 0; f < datalistado.Columns.Count; f++)
+                                for (int paginaActual = 0; paginaActual < Math.Ceiling((double)datalistado.Rows.Count / filasPorPagina); paginaActual++)
                                 {
-                                    gfx.DrawString(datalistado.Rows[c].Cells[f].Value.ToString(), fuente, XBrushes.Black, new XRect(derechaY + 10 + f * 55, posY, 50, 20), XStringFormats.TopLeft);
-                                }
+                                    document.Add(new Paragraph("Datos exportados de la tabla datalistado:").SetFont(font).SetFontSize(fontSize));
 
-                                posY += 20;
+                                    Table table = new Table(datalistado.Columns.Count);
+
+                                    foreach (DataGridViewColumn column in datalistado.Columns)
+                                    {
+                                        Cell headerCell = new Cell().Add(new Paragraph(column.HeaderText).SetFont(font).SetFontSize(fontSize));
+                                        table.AddHeaderCell(headerCell);
+                                    }
+
+                                    int inicioFila = paginaActual * filasPorPagina;
+                                    int finFila = Math.Min((paginaActual + 1) * filasPorPagina, datalistado.Rows.Count);
+
+                                    for (int c = inicioFila; c < finFila; c++)
+                                    {
+                                        foreach (DataGridViewCell cell in datalistado.Rows[c].Cells)
+                                        {
+                                            Cell cellPdf = new Cell().Add(new Paragraph(cell.Value.ToString()).SetFont(font).SetFontSize(fontSize));
+                                            table.AddCell(cellPdf);
+                                        }
+                                    }
+
+                                    document.Add(table);
+                                    document.Add(new AreaBreak());
+                                }
                             }
                         }
-
-                        pdf.Save(dialogoGuardar.FileName);
-
-                        MessageBox.Show("Los datos se han exportado a PDF correctamente.", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //Casi al final de guarda el documento PDF y salta un mensaje de caja.
                     }
+
+                    MessageBox.Show("Los datos se han exportado a PDF correctamente.", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al exportar el PDF: {ex.Message}\nDetalles: {ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //Al final está el catch para controloar posibles excepciones.
             }
         }
 
         private int FilasMaximas(DataGridView datalistado)
         {
             int alturaPagina = 800;
-            int alturaEncabezado = 65;            
+            int alturaEncabezado = 65;
             int espacioDisponible = alturaPagina - alturaEncabezado;
             int filasPorPagina = espacioDisponible / 20;
 
