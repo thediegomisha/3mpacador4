@@ -390,16 +390,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void BtnExportar_Click(object sender, EventArgs e)
         {
-            Document.Create(contenedor =>
-            {
-                contenedor.Page(pagina =>
-                {
-                    pagina.Size(PageSizes.A4);
-
-                    pagina.Header().Text("Hola Mundo");
-                });
-
-            }).ShowInPreviewer();
+            
         }
     }
 }
