@@ -29,6 +29,12 @@ using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
+using iText.Kernel.Geom;
+using iText.Kernel.Colors;
+using iText.Layout.Borders;
+using iText.Kernel.Pdf.Canvas.Draw;
+
+
 
 
 namespace _3mpacador4.Presentacion.Reporte
@@ -134,15 +140,15 @@ namespace _3mpacador4.Presentacion.Reporte
                 // propiedades que establecen el color de fondo del control DataGridView,
                 // 'color del texto y tipo de fuente (tipo, tamaño y estilo)
                 // 
-                withBlock.BackgroundColor = Color.Black;
-                withBlock.ForeColor = Color.Maroon;
+                withBlock.BackgroundColor = System.Drawing.Color.Black;
+                withBlock.ForeColor = System.Drawing.Color.Maroon;
                 withBlock.Font = new System.Drawing.Font("Tahoma", 11.0f, FontStyle.Regular, GraphicsUnit.Point, 0);
 
                 // 
                 // establecer color de resaltado (opcional)
                 // 
-                withBlock.DefaultCellStyle.SelectionBackColor = Color.Red;
-                withBlock.DefaultCellStyle.SelectionForeColor = Color.Yellow;
+                withBlock.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Red;
+                withBlock.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Yellow;
 
                 // 
                 // propiedades relacionadas con agregar / eliminar filas
@@ -165,7 +171,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 // propiedades que regulan las líneas uniformes de "cosméticos"
                 // 
-                withBlock.AlternatingRowsDefaultCellStyle.BackColor = Color.LemonChiffon;
+                withBlock.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LemonChiffon;
 
                 // propiedades relacionadas con el formato del encabezado de columna / encabezado de columna
                 // NB. para poder aplicar ForeColor y BackColor al encabezado, luego
@@ -176,8 +182,8 @@ namespace _3mpacador4.Presentacion.Reporte
                 withBlock.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 withBlock.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 11.0f, FontStyle.Bold, GraphicsUnit.Point, 0);
                 withBlock.EnableHeadersVisualStyles = false;
-                withBlock.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-                withBlock.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+                withBlock.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+                withBlock.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.Black;
                 withBlock.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
 
                 // 
@@ -458,15 +464,15 @@ namespace _3mpacador4.Presentacion.Reporte
                 // propiedades que establecen el color de fondo del control DataGridView,
                 // 'color del texto y tipo de fuente (tipo, tamaño y estilo)
                 // 
-                withBlock.BackgroundColor = Color.Black;
-                withBlock.ForeColor = Color.Maroon;
+                withBlock.BackgroundColor = System.Drawing.Color.Black;
+                withBlock.ForeColor = System.Drawing.Color.Maroon;
                 withBlock.Font = new Font("Tahoma", 10.0f, FontStyle.Regular, GraphicsUnit.Point, 0);
 
                 // 
                 // establecer color de resaltado (opcional)
                 // 
-                withBlock.DefaultCellStyle.SelectionBackColor = Color.Red;
-                withBlock.DefaultCellStyle.SelectionForeColor = Color.Yellow;
+                withBlock.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Red;
+                withBlock.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Yellow;
 
                 // 
                 // propiedades relacionadas con agregar / eliminar filas
@@ -489,7 +495,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 // propiedades que regulan las líneas uniformes de "cosméticos"
                 // 
-                withBlock.AlternatingRowsDefaultCellStyle.BackColor = Color.LemonChiffon;
+                withBlock.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LemonChiffon;
 
                 // propiedades relacionadas con el formato del encabezado de columna / encabezado de columna
                 // NB. para poder aplicar ForeColor y BackColor al encabezado, luego
@@ -500,8 +506,8 @@ namespace _3mpacador4.Presentacion.Reporte
                 withBlock.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 withBlock.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 10.0f, FontStyle.Bold, GraphicsUnit.Point, 0);
                 withBlock.EnableHeadersVisualStyles = false;
-                withBlock.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-                withBlock.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+                withBlock.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+                withBlock.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.Black;
                 withBlock.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
 
                 // 
@@ -603,7 +609,7 @@ namespace _3mpacador4.Presentacion.Reporte
             ExportarPDF(datalistado2_2);
         }
 
-        private void ExportarPDF(DataGridView dataGridView)
+        private void ExportarPDF(DataGridView datalistado2_2)
         {
             try
             {
@@ -614,23 +620,112 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 if (!string.IsNullOrEmpty(dialogoGuardar.FileName))
                 {
-                    using (PdfWriter writer = new PdfWriter(dialogoGuardar.FileName))
+                    using (var stream = new FileStream(dialogoGuardar.FileName, FileMode.Create))
                     {
-                        using (PdfDocument pdf = new PdfDocument(writer))
+                        // Configurar el documento con orientación horizontal
+                        using (var pdf = new PdfDocument(new PdfWriter(stream)))
                         {
+                            pdf.SetDefaultPageSize(PageSize.A4.Rotate());
                             Document document = new Document(pdf);
 
+                            // Configuración de estilos
+                            Style estiloEncabezado = new Style()
+                                .SetFontSize(16)
+                                .SetBold()
+                                .SetTextAlignment(TextAlignment.CENTER)
+                                .SetMarginBottom(10);
+
+                            Style estiloNormal = new Style()
+                                .SetFontSize(12)
+                                .SetTextAlignment(TextAlignment.LEFT)
+                                .SetMarginBottom(5);
+
                             // Añadir título
-                            document.Add(new Paragraph("Datos del DataGridView"));
+                            document.Add(new Paragraph("Datos del datalistado2_2").AddStyle(estiloEncabezado));
+
+                            // Agregar datos del encabezado
+                            document.Add(new Paragraph($"Cliente: {lblcliente.Text}")
+                                .SetTextAlignment(TextAlignment.LEFT)
+                                .SetFontSize(10));
+
+                            document.Add(new Paragraph($"Productor: {lblproductor.Text}")
+                                .SetTextAlignment(TextAlignment.LEFT)
+                                .SetFontSize(10));
+
+                            document.Add(new Paragraph($"Porducto: {lblproducto.Text}")
+                                .SetTextAlignment(TextAlignment.LEFT)
+                                .SetFontSize(10));
+
+                            document.Add(new Paragraph($"Método de cultivo: {lblmetodo.Text}")
+                                .SetTextAlignment(TextAlignment.LEFT)
+                                .SetFontSize(10));
+
+                            document.Add(new Paragraph($"Guía ingreso: {lblguiaingreso.Text}")
+                                .SetTextAlignment(TextAlignment.LEFT)
+                                .SetFontSize(10));
+
+                            // Línea horizontal que separa secciones.
+                            document.Add(new LineSeparator(new SolidLine()).SetMarginTop(20).SetMarginBottom(20));
 
                             // Añadir datos de datalistado2_2
-                            foreach (DataGridViewRow row in dataGridView.Rows)
+                            foreach (DataGridViewRow row in datalistado2_2.Rows)
                             {
+                                Table table = new Table(row.Cells.Count);
+
                                 foreach (DataGridViewCell cell in row.Cells)
                                 {
-                                    document.Add(new Paragraph(cell.Value.ToString()));
+                                    Cell pdfCell = new Cell().Add(new Paragraph(cell.Value.ToString()).AddStyle(estiloNormal));
+                                    table.AddCell(pdfCell);
                                 }
+
+                                document.Add(table);
+                            }   
+
+                            // Línea horizontal que separa secciones.
+                            document.Add(new LineSeparator(new SolidLine()).SetMarginTop(20).SetMarginBottom(20));
+
+                            // Añadir datos del datalistado3_2 (si existe)
+                            if (datalistado3_2.Rows.Count > 0)
+                            {
+                                // Configuración de estilos para datalistado3_2
+                                Style estiloEncabezado3_2 = new Style()
+                                    .SetFontSize(16)
+                                    .SetBold()
+                                    .SetTextAlignment(TextAlignment.CENTER)
+                                    .SetMarginBottom(10)
+                                    .SetFontColor(new DeviceRgb(255, 165, 0)); // Naranja
+
+                                document.Add(new Paragraph("Datos del datalistado3_2").AddStyle(estiloEncabezado3_2));
+
+                                foreach (DataGridViewRow row in datalistado3_2.Rows)
+                                {
+                                    foreach (DataGridViewCell cell in row.Cells)
+                                    {
+                                        document.Add(new Paragraph(cell.Value.ToString()).AddStyle(estiloNormal));
+                                    }
+                                }
+
+                                // Línea horizontal que separa secciones
+                                document.Add(new LineSeparator(new SolidLine()).SetMarginTop(20).SetMarginBottom(20).SetBackgroundColor(new DeviceRgb(255, 165, 0)));
                             }
+
+                            //Sección inferior
+                            document.Add(new Paragraph("Firmas:")
+                                .AddStyle(estiloEncabezado)
+                                .SetTextAlignment(TextAlignment.LEFT));
+
+                            //Configuración de estilos para firmas
+                           Style estiloFirma = new Style()
+                               .SetFontSize(12)
+                               .SetTextAlignment(TextAlignment.LEFT)
+                               .SetMarginBottom(10);
+
+                            //document.Add(new Paragraph("__________________________").AddStyle(estiloFirma));
+                            //document.Add(new Paragraph("Gerente General").AddStyle(estiloNormal));
+
+
+                            document.Add(new Paragraph("__________________________").AddStyle(estiloFirma));
+                            document.Add(new Paragraph("Encargado de Planta").AddStyle(estiloNormal));
 
                             MessageBox.Show("Los datos se han exportado a PDF correctamente.", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -642,41 +737,6 @@ namespace _3mpacador4.Presentacion.Reporte
                 MessageBox.Show($"Error al exportar el PDF: {ex.Message}\nDetalles: {ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
