@@ -606,10 +606,10 @@ namespace _3mpacador4.Presentacion.Reporte
                 return;
             }
 
-            ExportarPDF(datalistado2_2);
+            ExportarPDF(datalistado2_2, datalistado3_2);
         }
 
-        private void ExportarPDF(DataGridView datalistado2_2)
+        private void ExportarPDF(DataGridView datalistado2_2, DataGridView datalistado3_2)
         {
             try
             {
@@ -622,13 +622,13 @@ namespace _3mpacador4.Presentacion.Reporte
                 {
                     using (var stream = new FileStream(dialogoGuardar.FileName, FileMode.Create))
                     {
-                        // Configurar el documento con orientación horizontal
                         using (var pdf = new PdfDocument(new PdfWriter(stream)))
                         {
+                            //Rotación horizontal.
                             pdf.SetDefaultPageSize(PageSize.A4.Rotate());
                             Document document = new Document(pdf);
 
-                            // Configuración de estilos
+                            // Darle estilo a la sección encabezado.css
                             Style estiloEncabezado = new Style()
                                 .SetFontSize(16)
                                 .SetBold()
@@ -640,10 +640,10 @@ namespace _3mpacador4.Presentacion.Reporte
                                 .SetTextAlignment(TextAlignment.LEFT)
                                 .SetMarginBottom(5);
 
-                            // Añadir título
-                            document.Add(new Paragraph("Datos del datalistado2_2").AddStyle(estiloEncabezado));
+                            // Título.
+                            document.Add(new Paragraph($"BOLETA DE PESAJE      LOTE Nª {lblnumlote.Text}").AddStyle(estiloEncabezado));
 
-                            // Agregar datos del encabezado
+                            // Añadimos datos del encabezado con los labels.
                             document.Add(new Paragraph($"Cliente: {lblcliente.Text}")
                                 .SetTextAlignment(TextAlignment.LEFT)
                                 .SetFontSize(10));
@@ -664,14 +664,24 @@ namespace _3mpacador4.Presentacion.Reporte
                                 .SetTextAlignment(TextAlignment.LEFT)
                                 .SetFontSize(10));
 
-                            // Línea horizontal que separa secciones.
+                            // Creamos una línea horizontal que separa las secciones (encabezado, medio y inferior.
                             document.Add(new LineSeparator(new SolidLine()).SetMarginTop(20).SetMarginBottom(20));
 
-                            // Añadir datos de datalistado2_2
+                            document.Add(new Paragraph("RECEPCIÓN").AddStyle(estiloNormal));
+
+                            // Los datos de datalistado2_2.
                             foreach (DataGridViewRow row in datalistado2_2.Rows)
                             {
                                 Table table = new Table(row.Cells.Count);
 
+                                // Los nombres de las columnas.
+                                foreach (DataGridViewColumn column in datalistado2_2.Columns)
+                                {
+                                    Cell pdfCell = new Cell().Add(new Paragraph(column.HeaderText).AddStyle(estiloNormal).SetBold());
+                                    table.AddCell(pdfCell);
+                                }
+
+                                // Datos del datagrid 2_2.
                                 foreach (DataGridViewCell cell in row.Cells)
                                 {
                                     Cell pdfCell = new Cell().Add(new Paragraph(cell.Value.ToString()).AddStyle(estiloNormal));
@@ -679,53 +689,80 @@ namespace _3mpacador4.Presentacion.Reporte
                                 }
 
                                 document.Add(table);
-                            }   
+                            }
 
-                            // Línea horizontal que separa secciones.
+                            // Se crea una línea horizontal que separa las secciones
                             document.Add(new LineSeparator(new SolidLine()).SetMarginTop(20).SetMarginBottom(20));
 
-                            // Añadir datos del datalistado3_2 (si existe)
+                            // Datos del datalistado3_2 ( comprobamos si es que existe con el if).
                             if (datalistado3_2.Rows.Count > 0)
                             {
-                                // Configuración de estilos para datalistado3_2
+                                // Prueba de estilos para datalistado3_2.css
                                 Style estiloEncabezado3_2 = new Style()
                                     .SetFontSize(16)
                                     .SetBold()
                                     .SetTextAlignment(TextAlignment.CENTER)
                                     .SetMarginBottom(10)
-                                    .SetFontColor(new DeviceRgb(255, 165, 0)); // Naranja
+                                    .SetFontColor(new DeviceRgb(255, 165, 0));
 
                                 document.Add(new Paragraph("Datos del datalistado3_2").AddStyle(estiloEncabezado3_2));
 
-                                foreach (DataGridViewRow row in datalistado3_2.Rows)
+                                document.Add(new Paragraph("DESCARTE").AddStyle(estiloNormal));
+
+                                // Añadimos los nombres de las  columnas.
+                                Table headerTable = new Table(datalistado3_2.Columns.Count);
+                                foreach (DataGridViewColumn column in datalistado3_2.Columns)
                                 {
-                                    foreach (DataGridViewCell cell in row.Cells)
+                                    Cell pdfCell = new Cell().Add(new Paragraph(column.HeaderText).AddStyle(estiloNormal).SetBold());
+                                    headerTable.AddCell(pdfCell);
+                                }
+                                document.Add(headerTable);
+
+                                //Añadimos los datos de las filas del datagrid 3_2.
+                                foreach (DataGridViewRow row2 in datalistado3_2.Rows)
+                                {
+                                    Table table2 = new Table(row2.Cells.Count);
+
+                                    foreach (DataGridViewCell cell in row2.Cells)
                                     {
-                                        document.Add(new Paragraph(cell.Value.ToString()).AddStyle(estiloNormal));
+                                        Cell pdfCell = new Cell().Add(new Paragraph(cell.Value.ToString()).AddStyle(estiloNormal));
+                                        table2.AddCell(pdfCell);
                                     }
+
+                                    document.Add(table2);
                                 }
 
-                                // Línea horizontal que separa secciones
+                                // Creamos una línea horizontal que separa las secciones.
                                 document.Add(new LineSeparator(new SolidLine()).SetMarginTop(20).SetMarginBottom(20).SetBackgroundColor(new DeviceRgb(255, 165, 0)));
                             }
 
-                            //Sección inferior
+                            //Sección inferior de la hoja con estilos.css
                             document.Add(new Paragraph("Firmas:")
                                 .AddStyle(estiloEncabezado)
                                 .SetTextAlignment(TextAlignment.LEFT));
 
-                            //Configuración de estilos para firmas
-                           Style estiloFirma = new Style()
-                               .SetFontSize(12)
-                               .SetTextAlignment(TextAlignment.LEFT)
-                               .SetMarginBottom(10);
+                            //Código de estilos para las firmas.
+                            Style estiloFirma = new Style()
+                                .SetFontSize(12)
+                                .SetTextAlignment(TextAlignment.LEFT)
+                                .SetMarginBottom(10);
 
                             //document.Add(new Paragraph("__________________________").AddStyle(estiloFirma));
                             //document.Add(new Paragraph("Gerente General").AddStyle(estiloNormal));
 
-
                             document.Add(new Paragraph("__________________________").AddStyle(estiloFirma));
                             document.Add(new Paragraph("Encargado de Planta").AddStyle(estiloNormal));
+
+                            // Números de página
+                            //Solo funiona cuando no hay datos en el datalistado3_2 :(
+                            int totalPaginas = pdf.GetNumberOfPages();
+                            for (int i = 1; i <= totalPaginas; i++)
+                            {
+                                document.ShowTextAligned(new Paragraph($"Página {i} de {totalPaginas}"),
+                                    pdf.GetDefaultPageSize().GetWidth() - 50, 30, i, TextAlignment.RIGHT, iText.Layout.Properties.VerticalAlignment.TOP, 0);
+                            }
+
+                            document.Close();
 
                             MessageBox.Show("Los datos se han exportado a PDF correctamente.", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
