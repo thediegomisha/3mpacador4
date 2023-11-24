@@ -36,6 +36,7 @@ using iText.Kernel.Pdf.Canvas.Draw;
 using iText.IO.Image;
 using iText.Kernel.Font;
 using iText.Kernel.Pdf.Canvas;
+using iText.IO.Font.Constants;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
@@ -631,18 +632,26 @@ namespace _3mpacador4.Presentacion.Reporte
                             var canvas = new PdfCanvas(page);
 
                             //Rotación horizontal.
-                            pdf.SetDefaultPageSize(PageSize.A4.Rotate());
+                            //pdf.SetDefaultPageSize(PageSize.A4.Rotate());
                             Document document = new Document(pdf);
 
                             // Darle estilo a la sección encabezado.css
                             Style estiloEncabezado = new Style()
-                                .SetFontSize(16)
+                                .SetFontSize(12)
                                 .SetBold()
                                 .SetTextAlignment(TextAlignment.CENTER)
                                 .SetMarginBottom(10);
 
                             // Título.
-                            document.Add(new Paragraph($"BOLETA DE PESAJE      LOTE Nª {lblnumlote.Text}").AddStyle(estiloEncabezado));
+                            document.Add(new Paragraph($"BOLETA DE PESAJE      LOTE Nª {lblnumlote.Text}").SetFontSize(12).AddStyle(estiloEncabezado));
+                            document.Add(new Paragraph("").AddStyle(estiloEncabezado));
+                            document.Add(new Paragraph("").AddStyle(estiloEncabezado));
+                            document.Add(new Paragraph("").AddStyle(estiloEncabezado));
+                            document.Add(new Paragraph("").AddStyle(estiloEncabezado));
+                            document.Add(new Paragraph("").AddStyle(estiloEncabezado));
+                            document.Add(new Paragraph("").AddStyle(estiloEncabezado));
+                            document.Add(new Paragraph("").AddStyle(estiloEncabezado));
+                            document.Add(new Paragraph("").AddStyle(estiloEncabezado)); //Espacios para ajustar la iamgen, textos(decripciones) y cuadro RUC.
 
                             Style estiloNormal = new Style()
                                 .SetFontSize(12)
@@ -650,26 +659,40 @@ namespace _3mpacador4.Presentacion.Reporte
                                 .SetMarginBottom(5);
 
                             // Añadeimos una imgaen de la empresa con posibilidad de ajustar sus dimensiones.
-                            string rutaImagen = "C:\\Users\\W10\\Pictures\\Saved Pictures\\logo.png";
+                            string rutaImagen = "C:\\Users\\W10\\Pictures\\Saved Pictures\\logo.jpg";
                             iText.Layout.Element.Image imgEmpresa = new iText.Layout.Element.Image(ImageDataFactory.Create(rutaImagen));
-                            imgEmpresa.SetWidth(100);
+                            imgEmpresa.SetWidth(150);
                             imgEmpresa.SetHeight(100);
+                            imgEmpresa.SetFixedPosition(40, 660);
                             document.Add(imgEmpresa);
-                            
-                            //Datos generales de la empresa.
-                            document.Add(new Paragraph("AGRICOLA DEL SUR PISCO EIRL").SetFontSize(8));
-                            document.Add(new Paragraph("Empacadora con productos de calidad  y respaldo de trabajadores capacitados.").SetFontSize(6));
-                            document.Add(new Paragraph("Dirección: PARCELA 081 NRO. S/N SECTOR SANTA ANA (CARR.LOS LIBERTADORES KM 1.5 -DEFENSORES) ICA-PISCO-SAN CLEMENTE").SetFontSize(6));
-                            document.Add(new Paragraph("Teléfono: 938438743").SetFontSize(6));
-                            document.Add(new Paragraph("E-mail: agricola.delsur@pisco.senasa.pe").SetFontSize(6));
-                            document.Add(new Paragraph("Página Web: www.agricoladelsurpisco.com").SetFontSize(6));
 
+                            // Datos generales de la empresa.
+                            document.Add(new Paragraph("AGRICOLA DEL SUR PISCO EIRL").SetFontSize(9).SetBold()
+                                .SetFixedPosition(225, 740, 200));
+                            document.Add(new Paragraph("Empacadora con productos de calidad  y respaldo de").SetFontSize(8)
+                                .SetFixedPosition(200, 730, 200));
+                            document.Add(new Paragraph("trabajadores capacitados").SetFontSize(8)
+                                .SetFixedPosition(250, 720, 210));
+                            document.Add(new Paragraph("PARCELA 081 NRO. S/N SECTOR SANTA ANA").SetFontSize(8)
+                                .SetFixedPosition(210, 710, 200));
+                            document.Add(new Paragraph("(CARR.LOS LIBERTADORES KM 1.5 -DEFENSORES)").SetFontSize(8)
+                                .SetFixedPosition(200, 700, 200));
+                            document.Add(new Paragraph("ICA-PISCO-SAN CLEMENTE").SetFontSize(8)
+                                .SetFixedPosition(240, 690, 200));
+                            document.Add(new Paragraph("Teléfono: 938438743").SetFontSize(8)
+                                .SetFixedPosition(255, 680, 200));
+                            document.Add(new Paragraph("E-mail: agricola.delsur@pisco.senasa.pe").SetFontSize(8)
+                                .SetFixedPosition(220, 670, 200));
+                            document.Add(new Paragraph("www.agricoladelsur-pisco.com.pe").SetFontSize(8)
+                                .SetFixedPosition(230, 660, 200));
 
                             // Posición del rectángulo con sus divisiones.
-                            float rectAncho = 120;
-                            float rectAlto = 50;
-                            float rectX = page.GetPageSize().GetWidth() - rectAncho - 50;
-                            float rectY = page.GetPageSize().GetHeight() - rectAlto - 100;
+                            float rectAncho = 155;
+                            float rectAlto = 90;
+                            float rectX = page.GetPageSize().GetWidth() - rectAncho - 33;
+                            float rectY = page.GetPageSize().GetHeight() - rectAlto - 90;
+
+                            canvas.SaveState();  // Guardar el estado actual del canvas
 
                             canvas.Rectangle(rectX, rectY, rectAncho, rectAlto);
 
@@ -679,58 +702,78 @@ namespace _3mpacador4.Presentacion.Reporte
                             canvas.MoveTo(rectX, rectY + 2 * divisionAlto).LineTo(rectX + rectAncho, rectY + 2 * divisionAlto).Stroke();
 
                             // Configurar posición para el texto dentro del rectángulo
-                            float textX = rectX + 10;
-                            float textY1 = rectY + 2 * divisionAlto - 10;
-                            float textY2 = rectY + divisionAlto - 10;
+                            float textX = rectX + 20; // Ajusta según necesidades (movido a la derecha)
+                            float textY1 = rectY + 2 * divisionAlto + 7; // Ajusta según necesidades (posición del RUC)
+                            float textY2 = rectY + divisionAlto + 7; // Ajusta según necesidades (posición de "GUIA DE REMISIÓN")
 
-                            //Primera celda RUC.
-                            canvas.BeginText().SetFontAndSize(PdfFontFactory.CreateFont(), 8)
+                            // Texto en la primera celda (RUC)
+                            canvas.BeginText()
+                                .SetFontAndSize(PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD), 12)
                                 .MoveText(textX, textY1)
-                                .ShowText("R.U.C 20604679380")
+                                .ShowText("R.U.C. 20604679380")
                                 .EndText();
 
-                            // Segunda celda "GUIA DE REMISIÓN".
-                            canvas.BeginText().SetFontAndSize(PdfFontFactory.CreateFont(), 8)
+                            // Texto en la segunda celda ("GUIA DE REMISIÓN")
+                            canvas.BeginText().SetFontAndSize(PdfFontFactory.CreateFont(), 12)
                                 .MoveText(textX, textY2)
-                                .ShowText("GUIA DE REMISIÓN")
+                                .ShowText("     REPORTE")
                                 .EndText();
 
-                            // Tercera celda el código de número de guía de remisión.
-                            string numeroGuiaRemision = "G1-0008";
-                            canvas.BeginText().SetFontAndSize(PdfFontFactory.CreateFont(), 8)
-                                .MoveText(textX, rectY - 10)
+                            // Texto en la tercera celda (Número de guía de remisión desde datalistado2_2)
+                            string numeroGuiaRemision = $"   Nº V001 - 00001"; // Reemplaza esto con la lógica para obtener el número de guía de remisión
+                            canvas.BeginText()
+                                .SetFontAndSize(PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD), 11)
+                                .MoveText(textX, textY2 - divisionAlto + 5) // Ajusta según necesidades
                                 .ShowText(numeroGuiaRemision)
                                 .EndText();
 
                             canvas.Stroke();
+
+                            canvas.RestoreState();
 
 
 
                             // Creamos una línea horizontal que separa las secciones (encabezado, medio y inferior.
                             document.Add(new LineSeparator(new SolidLine()).SetMarginTop(20).SetMarginBottom(20).SetBackgroundColor(new DeviceRgb(255, 165, 0)));
 
-                            document.Add(new Paragraph("RECEPCIÓN").AddStyle(estiloNormal));
+                            document.Add(new Paragraph("RECEPCIÓN").AddStyle(estiloNormal)
+                                    .SetFont(PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD)));
 
-                            // Nombres de las columnas
-                            Table table = new Table(datalistado2_2.Columns.Count);
+                            // En este list string especificamos las columnas que deseamos solo mostrar (no fue eliminar ya que deja espacios en blanco).
+                            List<string> columnasMostradas = new List<string> { "GUIA REMISION", "FECHA PESAJE", "H LLEGADA", "CODIGO PRODUCCION",
+                                "T. JABA", "T.PARIH", "CANT JABAS", "PESO BRUTO", "PESO JABAS", "PESO NETO", "PROMEDIO" };
 
-                            for (int c = 0; c < datalistado2_2.Columns.Count; c++)
+                            // Instanciamos la tabla para datalistado2_2.
+                            Table tabla = new Table(columnasMostradas.Count);
+
+                            // Agregar solo las columnas que deseas mostrar en el PDF.
+                            foreach (string nombreColumna in columnasMostradas)
                             {
-                                Cell pdfCell = new Cell().Add(new Paragraph(datalistado2_2.Columns[c].HeaderText));
-                                table.AddCell(pdfCell)
-                                .SetBold();
+                                Cell pdfCeldas = new Cell().Add(new Paragraph(nombreColumna)
+                                    .SetFont(PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD))
+                                    .SetFontSize(10));
+
+                                tabla.AddCell(pdfCeldas);
                             }
 
-                            // Datos del datagrid 2_2
+                            // Datos del datagrid 2_2.
                             for (int f = 0; f < datalistado2_2.Rows.Count; f++)
                             {
-                                for (int c = 0; c < datalistado2_2.Columns.Count; c++)
+                                foreach (string nombreColumna in columnasMostradas)
                                 {
-                                    Cell pdfCell = new Cell().Add(new Paragraph(datalistado2_2[c, f].Value.ToString()));
-                                    table.AddCell(pdfCell);
+                                    int columnIndex = datalistado2_2.Columns.Cast<DataGridViewColumn>().ToList().FindIndex(c => c.HeaderText == nombreColumna);
+                                    if (columnIndex != -1)
+                                    {
+                                        Cell pdfCeldas = new Cell().Add(new Paragraph(datalistado2_2[columnIndex, f].Value.ToString())
+                                            .SetFont(PdfFontFactory.CreateFont(StandardFonts.HELVETICA)))
+                                            .SetFontSize(8);
+
+                                        tabla.AddCell(pdfCeldas);
+                                    }
                                 }
                             }
-                            document.Add(table);
+                            document.Add(tabla);
+
 
 
                             // Se crea una línea horizontal que separa las secciones
@@ -747,29 +790,34 @@ namespace _3mpacador4.Presentacion.Reporte
                                     .SetMarginBottom(10)
                                     .SetFontColor(new DeviceRgb(255, 165, 0));
 
-                                document.Add(new Paragraph("DESCARTE").AddStyle(estiloNormal));
+                                document.Add(new Paragraph("DESCARTE").AddStyle(estiloNormal)
+                                    .SetFont(PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD)));
 
                                 // Añadimos los nombres de las columnas.
-                                Table table2 = new Table(datalistado3_2.Columns.Count);
+                                Table tabla2 = new Table(datalistado3_2.Columns.Count);
 
                                 for (int c = 0; c < datalistado3_2.Columns.Count; c++)
                                 {
-                                    Cell pdfCell2 = new Cell().Add(new Paragraph(datalistado3_2.Columns[c].HeaderText));
-                                        table2.AddCell(pdfCell2)
-                                        .SetBold();
+                                    Cell pdfCeldas2 = new Cell().Add(new Paragraph(datalistado3_2.Columns[c].HeaderText))
+                                        .SetFont(PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD))
+                                        .SetFontSize(10);
+
+                                    tabla2.AddCell(pdfCeldas2);
                                 }
 
                                 // Añadimos los datos de las filas del datagrid 3_2.
                                 for (int f = 0; f < datalistado3_2.Rows.Count; f++)
                                 {
-
                                     for (int c = 0; c < datalistado3_2.Columns.Count; c++)
                                     {
-                                        Cell pdfCell2 = new Cell().Add(new Paragraph(datalistado3_2[c, f].Value.ToString()));
-                                        table2.AddCell(pdfCell2);
+                                        Cell pdfCeldas2 = new Cell().Add(new Paragraph(datalistado3_2[c, f].Value.ToString()))
+                                            .SetFont(PdfFontFactory.CreateFont(StandardFonts.HELVETICA))
+                                            .SetFontSize(9);
+
+                                        tabla2.AddCell(pdfCeldas2);
                                     }
                                 }
-                                document.Add(table2);
+                                document.Add(tabla2);
 
 
                                 // Creamos una línea horizontal que separa las secciones.
@@ -787,8 +835,13 @@ namespace _3mpacador4.Presentacion.Reporte
                                 .SetTextAlignment(TextAlignment.LEFT)
                                 .SetMarginBottom(10);
 
-                            //document.Add(new Paragraph("__________________________").AddStyle(estiloFirma));
-                            //document.Add(new Paragraph("Gerente General").AddStyle(estiloNormal));
+                            document.Add(new Paragraph("").AddStyle(estiloFirma));
+
+                            document.Add(new Paragraph("__________________________").AddStyle(estiloFirma));
+                            document.Add(new Paragraph("Gerente General").AddStyle(estiloNormal));
+
+                            document.Add(new Paragraph("").AddStyle(estiloFirma));
+                            document.Add(new Paragraph("").AddStyle(estiloFirma));
 
                             document.Add(new Paragraph("__________________________").AddStyle(estiloFirma));
                             document.Add(new Paragraph("Encargado de Planta").AddStyle(estiloNormal));
@@ -797,14 +850,14 @@ namespace _3mpacador4.Presentacion.Reporte
                             /*Cuando quito los coentarios de este código, la excepción dice que: Estoy intentando agregar contenido
                               al documento después de que ya ha sido cerrado, pero el document.Close(); está bien colocado, ya que 
                               está despues de toda modificación :( */
-                            //int totalPaginas = pdf.GetNumberOfPages();
-                            //for (int p = 1; p <= totalPaginas; p++)
-                            //{
-                            //    document.ShowTextAligned(new Paragraph($"Página {p} de {totalPaginas}"),
-                            //        pdf.GetDefaultPageSize().GetWidth() - 50, 30, p, TextAlignment.RIGHT, 
-                            //        iText.Layout.Properties.VerticalAlignment.TOP, 0);
-                            //}
-                            
+                            int totalPaginas = pdf.GetNumberOfPages();
+                            for (int p = 1; p <= totalPaginas; p++)
+                            {
+                                document.ShowTextAligned(new Paragraph($"Página {p} de {totalPaginas}"),
+                                    pdf.GetDefaultPageSize().GetWidth() - 50, 30, p, TextAlignment.RIGHT,
+                                    iText.Layout.Properties.VerticalAlignment.TOP, 0);
+                            }
+
                             document.Close();
 
                             MessageBox.Show("Los datos se han exportado a PDF correctamente.", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
