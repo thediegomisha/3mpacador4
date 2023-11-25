@@ -89,9 +89,7 @@ namespace _3mpacador4.Presentacion.Reporte
                     mostrarDestino();
                     mostrarCalibre();
                     mostrarCategoria();
-                    MostrarPresentacion();
-
-                   
+                    MostrarPresentacion();                   
                 }
             }
             catch (Exception ex)

@@ -18,9 +18,9 @@ namespace _3mpacador4.Presentacion
 {
     public partial class Login : Form
     {
-        public string nombre1 { get; private set; }
-        public string apaterno1 { get; private set; }
-        public int usuarioId1 { get; private set; }
+        public static string nombre1 { get; private set; }
+        public static string apaterno1 { get; private set; }
+        public static int usuarioId1 { get; private set; }
 
         public Login()
         {

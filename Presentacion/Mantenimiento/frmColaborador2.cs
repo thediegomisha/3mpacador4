@@ -10,7 +10,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _3mpacador4.Entidad;
+using System.Net;
+using System.IO;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
@@ -73,8 +76,8 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 var aux = new Colaborador();
                 aux.dni = txtdni.Text.Trim();
                 aux.nombres = txtnombres.Text.Trim();
-                aux.apel_paterno = txtapel_paterno.Text.Trim();
-                aux.apel_materno = txtapel_materno.Text.Trim();
+                aux.apellidoPaterno = txtapel_paterno.Text.Trim();
+                aux.apellidoMaterno = txtapel_materno.Text.Trim();
                 aux.flag_estado = Estado();
 
 
@@ -88,12 +91,12 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
                 comando.Parameters.AddWithValue("p_dni", aux.dni);
                 comando.Parameters.AddWithValue("p_nombres", aux.nombres);
-                comando.Parameters.AddWithValue("p_apel_paterno", aux.apel_paterno);
-                comando.Parameters.AddWithValue("p_apel_materno", aux.apel_materno);
+                comando.Parameters.AddWithValue("p_apel_paterno", aux.apellidoPaterno);
+                comando.Parameters.AddWithValue("p_apel_materno", aux.apellidoMaterno);
                 comando.Parameters.AddWithValue("p_flag_estado", aux.flag_estado);
                 comando.ExecuteNonQuery();
                 MessageBox.Show("COLABORADOR REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                limpiarcampos();
+                LimpiarCampos();
                 ConexionGral.desconectar();
                 return;
 
@@ -101,7 +104,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             catch (MySqlException ex)
             {
                 MessageBox.Show("COLABORADOR NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    throw;
+                throw;
             }
         }
         private void ActualizarColaborador()
@@ -140,8 +143,8 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 aux.idcolaborador = id;
                 aux.dni = txtdni.Text.Trim();
                 aux.nombres = txtnombres.Text.Trim();
-                aux.apel_paterno = txtapel_paterno.Text.Trim();
-                aux.apel_materno = txtapel_materno.Text.Trim();
+                aux.apellidoPaterno = txtapel_paterno.Text.Trim();
+                aux.apellidoMaterno = txtapel_materno.Text.Trim();
                 aux.flag_estado = Estado();
 
 
@@ -155,13 +158,13 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 comando.Parameters.AddWithValue("p_id", aux.idcolaborador);
                 comando.Parameters.AddWithValue("p_dni", aux.dni);
                 comando.Parameters.AddWithValue("p_nombres", aux.nombres);
-                comando.Parameters.AddWithValue("p_apel_paterno", aux.apel_paterno);
-                comando.Parameters.AddWithValue("p_apel_materno", aux.apel_materno);
+                comando.Parameters.AddWithValue("p_apel_paterno", aux.apellidoPaterno);
+                comando.Parameters.AddWithValue("p_apel_materno", aux.apellidoMaterno);
                 comando.Parameters.AddWithValue("p_flag_estado", aux.flag_estado);
                 comando.ExecuteNonQuery();
                 MessageBox.Show("COLABORADOR ACTUALIZADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                limpiarcampos();
-                ConexionGral.desconectar();
+                LimpiarCampos();
+                ConexionGral.desconectar();                
                 return;
 
             }
@@ -171,18 +174,20 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 throw;
             }
         }
-        private void limpiarcampos()
+        private void LimpiarCampos()
         {
             try
             {
+                txtdni.Focus();
                 txtdni.Text = string.Empty;
                 txtnombres.Text = string.Empty;               
                 txtapel_paterno.Text = string.Empty;
                 txtapel_materno.Text = string.Empty;
-                cbxestado.Checked = false;
+                //cbxestado.Checked = false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message, "Algo Salio Mal LimpiarCampos() :( ");
                 throw;
             }
         }
@@ -194,12 +199,14 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            InsertarColaborador();          
+            InsertarColaborador();
+            this.Close();
         }
      
 
         private void frmPersonaJuridica_Load(object sender, EventArgs e)
         {
+            txtdni.Focus();
             if (cbxestado.Checked)
             {
                 cbxestado.Text = "ACTIVO";
@@ -216,8 +223,8 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     id = frmColaborador.cl.idcolaborador;
                     txtdni.Text = frmColaborador.cl.dni;
                     txtnombres.Text = frmColaborador.cl.nombres;
-                    txtapel_paterno.Text = frmColaborador.cl.apel_paterno;
-                    txtapel_materno.Text = frmColaborador.cl.apel_materno;
+                    txtapel_paterno.Text = frmColaborador.cl.apellidoPaterno;
+                    txtapel_materno.Text = frmColaborador.cl.apellidoMaterno;
                     if (Convert.ToBoolean(frmColaborador.cl.flag_estado))
                     {
                         cbxestado.Checked = true;
@@ -227,8 +234,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                         cbxestado.Checked = false;
                     }
                 }
-            }
-            
+            }            
         }
 
         private void cbxestado_CheckedChanged(object sender, EventArgs e)
@@ -246,6 +252,57 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             ActualizarColaborador();
+            this.Close();
+        }        
+
+        private void cbxreniec_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxreniec.Checked)
+            {
+                pbreniec.Image = Properties.Resources.reniec;
+                LimpiarCampos();
+            }
+            else
+            {
+                pbreniec.Image = Properties.Resources.cargando;
+                LimpiarCampos();
+            }
+        }
+
+        private async void txtdni_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbxreniec.Checked)
+                {
+                    if (txtdni.Text.Trim().Length == 8)
+                    {
+                        string respuesta = await ConsultaDNI(txtdni.Text.Trim());
+
+                        var obj = JsonConvert.DeserializeObject<Colaborador>(respuesta);
+
+                        txtdni.Text = obj.dni;
+                        txtnombres.Text = obj.nombres;
+                        txtapel_paterno.Text = obj.apellidoPaterno;
+                        txtapel_materno.Text = obj.apellidoMaterno;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Algo Salio Mal ConsultaDNI() :( ");
+                throw;
+            }
+            
+        }
+
+        public async Task<string> ConsultaDNI(string ls_dni)
+        {
+            string url = "https://dniruc.apisperu.com/api/v1/dni/" + ls_dni + "?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InBhYmxvamMzMDA1QGdtYWlsLmNvbSJ9.ZuknLPwsDIINQaL0YfoOdXvtUouYB4dnhm4469HsMnM";
+            WebRequest oRequest = WebRequest.Create(url);
+            WebResponse oResponse = oRequest.GetResponse();
+            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
+            return await sr.ReadToEndAsync();
         }
     }
 }

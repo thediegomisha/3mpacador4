@@ -101,5 +101,10 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         {
             InsertarAcopiador();
         }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
