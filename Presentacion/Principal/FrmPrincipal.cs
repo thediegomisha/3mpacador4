@@ -243,6 +243,12 @@ namespace _3mpacador4.Presentacion
             ocultarSubMenu();
             AbrirFormularioHijo(new frmUsuarios());
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new TblTrazabilidad());
+        }
     }
     }
 

@@ -32,6 +32,7 @@
             this.PanelLadoIzq = new System.Windows.Forms.Panel();
             this.panelMantenimiento = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnAcopiador = new System.Windows.Forms.Button();
             this.btnProductores = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
@@ -68,7 +69,7 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnUsuarios = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -104,7 +105,7 @@
             this.panelMantenimiento.Controls.Add(this.panel1);
             this.panelMantenimiento.Controls.Add(this.btnClientes);
             this.panelMantenimiento.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMantenimiento.Location = new System.Drawing.Point(0, 602);
+            this.panelMantenimiento.Location = new System.Drawing.Point(0, 640);
             this.panelMantenimiento.Name = "panelMantenimiento";
             this.panelMantenimiento.Size = new System.Drawing.Size(124, 155);
             this.panelMantenimiento.TabIndex = 13;
@@ -120,6 +121,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(124, 148);
             this.panel1.TabIndex = 12;
+            // 
+            // btnUsuarios
+            // 
+            this.btnUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUsuarios.FlatAppearance.BorderSize = 0;
+            this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsuarios.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnUsuarios.ForeColor = System.Drawing.Color.LightGray;
+            this.btnUsuarios.Location = new System.Drawing.Point(0, 66);
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnUsuarios.Size = new System.Drawing.Size(124, 33);
+            this.btnUsuarios.TabIndex = 15;
+            this.btnUsuarios.Text = "Usuarios";
+            this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUsuarios.UseVisualStyleBackColor = true;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
             // btnAcopiador
             // 
@@ -179,7 +197,7 @@
             this.btnMantenimiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMantenimiento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnMantenimiento.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnMantenimiento.Location = new System.Drawing.Point(0, 558);
+            this.btnMantenimiento.Location = new System.Drawing.Point(0, 596);
             this.btnMantenimiento.Name = "btnMantenimiento";
             this.btnMantenimiento.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnMantenimiento.Size = new System.Drawing.Size(124, 44);
@@ -196,7 +214,7 @@
             this.panelSistema.Controls.Add(this.btnBD);
             this.panelSistema.Controls.Add(this.btnPuertoSerie);
             this.panelSistema.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSistema.Location = new System.Drawing.Point(0, 410);
+            this.panelSistema.Location = new System.Drawing.Point(0, 448);
             this.panelSistema.Name = "panelSistema";
             this.panelSistema.Size = new System.Drawing.Size(124, 148);
             this.panelSistema.TabIndex = 11;
@@ -275,7 +293,7 @@
             this.btnSistema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSistema.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnSistema.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnSistema.Location = new System.Drawing.Point(0, 366);
+            this.btnSistema.Location = new System.Drawing.Point(0, 404);
             this.btnSistema.Name = "btnSistema";
             this.btnSistema.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnSistema.Size = new System.Drawing.Size(124, 44);
@@ -287,6 +305,7 @@
             // panelReportes
             // 
             this.panelReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panelReportes.Controls.Add(this.button1);
             this.panelReportes.Controls.Add(this.button10);
             this.panelReportes.Controls.Add(this.button11);
             this.panelReportes.Controls.Add(this.button12);
@@ -294,7 +313,7 @@
             this.panelReportes.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelReportes.Location = new System.Drawing.Point(0, 221);
             this.panelReportes.Name = "panelReportes";
-            this.panelReportes.Size = new System.Drawing.Size(124, 145);
+            this.panelReportes.Size = new System.Drawing.Size(124, 183);
             this.panelReportes.TabIndex = 9;
             // 
             // button10
@@ -304,10 +323,10 @@
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.button10.ForeColor = System.Drawing.Color.LightGray;
-            this.button10.Location = new System.Drawing.Point(0, 99);
+            this.button10.Location = new System.Drawing.Point(0, 93);
             this.button10.Name = "button10";
             this.button10.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button10.Size = new System.Drawing.Size(124, 33);
+            this.button10.Size = new System.Drawing.Size(124, 39);
             this.button10.TabIndex = 7;
             this.button10.Text = "Impresion";
             this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -324,7 +343,7 @@
             this.button11.Location = new System.Drawing.Point(0, 66);
             this.button11.Name = "button11";
             this.button11.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button11.Size = new System.Drawing.Size(124, 33);
+            this.button11.Size = new System.Drawing.Size(124, 27);
             this.button11.TabIndex = 6;
             this.button11.Text = "Trazabilidad";
             this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -577,22 +596,22 @@
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
             // 
-            // btnUsuarios
+            // button1
             // 
-            this.btnUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUsuarios.FlatAppearance.BorderSize = 0;
-            this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsuarios.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnUsuarios.ForeColor = System.Drawing.Color.LightGray;
-            this.btnUsuarios.Location = new System.Drawing.Point(0, 66);
-            this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnUsuarios.Size = new System.Drawing.Size(124, 33);
-            this.btnUsuarios.TabIndex = 15;
-            this.btnUsuarios.Text = "Usuarios";
-            this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsuarios.UseVisualStyleBackColor = true;
-            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.Color.LightGray;
+            this.button1.Location = new System.Drawing.Point(0, 132);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(124, 33);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Tablero Trazabilidad";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmPrincipal
             // 
@@ -663,5 +682,6 @@
         private System.Windows.Forms.Button btnAcopiador;
         private System.Windows.Forms.Button btnProductores;
         private System.Windows.Forms.Button btnUsuarios;
+        private System.Windows.Forms.Button button1;
     }
 }

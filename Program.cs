@@ -19,7 +19,7 @@ namespace _3mpacador4
        {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RptGeneral());
+            Application.Run(new FrmPrincipal());
         }
     }
 }

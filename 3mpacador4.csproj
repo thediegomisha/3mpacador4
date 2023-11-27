@@ -344,6 +344,12 @@
     <Compile Include="Presentacion\Reporte\RptBoletaPesadoDetalle.Designer.cs">
       <DependentUpon>RptBoletaPesadoDetalle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Reporte\TblTrazabilidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\TblTrazabilidad.Designer.cs">
+      <DependentUpon>TblTrazabilidad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Reporte\TicketCajas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -461,6 +467,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\RptBoletaPesadoDetalle.resx">
       <DependentUpon>RptBoletaPesadoDetalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Reporte\TblTrazabilidad.resx">
+      <DependentUpon>TblTrazabilidad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\TicketCajas.resx">
       <DependentUpon>TicketCajas.cs</DependentUpon>

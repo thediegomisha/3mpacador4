@@ -459,6 +459,26 @@ namespace _3mpacador4.Presentacion.Reporte
         {
 
         }
+
+        private void datalistado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void cboLote_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboDestino_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     
