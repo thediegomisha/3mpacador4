@@ -389,8 +389,9 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 23);
             this.button1.TabIndex = 78;
-            this.button1.Text = "ExportarFrmAPDF";
+            this.button1.Text = "ExportarAPDF";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel1
             // 
@@ -428,6 +429,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(688, 179);
             this.panel1.TabIndex = 79;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // datalistado
             // 

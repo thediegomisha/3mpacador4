@@ -556,6 +556,9 @@
     <None Include="Resources\TickeAgricolaPesos2.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="logo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="NOTICE.TXT" />
     <Content Include="palta.ico" />
     <None Include="Resources\cargando.gif" />

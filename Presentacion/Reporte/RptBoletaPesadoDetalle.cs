@@ -659,12 +659,22 @@ namespace _3mpacador4.Presentacion.Reporte
                                 .SetMarginBottom(5);
 
                             // Añadeimos una imgaen de la empresa con posibilidad de ajustar sus dimensiones.
-                            string rutaImagen = "C:\\Users\\W10\\Pictures\\Saved Pictures\\logo.jpg";
-                            iText.Layout.Element.Image imgEmpresa = new iText.Layout.Element.Image(ImageDataFactory.Create(rutaImagen));
-                            imgEmpresa.SetWidth(150);
-                            imgEmpresa.SetHeight(100);
-                            imgEmpresa.SetFixedPosition(40, 660);
-                            document.Add(imgEmpresa);
+                            //string rutaImagen = "C:\\Users\\W10\\Pictures\\Saved Pictures\\logo.jpg";
+                            string rutaImagen = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logo.jpg");
+
+                            if (File.Exists(rutaImagen))
+                            {
+                                iText.Layout.Element.Image imgEmpresa = new iText.Layout.Element.Image(ImageDataFactory.Create(rutaImagen));
+                                imgEmpresa.SetWidth(150);
+                                imgEmpresa.SetHeight(100);
+                                imgEmpresa.SetFixedPosition(40, 660);
+                                document.Add(imgEmpresa);
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se puede encontrar la ruta", "Error al cargar la Imagen", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+
 
                             // Datos generales de la empresa.
                             document.Add(new Paragraph("AGRICOLA DEL SUR PISCO EIRL").SetFontSize(9).SetBold()
