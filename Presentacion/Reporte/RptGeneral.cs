@@ -1458,19 +1458,5 @@ namespace _3mpacador4.Presentacion.Reporte
 
             return filasPorPagina;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

@@ -238,106 +238,54 @@ namespace _3mpacador4.Presentacion.Reporte
                 comando = new MySqlCommand("usp_tbltrazabilidad_Select", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
 
-                // Usamos el valor seleccionado del combo box
                 string numLote = cboLote.Text;
 
-                // Agregamos el parámetro al comando
                 comando.Parameters.AddWithValue("p_numlote", numLote);
 
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
                 adaptador.Fill(datos);
 
-                // Mostramos los datos en el datalistado
-                datalistado.DataSource = datos;
+                // Especificamos las columnas que queramos mostrar en el datalistado.
+                var datosMostrados = datos.DefaultView.ToTable(false, "ID", "Calibre", "Presentacion", "Cant Cajas");
 
-                // También puedes asignar los datos a las etiquetas si es necesario
+                datalistado.DataSource = datosMostrados;
+
+                //Aquí especificamos al datalistado que no genere columnas que no hayamos especificado.
+                datalistado.AutoGenerateColumns = false;
+
                 if (datos.Rows.Count > 0)
-                {
+                { 
+                    // Asignar las demás columnas a los labels
+                    lblnumlote.Text = datos.Rows[0]["numlote"].ToString();
                     lblcliente.Text = datos.Rows[0]["cliente"].ToString();
+                    lblclp.Text = datos.Rows[0]["clp"].ToString();
                     lblproductor.Text = datos.Rows[0]["productor"].ToString();
                     lblproducto.Text = datos.Rows[0]["producto"].ToString();
-                    lblclp.Text = datos.Rows[0]["clp"].ToString();
                     lblvariedad.Text = datos.Rows[0]["variedad"].ToString();
-                    lblpesoneto.Text = datos.Rows[0]["ingresoplanta"].ToString();
-                    lblfechaingreso.Text = datos.Rows[0]["fproceso"].ToString();
-                    lblcantjabas.Text = datos.Rows[0]["cantjabas"].ToString();
-                    // Otras asignaciones de etiquetas según sea necesario
+                    lblfproceso.Text = datos.Rows[0]["fproceso"].ToString();
+                    lblcategoria.Text = datos.Rows[0]["categoria"].ToString();
+                    lblingresoplanta.Text = datos.Rows[0]["ingresoplanta"].ToString();
+                    lblcantjabas.Text = datos.Rows[0]["cant_jabas"].ToString();
+                    lbldestino.Text = datos.Rows[0]["destino"].ToString();
+
+                    lblinfo.Visible = false;
                 }
-
-                ConexionGral.desconectar();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
-        private void btnMostrar_Click(object sender, EventArgs e)
-        {
-            InsertarRegistro();
-
-        }
-
-        private void InsertarRegistro()
-        {
-            try
-            {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
+                else
                 {
-                    ConexionGral.conectar();
+                    //Se muestra el label cuando no haya datos en el datalistado.
+                    lblinfo.Visible = true;
                 }
-                var comando = new MySqlCommand("INSERT INTO tbltrazabilidad (numlote ,cliente,clp, productor ,producto ,variedad ,fproceso ,ingresoplanta ,cant_jabas ,destino ,calibre ,categoria ,presentacion ,cant_cajas)" + '\r'
-                    + "VALUES(@numlote, @cliente, @clp, @productor, @producto, @variedad, @fproceso, @ingresoplanta, @cant_jabas, @destino, @calibre, @categoria, @presentacion, @cant_cajas)", ConexionGral.conexion);
 
 
-                int numlote = Convert.ToInt32(cboLote.Text.ToString());
-
-                comando.Parameters.AddWithValue("@numlote", MySqlType.Int).Value = numlote;
-                comando.Parameters.AddWithValue("@cliente", this.lblcliente.Text);
-                comando.Parameters.AddWithValue("@clp", this.lblclp.Text);
-                comando.Parameters.AddWithValue("@productor", this.lblproductor.Text);
-
-                comando.Parameters.AddWithValue("@producto", this.lblproducto.Text);
-                comando.Parameters.AddWithValue("@variedad", this.lblvariedad.Text);
-                //comando.Parameters.AddWithValue("@fproceso", Convert.ToDateTime(this.fproceso.Text));
-
-                double pesoingreso = Convert.ToDouble(lblpesoneto.Text.ToString());
-
-                comando.Parameters.AddWithValue("@ingresoplanta", MySqlType.Double).Value = pesoingreso;
-
-                int cant_jabas = Convert.ToInt32(lblcantjabas.Text.ToString());
-
-                comando.Parameters.AddWithValue("@cant_jabas", MySqlType.Int).Value = cant_jabas;
-
-                //comando.Parameters.AddWithValue("@destino", MySqlType.Int).Value = cboDestino.Text.ToString();
-
-                //int calibre = Convert.ToInt32(cbCalibre.Text.ToString());
-
-                //comando.Parameters.AddWithValue("@calibre", MySqlType.Int).Value = calibre;
-                //comando.Parameters.AddWithValue("@categoria", MySqlType.Int).Value = cbCategoria.Text.ToString();
-                //comando.Parameters.AddWithValue("@presentacion", MySqlType.Text).Value = cbpresentacion .Text.ToString();
-
-                //double cant_cajas = Convert.ToDouble(txtcant_cajas.Text.ToString());
-
-                //comando.Parameters.AddWithValue("@cant_cajas", MySqlType.Int).Value = cant_cajas;
-
-
-
-                comando.ExecuteNonQuery();
-                MessageBox.Show("PESO REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
-                // limpiarcampos()
-                //    this.chkcapturapeso.Checked = false;
                 ConexionGral.desconectar();
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            // cuentacorrelativo_BG()
         }
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -413,7 +361,7 @@ namespace _3mpacador4.Presentacion.Reporte
                                 .SetMarginBottom(10);
 
                             // Título.
-                            document.Add(new Paragraph("TABLERO DE TRAZABILIDAD").SetFontSize(12).AddStyle(estiloEncabezado));
+                            document.Add(new Paragraph($"TABLERO DE TRAZABILIDAD      LOTE Nº {lblnumlote.Text}").SetFontSize(12).AddStyle(estiloEncabezado));
                             document.Add(new Paragraph("").AddStyle(estiloEncabezado));
                             document.Add(new Paragraph("").AddStyle(estiloEncabezado));
                             document.Add(new Paragraph("").AddStyle(estiloEncabezado));
@@ -516,18 +464,113 @@ namespace _3mpacador4.Presentacion.Reporte
                             // Creamos una línea horizontal que separa las secciones (encabezado, medio y inferior.
                             document.Add(new LineSeparator(new SolidLine()).SetMarginTop(20).SetMarginBottom(20).SetBackgroundColor(new DeviceRgb(255, 165, 0)));
 
+                            document.Add(new Paragraph("INFORMACIÓN:").AddStyle(estiloNormal)
+                                    .SetFont(PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD)));
+
+
+                            // Datos generales de la empresa.
+                            document.Add(new Paragraph("").AddStyle(estiloEncabezado));
+                            document.Add(new Paragraph("").AddStyle(estiloEncabezado));
+                            document.Add(new Paragraph("").AddStyle(estiloEncabezado));
+                            document.Add(new Paragraph("").AddStyle(estiloEncabezado));
+                            document.Add(new Paragraph("").AddStyle(estiloEncabezado));
+                            document.Add(new Paragraph("").AddStyle(estiloEncabezado));
+                            document.Add(new Paragraph("").AddStyle(estiloEncabezado));
+                            document.Add(new Paragraph("").AddStyle(estiloEncabezado));
+
+                            document.Add(new Paragraph($"CLIENTE:     {lblcliente.Text}").SetFontSize(9)
+                                .SetFixedPosition(35, 580, 200));
+                            document.Add(new Paragraph($"PRODUCTOR:     {lblproductor.Text}").SetFontSize(9)
+                                .SetFixedPosition(35, 560, 200));
+                            document.Add(new Paragraph($"VARIEDAD:     {lblvariedad.Text}").SetFontSize(9)
+                                .SetFixedPosition(35, 540, 200));
+                            document.Add(new Paragraph($"INGRESO PLANTA:     {lblingresoplanta.Text}").SetFontSize(9)
+                                .SetFixedPosition(35, 520, 200));
+                            document.Add(new Paragraph($"DESTINO:     {lbldestino.Text}").SetFontSize(9)
+                                .SetFixedPosition(35, 500, 200));
+                            document.Add(new Paragraph($"CLP:     {lblclp.Text}").SetFontSize(9)
+                                .SetFixedPosition(260, 580, 200));
+                            document.Add(new Paragraph($"PRODUCTO:     {lblproducto.Text}").SetFontSize(9)
+                                .SetFixedPosition(260, 560, 200));
+                            document.Add(new Paragraph($"F PROCESO:     {lblfproceso.Text}").SetFontSize(9)
+                                .SetFixedPosition(260, 540, 200));
+                            document.Add(new Paragraph($"CANT JABAS:     {lblcantjabas.Text}").SetFontSize(9)
+                                .SetFixedPosition(260, 520, 200));
+                            document.Add(new Paragraph($"CATEGORÍA:     {lblcategoria.Text}").SetFontSize(9)
+                                .SetFixedPosition(260, 500, 200));
+
+
+
+
                             document.Add(new Paragraph("TABLERO DE DATOS:").AddStyle(estiloNormal)
                                     .SetFont(PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD)));
 
-                            // En este list string especificamos las columnas que deseamos solo mostrar (no fue eliminar ya que deja espacios en blanco).
-                            List<string> columnasMostradas = new List<string> { /*"GUIA REMISION", "FECHA PESAJE", "H LLEGADA", "CODIGO PRODUCCION",
-                                "T. JABA", "T.PARIH", "CANT JABAS", "PESO BRUTO", "PESO JABAS", "PESO NETO", "PROMEDIO"*/ };
+                                // Añadimos los nombres de las columnas.
+                                Table tabla = new Table(datalistado.Columns.Count);
 
-                            // Instanciamos la tabla para datalistado.
-                            Table tabla = new Table(columnasMostradas.Count);
+                                for (int c = 0; c < datalistado.Columns.Count; c++)
+                                {
+                                    Cell pdfCeldas = new Cell().Add(new Paragraph(datalistado.Columns[c].HeaderText))
+                                        .SetFont(PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD))
+                                        .SetFontSize(11);
 
-                            document.Add(tabla);
+                                    tabla.AddCell(pdfCeldas);
+                                }
 
+                                // Añadimos los datos de las filas del datagrid.
+                                for (int f = 0; f < datalistado.Rows.Count; f++)
+                                {
+                                    for (int c = 0; c < datalistado.Columns.Count; c++)
+                                    {
+                                        Cell pdfCeldas = new Cell().Add(new Paragraph(datalistado[c, f].Value.ToString()))
+                                            .SetFont(PdfFontFactory.CreateFont(StandardFonts.HELVETICA))
+                                            .SetFontSize(10);
+
+                                        tabla.AddCell(pdfCeldas);
+                                    }
+                                }
+                                document.Add(tabla);
+
+                            document.Add(new LineSeparator(new SolidLine()).SetMarginTop(20).SetMarginBottom(20).SetBackgroundColor(new DeviceRgb(255, 165, 0)));
+
+                            //Sección inferior de la hoja con estilos.css
+                            document.Add(new Paragraph("Firmas:")
+                                .AddStyle(estiloEncabezado)
+                                .SetTextAlignment(TextAlignment.LEFT));
+
+                                //Código de estilos para las firmas.
+                                Style estiloFirma = new Style()
+                                    .SetFontSize(12)
+                                    .SetTextAlignment(TextAlignment.LEFT)
+                                    .SetMarginBottom(10);
+
+                                document.Add(new Paragraph("").AddStyle(estiloFirma));
+
+                                document.Add(new Paragraph("__________________________").AddStyle(estiloFirma));
+                                document.Add(new Paragraph("Gerente General").AddStyle(estiloNormal));
+
+                                document.Add(new Paragraph("").AddStyle(estiloFirma));
+                                document.Add(new Paragraph("").AddStyle(estiloFirma));
+
+                                document.Add(new Paragraph("__________________________").AddStyle(estiloFirma));
+                                document.Add(new Paragraph("Encargado de Planta").AddStyle(estiloNormal));
+
+                                // Números de página
+                                /*Cuando quito los coentarios de este código, la excepción dice que: Estoy intentando agregar contenido
+                                  al documento después de que ya ha sido cerrado, pero el document.Close(); está bien colocado, ya que 
+                                  está despues de toda modificación :( */
+                                int totalPaginas = pdf.GetNumberOfPages();
+                                for (int p = 1; p <= totalPaginas; p++)
+                                {
+                                    document.ShowTextAligned(new Paragraph($"Página {p} de {totalPaginas}"),
+                                        pdf.GetDefaultPageSize().GetWidth() - 50, 30, p, TextAlignment.RIGHT,
+                                        iText.Layout.Properties.VerticalAlignment.TOP, 0);
+                                }
+
+                                document.Close();
+
+                                MessageBox.Show("Los datos se han exportado a PDF correctamente.", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            
                         }
                     }
                 }

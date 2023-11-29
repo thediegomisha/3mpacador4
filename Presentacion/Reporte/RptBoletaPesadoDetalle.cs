@@ -749,7 +749,7 @@ namespace _3mpacador4.Presentacion.Reporte
                             document.Add(new Paragraph("RECEPCIÓN").AddStyle(estiloNormal)
                                     .SetFont(PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD)));
 
-                            // En este list string especificamos las columnas que deseamos solo mostrar (no fue eliminar ya que deja espacios en blanco).
+                            // En este list string especificamos las columnas que deseamos solo mostrar (no fue eliminar columnas ya que deja espacios en blanco).
                             List<string> columnasMostradas = new List<string> { "GUIA REMISION", "FECHA PESAJE", "H LLEGADA", "CODIGO PRODUCCION",
                                 "T. JABA", "T.PARIH", "CANT JABAS", "PESO BRUTO", "PESO JABAS", "PESO NETO", "PROMEDIO" };
 
