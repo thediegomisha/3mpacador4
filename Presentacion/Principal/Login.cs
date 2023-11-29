@@ -37,8 +37,8 @@ namespace _3mpacador4.Presentacion
             string nombre;
             string apaterno;
 
-            //   bool autenticado = Validarusuario(login, clave, out usuarioId, out nombre, out apaterno);
-            cargavalidada();
+               bool autenticado = Validarusuario(login, clave, out usuarioId, out nombre, out apaterno);
+          //  cargavalidada();
         }
 
         private bool Validarusuario(string login, string clave, out int usuarioId, out string nombre, out string apaterno)
