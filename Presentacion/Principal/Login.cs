@@ -40,7 +40,6 @@ namespace _3mpacador4.Presentacion
                bool autenticado = Validarusuario(login, clave, out usuarioId, out nombre, out apaterno);
           //  cargavalidada();
 
-
         }
 
         private bool Validarusuario(string login, string clave, out int usuarioId, out string nombre, out string apaterno)
@@ -121,10 +120,7 @@ namespace _3mpacador4.Presentacion
             bienvenida.ApaternoDesdeLogin = apaterno1;
 
             bienvenida.ShowDialog();
-            FrmPrincipal form = new FrmPrincipal();
-            
-
-
+            FrmPrincipal form = new FrmPrincipal();       
 
             form.NombreDesdeLogin = nombre1;
             form.ApaternoDesdeLogin = apaterno1;
