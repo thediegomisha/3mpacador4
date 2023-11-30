@@ -126,6 +126,7 @@ namespace _3mpacador4.Presentacion
             form.ApaternoDesdeLogin = apaterno1;
 
             form.Show();
+
         }
 
         public void info()
