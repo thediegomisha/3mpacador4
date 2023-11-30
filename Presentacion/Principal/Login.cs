@@ -124,8 +124,6 @@ namespace _3mpacador4.Presentacion
             FrmPrincipal form = new FrmPrincipal();
             
 
-
-
             form.NombreDesdeLogin = nombre1;
             form.ApaternoDesdeLogin = apaterno1;
 
