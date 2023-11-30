@@ -120,6 +120,9 @@ namespace _3mpacador4.Presentacion
 
             bienvenida.ShowDialog();
             FrmPrincipal form = new FrmPrincipal();
+            
+
+
 
             form.NombreDesdeLogin = nombre1;
             form.ApaternoDesdeLogin = apaterno1;
