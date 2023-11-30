@@ -281,7 +281,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 {
                     ConexionGral.conectar();
                 }
-                if (chkcliente.Checked == true && chkf_ing.Checked  == true)
+                if (chkcliente.Checked == true && chkf_ing.Checked == true)
                 {
                     procedimientoalmacenado = "usp_tblticketpesaje_Exportador";
                     iniciocadena = cb_cliente.Text.IndexOf('-');
@@ -295,8 +295,8 @@ namespace _3mpacador4.Presentacion.Reporte
                     procedimientoalmacenado = "usp_tblticketpesaje_Exportador";
                     iniciocadena = cb_cliente.Text.IndexOf('-');
                     flag.Text = cb_cliente.Text.Substring(0, iniciocadena);
-                    bandera = "p_idcliente";                   
-                }             
+                    bandera = "p_idcliente";
+                }
                 else if (chkproductor.Checked == true)
                 {
                     procedimientoalmacenado = "usp_tblticketpesaje_Productor";
@@ -306,13 +306,20 @@ namespace _3mpacador4.Presentacion.Reporte
                 }
                 else if (chkvariedad.Checked == true)
                 {
-                    procedimientoalmacenado = "usp_tblticketpesaje_Variedad";                  
+                    procedimientoalmacenado = "usp_tblticketpesaje_Variedad";
                     flag.Text = cb_variedad.SelectedValue.ToString();
                     bandera = "p_variedad";
                 }
+
+                else if (chk_acopiador.Checked == true)
+                {
+                    procedimientoalmacenado = "nomedjodas";
+                    flag.Text = cbAcopiador.SelectedValue.ToString();
+                    bandera = "p_acopiador";
+                }
                 else if (chkproductor.Checked == false && chkvariedad.Checked == false && chkcliente.Checked == false && chk_acopiador.Checked == false)
                 {
-                    procedimientoalmacenado = "usp_tblticketpesaje_RptGral";                   
+                    procedimientoalmacenado = "usp_tblticketpesaje_RptGral";
                 }
                 comando = new MySqlCommand(procedimientoalmacenado, ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
