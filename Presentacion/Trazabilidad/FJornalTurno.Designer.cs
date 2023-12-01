@@ -29,11 +29,12 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FJornalTurno));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbturno = new System.Windows.Forms.ComboBox();
             this.tbxdescripcion = new System.Windows.Forms.TextBox();
             this.Label2 = new System.Windows.Forms.Label();
@@ -58,15 +59,26 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.label8 = new System.Windows.Forms.Label();
             this.dgvgrupo_turno_cab = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblnro_trab = new System.Windows.Forms.Label();
+            this.lbldesc_grupo = new System.Windows.Forms.Label();
+            this.lblidgrupo = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dgvlista_trab = new System.Windows.Forms.DataGridView();
             this.btnasigna_trab = new Glass.GlassButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.glassButton2 = new Glass.GlassButton();
-            this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnbuscar_trab = new Glass.GlassButton();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,7 +95,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvgrupo_turno_cab)).BeginInit();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvlista_trab)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -283,7 +295,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.btncancelar.ShineColor = System.Drawing.Color.RoyalBlue;
             this.btncancelar.Size = new System.Drawing.Size(121, 40);
             this.btncancelar.TabIndex = 88;
-            this.btncancelar.Text = "CERRAR GRUPO";
+            this.btncancelar.Text = "CANCELAR";
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
@@ -342,14 +354,14 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.dgvgrupo_turno_cab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvgrupo_turno_cab.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvgrupo_turno_cab.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvgrupo_turno_cab.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvgrupo_turno_cab.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -370,93 +382,125 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.dgvgrupo_turno_cab.ReadOnly = true;
             this.dgvgrupo_turno_cab.RowHeadersVisible = false;
             this.dgvgrupo_turno_cab.RowHeadersWidth = 51;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvgrupo_turno_cab.RowsDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvgrupo_turno_cab.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvgrupo_turno_cab.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvgrupo_turno_cab.Size = new System.Drawing.Size(866, 143);
             this.dgvgrupo_turno_cab.TabIndex = 91;
+            this.dgvgrupo_turno_cab.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvgrupo_turno_cab_CellPainting);
+            this.dgvgrupo_turno_cab.DoubleClick += new System.EventHandler(this.dgvgrupo_turno_cab_DoubleClick);
             // 
             // groupBox5
             // 
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox5.Controls.Add(this.dataGridView2);
+            this.groupBox5.Controls.Add(this.label11);
+            this.groupBox5.Controls.Add(this.lblnro_trab);
+            this.groupBox5.Controls.Add(this.lbldesc_grupo);
+            this.groupBox5.Controls.Add(this.lblidgrupo);
+            this.groupBox5.Controls.Add(this.label9);
+            this.groupBox5.Controls.Add(this.dgvlista_trab);
             this.groupBox5.Location = new System.Drawing.Point(152, 391);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(602, 170);
+            this.groupBox5.Size = new System.Drawing.Size(736, 214);
             this.groupBox5.TabIndex = 92;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "DETALLE TURNO";
             // 
-            // dataGridView2
+            // label11
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(365, 25);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(127, 17);
+            this.label11.TabIndex = 98;
+            this.label11.Text = "N° TRABAJADORES :";
+            // 
+            // lblnro_trab
+            // 
+            this.lblnro_trab.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblnro_trab.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnro_trab.Location = new System.Drawing.Point(496, 23);
+            this.lblnro_trab.Name = "lblnro_trab";
+            this.lblnro_trab.Size = new System.Drawing.Size(70, 21);
+            this.lblnro_trab.TabIndex = 97;
+            this.lblnro_trab.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbldesc_grupo
+            // 
+            this.lbldesc_grupo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbldesc_grupo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldesc_grupo.Location = new System.Drawing.Point(102, 24);
+            this.lbldesc_grupo.Name = "lbldesc_grupo";
+            this.lbldesc_grupo.Size = new System.Drawing.Size(249, 21);
+            this.lbldesc_grupo.TabIndex = 96;
+            // 
+            // lblidgrupo
+            // 
+            this.lblidgrupo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblidgrupo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblidgrupo.Location = new System.Drawing.Point(73, 24);
+            this.lblidgrupo.Name = "lblidgrupo";
+            this.lblidgrupo.Size = new System.Drawing.Size(26, 21);
+            this.lblidgrupo.TabIndex = 95;
+            this.lblidgrupo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(9, 27);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(58, 17);
+            this.label9.TabIndex = 94;
+            this.label9.Text = "GRUPO :";
+            // 
+            // dgvlista_trab
+            // 
+            this.dgvlista_trab.AllowUserToAddRows = false;
+            this.dgvlista_trab.AllowUserToDeleteRows = false;
+            this.dgvlista_trab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn4,
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvlista_trab.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvlista_trab.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvlista_trab.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6});
-            this.dataGridView2.Location = new System.Drawing.Point(11, 19);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.RowHeadersWidth = 51;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle20;
-            this.dataGridView2.Size = new System.Drawing.Size(576, 145);
-            this.dataGridView2.TabIndex = 91;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Visible = false;
-            this.dataGridViewTextBoxColumn4.Width = 30;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle19;
-            this.dataGridViewTextBoxColumn5.HeaderText = "DNI";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 75;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "NOMBRES";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 250;
+            this.dataGridViewTextBoxColumn6,
+            this.Column13,
+            this.Column14,
+            this.Column3});
+            this.dgvlista_trab.Location = new System.Drawing.Point(11, 49);
+            this.dgvlista_trab.Name = "dgvlista_trab";
+            this.dgvlista_trab.ReadOnly = true;
+            this.dgvlista_trab.RowHeadersVisible = false;
+            this.dgvlista_trab.RowHeadersWidth = 51;
+            this.dgvlista_trab.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvlista_trab.Size = new System.Drawing.Size(719, 159);
+            this.dgvlista_trab.TabIndex = 91;
+            this.dgvlista_trab.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvlista_trab_CellClick);
+            this.dgvlista_trab.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvlista_trab_CellPainting);
             // 
             // btnasigna_trab
             // 
             this.btnasigna_trab.BackColor = System.Drawing.Color.Blue;
             this.btnasigna_trab.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnasigna_trab.Location = new System.Drawing.Point(23, 520);
+            this.btnasigna_trab.Location = new System.Drawing.Point(23, 559);
             this.btnasigna_trab.Margin = new System.Windows.Forms.Padding(4);
             this.btnasigna_trab.Name = "btnasigna_trab";
             this.btnasigna_trab.OuterBorderColor = System.Drawing.Color.Blue;
             this.btnasigna_trab.ShineColor = System.Drawing.Color.Navy;
             this.btnasigna_trab.Size = new System.Drawing.Size(122, 40);
             this.btnasigna_trab.TabIndex = 93;
-            this.btnasigna_trab.Text = "ASIGNAR TRAJADOR";
+            this.btnasigna_trab.Text = "ASIGNAR TRABAJADOR";
             this.btnasigna_trab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnasigna_trab.Click += new System.EventHandler(this.btnasigna_trab_Click);
             // 
@@ -486,21 +530,103 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.glassButton2.Text = "EDITAR GRUPO";
             this.glassButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             // 
+            // btnbuscar_trab
+            // 
+            this.btnbuscar_trab.BackColor = System.Drawing.Color.Blue;
+            this.btnbuscar_trab.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnbuscar_trab.Location = new System.Drawing.Point(23, 511);
+            this.btnbuscar_trab.Margin = new System.Windows.Forms.Padding(4);
+            this.btnbuscar_trab.Name = "btnbuscar_trab";
+            this.btnbuscar_trab.OuterBorderColor = System.Drawing.Color.Blue;
+            this.btnbuscar_trab.ShineColor = System.Drawing.Color.Navy;
+            this.btnbuscar_trab.Size = new System.Drawing.Size(122, 40);
+            this.btnbuscar_trab.TabIndex = 95;
+            this.btnbuscar_trab.Text = "BUSCAR TRABAJADOR";
+            this.btnbuscar_trab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnbuscar_trab.Click += new System.EventHandler(this.btnbuscar_trab_Click);
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewImageColumn2.HeaderText = "";
+            this.dataGridViewImageColumn2.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn2.Image")));
+            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.ReadOnly = true;
+            this.dataGridViewImageColumn2.Width = 5;
+            // 
+            // dataGridViewImageColumn3
+            // 
+            this.dataGridViewImageColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewImageColumn3.HeaderText = "";
+            this.dataGridViewImageColumn3.Image = global::_3mpacador4.Properties.Resources.eliminar;
+            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
+            this.dataGridViewImageColumn3.ReadOnly = true;
+            this.dataGridViewImageColumn3.Width = 5;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewTextBoxColumn5.HeaderText = "DNI";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "TRABAJADOR";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 350;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "GENERA QR";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            this.Column13.Text = "";
+            this.Column13.Width = 80;
+            // 
+            // Column14
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column14.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column14.HeaderText = "CANTIDAD";
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            this.Column14.Width = 80;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "QUITAR";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 50;
+            // 
             // Column1
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column1.HeaderText = "";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Width = 5;
+            this.Column1.Width = 30;
             // 
             // Column2
             // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column2.HeaderText = "";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 5;
+            this.Column2.Width = 30;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -508,7 +634,6 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
             this.dataGridViewTextBoxColumn1.Width = 30;
             // 
             // dataGridViewTextBoxColumn3
@@ -599,7 +724,8 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 573);
+            this.ClientSize = new System.Drawing.Size(912, 617);
+            this.Controls.Add(this.btnbuscar_trab);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnasigna_trab);
             this.Controls.Add(this.groupBox5);
@@ -615,7 +741,8 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvgrupo_turno_cab)).EndInit();
             this.groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvlista_trab)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -643,10 +770,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView dgvgrupo_turno_cab;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridView dgvlista_trab;
         private System.Windows.Forms.DateTimePicker dtpdesde;
         private System.Windows.Forms.DateTimePicker dtphasta;
         internal System.Windows.Forms.DateTimePicker dtpfecha_produccion_fil;
@@ -654,8 +778,22 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         private Glass.GlassButton btnasigna_trab;
         private System.Windows.Forms.GroupBox groupBox2;
         private Glass.GlassButton glassButton2;
-        private System.Windows.Forms.DataGridViewImageColumn Column1;
-        private System.Windows.Forms.DataGridViewImageColumn Column2;
+        internal System.Windows.Forms.Label lbldesc_grupo;
+        internal System.Windows.Forms.Label lblidgrupo;
+        internal System.Windows.Forms.Label label9;
+        internal System.Windows.Forms.Label label11;
+        internal System.Windows.Forms.Label lblnro_trab;
+        private Glass.GlassButton btnbuscar_trab;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewButtonColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewButtonColumn Column3;
+        private System.Windows.Forms.DataGridViewButtonColumn Column1;
+        private System.Windows.Forms.DataGridViewButtonColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;

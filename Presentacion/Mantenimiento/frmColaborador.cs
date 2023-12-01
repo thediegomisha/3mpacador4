@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using _3mpacador4.Presentacion.Mantenimiento;
-using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.CompilerServices;
-using _3mpacador4;
 using _3mpacador4.Entidad;
 using _3mpacador4.Logica;
 using Devart.Data.MySql;

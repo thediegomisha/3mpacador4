@@ -19,5 +19,7 @@ namespace _3mpacador4.Entidad
         public DateTime fecha_fin { get; set; }
         public string flag_tercero { get; set; }
         public string flag_estado { get; set; }
+
+        //public List<Grupo_turno_detalle> lista_detalle { get; set; }
     }
 }

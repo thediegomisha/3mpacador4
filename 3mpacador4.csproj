@@ -68,6 +68,9 @@
     <ApplicationIcon>palta.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="CircularProgressBar, Version=2.8.0.16, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
       <HintPath>packages\CircularProgressBar.2.8.0.16\lib\net40\CircularProgressBar.dll</HintPath>
     </Reference>
@@ -81,8 +84,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\GlassButton.dll</HintPath>
     </Reference>
+    <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\QrCode.Net.0.4.0.0\lib\net45\Gma.QrCodeNet.Encoding.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
@@ -163,7 +172,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidad\Colaborador.cs" />
+    <Compile Include="Entidad\Grupo_turno_detalle.cs" />
     <Compile Include="Entidad\Grupo_turno.cs" />
+    <Compile Include="Entidad\Lista_transferir_trab.cs" />
     <Compile Include="Logica\ClConexion.cs" />
     <Compile Include="Logica\ConexionGral.cs" />
     <Compile Include="Logica\ConnectionStringManager.cs" />
@@ -353,6 +364,12 @@
     <Compile Include="Presentacion\Sistema\FrmPuertos.Designer.cs">
       <DependentUpon>FrmPuertos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Trazabilidad\FImprimirQR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Trazabilidad\FImprimirQR.Designer.cs">
+      <DependentUpon>FImprimirQR.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Trazabilidad\FJornalTurno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -459,6 +476,9 @@
     <EmbeddedResource Include="Presentacion\Sistema\FrmPuertos.resx">
       <DependentUpon>FrmPuertos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Trazabilidad\FImprimirQR.resx">
+      <DependentUpon>FImprimirQR.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Trazabilidad\FJornalTurno.resx">
       <DependentUpon>FJornalTurno.cs</DependentUpon>
     </EmbeddedResource>
@@ -531,6 +551,9 @@
   <ItemGroup>
     <Content Include="NOTICE.TXT" />
     <Content Include="palta.ico" />
+    <None Include="Resources\eliminar.jpg" />
+    <None Include="Resources\edit.jpg" />
+    <None Include="Resources\qr.png" />
     <None Include="Resources\reniec.png" />
     <None Include="Resources\cargando.gif" />
     <None Include="Resources\Image1.bmp" />

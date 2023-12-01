@@ -21,6 +21,9 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             ListaTrabajadores();
         }
 
+        Lista_transferir_trab d = null;
+        public static List<Lista_transferir_trab> lista_datos = null;
+        public static bool estado_transferencia;
 
         public void ListaTrabajadores()
         {
@@ -45,7 +48,9 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                         Colaborador c = new Colaborador();
                         c.dni = reader["dni"].ToString();
                         c.nombres = reader["nombres"].ToString();
-                        dgvlista1.Rows.Add(c.dni, c.nombres, false);
+                        c.apellidoPaterno = reader["apel_paterno"].ToString();
+                        c.apellidoMaterno = reader["apel_materno"].ToString();
+                        dgvlista1.Rows.Add(c.dni, c.nombres+" "+c.apellidoPaterno + " " + c.apellidoMaterno, false);
                     }
                     lblnrotrab1.Text = dgvlista1.RowCount.ToString();
                 }
@@ -63,6 +68,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         {
             lblidgrupo.Text = FJornalTurno.li_idgrupo.ToString();
             lblgrupo.Text = FJornalTurno.ls_grupo_desc.ToString();
+            estado_transferencia = false;
         }
 
         void Buscar_dni(string ls_dni) 
@@ -113,6 +119,20 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                 lblnrotrab2.Text = dgvlista2.RowCount.ToString();
             }
             
+        }
+
+        private void btntrasladar_Click(object sender, EventArgs e)
+        {
+            lista_datos = new List<Lista_transferir_trab>();
+            foreach (DataGridViewRow f in dgvlista2.Rows)
+            {
+                d = new Lista_transferir_trab();
+                d.dni =f.Cells[0].Value.ToString();
+                d.trabajador = f.Cells[1].Value.ToString();
+                lista_datos.Add(d);
+            }
+            estado_transferencia = true;
+            Close();
         }
     }
 }
