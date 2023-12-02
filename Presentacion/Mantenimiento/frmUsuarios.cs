@@ -13,7 +13,6 @@ using Microsoft.VisualBasic.CompilerServices;
 using _3mpacador4;
 using _3mpacador4.Logica;
 using Devart.Data.MySql;
-using NPOI.SS.Formula.Functions;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
@@ -24,15 +23,14 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         public frmUsuarios()
         {
             InitializeComponent();
-            mostrarusuario();
-            
+            mostrarusuarios();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             frmUsuarios2 F = new frmUsuarios2();
             F.ShowDialog();
-            mostrarusuario();
+            mostrarusuarios();
         }
        
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -45,7 +43,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             this.Close();
         } 
 
-        public void mostrarusuario()
+        public void mostrarusuarios()
         {
            
                 MySqlCommand comando;
@@ -75,10 +73,12 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                         withBlock.DataSource = null;
                     }
                 }
+
                 ConexionGral.desconectar();
-                } catch (Exception ex)
+                } 
+                catch (Exception ex)
                 {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
         }
 
@@ -96,7 +96,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 editForm.idUsuarioedit = usuarioId;
 
                 editForm.ShowDialog();
-                mostrarusuario();
+                mostrarusuarios();
             }
 
             if (datalistado.Columns[e.ColumnIndex].Name == "Eliminar")
@@ -106,7 +106,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 if (r == DialogResult.OK)
                 {
                     EliminarUsuario(usuarioId);
-                    mostrarusuario();
+                    mostrarusuarios();
                 }
             }
         }

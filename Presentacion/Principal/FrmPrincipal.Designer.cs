@@ -44,6 +44,7 @@
             this.btnPuertoSerie = new System.Windows.Forms.Button();
             this.btnSistema = new System.Windows.Forms.Button();
             this.panelReportes = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
@@ -69,7 +70,7 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnColaboradores = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -113,6 +114,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panel1.Controls.Add(this.btnColaboradores);
             this.panel1.Controls.Add(this.btnUsuarios);
             this.panel1.Controls.Add(this.btnAcopiador);
             this.panel1.Controls.Add(this.btnProductores);
@@ -315,6 +317,23 @@
             this.panelReportes.Name = "panelReportes";
             this.panelReportes.Size = new System.Drawing.Size(124, 183);
             this.panelReportes.TabIndex = 9;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.Color.LightGray;
+            this.button1.Location = new System.Drawing.Point(0, 132);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(124, 33);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Tablero Trazabilidad";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button10
             // 
@@ -596,22 +615,22 @@
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
             // 
-            // button1
+            // btnColaboradores
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.LightGray;
-            this.button1.Location = new System.Drawing.Point(0, 132);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(124, 33);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Tablero Trazabilidad";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnColaboradores.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnColaboradores.FlatAppearance.BorderSize = 0;
+            this.btnColaboradores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnColaboradores.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnColaboradores.ForeColor = System.Drawing.Color.LightGray;
+            this.btnColaboradores.Location = new System.Drawing.Point(0, 99);
+            this.btnColaboradores.Name = "btnColaboradores";
+            this.btnColaboradores.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnColaboradores.Size = new System.Drawing.Size(124, 33);
+            this.btnColaboradores.TabIndex = 16;
+            this.btnColaboradores.Text = "Colaboradores";
+            this.btnColaboradores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnColaboradores.UseVisualStyleBackColor = true;
+            this.btnColaboradores.Click += new System.EventHandler(this.btnColaboradores_Click);
             // 
             // FrmPrincipal
             // 
@@ -683,5 +702,6 @@
         private System.Windows.Forms.Button btnProductores;
         private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnColaboradores;
     }
 }

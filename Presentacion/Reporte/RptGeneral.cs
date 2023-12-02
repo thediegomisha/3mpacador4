@@ -56,8 +56,8 @@ namespace _3mpacador4.Presentacion.Reporte
             mostrarMetodo();
             mostrarDestino();
             lblpuntero.Visible  = false;
-            
         }
+
         private void comboboxgrupo()
         {
             cb_cliente.Enabled= false;
@@ -170,7 +170,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 cb_variedad.Enabled = false;
             }
         }
-
+        
         private void chkmetodo_CheckedChanged(object sender, EventArgs e)
         {
             if(chkmetodo.Checked == true)
@@ -221,16 +221,19 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void chk_acopiador_CheckedChanged(object sender, EventArgs e)
         {
-
-            if (chk_acopiador .Checked == true)
+            if (chk_acopiador.Checked == true)
             {
-                cbAcopiador .Enabled = true;
+                cbAcopiador.Enabled = true;
+                mostrarAcopiador();
             }
             else
             {
                 cbAcopiador.Enabled = false;
+                cbAcopiador.DataSource = null;
             }
         }
+
+
 
         private void mostrarclientes()
         {
@@ -278,7 +281,7 @@ namespace _3mpacador4.Presentacion.Reporte
             string bandera = "null";
             string dtinicio = "null";
             string dtfin = "null";
-
+            
 
             int iniciocadena;
 
@@ -298,13 +301,29 @@ namespace _3mpacador4.Presentacion.Reporte
                     dtinicio = "p_fechainicio";
                     dtfin = "p_fechafin";
                 }
+                else if (chklote.Checked == true)
+                {
+                    procedimientoalmacenado = "usp_tblticketpesaje_Lote";
+                    bandera = "p_numlote";
+                    comando = new MySqlCommand(procedimientoalmacenado, ConexionGral.conexion);
+                    comando.CommandType = (CommandType)4;
+                    comando.Parameters.AddWithValue(bandera, MySqlType.Int).Value = Convert.ToInt32(txt_lote.Text);
+                }
+
                 else if (chkcliente.Checked == true)
                 {
                     procedimientoalmacenado = "usp_tblticketpesaje_Exportador";
                     iniciocadena = cb_cliente.Text.IndexOf('-');
                     flag.Text = cb_cliente.Text.Substring(0, iniciocadena);
                     bandera = "p_idcliente";                   
-                }             
+                }
+                else if (chk_acopiador.Checked == true)
+                {
+                    procedimientoalmacenado = "nose";
+                    iniciocadena = cbAcopiador.Text.IndexOf('-');
+                    flag.Text = cbAcopiador.Text.Substring(0, iniciocadena);
+                    bandera = "p_acopiador";
+                }
                 else if (chkproductor.Checked == true)
                 {
                     procedimientoalmacenado = "usp_tblticketpesaje_Productor";
@@ -314,7 +333,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 }
                 else if (chkvariedad.Checked == true)
                 {
-                    procedimientoalmacenado = "usp_tblticketpesaje_Variedad";                  
+                    procedimientoalmacenado = "usp_tblticketpesaje_Variedad";                 
                     flag.Text = cb_variedad.SelectedValue.ToString();
                     bandera = "p_variedad";
                 }
@@ -983,7 +1002,6 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DisplayMember = "razon_social";
                         withBlock.ValueMember = "ruc";
                         withBlock.SelectedIndex = -1;
-                        //   poblarPais();
                     }
                     else
                     {

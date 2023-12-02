@@ -7,7 +7,6 @@ using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,14 +15,11 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 {
     public partial class frmEditUsuarios : Form
     {
-
         public int idUsuarioedit { get; set; }
-        //  int idUsuario;
+
         public frmEditUsuarios()
         {
             InitializeComponent();
-            
-            //UpdateUsuario(idUsuario);
 
         }
 

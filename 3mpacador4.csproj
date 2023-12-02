@@ -191,6 +191,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidad\Colaborador.cs" />
     <Compile Include="Logica\ClConexion.cs" />
     <Compile Include="Logica\ConexionGral.cs" />
     <Compile Include="Logica\ConnectionStringManager.cs" />
@@ -205,6 +206,24 @@
     </Compile>
     <Compile Include="Presentacion\Mantenimiento\frmAcopiador2.Designer.cs">
       <DependentUpon>frmAcopiador2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmColaborador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmColaborador.designer.cs">
+      <DependentUpon>frmColaborador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmColaborador2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmColaborador2.designer.cs">
+      <DependentUpon>frmColaborador2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmEditClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmEditClientes.Designer.cs">
+      <DependentUpon>frmEditClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Mantenimiento\frmMatCosecha.cs">
       <SubType>Form</SubType>
@@ -400,6 +419,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmAcopiador2.resx">
       <DependentUpon>frmAcopiador2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmColaborador2.resx">
+      <DependentUpon>frmColaborador2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmEditClientes.resx">
+      <DependentUpon>frmEditClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmMatCosecha.resx">
       <DependentUpon>frmMatCosecha.cs</DependentUpon>
