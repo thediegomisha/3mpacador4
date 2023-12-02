@@ -66,7 +66,7 @@
             this.btnprobar.TabIndex = 6;
             this.btnprobar.Text = "&Probar Conexion";
             this.btnprobar.UseVisualStyleBackColor = true;
-            this.btnprobar.Click += new System.EventHandler(this.btnprobar_Click);
+           // this.btnprobar.Click += new System.EventHandler(this.btnprobar_Click);
             this.btnprobar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnprobar_KeyPress);
             // 
             // Label5

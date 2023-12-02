@@ -136,26 +136,26 @@ namespace _3mpacador4.Presentacion.Sistema
             }
         }
 
-        private void btnprobar_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(this.txtservidor.Text) & !string.IsNullOrEmpty(this.txttoken.Text))
-            {
-                string nuevaconexion = "server=" + this.txtservidor.Text + ";user=" + this.txttoken.Text + " ;Connect Timeout=";
+        //private void btnprobar_Click(object sender, EventArgs e)
+        //{
+        //    if (!string.IsNullOrEmpty(this.txtservidor.Text) & !string.IsNullOrEmpty(this.txttoken.Text))
+        //    {
+        //        string nuevaconexion = "server=" + this.txtservidor.Text + ";user=" + this.txttoken.Text + " ;Connect Timeout=";
 
-                if (claseconnect.ProbarConexion(nuevaconexion))
-                {
-                    MessageBox.Show("Conexion exitosa", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Conexion erronea", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Todos los datos son necesarios", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
+        //        if (claseconnect.ProbarConexion(nuevaconexion))
+        //        {
+        //            MessageBox.Show("Conexion exitosa", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Conexion erronea", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Todos los datos son necesarios", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //    }
+        //}
 
         private void FrmConexion_KeyDown(object sender, KeyEventArgs e)
         {
