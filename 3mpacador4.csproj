@@ -367,6 +367,12 @@
     <Compile Include="Presentacion\Sistema\FrmPuertos.Designer.cs">
       <DependentUpon>FrmPuertos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Sistema\FrmReniecc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Sistema\FrmReniecc.Designer.cs">
+      <DependentUpon>FrmReniecc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Trazabilidad\FImprimirQR.cs">
       <SubType>Form</SubType>
     </Compile>

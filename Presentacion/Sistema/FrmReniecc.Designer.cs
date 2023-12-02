@@ -125,7 +125,7 @@
             // 
             this.txtservidor.Location = new System.Drawing.Point(84, 24);
             this.txtservidor.Name = "txtservidor";
-            this.txtservidor.Size = new System.Drawing.Size(246, 22);
+            this.txtservidor.Size = new System.Drawing.Size(292, 22);
             this.txtservidor.TabIndex = 0;
             this.txtservidor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtservidor_KeyPress);
             // 
@@ -133,7 +133,7 @@
             // 
             this.txttoken.Location = new System.Drawing.Point(84, 52);
             this.txttoken.Name = "txttoken";
-            this.txttoken.Size = new System.Drawing.Size(246, 22);
+            this.txttoken.Size = new System.Drawing.Size(292, 22);
             this.txttoken.TabIndex = 1;
             // 
             // btnGuardar

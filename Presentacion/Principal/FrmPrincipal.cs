@@ -255,6 +255,13 @@ namespace _3mpacador4.Presentacion
             ocultarSubMenu();
             AbrirFormularioHijo(new RptTrazabilidad());
         }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            FrmReniec form = new FrmReniec();
+            form.ShowDialog();
+        }
     }
 }
 
