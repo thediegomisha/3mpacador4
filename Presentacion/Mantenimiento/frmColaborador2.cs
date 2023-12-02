@@ -38,9 +38,9 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 estado = "0";
             }
 
-        return estado;
+            return estado;
         }
-               
+
         private void InsertarColaborador()
         {
             try
@@ -164,7 +164,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 comando.ExecuteNonQuery();
                 MessageBox.Show("COLABORADOR ACTUALIZADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarCampos();
-                ConexionGral.desconectar();                
+                ConexionGral.desconectar();
                 return;
 
             }
@@ -180,7 +180,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             {
                 txtdni.Focus();
                 txtdni.Text = string.Empty;
-                txtnombres.Text = string.Empty;               
+                txtnombres.Text = string.Empty;
                 txtapel_paterno.Text = string.Empty;
                 txtapel_materno.Text = string.Empty;
                 //cbxestado.Checked = false;
@@ -202,7 +202,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             InsertarColaborador();
             this.Close();
         }
-     
+
 
         private void frmPersonaJuridica_Load(object sender, EventArgs e)
         {
@@ -234,7 +234,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                         cbxestado.Checked = false;
                     }
                 }
-            }            
+            }
         }
 
         private void cbxestado_CheckedChanged(object sender, EventArgs e)
@@ -253,7 +253,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         {
             ActualizarColaborador();
             this.Close();
-        }        
+        }
 
         private void cbxreniec_CheckedChanged(object sender, EventArgs e)
         {
@@ -293,7 +293,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 MessageBox.Show(ex.Message, "Algo Salio Mal ConsultaDNI() :( ");
                 throw;
             }
-            
+
         }
 
         public async Task<string> ConsultaDNI(string ls_dni)
