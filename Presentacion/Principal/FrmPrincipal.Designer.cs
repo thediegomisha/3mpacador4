@@ -70,7 +70,6 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnColaboradores = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -114,7 +113,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.panel1.Controls.Add(this.btnColaboradores);
             this.panel1.Controls.Add(this.btnUsuarios);
             this.panel1.Controls.Add(this.btnAcopiador);
             this.panel1.Controls.Add(this.btnProductores);
@@ -615,23 +613,6 @@
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
             // 
-            // btnColaboradores
-            // 
-            this.btnColaboradores.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnColaboradores.FlatAppearance.BorderSize = 0;
-            this.btnColaboradores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnColaboradores.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnColaboradores.ForeColor = System.Drawing.Color.LightGray;
-            this.btnColaboradores.Location = new System.Drawing.Point(0, 99);
-            this.btnColaboradores.Name = "btnColaboradores";
-            this.btnColaboradores.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnColaboradores.Size = new System.Drawing.Size(124, 33);
-            this.btnColaboradores.TabIndex = 16;
-            this.btnColaboradores.Text = "Colaboradores";
-            this.btnColaboradores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnColaboradores.UseVisualStyleBackColor = true;
-            this.btnColaboradores.Click += new System.EventHandler(this.btnColaboradores_Click);
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -702,6 +683,5 @@
         private System.Windows.Forms.Button btnProductores;
         private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnColaboradores;
     }
 }

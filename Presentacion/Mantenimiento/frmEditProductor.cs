@@ -13,18 +13,18 @@ using System.Windows.Forms;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
-    public partial class frmEditClientes : Form
+    public partial class frmEditProductor : Form
     {
-        public int idClienteedit { get; set; }
+        public int idProductoredit { get; set; }
 
-        public frmEditClientes()
+        public frmEditProductor()
         {
             InitializeComponent();
 
         }
 
 
-        public void CargarDatosCliente(int idCliente)
+        public void CargarDatosProductor(int idProductor)
         {
             try
             {
@@ -33,25 +33,26 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     ConexionGral.conectar();
                 }
 
-                MySqlCommand comando = new MySqlCommand("usp_tblcliente_Mostrar", ConexionGral.conexion);
+                MySqlCommand comando = new MySqlCommand("usp_tblproductor_Mostrar", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("p_idCliente", idCliente);
+                comando.Parameters.AddWithValue("p_idProductor", idProductor);
 
                 using (MySqlDataReader reader = comando.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        txtRazonSocial.Text = reader["razon_social"].ToString();
-                        txtruc.Text = reader["ruc"].ToString();
-                        txtdireccion.Text = reader["direccion"].ToString();
+                        txtRazonSocial.Text = reader["razonsocial"].ToString();
+                        txtregion.Text = reader["region"].ToString();
+                        txtnombreLugar.Text = reader["nombrelugar"].ToString();
                     }
                 }
+
 
                 ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error al cargar datos del cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Error al cargar datos del productor: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -60,9 +61,6 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             try
             {
                 txtRazonSocial.Text = String.Empty;
-                txtruc.Text = string.Empty;
-                txtdireccion.Text = string.Empty;
-
             }
             catch (Exception)
             {
@@ -85,44 +83,33 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     ConexionGral.conectar();
                 }
 
-                comando = new MySqlCommand("usp_tblcliente_update", ConexionGral.conexion);
+                comando = new MySqlCommand("usp_tblproductor_update", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
 
-                comando.Parameters.AddWithValue("p_idCliente", idClienteedit);
+                comando.Parameters.AddWithValue("p_idProductor", idProductoredit);
                 comando.Parameters.AddWithValue("p_razon_social", txtRazonSocial.Text);
-                comando.Parameters.AddWithValue("p_ruc", txtruc.Text);
-                comando.Parameters.AddWithValue("p_direccion", txtdireccion.Text);
+                comando.Parameters.AddWithValue("p_region", txtregion.Text);
+                comando.Parameters.AddWithValue("p_nombrelugar", txtnombreLugar.Text);
+
 
                 int filasAfectadas = comando.ExecuteNonQuery();
 
                 if (filasAfectadas > 0)
                 {
-                    MessageBox.Show("Cliente actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Productor actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else
-                {//armmandrflg;¡rkg = rrk
-                    MessageBox.Show("No se pudo actualizar el cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                {
+                    MessageBox.Show("No se pudo actualizar el productor.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al actualizar los datos del cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al actualizar los datos del productor: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
-        private void frmPersonaJuridica_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-
-
     }
 }

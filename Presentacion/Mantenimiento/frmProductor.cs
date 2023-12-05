@@ -18,10 +18,12 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 {
     public partial class frmProductor : Form
     {
+        public int productorId { get; private set; }
+
         public frmProductor()
         {
             InitializeComponent();
-            mostrarclientes();
+            mostrarproductores();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -41,19 +43,19 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             this.Close();
         } 
 
-        private void mostrarclientes()
+        private void mostrarproductores()
         {
            
-                MySqlCommand comando;
-                try
+            MySqlCommand comando;
+            try
+            {
+                if (ConexionGral.conexion.State == ConnectionState.Closed)
                 {
-                    if (ConexionGral.conexion.State == ConnectionState.Closed)
-                    {
-                        ConexionGral.conectar();
-                    }
+                    ConexionGral.conectar();
+                }
 
-                    comando = new MySqlCommand("usp_tblproductor_Select", ConexionGral.conexion);
-                    comando.CommandType = (CommandType)4;
+                comando = new MySqlCommand("usp_tblproductor_Select", ConexionGral.conexion);
+                comando.CommandType = (CommandType)4;
 
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
@@ -88,5 +90,80 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         }
 
+        private void datalistado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (datalistado.Columns[e.ColumnIndex].Name == "Editar")
+            {
+                productorId = Convert.ToInt32(datalistado.CurrentRow.Cells["idproductor"].Value.ToString());
+
+                frmEditProductor editForm = new frmEditProductor();
+                editForm.CargarDatosProductor(productorId);
+
+                editForm.idProductoredit = productorId;
+
+                editForm.ShowDialog();
+                mostrarproductores();
+            }
+
+            if (datalistado.Columns[e.ColumnIndex].Name == "Eliminar" && e.RowIndex >= 0)
+            {
+                DialogResult c = MessageBox.Show("¿Está seguro que desea ELIMINAR este productor?", "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+
+                if (c == DialogResult.OK)
+                {
+                    if (datalistado.CurrentRow.Cells["idproductor"].Value != null)
+                    {
+                        productorId = Convert.ToInt32(datalistado.CurrentRow.Cells["idproductor"].Value.ToString());
+                        EliminarProductor(productorId);
+                        mostrarproductores();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se puede eliminar una fila sin ID asignado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void EliminarProductor(int idProductor)
+        {
+            MySqlCommand comando = null;
+
+            try
+            {
+                if (ConexionGral.conexion.State == ConnectionState.Closed)
+                {
+                    ConexionGral.conectar();
+                }
+
+                comando = new MySqlCommand("DELETE FROM tblproductor WHERE idproductor = @idProductor", ConexionGral.conexion);
+                comando.Parameters.AddWithValue("@idProductor", idProductor);
+
+                int filasAfectadas = comando.ExecuteNonQuery();
+
+                if (filasAfectadas > 0)
+                {
+                    MessageBox.Show("Productor eliminado exitosamente.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar el Productor.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error al eliminar el productor: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Para que no moleste la excepción JAJAJA.
+                if (comando != null)
+                {
+                    comando.Dispose();
+                }
+
+                ConexionGral.desconectar();
+            }
+        }
     }
 }

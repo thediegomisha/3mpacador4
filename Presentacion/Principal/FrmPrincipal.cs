@@ -250,13 +250,8 @@ namespace _3mpacador4.Presentacion
             AbrirFormularioHijo(new TblTrazabilidad());
         }
 
-        private void btnColaboradores_Click(object sender, EventArgs e)
-        {
-            ocultarSubMenu();
-            AbrirFormularioHijo(new frmColaborador());
-        }
     }
-    }
+}
 
 
 

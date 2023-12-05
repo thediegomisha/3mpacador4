@@ -201,23 +201,17 @@
     <Compile Include="Presentacion\Mantenimiento\frmAcopiador.Designer.cs">
       <DependentUpon>frmAcopiador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmEditAcopiador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmEditAcopiador.Designer.cs">
+      <DependentUpon>frmEditAcopiador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Mantenimiento\frmAcopiador2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentacion\Mantenimiento\frmAcopiador2.Designer.cs">
       <DependentUpon>frmAcopiador2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmColaborador.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmColaborador.designer.cs">
-      <DependentUpon>frmColaborador.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmColaborador2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmColaborador2.designer.cs">
-      <DependentUpon>frmColaborador2.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Mantenimiento\frmEditClientes.cs">
       <SubType>Form</SubType>
@@ -230,6 +224,12 @@
     </Compile>
     <Compile Include="Presentacion\Mantenimiento\frmMatCosecha.Designer.cs">
       <DependentUpon>frmMatCosecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmEditProductor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmEditProductor.Designer.cs">
+      <DependentUpon>frmEditProductor.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Mantenimiento\frmServicio.cs">
       <SubType>Form</SubType>
@@ -417,17 +417,20 @@
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmAcopiador.resx">
       <DependentUpon>frmAcopiador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmEditAcopiador.resx">
+      <DependentUpon>frmEditAcopiador.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmAcopiador2.resx">
       <DependentUpon>frmAcopiador2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmColaborador2.resx">
-      <DependentUpon>frmColaborador2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmEditClientes.resx">
       <DependentUpon>frmEditClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmMatCosecha.resx">
       <DependentUpon>frmMatCosecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmEditProductor.resx">
+      <DependentUpon>frmEditProductor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmServicio.resx">
       <DependentUpon>frmServicio.cs</DependentUpon>
