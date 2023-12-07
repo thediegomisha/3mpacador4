@@ -70,14 +70,27 @@
     <ApplicationIcon>palta.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="CircularProgressBar, Version=2.8.0.16, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
       <HintPath>packages\CircularProgressBar.2.8.0.16\lib\net40\CircularProgressBar.dll</HintPath>
     </Reference>
     <Reference Include="HarfBuzzSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <HintPath>packages\HarfBuzzSharp.7.3.0\lib\net462\HarfBuzzSharp.dll</HintPath>
     </Reference>
+    <Reference Include="GlassButton, Version=1.3.0.0, Culture=neutral, PublicKeyToken=2e983e6e44d23a4f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Desktop\enhancedglassbutton_dll_for_vs_toolbox\GlassButton.dll</HintPath>
+    </Reference>
+    <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\QrCode.Net.0.4.0.0\lib\net45\Gma.QrCodeNet.Encoding.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
@@ -94,6 +107,9 @@
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.Win32.Registry, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Win32.Registry.4.5.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NPOI, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\DotNetCore.NPOI.Core.1.2.3\lib\net461\NPOI.dll</HintPath>
@@ -158,6 +174,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidad\Colaborador.cs" />
+    <Compile Include="Entidad\Grupo_turno_detalle.cs" />
+    <Compile Include="Entidad\Grupo_turno.cs" />
+    <Compile Include="Entidad\Lista_transferir_trab.cs" />
     <Compile Include="Logica\ClConexion.cs" />
     <Compile Include="Logica\ConexionGral.cs" />
     <Compile Include="Logica\ConnectionStringManager.cs" />
@@ -172,6 +192,18 @@
     </Compile>
     <Compile Include="Presentacion\Mantenimiento\frmAcopiador2.Designer.cs">
       <DependentUpon>frmAcopiador2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmColaborador2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmColaborador2.Designer.cs">
+      <DependentUpon>frmColaborador2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmColaborador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmColaborador.Designer.cs">
+      <DependentUpon>frmColaborador.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Mantenimiento\frmMatCosecha.cs">
       <SubType>Form</SubType>
@@ -335,6 +367,24 @@
     <Compile Include="Presentacion\Sistema\FrmPuertos.Designer.cs">
       <DependentUpon>FrmPuertos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Trazabilidad\FImprimirQR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Trazabilidad\FImprimirQR.Designer.cs">
+      <DependentUpon>FImprimirQR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Trazabilidad\FJornalTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Trazabilidad\FJornalTurno.Designer.cs">
+      <DependentUpon>FJornalTurno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Trazabilidad\FTraslado_trabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Trazabilidad\FTraslado_trabajador.Designer.cs">
+      <DependentUpon>FTraslado_trabajador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
@@ -343,6 +393,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmAcopiador2.resx">
       <DependentUpon>frmAcopiador2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmColaborador2.resx">
+      <DependentUpon>frmColaborador2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmColaborador.resx">
+      <DependentUpon>frmColaborador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmMatCosecha.resx">
       <DependentUpon>frmMatCosecha.cs</DependentUpon>
@@ -423,6 +479,15 @@
     <EmbeddedResource Include="Presentacion\Sistema\FrmPuertos.resx">
       <DependentUpon>FrmPuertos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Trazabilidad\FImprimirQR.resx">
+      <DependentUpon>FImprimirQR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Trazabilidad\FJornalTurno.resx">
+      <DependentUpon>FJornalTurno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Trazabilidad\FTraslado_trabajador.resx">
+      <DependentUpon>FTraslado_trabajador.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -489,6 +554,10 @@
   <ItemGroup>
     <Content Include="NOTICE.TXT" />
     <Content Include="palta.ico" />
+    <None Include="Resources\eliminar.jpg" />
+    <None Include="Resources\edit.jpg" />
+    <None Include="Resources\qr.png" />
+    <None Include="Resources\reniec.png" />
     <None Include="Resources\cargando.gif" />
     <None Include="Resources\Image1.bmp" />
   </ItemGroup>
@@ -520,6 +589,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\HarfBuzzSharp.NativeAssets.macOS.7.3.0\build\net462\HarfBuzzSharp.NativeAssets.macOS.targets" Condition="Exists('packages\HarfBuzzSharp.NativeAssets.macOS.7.3.0\build\net462\HarfBuzzSharp.NativeAssets.macOS.targets')" />

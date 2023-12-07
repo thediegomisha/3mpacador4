@@ -14,6 +14,7 @@ using _3mpacador4.Presentacion;
 using _3mpacador4.Presentacion.Mantenimiento;
 using _3mpacador4.Presentacion.Reporte;
 using _3mpacador4.Presentacion.Sistema;
+using _3mpacador4.Presentacion.Trazabilidad;
 using _3mpacador4.Properties;
 using Microsoft.VisualBasic;
 
@@ -189,8 +190,7 @@ namespace _3mpacador4.Presentacion
 
        private void button11_Click(object sender, EventArgs e)
         {
-            ocultarSubMenu();
-            AbrirFormularioHijo(new RptTrazabilidad());
+            
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -237,8 +237,26 @@ namespace _3mpacador4.Presentacion
             ocultarSubMenu();
             AbrirFormularioHijo(new frmProductor());
         }
+
+        private void btnColaborador_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new frmColaborador());
+        }        
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new FJornalTurno());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new RptTrazabilidad());
+        }
     }
-    }
+}
 
 
 

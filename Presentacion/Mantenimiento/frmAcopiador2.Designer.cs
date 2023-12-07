@@ -50,8 +50,9 @@
             this.Panel1.Controls.Add(this.Label1);
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
+            this.Panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(718, 41);
+            this.Panel1.Size = new System.Drawing.Size(957, 50);
             this.Panel1.TabIndex = 32;
             // 
             // Label1
@@ -59,9 +60,10 @@
             this.Label1.AutoSize = true;
             this.Label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.White;
-            this.Label1.Location = new System.Drawing.Point(12, 9);
+            this.Label1.Location = new System.Drawing.Point(16, 11);
+            this.Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(189, 21);
+            this.Label1.Size = new System.Drawing.Size(234, 28);
             this.Label1.TabIndex = 0;
             this.Label1.Text = "Ingreso de Acopiadores";
             // 
@@ -69,27 +71,30 @@
             // 
             this.Label4.AutoSize = true;
             this.Label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.Location = new System.Drawing.Point(26, 70);
+            this.Label4.Location = new System.Drawing.Point(35, 86);
+            this.Label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(91, 21);
+            this.Label4.Size = new System.Drawing.Size(111, 28);
             this.Label4.TabIndex = 41;
             this.Label4.Text = "DIRECCION";
             // 
             // txtruc
             // 
             this.txtruc.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtruc.Location = new System.Drawing.Point(366, 35);
+            this.txtruc.Location = new System.Drawing.Point(488, 43);
+            this.txtruc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtruc.Name = "txtruc";
-            this.txtruc.Size = new System.Drawing.Size(311, 29);
+            this.txtruc.Size = new System.Drawing.Size(413, 34);
             this.txtruc.TabIndex = 40;
             // 
             // btnCancelar
             // 
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(610, 258);
+            this.btnCancelar.Location = new System.Drawing.Point(813, 318);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(98, 29);
+            this.btnCancelar.Size = new System.Drawing.Size(131, 36);
             this.btnCancelar.TabIndex = 36;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -99,9 +104,10 @@
             // 
             this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(331, 258);
+            this.btnGuardar.Location = new System.Drawing.Point(441, 318);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(82, 29);
+            this.btnGuardar.Size = new System.Drawing.Size(109, 36);
             this.btnGuardar.TabIndex = 37;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -110,18 +116,20 @@
             // txtRazonSocial
             // 
             this.txtRazonSocial.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRazonSocial.Location = new System.Drawing.Point(31, 35);
+            this.txtRazonSocial.Location = new System.Drawing.Point(41, 43);
+            this.txtRazonSocial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(311, 29);
+            this.txtRazonSocial.Size = new System.Drawing.Size(413, 34);
             this.txtRazonSocial.TabIndex = 35;
             // 
             // Label3
             // 
             this.Label3.AutoSize = true;
             this.Label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(362, 11);
+            this.Label3.Location = new System.Drawing.Point(483, 14);
+            this.Label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(50, 21);
+            this.Label3.Size = new System.Drawing.Size(62, 28);
             this.Label3.TabIndex = 33;
             this.Label3.Text = "R.U.C.";
             // 
@@ -129,9 +137,10 @@
             // 
             this.Label2.AutoSize = true;
             this.Label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(27, 11);
+            this.Label2.Location = new System.Drawing.Point(36, 14);
+            this.Label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(120, 21);
+            this.Label2.Size = new System.Drawing.Size(149, 28);
             this.Label2.TabIndex = 34;
             this.Label2.Text = "RAZON SOCIAL";
             // 
@@ -139,12 +148,14 @@
             // 
             this.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnActualizar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.Location = new System.Drawing.Point(449, 258);
+            this.btnActualizar.Location = new System.Drawing.Point(599, 318);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(82, 29);
+            this.btnActualizar.Size = new System.Drawing.Size(109, 36);
             this.btnActualizar.TabIndex = 38;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // txtdireccion
             // 
@@ -152,16 +163,18 @@
             // 
             // 
             this.txtdireccion.CustomButton.Image = null;
-            this.txtdireccion.CustomButton.Location = new System.Drawing.Point(282, 2);
+            this.txtdireccion.CustomButton.Location = new System.Drawing.Point(503, 1);
+            this.txtdireccion.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtdireccion.CustomButton.Name = "";
-            this.txtdireccion.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.txtdireccion.CustomButton.Size = new System.Drawing.Size(47, 43);
             this.txtdireccion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtdireccion.CustomButton.TabIndex = 1;
             this.txtdireccion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtdireccion.CustomButton.UseSelectable = true;
             this.txtdireccion.CustomButton.Visible = false;
             this.txtdireccion.Lines = new string[0];
-            this.txtdireccion.Location = new System.Drawing.Point(29, 94);
+            this.txtdireccion.Location = new System.Drawing.Point(39, 116);
+            this.txtdireccion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtdireccion.MaxLength = 32767;
             this.txtdireccion.Name = "txtdireccion";
             this.txtdireccion.PasswordChar = '\0';
@@ -171,7 +184,7 @@
             this.txtdireccion.SelectionLength = 0;
             this.txtdireccion.SelectionStart = 0;
             this.txtdireccion.ShortcutsEnabled = true;
-            this.txtdireccion.Size = new System.Drawing.Size(310, 30);
+            this.txtdireccion.Size = new System.Drawing.Size(413, 37);
             this.txtdireccion.TabIndex = 42;
             this.txtdireccion.UseSelectable = true;
             this.txtdireccion.WaterMark = "Ej: Jiron Santa Rosa 711";
@@ -186,25 +199,26 @@
             this.panel2.Controls.Add(this.txtRazonSocial);
             this.panel2.Controls.Add(this.Label3);
             this.panel2.Controls.Add(this.Label2);
-            this.panel2.Location = new System.Drawing.Point(-1, 48);
+            this.panel2.Location = new System.Drawing.Point(-1, 59);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(718, 204);
+            this.panel2.Size = new System.Drawing.Size(957, 251);
             this.panel2.TabIndex = 59;
             // 
             // frmAcopiador2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 293);
+            this.ClientSize = new System.Drawing.Size(957, 361);
             this.ControlBox = false;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Panel1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnActualizar);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmAcopiador2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-//            this.Load += new System.EventHandler(this.frmPersonaJuridica_Load);
             this.Panel1.ResumeLayout(false);
             this.Panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
