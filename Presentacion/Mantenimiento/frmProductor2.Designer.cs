@@ -168,7 +168,7 @@
             this.txtregion.MaxLength = 32767;
             this.txtregion.Name = "txtregion";
             this.txtregion.PasswordChar = '\0';
-            this.txtregion.PromptText = "Ej: Jiron Santa Rosa 711";
+            this.txtregion.WaterMark = "Ej: Jiron Santa Rosa 711";
             this.txtregion.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtregion.SelectedText = "";
             this.txtregion.SelectionLength = 0;
