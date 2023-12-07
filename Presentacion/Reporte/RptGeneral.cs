@@ -284,8 +284,8 @@ namespace _3mpacador4.Presentacion.Reporte
                 if (chkcliente.Checked == true && chkf_ing.Checked  == true)
                 {
                     procedimientoalmacenado = "usp_tblticketpesaje_Exportador";
-                    iniciocadena = cb_cliente.Text.IndexOf('-');
-                    flag.Text = cb_cliente.Text.Substring(0, iniciocadena);
+                    //iniciocadena = cb_cliente.Text.IndexOf('-');
+                    //flag.Text = cb_cliente.Text.Substring(0, iniciocadena);
                     bandera = "p_idcliente";
                     dtinicio = "p_fechainicio";
                     dtfin = "p_fechafin";
@@ -293,10 +293,10 @@ namespace _3mpacador4.Presentacion.Reporte
                 else if (chkcliente.Checked == true)
                 {
                     procedimientoalmacenado = "usp_tblticketpesaje_Exportador";
-                    iniciocadena = cb_cliente.Text.IndexOf('-');
-                    flag.Text = cb_cliente.Text.Substring(0, iniciocadena);
+                  //  iniciocadena = cb_cliente.Text.IndexOf('-');
+                  //  flag.Text = cb_cliente.Text.Substring(0, iniciocadena);
                     bandera = "p_idcliente";                   
-                }             
+                d}             
                 else if (chkproductor.Checked == true)
                 {
                     procedimientoalmacenado = "usp_tblticketpesaje_Productor";
