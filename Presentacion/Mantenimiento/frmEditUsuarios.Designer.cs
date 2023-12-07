@@ -213,6 +213,7 @@
             this.txtAcceso.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAcceso.Location = new System.Drawing.Point(366, 222);
             this.txtAcceso.Name = "txtAcceso";
+            this.txtAcceso.ReadOnly = true;
             this.txtAcceso.Size = new System.Drawing.Size(311, 29);
             this.txtAcceso.TabIndex = 52;
             // 

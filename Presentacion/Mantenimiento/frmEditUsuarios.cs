@@ -33,9 +33,9 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     ConexionGral.conectar();
                 }
 
-                MySqlCommand comando = new MySqlCommand("us_lista_usuarioid", ConexionGral.conexion);
+                MySqlCommand comando = new MySqlCommand("usp_tblusuario_Mostrar", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("p_idUsuario", idUsuario);
+                comando.Parameters.AddWithValue("p_idusuarios", idUsuario);
 
                 using (MySqlDataReader reader = comando.ExecuteReader())
                 {
@@ -48,7 +48,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                         txtTelefono.Text = reader["telefono"].ToString();
                         txtLogin.Text = reader["login"].ToString();
                         txtClave.Text = reader["clave"].ToString();
-                        //txtAcceso.Text = reader["acceso"].ToString();
+                        txtAcceso.Text = reader["acceso"].ToString();
                         txtNivel.Text = reader.GetInt32("nivel").ToString();
                     }
                 }
@@ -108,7 +108,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 comando = new MySqlCommand("usp_tbusuario_Update", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
 
-                comando.Parameters.AddWithValue("p_idUsuario", idUsuarioedit);
+                comando.Parameters.AddWithValue("p_idUsuarios", idUsuarioedit);
                 comando.Parameters.AddWithValue("p_nombres", txtNombres.Text);
                 comando.Parameters.AddWithValue("p_apaterno", txtaPaterno.Text);
                 comando.Parameters.AddWithValue("p_amaterno", txtaMaterno.Text);
