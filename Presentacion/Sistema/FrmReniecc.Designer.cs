@@ -48,7 +48,7 @@
             // 
             // PictureBox1
             // 
-            this.PictureBox1.ErrorImage = ((System.Drawing.Image)(resources.GetObject("PictureBox1.ErrorImage")));
+            this.PictureBox1.ErrorImage = null;
             this.PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox1.Image")));
             this.PictureBox1.Location = new System.Drawing.Point(199, 25);
             this.PictureBox1.Name = "PictureBox1";
@@ -66,7 +66,6 @@
             this.btnprobar.TabIndex = 6;
             this.btnprobar.Text = "&Probar Conexion";
             this.btnprobar.UseVisualStyleBackColor = true;
-           // this.btnprobar.Click += new System.EventHandler(this.btnprobar_Click);
             this.btnprobar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnprobar_KeyPress);
             // 
             // Label5

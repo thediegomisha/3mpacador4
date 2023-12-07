@@ -46,8 +46,8 @@
             this.cbxestado = new System.Windows.Forms.CheckBox();
             this.txtapel_materno = new MetroFramework.Controls.MetroTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtapel_paterno = new System.Windows.Forms.TextBox();
-            this.txtapel_materno = new System.Windows.Forms.TextBox();
+            //this.txtapel_paterno = new System.Windows.Forms.TextBox();
+            //this.txtapel_materno = new System.Windows.Forms.TextBox();
             this.Panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbreniec)).BeginInit();
@@ -360,7 +360,7 @@
         internal System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox cbxreniec;
         private System.Windows.Forms.PictureBox pbreniec;
-        internal System.Windows.Forms.TextBox txtapel_paterno;
-        internal System.Windows.Forms.TextBox txtapel_materno;
+        //internal System.Windows.Forms.TextBox txtapel_paterno;
+        //internal System.Windows.Forms.TextBox txtapel_materno;
     }
 }

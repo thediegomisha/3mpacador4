@@ -37,8 +37,9 @@ namespace _3mpacador4.Presentacion
             string nombre;
             string apaterno;
 
-          //     bool autenticado = Validarusuario(login, clave, out usuarioId, out nombre, out apaterno);
-            cargavalidada();
+               bool autenticado = Validarusuario(login, clave, out usuarioId, out nombre, out apaterno); // COMENTAR PARA UTILIZAR CON CONTRASEÑA
+
+          //  cargavalidada(); // DESCOMENTAR PARA UTILIZAR SIN CONTRASEÑA 
 
 
         }

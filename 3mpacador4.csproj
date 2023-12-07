@@ -485,6 +485,9 @@
     <EmbeddedResource Include="Presentacion\Sistema\FrmPuertos.resx">
       <DependentUpon>FrmPuertos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Sistema\FrmReniecc.resx">
+      <DependentUpon>FrmReniecc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Trazabilidad\FImprimirQR.resx">
       <DependentUpon>FImprimirQR.cs</DependentUpon>
     </EmbeddedResource>

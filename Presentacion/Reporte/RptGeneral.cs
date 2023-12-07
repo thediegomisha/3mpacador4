@@ -296,7 +296,7 @@ namespace _3mpacador4.Presentacion.Reporte
                   //  iniciocadena = cb_cliente.Text.IndexOf('-');
                   //  flag.Text = cb_cliente.Text.Substring(0, iniciocadena);
                     bandera = "p_idcliente";                   
-                d}             
+                }             
                 else if (chkproductor.Checked == true)
                 {
                     procedimientoalmacenado = "usp_tblticketpesaje_Productor";
