@@ -47,12 +47,16 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 comando.ExecuteNonQuery();
                 MessageBox.Show("TIPO DE SERVICIO REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
                 mostrarTipoServicio();
-                ConexionGral.desconectar();
+               // ConexionGral.desconectar();
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show("TIPO DE SERVICIO NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     throw;
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -88,7 +92,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
                 {
                     var withBlock = this.datalistado;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
                         withBlock.DataSource = datos;
@@ -100,12 +104,14 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                         withBlock.DataSource = null;
                     }
                 }
-
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 

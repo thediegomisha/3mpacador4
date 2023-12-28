@@ -240,7 +240,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.cb_cliente;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {   
                         withBlock.DataSource = datos;
                         withBlock.DisplayMember = "razon_social";
@@ -253,11 +253,15 @@ namespace _3mpacador4.Presentacion.Reporte
                     }
                 }
             //    OcultarAnimacionEspera();
-                ConexionGral.desconectar();
+               
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
         private void mostrarconsulta()
@@ -333,7 +337,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.datalistado;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();                        
                         withBlock.DataSource = datos;
@@ -349,12 +353,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         lblinfo1.Visible = true;
                     }
                 }
-
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -783,7 +789,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.datalistado2;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
                         withBlock.DataSource = datos;
@@ -800,12 +806,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         lblinfo2.Visible = true;                       
                     }
                 }
-
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
             return datos;
         }
@@ -832,7 +840,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.datalistado3;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
                         withBlock.DataSource = datos;
@@ -847,14 +855,15 @@ namespace _3mpacador4.Presentacion.Reporte
                         lblinfo2.Visible = true;                     
                     }
                 }
-
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            finally
+            {
+                ConexionGral.desconectar();
+            }
         }
         
         private void mostrarproductor()
@@ -876,7 +885,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.cb_productor;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         withBlock.DataSource = datos;
                         withBlock.DisplayMember = "RAZON SOCIAL";
@@ -889,11 +898,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -916,7 +928,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.cbAcopiador;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         withBlock.DataSource = datos;
                         withBlock.DisplayMember = "razon_social";
@@ -929,11 +941,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -956,7 +971,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.cb_variedad;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         withBlock.DataSource = datos;
                         withBlock.DisplayMember = "nombre";
@@ -969,11 +984,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -996,7 +1014,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.cb_metodo;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         withBlock.DataSource = datos;
                         withBlock.DisplayMember = "nombre";
@@ -1009,11 +1027,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -1036,7 +1057,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.cb_destino;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         withBlock.DataSource = datos;
                         withBlock.DisplayMember = "nombre";
@@ -1049,11 +1070,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 

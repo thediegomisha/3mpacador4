@@ -26,6 +26,13 @@ using HorizontalAlignment = NPOI.SS.UserModel.HorizontalAlignment;
 using NPOI.SS.Util;
 using NPOI.SS.Formula.Functions;
 
+
+
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
+using QuestPDF.Previewer;
+
 namespace _3mpacador4.Presentacion.Reporte
 {
     public partial class RptBoletaPesadoDetalle : Form
@@ -41,6 +48,8 @@ namespace _3mpacador4.Presentacion.Reporte
         {
             InitializeComponent();
             PrepGrid();
+
+            QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
 
             if (filaConDatos.Length >= 5)
             {
@@ -379,5 +388,9 @@ namespace _3mpacador4.Presentacion.Reporte
             
         }
 
+        private void BtnExportar_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

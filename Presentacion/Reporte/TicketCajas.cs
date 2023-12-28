@@ -52,7 +52,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.cboLote;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         //var dr = datos.NewRow();
                         //dr["idlote"] = 0;
@@ -70,11 +70,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -119,7 +122,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.cboDestino;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
                         dr["iddestino"] = 0;
@@ -137,11 +140,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -164,7 +170,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.cbCalibre;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         //var dr = datos.NewRow();
                         //dr["idcalibre"] = 0;
@@ -182,11 +188,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -210,7 +219,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.cbCategoria;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         //var dr = datos.NewRow();
                         //dr["idcalibre"] = 0;
@@ -228,11 +237,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -259,7 +271,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 {
                     var withBlock = this.cboLote;
-                    if (datos.Rows.Count != 0)
+                    if (datos != null && datos.Rows.Count > 0)
                     {
                         CodCliente.Text = datos.Rows[0]["CODTRA"].ToString();
                         CodPalta.Text = datos.Rows[0]["CODTRA2"].ToString();
@@ -292,11 +304,14 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = null;
                     }
                 }
-                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
@@ -330,11 +345,15 @@ namespace _3mpacador4.Presentacion.Reporte
 
                   lbljuliano.Text = dayOfYear.ToString();
 
-                ConexionGral.desconectar();
+               
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
             }
         }
 
