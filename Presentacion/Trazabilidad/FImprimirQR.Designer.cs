@@ -50,7 +50,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.btngenerar.ShineColor = System.Drawing.Color.Navy;
             this.btngenerar.Size = new System.Drawing.Size(160, 40);
             this.btngenerar.TabIndex = 89;
-            this.btngenerar.Text = "IMPRIMIR QR";
+            this.btngenerar.Text = "GENERAR QR";
             this.btngenerar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btngenerar.Click += new System.EventHandler(this.btngenerar_Click);
             // 
