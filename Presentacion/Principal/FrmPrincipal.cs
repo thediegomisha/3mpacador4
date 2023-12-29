@@ -253,7 +253,7 @@ namespace _3mpacador4.Presentacion
         private void button2_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
-            AbrirFormularioHijo(new RptTrazabilidad());
+            AbrirFormularioHijo(new FProgramaProceso());
         }
     }
 }

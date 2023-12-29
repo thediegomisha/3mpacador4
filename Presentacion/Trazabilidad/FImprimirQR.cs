@@ -17,6 +17,9 @@ using iTextSharp.text.pdf;
 using _3mpacador4.Entidad;
 using _3mpacador4.Logica;
 using Devart.Data.MySql;
+using Font = iTextSharp.text.Font;
+using Image = iTextSharp.text.Image;
+using Rectangle = iTextSharp.text.Rectangle;
 
 namespace _3mpacador4.Presentacion.Trazabilidad
 {
@@ -30,6 +33,50 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         int li_idgrupo = 0;
         string ls_dni = "";
         bool lb_estado_impresion = false;
+        List<Numerador_trab> Lista_num_trab = new List<Numerador_trab>();
+
+
+        void Lista_Num_trab(string ls_dni, int li_idgrupo_turno)
+        {
+            MySqlCommand comando;
+            try
+            {
+                Lista_num_trab.Clear();
+
+                if (ConexionGral.conexion.State == ConnectionState.Closed)
+                {
+                    ConexionGral.conectar();
+                }
+                comando = new MySqlCommand("usp_tblnumerador_trab_select", ConexionGral.conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("p_dni", ls_dni);
+                comando.Parameters.AddWithValue("p_idgrupo_turno", li_idgrupo_turno);
+
+                Lista_num_trab = new List<Numerador_trab>();
+
+                using (MySqlDataReader reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Numerador_trab c = new Numerador_trab();
+                        c.codigo = Convert.ToString(reader["codigo"]);
+                        c.fecha_produccion = Convert.ToDateTime(reader["fecha_produccion"]);
+                        c.numerador = Convert.ToString(reader["numerador"]);
+                        c.dni = Convert.ToString(reader["dni"]);
+                        c.item = Convert.ToInt32(reader["item"]);
+                        c.idgrupo_turno = Convert.ToInt32(reader["idgrupo_turno"]);
+                        Lista_num_trab.Add(c);
+                    }
+                }
+                ConexionGral.desconectar();
+            }
+            catch (Exception ex)
+            {
+                ConexionGral.desconectar();
+                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
 
         void ConstruirQR(string ls_dni) 
         {
@@ -142,11 +189,53 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             int nro_etiquetas = Convert.ToInt32(nudcantidad.Value.ToString());
             if (nro_etiquetas > 0)
             {
-                GenerarQR_A4(nro_etiquetas);
-                if (lb_estado_impresion)
+                //if (lb_estado_impresion)
+
+                ActualizarEtiquetas(li_idgrupo, ls_dni, nro_etiquetas);
+                Lista_Num_trab(ls_dni, li_idgrupo);
+
+                string ruta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ls_dni + ".pdf");
+                using (FileStream fs = new FileStream(ruta, FileMode.Create, FileAccess.Write, FileShare.None))
                 {
-                    ActualizarEtiquetas(li_idgrupo, ls_dni, nro_etiquetas);
+                    Document doc = new Document();
+                    PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+
+                    doc.Open();
+
+                    PdfPTable table = new PdfPTable(5);
+                    table.DefaultCell.Padding = 0;
+                    Font boldFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 9); // Fuente en negrita
+                    foreach (Numerador_trab li in Lista_num_trab)
+                    {
+
+                        BarcodeQRCode qrCode = new BarcodeQRCode(li.codigo, 150, 150, null);
+                        iTextSharp.text.Image img = qrCode.GetImage();
+
+                        PdfPCell qrCell = new PdfPCell();
+                        qrCell.PaddingTop = 1;
+                        qrCell.Border = 0;
+                        qrCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                        qrCell.AddElement(img);
+
+
+                        Chunk textChunk = new Chunk(li.codigo, boldFont);
+                        Paragraph text = new Paragraph(textChunk);
+                        text.Alignment = Element.ALIGN_CENTER;
+                        text.IndentationLeft = 10; 
+                        text.IndentationRight = 10;
+                        qrCell.AddElement(text);
+
+                        table.AddCell(qrCell);
+                    }
+                    doc.Add(table);
+
+                    doc.Close();
+                    writer.Close();
+
+                    MessageBox.Show("SE GENERARON LOS QR :)", "CODIGOS QR");
+                    Close();
                 }
+
             }            
         }
     }

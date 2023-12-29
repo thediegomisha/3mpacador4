@@ -30,7 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.PanelLadoIzq = new System.Windows.Forms.Panel();
+            this.panelTrazabilidad = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.btnTrazabilidadP = new System.Windows.Forms.Button();
             this.panelMantenimiento = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnColaborador = new System.Windows.Forms.Button();
             this.btnAcopiador = new System.Windows.Forms.Button();
@@ -69,12 +74,8 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnTrazabilidadP = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panelTrazabilidad = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
+            this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelSistema.SuspendLayout();
@@ -82,7 +83,6 @@
             this.panelPesos.SuspendLayout();
             this.PanelFormularioHijo.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.panelTrazabilidad.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelLadoIzq
@@ -106,6 +106,67 @@
             this.PanelLadoIzq.Size = new System.Drawing.Size(176, 845);
             this.PanelLadoIzq.TabIndex = 0;
             // 
+            // panelTrazabilidad
+            // 
+            this.panelTrazabilidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panelTrazabilidad.Controls.Add(this.button2);
+            this.panelTrazabilidad.Controls.Add(this.button6);
+            this.panelTrazabilidad.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTrazabilidad.Location = new System.Drawing.Point(0, 801);
+            this.panelTrazabilidad.Name = "panelTrazabilidad";
+            this.panelTrazabilidad.Size = new System.Drawing.Size(159, 155);
+            this.panelTrazabilidad.TabIndex = 15;
+            // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button2.ForeColor = System.Drawing.Color.LightGray;
+            this.button2.Location = new System.Drawing.Point(0, 33);
+            this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button2.Size = new System.Drawing.Size(159, 33);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "Programa Proceso";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button6
+            // 
+            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button6.ForeColor = System.Drawing.Color.LightGray;
+            this.button6.Location = new System.Drawing.Point(0, 0);
+            this.button6.Name = "button6";
+            this.button6.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button6.Size = new System.Drawing.Size(159, 33);
+            this.button6.TabIndex = 15;
+            this.button6.Text = "Programa Jornal";
+            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // btnTrazabilidadP
+            // 
+            this.btnTrazabilidadP.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTrazabilidadP.FlatAppearance.BorderSize = 0;
+            this.btnTrazabilidadP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTrazabilidadP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnTrazabilidadP.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 757);
+            this.btnTrazabilidadP.Name = "btnTrazabilidadP";
+            this.btnTrazabilidadP.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnTrazabilidadP.Size = new System.Drawing.Size(159, 44);
+            this.btnTrazabilidadP.TabIndex = 14;
+            this.btnTrazabilidadP.Text = "Trazabilidad";
+            this.btnTrazabilidadP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTrazabilidadP.UseVisualStyleBackColor = true;
+            // 
             // panelMantenimiento
             // 
             this.panelMantenimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
@@ -117,6 +178,22 @@
             this.panelMantenimiento.Name = "panelMantenimiento";
             this.panelMantenimiento.Size = new System.Drawing.Size(159, 155);
             this.panelMantenimiento.TabIndex = 13;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.Color.LightGray;
+            this.button1.Location = new System.Drawing.Point(0, 181);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(159, 33);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Clientes";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -607,83 +684,6 @@
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
             // 
-            // btnTrazabilidadP
-            // 
-            this.btnTrazabilidadP.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTrazabilidadP.FlatAppearance.BorderSize = 0;
-            this.btnTrazabilidadP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTrazabilidadP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnTrazabilidadP.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 757);
-            this.btnTrazabilidadP.Name = "btnTrazabilidadP";
-            this.btnTrazabilidadP.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnTrazabilidadP.Size = new System.Drawing.Size(159, 44);
-            this.btnTrazabilidadP.TabIndex = 14;
-            this.btnTrazabilidadP.Text = "Trazabilidad";
-            this.btnTrazabilidadP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTrazabilidadP.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.LightGray;
-            this.button1.Location = new System.Drawing.Point(0, 181);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(159, 33);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Clientes";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // panelTrazabilidad
-            // 
-            this.panelTrazabilidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.panelTrazabilidad.Controls.Add(this.button2);
-            this.panelTrazabilidad.Controls.Add(this.button6);
-            this.panelTrazabilidad.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTrazabilidad.Location = new System.Drawing.Point(0, 801);
-            this.panelTrazabilidad.Name = "panelTrazabilidad";
-            this.panelTrazabilidad.Size = new System.Drawing.Size(159, 155);
-            this.panelTrazabilidad.TabIndex = 15;
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.Color.LightGray;
-            this.button2.Location = new System.Drawing.Point(0, 33);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(159, 33);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Trazabilidad";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button6
-            // 
-            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button6.ForeColor = System.Drawing.Color.LightGray;
-            this.button6.Location = new System.Drawing.Point(0, 0);
-            this.button6.Name = "button6";
-            this.button6.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button6.Size = new System.Drawing.Size(159, 33);
-            this.button6.TabIndex = 15;
-            this.button6.Text = "Programa Jornal";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -698,6 +698,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.Principal_Load);
             this.PanelLadoIzq.ResumeLayout(false);
+            this.panelTrazabilidad.ResumeLayout(false);
             this.panelMantenimiento.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panelSistema.ResumeLayout(false);
@@ -707,7 +708,6 @@
             this.PanelFormularioHijo.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.panelTrazabilidad.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
