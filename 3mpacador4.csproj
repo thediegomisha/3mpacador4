@@ -178,6 +178,8 @@
     <Compile Include="Entidad\Grupo_turno_detalle.cs" />
     <Compile Include="Entidad\Grupo_turno.cs" />
     <Compile Include="Entidad\Lista_transferir_trab.cs" />
+    <Compile Include="Entidad\Numerador_trab.cs" />
+    <Compile Include="Entidad\Programa_proceso.cs" />
     <Compile Include="Logica\ClConexion.cs" />
     <Compile Include="Logica\ConexionGral.cs" />
     <Compile Include="Logica\ConnectionStringManager.cs" />
@@ -325,6 +327,12 @@
     <Compile Include="Presentacion\Reporte\RptBoletaPesadoDetalle.Designer.cs">
       <DependentUpon>RptBoletaPesadoDetalle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Trazabilidad\FProgramaProceso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Trazabilidad\FProgramaProceso.Designer.cs">
+      <DependentUpon>FProgramaProceso.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Reporte\TicketCajas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -463,6 +471,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\RptBoletaPesadoDetalle.resx">
       <DependentUpon>RptBoletaPesadoDetalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Trazabilidad\FProgramaProceso.resx">
+      <DependentUpon>FProgramaProceso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\TicketCajas.resx">
       <DependentUpon>TicketCajas.cs</DependentUpon>
