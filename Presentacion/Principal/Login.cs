@@ -3,7 +3,6 @@ using _3mpacador4.Presentacion;
 using _3mpacador4.Presentacion.Sistema;
 using _3mpacador4.Presentacion.Principal;
 using Devart.Data.MySql;
-using NPOI.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

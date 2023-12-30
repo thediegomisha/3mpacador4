@@ -2,8 +2,7 @@
 using _3mpacador4.Presentacion.Mantenimiento;
 using Devart.Data.MySql;
 using Microsoft.VisualBasic;
-using NPOI.POIFS.NIO;
-using NPOI.SS.Formula.Functions;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -684,28 +683,18 @@ namespace _3mpacador4.Presentacion.Reporte
                 {
                     withBlock.Columns["PRODUCTOR"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     withBlock.Columns["PRODUCTOR"].Width = 270;
-                }
-
-                
+                }                
 
                 withBlock.Columns["CODIGO PRODUCCION"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 withBlock.Columns["CODIGO PRODUCCION"].Width = 90;
 
-
-
-
-                // establecer modo de ajuste
-                // .Columns("NOMBRE_PRODUCTO").DefaultCellStyle.WrapMode = DataGridViewTriState.True
-              
                 withBlock.Columns["CANT JABAS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 // .Columns("PESAJE").DefaultCellStyle.Format = "#.#0"
                 withBlock.Columns["CANT JABAS"].Width = 50;
 
-
                 withBlock.Columns["PESO BRUTO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 // .Columns("TURNO").DefaultCellStyle.Format = "#.#0"
                 withBlock.Columns["PESO BRUTO"].Width = 80;
-
 
                 withBlock.Columns["PESO JABAS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
@@ -724,12 +713,9 @@ namespace _3mpacador4.Presentacion.Reporte
             }
             catch (Exception)
             {
-
                 //  throw;
             }
             {
-
-
             }
         }
         private void ocultar_columnas()
@@ -763,7 +749,6 @@ namespace _3mpacador4.Presentacion.Reporte
                 mostrarconsulta3();
             }
         }
-
        
 
         private DataTable mostrarconsulta2()

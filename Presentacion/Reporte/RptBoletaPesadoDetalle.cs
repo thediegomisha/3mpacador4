@@ -13,19 +13,13 @@ using Devart.Common;
 using Microsoft.VisualBasic;
 //using Microsoft.Office.Interop.Excel;
 //using objExcel  = Microsoft.Office.Interop.Excel;
-using NPOI.SS.UserModel;
-using NPOI.XSSF.UserModel;
+
 using System.IO;
-using BorderStyle = NPOI.SS.UserModel.BorderStyle;
+
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using TextBox = System.Windows.Forms.TextBox;
 //using Microsoft.Office.Interop.Excel;
 using Label = System.Windows.Forms.Label;
-using IFont = NPOI.SS.UserModel.IFont;
-using HorizontalAlignment = NPOI.SS.UserModel.HorizontalAlignment;
-using NPOI.SS.Util;
-using NPOI.SS.Formula.Functions;
-
 
 
 using QuestPDF.Fluent;
@@ -292,73 +286,10 @@ namespace _3mpacador4.Presentacion.Reporte
       
         private void button1_Click(object sender, EventArgs e)
         {
-            ExportarExcel( nombreArchivo);
+          //  ExportarExcel( nombreArchivo);
         }
 
-        private void ExportarExcel(string nombreArchivo)
-        {
-
-            // Crear un nuevo libro de Excel
-            IWorkbook libro = new XSSFWorkbook();
-
-            // Crear una hoja de trabajo en el libro
-            ISheet hoja = libro.CreateSheet("Datos");
-
-            // Crear una fila para el encabezado principal
-            IRow encabezadoPrincipalRow = hoja.CreateRow(0);
-
-            // Establecer el estilo de celda para el encabezado principal
-            ICellStyle estiloEncabezadoPrincipal = libro.CreateCellStyle();
-            estiloEncabezadoPrincipal.FillForegroundColor = IndexedColors.LightYellow.Index;
-            estiloEncabezadoPrincipal.FillPattern = FillPattern.SolidForeground;
-            estiloEncabezadoPrincipal.Alignment = HorizontalAlignment.Center;
-            estiloEncabezadoPrincipal.BorderTop = BorderStyle.Thin;
-            estiloEncabezadoPrincipal.BorderBottom = BorderStyle.Thin;
-            estiloEncabezadoPrincipal.BorderLeft = BorderStyle.Thin;
-            estiloEncabezadoPrincipal.BorderRight = BorderStyle.Thin;
-
-            // Crear celda y unir celdas para el encabezado principal
-            ICell celdaTitulo = encabezadoPrincipalRow.CreateCell(3);
-            celdaTitulo.SetCellValue("Datos del Formulario");
-            celdaTitulo.CellStyle = estiloEncabezadoPrincipal;
-            hoja.AddMergedRegion(new CellRangeAddress(0, 0, 3, 6));
-
-            // Obtener los Label del formulario actual
-            Label[] labelsFormulario = { lblcliente, lblproductor, lblproducto, lblvariedad }; // Reemplaza con tus Labels correspondientes
-
-            // Crear una fila para los datos adicionales
-            IRow datosAdicionalesRow = hoja.CreateRow(2);
-
-            // Establecer el estilo de celda para los datos adicionales
-            ICellStyle estiloDatosAdicionales = libro.CreateCellStyle();
-            estiloDatosAdicionales.Alignment = HorizontalAlignment.Left;
-            estiloDatosAdicionales.BorderTop = BorderStyle.Thin;
-            estiloDatosAdicionales.BorderBottom = BorderStyle.Thin;
-            estiloDatosAdicionales.BorderLeft = BorderStyle.Thin;
-            estiloDatosAdicionales.BorderRight = BorderStyle.Thin;
-
-            // Crear celdas y establecer los valores de los Labels como datos adicionales
-            for (int i = 0; i < labelsFormulario.Length; i++)
-            {
-                ICell celdaLabel = datosAdicionalesRow.CreateCell(i + 1); // Iniciar desde la segunda columna
-                celdaLabel.SetCellValue(labelsFormulario[i].Text);
-                celdaLabel.CellStyle = estiloDatosAdicionales;
-            }
-
-            // Ajustar el ancho de las columnas automáticamente
-            hoja.AutoSizeColumn(3);
-
-
-            // Guardar el libro en un archivo
-            using (FileStream archivo = new FileStream(nombreArchivo, FileMode.Create, FileAccess.Write))
-            {
-                libro.Write(archivo);
-            }
-
-            // Abrir el archivo de Excel
-            System.Diagnostics.Process.Start(nombreArchivo);
-
-        }
+       
 
         private void RptBoletaPesadoDetalle_KeyPress(object sender, KeyPressEventArgs e)
         {

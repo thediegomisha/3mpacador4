@@ -59,6 +59,7 @@ namespace _3mpacador4.Presentacion
             panelReportes.Visible  = false;
             panelSistema.Visible = false;
             panelMantenimiento.Visible = false;
+            panelTrazabilidad.Visible = false;
         }
 
         private void ocultarSubMenu()
@@ -261,6 +262,11 @@ namespace _3mpacador4.Presentacion
             ocultarSubMenu();
             FrmReniec form = new FrmReniec();
             form.ShowDialog();
+        }
+
+        private void btnTrazabilidadP_Click(object sender, EventArgs e)
+        {
+            MostrarSubMenu(panelTrazabilidad);
         }
     }
 }
