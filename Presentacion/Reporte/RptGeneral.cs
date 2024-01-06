@@ -20,6 +20,10 @@ namespace _3mpacador4.Presentacion.Reporte
 {
     public partial class RptGeneral : Form
     {
+
+        bool btnsearchallpress;
+        bool btnsearchpress;
+
         public RptGeneral()
         {
             InitializeComponent();
@@ -263,73 +267,152 @@ namespace _3mpacador4.Presentacion.Reporte
                 ConexionGral.desconectar();
             }
         }
+
+  
+        //private void MostrarConsulta()
+        //{
+        //    try
+        //    {
+        //        if (ConexionGral.conexion.State == ConnectionState.Closed)
+        //        {
+        //            ConexionGral.conectar();
+        //        }
+
+        //        string procedimientoAlmacenado = DeterminarProcedimientoAlmacenado();
+        //        string bandera = DeterminarBandera();
+        //        string dtInicio = "null";
+        //        string dtFin = "null";
+
+        //        MySqlCommand comando = new MySqlCommand(procedimientoAlmacenado, ConexionGral.conexion);
+        //        comando.CommandType = CommandType.StoredProcedure;
+
+        //        if (!string.IsNullOrEmpty(bandera))
+        //        {
+        //            comando.Parameters.AddWithValue(bandera, MySqlType.Int).Value = flag.Text;
+        //        }
+
+        //        if (chkcliente.Checked && chkf_ing.Checked)
+        //        {
+        //            dtInicio = "p_fechainicio";
+        //            dtFin = "p_fechafin";
+        //            comando.Parameters.AddWithValue(dtInicio, MySqlType.Int).Value = dtpfingresoini.Value;
+        //            comando.Parameters.AddWithValue(dtFin, MySqlType.Int).Value = dtpfingresofin.Value;
+        //        }
+
+        //        var adaptador = new MySqlDataAdapter(comando);
+        //        var datos = new DataTable();
+        //        adaptador.Fill(datos);
+
+        //        if (datos != null && datos.Rows.Count > 0)
+        //        {
+        //            datalistado.DataSource = datos;
+        //            Tamanio();
+        //            ContarGeneral();
+        //            ContarJabaGeneral();
+        //            lblinfo1.Visible = false;
+        //        }
+        //        else
+        //        {
+        //            datalistado.DataSource = null;
+        //            lblinfo1.Visible = true;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    finally
+        //    {
+        //        ConexionGral.desconectar();
+        //    }
+        //}
+
+
         private void mostrarconsulta()
-        {
-            string procedimientoalmacenado="null";
-            string bandera = "null";
-            string dtinicio = "null";
-            string dtfin = "null";
-
-
-            int iniciocadena;
-
-            MySqlCommand comando;
+        {           
             try
             {
+             //   datalistado.Rows.Clear();
+
                 if (ConexionGral.conexion.State == ConnectionState.Closed)
                 {
                     ConexionGral.conectar();
                 }
+
+                string procedimientoAlmacenado = DeterminarProcedimientoAlmacenado();
+                string bandera = DeterminarBandera();
+                string dtInicio = "null";
+                string dtFin = "null";
+
+                int iniciocadena = 0;
+
+                MySqlCommand comando = new MySqlCommand(procedimientoAlmacenado, ConexionGral.conexion);
+                comando.CommandType = (CommandType)4;
+
+
                 if (chkcliente.Checked == true && chkf_ing.Checked  == true)
                 {
-                    procedimientoalmacenado = "usp_tblticketpesaje_Exportador";
-                    //iniciocadena = cb_cliente.Text.IndexOf('-');
-                    //flag.Text = cb_cliente.Text.Substring(0, iniciocadena);
-                    bandera = "p_idcliente";
-                    dtinicio = "p_fechainicio";
-                    dtfin = "p_fechafin";
+                    //     procedimientoalmacenado = "usp_tblticketpesaje_Exportador";
+                    iniciocadena = cb_cliente.Text.IndexOf('-');
+                    flag.Text = cb_cliente.Text.Substring(0, iniciocadena);
+                    //    bandera = "p_idcliente";
+                    dtInicio = "p_fechainicio";
+                    dtFin = "p_fechafin";
                 }
                 else if (chkcliente.Checked == true)
                 {
-                    procedimientoalmacenado = "usp_tblticketpesaje_Exportador";
-                  //  iniciocadena = cb_cliente.Text.IndexOf('-');
-                  //  flag.Text = cb_cliente.Text.Substring(0, iniciocadena);
-                    bandera = "p_idcliente";                   
+                    //     procedimientoalmacenado = "usp_tblticketpesaje_Exportador";
+                    iniciocadena = cb_cliente.Text.IndexOf('-');
+                    flag.Text = cb_cliente.Text.Substring(0, iniciocadena);
+                    //  bandera = "p_idcliente";                   
                 }             
                 else if (chkproductor.Checked == true)
                 {
-                    procedimientoalmacenado = "usp_tblticketpesaje_Productor";
+               //     procedimientoalmacenado = "usp_tblticketpesaje_Productor";
                     iniciocadena = cb_productor.Text.IndexOf('-');
                     flag.Text = cb_productor.Text.Substring(0, iniciocadena);
-                    bandera = "p_idproductor";
+                 //   bandera = "p_idproductor";
                 }
                 else if (chkvariedad.Checked == true)
                 {
-                    procedimientoalmacenado = "usp_tblticketpesaje_Variedad";                  
+                //    procedimientoalmacenado = "usp_tblticketpesaje_Variedad";                  
                     flag.Text = cb_variedad.SelectedValue.ToString();
-                    bandera = "p_variedad";
+                //    bandera = "p_variedad";
+                }
+                else if (chk_acopiador.Checked == true)
+                {
+                    iniciocadena = cbAcopiador.Text.IndexOf('-');
+                    flag.Text = cbAcopiador.Text.Substring(0, iniciocadena);
                 }
                 else if (chkproductor.Checked == false && chkvariedad.Checked == false && chkcliente.Checked == false && chk_acopiador.Checked == false)
                 {
-                    procedimientoalmacenado = "usp_tblticketpesaje_RptGral";                   
+               //     procedimientoalmacenado = "usp_tblticketpesaje_RptGral";                   
                 }
-                comando = new MySqlCommand(procedimientoalmacenado, ConexionGral.conexion);
-                comando.CommandType = (CommandType)4;
+               // comando = new MySqlCommand(procedimientoalmacenado, ConexionGral.conexion);
+             
                 if (chkproductor.Checked == false && chkvariedad.Checked == false && chkcliente.Checked == false && chk_acopiador.Checked == false)
                 {
 
                 }
                 else if (chkproductor.Checked == false && chkvariedad.Checked == false && chkcliente.Checked == true && chkf_ing.Checked == true && chk_acopiador.Checked == false)
                 {
-                    comando.Parameters.AddWithValue(bandera, MySqlType.Int).Value = flag.Text;
-                    comando.Parameters.AddWithValue(dtinicio, MySqlType.Int).Value = dtpfingresoini.Value;
-                    comando.Parameters.AddWithValue(dtfin, MySqlType.Int).Value = dtpfingresofin.Value;
+                    //comando.Parameters.AddWithValue(bandera, MySqlType.Int).Value = flag.Text;
+                    //comando.Parameters.AddWithValue(dtinicio, MySqlType.Int).Value = dtpfingresoini.Value;
+                    //comando.Parameters.AddWithValue(dtfin, MySqlType.Int).Value = dtpfingresofin.Value;
                 }
                 else
                 {
-                    comando.Parameters.AddWithValue(bandera, MySqlType.Int).Value = flag.Text;
-                }               
+                   // comando.Parameters.AddWithValue(bandera, MySqlType.Int).Value = flag.Text;
+                }
+                if (btnsearchallpress == true )
+                {
 
+                }
+                if(btnsearchpress == true)
+                {
+                    comando.Parameters.AddWithValue(bandera, MySqlType.Int).Value = flag.Text;
+                }
+                              
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
                 adaptador.Fill(datos);
@@ -363,6 +446,54 @@ namespace _3mpacador4.Presentacion.Reporte
             }
         }
 
+
+        private string DeterminarProcedimientoAlmacenado()
+        {
+            if (chkcliente.Checked && chkf_ing.Checked)
+            {
+                return "usp_tblticketpesaje_Exportador";
+            }
+            else if (chkcliente.Checked)
+            {
+                return "usp_tblticketpesaje_Exportador";
+            }
+            else if (chkproductor.Checked)
+            {
+                return "usp_tblticketpesaje_Productor";
+            }
+            else if (chk_acopiador.Checked)
+            {
+                return "usp_tblticketpesaje_Acopiador";
+            }
+            else if (chkvariedad.Checked)
+            {
+                return "usp_tblticketpesaje_Variedad";
+            }
+            else
+            {
+                return "usp_tblticketpesaje_RptGral";
+            }
+        }
+
+        private string DeterminarBandera()
+        {
+            if (chkcliente.Checked)
+            {
+                return "p_idcliente";
+            }
+            else if (chkproductor.Checked)
+            {
+                return "p_idproductor";
+            }
+            else if (chkvariedad.Checked)
+            {
+                return "p_variedad";
+            }
+            else
+            {
+                return null;
+            }
+        }
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -651,11 +782,25 @@ namespace _3mpacador4.Presentacion.Reporte
                 withBlock.Columns["FECHA PESAJE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 withBlock.Columns["FECHA PESAJE"].Width = 90;
 
-                withBlock.Columns["H LLEGADA"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                withBlock.Columns["H LLEGADA"].Width = 70;
+                if (chk_acopiador.Checked == true || chkcliente.Checked == true || chkproductor.Checked == true)
+                {
+                    
+                }
+                else
+                {
+                    withBlock.Columns["H LLEGADA"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    withBlock.Columns["H LLEGADA"].Width = 70;
+                    withBlock.Columns["PRODUCTO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    withBlock.Columns["PRODUCTO"].Width = 60;
+                    withBlock.Columns["PESO BRUTO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    // .Columns("TURNO").DefaultCellStyle.Format = "#.#0"
+                    withBlock.Columns["PESO BRUTO"].Width = 80;
 
-                withBlock.Columns["PRODUCTO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                withBlock.Columns["PRODUCTO"].Width = 60;
+                    withBlock.Columns["PESO JABAS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
+                    withBlock.Columns["PESO JABAS"].Width = 80;
+                }
+                           
 
                 if(chkvariedad.Checked == true)
                 {
@@ -692,13 +837,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 // .Columns("PESAJE").DefaultCellStyle.Format = "#.#0"
                 withBlock.Columns["CANT JABAS"].Width = 50;
 
-                withBlock.Columns["PESO BRUTO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                // .Columns("TURNO").DefaultCellStyle.Format = "#.#0"
-                withBlock.Columns["PESO BRUTO"].Width = 80;
-
-                withBlock.Columns["PESO JABAS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
-                withBlock.Columns["PESO JABAS"].Width = 80;
+             
 
                 withBlock.Columns["PESO NETO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 withBlock.Columns["PESO NETO"].DefaultCellStyle.Format = "#.#0";
@@ -916,7 +1055,7 @@ namespace _3mpacador4.Presentacion.Reporte
                     if (datos != null && datos.Rows.Count > 0)
                     {
                         withBlock.DataSource = datos;
-                        withBlock.DisplayMember = "razon_social";
+                        withBlock.DisplayMember = "razonsocial";
                         withBlock.ValueMember = "ruc";
                         withBlock.SelectedIndex = -1;
                         //   poblarPais();
@@ -1184,6 +1323,9 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            btnsearchpress = true;
+            btnsearchallpress = false;
+
             if (chkcliente.Checked == true || chkdestino.Checked == true || chkestado.Checked == true || chkf_ing.Checked == true
                 || chkf_proc.Checked == true || chkguia.Checked == true || chklote.Checked == true || chkmetodo.Checked == true
                 || chkproductor.Checked == true || chkvariedad.Checked == true || chk_acopiador.Checked == true)
@@ -1198,7 +1340,12 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void btnBuscarTodos_Click(object sender, EventArgs e)
         {
-            if(chkcliente.Checked == false && chkdestino.Checked  == false && chkestado.Checked == false && chkf_ing.Checked == false
+            
+                btnsearchallpress = true;
+                btnsearchpress = false;
+            
+
+                if (chkcliente.Checked == false && chkdestino.Checked  == false && chkestado.Checked == false && chkf_ing.Checked == false
                 && chkf_proc.Checked == false && chkguia.Checked == false && chklote.Checked == false && chkmetodo.Checked == false
                 && chkproductor.Checked == false && chkvariedad.Checked == false && chk_acopiador.Checked == false)
             {

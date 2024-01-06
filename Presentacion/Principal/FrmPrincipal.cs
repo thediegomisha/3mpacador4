@@ -239,11 +239,7 @@ namespace _3mpacador4.Presentacion
             AbrirFormularioHijo(new frmProductor());
         }
 
-        private void btnColaborador_Click(object sender, EventArgs e)
-        {
-            ocultarSubMenu();
-            AbrirFormularioHijo(new frmColaborador());
-        }        
+              
 
         private void button6_Click(object sender, EventArgs e)
         {
@@ -267,6 +263,32 @@ namespace _3mpacador4.Presentacion
         private void btnTrazabilidadP_Click(object sender, EventArgs e)
         {
             MostrarSubMenu(panelTrazabilidad);
+        }
+
+        private void btnProducto_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            frmProducto form = new frmProducto();
+            form.ShowDialog();
+        }
+
+        private void btnColaborador_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new frmColaborador());
+
+        }
+
+        private void btnProductores_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new frmProductor());
+        }
+
+        private void btnAcopiador_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new frmAcopiador());
         }
     }
 }

@@ -528,7 +528,7 @@ catch (Exception ex)
                     poblarPais();
                     if (cbProductor.Text == "Nuevo ...")
                     {
-                        frmProductor2 form = new frmProductor2();
+                        frmProductor2 form = new frmProductor2();                         
                         form.ShowDialog();
                         mostrarproductor();                       
                     }
@@ -540,19 +540,6 @@ catch (Exception ex)
             }
         }
 
-        //private void MostrarAnimacionEspera()
-        //{
-        //    pictureBoxEspera.Visible = true;
-        //    //  buttonConsultar.Enabled = false;
-        //    // Otros controles que desees deshabilitar durante la espera
-        //}
-
-        //private void OcultarAnimacionEspera()
-        //{
-        //    pictureBoxEspera.Visible = false;
-        //    //   buttonConsultar.Enabled = true;
-        //    // Otros controles que desees habilitar después de la espera
-        //}
         private void cbcliente_DropDownClosed(object sender, EventArgs e)
         {           
             try
@@ -566,8 +553,9 @@ catch (Exception ex)
                     if (cbcliente.Text == "Nuevo ...")
                     {
                        
-                        frmCliente2 form = new frmCliente2();
-                        form.ShowDialog();
+                        frmAltaRUC F = new frmAltaRUC();
+                        F.CambiarTextoLabel("Ingreso de Clientes");
+                        F.ShowDialog();
                         mostrarclientes();
                     }else
                     {
@@ -939,9 +927,6 @@ catch (Exception ex)
                 {
                     ConexionGral.conectar();
                 }
-                //var comando = new MySqlCommand("INSERT INTO tblticketpesaje (numdoc, horallegada, horapesaje, fecha_ticket, idmetodocultivo, idtiposervicio, idproducto, idlote, idvariedad, idcliente, num_guia, tara_jaba, tara_pallet, cant_jabas, peso_bruto, peso_jabas, idturno, idclp)" + '\r'
-                //    + "VALUES(p_numdoc, p_horallegada, p_horapesaje, p_fecha_ticket, p_idmetodocultivo, p_idtiposervicio, p_idproducto, p_idlote, p_idvariedad, p_idcliente, p_num_guia, p_tara_java, p_tara_pallet, p_cant_jabas, p_peso_bruto, p_peso_jabas, p_turno, p_idclp)", ConexionGral.conexion);
-              
                 var comando = new MySqlCommand("usp_tblticketpesaje_Insert", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
 
@@ -1075,8 +1060,10 @@ catch (Exception ex)
 
                     if (cbAcopiador.Text == "Nuevo ...")
                     {
-                        frmAcopiador2 form = new frmAcopiador2();
-                        form.ShowDialog();
+                        frmAltaRUC F = new frmAltaRUC();
+                        F.CambiarTextoLabel("Ingreso de Acopiadores");
+                        F.Panel1.BackColor = Color.Green;
+                        F.ShowDialog();
                         mostrarAcopiador();
                     }
                     else
@@ -1373,23 +1360,17 @@ catch (Exception ex)
 
                {
                     var withBlock = this.cbAcopiador;
-                    //if (datos.Rows.Count != 0)
-                    //{
-                        var dr = datos.NewRow();
+                       var dr = datos.NewRow();
                         dr["ruc"] = 0;
-                        dr["razon_social"] = "Nuevo ...";
+                        dr["razonsocial"] = "Nuevo ...";
                         datos.Rows.InsertAt(dr, 0);
 
 
                         withBlock.DataSource = datos;
-                        withBlock.DisplayMember = "razon_social";
+                        withBlock.DisplayMember = "razonsocial";
                         withBlock.ValueMember = "ruc";
                         withBlock.SelectedIndex = -1;
-                    //}
-                    //else
-                    //{
-                    //    withBlock.DataSource = null;
-                    //}
+               
                 }
             }
             catch (Exception ex)

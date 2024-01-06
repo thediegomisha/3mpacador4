@@ -28,6 +28,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         {
             frmProductor2 F = new frmProductor2();
             F.ShowDialog();
+            mostrarclientes();
 
         }
        
@@ -78,6 +79,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                         withBlock.DataSource = null;
                     }
                 }
+                lblnro_reg.Text = datalistado.RowCount.ToString();
             }
             catch (Exception ex)
             {

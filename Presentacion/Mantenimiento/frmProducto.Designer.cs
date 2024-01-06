@@ -1,6 +1,6 @@
 ﻿namespace _3mpacador4.Presentacion.Mantenimiento
 {
-    partial class frmCliente2
+    partial class frmProducto
     {
         /// <summary>
         /// Required designer variable.
@@ -30,29 +30,27 @@
         {
             this.Panel1 = new System.Windows.Forms.Panel();
             this.Label1 = new System.Windows.Forms.Label();
-            this.Label4 = new System.Windows.Forms.Label();
-            this.txtruc = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.txtRazonSocial = new System.Windows.Forms.TextBox();
-            this.Label3 = new System.Windows.Forms.Label();
+            this.txtTipoCultivo = new System.Windows.Forms.TextBox();
             this.Label2 = new System.Windows.Forms.Label();
             this.btnActualizar = new System.Windows.Forms.Button();
-            this.txtdireccion = new MetroFramework.Controls.MetroTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.datalistado = new System.Windows.Forms.DataGridView();
             this.Panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel1
             // 
-            this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(48)))));
             this.Panel1.Controls.Add(this.Label1);
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(718, 41);
-            this.Panel1.TabIndex = 32;
+            this.Panel1.Size = new System.Drawing.Size(537, 41);
+            this.Panel1.TabIndex = 0;
             // 
             // Label1
             // 
@@ -61,33 +59,15 @@
             this.Label1.ForeColor = System.Drawing.Color.White;
             this.Label1.Location = new System.Drawing.Point(12, 9);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(155, 21);
+            this.Label1.Size = new System.Drawing.Size(225, 21);
             this.Label1.TabIndex = 0;
-            this.Label1.Text = "Ingreso de Clientes";
-            // 
-            // Label4
-            // 
-            this.Label4.AutoSize = true;
-            this.Label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.Location = new System.Drawing.Point(26, 70);
-            this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(91, 21);
-            this.Label4.TabIndex = 41;
-            this.Label4.Text = "DIRECCION";
-            // 
-            // txtruc
-            // 
-            this.txtruc.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtruc.Location = new System.Drawing.Point(366, 35);
-            this.txtruc.Name = "txtruc";
-            this.txtruc.Size = new System.Drawing.Size(311, 29);
-            this.txtruc.TabIndex = 40;
+            this.Label1.Text = "Ingreso de Tipo de Producto";
             // 
             // btnCancelar
             // 
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(610, 258);
+            this.btnCancelar.Location = new System.Drawing.Point(420, 217);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(98, 29);
             this.btnCancelar.TabIndex = 36;
@@ -99,7 +79,7 @@
             // 
             this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(331, 258);
+            this.btnGuardar.Location = new System.Drawing.Point(154, 217);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(82, 29);
             this.btnGuardar.TabIndex = 37;
@@ -107,23 +87,13 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // txtRazonSocial
+            // txtTipoCultivo
             // 
-            this.txtRazonSocial.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRazonSocial.Location = new System.Drawing.Point(31, 35);
-            this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(311, 29);
-            this.txtRazonSocial.TabIndex = 35;
-            // 
-            // Label3
-            // 
-            this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(362, 11);
-            this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(50, 21);
-            this.Label3.TabIndex = 33;
-            this.Label3.Text = "R.U.C.";
+            this.txtTipoCultivo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTipoCultivo.Location = new System.Drawing.Point(31, 35);
+            this.txtTipoCultivo.Name = "txtTipoCultivo";
+            this.txtTipoCultivo.Size = new System.Drawing.Size(220, 29);
+            this.txtTipoCultivo.TabIndex = 2;
             // 
             // Label2
             // 
@@ -131,84 +101,66 @@
             this.Label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label2.Location = new System.Drawing.Point(27, 11);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(120, 21);
+            this.Label2.Size = new System.Drawing.Size(169, 21);
             this.Label2.TabIndex = 34;
-            this.Label2.Text = "RAZON SOCIAL";
+            this.Label2.Text = "Ingrese Tipo de Cultivo";
             // 
             // btnActualizar
             // 
             this.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnActualizar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.Location = new System.Drawing.Point(449, 258);
+            this.btnActualizar.Location = new System.Drawing.Point(287, 217);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(82, 29);
             this.btnActualizar.TabIndex = 38;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
             // 
-            // txtdireccion
-            // 
-            // 
-            // 
-            // 
-            this.txtdireccion.CustomButton.Image = null;
-            this.txtdireccion.CustomButton.Location = new System.Drawing.Point(282, 2);
-            this.txtdireccion.CustomButton.Name = "";
-            this.txtdireccion.CustomButton.Size = new System.Drawing.Size(25, 25);
-            this.txtdireccion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtdireccion.CustomButton.TabIndex = 1;
-            this.txtdireccion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtdireccion.CustomButton.UseSelectable = true;
-            this.txtdireccion.CustomButton.Visible = false;
-            this.txtdireccion.Lines = new string[0];
-            this.txtdireccion.Location = new System.Drawing.Point(29, 94);
-            this.txtdireccion.MaxLength = 32767;
-            this.txtdireccion.Name = "txtdireccion";
-            this.txtdireccion.PasswordChar = '\0';
-            this.txtdireccion.WaterMark = "Ej: Jiron Santa Rosa 711";
-            this.txtdireccion.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtdireccion.SelectedText = "";
-            this.txtdireccion.SelectionLength = 0;
-            this.txtdireccion.SelectionStart = 0;
-            this.txtdireccion.ShortcutsEnabled = true;
-            this.txtdireccion.Size = new System.Drawing.Size(310, 30);
-            this.txtdireccion.TabIndex = 42;
-            this.txtdireccion.UseSelectable = true;
-            this.txtdireccion.WaterMark = "Ej: Jiron Santa Rosa 711";
-            this.txtdireccion.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtdireccion.WaterMarkFont = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.txtdireccion);
-            this.panel2.Controls.Add(this.Label4);
-            this.panel2.Controls.Add(this.txtruc);
-            this.panel2.Controls.Add(this.txtRazonSocial);
-            this.panel2.Controls.Add(this.Label3);
+            this.panel2.Controls.Add(this.datalistado);
+            this.panel2.Controls.Add(this.txtTipoCultivo);
             this.panel2.Controls.Add(this.Label2);
             this.panel2.Location = new System.Drawing.Point(-1, 48);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(718, 204);
-            this.panel2.TabIndex = 59;
+            this.panel2.Size = new System.Drawing.Size(538, 163);
+            this.panel2.TabIndex = 1;
             // 
-            // frmCliente2
+            // datalistado
+            // 
+            this.datalistado.AllowUserToAddRows = false;
+            this.datalistado.AllowUserToDeleteRows = false;
+            this.datalistado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.datalistado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.datalistado.BackgroundColor = System.Drawing.Color.White;
+            this.datalistado.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.datalistado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datalistado.Location = new System.Drawing.Point(269, 11);
+            this.datalistado.Name = "datalistado";
+            this.datalistado.ReadOnly = true;
+            this.datalistado.RowHeadersVisible = false;
+            this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.datalistado.Size = new System.Drawing.Size(250, 126);
+            this.datalistado.TabIndex = 36;
+            // 
+            // frmProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 293);
+            this.ClientSize = new System.Drawing.Size(537, 259);
             this.ControlBox = false;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Panel1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnActualizar);
-            this.Name = "frmCliente2";
+            this.Name = "frmProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.frmPersonaJuridica_Load);
             this.Panel1.ResumeLayout(false);
             this.Panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.datalistado)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -217,15 +169,12 @@
 
         internal System.Windows.Forms.Panel Panel1;
         internal System.Windows.Forms.Label Label1;
-        internal System.Windows.Forms.Label Label4;
-        internal System.Windows.Forms.TextBox txtruc;
         internal System.Windows.Forms.Button btnCancelar;
         internal System.Windows.Forms.Button btnGuardar;
-        internal System.Windows.Forms.TextBox txtRazonSocial;
-        internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.Button btnActualizar;
-        internal MetroFramework.Controls.MetroTextBox txtdireccion;
         private System.Windows.Forms.Panel panel2;
+        public System.Windows.Forms.TextBox txtTipoCultivo;
+        public System.Windows.Forms.DataGridView datalistado;
     }
 }

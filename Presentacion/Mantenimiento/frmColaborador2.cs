@@ -96,6 +96,10 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 comando.Parameters.AddWithValue("p_flag_estado", aux.flag_estado);
                 comando.ExecuteNonQuery();
                 MessageBox.Show("COLABORADOR REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (MessageBox.Show(@"Desea ingresar otro Colaborador?", @"Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    this.Close();
+                }
                 LimpiarCampos();
                 ConexionGral.desconectar();
                 return;
@@ -200,7 +204,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             InsertarColaborador();
-            this.Close();
+           // this.Close();
         }
 
 

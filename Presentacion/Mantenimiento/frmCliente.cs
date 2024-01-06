@@ -26,9 +26,10 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            frmCliente2 F = new frmCliente2();
-            F.ShowDialog();
-
+            frmAltaRUC F = new frmAltaRUC();
+            F.CambiarTextoLabel("Ingreso de Clientes");
+            F.ShowDialog();            
+            mostrarclientes();
         }
        
         private void btnCerrar_Click(object sender, EventArgs e)

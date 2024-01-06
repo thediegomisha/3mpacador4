@@ -38,12 +38,13 @@
             this.Panel5 = new System.Windows.Forms.Panel();
             this.Panel3 = new System.Windows.Forms.Panel();
             this.datalistado = new System.Windows.Forms.DataGridView();
-            this.Panel6 = new System.Windows.Forms.Panel();
-            this.lblContar = new System.Windows.Forms.Label();
-            this.Panel4 = new System.Windows.Forms.Panel();
-            this.DataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Panel6 = new System.Windows.Forms.Panel();
+            this.Panel4 = new System.Windows.Forms.Panel();
+            this.DataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.lblnro_reg = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.Panel2.SuspendLayout();
             this.Panel1.SuspendLayout();
             this.Panel3.SuspendLayout();
@@ -155,43 +156,6 @@
             this.datalistado.Size = new System.Drawing.Size(980, 385);
             this.datalistado.TabIndex = 0;
             // 
-            // Panel6
-            // 
-            this.Panel6.BackColor = System.Drawing.Color.White;
-            this.Panel6.Controls.Add(this.lblContar);
-            this.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Panel6.Location = new System.Drawing.Point(10, 473);
-            this.Panel6.Name = "Panel6";
-            this.Panel6.Size = new System.Drawing.Size(980, 31);
-            this.Panel6.TabIndex = 3;
-            // 
-            // lblContar
-            // 
-            this.lblContar.AutoSize = true;
-            this.lblContar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContar.Location = new System.Drawing.Point(6, 9);
-            this.lblContar.Name = "lblContar";
-            this.lblContar.Size = new System.Drawing.Size(48, 17);
-            this.lblContar.TabIndex = 0;
-            this.lblContar.Text = "Label2";
-            // 
-            // Panel4
-            // 
-            this.Panel4.BackColor = System.Drawing.Color.White;
-            this.Panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Panel4.Location = new System.Drawing.Point(0, 0);
-            this.Panel4.Name = "Panel4";
-            this.Panel4.Size = new System.Drawing.Size(10, 504);
-            this.Panel4.TabIndex = 1;
-            // 
-            // DataGridViewImageColumn1
-            // 
-            this.DataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DataGridViewImageColumn1.HeaderText = "";
-            this.DataGridViewImageColumn1.Image = ((System.Drawing.Image)(resources.GetObject("DataGridViewImageColumn1.Image")));
-            this.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1";
-            this.DataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
             // Editar
             // 
             this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -211,6 +175,54 @@
             this.Eliminar.ReadOnly = true;
             this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Eliminar.Width = 5;
+            // 
+            // Panel6
+            // 
+            this.Panel6.BackColor = System.Drawing.Color.White;
+            this.Panel6.Controls.Add(this.lblnro_reg);
+            this.Panel6.Controls.Add(this.label2);
+            this.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Panel6.Location = new System.Drawing.Point(10, 473);
+            this.Panel6.Name = "Panel6";
+            this.Panel6.Size = new System.Drawing.Size(980, 31);
+            this.Panel6.TabIndex = 3;
+            // 
+            // Panel4
+            // 
+            this.Panel4.BackColor = System.Drawing.Color.White;
+            this.Panel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Panel4.Location = new System.Drawing.Point(0, 0);
+            this.Panel4.Name = "Panel4";
+            this.Panel4.Size = new System.Drawing.Size(10, 504);
+            this.Panel4.TabIndex = 1;
+            // 
+            // DataGridViewImageColumn1
+            // 
+            this.DataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DataGridViewImageColumn1.HeaderText = "";
+            this.DataGridViewImageColumn1.Image = ((System.Drawing.Image)(resources.GetObject("DataGridViewImageColumn1.Image")));
+            this.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1";
+            this.DataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // lblnro_reg
+            // 
+            this.lblnro_reg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblnro_reg.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnro_reg.Location = new System.Drawing.Point(151, 7);
+            this.lblnro_reg.Name = "lblnro_reg";
+            this.lblnro_reg.Size = new System.Drawing.Size(78, 17);
+            this.lblnro_reg.TabIndex = 3;
+            this.lblnro_reg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(4, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(141, 17);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "NRO DE REGISTROS : ";
             // 
             // frmProductor
             // 
@@ -246,10 +258,11 @@
         internal System.Windows.Forms.Panel Panel3;
         internal System.Windows.Forms.DataGridView datalistado;
         internal System.Windows.Forms.Panel Panel6;
-        internal System.Windows.Forms.Label lblContar;
         internal System.Windows.Forms.Panel Panel4;
         internal System.Windows.Forms.DataGridViewImageColumn DataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn Eliminar;
+        internal System.Windows.Forms.Label lblnro_reg;
+        internal System.Windows.Forms.Label label2;
     }
 }

@@ -26,9 +26,11 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            frmAcopiador2 F = new frmAcopiador2();
+            frmAltaRUC F = new frmAltaRUC();
+            F.CambiarTextoLabel("Ingreso de Acopiadores");
+            F.Panel1.BackColor = Color .Green;
             F.ShowDialog();
-
+            mostraracopiador();
         }
        
         private void btnCerrar_Click(object sender, EventArgs e)
