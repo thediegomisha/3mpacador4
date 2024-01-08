@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using _3mpacador4.Entidad;
 using _3mpacador4.Logica;
 using Devart.Data.MySql;
+using iText.Kernel.Colors;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
@@ -25,10 +26,13 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         {
             var aux = new Colaborador();
 
-            frmColaborador2 F = new frmColaborador2();
+            frmAltaDNI F = new frmAltaDNI();
+            F.CambiarTextoLabel("Ingreso de Colaborador");
+           // F.Panel.BackColor = Color.Green;
             F.ShowDialog();
             MostrarColaborador();
         }
+
        
         private void btnCerrar_Click(object sender, EventArgs e)
         {
@@ -41,8 +45,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         } 
 
         public void MostrarColaborador()
-        {
-           
+        {           
                 MySqlCommand comando;
                 try
                 {
@@ -78,7 +81,6 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
-
         }
 
         private void datalistado_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -95,7 +97,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 cl.apellidoMaterno = datalistado.CurrentRow.Cells[6].Value.ToString();
                 cl.flag_estado = datalistado.CurrentRow.Cells[7].Value.ToString();
 
-                var f = new frmColaborador2();
+                var f = new frmAltaDNI();
                 f.ShowDialog();
                 MostrarColaborador();
 

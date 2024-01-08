@@ -167,6 +167,12 @@
     <Compile Include="Presentacion\Mantenimiento\frmAcopiador.Designer.cs">
       <DependentUpon>frmAcopiador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmAltaDNI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmAltaDNI.Designer.cs">
+      <DependentUpon>frmAltaDNI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Mantenimiento\frmColaborador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -376,6 +382,9 @@
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmAcopiador.resx">
       <DependentUpon>frmAcopiador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmAltaDNI.resx">
+      <DependentUpon>frmAltaDNI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmColaborador.resx">
       <DependentUpon>frmColaborador.cs</DependentUpon>
