@@ -60,18 +60,25 @@ namespace _3mpacador4.Presentacion
             panelSistema.Visible = false;
             panelMantenimiento.Visible = false;
             panelTrazabilidad.Visible = false;
+            PanelBuscar.Visible = false;
         }
 
         private void ocultarSubMenu()
         {
                if(panelPesos.Visible == true)
-                    panelPesos.Visible = false;
+                panelPesos.Visible = false;
                if(panelReportes.Visible == true)
                 panelReportes.Visible = false;
                if(panelSistema.Visible == true)
                 panelSistema.Visible = false;
                if (panelMantenimiento.Visible == true)
                 panelMantenimiento.Visible = false;
+               if (PanelBuscar.Visible == true)
+                PanelBuscar.Visible = false;
+               if (panelTrazabilidad.Visible == true)
+                panelTrazabilidad.Visible = false;
+
+
         }
         private void MostrarSubMenu(Panel subMenu)
         {
@@ -289,6 +296,18 @@ namespace _3mpacador4.Presentacion
         {
             ocultarSubMenu();
             AbrirFormularioHijo(new frmAcopiador());
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            MostrarSubMenu(PanelBuscar);
+        }
+
+        private void btnCLP_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            frmProductorCLP form = new frmProductorCLP();
+            form.ShowDialog();
         }
     }
 }

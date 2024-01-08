@@ -154,6 +154,7 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnActualizar);
+            this.KeyPreview = true;
             this.Name = "frmProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Panel1.ResumeLayout(false);

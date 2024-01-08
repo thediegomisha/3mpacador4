@@ -270,6 +270,7 @@
             this.Controls.Add(this.Panel1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
+            this.KeyPreview = true;
             this.Name = "frmAltaRUC";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmPersonaJuridica_Load);

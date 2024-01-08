@@ -167,12 +167,6 @@
     <Compile Include="Presentacion\Mantenimiento\frmAcopiador.Designer.cs">
       <DependentUpon>frmAcopiador.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmColaborador2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmColaborador2.Designer.cs">
-      <DependentUpon>frmColaborador2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Presentacion\Mantenimiento\frmColaborador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -382,9 +376,6 @@
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmAcopiador.resx">
       <DependentUpon>frmAcopiador.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmColaborador2.resx">
-      <DependentUpon>frmColaborador2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmColaborador.resx">
       <DependentUpon>frmColaborador.cs</DependentUpon>

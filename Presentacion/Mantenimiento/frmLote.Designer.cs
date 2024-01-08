@@ -111,6 +111,7 @@
             this.Controls.Add(this.txtnumlote);
             this.Controls.Add(this.Label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "frmLote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Panel1.ResumeLayout(false);

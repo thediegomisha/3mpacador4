@@ -189,6 +189,7 @@
             this.Controls.Add(this.Panel1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnBuscar);
+            this.KeyPreview = true;
             this.Name = "frmProductorCLP";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Activated += new System.EventHandler(this.frmProductorCLP_Activated);

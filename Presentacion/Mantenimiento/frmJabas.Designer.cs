@@ -111,6 +111,7 @@
             this.Controls.Add(this.txtnumjaba);
             this.Controls.Add(this.Label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmJabas";
