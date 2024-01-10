@@ -48,6 +48,10 @@
             this.btnBD = new System.Windows.Forms.Button();
             this.btnPuertoSerie = new System.Windows.Forms.Button();
             this.btnSistema = new System.Windows.Forms.Button();
+            this.PanelBuscar = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnCLP = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.panelReportes = new System.Windows.Forms.Panel();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
@@ -74,19 +78,15 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.PanelBuscar = new System.Windows.Forms.Panel();
-            this.btnCLP = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
             this.panelSistema.SuspendLayout();
+            this.PanelBuscar.SuspendLayout();
             this.panelReportes.SuspendLayout();
             this.panelPesos.SuspendLayout();
             this.PanelFormularioHijo.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.PanelBuscar.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelLadoIzq
@@ -177,12 +177,12 @@
             // panelMantenimiento
             // 
             this.panelMantenimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.panelMantenimiento.Controls.Add(this.btnProducto);
-            this.panelMantenimiento.Controls.Add(this.btnColaborador);
-            this.panelMantenimiento.Controls.Add(this.btnAcopiador);
-            this.panelMantenimiento.Controls.Add(this.btnProductores);
             this.panelMantenimiento.Controls.Add(this.btnUsuarios);
+            this.panelMantenimiento.Controls.Add(this.btnProducto);
+            this.panelMantenimiento.Controls.Add(this.btnProductores);
+            this.panelMantenimiento.Controls.Add(this.btnColaborador);
             this.panelMantenimiento.Controls.Add(this.btnClientes);
+            this.panelMantenimiento.Controls.Add(this.btnAcopiador);
             this.panelMantenimiento.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMantenimiento.Location = new System.Drawing.Point(0, 713);
             this.panelMantenimiento.Name = "panelMantenimiento";
@@ -196,7 +196,7 @@
             this.btnProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProducto.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnProducto.ForeColor = System.Drawing.Color.LightGray;
-            this.btnProducto.Location = new System.Drawing.Point(0, 165);
+            this.btnProducto.Location = new System.Drawing.Point(0, 132);
             this.btnProducto.Name = "btnProducto";
             this.btnProducto.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnProducto.Size = new System.Drawing.Size(121, 33);
@@ -213,7 +213,7 @@
             this.btnColaborador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnColaborador.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnColaborador.ForeColor = System.Drawing.Color.LightGray;
-            this.btnColaborador.Location = new System.Drawing.Point(0, 132);
+            this.btnColaborador.Location = new System.Drawing.Point(0, 66);
             this.btnColaborador.Name = "btnColaborador";
             this.btnColaborador.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnColaborador.Size = new System.Drawing.Size(121, 33);
@@ -230,7 +230,7 @@
             this.btnAcopiador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAcopiador.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnAcopiador.ForeColor = System.Drawing.Color.LightGray;
-            this.btnAcopiador.Location = new System.Drawing.Point(0, 99);
+            this.btnAcopiador.Location = new System.Drawing.Point(0, 0);
             this.btnAcopiador.Name = "btnAcopiador";
             this.btnAcopiador.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnAcopiador.Size = new System.Drawing.Size(121, 33);
@@ -247,7 +247,7 @@
             this.btnProductores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProductores.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnProductores.ForeColor = System.Drawing.Color.LightGray;
-            this.btnProductores.Location = new System.Drawing.Point(0, 66);
+            this.btnProductores.Location = new System.Drawing.Point(0, 99);
             this.btnProductores.Name = "btnProductores";
             this.btnProductores.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnProductores.Size = new System.Drawing.Size(121, 33);
@@ -264,7 +264,7 @@
             this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUsuarios.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnUsuarios.ForeColor = System.Drawing.Color.LightGray;
-            this.btnUsuarios.Location = new System.Drawing.Point(0, 33);
+            this.btnUsuarios.Location = new System.Drawing.Point(0, 165);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnUsuarios.Size = new System.Drawing.Size(121, 33);
@@ -280,7 +280,7 @@
             this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClientes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnClientes.ForeColor = System.Drawing.Color.LightGray;
-            this.btnClientes.Location = new System.Drawing.Point(0, 0);
+            this.btnClientes.Location = new System.Drawing.Point(0, 33);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnClientes.Size = new System.Drawing.Size(121, 33);
@@ -404,6 +404,67 @@
             this.btnSistema.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSistema.UseVisualStyleBackColor = true;
             this.btnSistema.Click += new System.EventHandler(this.btnSistema_Click);
+            // 
+            // PanelBuscar
+            // 
+            this.PanelBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.PanelBuscar.Controls.Add(this.button1);
+            this.PanelBuscar.Controls.Add(this.btnCLP);
+            this.PanelBuscar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelBuscar.Location = new System.Drawing.Point(0, 404);
+            this.PanelBuscar.Name = "PanelBuscar";
+            this.PanelBuscar.Size = new System.Drawing.Size(121, 73);
+            this.PanelBuscar.TabIndex = 19;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.Color.LightGray;
+            this.button1.Location = new System.Drawing.Point(0, 33);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(121, 33);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Buscar 2";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnCLP
+            // 
+            this.btnCLP.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCLP.FlatAppearance.BorderSize = 0;
+            this.btnCLP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCLP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnCLP.ForeColor = System.Drawing.Color.LightGray;
+            this.btnCLP.Location = new System.Drawing.Point(0, 0);
+            this.btnCLP.Name = "btnCLP";
+            this.btnCLP.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnCLP.Size = new System.Drawing.Size(121, 33);
+            this.btnCLP.TabIndex = 15;
+            this.btnCLP.Text = "Busqueda por CLP";
+            this.btnCLP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCLP.UseVisualStyleBackColor = true;
+            this.btnCLP.Click += new System.EventHandler(this.btnCLP_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnBuscar.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnBuscar.Location = new System.Drawing.Point(0, 366);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnBuscar.Size = new System.Drawing.Size(121, 38);
+            this.btnBuscar.TabIndex = 18;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // panelReportes
             // 
@@ -700,67 +761,6 @@
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
             // 
-            // PanelBuscar
-            // 
-            this.PanelBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.PanelBuscar.Controls.Add(this.button1);
-            this.PanelBuscar.Controls.Add(this.btnCLP);
-            this.PanelBuscar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelBuscar.Location = new System.Drawing.Point(0, 404);
-            this.PanelBuscar.Name = "PanelBuscar";
-            this.PanelBuscar.Size = new System.Drawing.Size(121, 73);
-            this.PanelBuscar.TabIndex = 19;
-            // 
-            // btnCLP
-            // 
-            this.btnCLP.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCLP.FlatAppearance.BorderSize = 0;
-            this.btnCLP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCLP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnCLP.ForeColor = System.Drawing.Color.LightGray;
-            this.btnCLP.Location = new System.Drawing.Point(0, 0);
-            this.btnCLP.Name = "btnCLP";
-            this.btnCLP.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnCLP.Size = new System.Drawing.Size(121, 33);
-            this.btnCLP.TabIndex = 15;
-            this.btnCLP.Text = "Busqueda por CLP";
-            this.btnCLP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCLP.UseVisualStyleBackColor = true;
-            this.btnCLP.Click += new System.EventHandler(this.btnCLP_Click);
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.LightGray;
-            this.button1.Location = new System.Drawing.Point(0, 33);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(121, 33);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Buscar 2";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnBuscar.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnBuscar.Location = new System.Drawing.Point(0, 366);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnBuscar.Size = new System.Drawing.Size(121, 38);
-            this.btnBuscar.TabIndex = 18;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -778,13 +778,13 @@
             this.panelTrazabilidad.ResumeLayout(false);
             this.panelMantenimiento.ResumeLayout(false);
             this.panelSistema.ResumeLayout(false);
+            this.PanelBuscar.ResumeLayout(false);
             this.panelReportes.ResumeLayout(false);
             this.panelPesos.ResumeLayout(false);
             this.PanelFormularioHijo.ResumeLayout(false);
             this.PanelFormularioHijo.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.PanelBuscar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
