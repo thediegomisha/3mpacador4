@@ -53,7 +53,7 @@
             // 
             // Panel1
             // 
-            this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.Panel1.Controls.Add(this.Label1);
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
@@ -66,11 +66,11 @@
             this.Label1.AutoSize = true;
             this.Label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.White;
-            this.Label1.Location = new System.Drawing.Point(12, 9);
+            this.Label1.Location = new System.Drawing.Point(247, 9);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(189, 21);
+            this.Label1.Size = new System.Drawing.Size(232, 21);
             this.Label1.TabIndex = 0;
-            this.Label1.Text = "Ingreso de Colaborador";
+            this.Label1.Text = "REGISTRO DE COLABORADOR";
             // 
             // Label4
             // 

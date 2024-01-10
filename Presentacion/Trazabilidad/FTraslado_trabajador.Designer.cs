@@ -338,12 +338,13 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             // 
             this.btntrasladar.BackColor = System.Drawing.Color.Blue;
             this.btntrasladar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btntrasladar.Location = new System.Drawing.Point(259, 16);
+            this.btntrasladar.Image = global::_3mpacador4.Properties.Resources.trasladar;
+            this.btntrasladar.Location = new System.Drawing.Point(252, 16);
             this.btntrasladar.Margin = new System.Windows.Forms.Padding(4);
             this.btntrasladar.Name = "btntrasladar";
             this.btntrasladar.OuterBorderColor = System.Drawing.Color.Blue;
             this.btntrasladar.ShineColor = System.Drawing.Color.Navy;
-            this.btntrasladar.Size = new System.Drawing.Size(104, 47);
+            this.btntrasladar.Size = new System.Drawing.Size(111, 47);
             this.btntrasladar.TabIndex = 89;
             this.btntrasladar.Text = "TRASLADAR ";
             this.btntrasladar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
