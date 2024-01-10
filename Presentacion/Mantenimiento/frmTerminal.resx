@@ -117,65 +117,39 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="TickeAgricolaPesos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TickeAgricolaPesos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Eliminar.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column6.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="DataGridViewImageColumn1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAPxJREFUOE+l0z9qAkEcxfElRQhBxDKIiAQLCw/iOYJHEEtbERGxSplTiIRgYSHB
+        0sJKxCOkTCU/v292FmTdnQzkwQd213nzD0ziYw+Y4wcj+O9RsSc08QmazhT+9z9j7ziijdtJ2Ekw9pgO
+        shYOyE/CcUrjtr3EHnXoCPlJFn5wPq68gsoNaCK96zmb5BVc7F0Ky9ruBNqJjvOBmi/cxpW1taKyjnBC
+        6baf8YVQeYfClf9TVmwGXU5Z+RtVPzgfxqaD+t4vxogpK9aBVmR1995DVt4iVFZsgDP0/II3qLxBJR0T
+        jK2hHah0gSbTv46LjYq7PK02RBf+e0yS5ApSBNMUyxz3JgAAAABJRU5ErkJggg==
+</value>
   </data>
-  <data name="TickeAgricolaPesos1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TickeAgricolaPesos1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Eliminar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Eliminar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ICUSB2322F.C" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Recursos\ICUSB2322F.C.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="reniec" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\reniec.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ticketagricola2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ticketagricola2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TickeAgricolaPesos2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TickeAgricolaPesos2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cancel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ticketagricola1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ticketagricola1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\edit.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logoagricola" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logoagricola.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="close" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="update" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\update.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="new" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\new.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="qr" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\qr.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ticketagricola" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ticketagricola.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="new1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\new1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cargando" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cargando.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Editar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Editar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DataGridViewImageColumn2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAMJJREFUOE/tkzEKwkAQRRePZ2EhIiLiCURExEq8hYW1iFha5ChiKZLaUkQkxDfm
+        r4Zlg9hZOOTBn9n5v5q4sHLnFnCBa4Sl1qpLi3dIYCdM3yDTWnVpMVH7KmYWxBcppjNYiwzSUu85QV7q
+        57I/A/Z6/IaD7HQFlmoPUxhIT2AoPYKx9BZqhVvFYKXHHjSlu9CSbkNHeiPbuxj+A34poA/eZGFmNG1m
+        C/wYYGd8lLbz9Sdc1tGAOpwh/IVDbKdRuJx7AB6xNRggJETLAAAAAElFTkSuQmCC
+</value>
   </data>
 </root>

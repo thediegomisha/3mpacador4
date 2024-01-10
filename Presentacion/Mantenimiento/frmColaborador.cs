@@ -7,7 +7,6 @@ using Devart.Data.MySql;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
-    
 
     public partial class frmColaborador : Form
     {     
@@ -23,8 +22,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            var aux = new Colaborador();
-
+            //var aux = new Colaborador();
             frmColaborador2 F = new frmColaborador2();
             F.ShowDialog();
             MostrarColaborador();

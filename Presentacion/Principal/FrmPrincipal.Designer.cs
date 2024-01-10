@@ -37,6 +37,7 @@
             this.panelMantenimiento = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnTerminal = new System.Windows.Forms.Button();
             this.btnColaborador = new System.Windows.Forms.Button();
             this.btnAcopiador = new System.Windows.Forms.Button();
             this.btnProductores = new System.Windows.Forms.Button();
@@ -112,7 +113,7 @@
             this.panelTrazabilidad.Controls.Add(this.button2);
             this.panelTrazabilidad.Controls.Add(this.button6);
             this.panelTrazabilidad.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTrazabilidad.Location = new System.Drawing.Point(0, 801);
+            this.panelTrazabilidad.Location = new System.Drawing.Point(0, 818);
             this.panelTrazabilidad.Name = "panelTrazabilidad";
             this.panelTrazabilidad.Size = new System.Drawing.Size(159, 155);
             this.panelTrazabilidad.TabIndex = 15;
@@ -158,7 +159,7 @@
             this.btnTrazabilidadP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrazabilidadP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnTrazabilidadP.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 757);
+            this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 774);
             this.btnTrazabilidadP.Name = "btnTrazabilidadP";
             this.btnTrazabilidadP.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnTrazabilidadP.Size = new System.Drawing.Size(159, 44);
@@ -176,7 +177,7 @@
             this.panelMantenimiento.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMantenimiento.Location = new System.Drawing.Point(0, 602);
             this.panelMantenimiento.Name = "panelMantenimiento";
-            this.panelMantenimiento.Size = new System.Drawing.Size(159, 155);
+            this.panelMantenimiento.Size = new System.Drawing.Size(159, 172);
             this.panelMantenimiento.TabIndex = 13;
             // 
             // button1
@@ -198,6 +199,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panel1.Controls.Add(this.btnTerminal);
             this.panel1.Controls.Add(this.btnColaborador);
             this.panel1.Controls.Add(this.btnAcopiador);
             this.panel1.Controls.Add(this.btnProductores);
@@ -206,6 +208,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(159, 148);
             this.panel1.TabIndex = 12;
+            // 
+            // btnTerminal
+            // 
+            this.btnTerminal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTerminal.FlatAppearance.BorderSize = 0;
+            this.btnTerminal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTerminal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnTerminal.ForeColor = System.Drawing.Color.LightGray;
+            this.btnTerminal.Location = new System.Drawing.Point(0, 99);
+            this.btnTerminal.Name = "btnTerminal";
+            this.btnTerminal.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnTerminal.Size = new System.Drawing.Size(159, 34);
+            this.btnTerminal.TabIndex = 16;
+            this.btnTerminal.Text = "Terminal";
+            this.btnTerminal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTerminal.UseVisualStyleBackColor = true;
+            this.btnTerminal.Click += new System.EventHandler(this.btnTerminal_Click);
             // 
             // btnColaborador
             // 
@@ -759,5 +778,6 @@
         private System.Windows.Forms.Panel panelTrazabilidad;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnTerminal;
     }
 }

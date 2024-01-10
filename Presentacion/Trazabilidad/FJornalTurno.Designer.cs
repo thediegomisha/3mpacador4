@@ -288,6 +288,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.btncancelar.BackColor = System.Drawing.Color.Red;
             this.btncancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.GlowColor = System.Drawing.Color.Empty;
+            this.btncancelar.Image = global::_3mpacador4.Properties.Resources.cancel;
             this.btncancelar.Location = new System.Drawing.Point(7, 109);
             this.btncancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btncancelar.Name = "btncancelar";
@@ -303,6 +304,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             // 
             this.btncrearturno.BackColor = System.Drawing.Color.Blue;
             this.btncrearturno.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btncrearturno.Image = global::_3mpacador4.Properties.Resources.save;
             this.btncrearturno.Location = new System.Drawing.Point(7, 21);
             this.btncrearturno.Margin = new System.Windows.Forms.Padding(4);
             this.btncrearturno.Name = "btncrearturno";
@@ -668,6 +670,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             // 
             this.btnactualizar_turno.BackColor = System.Drawing.Color.Blue;
             this.btnactualizar_turno.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnactualizar_turno.Image = global::_3mpacador4.Properties.Resources.update;
             this.btnactualizar_turno.Location = new System.Drawing.Point(7, 65);
             this.btnactualizar_turno.Margin = new System.Windows.Forms.Padding(4);
             this.btnactualizar_turno.Name = "btnactualizar_turno";
@@ -714,7 +717,6 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             // 
             this.dataGridViewImageColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.dataGridViewImageColumn3.HeaderText = "";
-            this.dataGridViewImageColumn3.Image = global::_3mpacador4.Properties.Resources.eliminar;
             this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
             this.dataGridViewImageColumn3.ReadOnly = true;
             // 

@@ -255,6 +255,13 @@ namespace _3mpacador4.Presentacion
             ocultarSubMenu();
             AbrirFormularioHijo(new FProgramaProceso());
         }
+
+        private void btnTerminal_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new frmTerminal());
+
+        }
     }
 }
 

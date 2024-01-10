@@ -297,7 +297,7 @@
             // 
             // PictureBox1
             // 
-            this.PictureBox1.Image = global::_3mpacador4.Properties.Resources.ICUSB2322F_C;
+            //this.PictureBox1.Image = global::_3mpacador4.Properties.Resources.ICUSB2322F_C;
             this.PictureBox1.Location = new System.Drawing.Point(15, 10);
             this.PictureBox1.Name = "PictureBox1";
             this.PictureBox1.Size = new System.Drawing.Size(105, 92);

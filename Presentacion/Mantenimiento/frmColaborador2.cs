@@ -200,7 +200,6 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             InsertarColaborador();
-            this.Close();
         }
      
 
@@ -252,7 +251,6 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             ActualizarColaborador();
-            this.Close();
         }        
 
         private void cbxreniec_CheckedChanged(object sender, EventArgs e)
@@ -292,8 +290,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             {
                 MessageBox.Show(ex.Message, "Algo Salio Mal ConsultaDNI() :( ");
                 throw;
-            }
-            
+            }            
         }
 
         public async Task<string> ConsultaDNI(string ls_dni)
