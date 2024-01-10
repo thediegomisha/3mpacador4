@@ -309,6 +309,13 @@ namespace _3mpacador4.Presentacion
             frmProductorCLP form = new frmProductorCLP();
             form.ShowDialog();
         }
+
+        private void btnTerminal_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new frmTerminal());
+
+        }
     }
 }
 

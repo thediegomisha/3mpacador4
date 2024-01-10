@@ -35,6 +35,9 @@
             this.button6 = new System.Windows.Forms.Button();
             this.btnTrazabilidadP = new System.Windows.Forms.Button();
             this.panelMantenimiento = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnTerminal = new System.Windows.Forms.Button();
             this.btnProducto = new System.Windows.Forms.Button();
             this.btnColaborador = new System.Windows.Forms.Button();
             this.btnAcopiador = new System.Windows.Forms.Button();
@@ -205,6 +208,36 @@
             this.btnProducto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProducto.UseVisualStyleBackColor = true;
             this.btnProducto.Click += new System.EventHandler(this.btnProducto_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panel1.Controls.Add(this.btnTerminal);
+            this.panel1.Controls.Add(this.btnColaborador);
+            this.panel1.Controls.Add(this.btnAcopiador);
+            this.panel1.Controls.Add(this.btnProductores);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 33);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(159, 148);
+            this.panel1.TabIndex = 12;
+            // 
+            // btnTerminal
+            // 
+            this.btnTerminal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTerminal.FlatAppearance.BorderSize = 0;
+            this.btnTerminal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTerminal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnTerminal.ForeColor = System.Drawing.Color.LightGray;
+            this.btnTerminal.Location = new System.Drawing.Point(0, 99);
+            this.btnTerminal.Name = "btnTerminal";
+            this.btnTerminal.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnTerminal.Size = new System.Drawing.Size(159, 34);
+            this.btnTerminal.TabIndex = 16;
+            this.btnTerminal.Text = "Terminal";
+            this.btnTerminal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTerminal.UseVisualStyleBackColor = true;
+            this.btnTerminal.Click += new System.EventHandler(this.btnTerminal_Click);
             // 
             // btnColaborador
             // 
@@ -840,5 +873,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnCLP;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btnTerminal;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace _3mpacador4.Presentacion.Mantenimiento
 {
-    partial class frmColaborador
+    partial class frmTerminal
     {
         /// <summary>
         /// Required designer variable.
@@ -28,23 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmColaborador));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTerminal));
             this.Panel2 = new System.Windows.Forms.Panel();
+            this.btnCerrar = new Glass.GlassButton();
+            this.btnNuevo = new Glass.GlassButton();
             this.Panel1 = new System.Windows.Forms.Panel();
             this.Label1 = new System.Windows.Forms.Label();
             this.Panel5 = new System.Windows.Forms.Panel();
             this.Panel3 = new System.Windows.Forms.Panel();
             this.datalistado = new System.Windows.Forms.DataGridView();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Panel6 = new System.Windows.Forms.Panel();
             this.lblnro_reg = new System.Windows.Forms.Label();
@@ -52,8 +50,6 @@
             this.Panel4 = new System.Windows.Forms.Panel();
             this.DataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.DataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnNuevo = new Glass.GlassButton();
-            this.btnCerrar = new Glass.GlassButton();
             this.Panel2.SuspendLayout();
             this.Panel1.SuspendLayout();
             this.Panel3.SuspendLayout();
@@ -71,9 +67,43 @@
             this.Panel2.Size = new System.Drawing.Size(1000, 48);
             this.Panel2.TabIndex = 20;
             // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.BackColor = System.Drawing.Color.Red;
+            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.GlowColor = System.Drawing.Color.Empty;
+            this.btnCerrar.Image = global::_3mpacador4.Properties.Resources.close;
+            this.btnCerrar.Location = new System.Drawing.Point(851, 3);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.OuterBorderColor = System.Drawing.Color.Red;
+            this.btnCerrar.ShineColor = System.Drawing.Color.RoyalBlue;
+            this.btnCerrar.Size = new System.Drawing.Size(139, 40);
+            this.btnCerrar.TabIndex = 92;
+            this.btnCerrar.Text = "CERRAR";
+            this.btnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.BackColor = System.Drawing.Color.Blue;
+            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnNuevo.Image = global::_3mpacador4.Properties.Resources._new;
+            this.btnNuevo.Location = new System.Drawing.Point(4, 3);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.OuterBorderColor = System.Drawing.Color.Blue;
+            this.btnNuevo.ShineColor = System.Drawing.Color.Navy;
+            this.btnNuevo.Size = new System.Drawing.Size(164, 40);
+            this.btnNuevo.TabIndex = 93;
+            this.btnNuevo.Text = "NUEVO TERMINAL";
+            this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
             // Panel1
             // 
-            this.Panel1.BackColor = System.Drawing.Color.MediumBlue;
+            this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.Panel1.Controls.Add(this.Label1);
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
@@ -85,11 +115,11 @@
             // 
             this.Label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.White;
-            this.Label1.Location = new System.Drawing.Point(284, 9);
+            this.Label1.Location = new System.Drawing.Point(345, 10);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(308, 21);
+            this.Label1.Size = new System.Drawing.Size(201, 21);
             this.Label1.TabIndex = 0;
-            this.Label1.Text = "LISTA DE COLABORADORES";
+            this.Label1.Text = "LISTA DE TERMINALES";
             this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Panel5
@@ -122,48 +152,44 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.datalistado.BackgroundColor = System.Drawing.Color.White;
             this.datalistado.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datalistado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datalistado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.datalistado.ColumnHeadersHeight = 30;
             this.datalistado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Editar,
+            this.Column2,
             this.Eliminar,
             this.Column1,
-            this.Column2,
             this.Column3,
-            this.Column4,
-            this.Column5,
             this.Column6});
             this.datalistado.Location = new System.Drawing.Point(10, 88);
             this.datalistado.Name = "datalistado";
             this.datalistado.ReadOnly = true;
             this.datalistado.RowHeadersVisible = false;
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datalistado.Size = new System.Drawing.Size(980, 385);
-            this.datalistado.TabIndex = 0;
+            this.datalistado.Size = new System.Drawing.Size(980, 379);
+            this.datalistado.TabIndex = 4;
             this.datalistado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datalistado_CellClick);
             // 
-            // Editar
+            // Column2
             // 
-            this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Editar.HeaderText = "";
-            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Editar.Width = 5;
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column2.HeaderText = "";
+            this.Column2.Image = global::_3mpacador4.Properties.Resources.Editar;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 5;
             // 
             // Eliminar
             // 
             this.Eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Eliminar.HeaderText = "";
-            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
+            this.Eliminar.Image = global::_3mpacador4.Properties.Resources.Eliminar;
             this.Eliminar.Name = "Eliminar";
             this.Eliminar.ReadOnly = true;
             this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -171,41 +197,19 @@
             // 
             // Column1
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column1.HeaderText = "ID";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.Width = 50;
             // 
-            // Column2
-            // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle15;
-            this.Column2.HeaderText = "DNI";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
             // Column3
             // 
-            this.Column3.HeaderText = "NOMBRES";
+            this.Column3.HeaderText = "DESCRIPCION DEL TERMINAL";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            this.Column3.Width = 200;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "APELLIDO PATERNO";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 200;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "APELLIDO MATERNO";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 200;
+            this.Column3.Width = 250;
             // 
             // Column6
             // 
@@ -232,7 +236,7 @@
             this.lblnro_reg.Location = new System.Drawing.Point(153, 6);
             this.lblnro_reg.Name = "lblnro_reg";
             this.lblnro_reg.Size = new System.Drawing.Size(78, 17);
-            this.lblnro_reg.TabIndex = 1;
+            this.lblnro_reg.TabIndex = 3;
             this.lblnro_reg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblContar
@@ -242,7 +246,7 @@
             this.lblContar.Location = new System.Drawing.Point(6, 6);
             this.lblContar.Name = "lblContar";
             this.lblContar.Size = new System.Drawing.Size(141, 17);
-            this.lblContar.TabIndex = 0;
+            this.lblContar.TabIndex = 2;
             this.lblContar.Text = "NRO DE REGISTROS : ";
             // 
             // Panel4
@@ -270,41 +274,7 @@
             this.DataGridViewImageColumn2.Name = "DataGridViewImageColumn2";
             this.DataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // btnNuevo
-            // 
-            this.btnNuevo.BackColor = System.Drawing.Color.Blue;
-            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnNuevo.Image = global::_3mpacador4.Properties.Resources._new;
-            this.btnNuevo.Location = new System.Drawing.Point(4, 4);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.OuterBorderColor = System.Drawing.Color.Blue;
-            this.btnNuevo.ShineColor = System.Drawing.Color.Navy;
-            this.btnNuevo.Size = new System.Drawing.Size(207, 40);
-            this.btnNuevo.TabIndex = 94;
-            this.btnNuevo.Text = "NUEVO COLABORADOR";
-            this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCerrar.BackColor = System.Drawing.Color.Red;
-            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.GlowColor = System.Drawing.Color.Empty;
-            this.btnCerrar.Image = global::_3mpacador4.Properties.Resources.close;
-            this.btnCerrar.Location = new System.Drawing.Point(857, 4);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.OuterBorderColor = System.Drawing.Color.Red;
-            this.btnCerrar.ShineColor = System.Drawing.Color.RoyalBlue;
-            this.btnCerrar.Size = new System.Drawing.Size(139, 40);
-            this.btnCerrar.TabIndex = 95;
-            this.btnCerrar.Text = "CERRAR";
-            this.btnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
-            // frmColaborador
+            // frmTerminal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -313,7 +283,7 @@
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.Panel1);
             this.Controls.Add(this.Panel3);
-            this.Name = "frmColaborador";
+            this.Name = "frmTerminal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Panel2.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);
@@ -334,20 +304,17 @@
         internal System.Windows.Forms.Panel Panel5;
         internal System.Windows.Forms.Panel Panel3;
         internal System.Windows.Forms.Panel Panel6;
-        internal System.Windows.Forms.Label lblContar;
         internal System.Windows.Forms.Panel Panel4;
         internal System.Windows.Forms.DataGridViewImageColumn DataGridViewImageColumn1;
+        internal System.Windows.Forms.Label lblnro_reg;
+        internal System.Windows.Forms.Label lblContar;
+        private Glass.GlassButton btnCerrar;
+        private Glass.GlassButton btnNuevo;
         public System.Windows.Forms.DataGridView datalistado;
-        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.DataGridViewImageColumn Column2;
         private System.Windows.Forms.DataGridViewImageColumn Eliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column6;
-        internal System.Windows.Forms.Label lblnro_reg;
-        private Glass.GlassButton btnNuevo;
-        private Glass.GlassButton btnCerrar;
     }
 }

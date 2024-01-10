@@ -8,7 +8,6 @@ using iText.Kernel.Colors;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
-    
 
     public partial class frmColaborador : Form
     {     

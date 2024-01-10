@@ -304,7 +304,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 MessageBox.Show(ex.Message, "Algo Salio Mal ConsultaDNI() :( ");
                 throw;
             }
-
+            
         }
 
         public async Task<string> ConsultaDNI(string ls_dni)

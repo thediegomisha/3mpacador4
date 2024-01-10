@@ -90,7 +90,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             // pbQR
             // 
             this.pbQR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbQR.Image = global::_3mpacador4.Properties.Resources.qr;
+            //this.pbQR.Image = global::_3mpacador4.Properties.Resources.qr;
             this.pbQR.Location = new System.Drawing.Point(37, 12);
             this.pbQR.Name = "pbQR";
             this.pbQR.Size = new System.Drawing.Size(114, 90);

@@ -320,7 +320,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             else if (e.ColumnIndex == 4 && e.RowIndex > -1)
             {
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-                var img = Properties.Resources.eliminar;
+                var img = Properties.Resources.Eliminar;
                 e.Graphics.DrawImage(img, e.CellBounds.Left + 15, e.CellBounds.Top + 3, 18, 15); // centrar la imagen en el boton
                 e.Handled = true;
             }
@@ -331,14 +331,14 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             if (e.ColumnIndex == 0 && e.RowIndex > -1)
             {
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-                var img = Properties.Resources.edit;
+                var img = Properties.Resources.Editar;
                 e.Graphics.DrawImage(img, e.CellBounds.Left + 5, e.CellBounds.Top + 3, 18, 15); // centrar la imagen en el boton
                 e.Handled = true;
             }
             else if (e.ColumnIndex == 1 && e.RowIndex > -1)
             {
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-                var img = Properties.Resources.eliminar;
+                var img = Properties.Resources.Eliminar;
                 e.Graphics.DrawImage(img, e.CellBounds.Left + 5, e.CellBounds.Top + 3, 18, 15); // centrar la imagen en el boton
                 e.Handled = true;
             }
