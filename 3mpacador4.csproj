@@ -201,6 +201,7 @@
     <Compile Include="Logica\ConexionGral.cs" />
     <Compile Include="Logica\ConnectionStringManager.cs" />
     <Compile Include="Logica\FormUtils.cs" />
+    <Compile Include="Logica\LGrupo_turno.cs" />
     <Compile Include="Presentacion\Mantenimiento\frmAcopiador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -609,6 +610,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="palta.ico" />
+    <None Include="Resources\add_persona.png" />
+    <None Include="Resources\trasladar.png" />
+    <None Include="Resources\buscar.png" />
     <None Include="Resources\Editar1.png" />
     <None Include="Resources\new1.png" />
     <None Include="Resources\logoagricola.png" />

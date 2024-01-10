@@ -52,14 +52,12 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.lblestado = new System.Windows.Forms.Label();
             this.cbflag_tercero = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btncancelar = new Glass.GlassButton();
-            this.btncrearturno = new Glass.GlassButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dtpfecha_produccion_fil = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.dgvgrupo_turno_cab = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,14 +80,16 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnasigna_trab = new Glass.GlassButton();
+            this.Column3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnactualizar_turno = new Glass.GlassButton();
-            this.btnbuscar_trab = new Glass.GlassButton();
+            this.btncrearturno = new Glass.GlassButton();
+            this.btncancelar = new Glass.GlassButton();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnbuscar_trab = new Glass.GlassButton();
+            this.btnasigna_trab = new Glass.GlassButton();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -283,39 +283,6 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.label5.TabIndex = 83;
             this.label5.Text = "TERCERO :";
             // 
-            // btncancelar
-            // 
-            this.btncancelar.BackColor = System.Drawing.Color.Red;
-            this.btncancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncancelar.GlowColor = System.Drawing.Color.Empty;
-            this.btncancelar.Image = global::_3mpacador4.Properties.Resources.cancel;
-            this.btncancelar.Location = new System.Drawing.Point(7, 109);
-            this.btncancelar.Margin = new System.Windows.Forms.Padding(4);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.OuterBorderColor = System.Drawing.Color.Red;
-            this.btncancelar.ShineColor = System.Drawing.Color.RoyalBlue;
-            this.btncancelar.Size = new System.Drawing.Size(160, 40);
-            this.btncancelar.TabIndex = 88;
-            this.btncancelar.Text = "CANCELAR";
-            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // btncrearturno
-            // 
-            this.btncrearturno.BackColor = System.Drawing.Color.Blue;
-            this.btncrearturno.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btncrearturno.Image = global::_3mpacador4.Properties.Resources.save;
-            this.btncrearturno.Location = new System.Drawing.Point(7, 21);
-            this.btncrearturno.Margin = new System.Windows.Forms.Padding(4);
-            this.btncrearturno.Name = "btncrearturno";
-            this.btncrearturno.OuterBorderColor = System.Drawing.Color.Blue;
-            this.btncrearturno.ShineColor = System.Drawing.Color.Navy;
-            this.btncrearturno.Size = new System.Drawing.Size(160, 40);
-            this.btncrearturno.TabIndex = 87;
-            this.btncrearturno.Text = "CREAR GRUPO";
-            this.btncrearturno.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncrearturno.Click += new System.EventHandler(this.btncrearturno_Click);
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.dtpfecha_produccion_fil);
@@ -389,22 +356,28 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.dgvgrupo_turno_cab.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvgrupo_turno_cab.Size = new System.Drawing.Size(896, 143);
             this.dgvgrupo_turno_cab.TabIndex = 91;
-            this.dgvgrupo_turno_cab.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvgrupo_turno_cab_CellPainting);
-            this.dgvgrupo_turno_cab.DoubleClick += new System.EventHandler(this.dgvgrupo_turno_cab_DoubleClick);
+            this.dgvgrupo_turno_cab.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvgrupo_turno_cab_CellClick);
+            this.dgvgrupo_turno_cab.SelectionChanged += new System.EventHandler(this.dgvgrupo_turno_cab_SelectionChanged);
             // 
             // Column1
             // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column1.HeaderText = "";
+            this.Column1.Image = global::_3mpacador4.Properties.Resources.Editar;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Width = 30;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.Width = 5;
             // 
             // Column2
             // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column2.HeaderText = "";
+            this.Column2.Image = global::_3mpacador4.Properties.Resources.Eliminar;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 30;
+            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column2.Width = 5;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -508,9 +481,9 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.groupBox5.Controls.Add(this.lblidgrupo);
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Controls.Add(this.dgvlista_trab);
-            this.groupBox5.Location = new System.Drawing.Point(152, 391);
+            this.groupBox5.Location = new System.Drawing.Point(163, 391);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(782, 214);
+            this.groupBox5.Size = new System.Drawing.Size(771, 214);
             this.groupBox5.TabIndex = 92;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "DETALLE TURNO";
@@ -592,7 +565,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.dgvlista_trab.RowHeadersVisible = false;
             this.dgvlista_trab.RowHeadersWidth = 51;
             this.dgvlista_trab.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvlista_trab.Size = new System.Drawing.Size(765, 159);
+            this.dgvlista_trab.Size = new System.Drawing.Size(754, 159);
             this.dgvlista_trab.TabIndex = 91;
             this.dgvlista_trab.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvlista_trab_CellClick);
             this.dgvlista_trab.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvlista_trab_CellPainting);
@@ -634,25 +607,14 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             // 
             // Column3
             // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column3.HeaderText = "QUITAR";
+            this.Column3.Image = global::_3mpacador4.Properties.Resources.Eliminar;
+            this.Column3.MinimumWidth = 30;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            this.Column3.Width = 50;
-            // 
-            // btnasigna_trab
-            // 
-            this.btnasigna_trab.BackColor = System.Drawing.Color.Blue;
-            this.btnasigna_trab.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnasigna_trab.Location = new System.Drawing.Point(23, 559);
-            this.btnasigna_trab.Margin = new System.Windows.Forms.Padding(4);
-            this.btnasigna_trab.Name = "btnasigna_trab";
-            this.btnasigna_trab.OuterBorderColor = System.Drawing.Color.Blue;
-            this.btnasigna_trab.ShineColor = System.Drawing.Color.Navy;
-            this.btnasigna_trab.Size = new System.Drawing.Size(122, 40);
-            this.btnasigna_trab.TabIndex = 93;
-            this.btnasigna_trab.Text = "ASIGNAR TRABAJADOR";
-            this.btnasigna_trab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnasigna_trab.Click += new System.EventHandler(this.btnasigna_trab_Click);
+            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column3.Width = 54;
             // 
             // groupBox2
             // 
@@ -680,21 +642,40 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.btnactualizar_turno.TabIndex = 89;
             this.btnactualizar_turno.Text = "ACTUALIZAR GRUPO";
             this.btnactualizar_turno.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnactualizar_turno.Click += new System.EventHandler(this.btnactualizar_turno_Click);
             // 
-            // btnbuscar_trab
+            // btncrearturno
             // 
-            this.btnbuscar_trab.BackColor = System.Drawing.Color.Blue;
-            this.btnbuscar_trab.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnbuscar_trab.Location = new System.Drawing.Point(23, 511);
-            this.btnbuscar_trab.Margin = new System.Windows.Forms.Padding(4);
-            this.btnbuscar_trab.Name = "btnbuscar_trab";
-            this.btnbuscar_trab.OuterBorderColor = System.Drawing.Color.Blue;
-            this.btnbuscar_trab.ShineColor = System.Drawing.Color.Navy;
-            this.btnbuscar_trab.Size = new System.Drawing.Size(122, 40);
-            this.btnbuscar_trab.TabIndex = 95;
-            this.btnbuscar_trab.Text = "BUSCAR TRABAJADOR";
-            this.btnbuscar_trab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnbuscar_trab.Click += new System.EventHandler(this.btnbuscar_trab_Click);
+            this.btncrearturno.BackColor = System.Drawing.Color.Blue;
+            this.btncrearturno.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btncrearturno.Image = global::_3mpacador4.Properties.Resources.save;
+            this.btncrearturno.Location = new System.Drawing.Point(7, 21);
+            this.btncrearturno.Margin = new System.Windows.Forms.Padding(4);
+            this.btncrearturno.Name = "btncrearturno";
+            this.btncrearturno.OuterBorderColor = System.Drawing.Color.Blue;
+            this.btncrearturno.ShineColor = System.Drawing.Color.Navy;
+            this.btncrearturno.Size = new System.Drawing.Size(160, 40);
+            this.btncrearturno.TabIndex = 87;
+            this.btncrearturno.Text = "CREAR GRUPO";
+            this.btncrearturno.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncrearturno.Click += new System.EventHandler(this.btncrearturno_Click);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.BackColor = System.Drawing.Color.Red;
+            this.btncancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncancelar.GlowColor = System.Drawing.Color.Empty;
+            this.btncancelar.Image = global::_3mpacador4.Properties.Resources.cancel;
+            this.btncancelar.Location = new System.Drawing.Point(7, 109);
+            this.btncancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.OuterBorderColor = System.Drawing.Color.Red;
+            this.btncancelar.ShineColor = System.Drawing.Color.RoyalBlue;
+            this.btncancelar.Size = new System.Drawing.Size(160, 40);
+            this.btncancelar.TabIndex = 88;
+            this.btncancelar.Text = "CANCELAR";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
             // dataGridViewImageColumn1
             // 
@@ -704,6 +685,45 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.ReadOnly = true;
             // 
+            // dataGridViewImageColumn3
+            // 
+            this.dataGridViewImageColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewImageColumn3.HeaderText = "";
+            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
+            this.dataGridViewImageColumn3.ReadOnly = true;
+            // 
+            // btnbuscar_trab
+            // 
+            this.btnbuscar_trab.BackColor = System.Drawing.Color.Blue;
+            this.btnbuscar_trab.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnbuscar_trab.Image = global::_3mpacador4.Properties.Resources.buscar;
+            this.btnbuscar_trab.Location = new System.Drawing.Point(12, 507);
+            this.btnbuscar_trab.Margin = new System.Windows.Forms.Padding(4);
+            this.btnbuscar_trab.Name = "btnbuscar_trab";
+            this.btnbuscar_trab.OuterBorderColor = System.Drawing.Color.Blue;
+            this.btnbuscar_trab.ShineColor = System.Drawing.Color.Navy;
+            this.btnbuscar_trab.Size = new System.Drawing.Size(144, 45);
+            this.btnbuscar_trab.TabIndex = 95;
+            this.btnbuscar_trab.Text = "BUSCAR TRABAJADOR";
+            this.btnbuscar_trab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnbuscar_trab.Click += new System.EventHandler(this.btnbuscar_trab_Click);
+            // 
+            // btnasigna_trab
+            // 
+            this.btnasigna_trab.BackColor = System.Drawing.Color.Blue;
+            this.btnasigna_trab.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnasigna_trab.Image = global::_3mpacador4.Properties.Resources.add_persona;
+            this.btnasigna_trab.Location = new System.Drawing.Point(12, 559);
+            this.btnasigna_trab.Margin = new System.Windows.Forms.Padding(4);
+            this.btnasigna_trab.Name = "btnasigna_trab";
+            this.btnasigna_trab.OuterBorderColor = System.Drawing.Color.Blue;
+            this.btnasigna_trab.ShineColor = System.Drawing.Color.Navy;
+            this.btnasigna_trab.Size = new System.Drawing.Size(144, 45);
+            this.btnasigna_trab.TabIndex = 93;
+            this.btnasigna_trab.Text = "ASIGNAR TRABAJADOR";
+            this.btnasigna_trab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnasigna_trab.Click += new System.EventHandler(this.btnasigna_trab_Click);
+            // 
             // dataGridViewImageColumn2
             // 
             this.dataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -712,13 +732,6 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.ReadOnly = true;
-            // 
-            // dataGridViewImageColumn3
-            // 
-            this.dataGridViewImageColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewImageColumn3.HeaderText = "";
-            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
-            this.dataGridViewImageColumn3.ReadOnly = true;
             // 
             // FJornalTurno
             // 
@@ -787,13 +800,8 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewButtonColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewButtonColumn Column3;
-        private System.Windows.Forms.DataGridViewButtonColumn Column1;
-        private System.Windows.Forms.DataGridViewButtonColumn Column2;
+        private System.Windows.Forms.DataGridViewImageColumn Column1;
+        private System.Windows.Forms.DataGridViewImageColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
@@ -805,5 +813,10 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column11;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewButtonColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewImageColumn Column3;
     }
 }

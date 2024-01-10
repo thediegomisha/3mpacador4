@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmColaborador));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Panel2 = new System.Windows.Forms.Panel();
+            this.btnCerrar = new Glass.GlassButton();
+            this.btnNuevo = new Glass.GlassButton();
             this.Panel1 = new System.Windows.Forms.Panel();
             this.Label1 = new System.Windows.Forms.Label();
             this.Panel5 = new System.Windows.Forms.Panel();
@@ -52,8 +54,6 @@
             this.Panel4 = new System.Windows.Forms.Panel();
             this.DataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.DataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnNuevo = new Glass.GlassButton();
-            this.btnCerrar = new Glass.GlassButton();
             this.Panel2.SuspendLayout();
             this.Panel1.SuspendLayout();
             this.Panel3.SuspendLayout();
@@ -66,26 +66,60 @@
             this.Panel2.Controls.Add(this.btnCerrar);
             this.Panel2.Controls.Add(this.btnNuevo);
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Panel2.Location = new System.Drawing.Point(0, 41);
+            this.Panel2.Location = new System.Drawing.Point(0, 53);
             this.Panel2.Name = "Panel2";
             this.Panel2.Size = new System.Drawing.Size(1000, 48);
             this.Panel2.TabIndex = 20;
             // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.BackColor = System.Drawing.Color.Red;
+            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.GlowColor = System.Drawing.Color.Empty;
+            this.btnCerrar.Image = global::_3mpacador4.Properties.Resources.close;
+            this.btnCerrar.Location = new System.Drawing.Point(857, 4);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.OuterBorderColor = System.Drawing.Color.Red;
+            this.btnCerrar.ShineColor = System.Drawing.Color.RoyalBlue;
+            this.btnCerrar.Size = new System.Drawing.Size(139, 40);
+            this.btnCerrar.TabIndex = 95;
+            this.btnCerrar.Text = "CERRAR";
+            this.btnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.BackColor = System.Drawing.Color.Blue;
+            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnNuevo.Image = global::_3mpacador4.Properties.Resources._new;
+            this.btnNuevo.Location = new System.Drawing.Point(4, 4);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.OuterBorderColor = System.Drawing.Color.Blue;
+            this.btnNuevo.ShineColor = System.Drawing.Color.Navy;
+            this.btnNuevo.Size = new System.Drawing.Size(207, 40);
+            this.btnNuevo.TabIndex = 94;
+            this.btnNuevo.Text = "NUEVO COLABORADOR";
+            this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
             // Panel1
             // 
-            this.Panel1.BackColor = System.Drawing.Color.MediumBlue;
+            this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.Panel1.Controls.Add(this.Label1);
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(1000, 41);
+            this.Panel1.Size = new System.Drawing.Size(1000, 53);
             this.Panel1.TabIndex = 19;
             // 
             // Label1
             // 
-            this.Label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.White;
-            this.Label1.Location = new System.Drawing.Point(284, 9);
+            this.Label1.Location = new System.Drawing.Point(363, 15);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(308, 21);
             this.Label1.TabIndex = 0;
@@ -122,14 +156,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.datalistado.BackgroundColor = System.Drawing.Color.White;
             this.datalistado.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datalistado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datalistado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.datalistado.ColumnHeadersHeight = 30;
             this.datalistado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Editar,
@@ -140,12 +174,12 @@
             this.Column4,
             this.Column5,
             this.Column6});
-            this.datalistado.Location = new System.Drawing.Point(10, 88);
+            this.datalistado.Location = new System.Drawing.Point(10, 104);
             this.datalistado.Name = "datalistado";
             this.datalistado.ReadOnly = true;
             this.datalistado.RowHeadersVisible = false;
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datalistado.Size = new System.Drawing.Size(980, 385);
+            this.datalistado.Size = new System.Drawing.Size(980, 369);
             this.datalistado.TabIndex = 0;
             this.datalistado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datalistado_CellClick);
             // 
@@ -171,8 +205,8 @@
             // 
             // Column1
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle5;
             this.Column1.HeaderText = "ID";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -180,8 +214,8 @@
             // 
             // Column2
             // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle6;
             this.Column2.HeaderText = "DNI";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
@@ -269,40 +303,6 @@
             this.DataGridViewImageColumn2.Image = ((System.Drawing.Image)(resources.GetObject("DataGridViewImageColumn2.Image")));
             this.DataGridViewImageColumn2.Name = "DataGridViewImageColumn2";
             this.DataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.BackColor = System.Drawing.Color.Blue;
-            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnNuevo.Image = global::_3mpacador4.Properties.Resources._new;
-            this.btnNuevo.Location = new System.Drawing.Point(4, 4);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.OuterBorderColor = System.Drawing.Color.Blue;
-            this.btnNuevo.ShineColor = System.Drawing.Color.Navy;
-            this.btnNuevo.Size = new System.Drawing.Size(207, 40);
-            this.btnNuevo.TabIndex = 94;
-            this.btnNuevo.Text = "NUEVO COLABORADOR";
-            this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCerrar.BackColor = System.Drawing.Color.Red;
-            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.GlowColor = System.Drawing.Color.Empty;
-            this.btnCerrar.Image = global::_3mpacador4.Properties.Resources.close;
-            this.btnCerrar.Location = new System.Drawing.Point(857, 4);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.OuterBorderColor = System.Drawing.Color.Red;
-            this.btnCerrar.ShineColor = System.Drawing.Color.RoyalBlue;
-            this.btnCerrar.Size = new System.Drawing.Size(139, 40);
-            this.btnCerrar.TabIndex = 95;
-            this.btnCerrar.Text = "CERRAR";
-            this.btnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // frmColaborador
             // 
