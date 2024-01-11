@@ -58,7 +58,7 @@ namespace _3mpacador4.Presentacion.Sistema
                                                         ";database=" + txtBd.Text + " ;Connect Timeout=" +
                                                         txttime.Text + ";Unicode=True";
                     Settings.Default.Save();
-                    MessageBox.Show("La Conexion se guardo correctamente. El sistema se Reiniciara ", "OK",
+                    MessageBox.Show(@"La Conexion se guardo correctamente. El sistema se Reiniciara ", @"OK",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     var F = new FrmPrincipal();
                     F.Close();
@@ -72,7 +72,7 @@ namespace _3mpacador4.Presentacion.Sistema
                     ConexionGral.desconectar();
                 }
             else
-                MessageBox.Show("Todos los datos son necesarios", "Aviso", MessageBoxButtons.OK,
+                MessageBox.Show(@"Todos los datos son necesarios", @"Aviso", MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
         }
 
@@ -127,13 +127,13 @@ namespace _3mpacador4.Presentacion.Sistema
                                     " ;Connect Timeout=" + txttime.Text + "";
 
                 if (claseconnect.ProbarConexion(nuevaconexion))
-                    MessageBox.Show("Conexion exitosa", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(@"Conexion exitosa", @"OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
-                    MessageBox.Show("Conexion erronea", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Conexion erronea", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                MessageBox.Show("Todos los datos son necesarios", "Aviso", MessageBoxButtons.OK,
+                MessageBox.Show(@"Todos los datos son necesarios", @"Aviso", MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
             }
         }

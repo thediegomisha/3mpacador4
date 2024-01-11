@@ -39,14 +39,14 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             {
                 if (txtdni.Text.Length < 8)
                 {
-                    MessageBox.Show("Error, Ingrese DNI Valido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Error, Ingrese DNI Valido", @"Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtdni.Focus();
                     return;
                 }
 
                 if (txtnombres.Text.Length <= 0)
                 {
-                    MessageBox.Show("Error, Ingrese Nombres del Colaborador", "Aviso", MessageBoxButtons.OK,
+                    MessageBox.Show(@"Error, Ingrese Nombres del Colaborador", @"Aviso", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     txtnombres.Focus();
                     return;
@@ -54,7 +54,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
                 if (txtapel_paterno.Text.Length <= 0)
                 {
-                    MessageBox.Show("Error, Ingrese Apellido Paterno del Colaborador", "Aviso", MessageBoxButtons.OK,
+                    MessageBox.Show(@"Error, Ingrese Apellido Paterno del Colaborador", @"Aviso", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     txtapel_paterno.Focus();
                     return;
@@ -62,7 +62,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
                 if (txtapel_materno.Text.Length <= 0)
                 {
-                    MessageBox.Show("Error, Ingrese Apellido Materno del Colaborador", "Aviso", MessageBoxButtons.OK,
+                    MessageBox.Show(@"Error, Ingrese Apellido Materno del Colaborador", @"Aviso", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     txtapel_materno.Focus();
                     return;
@@ -87,7 +87,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 comando.Parameters.AddWithValue("p_apel_materno", aux.apellidoMaterno);
                 comando.Parameters.AddWithValue("p_flag_estado", aux.flag_estado);
                 comando.ExecuteNonQuery();
-                MessageBox.Show("COLABORADOR REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                MessageBox.Show(@"COLABORADOR REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 if (MessageBox.Show(@"Desea ingresar otro Colaborador?", @"Mensaje", MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question) == DialogResult.No) Close();
@@ -96,7 +96,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("COLABORADOR NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK,
+                MessageBox.Show("COLABORADOR NO REGISTRADO. \n" + ex.Message, @"ERROR", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 throw;
             }
@@ -108,14 +108,14 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             {
                 if (txtdni.Text.Length < 8)
                 {
-                    MessageBox.Show("Error, Ingrese DNI Valido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Error, Ingrese DNI Valido", @"Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtdni.Focus();
                     return;
                 }
 
                 if (txtnombres.Text.Length <= 0)
                 {
-                    MessageBox.Show("Error, Ingrese Nombres del Colaborador", "Aviso", MessageBoxButtons.OK,
+                    MessageBox.Show(@"Error, Ingrese Nombres del Colaborador", @"Aviso", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     txtnombres.Focus();
                     return;
@@ -123,7 +123,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
                 if (txtapel_paterno.Text.Length <= 0)
                 {
-                    MessageBox.Show("Error, Ingrese Apellido Paterno del Colaborador", "Aviso", MessageBoxButtons.OK,
+                    MessageBox.Show(@"Error, Ingrese Apellido Paterno del Colaborador", @"Aviso", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     txtapel_paterno.Focus();
                     return;
@@ -131,7 +131,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
                 if (txtapel_materno.Text.Length <= 0)
                 {
-                    MessageBox.Show("Error, Ingrese Apellido Materno del Colaborador", "Aviso", MessageBoxButtons.OK,
+                    MessageBox.Show(@"Error, Ingrese Apellido Materno del Colaborador", @"Aviso", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     txtapel_materno.Focus();
                     return;
@@ -157,14 +157,14 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 comando.Parameters.AddWithValue("p_apel_materno", aux.apellidoMaterno);
                 comando.Parameters.AddWithValue("p_flag_estado", aux.flag_estado);
                 comando.ExecuteNonQuery();
-                MessageBox.Show("COLABORADOR ACTUALIZADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                MessageBox.Show(@"COLABORADOR ACTUALIZADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 LimpiarCampos();
                 ConexionGral.desconectar();
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("COLABORADOR NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK,
+                MessageBox.Show("COLABORADOR NO REGISTRADO. \n" + ex.Message, @"ERROR", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 throw;
             }
@@ -183,7 +183,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Algo Salio Mal LimpiarCampos() :( ");
+                MessageBox.Show(ex.Message, @"Algo Salio Mal LimpiarCampos() :( ");
                 throw;
             }
         }
@@ -276,7 +276,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Algo Salio Mal ConsultaDNI() :( ");
+                MessageBox.Show(ex.Message, @"Algo Salio Mal ConsultaDNI() :( ");
                 throw;
             }
         }

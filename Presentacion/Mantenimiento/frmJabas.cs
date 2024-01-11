@@ -40,19 +40,19 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
 
                     comando.ExecuteNonQuery();
-                    MessageBox.Show("JAVA REGISTRADA SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                    MessageBox.Show(@"JAVA REGISTRADA SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
                         MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
                     // limpiarcampos()
                     //    this.chkcapturapeso.Checked = false;
                 }
                 else
                 {
-                    MessageBox.Show("Error, La cantidad tiene que ser mayor que 0", "CANTIDAD JABA");
+                    MessageBox.Show("Error, La cantidad tiene que ser mayor que 0", @"CANTIDAD JABA");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

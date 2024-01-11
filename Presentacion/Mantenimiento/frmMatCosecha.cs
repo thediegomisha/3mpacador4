@@ -30,20 +30,20 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     }
                     else
                     {
-                        MessageBox.Show("Error, Ingrese el Material de Cosecha", "Informacion", MessageBoxButtons.OK,
+                        MessageBox.Show(@"Error, Ingrese el Material de Cosecha", @"Informacion", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                         return;
                     }
                 }
                 comando.ExecuteNonQuery();
-                MessageBox.Show("MATERIAL DE COSECHA REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                MessageBox.Show(@"MATERIAL DE COSECHA REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
                     MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
                 mostrarMatCosecha();
                 // ConexionGral.desconectar();
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("MATERIAL DE COSECHA NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK,
+                MessageBox.Show("MATERIAL DE COSECHA NO REGISTRADO. \n" + ex.Message, @"ERROR", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 throw;
             }
@@ -89,7 +89,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

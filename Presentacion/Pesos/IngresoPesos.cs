@@ -137,7 +137,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -248,7 +248,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -340,7 +340,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -387,7 +387,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -434,7 +434,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -480,7 +480,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -658,7 +658,7 @@ namespace _3mpacador4
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -700,7 +700,7 @@ namespace _3mpacador4
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -746,7 +746,7 @@ namespace _3mpacador4
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -803,7 +803,7 @@ namespace _3mpacador4
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -858,7 +858,7 @@ namespace _3mpacador4
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -899,7 +899,7 @@ namespace _3mpacador4
 
                 if (txtGuiaRemision.Text == string.Empty)
                 {
-                    MessageBox.Show("Error, Tiene que Ingresar el Numero de Guia", "GUIA REMISION");
+                    MessageBox.Show("Error, Tiene que Ingresar el Numero de Guia", @"GUIA REMISION");
                     return;
                 }
                 else
@@ -913,7 +913,7 @@ namespace _3mpacador4
                 }
                 else
                 {
-                    MessageBox.Show("Error, el Peso tiene que ser mayor que 0", "TARA JABA");
+                    MessageBox.Show("Error, el Peso tiene que ser mayor que 0", @"TARA JABA");
                     return;
                 }
 
@@ -923,7 +923,7 @@ namespace _3mpacador4
                 }
                 else
                 {
-                    MessageBox.Show("Error, el Peso tiene que ser mayor que 0", "TARA PARIHUELA");
+                    MessageBox.Show("Error, el Peso tiene que ser mayor que 0", @"TARA PARIHUELA");
                     return;
                 }
 
@@ -938,7 +938,7 @@ namespace _3mpacador4
                     }
                     else
                     {
-                        MessageBox.Show("Error, el Peso tiene que ser mayor que 0", "PESO BALANZA");
+                        MessageBox.Show("Error, el Peso tiene que ser mayor que 0", @"PESO BALANZA");
                         return;
                     }
                 }
@@ -950,7 +950,7 @@ namespace _3mpacador4
                     }
                     else
                     {
-                        MessageBox.Show("Error, el Peso tiene que ser mayor que 0", "PESO BALANZA");
+                        MessageBox.Show("Error, el Peso tiene que ser mayor que 0", @"PESO BALANZA");
                         return;
                     }
                 }
@@ -962,7 +962,7 @@ namespace _3mpacador4
                 }
                 else
                 {
-                    MessageBox.Show("Error, El Turno debe ser Ingresado", "TURNO");
+                    MessageBox.Show("Error, El Turno debe ser Ingresado", @"TURNO");
                     return;
                 }
 
@@ -972,19 +972,19 @@ namespace _3mpacador4
                 }
                 else
                 {
-                    MessageBox.Show("Error, El Turno debe ser Ingresado", "TURNO");
+                    MessageBox.Show("Error, El Turno debe ser Ingresado", @"TURNO");
                     return;
                 }
 
                 comando.ExecuteNonQuery();
-                MessageBox.Show("PESO REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                MessageBox.Show(@"PESO REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
                     MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
                 // limpiarcampos()
                 //    this.chkcapturapeso.Checked = false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -1162,7 +1162,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -1245,7 +1245,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -1300,7 +1300,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -1339,7 +1339,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -1384,7 +1384,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

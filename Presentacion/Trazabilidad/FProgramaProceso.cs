@@ -41,7 +41,7 @@ namespace _3mpacador4.Presentacion.Reporte
             catch (Exception ex)
             {
                 ConexionGral.desconectar();
-                MessageBox.Show(ex.Message, "Algo salio Mal :( ");
+                MessageBox.Show(ex.Message, @"Algo salio Mal :( ");
                 throw;
             }
         }
@@ -70,7 +70,7 @@ namespace _3mpacador4.Presentacion.Reporte
             catch (Exception ex)
             {
                 ConexionGral.desconectar();
-                MessageBox.Show(ex.Message, "Algo salio Mal en usp_tbldestino_Select :( ");
+                MessageBox.Show(ex.Message, @"Algo salio Mal en usp_tbldestino_Select :( ");
                 throw;
             }
         }
@@ -99,7 +99,7 @@ namespace _3mpacador4.Presentacion.Reporte
             catch (Exception ex)
             {
                 ConexionGral.desconectar();
-                MessageBox.Show(ex.Message, "Algo salio Mal en usp_tblcategoria_Select :( ");
+                MessageBox.Show(ex.Message, @"Algo salio Mal en usp_tblcategoria_Select :( ");
                 throw;
             }
         }
@@ -128,7 +128,7 @@ namespace _3mpacador4.Presentacion.Reporte
             catch (Exception ex)
             {
                 ConexionGral.desconectar();
-                MessageBox.Show(ex.Message, "Algo salio Mal en usp_tblcategoria_Select :( ");
+                MessageBox.Show(ex.Message, @"Algo salio Mal en usp_tblcategoria_Select :( ");
                 throw;
             }
         }
@@ -157,7 +157,7 @@ namespace _3mpacador4.Presentacion.Reporte
             catch (Exception ex)
             {
                 ConexionGral.desconectar();
-                MessageBox.Show(ex.Message, "Algo salio Mal en usp_tblcategoria_Select :( ");
+                MessageBox.Show(ex.Message, @"Algo salio Mal en usp_tblcategoria_Select :( ");
                 throw;
             }
         }
@@ -173,7 +173,6 @@ namespace _3mpacador4.Presentacion.Reporte
                 comando.CommandType = (CommandType)4;
 
                 comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = cboLote.Text;
-                ;
 
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
@@ -208,7 +207,7 @@ namespace _3mpacador4.Presentacion.Reporte
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -280,7 +279,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
 
                 comando.ExecuteNonQuery();
-                MessageBox.Show("PESO REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                MessageBox.Show(@"PESO REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
                     MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
                 // limpiarcampos()
                 //    this.chkcapturapeso.Checked = false;
@@ -288,7 +287,7 @@ namespace _3mpacador4.Presentacion.Reporte
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             // cuentacorrelativo_BG()
         }
@@ -299,26 +298,26 @@ namespace _3mpacador4.Presentacion.Reporte
             {
                 if (cboLote.SelectedIndex == 0)
                 {
-                    MessageBox.Show("Seleccione Un Lote", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(@"Seleccione Un Lote", @"Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
 
                 if (cboDestino.SelectedIndex == 0)
                 {
-                    MessageBox.Show("Seleccione un Destino", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(@"Seleccione un Destino", @"Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
 
                 if (cbCategoria.SelectedIndex == 0)
                 {
-                    MessageBox.Show("Seleccione una Categoria", "Aviso", MessageBoxButtons.OK,
+                    MessageBox.Show(@"Seleccione una Categoria", @"Aviso", MessageBoxButtons.OK,
                         MessageBoxIcon.Exclamation);
                     return;
                 }
 
                 if (cbpresentacion.SelectedIndex == 0)
                 {
-                    MessageBox.Show("Seleccione una Presentación", "Aviso", MessageBoxButtons.OK,
+                    MessageBox.Show(@"Seleccione una Presentación", @"Aviso", MessageBoxButtons.OK,
                         MessageBoxIcon.Exclamation);
                     return;
                 }
@@ -360,14 +359,15 @@ namespace _3mpacador4.Presentacion.Reporte
                 comando.Parameters.AddWithValue("p_idusuario", aux.idusuario);
                 comando.Parameters.AddWithValue("p_flag_estado", aux.flag_estado);
                 comando.ExecuteNonQuery();
-                MessageBox.Show("PROGRAMA REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                MessageBox.Show(@"PROGRAMA REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 //Lista_Grupo_turno(aux.fecha_produccion.ToString("yyyy-MM-dd"));
                 ConexionGral.desconectar();
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("PROGRAMA NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK,
+                MessageBox.Show(@"PROGRAMA NO REGISTRADO. 
+" + ex.Message, @"ERROR", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 throw;
             }

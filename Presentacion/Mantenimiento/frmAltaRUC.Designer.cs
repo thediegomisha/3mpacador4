@@ -142,7 +142,7 @@
             this.txtdireccion.Multiline = true;
             this.txtdireccion.Name = "txtdireccion";
             this.txtdireccion.PasswordChar = '\0';
-            this.txtdireccion.PromptText = "Ej: Jiron Santa Rosa 711";
+            this.txtdireccion.WaterMark = "Ej: Jiron Santa Rosa 711";
             this.txtdireccion.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtdireccion.SelectedText = "";
             this.txtdireccion.SelectionLength = 0;
@@ -190,7 +190,7 @@
             this.txtruc.MaxLength = 32767;
             this.txtruc.Name = "txtruc";
             this.txtruc.PasswordChar = '\0';
-            this.txtruc.PromptText = "Ej. 20552167466";
+            this.txtruc.WaterMark = "Ej. 20552167466";
             this.txtruc.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtruc.SelectedText = "";
             this.txtruc.SelectionLength = 0;
@@ -225,7 +225,7 @@
             this.txtRazonSocial.Multiline = true;
             this.txtRazonSocial.Name = "txtRazonSocial";
             this.txtRazonSocial.PasswordChar = '\0';
-            this.txtRazonSocial.PromptText = "Ej. ALMIK SAC";
+            this.txtRazonSocial.WaterMark = "Ej. ALMIK SAC";
             this.txtRazonSocial.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtRazonSocial.SelectedText = "";
             this.txtRazonSocial.SelectionLength = 0;

@@ -67,7 +67,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             catch (Exception ex)
             {
                 ConexionGral.desconectar();
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
         }
@@ -153,7 +153,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                 comando.Parameters.AddWithValue("p_dni", ls_dni);
                 comando.Parameters.AddWithValue("p_cantidad", cantidad);
                 comando.ExecuteNonQuery();
-                MessageBox.Show("CANTIDAD DE ETIQUETAS ACTUALIZADA SATISFACTORIAMENTE.", "Mensaje",
+                MessageBox.Show(@"CANTIDAD DE ETIQUETAS ACTUALIZADA SATISFACTORIAMENTE.", @"Mensaje",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //LimpiarCampos();
                 ConexionGral.desconectar();
@@ -161,7 +161,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             catch (MySqlException ex)
             {
                 ConexionGral.desconectar();
-                MessageBox.Show("ALGO SALIO MAL \n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("ALGO SALIO MAL \n" + ex.Message, @"ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
         }
@@ -222,7 +222,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                     doc.Close();
                     writer.Close();
 
-                    MessageBox.Show("SE GENERARON LOS QR :)", "CODIGOS QR");
+                    MessageBox.Show("SE GENERARON LOS QR :)", @"CODIGOS QR");
                     Close();
                 }
             }

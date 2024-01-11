@@ -40,7 +40,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
                     comando.ExecuteNonQuery();
 
-                    MessageBox.Show("LOTE REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                    MessageBox.Show(@"LOTE REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
                         MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
                     mostrarUltimoRegistro();
                     // limpiarcampos()
@@ -48,12 +48,12 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 }
                 else
                 {
-                    MessageBox.Show("Error, La cantidad tiene que ser mayor que 0", "CANTIDAD LOTE");
+                    MessageBox.Show("Error, La cantidad tiene que ser mayor que 0", @"CANTIDAD LOTE");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -85,7 +85,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

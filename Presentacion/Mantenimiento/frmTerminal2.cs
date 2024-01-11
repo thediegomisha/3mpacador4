@@ -37,7 +37,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Algo Salio Mal LimpiarCampos() :( ");
+                MessageBox.Show(ex.Message, @"Algo Salio Mal LimpiarCampos() :( ");
                 throw;
             }
         }
@@ -48,7 +48,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             {
                 if (txtDescripcion.Text.Length <= 0)
                 {
-                    MessageBox.Show("Error, Ingrese Descripcion para el Terminal", "Aviso", MessageBoxButtons.OK,
+                    MessageBox.Show(@"Error, Ingrese Descripcion para el Terminal", @"Aviso", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     txtDescripcion.Focus();
                     return;
@@ -67,14 +67,14 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 comando.Parameters.AddWithValue("p_descripcion", aux.descripcion);
                 comando.Parameters.AddWithValue("p_flag_estado", aux.flag_estado);
                 comando.ExecuteNonQuery();
-                MessageBox.Show("TERMINAL REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                MessageBox.Show(@"TERMINAL REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 LimpiarCampos();
                 ConexionGral.desconectar();
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("TERMINAL NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK,
+                MessageBox.Show(@"TERMINAL NO REGISTRADO. " + ex.Message, @"ERROR", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 throw;
             }
@@ -86,7 +86,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             {
                 if (txtDescripcion.Text.Length <= 0)
                 {
-                    MessageBox.Show("Error, Ingrese Nombres del Colaborador", "Aviso", MessageBoxButtons.OK,
+                    MessageBox.Show(@"Error, Ingrese Nombres del Colaborador", @"Aviso", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     txtDescripcion.Focus();
                     return;
@@ -106,14 +106,15 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 comando.Parameters.AddWithValue("p_descripcion", aux.descripcion);
                 comando.Parameters.AddWithValue("p_flag_estado", aux.flag_estado);
                 comando.ExecuteNonQuery();
-                MessageBox.Show("TERMINAL ACTUALIZADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                MessageBox.Show(@"TERMINAL ACTUALIZADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 LimpiarCampos();
                 ConexionGral.desconectar();
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("COLABORADOR NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK,
+                MessageBox.Show(@"COLABORADOR NO REGISTRADO. 
+" + ex.Message, @"ERROR", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 throw;
             }
@@ -138,9 +139,9 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         {
             txtDescripcion.Focus();
             if (cbxestado.Checked)
-                cbxestado.Text = "ACTIVO";
+                cbxestado.Text = @"ACTIVO";
             else
-                cbxestado.Text = "INACTIVO";
+                cbxestado.Text = @"INACTIVO";
 
             if (frmTerminal.editar)
                 if (frmTerminal.t.idterminal > 0)

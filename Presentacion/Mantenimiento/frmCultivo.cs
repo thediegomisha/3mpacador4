@@ -30,19 +30,19 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     }
                     else
                     {
-                        MessageBox.Show("Error, Ingrese el Tipo de Cultivo", "Informacion", MessageBoxButtons.OK,
+                        MessageBox.Show(@"Error, Ingrese el Tipo de Cultivo", @"Informacion", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                         return;
                     }
                 }
                 comando.ExecuteNonQuery();
-                MessageBox.Show("TIPO DE CULTIVO REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                MessageBox.Show(@"TIPO DE CULTIVO REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
                     MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
                 mostrarMetodoCultivo();
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("TIPO DE CULTIVO NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK,
+                MessageBox.Show("TIPO DE CULTIVO NO REGISTRADO. \n" + ex.Message, @"ERROR", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 throw;
             }
@@ -88,7 +88,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

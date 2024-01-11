@@ -36,7 +36,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     }
                     else
                     {
-                        MessageBox.Show("Error, Ingrese la Razon Social", "Informacion", MessageBoxButtons.OK,
+                        MessageBox.Show(@"Error, Ingrese la Razon Social", @"Informacion", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                         return;
                     }
@@ -48,7 +48,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     }
                     else
                     {
-                        MessageBox.Show("Error, Ingrese el Numero de RUC", "Informacion", MessageBoxButtons.OK,
+                        MessageBox.Show(@"Error, Ingrese el Numero de RUC", @"Informacion", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                         return;
                     }
@@ -59,7 +59,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
 
                         comando.ExecuteNonQuery();
-                        MessageBox.Show("CLIENTE REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                        MessageBox.Show(@"CLIENTE REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
 
                         if (MessageBox.Show(@"Desea ingresar otro Cliente?", @"Atención", MessageBoxButtons.YesNo,
@@ -70,13 +70,13 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                         return;
                     }
 
-                    MessageBox.Show("Error, Ingrese el Numero de RUC", "Informacion", MessageBoxButtons.OK,
+                    MessageBox.Show(@"Error, Ingrese el Numero de RUC", @"Informacion", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("CLIENTE NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK,
+                MessageBox.Show("CLIENTE NO REGISTRADO. \n" + ex.Message, @"ERROR", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 throw;
             }
@@ -97,7 +97,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     }
                     else
                     {
-                        MessageBox.Show("Error, Ingrese la Razon Social correctamente", "Informacion",
+                        MessageBox.Show(@"Error, Ingrese la Razon Social correctamente", @"Informacion",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
@@ -109,7 +109,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     }
                     else
                     {
-                        MessageBox.Show("Error, Ingrese el Numero de RUC", "Informacion", MessageBoxButtons.OK,
+                        MessageBox.Show(@"Error, Ingrese el Numero de RUC", @"Informacion", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                         return;
                     }
@@ -119,20 +119,20 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                         comando.Parameters.AddWithValue("@direccion", MySqlType.Text).Value = txtdireccion.Text;
 
                         comando.ExecuteNonQuery();
-                        MessageBox.Show("ACOPIADOR REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                        MessageBox.Show(@"ACOPIADOR REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
                         limpiarcampos();
                         ConexionGral.desconectar();
                         return;
                     }
 
-                    MessageBox.Show("Error, Ingrese el Numero de RUC", "Informacion", MessageBoxButtons.OK,
+                    MessageBox.Show(@"Error, Ingrese el Numero de RUC", @"Informacion", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("ACOPIADOR NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK,
+                MessageBox.Show("ACOPIADOR NO REGISTRADO. \n" + ex.Message, @"ERROR", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 throw;
             }
@@ -188,7 +188,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Algo salió mal en la consulta(): {ex.Message}", "Error");
+                MessageBox.Show($"Algo salió mal en la consulta(): {ex.Message}", @"Error");
             }
         }
 

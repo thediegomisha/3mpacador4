@@ -70,7 +70,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
         }
@@ -96,8 +96,8 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 else if (datalistado.Columns[e.ColumnIndex].Index == 1) // ELIMINAR
                 {
                     var rpta = MessageBox.Show(
-                        "¿ ESTA SEGURO DE ELIMINAR EL TERMINAL " + datalistado.CurrentRow.Cells[3].Value + " ?"
-                        , "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        @"¿ ESTA SEGURO DE ELIMINAR EL TERMINAL " + datalistado.CurrentRow.Cells[3].Value + " ?"
+                        , @"Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (rpta == DialogResult.Yes)
                     {
                         MySqlCommand comando;
@@ -109,14 +109,14 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                             comando.Parameters.AddWithValue("p_id",
                                 Convert.ToInt32(datalistado.CurrentRow.Cells[2].Value));
                             comando.ExecuteNonQuery();
-                            MessageBox.Show("TERMINAL SE ELIMINO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                            MessageBox.Show(@"TERMINAL SE ELIMINO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
                             ConexionGral.desconectar();
                             MostrarTerminal();
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             throw;
                         }
                     }

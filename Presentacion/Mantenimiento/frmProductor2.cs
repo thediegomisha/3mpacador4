@@ -30,7 +30,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     }
                     else
                     {
-                        MessageBox.Show("Error, Ingrese la Razon Social", "Informacion", MessageBoxButtons.OK,
+                        MessageBox.Show(@"Error, Ingrese la Razon Social", @"Informacion", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                         return;
                     }
@@ -42,7 +42,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     }
                     else
                     {
-                        MessageBox.Show("Error, Ingrese la Region correcta", "Informacion", MessageBoxButtons.OK,
+                        MessageBox.Show(@"Error, Ingrese la Region correcta", @"Informacion", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                         return;
                     }
@@ -53,7 +53,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     }
                     else
                     {
-                        MessageBox.Show("Error, Ingrese el Nombre del Lugar", "Informacion", MessageBoxButtons.OK,
+                        MessageBox.Show(@"Error, Ingrese el Nombre del Lugar", @"Informacion", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                         return;
                     }
@@ -63,20 +63,20 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                         comando.Parameters.AddWithValue("p_clp", MySqlType.VarChar).Value = txtclp.Text;
 
                         comando.ExecuteNonQuery();
-                        MessageBox.Show("CLIENTE REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                        MessageBox.Show(@"CLIENTE REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
                         limpiarcampos();
                         ConexionGral.desconectar();
                         return;
                     }
 
-                    MessageBox.Show("Error, Ingrese el Numero de Codigo del Lugar de Produccion", "Informacion",
+                    MessageBox.Show(@"Error, Ingrese el Numero de Codigo del Lugar de Produccion", @"Informacion",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("CLIENTE NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK,
+                MessageBox.Show("CLIENTE NO REGISTRADO. \n" + ex.Message, @"ERROR", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 throw;
             }
