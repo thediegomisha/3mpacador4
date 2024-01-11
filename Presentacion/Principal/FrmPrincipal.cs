@@ -178,9 +178,6 @@ namespace _3mpacador4.Presentacion
             MostrarSubMenu(panelReportes);
         }
 
-        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
-        {
-        }
 
         private void button12_Click(object sender, EventArgs e)
         {
@@ -188,11 +185,7 @@ namespace _3mpacador4.Presentacion
             AbrirFormularioHijo(new RptBoletaPesado());
         }
 
-        private void button11_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void button10_Click(object sender, EventArgs e)
+       private void button10_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
             AbrirFormularioHijo(new TicketCajas());
@@ -214,11 +207,7 @@ namespace _3mpacador4.Presentacion
             MostrarSubMenu(panelMantenimiento);
         }
 
-        private void PanelFormularioHijo_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void btnClientes_Click_1(object sender, EventArgs e)
+     private void btnClientes_Click_1(object sender, EventArgs e)
         {
             ocultarSubMenu();
             AbrirFormularioHijo(new frmCliente());
@@ -234,26 +223,6 @@ namespace _3mpacador4.Presentacion
         {
             ocultarSubMenu();
             AbrirFormularioHijo(new frmProductor());
-        }
-
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            ocultarSubMenu();
-            AbrirFormularioHijo(new FJornalTurno());
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            ocultarSubMenu();
-            AbrirFormularioHijo(new FProgramaProceso());
-        }
-
-        private void button16_Click(object sender, EventArgs e)
-        {
-            ocultarSubMenu();
-            var form = new FrmReniec();
-            form.ShowDialog();
         }
 
         private void btnTrazabilidadP_Click(object sender, EventArgs e)
@@ -302,6 +271,30 @@ namespace _3mpacador4.Presentacion
         {
             ocultarSubMenu();
             AbrirFormularioHijo(new frmTerminal());
+        }
+
+        private void btnProceso_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new FProgramaProceso());
+        }
+
+        private void btnReniec_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            var form = new FrmReniec();
+            form.ShowDialog();
+        }
+
+        private void btnJornal_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new FJornalTurno());
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

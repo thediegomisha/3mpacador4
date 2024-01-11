@@ -462,6 +462,9 @@
     <EmbeddedResource Include="Presentacion\Mantenimiento\MantoProductor.resx">
       <DependentUpon>MantoProductor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\MantoVariedad.resx">
+      <DependentUpon>MantoVariedad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Pesos\IngresoDescarte.resx">
       <DependentUpon>IngresoDescarte.cs</DependentUpon>
     </EmbeddedResource>
@@ -624,9 +627,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="arm64\libHarfBuzzSharp.dll">

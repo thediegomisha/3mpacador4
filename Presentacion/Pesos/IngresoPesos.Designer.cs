@@ -195,6 +195,7 @@
             this.cbvariedad.Name = "cbvariedad";
             this.cbvariedad.Size = new System.Drawing.Size(174, 25);
             this.cbvariedad.TabIndex = 12;
+            this.cbvariedad.DropDownClosed += new System.EventHandler(this.cbvariedad_DropDownClosed);
             // 
             // GroupBox3
             // 

@@ -1101,6 +1101,24 @@ namespace _3mpacador4
             errorProvider1.SetError(txttarajaba, "");
         }
 
+        private void cbvariedad_DropDownClosed(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(cbvariedad.Text))
+                    if (cbvariedad.Text == "Nuevo ...")
+                    {
+                        var form = new MantoVariedad();
+                        form.ShowDialog();
+                        mostrarlistadovariedad();
+                    }
+            }
+            catch (Exception ex)
+            {
+                Interaction.MsgBox("Error " + "Error " + ex.Message, Constants.vbCritical);
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Close();

@@ -8,5 +8,10 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         {
             InitializeComponent();
         }
+
+        private void btnCancelar_Click(object sender, System.EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
