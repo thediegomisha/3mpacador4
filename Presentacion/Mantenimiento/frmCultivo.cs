@@ -1,15 +1,8 @@
-﻿using _3mpacador4.Logica;
-using Devart.Data.MySql;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using _3mpacador4.Logica;
+using Devart.Data.MySql;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
@@ -20,39 +13,38 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             InitializeComponent();
             mostrarMetodoCultivo();
         }
-               
+
         private void InsertarMetodoCultivo()
         {
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
-               
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+
                 comando = new MySqlCommand("usp_tblmetodocultivo_Insert", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
                 {
-                    if (!String.IsNullOrEmpty(txtTipoCultivo.Text))
+                    if (!string.IsNullOrEmpty(txtTipoCultivo.Text))
                     {
-                        comando.Parameters.AddWithValue("p_nombre", MySqlType.VarChar).Value = this.txtTipoCultivo.Text;
+                        comando.Parameters.AddWithValue("p_nombre", MySqlType.VarChar).Value = txtTipoCultivo.Text;
                     }
                     else
                     {
-                        MessageBox.Show("Error, Ingrese el Tipo de Cultivo", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error, Ingrese el Tipo de Cultivo", "Informacion", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                         return;
-                    }                   
-                 }
+                    }
+                }
                 comando.ExecuteNonQuery();
-                MessageBox.Show("TIPO DE CULTIVO REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
+                MessageBox.Show("TIPO DE CULTIVO REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
                 mostrarMetodoCultivo();
-               
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("TIPO DE CULTIVO NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    throw;
+                MessageBox.Show("TIPO DE CULTIVO NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                throw;
             }
             finally
             {
@@ -62,26 +54,15 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void limpiarcampos()
         {
-            try
-            {
-                txtTipoCultivo.Text = String.Empty;             
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            txtTipoCultivo.Text = string.Empty;
         }
 
         public void mostrarMetodoCultivo()
         {
-
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblmetodocultivo_Select", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
@@ -91,7 +72,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 adaptador.Fill(datos);
 
                 {
-                    var withBlock = this.datalistado;
+                    var withBlock = datalistado;
                     if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
@@ -113,12 +94,11 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             {
                 ConexionGral.desconectar();
             }
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

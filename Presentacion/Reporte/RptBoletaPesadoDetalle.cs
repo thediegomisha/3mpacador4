@@ -1,71 +1,51 @@
-﻿using _3mpacador4.Logica;
-using Devart.Data.MySql;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms; 
-using Devart.Common;
+using System.Windows.Forms;
 using Microsoft.VisualBasic;
+using QuestPDF;
+using QuestPDF.Infrastructure;
 //using Microsoft.Office.Interop.Excel;
 //using objExcel  = Microsoft.Office.Interop.Excel;
-
-using System.IO;
-
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using TextBox = System.Windows.Forms.TextBox;
 //using Microsoft.Office.Interop.Excel;
-using Label = System.Windows.Forms.Label;
-
-
-using QuestPDF.Fluent;
-using QuestPDF.Helpers;
-using QuestPDF.Infrastructure;
-using QuestPDF.Previewer;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
     public partial class RptBoletaPesadoDetalle : Form
 
     {
-      //  String nombreArchivo = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        string nombreArchivo = "C:/archivo.xlsx";
+        //  String nombreArchivo = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        private string nombreArchivo = "C:/archivo.xlsx";
 
         // Label[] labels = new Label[] { lblciente, label2, label3, label4, label5, label6 };
-       
-       
+
+
         public RptBoletaPesadoDetalle(string[] filaConDatos, DataTable data)
         {
             InitializeComponent();
             PrepGrid();
 
-            QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+            Settings.License = LicenseType.Community;
 
             if (filaConDatos.Length >= 5)
             {
-                lblguiaingreso .Text = filaConDatos[0];
-             //   lblnumdoc.Text = filaConDatos[1];
+                lblguiaingreso.Text = filaConDatos[0];
+                //   lblnumdoc.Text = filaConDatos[1];
                 lblnumlote.Text = filaConDatos[2];
                 lblfechaingreso.Text = filaConDatos[3];
-                lblhoraingreso .Text = filaConDatos[4];                
+                lblhoraingreso.Text = filaConDatos[4];
                 lblproducto.Text = filaConDatos[5];
-                lblvariedad .Text = filaConDatos[6];
+                lblvariedad.Text = filaConDatos[6];
                 lblcliente.Text = filaConDatos[7];
                 lblproductor.Text = filaConDatos[8];
                 lblclp.Text = filaConDatos[9];
-             //   lblservicio .Text = filaConDatos[4];
-             //   lblmetodo.Text = filaConDatos[2];
+                //   lblservicio .Text = filaConDatos[4];
+                //   lblmetodo.Text = filaConDatos[2];
 
                 datalistado.DataSource = data;
                 ocultar_columnas2();
             }
-
         }
-
 
 
         //public RptBoletaPesadoDetalle(DataGridViewSelectedRowCollection filasseleccionadas)
@@ -78,20 +58,18 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void RptBoletaPesado_Load(object sender, EventArgs e)
         {
-
         }
 
-       
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-          //  mostrarconsulta();
+            //  mostrarconsulta();
         }
 
         private void PrepGrid()
         {
             {
-                var withBlock = this.datalistado;
+                var withBlock = datalistado;
                 withBlock.SuspendLayout();
 
                 // propiedades que establecen el color de fondo del control DataGridView,
@@ -99,7 +77,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 // 
                 withBlock.BackgroundColor = Color.Black;
                 withBlock.ForeColor = Color.Maroon;
-                withBlock.Font = new System.Drawing.Font("Tahoma", 11.0f, FontStyle.Regular, GraphicsUnit.Point, 0);
+                withBlock.Font = new Font("Tahoma", 11.0f, FontStyle.Regular, GraphicsUnit.Point, 0);
 
                 // 
                 // establecer color de resaltado (opcional)
@@ -124,7 +102,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 // 'haciendo clic en los encabezados de columna
                 withBlock.AllowUserToOrderColumns = false;
 
-                withBlock.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                withBlock.BorderStyle = BorderStyle.None;
 
                 // propiedades que regulan las líneas uniformes de "cosméticos"
                 // 
@@ -137,7 +115,8 @@ namespace _3mpacador4.Presentacion.Reporte
                 withBlock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
                 withBlock.ColumnHeadersHeight = 40;
                 withBlock.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                withBlock.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 11.0f, FontStyle.Bold, GraphicsUnit.Point, 0);
+                withBlock.ColumnHeadersDefaultCellStyle.Font =
+                    new Font("Tahoma", 11.0f, FontStyle.Bold, GraphicsUnit.Point, 0);
                 withBlock.EnableHeadersVisualStyles = false;
                 withBlock.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
                 withBlock.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
@@ -172,7 +151,6 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 withBlock.ResumeLayout();
                 withBlock.PerformLayout();
-
             }
         }
 
@@ -181,7 +159,7 @@ namespace _3mpacador4.Presentacion.Reporte
             try
             {
                 var withBlock = datalistado;
-              
+
                 //withBlock.Columns["LOTE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 //withBlock.Columns["LOTE"].Width = 0;
 
@@ -215,48 +193,47 @@ namespace _3mpacador4.Presentacion.Reporte
                 withBlock.Columns["PROMEDIO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
                 withBlock.Columns["PROMEDIO"].Width = 90;
-
-
             }
             catch (Exception)
             {
-
-              //  throw;
+                //  throw;
             }
-            {
-               
 
+            {
             }
         }
+
         private void ocultar_columnas()
         {
-            this.datalistado.Columns[0].Visible = false;
-            this.datalistado.Columns[1].Visible = false;
-            this.datalistado.Columns[2].Visible = false;
-            this.datalistado.Columns[3].Visible = false;
-            this.datalistado.Columns[4].Visible = false;
-            this.datalistado.Columns[5].Visible = false;
-            this.datalistado.Columns[6].Visible = false;
-            this.datalistado.Columns[7].Visible = false;
-            this.datalistado.Columns[8].Visible = false;
-            this.datalistado.Columns[0].Visible = false;
-            this.datalistado.Columns[0].Visible = false;
-            this.datalistado.Columns[0].Visible = false;
+            datalistado.Columns[0].Visible = false;
+            datalistado.Columns[1].Visible = false;
+            datalistado.Columns[2].Visible = false;
+            datalistado.Columns[3].Visible = false;
+            datalistado.Columns[4].Visible = false;
+            datalistado.Columns[5].Visible = false;
+            datalistado.Columns[6].Visible = false;
+            datalistado.Columns[7].Visible = false;
+            datalistado.Columns[8].Visible = false;
+            datalistado.Columns[0].Visible = false;
+            datalistado.Columns[0].Visible = false;
+            datalistado.Columns[0].Visible = false;
 
             // datalistado.Columns(3).Visible = False
         }
 
         public void contar()
         {
-            int contarfila = datalistado.RowCount - 1;
-            int contador = 0;
+            var contarfila = datalistado.RowCount - 1;
+            var contador = 0;
             while (contarfila >= 0)
             {
                 contador = contador + 1;
                 contarfila = contarfila - 1;
             }
+
             LBLCONTAR.Text = Strings.FormatNumber(contador, 0);
         }
+
         public void sumaneto()
         {
             try
@@ -264,32 +241,28 @@ namespace _3mpacador4.Presentacion.Reporte
                 double total = 0;
                 double cantjabas = 0;
 
-                foreach(DataGridViewRow row in datalistado.Rows)
+                foreach (DataGridViewRow row in datalistado.Rows)
                 {
                     total += Convert.ToDouble(row.Cells["PESO NETO"].Value);
                     cantjabas += Convert.ToDouble(row.Cells["CANT JABAS"].Value);
-                    
-                   
                 }
+
                 totalneto.Text = Strings.FormatNumber(total, 2);
                 lblcantjabas.Text = Strings.FormatNumber(cantjabas, 0);
-
-
             }
 
             catch (Exception ex)
             {
-                Interaction.MsgBox(ex.Message, Microsoft.VisualBasic.Constants.vbCritical);
+                Interaction.MsgBox(ex.Message, Constants.vbCritical);
             }
         }
 
-      
+
         private void button1_Click(object sender, EventArgs e)
         {
-          //  ExportarExcel( nombreArchivo);
+            //  ExportarExcel( nombreArchivo);
         }
 
-       
 
         private void RptBoletaPesadoDetalle_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -299,29 +272,24 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void RptBoletaPesadoDetalle_KeyDown(object sender, KeyEventArgs e)
         {
-           if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
+            if (e.KeyCode == Keys.Escape) Close();
         }
 
         private void ocultar_columnas2()
         {
-            this.datalistado.Columns[0].Visible = false;
-            this.datalistado.Columns[1].Visible = false;
-            this.datalistado.Columns[2].Visible = false;
-            this.datalistado.Columns[3].Visible = false;
-            this.datalistado.Columns[4].Visible = false;
-            this.datalistado.Columns[5].Visible = false;
-            this.datalistado.Columns[6].Visible = false;
-            this.datalistado.Columns[7].Visible = false;
-            this.datalistado.Columns[8].Visible = false;
-            
+            datalistado.Columns[0].Visible = false;
+            datalistado.Columns[1].Visible = false;
+            datalistado.Columns[2].Visible = false;
+            datalistado.Columns[3].Visible = false;
+            datalistado.Columns[4].Visible = false;
+            datalistado.Columns[5].Visible = false;
+            datalistado.Columns[6].Visible = false;
+            datalistado.Columns[7].Visible = false;
+            datalistado.Columns[8].Visible = false;
         }
 
         private void BtnExportar_Click(object sender, EventArgs e)
         {
-            
         }
     }
 }

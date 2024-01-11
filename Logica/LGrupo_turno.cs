@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using _3mpacador4.Entidad;
 using Devart.Data.MySql;
 
@@ -11,7 +8,6 @@ namespace _3mpacador4.Logica
 {
     public class LGrupo_turno
     {
-
         public static Grupo_turno Entidad(MySqlDataReader lector)
         {
             var x = new Grupo_turno();
@@ -29,23 +25,21 @@ namespace _3mpacador4.Logica
 
             return x;
         }
+
         public static List<Grupo_turno> Lista_grupo_turno(string ls_fecha_produccion)
         {
             var lista = new List<Grupo_turno>();
-            if (ConexionGral.conexion.State == ConnectionState.Closed)
-            {
-                ConexionGral.conectar();
-            }
+            if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
             var comando = new MySqlCommand("usp_tblgrupo_turno_select", ConexionGral.conexion);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("p_fecha_produccion", ls_fecha_produccion);
 
-            using (MySqlDataReader reader = comando.ExecuteReader())
+            using (var reader = comando.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    Grupo_turno c = new Grupo_turno();
+                    var c = new Grupo_turno();
                     c.idgrupo = Convert.ToInt32(reader["idgrupo_turno"]);
                     c.descripcion = Convert.ToString(reader["descripcion"]);
                     c.idusuario = Convert.ToInt32(reader["idusuario"]);
@@ -60,6 +54,7 @@ namespace _3mpacador4.Logica
                     lista.Add(c);
                 }
             }
+
             ConexionGral.desconectar();
             return lista;
         }
@@ -74,23 +69,21 @@ namespace _3mpacador4.Logica
 
             return x;
         }
+
         public static List<Grupo_turno_detalle> Lista_grupo_turno_detalle(int li_idgrupo)
         {
             var lista = new List<Grupo_turno_detalle>();
-            if (ConexionGral.conexion.State == ConnectionState.Closed)
-            {
-                ConexionGral.conectar();
-            }
+            if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
             var comando = new MySqlCommand("usp_tblgrupo_turno_det_select", ConexionGral.conexion);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("p_idgrupo", li_idgrupo);
 
-            using (MySqlDataReader reader = comando.ExecuteReader())
+            using (var reader = comando.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    Grupo_turno_detalle c = new Grupo_turno_detalle();
+                    var c = new Grupo_turno_detalle();
                     c.idgrupo = Convert.ToInt32(reader["idgrupo_turno"]);
                     c.dni = Convert.ToString(reader["dni"]);
                     c.trabajador = Convert.ToString(reader["trabajador"]);
@@ -98,6 +91,7 @@ namespace _3mpacador4.Logica
                     lista.Add(c);
                 }
             }
+
             ConexionGral.desconectar();
             return lista;
         }

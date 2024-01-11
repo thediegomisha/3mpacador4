@@ -1,62 +1,52 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
 using System.Deployment.Application;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;  
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
 using System.Windows.Forms;
-using _3mpacador4.Presentacion;
 using _3mpacador4.Presentacion.Mantenimiento;
 using _3mpacador4.Presentacion.Reporte;
 using _3mpacador4.Presentacion.Sistema;
 using _3mpacador4.Presentacion.Trazabilidad;
 using _3mpacador4.Properties;
-using Microsoft.VisualBasic;
-
-using System.Net;
-using _3mpacador4.Presentacion.Principal;
 
 namespace _3mpacador4.Presentacion
 {
     public partial class FrmPrincipal : Form
     {
-        public string NombreDesdeLogin { get; set; }
-        public string ApaternoDesdeLogin { get; set; }
+        private Form FormularioActivo;
+
         public FrmPrincipal()
         {
             InitializeComponent();
-            personalizado();           
+            personalizado();
         }
+
+        public string NombreDesdeLogin { get; set; }
+        public string ApaternoDesdeLogin { get; set; }
 
         private void Principal_Load(object sender, EventArgs e)
         {
             informacion();
         }
 
-        private Form FormularioActivo = null;
         private void AbrirFormularioHijo(Form FormularioHijo)
         {
             if (FormularioActivo != null)
                 FormularioActivo.Close();
             FormularioActivo = FormularioHijo;
             FormularioHijo.TopLevel = false;
-            FormularioHijo.FormBorderStyle= FormBorderStyle.None;   
-            FormularioHijo.Dock= DockStyle.Fill;
+            FormularioHijo.FormBorderStyle = FormBorderStyle.None;
+            FormularioHijo.Dock = DockStyle.Fill;
             PanelFormularioHijo.Controls.Add(FormularioHijo);
             PanelFormularioHijo.Tag = FormularioHijo;
             FormularioHijo.BringToFront();
             FormularioHijo.Show();
         }
-              
+
         private void personalizado()
         {
             panelPesos.Visible = false;
-            panelReportes.Visible  = false;
+            panelReportes.Visible = false;
             panelSistema.Visible = false;
             panelMantenimiento.Visible = false;
             panelTrazabilidad.Visible = false;
@@ -65,71 +55,74 @@ namespace _3mpacador4.Presentacion
 
         private void ocultarSubMenu()
         {
-               if(panelPesos.Visible == true)
+            if (panelPesos.Visible)
                 panelPesos.Visible = false;
-               if(panelReportes.Visible == true)
+            if (panelReportes.Visible)
                 panelReportes.Visible = false;
-               if(panelSistema.Visible == true)
+            if (panelSistema.Visible)
                 panelSistema.Visible = false;
-               if (panelMantenimiento.Visible == true)
+            if (panelMantenimiento.Visible)
                 panelMantenimiento.Visible = false;
-               if (PanelBuscar.Visible == true)
+            if (PanelBuscar.Visible)
                 PanelBuscar.Visible = false;
-               if (panelTrazabilidad.Visible == true)
+            if (panelTrazabilidad.Visible)
                 panelTrazabilidad.Visible = false;
-
-
         }
+
         private void MostrarSubMenu(Panel subMenu)
         {
             if (subMenu.Visible == false)
             {
                 ocultarSubMenu();
-                subMenu.Visible= true;
+                subMenu.Visible = true;
             }
             else
             {
-                subMenu.Visible= false; 
+                subMenu.Visible = false;
             }
         }
+
         public void informacion()
         {
             try
             {
+                var FileVer = FileVersionInfo.GetVersionInfo(Application.ExecutablePath).FileVersion;
+                var currentversion = Application.ProductVersion;
 
-                string FileVer = FileVersionInfo.GetVersionInfo(Application.ExecutablePath).FileVersion;
-                string currentversion = Application.ProductVersion;
 
-               
-                string cadenaconexion = Settings.Default.ConecctionString;
-                string[] nombress = cadenaconexion.Split(';');
+                var cadenaconexion = Settings.Default.ConecctionString;
+                var nombress = cadenaconexion.Split(';');
 
                 // Obtener dirección IP local
                 IPHostEntry host;
-                string LocalIp = "?";
+                var LocalIp = "?";
                 host = Dns.GetHostEntry(Dns.GetHostName());
 
-                foreach (IPAddress ip in host.AddressList)
-                    if(ip.AddressFamily.ToString() == "InterNetwork")
-                {
-                        LocalIp= ip.ToString();
-                        TxtIp.Text = LocalIp.ToString() + " ";
-                }
-                        LBLUSUARIO.Text = NombreDesdeLogin + " " + ApaternoDesdeLogin + "  ";
+                foreach (var ip in host.AddressList)
+                    if (ip.AddressFamily.ToString() == "InterNetwork")
+                    {
+                        LocalIp = ip.ToString();
+                        TxtIp.Text = LocalIp + " ";
+                    }
+
+                LBLUSUARIO.Text = NombreDesdeLogin + " " + ApaternoDesdeLogin + "  ";
 
                 if (ApplicationDeployment.IsNetworkDeployed)
                 {
-                    ApplicationDeployment deployment = ApplicationDeployment.CurrentDeployment;
-                    TxtVersion.Text = deployment.CurrentVersion.ToString() + "   ";
+                    var deployment = ApplicationDeployment.CurrentDeployment;
+                    TxtVersion.Text = deployment.CurrentVersion + "   ";
                     lblDatabase.Text = nombress[4].Substring(9) + "   ";
                 }
                 else
-               
-                    TxtVersion.Text = currentversion + "   ";
-                    lblDatabase.Text = nombress[4].Substring(9) + "   ";
 
-                    txtServer.Text = nombress[0].Substring(7) + "  ";
-                    txtNombreEquipo.Text = Environment.MachineName + "  ";
+                {
+                    TxtVersion.Text = currentversion + "   ";
+                }
+
+                lblDatabase.Text = nombress[4].Substring(9) + "   ";
+
+                txtServer.Text = nombress[0].Substring(7) + "  ";
+                txtNombreEquipo.Text = Environment.MachineName + "  ";
             }
             catch (Exception ex)
             {
@@ -150,22 +143,22 @@ namespace _3mpacador4.Presentacion
         private void btnPuertoSerie_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
-            FrmPuertos form = new FrmPuertos();
-            form.ShowDialog();           
+            var form = new FrmPuertos();
+            form.ShowDialog();
         }
 
         private void btnBD_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
-            FrmConexion form = new FrmConexion();
-            form.ShowDialog();           
+            var form = new FrmConexion();
+            form.ShowDialog();
         }
 
         private void BtnPesosDiversos_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
-            FrmPesosDiversos from = new FrmPesosDiversos();
-            from.ShowDialog();           
+            var from = new FrmPesosDiversos();
+            from.ShowDialog();
         }
 
         private void btnRecepcionPesos_Click(object sender, EventArgs e)
@@ -187,7 +180,6 @@ namespace _3mpacador4.Presentacion
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -196,9 +188,8 @@ namespace _3mpacador4.Presentacion
             AbrirFormularioHijo(new RptBoletaPesado());
         }
 
-       private void button11_Click(object sender, EventArgs e)
+        private void button11_Click(object sender, EventArgs e)
         {
-            
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -209,15 +200,15 @@ namespace _3mpacador4.Presentacion
 
         private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application .Exit ();
+            Application.Exit();
         }
 
-       private void btnDescarte_Click(object sender, EventArgs e)
+        private void btnDescarte_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
             AbrirFormularioHijo(new IngresoDescarte());
         }
-                     
+
         private void btnMantenimiento_Click_1(object sender, EventArgs e)
         {
             MostrarSubMenu(panelMantenimiento);
@@ -225,7 +216,6 @@ namespace _3mpacador4.Presentacion
 
         private void PanelFormularioHijo_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void btnClientes_Click_1(object sender, EventArgs e)
@@ -246,7 +236,6 @@ namespace _3mpacador4.Presentacion
             AbrirFormularioHijo(new frmProductor());
         }
 
-              
 
         private void button6_Click(object sender, EventArgs e)
         {
@@ -263,7 +252,7 @@ namespace _3mpacador4.Presentacion
         private void button16_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
-            FrmReniec form = new FrmReniec();
+            var form = new FrmReniec();
             form.ShowDialog();
         }
 
@@ -275,7 +264,7 @@ namespace _3mpacador4.Presentacion
         private void btnProducto_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
-            frmProducto form = new frmProducto();
+            var form = new frmProducto();
             form.ShowDialog();
         }
 
@@ -283,7 +272,6 @@ namespace _3mpacador4.Presentacion
         {
             ocultarSubMenu();
             AbrirFormularioHijo(new frmColaborador());
-
         }
 
         private void btnProductores_Click(object sender, EventArgs e)
@@ -306,7 +294,7 @@ namespace _3mpacador4.Presentacion
         private void btnCLP_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
-            frmProductorCLP form = new frmProductorCLP();
+            var form = new frmProductorCLP();
             form.ShowDialog();
         }
 
@@ -314,10 +302,6 @@ namespace _3mpacador4.Presentacion
         {
             ocultarSubMenu();
             AbrirFormularioHijo(new frmTerminal());
-
         }
     }
 }
-
-
-

@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using _3mpacador4.Presentacion.Mantenimiento;
-using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.CompilerServices;
-using _3mpacador4;
 using _3mpacador4.Logica;
 using Devart.Data.MySql;
 
@@ -26,42 +16,37 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            frmProductor2 F = new frmProductor2();
+            var F = new frmProductor2();
             F.ShowDialog();
             mostrarclientes();
-
         }
-       
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
         {
-            this.Close();
-        } 
+            Close();
+        }
 
         private void mostrarclientes()
         {
-           
-                MySqlCommand comando;
-                try
-                {
-                    if (ConexionGral.conexion.State == ConnectionState.Closed)
-                    {
-                        ConexionGral.conectar();
-                    }
+            MySqlCommand comando;
+            try
+            {
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
-                    comando = new MySqlCommand("usp_tblproductor_Select", ConexionGral.conexion);
-                    comando.CommandType = (CommandType)4;
+                comando = new MySqlCommand("usp_tblproductor_Select", ConexionGral.conexion);
+                comando.CommandType = (CommandType)4;
 
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
                 adaptador.Fill(datos);
 
                 {
-                    var withBlock = this.datalistado;
+                    var withBlock = datalistado;
                     if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
@@ -89,8 +74,6 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             {
                 ConexionGral.desconectar();
             }
-
         }
-
     }
 }

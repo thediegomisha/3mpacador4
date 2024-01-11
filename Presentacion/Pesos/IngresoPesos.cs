@@ -1,55 +1,56 @@
 ﻿using System;
-using Devart.Data.MySql;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Microsoft.VisualBasic;
-using _3mpacador4.Logica;
-using System.IO.Ports;
-using _3mpacador4.Properties;
-using Devart.Common;
-using _3mpacador4.Presentacion.Mantenimiento;
-using _3mpacador4.Presentacion.Sistema;
 using System.Globalization;
+using System.IO.Ports;
+using System.Windows.Forms;
+using _3mpacador4.Logica;
+using _3mpacador4.Presentacion.Mantenimiento;
 using _3mpacador4.Presentacion.Reporte;
+using _3mpacador4.Properties;
+using Devart.Data.MySql;
+using Microsoft.VisualBasic;
 
 namespace _3mpacador4
 {
     public partial class IngresoPesos : Form
     {
-        CultureInfo en = new CultureInfo("es-MX");
-        private int contador = 0;
-        private int correlativo = 0;
-        private int aux = 0;
-
-        private int a1, b1, c1, d1, e2, f1, g1, h1;
-
         private int a, b, c, d;
 
-        private string POSICION_INICIAL;
-        private string stringinicio;
-        private string mostrarcaracter;
-        private string salidacontrol;
-
-        private string w = Convert.ToString('w');  // HEXADECIMAL
-        private string n = Convert.ToString('n');  // HEXADECIMAL
-        private string cero = Convert.ToString('0');  // HEXADECIMAL
-        private string menos = Convert.ToString('-');
+        private int a1, b1, c1, d1, e2, f1, g1, h1;
+        private int aux = 0;
+        private readonly string cero = Convert.ToString('0'); // HEXADECIMAL
+        private int contador = 0;
+        private int correlativo = 0;
         private string CR = Convert.ToString('\r');
+        private CultureInfo en = new CultureInfo("es-MX");
         private string LF = Convert.ToString('\n');
-        private string PUNTO = Convert.ToString('.');
+
+        private string MAS = Convert.ToString('+');
+        private string menos = Convert.ToString('-');
+        private string mostrarcaracter;
+        private readonly string n = Convert.ToString('n'); // HEXADECIMAL
+
+        private string POSICION_INICIAL;
+        private readonly string PUNTO = Convert.ToString('.');
+        private string salidacontrol;
+        private string stringinicio;
+
+        private readonly string w = Convert.ToString('w'); // HEXADECIMAL
+
+        public IngresoPesos()
+        {
+            InitializeComponent();
+            conectarserial();
+            cargarinicial();
+        }
 
         private void sppuerto_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string DatoInterrupcion;
             try
             {
-                DatoInterrupcion = this.sppuerto.ReadExisting();
+                DatoInterrupcion = sppuerto.ReadExisting();
                 PuertaAccesoInterrupcion(DatoInterrupcion);
             }
             catch (Exception ex)
@@ -57,54 +58,40 @@ namespace _3mpacador4
                 Interaction.MsgBox("ERROR DATOS INTERRUPCION " + ex.Message, Constants.vbCritical);
             }
         }
-        
-        private string MAS = Convert.ToString('+');
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            this.Close();   
+            Close();
         }
 
         private void cbProducto_DropDownClosed(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(cbProducto.Text))
-            {
-                mostrarlistadovariedad();
-            }
+            if (!string.IsNullOrEmpty(cbProducto.Text)) mostrarlistadovariedad();
         }
-
-        private delegate void DelegadoAcceso(string Adicionartexto);
 
         private void btnguardar_Click(object sender, EventArgs e)
         {
-            try
+            borrarmensajeerror();
+            if (validarcampos())
             {
-                borrarmensajeerror();
-                if (validarcampos())
-                {
-                    InsertarRegistro();
-                    mostrarconsulta();
-                    txtPesoManual.Focus();
-                    txtPesoManual.Text = string.Empty;                  
-                }                
+                InsertarRegistro();
+                mostrarconsulta();
+                txtPesoManual.Focus();
+                txtPesoManual.Text = string.Empty;
             }
-            catch (Exception)
-            {
-                throw;
-            }            
         }
 
         public void titulosjavasvisible()
         {
-           // lblpeso.Visible = false;
+            // lblpeso.Visible = false;
             lblcantjavas.Visible = false;
-            lbltarajaba .Visible = false;
-            lbltaraparh .Visible = false;
-            lblpjaba .Visible = false;
+            lbltarajaba.Visible = false;
+            lbltaraparh.Visible = false;
+            lblpjaba.Visible = false;
             lblpesojabas.Visible = false;
             txttarajaba.Visible = false;
             txttaraParihuela.Visible = false;
-            cbjabas.Visible = false;           
+            cbjabas.Visible = false;
         }
 
         public void titulosjavasinvisible()
@@ -119,39 +106,33 @@ namespace _3mpacador4
             txttaraParihuela.Visible = true;
             cbjabas.Visible = true;
         }
-            public IngresoPesos()
-        {
-            InitializeComponent();
-            conectarserial();
-            cargarinicial();
-        }
 
         private void IngresoPesos_Load(object sender, EventArgs e)
         {
-   //         pictureBoxEspera.Visible = true;
-            this.timer1.Interval = 100;  // Un segundo
-            this.timer1.Start();
+            //         pictureBoxEspera.Visible = true;
+            timer1.Interval = 100; // Un segundo
+            timer1.Start();
             // temporizador();
             txtPesoManual.Visible = false;
             titulosjavasvisible();
             mostrarLote();
-        //    pictureBoxEspera.Visible = false;
+            //    pictureBoxEspera.Visible = false;
         }
 
         private void cbMetodoCultivo_DropDownClosed(object sender, EventArgs e)
         {
             try
             {
-                if (!String.IsNullOrEmpty(cbMetodoCultivo.Text))
+                if (!string.IsNullOrEmpty(cbMetodoCultivo.Text))
                 {
-                    int Id = Convert.ToInt32(cbMetodoCultivo.SelectedValue.ToString());
+                    var Id = Convert.ToInt32(cbMetodoCultivo.SelectedValue.ToString());
                 }
 
                 if (cbMetodoCultivo.Text == "Nuevo ...")
                 {
-                  frmCultivo form = new frmCultivo();
-                  form.ShowDialog();
-                  mostrarMetCultivo();
+                    var form = new frmCultivo();
+                    form.ShowDialog();
+                    mostrarMetCultivo();
                 }
             }
             catch (Exception ex)
@@ -159,25 +140,27 @@ namespace _3mpacador4
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void cbTipoServicio_DropDownClosed(object sender, EventArgs e)
         {
             try
             {
-                if (!String.IsNullOrEmpty(cbTipoServicio.Text))
+                if (!string.IsNullOrEmpty(cbTipoServicio.Text))
                 {
-                    int Id = Convert.ToInt32(cbTipoServicio.SelectedValue.ToString());                  
+                    var Id = Convert.ToInt32(cbTipoServicio.SelectedValue.ToString());
                 }
+
                 if (cbTipoServicio.Text == "Nuevo ...")
                 {
-                    frmServicio form = new frmServicio();
+                    var form = new frmServicio();
                     form.ShowDialog();
                     mostrarservicio();
                 }
             }
             catch (Exception ex)
             {
-                Interaction.MsgBox("Error " + "Error "  + ex.Message, Constants.vbCritical);
-            }           
+                Interaction.MsgBox("Error " + "Error " + ex.Message, Constants.vbCritical);
+            }
         }
 
         private void AccesoFromPrincipal(string TextoForm)
@@ -210,32 +193,37 @@ namespace _3mpacador4
                         string textoini = null;
                         textoini = Strings.Left(stringinicio, 3);
 
-                        if ((textoini == (w + n + cero)   ))
+                        if (textoini == w + n + cero)
                         {
-                            mostrarcaracter = Strings.Mid(TextoForm, (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 12d), 8);
-                            this.lblpeso.Text = Strings.FormatNumber(Conversion.Val(mostrarcaracter.Replace("+", " ")), 2); // funcion REPLACE, REEMPLAZA EL SIGNO + POR UN ESPACIO EN BLANCO 05/12/19
-
+                            mostrarcaracter = Strings.Mid(TextoForm,
+                                (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 12d), 8);
+                            lblpeso.Text =
+                                Strings.FormatNumber(Conversion.Val(mostrarcaracter.Replace("+", " ")),
+                                    2); // funcion REPLACE, REEMPLAZA EL SIGNO + POR UN ESPACIO EN BLANCO 05/12/19
                         }
                         else
                         {
-                            mostrarcaracter = Strings.Mid(TextoForm, (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 8d), 12);
-                            this.lblpeso.Text = Strings.FormatNumber(Conversion.Val(mostrarcaracter.Replace(" ", " ")), 2); // funcion REPLACE, REEMPLAZA EL SIGNO + POR UN ESPACIO EN BLANCO 05/12/19
+                            mostrarcaracter = Strings.Mid(TextoForm,
+                                (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 8d), 12);
+                            lblpeso.Text =
+                                Strings.FormatNumber(Conversion.Val(mostrarcaracter.Replace(" ", " ")),
+                                    2); // funcion REPLACE, REEMPLAZA EL SIGNO + POR UN ESPACIO EN BLANCO 05/12/19
                         }
                     }
-                                       
+
                     //////ENVIA LA SALIDA A LBLTODO SI ES DIFERENTE DE VACIO
-        else
+                    else
                     {
-                        this.sppuerto.DiscardInBuffer();
+                        sppuerto.DiscardInBuffer();
                     }
                 }
                 else
                 {
-                    this.lblpeso.Text = "REVISE CONEXION";
+                    lblpeso.Text = "REVISE CONEXION";
                 }
             }
 
-catch (Exception ex)
+            catch (Exception ex)
             {
                 Interaction.MsgBox(ex.Message, Constants.vbCritical);
             }
@@ -245,44 +233,45 @@ catch (Exception ex)
         {
             try
             {
-               if (!String.IsNullOrEmpty(cbjabas.Text))
+                if (!string.IsNullOrEmpty(cbjabas.Text))
                 {
-                    int Id = Convert.ToInt32(cbjabas.SelectedValue.ToString());
+                    var Id = Convert.ToInt32(cbjabas.SelectedValue.ToString());
                     if (cbjabas.Text == "Nuevo ...")
                     {
-                        frmJabas form = new frmJabas();
+                        var form = new frmJabas();
                         form.ShowDialog();
-                      mostrarjabas();
+                        mostrarjabas();
                     }
-                  //  label35.Text = (cbjabas.GetItemText(cbjabas.SelectedValue));
+                    //  label35.Text = (cbjabas.GetItemText(cbjabas.SelectedValue));
                     //label22.Text = Id.ToString();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show ("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void PuertaAccesoInterrupcion(string BufferIn)
         {
-            object[] TextoInterrupcion = new object[] { BufferIn };
+            object[] TextoInterrupcion = { BufferIn };
             DelegadoAcceso DelegadoInterrupcion;
-            DelegadoInterrupcion = new DelegadoAcceso(AccesoFromPrincipal);
-            base.BeginInvoke(DelegadoInterrupcion, TextoInterrupcion);
+            DelegadoInterrupcion = AccesoFromPrincipal;
+            BeginInvoke(DelegadoInterrupcion, TextoInterrupcion);
         }
-       public void conectarserial()
+
+        public void conectarserial()
         {
             try
             {
-                string nompuerto = Settings.Default.select_bal1;
-                string baudios = Settings.Default.BaudiosRecp;
-                string bit_datos = Settings.Default.bitDatosRecp;
-                string paridad = Settings.Default.ParidadRecp;
-                string bit_parada = Settings.Default.ParadaRecp;
+                var nompuerto = Settings.Default.select_bal1;
+                var baudios = Settings.Default.BaudiosRecp;
+                var bit_datos = Settings.Default.bitDatosRecp;
+                var paridad = Settings.Default.ParidadRecp;
+                var bit_parada = Settings.Default.ParadaRecp;
 
                 {
-                    var bloque = this.sppuerto;
+                    var bloque = sppuerto;
                     bloque.PortName = nompuerto;
                     bloque.BaudRate = Convert.ToInt32(baudios);
                     bloque.DataBits = Convert.ToInt32(bit_datos);
@@ -295,7 +284,7 @@ catch (Exception ex)
                     bloque.Open();
                     if (bloque.IsOpen)
                     {
-                        this.lblestado.Text = "CONECTADO A LA BALANZA SATISFACTORIAMENTE !!!";
+                        lblestado.Text = "CONECTADO A LA BALANZA SATISFACTORIAMENTE !!!";
                     }
                     else
                     {
@@ -320,10 +309,7 @@ catch (Exception ex)
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblproducto_Select", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
@@ -333,7 +319,7 @@ catch (Exception ex)
                 adaptador.Fill(datos);
 
                 {
-                    var withBlock = this.cbProducto;
+                    var withBlock = cbProducto;
                     if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
@@ -360,19 +346,15 @@ catch (Exception ex)
             {
                 ConexionGral.desconectar();
             }
-
         }
 
         private void mostrarproductor()
         {
             MySqlCommand comando;
-          //  MostrarAnimacionEspera();
+            //  MostrarAnimacionEspera();
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblproductor_Select", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
@@ -381,8 +363,8 @@ catch (Exception ex)
                 var datos = new DataTable();
                 adaptador.Fill(datos);
 
-               {
-                    var withBlock = this.cbProductor;
+                {
+                    var withBlock = cbProductor;
                     if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
@@ -395,7 +377,7 @@ catch (Exception ex)
                         withBlock.DisplayMember = "RAZON SOCIAL";
                         withBlock.ValueMember = "clp";
                         withBlock.SelectedIndex = -1;
-                     //   poblarPais();
+                        //   poblarPais();
                     }
                     else
                     {
@@ -413,17 +395,14 @@ catch (Exception ex)
             }
         }
 
-      
+
         private void mostrarclientes()
         {
             MySqlCommand comando;
-        //    MostrarAnimacionEspera();
+            //    MostrarAnimacionEspera();
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblcliente_Select", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
@@ -433,7 +412,7 @@ catch (Exception ex)
                 adaptador.Fill(datos);
 
                 {
-                    var withBlock = this.cbcliente;
+                    var withBlock = cbcliente;
                     if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
@@ -468,10 +447,7 @@ catch (Exception ex)
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tbllote_Select", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
@@ -481,20 +457,20 @@ catch (Exception ex)
                 adaptador.Fill(datos);
 
                 {
-                    var withBlock = this.cboLote;
+                    var withBlock = cboLote;
                     //if (datos.Rows.Count != 0)
                     //{
-                        var dr = datos.NewRow();
-                        dr["idlote"] = 0;
-                        dr["numlote"] = "Nuevo ...";
-                        datos.Rows.InsertAt(dr, 0);
+                    var dr = datos.NewRow();
+                    dr["idlote"] = 0;
+                    dr["numlote"] = "Nuevo ...";
+                    datos.Rows.InsertAt(dr, 0);
 
 
-                        withBlock.DataSource = datos;
-                        withBlock.DisplayMember = "numlote";
-                        withBlock.ValueMember = "idlote";
-                        withBlock.SelectedIndex = -1;
-            //        OcultarAnimacionEspera();
+                    withBlock.DataSource = datos;
+                    withBlock.DisplayMember = "numlote";
+                    withBlock.ValueMember = "idlote";
+                    withBlock.SelectedIndex = -1;
+                    //        OcultarAnimacionEspera();
                     //}
                     //else
                     //{
@@ -516,7 +492,7 @@ catch (Exception ex)
         {
             try
             {
-                if (!String.IsNullOrEmpty(cbProductor.Text))
+                if (!string.IsNullOrEmpty(cbProductor.Text))
                 {
                     lblCLP.Text = Convert.ToString(cbProductor.SelectedValue.ToString());
 
@@ -528,9 +504,9 @@ catch (Exception ex)
                     poblarPais();
                     if (cbProductor.Text == "Nuevo ...")
                     {
-                        frmProductor2 form = new frmProductor2();                         
+                        var form = new frmProductor2();
                         form.ShowDialog();
-                        mostrarproductor();                       
+                        mostrarproductor();
                     }
                 }
             }
@@ -541,44 +517,41 @@ catch (Exception ex)
         }
 
         private void cbcliente_DropDownClosed(object sender, EventArgs e)
-        {           
+        {
             try
             {
-                if (!String.IsNullOrEmpty(cbcliente.Text))
+                if (!string.IsNullOrEmpty(cbcliente.Text))
                 {
                     lblRUC.Text = cbcliente.GetItemText(cbcliente.SelectedValue.ToString());
 
-                   int iniciocadena = cbcliente.Text.IndexOf('-');
+                    var iniciocadena = cbcliente.Text.IndexOf('-');
 
                     if (cbcliente.Text == "Nuevo ...")
                     {
-                       
-                        frmAltaRUC F = new frmAltaRUC();
+                        var F = new frmAltaRUC();
                         F.CambiarTextoLabel("Ingreso de Clientes");
                         F.ShowDialog();
                         mostrarclientes();
-                    }else
+                    }
+                    else
                     {
                         label12.Text = cbcliente.Text.Substring(0, iniciocadena);
                     }
-                   
+
                     mostrarproductor();
                     mostrarMetCultivo();
                     mostrarlistadoproducto();
                     mostrarAcopiador();
                     cbvariedad.SelectedIndex = -1;
-                
+
                     mostrarturno();
                     mostrarservicio();
 
                     mostrarjabas();
                     multiplicajabas();
 
-                 //   OcultarAnimacionEspera();
-
-                   
+                    //   OcultarAnimacionEspera();
                 }
-
             }
             catch (Exception ex)
             {
@@ -590,10 +563,10 @@ catch (Exception ex)
         {
             try
             {
-                if (!String.IsNullOrEmpty(cboLote.Text))
+                if (!string.IsNullOrEmpty(cboLote.Text))
                 {
-                   label21 .Text = cboLote.GetItemText(cboLote.SelectedValue.ToString());
-                    label4.Text = (cboLote.Text.ToString());
+                    label21.Text = cboLote.GetItemText(cboLote.SelectedValue.ToString());
+                    label4.Text = cboLote.Text;
                     mostrarclientes();
                     //int combo = Convert.ToInt32(label21.ToString());
                     //combo += - 1;
@@ -602,7 +575,7 @@ catch (Exception ex)
 
                     if (cboLote.Text == "Nuevo ...")
                     {
-                        frmLote  form = new frmLote();
+                        var form = new frmLote();
                         form.ShowDialog();
                         mostrarLote();
                     }
@@ -632,47 +605,39 @@ catch (Exception ex)
 
         private void chkf_ing_CheckStateChanged(object sender, EventArgs e)
         {
-
         }
 
         private void chkPesoManual_CheckStateChanged(object sender, EventArgs e)
         {
-
         }
 
         private void chkPesoManual_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkPesoManual.Checked == true)
-            {
+            if (chkPesoManual.Checked)
                 txtPesoManual.Visible = true;
-            }
             else
-            {
                 txtPesoManual.Visible = false;
-            }
         }
 
         private void mostrarlistadovariedad()
         {
-           MySqlCommand comando;
+            MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                   ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblvariedad_Select", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
 
                 comando.Parameters.Clear();
-                comando.Parameters.AddWithValue("p_idvariedad", MySqlType.Int).Value = cbProducto.GetItemText(cbProducto.SelectedValue);
+                comando.Parameters.AddWithValue("p_idvariedad", MySqlType.Int).Value =
+                    cbProducto.GetItemText(cbProducto.SelectedValue);
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
                 adaptador.Fill(datos);
 
                 {
-                    var withBlock = this.cbvariedad;
+                    var withBlock = cbvariedad;
                     if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
@@ -691,7 +656,7 @@ catch (Exception ex)
                     }
                 }
             }
-            catch (MySqlException  ex)
+            catch (MySqlException ex)
             {
                 MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -700,33 +665,31 @@ catch (Exception ex)
                 ConexionGral.desconectar();
             }
         }
+
         private void mostrarturno()
         {
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblturno_Select", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
 
                 comando.Parameters.Clear();
-               // label3.Text = cbMetodoCultivo.GetItemText(cbMetodoCultivo.SelectedValue);
+                // label3.Text = cbMetodoCultivo.GetItemText(cbMetodoCultivo.SelectedValue);
                 //   comando.Parameters.AddWithValue("p_idvariedad", MySqlType.Int).Value = cbProducto.GetItemText(cbProducto.SelectedValue);
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
                 adaptador.Fill(datos);
 
                 {
-                    var withBlock = this.cboturno;
+                    var withBlock = cboturno;
                     if (datos != null && datos.Rows.Count > 0)
                     {
                         withBlock.DataSource = datos;
                         withBlock.DisplayMember = "nombre";
-                          withBlock.ValueMember = "idturno";
+                        withBlock.ValueMember = "idturno";
                         withBlock.SelectedIndex = -1;
                     }
                     else
@@ -744,27 +707,25 @@ catch (Exception ex)
                 ConexionGral.desconectar();
             }
         }
+
         private void mostrarMetCultivo()
         {
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblmetodocultivo_Select", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
 
                 comando.Parameters.Clear();
-                
+
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
                 adaptador.Fill(datos);
 
                 {
-                    var withBlock = this.cbMetodoCultivo;
+                    var withBlock = cbMetodoCultivo;
                     if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
@@ -774,7 +735,7 @@ catch (Exception ex)
 
                         withBlock.DataSource = datos;
                         withBlock.DisplayMember = "nombre";
-                          withBlock.ValueMember = "idmetodocultivo";
+                        withBlock.ValueMember = "idmetodocultivo";
                         withBlock.SelectedIndex = -1;
                     }
                     else
@@ -791,22 +752,17 @@ catch (Exception ex)
             {
                 ConexionGral.desconectar();
             }
-
         }
 
         private void txtPesoManual_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((int)e.KeyChar == (int)Keys.Enter)
+            if (e.KeyChar == (int)Keys.Enter)
             {
-                if (!String.IsNullOrEmpty( txtPesoManual.Text ))
-                {
+                if (!string.IsNullOrEmpty(txtPesoManual.Text))
                     btnguardar.PerformClick();
-                }
                 else
-                {
                     MessageBox.Show("Ingrese el Peso Correcto");
-                }              
-            }           
+            }
         }
 
         private void mostrarservicio()
@@ -814,22 +770,19 @@ catch (Exception ex)
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tbltiposervicio_Select", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
 
                 comando.Parameters.Clear();
-        
+
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
                 adaptador.Fill(datos);
 
                 {
-                    var withBlock = this.cbTipoServicio;
+                    var withBlock = cbTipoServicio;
                     if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
@@ -856,18 +809,15 @@ catch (Exception ex)
             {
                 ConexionGral.desconectar();
             }
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
             //Instancio el Formulario Hijo al Padre
-            ImprimirPesos FH = new ImprimirPesos();
+            var FH = new ImprimirPesos();
             //Indico al Formulario quien es el Propietario
             AddOwnedForm(FH);
             FH.ShowDialog();
-         
         }
 
         private void mostrarjabas()
@@ -875,10 +825,7 @@ catch (Exception ex)
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tbljabas_Select", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
@@ -890,7 +837,7 @@ catch (Exception ex)
                 adaptador.Fill(datos);
 
                 {
-                    var withBlock = this.cbjabas;
+                    var withBlock = cbjabas;
                     if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
@@ -923,45 +870,49 @@ catch (Exception ex)
         {
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
                 var comando = new MySqlCommand("usp_tblticketpesaje_Insert", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
 
-                float tarajaba = float.Parse(txttarajaba.Text);
-                float taraparihuela = float.Parse(txttaraParihuela.Text);
-                float pesobruto = float.Parse(lblpeso.Text);
-                float pesobrutoManual = float.Parse(txtPesoManual.Text);
+                var tarajaba = float.Parse(txttarajaba.Text);
+                var taraparihuela = float.Parse(txttaraParihuela.Text);
+                var pesobruto = float.Parse(lblpeso.Text);
+                var pesobrutoManual = float.Parse(txtPesoManual.Text);
 
 
-                comando.Parameters.AddWithValue("p_numdoc", this.lblcorrelativo.Text);
+                comando.Parameters.AddWithValue("p_numdoc", lblcorrelativo.Text);
                 comando.Parameters.AddWithValue("p_horallegada", DateTime.Now);
                 comando.Parameters.AddWithValue("p_horapesaje", DateTime.Now);
-                comando.Parameters.AddWithValue("p_fecha_ticket", Convert.ToDateTime(this.fpesaje.Text));               
-                comando.Parameters.AddWithValue("p_idmetodocultivo", MySqlType.Int).Value = cbMetodoCultivo.GetItemText(cbMetodoCultivo.SelectedValue);
-                comando.Parameters.AddWithValue("p_idtiposervicio", MySqlType.Int).Value = cbTipoServicio.GetItemText(cbTipoServicio.SelectedValue);
-                comando.Parameters.AddWithValue("p_idproducto", MySqlType.Int).Value = cbProducto.GetItemText(cbProducto.SelectedValue);
-                comando.Parameters.AddWithValue("p_idlote", MySqlType.Int).Value = cboLote.GetItemText(cboLote.SelectedValue.ToString());
-                comando.Parameters.AddWithValue("p_idvariedad", MySqlType.Int).Value = cbvariedad.GetItemText(cbvariedad.SelectedValue);
+                comando.Parameters.AddWithValue("p_fecha_ticket", Convert.ToDateTime(fpesaje.Text));
+                comando.Parameters.AddWithValue("p_idmetodocultivo", MySqlType.Int).Value =
+                    cbMetodoCultivo.GetItemText(cbMetodoCultivo.SelectedValue);
+                comando.Parameters.AddWithValue("p_idtiposervicio", MySqlType.Int).Value =
+                    cbTipoServicio.GetItemText(cbTipoServicio.SelectedValue);
+                comando.Parameters.AddWithValue("p_idproducto", MySqlType.Int).Value =
+                    cbProducto.GetItemText(cbProducto.SelectedValue);
+                comando.Parameters.AddWithValue("p_idlote", MySqlType.Int).Value =
+                    cboLote.GetItemText(cboLote.SelectedValue.ToString());
+                comando.Parameters.AddWithValue("p_idvariedad", MySqlType.Int).Value =
+                    cbvariedad.GetItemText(cbvariedad.SelectedValue);
                 comando.Parameters.AddWithValue("p_idcliente", MySqlType.Int).Value = label12.Text;
                 comando.Parameters.AddWithValue("p_idacopiador", MySqlType.Int).Value = label35.Text;
 
-                if (txtGuiaRemision.Text == String.Empty)
+                if (txtGuiaRemision.Text == string.Empty)
                 {
                     MessageBox.Show("Error, Tiene que Ingresar el Numero de Guia", "GUIA REMISION");
-                    return;                    
+                    return;
                 }
                 else
-                    comando.Parameters.AddWithValue("p_num_guia", MySqlType.Text).Value =this.txtGuiaRemision.Text;
+                {
+                    comando.Parameters.AddWithValue("p_num_guia", MySqlType.Text).Value = txtGuiaRemision.Text;
+                }
 
-                if (tarajaba > 0 ) 
+                if (tarajaba > 0)
                 {
                     comando.Parameters.AddWithValue("p_tara_java", MySqlType.Double).Value = txttarajaba.Text;
                 }
                 else
-                {                 
+                {
                     MessageBox.Show("Error, el Peso tiene que ser mayor que 0", "TARA JABA");
                     return;
                 }
@@ -976,9 +927,10 @@ catch (Exception ex)
                     return;
                 }
 
-                comando.Parameters.AddWithValue("p_cant_jabas", MySqlType.Double).Value = (cbjabas.GetItemText(cbjabas.SelectedValue));
+                comando.Parameters.AddWithValue("p_cant_jabas", MySqlType.Double).Value =
+                    cbjabas.GetItemText(cbjabas.SelectedValue);
 
-                if (chkPesoManual.Checked ==false)
+                if (chkPesoManual.Checked == false)
                 {
                     if (pesobruto > 0)
                     {
@@ -994,7 +946,7 @@ catch (Exception ex)
                 {
                     if (pesobrutoManual > 0)
                     {
-                        comando.Parameters.AddWithValue("p_peso_bruto", MySqlType.Double).Value = txtPesoManual .Text;
+                        comando.Parameters.AddWithValue("p_peso_bruto", MySqlType.Double).Value = txtPesoManual.Text;
                     }
                     else
                     {
@@ -1002,19 +954,21 @@ catch (Exception ex)
                         return;
                     }
                 }
-                
-                if (!String.IsNullOrEmpty(cboturno.Text))
+
+                if (!string.IsNullOrEmpty(cboturno.Text))
                 {
-                    comando.Parameters.AddWithValue("p_turno", MySqlType.Int).Value = cboturno.GetItemText(cboturno.SelectedValue);
-                }else
+                    comando.Parameters.AddWithValue("p_turno", MySqlType.Int).Value =
+                        cboturno.GetItemText(cboturno.SelectedValue);
+                }
+                else
                 {
                     MessageBox.Show("Error, El Turno debe ser Ingresado", "TURNO");
                     return;
                 }
 
-                if (!String.IsNullOrEmpty(lblCLP.Text))
+                if (!string.IsNullOrEmpty(lblCLP.Text))
                 {
-                    comando.Parameters.AddWithValue("p_idclp", MySqlType.Int).Value =(lblCLP.Text);
+                    comando.Parameters.AddWithValue("p_idclp", MySqlType.Int).Value = lblCLP.Text;
                 }
                 else
                 {
@@ -1023,10 +977,10 @@ catch (Exception ex)
                 }
 
                 comando.ExecuteNonQuery();
-                MessageBox.Show("PESO REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
+                MessageBox.Show("PESO REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
                 // limpiarcampos()
-            //    this.chkcapturapeso.Checked = false;
-               
+                //    this.chkcapturapeso.Checked = false;
             }
             catch (Exception ex)
             {
@@ -1043,7 +997,7 @@ catch (Exception ex)
         {
             cerrarlote();
             mostrarLote();
-            this.datalistado.DataSource = null;
+            datalistado.DataSource = null;
             totalneto.Text = "0";
             lblcantjabas.Text = "0";
         }
@@ -1052,15 +1006,15 @@ catch (Exception ex)
         {
             try
             {
-                if (!String.IsNullOrEmpty(cbAcopiador.Text))
+                if (!string.IsNullOrEmpty(cbAcopiador.Text))
                 {
-                   // lblRUC.Text = cbcliente.GetItemText(cbcliente.SelectedValue.ToString());
+                    // lblRUC.Text = cbcliente.GetItemText(cbcliente.SelectedValue.ToString());
 
-                    int iniciocadena = cbAcopiador.Text.IndexOf('-');
+                    var iniciocadena = cbAcopiador.Text.IndexOf('-');
 
                     if (cbAcopiador.Text == "Nuevo ...")
                     {
-                        frmAltaRUC F = new frmAltaRUC();
+                        var F = new frmAltaRUC();
                         F.CambiarTextoLabel("Ingreso de Acopiadores");
                         F.Panel1.BackColor = Color.Green;
                         F.ShowDialog();
@@ -1082,10 +1036,11 @@ catch (Exception ex)
         {
             try
             {
-                if (!String.IsNullOrEmpty(cbjabas.Text) && (!String.IsNullOrEmpty(txttarajaba.Text)))
+                if (!string.IsNullOrEmpty(cbjabas.Text) && !string.IsNullOrEmpty(txttarajaba.Text))
                 {
-                    Double resultado = Double.Parse(cbjabas.GetItemText(cbjabas.SelectedItem)) * Double.Parse(txttarajaba.Text);
-                    (lblpesojabas.Text) = resultado.ToString();
+                    var resultado = double.Parse(cbjabas.GetItemText(cbjabas.SelectedItem)) *
+                                    double.Parse(txttarajaba.Text);
+                    lblpesojabas.Text = resultado.ToString();
                 }
             }
             catch (Exception)
@@ -1094,21 +1049,18 @@ catch (Exception ex)
             }
         }
 
-       
+
         private void cbMatCosecha_DropDownClosed(object sender, EventArgs e)
         {
             try
             {
-                if (!String.IsNullOrEmpty(cbMatCosecha.Text))
-                {
+                if (!string.IsNullOrEmpty(cbMatCosecha.Text))
                     if (cbMatCosecha.Text == "Nuevo ...")
                     {
-                        frmMatCosecha form = new frmMatCosecha();
+                        var form = new frmMatCosecha();
                         form.ShowDialog();
-                       mostrarMaterialCosecha();
+                        mostrarMaterialCosecha();
                     }
-                    
-                }
             }
             catch (Exception ex)
             {
@@ -1118,82 +1070,54 @@ catch (Exception ex)
 
         private bool validarcampos()
         {
-            try
+            var ok = true;
+            if (txttarajaba.Text == "")
             {
-                bool ok = true;
-                if(txttarajaba.Text == "")
-                {
-                    ok = false;
-                    errorProvider1.SetError(txttarajaba, "Ingrese un numero valido");
-                }
-                return ok;
+                ok = false;
+                errorProvider1.SetError(txttarajaba, "Ingrese un numero valido");
             }
-            catch (Exception)
-            {
 
-                throw;
-            }
+            return ok;
         }
 
         private void cbMatCosecha_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            try
+            var filaSeleccionada = cbMatCosecha.SelectedItem as DataRowView;
+
+            if (filaSeleccionada != null)
             {
-                DataRowView filaSeleccionada = cbMatCosecha.SelectedItem as DataRowView;
+                // Obtener el texto seleccionado del ComboBox
+                var resultado = filaSeleccionada.Row["nombre"].ToString();
 
-                if (filaSeleccionada != null)
-                {
-                    // Obtener el texto seleccionado del ComboBox
-                    string resultado = filaSeleccionada.Row["nombre"].ToString();
-
-                    if (!string.IsNullOrEmpty(resultado))
-                    {
+                if (!string.IsNullOrEmpty(resultado))
                     // Verificar si el texto seleccionado es igual a algo
                     if (resultado == "JABAS")
-                    {
                         titulosjavasinvisible();
-                    }
-                    }
-                }
             }
-            catch (Exception)
-                {
-                    throw;
-                }           
         }
 
         private void borrarmensajeerror()
         {
-            try
-            {
-                errorProvider1.SetError(txttarajaba, "");
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            errorProvider1.SetError(txttarajaba, "");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void mostrarconsulta()
         {
-
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblticketpesaje_Selectlote", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
 
-                comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = (cboLote.Text.ToString()); ;
+                comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = cboLote.Text;
+                ;
 
 
                 var adaptador = new MySqlDataAdapter(comando);
@@ -1201,7 +1125,7 @@ catch (Exception ex)
                 adaptador.Fill(datos);
 
                 {
-                    var withBlock = this.datalistado;
+                    var withBlock = datalistado;
                     if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
@@ -1211,7 +1135,6 @@ catch (Exception ex)
                         //actualizardatos();
                         sumaneto();
                         contar();
-
                     }
                     else
                     {
@@ -1227,20 +1150,21 @@ catch (Exception ex)
             {
                 ConexionGral.desconectar();
             }
-
         }
 
         public void contar()
         {
-            int contarfila = datalistado.RowCount - 1;
-            int contador = 0;
+            var contarfila = datalistado.RowCount - 1;
+            var contador = 0;
             while (contarfila >= 0)
             {
                 contador = contador + 1;
                 contarfila = contarfila - 1;
             }
+
             LBLCONTAR.Text = Strings.FormatNumber(contador, 0);
         }
+
         public void sumaneto()
         {
             try
@@ -1252,8 +1176,8 @@ catch (Exception ex)
                 {
                     total += Convert.ToDouble(row.Cells["PESO NETO"].Value);
                     cantjabas += Convert.ToDouble(row.Cells["CANT JABAS"].Value);
-
                 }
+
                 totalneto.Text = Strings.FormatNumber(total, 2);
                 lblcantjabas.Text = Strings.FormatNumber(cantjabas, 0);
             }
@@ -1269,15 +1193,13 @@ catch (Exception ex)
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblhabilitadodestino_Select", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
 
-                comando.Parameters.AddWithValue("p_clp", MySqlType.Int).Value = (lblCLP.Text.ToString()); ;
+                comando.Parameters.AddWithValue("p_clp", MySqlType.Int).Value = lblCLP.Text;
+                ;
 
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
@@ -1286,32 +1208,21 @@ catch (Exception ex)
                 {
                     //var withBlock = this.cboLote;
                     if (datos != null && datos.Rows.Count > 0)
-                    {
-
-                    lblpais1.Text = datos.Rows[0]["ORIGEN"].ToString();
-
-                        //    ////  lblmetodo.Text = datos.Rows[0]["PRODUCTOR"].ToString();
-                        //    //lblproducto.Text = datos.Rows[0]["PRODUCTO"].ToString();
-                        //    ////  lblservicio.Text = datos.Rows[0]["PRODUCTOR"].ToString();
-                        //    ////  lblacopiador.Text = datos.Rows[0]["PRODUCTOR"].ToString();
-                        //    //// lblguiaingreso.Text = datos.Rows[0]["PRODUCTOR"].ToString();
-                        //    ////  lblruc_dni.Text = datos.Rows[0]["PRODUCTOR"].ToString();
-                        //    //lblclp.Text = datos.Rows[0]["CODIGO PRODUCCION"].ToString();
-                        //    //lblvariedad.Text = datos.Rows[0]["VARIEDAD"].ToString();
-                        //    //lblfechaingreso.Text = datos.Rows[0]["FECHA PESAJE"].ToString();
-                        //    ////    lblhoraingreso.Text = datos.Rows[0]["PRODUCTOR"].ToString();
-
-                        //    //lblpesoneto.Text = (datos.Rows[0]["PESO NETO"].ToString());
-                        //    //lblcantjabas.Text = (datos.Rows[0]["CANT JABAS"].ToString());
-
-
-
-
-                    }
+                        lblpais1.Text = datos.Rows[0]["ORIGEN"].ToString();
+                    //    ////  lblmetodo.Text = datos.Rows[0]["PRODUCTOR"].ToString();
+                    //    //lblproducto.Text = datos.Rows[0]["PRODUCTO"].ToString();
+                    //    ////  lblservicio.Text = datos.Rows[0]["PRODUCTOR"].ToString();
+                    //    ////  lblacopiador.Text = datos.Rows[0]["PRODUCTOR"].ToString();
+                    //    //// lblguiaingreso.Text = datos.Rows[0]["PRODUCTOR"].ToString();
+                    //    ////  lblruc_dni.Text = datos.Rows[0]["PRODUCTOR"].ToString();
+                    //    //lblclp.Text = datos.Rows[0]["CODIGO PRODUCCION"].ToString();
+                    //    //lblvariedad.Text = datos.Rows[0]["VARIEDAD"].ToString();
+                    //    //lblfechaingreso.Text = datos.Rows[0]["FECHA PESAJE"].ToString();
+                    //    ////    lblhoraingreso.Text = datos.Rows[0]["PRODUCTOR"].ToString();
+                    //    //lblpesoneto.Text = (datos.Rows[0]["PESO NETO"].ToString());
+                    //    //lblcantjabas.Text = (datos.Rows[0]["CANT JABAS"].ToString());
                     else
-                    {
-                        lblpais1.Text =  "No Existe en la Lista !!!";
-                    }
+                        lblpais1.Text = "No Existe en la Lista !!!";
                 }
             }
             catch (Exception ex)
@@ -1330,9 +1241,9 @@ catch (Exception ex)
             {
                 {
                     var bloque = Settings.Default;
-                                       
-                       this.txttarajaba.Text = bloque.javaverde.ToString();
-                       this.txttaraParihuela.Text = bloque.paleta.ToString();
+
+                    txttarajaba.Text = bloque.javaverde.ToString();
+                    txttaraParihuela.Text = bloque.paleta.ToString();
                 }
             }
             catch (Exception ex)
@@ -1346,10 +1257,7 @@ catch (Exception ex)
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tbacopiador_Select", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
@@ -1358,19 +1266,18 @@ catch (Exception ex)
                 var datos = new DataTable();
                 adaptador.Fill(datos);
 
-               {
-                    var withBlock = this.cbAcopiador;
-                       var dr = datos.NewRow();
-                        dr["ruc"] = 0;
-                        dr["razonsocial"] = "Nuevo ...";
-                        datos.Rows.InsertAt(dr, 0);
+                {
+                    var withBlock = cbAcopiador;
+                    var dr = datos.NewRow();
+                    dr["ruc"] = 0;
+                    dr["razonsocial"] = "Nuevo ...";
+                    datos.Rows.InsertAt(dr, 0);
 
 
-                        withBlock.DataSource = datos;
-                        withBlock.DisplayMember = "razonsocial";
-                        withBlock.ValueMember = "ruc";
-                        withBlock.SelectedIndex = -1;
-               
+                    withBlock.DataSource = datos;
+                    withBlock.DisplayMember = "razonsocial";
+                    withBlock.ValueMember = "ruc";
+                    withBlock.SelectedIndex = -1;
                 }
             }
             catch (Exception ex)
@@ -1388,10 +1295,7 @@ catch (Exception ex)
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblmatcosecha_Select", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
@@ -1401,7 +1305,7 @@ catch (Exception ex)
                 adaptador.Fill(datos);
 
                 {
-                    var withBlock = this.cbMatCosecha;
+                    var withBlock = cbMatCosecha;
                     //if (datos.Rows.Count != 0)
                     //{
                     var dr = datos.NewRow();
@@ -1412,7 +1316,7 @@ catch (Exception ex)
                     withBlock.DataSource = datos;
                     withBlock.DisplayMember = "nombre";
                     withBlock.ValueMember = "idmatcosecha";
-                    withBlock.SelectedIndex = -1;                  
+                    withBlock.SelectedIndex = -1;
                 }
             }
             catch (Exception ex)
@@ -1424,21 +1328,19 @@ catch (Exception ex)
                 ConexionGral.desconectar();
             }
         }
+
         private void cerrarlote()
         {
-
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tbllote_Update", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
 
-                comando.Parameters.AddWithValue("p_idlote", MySqlType.Int).Value = cboLote.GetItemText(cboLote.SelectedValue.ToString());
+                comando.Parameters.AddWithValue("p_idlote", MySqlType.Int).Value =
+                    cboLote.GetItemText(cboLote.SelectedValue.ToString());
 
 
                 var adaptador = new MySqlDataAdapter(comando);
@@ -1446,10 +1348,10 @@ catch (Exception ex)
                 adaptador.Fill(datos);
 
                 {
-                    var withBlock = this.cboLote;
+                    var withBlock = cboLote;
                     //if (datos.Rows.Count != 0)
                     //{
-                   
+
                     withBlock.DataSource = datos;
                     withBlock.DisplayMember = "numlote";
                     withBlock.ValueMember = "idlote";
@@ -1472,6 +1374,6 @@ catch (Exception ex)
             }
         }
 
-
+        private delegate void DelegadoAcceso(string Adicionartexto);
     }
 }

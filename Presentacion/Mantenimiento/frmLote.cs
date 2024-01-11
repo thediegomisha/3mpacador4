@@ -1,14 +1,8 @@
-﻿using _3mpacador4.Logica;
-using Devart.Data.MySql;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using _3mpacador4.Logica;
+using Devart.Data.MySql;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
@@ -22,7 +16,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -34,22 +28,20 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         {
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 var comando = new MySqlCommand("usp_tbllote_Insert", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
 
-                float cantlote = float.Parse(txtnumlote.Text);
+                var cantlote = float.Parse(txtnumlote.Text);
                 if (cantlote > 0)
                 {
-                    comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = cantlote;              
+                    comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = cantlote;
 
                     comando.ExecuteNonQuery();
 
-                MessageBox.Show("LOTE REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
+                    MessageBox.Show("LOTE REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
                     mostrarUltimoRegistro();
                     // limpiarcampos()
                     //    this.chkcapturapeso.Checked = false;
@@ -57,8 +49,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 else
                 {
                     MessageBox.Show("Error, La cantidad tiene que ser mayor que 0", "CANTIDAD LOTE");
-                    return;
-                }               
+                }
             }
             catch (Exception ex)
             {
@@ -75,10 +66,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tbllote_last_reg", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
@@ -92,7 +80,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     {
                         var dr = datos.NewRow();
                         txtnumlote.Text = datos.Rows[0]["siguienteregistro"].ToString();
-                    }                  
+                    }
                 }
             }
             catch (Exception ex)

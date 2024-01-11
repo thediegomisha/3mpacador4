@@ -1,15 +1,7 @@
-﻿using _3mpacador4.Properties;
-using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.CompilerServices;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+using _3mpacador4.Properties;
+using Microsoft.VisualBasic;
 
 namespace _3mpacador4.Presentacion.Sistema
 {
@@ -19,163 +11,129 @@ namespace _3mpacador4.Presentacion.Sistema
         {
             InitializeComponent();
             desabilitar();
-           
         }
 
         private void FrmPesosDiversos_Load(object sender, EventArgs e)
         {
             cargarinicial();
         }
+
         public void desabilitar()
         {
-            this.txtjavaverde.Enabled = false;
-            this.txtjavaazul.Enabled = false;
-            this.txtpaleta.Enabled = false;
-            this.txtcajacarton .Enabled = false;
-            this.txtcajaplasticablanca .Enabled = false;
-
-          
+            txtjavaverde.Enabled = false;
+            txtjavaazul.Enabled = false;
+            txtpaleta.Enabled = false;
+            txtcajacarton.Enabled = false;
+            txtcajaplasticablanca.Enabled = false;
         }
+
         private void cargarinicial()
-        {
-            try
-            {                          
-              {
-                var bloque = Settings.Default;
-
-                if (bloque.chkjavaverde == true)
-                {
-                    this.chkjavaverde.Checked = true;
-                    this.txtjavaverde.Text = bloque.javaverde.ToString();
-                }else
-                    {
-                        this.chkjavaverde.Checked = false;
-                        this.txtjavaverde.Text = bloque.javaverde.ToString();
-                    }            
-                if (bloque.chkjavaazul == true)
-                {
-                    this.chkjavaazul.Checked = true;
-                    this.txtjavaazul.Text = bloque.javaazul.ToString();
-                    }
-                    else
-                    {
-                        this.chkjavaazul.Checked = false;
-                        this.txtjavaazul.Text = bloque.javaazul.ToString();
-                    }
-                if (bloque.chkpaleta == true)
-                {
-                    this.chkpaleta.Checked = true;
-                    this.txtpaleta.Text = bloque.paleta.ToString();
-                }
-                    else
-                    {
-                        this.chkpaleta.Checked = false;
-                        this.txtpaleta.Text = bloque.paleta.ToString();
-                    }
-                if (bloque.chkcajacarton == true)
-                {
-                    this.chkcajacarton.Checked = true;
-                    this.txtcajacarton.Text = bloque.cajacarton.ToString();
-                }
-                    else
-                    {
-                        this.chkcajacarton.Checked = false;
-                        this.txtcajacarton.Text = bloque.cajacarton.ToString();
-                    }
-                if (bloque.chkcajaplasticablanca == true)
-                {
-                    this.chkcajaplasticablanca.Checked = true;
-                    this.txtcajaplasticablanca.Text = bloque.cajaplasticablanca.ToString();
-                }
-                    else
-                    {
-                        this.chkcajaplasticablanca.Checked = false;
-                        this.txtcajaplasticablanca.Text = bloque.cajaplasticablanca.ToString();
-                    }
-
-            }
-             }
-            catch (Exception ex)
-            {
-
-                Interaction.MsgBox(ex.Message, Constants.vbCritical);
-
-
-            }
-
-        }
-        private void guardar( )
         {
             try
             {
                 {
                     var bloque = Settings.Default;
 
-                    if (this.chkjavaverde.Checked == true)
+                    if (bloque.chkjavaverde)
                     {
-                        bloque.chkjavaverde = true;                                    
+                        chkjavaverde.Checked = true;
+                        txtjavaverde.Text = bloque.javaverde.ToString();
                     }
                     else
                     {
-                        bloque.chkjavaverde = false;                        
+                        chkjavaverde.Checked = false;
+                        txtjavaverde.Text = bloque.javaverde.ToString();
                     }
-                    if (this.chkjavaazul.Checked == true)
+
+                    if (bloque.chkjavaazul)
                     {
-                        bloque.chkjavaazul = true;                      
+                        chkjavaazul.Checked = true;
+                        txtjavaazul.Text = bloque.javaazul.ToString();
                     }
                     else
                     {
-                        bloque.chkjavaazul = false;                     
+                        chkjavaazul.Checked = false;
+                        txtjavaazul.Text = bloque.javaazul.ToString();
                     }
-                    if (this.chkpaleta.Checked == true)
+
+                    if (bloque.chkpaleta)
                     {
+                        chkpaleta.Checked = true;
+                        txtpaleta.Text = bloque.paleta.ToString();
+                    }
+                    else
+                    {
+                        chkpaleta.Checked = false;
+                        txtpaleta.Text = bloque.paleta.ToString();
+                    }
+
+                    if (bloque.chkcajacarton)
+                    {
+                        chkcajacarton.Checked = true;
+                        txtcajacarton.Text = bloque.cajacarton.ToString();
+                    }
+                    else
+                    {
+                        chkcajacarton.Checked = false;
+                        txtcajacarton.Text = bloque.cajacarton.ToString();
+                    }
+
+                    if (bloque.chkcajaplasticablanca)
+                    {
+                        chkcajaplasticablanca.Checked = true;
+                        txtcajaplasticablanca.Text = bloque.cajaplasticablanca.ToString();
+                    }
+                    else
+                    {
+                        chkcajaplasticablanca.Checked = false;
+                        txtcajaplasticablanca.Text = bloque.cajaplasticablanca.ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Interaction.MsgBox(ex.Message, Constants.vbCritical);
+            }
+        }
+
+        private void guardar()
+        {
+            try
+            {
+                {
+                    var bloque = Settings.Default;
+
+                    if (chkjavaverde.Checked)
+                        bloque.chkjavaverde = true;
+                    else
+                        bloque.chkjavaverde = false;
+                    if (chkjavaazul.Checked)
+                        bloque.chkjavaazul = true;
+                    else
+                        bloque.chkjavaazul = false;
+                    if (chkpaleta.Checked)
                         bloque.chkpaleta = true;
-                    }
                     else
-                    {
                         bloque.chkpaleta = false;
-                    }
-                    if (this.chkcajacarton.Checked == true)
-                    {
+                    if (chkcajacarton.Checked)
                         bloque.chkcajacarton = true;
-                    }
                     else
-                    {
                         bloque.chkcajacarton = false;
-                    }
-                    if (this.chkcajaplasticablanca.Checked == true)
-                    {
-                            bloque.chkcajaplasticablanca = true;
-                    }
+                    if (chkcajaplasticablanca.Checked)
+                        bloque.chkcajaplasticablanca = true;
                     else
-                    {
                         bloque.chkcajaplasticablanca = false;
-                    }
 
-                    if(txtjavaverde.Text != String.Empty)
-                    {
-                        bloque.javaverde = Double.Parse(this.txtjavaverde.Text.ToString());
-                    }
+                    if (txtjavaverde.Text != string.Empty) bloque.javaverde = double.Parse(txtjavaverde.Text);
 
-                    if(txtjavaazul .Text != String.Empty)
-                    {
-                        bloque.javaazul = Double.Parse(this.txtjavaazul.Text.ToString());
-                    }
-                  
-                    if(txtpaleta .Text != String.Empty)
-                    {
-                        bloque.paleta = Double.Parse(this.txtpaleta.Text.ToString());
-                    }
-                   
-                    if(txtcajacarton.Text != String.Empty)
-                    {
-                        bloque.cajacarton = Double.Parse(this.txtcajacarton.Text.ToString());
-                    }
-                   if(txtcajaplasticablanca.Text!= String.Empty)
-                    {
-                        bloque.cajaplasticablanca = Double.Parse(this.txtcajaplasticablanca.Text.ToString());
-                    }
-                   
+                    if (txtjavaazul.Text != string.Empty) bloque.javaazul = double.Parse(txtjavaazul.Text);
+
+                    if (txtpaleta.Text != string.Empty) bloque.paleta = double.Parse(txtpaleta.Text);
+
+                    if (txtcajacarton.Text != string.Empty) bloque.cajacarton = double.Parse(txtcajacarton.Text);
+                    if (txtcajaplasticablanca.Text != string.Empty)
+                        bloque.cajaplasticablanca = double.Parse(txtcajaplasticablanca.Text);
+
 
                     bloque.Save();
                     MessageBox.Show("Datos Guardados Satisfactoriamente !!!");
@@ -183,14 +141,13 @@ namespace _3mpacador4.Presentacion.Sistema
             }
             catch (Exception ex)
             {
-
                 Interaction.MsgBox(ex.Message, Constants.vbCritical);
             }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -200,70 +157,47 @@ namespace _3mpacador4.Presentacion.Sistema
 
         private void chkjavaverde_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkjavaverde.Checked == true)
-            {
+            if (chkjavaverde.Checked)
                 txtjavaverde.Enabled = true;
-            }
             else
-            {
                 txtjavaverde.Enabled = false;
-            }
         }
 
         private void chkjavaazul_CheckedChanged(object sender, EventArgs e)
         {
-            if(chkjavaazul.Checked == true)
-            {
+            if (chkjavaazul.Checked)
                 txtjavaazul.Enabled = true;
-            }
             else
-            {
                 txtjavaazul.Enabled = false;
-            }
         }
 
         private void chkpaleta_CheckedChanged(object sender, EventArgs e)
         {
-            if(chkpaleta.Checked == true)
-            {
+            if (chkpaleta.Checked)
                 txtpaleta.Enabled = true;
-            }
             else
-            {
                 txtpaleta.Enabled = false;
-            }
         }
 
         private void chkcajacarton_CheckedChanged(object sender, EventArgs e)
         {
-            if(chkcajacarton.Checked == true)
-            {
+            if (chkcajacarton.Checked)
                 txtcajacarton.Enabled = true;
-            }
             else
-            {
                 txtcajacarton.Enabled = false;
-            }
         }
 
         private void chkcajaplasticablanca_CheckedChanged(object sender, EventArgs e)
         {
-            if(chkcajaplasticablanca.Checked == true)
-            {
-                txtcajaplasticablanca.Enabled= true;
-            }
+            if (chkcajaplasticablanca.Checked)
+                txtcajaplasticablanca.Enabled = true;
             else
-            {
                 txtcajaplasticablanca.Enabled = false;
-            }
         }
 
         private void FrmPesosDiversos_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
+            if (e.KeyCode == Keys.Escape) Close();
         }
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _3mpacador4.Entidad
+﻿namespace _3mpacador4.Entidad
 {
     public class Grupo_turno_detalle
     {

@@ -1,14 +1,8 @@
-﻿using _3mpacador4.Logica;
-using Devart.Data.MySql;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using _3mpacador4.Logica;
+using Devart.Data.MySql;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
@@ -21,12 +15,11 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-           
         }
 
         private void mostrarPresentacion()
@@ -34,10 +27,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblpresentacion_Select", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
@@ -67,7 +57,6 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 //        withBlock.DataSource = null;
                 //    }
                 //}
-               
             }
             catch (MySqlException ex)
             {
@@ -96,9 +85,6 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         //        //INSERT INTO tbllote(numlote) VALUES(LPAD(numlote, 3, '0'))
 
         //        float cantlote = float.Parse(txtnumlote.Text);
-
-
-
 
 
         //        if (cantlote > 0)

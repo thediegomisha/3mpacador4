@@ -1,58 +1,51 @@
-﻿using _3mpacador4.Logica;
-using Devart.Data.MySql;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using _3mpacador4.Logica;
+using Devart.Data.MySql;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
-    public partial class frmServicio: Form
+    public partial class frmServicio : Form
     {
         public frmServicio()
         {
             InitializeComponent();
             mostrarTipoServicio();
         }
-               
+
         private void InsertarMetodoCultivo()
         {
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
-               
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+
                 comando = new MySqlCommand("usp_tbltiposervicio_Insert", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
                 {
-                    if (!String.IsNullOrEmpty(txtTipoServicio.Text))
+                    if (!string.IsNullOrEmpty(txtTipoServicio.Text))
                     {
-                        comando.Parameters.AddWithValue("p_nombre", MySqlType.VarChar).Value = this.txtTipoServicio.Text;
+                        comando.Parameters.AddWithValue("p_nombre", MySqlType.VarChar).Value = txtTipoServicio.Text;
                     }
                     else
                     {
-                        MessageBox.Show("Error, Ingrese el Tipo de Servicio", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error, Ingrese el Tipo de Servicio", "Informacion", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                         return;
-                    }                   
-                 }
+                    }
+                }
                 comando.ExecuteNonQuery();
-                MessageBox.Show("TIPO DE SERVICIO REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
+                MessageBox.Show("TIPO DE SERVICIO REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
                 mostrarTipoServicio();
-               // ConexionGral.desconectar();
+                // ConexionGral.desconectar();
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("TIPO DE SERVICIO NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    throw;
+                MessageBox.Show("TIPO DE SERVICIO NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                throw;
             }
             finally
             {
@@ -62,26 +55,15 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void limpiarcampos()
         {
-            try
-            {
-                txtTipoServicio.Text = String.Empty;             
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            txtTipoServicio.Text = string.Empty;
         }
 
         public void mostrarTipoServicio()
         {
-
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tbltiposervicio_Select", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
@@ -91,7 +73,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 adaptador.Fill(datos);
 
                 {
-                    var withBlock = this.datalistado;
+                    var withBlock = datalistado;
                     if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
@@ -117,7 +99,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

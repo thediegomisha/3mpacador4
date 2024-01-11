@@ -35,8 +35,8 @@
             this.txtnombres = new System.Windows.Forms.TextBox();
             this.Label3 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
-            this.btnActualizar = new System.Windows.Forms.Button();
-            this.txtapel_paterno = new MetroFramework.Controls.MetroTextBox();
+         //   this.btnActualizar = new System.Windows.Forms.Button();
+         // this.txtapel_paterno = new MetroFramework.Controls.MetroTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtapel_materno = new System.Windows.Forms.TextBox();
             this.txtapel_paterno = new System.Windows.Forms.TextBox();
@@ -44,12 +44,12 @@
             this.pbreniec = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cbxestado = new System.Windows.Forms.CheckBox();
-            this.txtapel_materno = new MetroFramework.Controls.MetroTextBox();
+        //  this.txtapel_materno = new MetroFramework.Controls.MetroTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnActualizar = new Glass.GlassButton();
             this.btnCancelar = new Glass.GlassButton();
             this.btnGuardar = new Glass.GlassButton();
-            this.Panel1.SuspendLayout();
+       //   this.Panel1.SuspendLayout();
             this.Panel.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbreniec)).BeginInit();
@@ -143,32 +143,32 @@
             // 
             // 
             // 
-            this.txtapel_paterno.CustomButton.Image = null;
-            this.txtapel_paterno.CustomButton.Location = new System.Drawing.Point(278, 1);
-            this.txtapel_paterno.CustomButton.Name = "";
-            this.txtapel_paterno.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.txtapel_paterno.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtapel_paterno.CustomButton.TabIndex = 1;
-            this.txtapel_paterno.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtapel_paterno.CustomButton.UseSelectable = true;
-            this.txtapel_paterno.CustomButton.Visible = false;
-            this.txtapel_paterno.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtapel_paterno.Lines = new string[0];
-            this.txtapel_paterno.Location = new System.Drawing.Point(49, 167);
-            this.txtapel_paterno.MaxLength = 32767;
-            this.txtapel_paterno.Name = "txtapel_paterno";
-            this.txtapel_paterno.PasswordChar = '\0';
-            this.txtapel_paterno.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtapel_paterno.SelectedText = "";
-            this.txtapel_paterno.SelectionLength = 0;
-            this.txtapel_paterno.SelectionStart = 0;
-            this.txtapel_paterno.ShortcutsEnabled = true;
-            this.txtapel_paterno.Size = new System.Drawing.Size(306, 29);
-            this.txtapel_paterno.TabIndex = 49;
-            this.txtapel_paterno.UseSelectable = true;
-            this.txtapel_paterno.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtapel_paterno.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
+            //this.txtapel_paterno.CustomButton.Image = null;
+            //this.txtapel_paterno.CustomButton.Location = new System.Drawing.Point(278, 1);
+            //this.txtapel_paterno.CustomButton.Name = "";
+            //this.txtapel_paterno.CustomButton.Size = new System.Drawing.Size(27, 27);
+            //this.txtapel_paterno.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            //this.txtapel_paterno.CustomButton.TabIndex = 1;
+            //this.txtapel_paterno.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            //this.txtapel_paterno.CustomButton.UseSelectable = true;
+            //this.txtapel_paterno.CustomButton.Visible = false;
+            //this.txtapel_paterno.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            //this.txtapel_paterno.Lines = new string[0];
+            //this.txtapel_paterno.Location = new System.Drawing.Point(49, 167);
+            //this.txtapel_paterno.MaxLength = 32767;
+            //this.txtapel_paterno.Name = "txtapel_paterno";
+            //this.txtapel_paterno.PasswordChar = '\0';
+            //this.txtapel_paterno.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            //this.txtapel_paterno.SelectedText = "";
+            //this.txtapel_paterno.SelectionLength = 0;
+            //this.txtapel_paterno.SelectionStart = 0;
+            //this.txtapel_paterno.ShortcutsEnabled = true;
+            //this.txtapel_paterno.Size = new System.Drawing.Size(306, 29);
+            //this.txtapel_paterno.TabIndex = 49;
+            //this.txtapel_paterno.UseSelectable = true;
+            //this.txtapel_paterno.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            //this.txtapel_paterno.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //// 
             // panel2
             // 
             this.panel2.Controls.Add(this.cbxreniec);
@@ -259,32 +259,32 @@
             // 
             // 
             // 
-            this.txtapel_materno.CustomButton.Image = null;
-            this.txtapel_materno.CustomButton.Location = new System.Drawing.Point(281, 1);
-            this.txtapel_materno.CustomButton.Name = "";
-            this.txtapel_materno.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.txtapel_materno.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtapel_materno.CustomButton.TabIndex = 1;
-            this.txtapel_materno.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtapel_materno.CustomButton.UseSelectable = true;
-            this.txtapel_materno.CustomButton.Visible = false;
-            this.txtapel_materno.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtapel_materno.Lines = new string[0];
-            this.txtapel_materno.Location = new System.Drawing.Point(374, 167);
-            this.txtapel_materno.MaxLength = 32767;
-            this.txtapel_materno.Name = "txtapel_materno";
-            this.txtapel_materno.PasswordChar = '\0';
-            this.txtapel_materno.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtapel_materno.SelectedText = "";
-            this.txtapel_materno.SelectionLength = 0;
-            this.txtapel_materno.SelectionStart = 0;
-            this.txtapel_materno.ShortcutsEnabled = true;
-            this.txtapel_materno.Size = new System.Drawing.Size(309, 29);
-            this.txtapel_materno.TabIndex = 50;
-            this.txtapel_materno.UseSelectable = true;
-            this.txtapel_materno.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtapel_materno.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
+            //this.txtapel_materno.CustomButton.Image = null;
+            //this.txtapel_materno.CustomButton.Location = new System.Drawing.Point(281, 1);
+            //this.txtapel_materno.CustomButton.Name = "";
+            //this.txtapel_materno.CustomButton.Size = new System.Drawing.Size(27, 27);
+            //this.txtapel_materno.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            //this.txtapel_materno.CustomButton.TabIndex = 1;
+            //this.txtapel_materno.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            //this.txtapel_materno.CustomButton.UseSelectable = true;
+            //this.txtapel_materno.CustomButton.Visible = false;
+            //this.txtapel_materno.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            //this.txtapel_materno.Lines = new string[0];
+            //this.txtapel_materno.Location = new System.Drawing.Point(374, 167);
+            //this.txtapel_materno.MaxLength = 32767;
+            //this.txtapel_materno.Name = "txtapel_materno";
+            //this.txtapel_materno.PasswordChar = '\0';
+            //this.txtapel_materno.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            //this.txtapel_materno.SelectedText = "";
+            //this.txtapel_materno.SelectionLength = 0;
+            //this.txtapel_materno.SelectionStart = 0;
+            //this.txtapel_materno.ShortcutsEnabled = true;
+            //this.txtapel_materno.Size = new System.Drawing.Size(309, 29);
+            //this.txtapel_materno.TabIndex = 50;
+            //this.txtapel_materno.UseSelectable = true;
+            //this.txtapel_materno.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            //this.txtapel_materno.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //// 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -379,12 +379,12 @@
         internal System.Windows.Forms.TextBox txtnombres;
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Label Label2;
-        internal System.Windows.Forms.Button btnActualizar;
-        internal MetroFramework.Controls.MetroTextBox txtapel_paterno;
+     //   internal System.Windows.Forms.Button btnActualizar;
+   //   internal MetroFramework.Controls.MetroTextBox txtapel_paterno;
         private System.Windows.Forms.Panel panel2;
         internal System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox cbxestado;
-        internal MetroFramework.Controls.MetroTextBox txtapel_materno;
+ //     internal MetroFramework.Controls.MetroTextBox txtapel_materno;
         internal System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox cbxreniec;
         private System.Windows.Forms.PictureBox pbreniec;

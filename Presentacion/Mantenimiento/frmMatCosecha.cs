@@ -1,58 +1,51 @@
-﻿using _3mpacador4.Logica;
-using Devart.Data.MySql;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using _3mpacador4.Logica;
+using Devart.Data.MySql;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
-    public partial class frmMatCosecha: Form
+    public partial class frmMatCosecha : Form
     {
         public frmMatCosecha()
         {
             InitializeComponent();
             mostrarMatCosecha();
         }
-               
+
         private void InsertarMetodoCultivo()
         {
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
-               
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+
                 comando = new MySqlCommand("usp_tblmatcosecha_Insert", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
                 {
-                    if (!String.IsNullOrEmpty(txtMatCosecha.Text))
+                    if (!string.IsNullOrEmpty(txtMatCosecha.Text))
                     {
-                        comando.Parameters.AddWithValue("p_nombre", MySqlType.VarChar).Value = this.txtMatCosecha.Text;
+                        comando.Parameters.AddWithValue("p_nombre", MySqlType.VarChar).Value = txtMatCosecha.Text;
                     }
                     else
                     {
-                        MessageBox.Show("Error, Ingrese el Material de Cosecha", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error, Ingrese el Material de Cosecha", "Informacion", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                         return;
-                    }                   
-                 }
+                    }
+                }
                 comando.ExecuteNonQuery();
-                MessageBox.Show("MATERIAL DE COSECHA REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
+                MessageBox.Show("MATERIAL DE COSECHA REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
                 mostrarMatCosecha();
-               // ConexionGral.desconectar();
+                // ConexionGral.desconectar();
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("MATERIAL DE COSECHA NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    throw;
+                MessageBox.Show("MATERIAL DE COSECHA NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                throw;
             }
             finally
             {
@@ -62,26 +55,15 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void limpiarcampos()
         {
-            try
-            {
-                txtMatCosecha.Text = String.Empty;             
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            txtMatCosecha.Text = string.Empty;
         }
 
         public void mostrarMatCosecha()
         {
-
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblmatcosecha_Select", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
@@ -91,7 +73,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 adaptador.Fill(datos);
 
                 {
-                    var withBlock = this.datalistado;
+                    var withBlock = datalistado;
                     if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
@@ -117,7 +99,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

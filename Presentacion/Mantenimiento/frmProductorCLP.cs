@@ -1,18 +1,10 @@
-﻿using _3mpacador4.Logica;
-using Devart.Data.MySql;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
-using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
+using _3mpacador4.Logica;
+using Devart.Data.MySql;
 using Microsoft.VisualBasic;
-
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
@@ -21,45 +13,33 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         public frmProductorCLP()
         {
             InitializeComponent();
-            PrepGrid();          
-            
-        }       
+            PrepGrid();
+        }
 
         private void limpiarcampos()
         {
-            try
-            {
-                txtCLP.Text = String.Empty;
-             
-             
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            txtCLP.Text = string.Empty;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
-       
 
         private void frmPersonaJuridica_Load(object sender, EventArgs e)
         {
             txtCLP.Focus();
         }
-      
+
         private void activarcamposjuridica()
         {
             txtCLP.Enabled = true;
-          
         }
+
         private void desactivarcamposjuridica()
         {
             txtCLP.Enabled = false;
-          
         }
 
         private void consulta()
@@ -67,15 +47,13 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblclp_Select", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
 
-                comando.Parameters.AddWithValue("p_clp", MySqlType.Int).Value = (txtCLP.Text.ToString()); ;
+                comando.Parameters.AddWithValue("p_clp", MySqlType.Int).Value = txtCLP.Text;
+                ;
 
 
                 var adaptador = new MySqlDataAdapter(comando);
@@ -83,7 +61,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 adaptador.Fill(datos);
 
                 {
-                    var withBlock = this.datalistado;
+                    var withBlock = datalistado;
                     if (datos != null && datos.Rows.Count > 0)
                     {
                         var dr = datos.NewRow();
@@ -140,38 +118,35 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 withBlock.Columns["FCERTIFICADO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 withBlock.Columns["FCERTIFICADO"].Width = 95;
 
-                withBlock.Columns["FFINCERTIFICADO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                withBlock.Columns["FFINCERTIFICADO"].DefaultCellStyle.Alignment =
+                    DataGridViewContentAlignment.MiddleLeft;
                 withBlock.Columns["FFINCERTIFICADO"].Width = 95;
-
-
             }
             catch (Exception)
             {
-
                 //  throw;
             }
+
             {
-
-
             }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            LBLCONTAR.Text = String.Empty;
+            LBLCONTAR.Text = string.Empty;
             consulta();
-            
         }
 
         public void contar()
         {
-            int contarfila = datalistado.RowCount - 1;
-            int contador = 0;
+            var contarfila = datalistado.RowCount - 1;
+            var contador = 0;
             while (contarfila >= 0)
             {
                 contador = contador + 1;
                 contarfila = contarfila - 1;
             }
+
             LBLCONTAR.Text = Strings.FormatNumber(contador, 0);
         }
 
@@ -179,16 +154,16 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow fila = this.datalistado.Rows[e.RowIndex];
+                var fila = datalistado.Rows[e.RowIndex];
                 // Instanciamos el Formulario PADRE
 
-                frmProductor2 frmProductor2 = Owner as frmProductor2;
+                var frmProductor2 = Owner as frmProductor2;
 
                 frmProductor2.txtRazonSocial.Text = fila.Cells[3].Value.ToString();
                 frmProductor2.txtnombreLugar.Text = fila.Cells[4].Value.ToString();
                 frmProductor2.txtregion.Text = fila.Cells[1].Value.ToString();
-                frmProductor2.txtclp.Text = fila.Cells[0].Value.ToString(); 
-                this.Close();
+                frmProductor2.txtclp.Text = fila.Cells[0].Value.ToString();
+                Close();
                 // mostrarconsulta2();
             }
         }
@@ -196,7 +171,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         private void PrepGrid()
         {
             {
-                var withBlock = this.datalistado;
+                var withBlock = datalistado;
                 withBlock.SuspendLayout();
 
                 // propiedades que establecen el color de fondo del control DataGridView,
@@ -242,7 +217,8 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 withBlock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
                 withBlock.ColumnHeadersHeight = 40;
                 withBlock.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                withBlock.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 11.0f, FontStyle.Bold, GraphicsUnit.Point, 0);
+                withBlock.ColumnHeadersDefaultCellStyle.Font =
+                    new Font("Tahoma", 11.0f, FontStyle.Bold, GraphicsUnit.Point, 0);
                 withBlock.EnableHeadersVisualStyles = false;
                 withBlock.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
                 withBlock.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
@@ -277,9 +253,9 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
                 withBlock.ResumeLayout();
                 withBlock.PerformLayout();
-
             }
         }
+
         private void ocultar_columnas()
         {
             //this.datalistado.Columns[0].Visible = false;
@@ -289,7 +265,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             //this.datalistado.Columns[4].Visible = false;
             //this.datalistado.Columns[5].Visible = false;
             //this.datalistado.Columns[6].Visible = false;
-            this.datalistado.Columns[7].Visible = false;
+            datalistado.Columns[7].Visible = false;
             //this.datalistado.Columns[8].Visible = false;
             //this.datalistado.Columns[0].Visible = false;
             //this.datalistado.Columns[0].Visible = false;
@@ -301,18 +277,12 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void txtCLP_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((int)e.KeyChar == (int)Keys.Enter)
+            if (e.KeyChar == (int)Keys.Enter)
             {
-                if (!String.IsNullOrEmpty(txtCLP.Text))
-                {
+                if (!string.IsNullOrEmpty(txtCLP.Text))
                     btnBuscar.PerformClick();
-                }
                 else
-                {
                     MessageBox.Show("Ingrese el Dato Correcto");
-                }
-
-
             }
         }
 

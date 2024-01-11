@@ -1,24 +1,15 @@
-﻿using _3mpacador4.Logica;
-using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
+﻿using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using _3mpacador4.Presentacion;
+using _3mpacador4.Logica;
 using _3mpacador4.Properties;
-
+using Microsoft.VisualBasic;
 
 namespace _3mpacador4.Presentacion.Sistema
 {
     public partial class FrmConexion : Form
     {
-        private ClConexion claseconnect = new ClConexion();
+        private readonly ClConexion claseconnect = new ClConexion();
 
         public FrmConexion()
         {
@@ -29,24 +20,18 @@ namespace _3mpacador4.Presentacion.Sistema
         {
             try
             {
-                
-            if (ConexionGral.conexion.State == ConnectionState.Closed)
-            {
-                ConexionGral.conectar();
-            }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
-            string cadenaconexion = Settings.Default.ConecctionString;
-            string[] nombress = cadenaconexion.Split(';');
+                var cadenaconexion = Settings.Default.ConecctionString;
+                var nombress = cadenaconexion.Split(';');
 
-            this.txtservidor.Text = nombress[0].Substring(7);
-            this.txtPort.Text = nombress[1].Substring(5);
-            this.txtusuario.Text = nombress[2].Substring(5);
-            this.txtpass.Text = nombress[3].Substring(9);
-            this.txtBd.Text = nombress[4].Substring(9);
-            this.txttime.Text = nombress[5].Substring(16);
-            this.txtunicode.Text = nombress[6].Substring(8);
-
-           
+                txtservidor.Text = nombress[0].Substring(7);
+                txtPort.Text = nombress[1].Substring(5);
+                txtusuario.Text = nombress[2].Substring(5);
+                txtpass.Text = nombress[3].Substring(9);
+                txtBd.Text = nombress[4].Substring(9);
+                txttime.Text = nombress[5].Substring(16);
+                txtunicode.Text = nombress[6].Substring(8);
             }
             catch (Exception ex)
             {
@@ -60,19 +45,22 @@ namespace _3mpacador4.Presentacion.Sistema
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(this.txtservidor.Text) & !string.IsNullOrEmpty(this.txtBd.Text) & !string.IsNullOrEmpty(this.txtusuario.Text))
-            {
+            if (!string.IsNullOrEmpty(txtservidor.Text) & !string.IsNullOrEmpty(txtBd.Text) &
+                !string.IsNullOrEmpty(txtusuario.Text))
                 try
                 {
                     // If conexion.State = ConnectionState.Closed Then
                     // conectar()
                     // 'conexion.Open()s
                     // End If
-
-                    Settings.Default.ConecctionString = "server=" + this.txtservidor.Text + ";port=" + this.txtPort.Text + ";user=" + this.txtusuario.Text + ";password=" + this.txtpass.Text + ";database=" + this.txtBd.Text + " ;Connect Timeout=" + this.txttime.Text +   ";Unicode=True";
+                    Settings.Default.ConecctionString = "server=" + txtservidor.Text + ";port=" + txtPort.Text +
+                                                        ";user=" + txtusuario.Text + ";password=" + txtpass.Text +
+                                                        ";database=" + txtBd.Text + " ;Connect Timeout=" +
+                                                        txttime.Text + ";Unicode=True";
                     Settings.Default.Save();
-                    MessageBox.Show("La Conexion se guardo correctamente. El sistema se Reiniciara ", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    FrmPrincipal F = new FrmPrincipal();
+                    MessageBox.Show("La Conexion se guardo correctamente. El sistema se Reiniciara ", "OK",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    var F = new FrmPrincipal();
                     F.Close();
                 }
                 catch (Exception ex)
@@ -83,106 +71,76 @@ namespace _3mpacador4.Presentacion.Sistema
                 {
                     ConexionGral.desconectar();
                 }
-            }
             else
-            {
-                MessageBox.Show("Todos los datos son necesarios", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
+                MessageBox.Show("Todos los datos son necesarios", "Aviso", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
         }
 
         private void btn_cerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
             Settings.Default.Reload();
         }
 
         private void txtservidor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Strings.Asc(e.KeyChar) == 13)
-            {
-                this.txtusuario.Focus();
-            }
+            if (Strings.Asc(e.KeyChar) == 13) txtusuario.Focus();
         }
 
         private void txtpass_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Strings.Asc(e.KeyChar) == 13)
-            {
-                this.txtBd.Focus();
-            }
+            if (Strings.Asc(e.KeyChar) == 13) txtBd.Focus();
         }
 
         private void txtBd_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Strings.Asc(e.KeyChar) == 13)
-            {
-                this.txttime.Focus();
-            }
+            if (Strings.Asc(e.KeyChar) == 13) txttime.Focus();
         }
 
         private void txtusuario_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Strings.Asc(e.KeyChar) == 13)
-            {
-                this.txtpass.Focus();
-            }
+            if (Strings.Asc(e.KeyChar) == 13) txtpass.Focus();
         }
 
         private void txttime_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Strings.Asc(e.KeyChar) == 13)
-            {
-                this.txtPort.Focus();
-            }
+            if (Strings.Asc(e.KeyChar) == 13) txtPort.Focus();
         }
 
         private void txtPort_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Strings.Asc(e.KeyChar) == 13)
-            {
-                this.btnprobar.Focus();
-            }
+            if (Strings.Asc(e.KeyChar) == 13) btnprobar.Focus();
         }
 
         private void btnprobar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Strings.Asc(e.KeyChar) == 13)
-            {
-                this.btnGuardar.Focus();
-            }
+            if (Strings.Asc(e.KeyChar) == 13) btnGuardar.Focus();
         }
 
         private void btnprobar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(this.txtservidor.Text) & !string.IsNullOrEmpty(this.txtPort.Text) & !string.IsNullOrEmpty(this.txtusuario.Text))
+            if (!string.IsNullOrEmpty(txtservidor.Text) & !string.IsNullOrEmpty(txtPort.Text) &
+                !string.IsNullOrEmpty(txtusuario.Text))
             {
-                string nuevaconexion = "server=" + this.txtservidor.Text + ";port=" + this.txtPort.Text + ";user=" + this.txtusuario.Text + ";password=" + this.txtpass.Text + ";database=" + this.txtBd.Text + " ;Connect Timeout=" + this.txttime.Text + "";
+                var nuevaconexion = "server=" + txtservidor.Text + ";port=" + txtPort.Text + ";user=" +
+                                    txtusuario.Text + ";password=" + txtpass.Text + ";database=" + txtBd.Text +
+                                    " ;Connect Timeout=" + txttime.Text + "";
 
                 if (claseconnect.ProbarConexion(nuevaconexion))
-                {
                     MessageBox.Show("Conexion exitosa", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
                 else
-                {
                     MessageBox.Show("Conexion erronea", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
             else
             {
-                MessageBox.Show("Todos los datos son necesarios", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Todos los datos son necesarios", "Aviso", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
             }
         }
 
         private void FrmConexion_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
+            if (e.KeyCode == Keys.Escape) Close();
         }
     }
-       
-    }
-    
-
+}

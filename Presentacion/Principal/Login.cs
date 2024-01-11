@@ -1,49 +1,44 @@
-﻿using _3mpacador4.Logica;
-using _3mpacador4.Presentacion;
-using _3mpacador4.Presentacion.Sistema;
-using _3mpacador4.Presentacion.Principal;
-using Devart.Data.MySql;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Deployment.Application;
 using System.Windows.Forms;
+using _3mpacador4.Logica;
+using _3mpacador4.Presentacion.Principal;
+using _3mpacador4.Presentacion.Sistema;
+using Devart.Data.MySql;
 
 namespace _3mpacador4.Presentacion
 {
     public partial class Login : Form
     {
+        public Login()
+        {
+            InitializeComponent();
+            // info();
+            lblversion.Text = Application.ProductVersion + "   ";
+        }
+
         public static string nombre1 { get; private set; }
         public static string apaterno1 { get; private set; }
         public static int usuarioId1 { get; private set; }
 
-        public Login()
-        {
-            InitializeComponent();
-           // info();
-          lblversion.Text = Application.ProductVersion + "   ";
-        }
-            
         private void cmd_Aceptar_Click(object sender, EventArgs e)
-       {
-            string login = txtlogin.Text; // Obtén el nombre de usuario del TextBox
-            string clave = txtpassword.Text; // Obtén la contraseña del TextBox
+        {
+            var login = txtlogin.Text; // Obtén el nombre de usuario del TextBox
+            var clave = txtpassword.Text; // Obtén la contraseña del TextBox
             int usuarioId;
             string nombre;
             string apaterno;
 
-               bool autenticado = Validarusuario(login, clave, out usuarioId, out nombre, out apaterno); // COMENTAR PARA UTILIZAR CON CONTRASEÑA
+            var autenticado =
+                Validarusuario(login, clave, out usuarioId, out nombre,
+                    out apaterno); // COMENTAR PARA UTILIZAR CON CONTRASEÑA
 
-          //  cargavalidada(); // DESCOMENTAR PARA UTILIZAR SIN CONTRASEÑA 
-
-
+            //  cargavalidada(); // DESCOMENTAR PARA UTILIZAR SIN CONTRASEÑA 
         }
 
-        private bool Validarusuario(string login, string clave, out int usuarioId, out string nombre, out string apaterno)
+        private bool Validarusuario(string login, string clave, out int usuarioId, out string nombre,
+            out string apaterno)
         {
             MySqlCommand comando = null;
             usuarioId = 0;
@@ -52,10 +47,7 @@ namespace _3mpacador4.Presentacion
 
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_validarusuarios", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
@@ -69,7 +61,7 @@ namespace _3mpacador4.Presentacion
                 comando.Parameters.AddWithValue("p_usuario_id", MySqlType.Int);
                 comando.Parameters["p_usuario_id"].Direction = ParameterDirection.Output;
 
-                comando.Parameters.AddWithValue("p_nombre", MySqlType.VarChar.ToString()) ;
+                comando.Parameters.AddWithValue("p_nombre", MySqlType.VarChar.ToString());
                 comando.Parameters["p_nombre"].Direction = ParameterDirection.Output;
 
                 comando.Parameters.AddWithValue("p_apaterno", MySqlType.VarChar.ToString());
@@ -77,22 +69,23 @@ namespace _3mpacador4.Presentacion
 
                 comando.ExecuteNonQuery();
 
-                bool usuarioValido = Convert.ToBoolean(comando.Parameters["p_valido"].Value);
+                var usuarioValido = Convert.ToBoolean(comando.Parameters["p_valido"].Value);
 
                 if (usuarioValido)
                 {
                     usuarioId1 = Convert.ToInt32(comando.Parameters["p_usuario_id"].Value);
-                    nombre1 = (comando.Parameters["p_nombre"].Value.ToString());
-                    apaterno1 = (comando.Parameters["p_apaterno"].Value.ToString());
-               //     MessageBox.Show("Inicio de sesión exitoso");
-                    cargavalidada();                 
+                    nombre1 = comando.Parameters["p_nombre"].Value.ToString();
+                    apaterno1 = comando.Parameters["p_apaterno"].Value.ToString();
+                    //     MessageBox.Show("Inicio de sesión exitoso");
+                    cargavalidada();
                 }
                 else
                 {
                     MessageBox.Show("Nombre de usuario o contraseña incorrectos");
-                    txtlogin.Text = string.Empty ;
+                    txtlogin.Text = string.Empty;
                     txtpassword.Text = string.Empty;
                 }
+
                 return usuarioValido;
             }
 
@@ -103,26 +96,23 @@ namespace _3mpacador4.Presentacion
             }
             finally
             {
-                if (comando != null)
-                {
-                    comando.Dispose();
-                }
+                if (comando != null) comando.Dispose();
 
                 ConexionGral.desconectar();
-            }           
+            }
         }
 
         private void cargavalidada()
         {
-            this.Hide();
-            Principal.FrmBienvenida bienvenida = new Principal.FrmBienvenida();
+            Hide();
+            var bienvenida = new FrmBienvenida();
 
             bienvenida.NombreDesdeLogin = nombre1;
             bienvenida.ApaternoDesdeLogin = apaterno1;
 
             bienvenida.ShowDialog();
-            FrmPrincipal form = new FrmPrincipal();
-            
+            var form = new FrmPrincipal();
+
 
             form.NombreDesdeLogin = nombre1;
             form.ApaternoDesdeLogin = apaterno1;
@@ -132,9 +122,9 @@ namespace _3mpacador4.Presentacion
 
         public void info()
         {
-            System.Deployment.Application.ApplicationDeployment ver;
-            ver = System.Deployment.Application.ApplicationDeployment.CurrentDeployment;
-            lblversion.Text = ver.CurrentVersion.ToString() + "   ";
+            ApplicationDeployment ver;
+            ver = ApplicationDeployment.CurrentDeployment;
+            lblversion.Text = ver.CurrentVersion + "   ";
             //lblDatabase.Text = nombress[4].Substring(9) + "   ";
         }
 
@@ -145,7 +135,7 @@ namespace _3mpacador4.Presentacion
 
         private void Label2_Click(object sender, EventArgs e)
         {
-        }       
+        }
 
         private void txtlogin_KeyDown(object sender, KeyEventArgs e)
         {
@@ -155,7 +145,7 @@ namespace _3mpacador4.Presentacion
                 e.Handled = true; // Indica que el evento se ha manejado para evitar que se propague
 
                 // Cambiar el foco al siguiente control
-                this.SelectNextControl((Control)sender, true, true, true, true);
+                SelectNextControl((Control)sender, true, true, true, true);
             }
         }
 
@@ -167,13 +157,13 @@ namespace _3mpacador4.Presentacion
                 e.Handled = true; // Indica que el evento se ha manejado para evitar que se propague
 
                 // Cambiar el foco al siguiente control
-                this.SelectNextControl((Control)sender, true, true, true, true);
+                SelectNextControl((Control)sender, true, true, true, true);
             }
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-            FrmConexion conexion = new FrmConexion();
+            var conexion = new FrmConexion();
 
             conexion.Show();
         }

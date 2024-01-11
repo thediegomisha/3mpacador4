@@ -1,21 +1,10 @@
-﻿using _3mpacador4.Logica;
-using Devart.Data.MySql;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Devart.Common;
-using Microsoft.VisualBasic;
-using _3mpacador4.Presentacion.Mantenimiento;
-using System.Reflection;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using Microsoft.SqlServer.Server;
 using _3mpacador4.Entidad;
+using _3mpacador4.Logica;
+using Devart.Data.MySql;
+using Microsoft.VisualBasic;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
@@ -36,21 +25,16 @@ namespace _3mpacador4.Presentacion.Reporte
                 cboLote.Items.Clear();
                 cboLote.Items.Add("< Seleccione >");
 
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tbllote_SelectTraceability", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
 
-                using (MySqlDataReader reader = comando.ExecuteReader())
+                using (var reader = comando.ExecuteReader())
                 {
-                    while (reader.Read())
-                    {
-                        cboLote.Items.Add(reader["numlote"].ToString());
-                    }
+                    while (reader.Read()) cboLote.Items.Add(reader["numlote"].ToString());
                 }
+
                 ConexionGral.desconectar();
                 cboLote.SelectedIndex = 0;
             }
@@ -70,21 +54,16 @@ namespace _3mpacador4.Presentacion.Reporte
                 cboDestino.Items.Clear();
                 cboDestino.Items.Add("< Seleccione >");
 
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tbldestino_Select", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
 
-                using (MySqlDataReader reader = comando.ExecuteReader())
+                using (var reader = comando.ExecuteReader())
                 {
-                    while (reader.Read())
-                    {
-                        cboDestino.Items.Add(reader["iddestino"].ToString() + " - " + reader["nombre"].ToString());
-                    }
+                    while (reader.Read()) cboDestino.Items.Add(reader["iddestino"] + " - " + reader["nombre"]);
                 }
+
                 ConexionGral.desconectar();
                 cboDestino.SelectedIndex = 0;
             }
@@ -104,21 +83,16 @@ namespace _3mpacador4.Presentacion.Reporte
                 cbCategoria.Items.Clear();
                 cbCategoria.Items.Add("< Seleccione >");
 
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblcategoria_Select", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
 
-                using (MySqlDataReader reader = comando.ExecuteReader())
+                using (var reader = comando.ExecuteReader())
                 {
-                    while (reader.Read())
-                    {
-                        cbCategoria.Items.Add(reader["idcategoria"].ToString() + " - " + reader["nombre"].ToString());
-                    }
+                    while (reader.Read()) cbCategoria.Items.Add(reader["idcategoria"] + " - " + reader["nombre"]);
                 }
+
                 ConexionGral.desconectar();
                 cbCategoria.SelectedIndex = 0;
             }
@@ -138,21 +112,16 @@ namespace _3mpacador4.Presentacion.Reporte
                 cbpresentacion.Items.Clear();
                 cbpresentacion.Items.Add("< Seleccione >");
 
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblpresentacion_Select", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
 
-                using (MySqlDataReader reader = comando.ExecuteReader())
+                using (var reader = comando.ExecuteReader())
                 {
-                    while (reader.Read())
-                    {
-                        cbpresentacion.Items.Add(reader["idpresentacion"].ToString()+" - "+reader["nombre"].ToString());
-                    }
+                    while (reader.Read()) cbpresentacion.Items.Add(reader["idpresentacion"] + " - " + reader["nombre"]);
                 }
+
                 ConexionGral.desconectar();
                 cbpresentacion.SelectedIndex = 0;
             }
@@ -172,21 +141,16 @@ namespace _3mpacador4.Presentacion.Reporte
                 cbxterminal.Items.Clear();
                 cbxterminal.Items.Add("< Seleccione >");
 
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblterminal_Select", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
 
-                using (MySqlDataReader reader = comando.ExecuteReader())
+                using (var reader = comando.ExecuteReader())
                 {
-                    while (reader.Read())
-                    {
-                        cbxterminal.Items.Add(reader["idterminal"].ToString() + " - " + reader["descripcion"].ToString());
-                    }
+                    while (reader.Read()) cbxterminal.Items.Add(reader["idterminal"] + " - " + reader["descripcion"]);
                 }
+
                 ConexionGral.desconectar();
                 cbxterminal.SelectedIndex = 0;
             }
@@ -203,37 +167,35 @@ namespace _3mpacador4.Presentacion.Reporte
             MySqlCommand comando;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblticketpesaje_Select_Trazability", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
 
-                comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = (cboLote.Text.ToString()); ;
+                comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = cboLote.Text;
+                ;
 
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
                 adaptador.Fill(datos);
 
                 {
-                    var withBlock = this.cboLote;
+                    var withBlock = cboLote;
                     if (datos.Rows.Count != 0)
                     {
                         lblcliente.Text = datos.Rows[0]["RAZON SOCIAL"].ToString();
                         lblproductor.Text = datos.Rows[0]["PRODUCTOR"].ToString();
-                      //  lblmetodo.Text = datos.Rows[0]["PRODUCTOR"].ToString();
+                        //  lblmetodo.Text = datos.Rows[0]["PRODUCTOR"].ToString();
                         lblproducto.Text = datos.Rows[0]["PRODUCTO"].ToString();
-                      //  lblservicio.Text = datos.Rows[0]["PRODUCTOR"].ToString();
-                      //  lblacopiador.Text = datos.Rows[0]["PRODUCTOR"].ToString();
-                       // lblguiaingreso.Text = datos.Rows[0]["PRODUCTOR"].ToString();
-                      //  lblruc_dni.Text = datos.Rows[0]["PRODUCTOR"].ToString();
+                        //  lblservicio.Text = datos.Rows[0]["PRODUCTOR"].ToString();
+                        //  lblacopiador.Text = datos.Rows[0]["PRODUCTOR"].ToString();
+                        // lblguiaingreso.Text = datos.Rows[0]["PRODUCTOR"].ToString();
+                        //  lblruc_dni.Text = datos.Rows[0]["PRODUCTOR"].ToString();
                         lblclp.Text = datos.Rows[0]["CODIGO PRODUCCION"].ToString();
-                        lblvariedad .Text = datos.Rows[0]["VARIEDAD"].ToString();
+                        lblvariedad.Text = datos.Rows[0]["VARIEDAD"].ToString();
                         //lblfechaingreso.Text = datos.Rows[0]["FECHA PESAJE"].ToString();
                         //    lblhoraingreso.Text = datos.Rows[0]["PRODUCTOR"].ToString();
-                        
+
                         //lblpesoneto.Text = (datos.Rows[0]["PESO NETO"].ToString());
                         //lblcantjabas.Text = (datos.Rows[0]["CANT JABAS"].ToString());
                     }
@@ -254,7 +216,7 @@ namespace _3mpacador4.Presentacion.Reporte
         {
             try
             {
-                if (cboLote.SelectedIndex > 0) 
+                if (cboLote.SelectedIndex > 0)
                 {
                     poblarLote();
                     Cargar_destino();
@@ -273,28 +235,28 @@ namespace _3mpacador4.Presentacion.Reporte
         {
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
-                var comando = new MySqlCommand("INSERT INTO tbltrazabilidad (numlote ,cliente,clp, productor ,producto ,variedad ,fproceso ,ingresoplanta ,cant_jabas ,destino ,calibre ,categoria ,presentacion ,cant_cajas)" + '\r'
-                    + "VALUES(@numlote, @cliente, @clp, @productor, @producto, @variedad, @fproceso, @ingresoplanta, @cant_jabas, @destino, @calibre, @categoria, @presentacion, @cant_cajas)", ConexionGral.conexion);
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+                var comando = new MySqlCommand(
+                    "INSERT INTO tbltrazabilidad (numlote ,cliente,clp, productor ,producto ,variedad ,fproceso ,ingresoplanta ,cant_jabas ,destino ,calibre ,categoria ,presentacion ,cant_cajas)" +
+                    '\r'
+                    + "VALUES(@numlote, @cliente, @clp, @productor, @producto, @variedad, @fproceso, @ingresoplanta, @cant_jabas, @destino, @calibre, @categoria, @presentacion, @cant_cajas)",
+                    ConexionGral.conexion);
 
                 //float tarajaba = float.Parse(txttarajaba.Text);
                 //float taraparihuela = float.Parse(txttaraParihuela.Text);
                 //float pesobruto = float.Parse(lblpeso.Text);
                 //float pesobrutoManual = float.Parse(txtPesoManual.Text);
 
-                int numlote = Convert.ToInt32(cboLote.Text.ToString());
+                var numlote = Convert.ToInt32(cboLote.Text);
 
                 comando.Parameters.AddWithValue("@numlote", MySqlType.Int).Value = numlote;
-                comando.Parameters.AddWithValue("@cliente", this.lblcliente.Text);
-                comando.Parameters.AddWithValue("@clp", this.lblclp.Text);
-                comando.Parameters.AddWithValue("@productor", this.lblproductor.Text);
+                comando.Parameters.AddWithValue("@cliente", lblcliente.Text);
+                comando.Parameters.AddWithValue("@clp", lblclp.Text);
+                comando.Parameters.AddWithValue("@productor", lblproductor.Text);
 
-                comando.Parameters.AddWithValue("@producto", this.lblproducto.Text);
-                comando.Parameters.AddWithValue("@variedad", this.lblvariedad.Text);
-                comando.Parameters.AddWithValue("@fproceso", Convert.ToDateTime(this.dtpf_proceso.Text));
+                comando.Parameters.AddWithValue("@producto", lblproducto.Text);
+                comando.Parameters.AddWithValue("@variedad", lblvariedad.Text);
+                comando.Parameters.AddWithValue("@fproceso", Convert.ToDateTime(dtpf_proceso.Text));
 
                 //double pesoingreso = Convert.ToDouble(lblpesoneto.Text.ToString());
 
@@ -304,26 +266,25 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 //comando.Parameters.AddWithValue("@cant_jabas", MySqlType.Int).Value = cant_jabas;
 
-                comando.Parameters.AddWithValue("@destino", MySqlType.Int).Value = cboDestino.Text.ToString();
+                comando.Parameters.AddWithValue("@destino", MySqlType.Int).Value = cboDestino.Text;
 
                 //int calibre = Convert.ToInt32(cbCalibre.Text.ToString());
 
                 //comando.Parameters.AddWithValue("@calibre", MySqlType.Int).Value = calibre;
-                comando.Parameters.AddWithValue("@categoria", MySqlType.Int).Value = cbCategoria.Text.ToString();
-                comando.Parameters.AddWithValue("@presentacion", MySqlType.Text).Value = cbpresentacion .Text.ToString();
+                comando.Parameters.AddWithValue("@categoria", MySqlType.Int).Value = cbCategoria.Text;
+                comando.Parameters.AddWithValue("@presentacion", MySqlType.Text).Value = cbpresentacion.Text;
 
-               // double cant_cajas = Convert.ToDouble(txtcant_cajas.Text.ToString());
+                // double cant_cajas = Convert.ToDouble(txtcant_cajas.Text.ToString());
 
                 //comando.Parameters.AddWithValue("@cant_cajas", MySqlType.Int).Value = cant_cajas;
 
 
-
                 comando.ExecuteNonQuery();
-                MessageBox.Show("PESO REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
+                MessageBox.Show("PESO REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
                 // limpiarcampos()
                 //    this.chkcapturapeso.Checked = false;
                 ConexionGral.desconectar();
-              
             }
             catch (Exception ex)
             {
@@ -350,31 +311,37 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 if (cbCategoria.SelectedIndex == 0)
                 {
-                    MessageBox.Show("Seleccione una Categoria", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Seleccione una Categoria", "Aviso", MessageBoxButtons.OK,
+                        MessageBoxIcon.Exclamation);
                     return;
                 }
 
                 if (cbpresentacion.SelectedIndex == 0)
                 {
-                    MessageBox.Show("Seleccione una Presentación", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Seleccione una Presentación", "Aviso", MessageBoxButtons.OK,
+                        MessageBoxIcon.Exclamation);
                     return;
-                }             
+                }
 
                 var aux = new Programa_proceso();
-                aux.fecha_proceso = Convert.ToDateTime(dtpf_proceso.Value);                
-                aux.idgrupo_turno = 1;// 
-                aux.iddestino = Convert.ToInt32(cboDestino.Text.Substring(0, cboDestino.Text.Contains("-").ToString().Length - 2));
-                aux.idcategoria = Convert.ToInt32(cbCategoria.Text.Substring(0, cbCategoria.Text.Contains("-").ToString().Length - 2));
-                aux.idpresentacion = Convert.ToInt32(cbpresentacion.Text.Substring(0, cbpresentacion.Text.Contains("-").ToString().Length - 2));
-                aux.idterminal = Convert.ToInt32(cbxterminal.Text.Substring(0, cbxterminal.Text.Contains("-").ToString().Length - 2));
+                aux.fecha_proceso = Convert.ToDateTime(dtpf_proceso.Value);
+                aux.idgrupo_turno = 1; // 
+                aux.iddestino =
+                    Convert.ToInt32(cboDestino.Text.Substring(0, cboDestino.Text.Contains("-").ToString().Length - 2));
+                aux.idcategoria =
+                    Convert.ToInt32(cbCategoria.Text.Substring(0,
+                        cbCategoria.Text.Contains("-").ToString().Length - 2));
+                aux.idpresentacion =
+                    Convert.ToInt32(cbpresentacion.Text.Substring(0,
+                        cbpresentacion.Text.Contains("-").ToString().Length - 2));
+                aux.idterminal =
+                    Convert.ToInt32(cbxterminal.Text.Substring(0,
+                        cbxterminal.Text.Contains("-").ToString().Length - 2));
                 aux.idusuario = 4;
                 aux.flag_estado = "1";
 
 
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 var cmd = new MySqlCommand("select idlote from tbllote where numlote = @idlote", ConexionGral.conexion);
                 cmd.Parameters.AddWithValue("@idlote", cboLote.Text.Trim());
@@ -393,15 +360,15 @@ namespace _3mpacador4.Presentacion.Reporte
                 comando.Parameters.AddWithValue("p_idusuario", aux.idusuario);
                 comando.Parameters.AddWithValue("p_flag_estado", aux.flag_estado);
                 comando.ExecuteNonQuery();
-                MessageBox.Show("PROGRAMA REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("PROGRAMA REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 //Lista_Grupo_turno(aux.fecha_produccion.ToString("yyyy-MM-dd"));
                 ConexionGral.desconectar();
-                return;
-
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("PROGRAMA NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("PROGRAMA NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 throw;
             }
         }
@@ -411,6 +378,4 @@ namespace _3mpacador4.Presentacion.Reporte
             Close();
         }
     }
-
-    
 }

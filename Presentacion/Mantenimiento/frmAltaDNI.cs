@@ -1,43 +1,34 @@
-﻿using _3mpacador4.Logica;
-using Devart.Data.MySql;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using _3mpacador4.Entidad;
-using System.Net;
 using System.IO;
+using System.Net;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using _3mpacador4.Entidad;
+using _3mpacador4.Logica;
+using _3mpacador4.Properties;
+using Devart.Data.MySql;
 using Newtonsoft.Json;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
     public partial class frmAltaDNI : Form
     {
+        private int id;
+
         public frmAltaDNI()
         {
             InitializeComponent();
         }
 
-        int id;
-
-        string Estado()
+        private string Estado()
         {
-            string estado = "";
+            var estado = "";
 
             if (cbxestado.Checked)
-            {
                 estado = "1";
-            }
             else
-            {
                 estado = "0";
-            }
 
             return estado;
         }
@@ -55,21 +46,24 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
                 if (txtnombres.Text.Length <= 0)
                 {
-                    MessageBox.Show("Error, Ingrese Nombres del Colaborador", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error, Ingrese Nombres del Colaborador", "Aviso", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                     txtnombres.Focus();
                     return;
                 }
 
                 if (txtapel_paterno.Text.Length <= 0)
                 {
-                    MessageBox.Show("Error, Ingrese Apellido Paterno del Colaborador", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error, Ingrese Apellido Paterno del Colaborador", "Aviso", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                     txtapel_paterno.Focus();
                     return;
                 }
 
                 if (txtapel_materno.Text.Length <= 0)
                 {
-                    MessageBox.Show("Error, Ingrese Apellido Materno del Colaborador", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error, Ingrese Apellido Materno del Colaborador", "Aviso", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                     txtapel_materno.Focus();
                     return;
                 }
@@ -82,10 +76,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 aux.flag_estado = Estado();
 
 
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 var comando = new MySqlCommand("usp_tblcolaborador_insert", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
@@ -96,22 +87,21 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 comando.Parameters.AddWithValue("p_apel_materno", aux.apellidoMaterno);
                 comando.Parameters.AddWithValue("p_flag_estado", aux.flag_estado);
                 comando.ExecuteNonQuery();
-                MessageBox.Show("COLABORADOR REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                if (MessageBox.Show(@"Desea ingresar otro Colaborador?", @"Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                {
-                    this.Close();
-                }
+                MessageBox.Show("COLABORADOR REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                if (MessageBox.Show(@"Desea ingresar otro Colaborador?", @"Mensaje", MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question) == DialogResult.No) Close();
                 LimpiarCampos();
                 ConexionGral.desconectar();
-                return;
-
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("COLABORADOR NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("COLABORADOR NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 throw;
             }
         }
+
         private void ActualizarColaborador()
         {
             try
@@ -125,21 +115,24 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
                 if (txtnombres.Text.Length <= 0)
                 {
-                    MessageBox.Show("Error, Ingrese Nombres del Colaborador", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error, Ingrese Nombres del Colaborador", "Aviso", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                     txtnombres.Focus();
                     return;
                 }
 
                 if (txtapel_paterno.Text.Length <= 0)
                 {
-                    MessageBox.Show("Error, Ingrese Apellido Paterno del Colaborador", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error, Ingrese Apellido Paterno del Colaborador", "Aviso", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                     txtapel_paterno.Focus();
                     return;
                 }
 
                 if (txtapel_materno.Text.Length <= 0)
                 {
-                    MessageBox.Show("Error, Ingrese Apellido Materno del Colaborador", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error, Ingrese Apellido Materno del Colaborador", "Aviso", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                     txtapel_materno.Focus();
                     return;
                 }
@@ -153,10 +146,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 aux.flag_estado = Estado();
 
 
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 var comando = new MySqlCommand("usp_tblcolaborador_update", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
@@ -167,18 +157,19 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 comando.Parameters.AddWithValue("p_apel_materno", aux.apellidoMaterno);
                 comando.Parameters.AddWithValue("p_flag_estado", aux.flag_estado);
                 comando.ExecuteNonQuery();
-                MessageBox.Show("COLABORADOR ACTUALIZADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("COLABORADOR ACTUALIZADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 LimpiarCampos();
                 ConexionGral.desconectar();
-                return;
-
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("COLABORADOR NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("COLABORADOR NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 throw;
             }
         }
+
         private void LimpiarCampos()
         {
             try
@@ -205,7 +196,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -219,16 +210,11 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         {
             txtdni.Focus();
             if (cbxestado.Checked)
-            {
                 cbxestado.Text = "ACTIVO";
-            }
             else
-            {
                 cbxestado.Text = "INACTIVO";
-            }
 
             if (frmColaborador.editar)
-            {
                 if (frmColaborador.cl.idcolaborador > 0)
                 {
                     id = frmColaborador.cl.idcolaborador;
@@ -237,45 +223,36 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     txtapel_paterno.Text = frmColaborador.cl.apellidoPaterno;
                     txtapel_materno.Text = frmColaborador.cl.apellidoMaterno;
                     if (Convert.ToBoolean(frmColaborador.cl.flag_estado))
-                    {
                         cbxestado.Checked = true;
-                    }
                     else
-                    {
                         cbxestado.Checked = false;
-                    }
                 }
-            }
         }
 
         private void cbxestado_CheckedChanged(object sender, EventArgs e)
         {
             if (cbxestado.Checked)
-            {
                 cbxestado.Text = "ACTIVO";
-            }
             else
-            {
                 cbxestado.Text = "INACTIVO";
-            }
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             ActualizarColaborador();
-            this.Close();
+            Close();
         }
 
         private void cbxreniec_CheckedChanged(object sender, EventArgs e)
         {
             if (cbxreniec.Checked)
             {
-                pbreniec.Image = Properties.Resources.reniec;
+                pbreniec.Image = Resources.reniec;
                 LimpiarCampos();
             }
             else
             {
-                pbreniec.Image = Properties.Resources.cargando;
+                pbreniec.Image = Resources.cargando;
                 LimpiarCampos();
             }
         }
@@ -285,10 +262,9 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             try
             {
                 if (cbxreniec.Checked)
-                {
                     if (txtdni.Text.Trim().Length == 8)
                     {
-                        string respuesta = await ConsultaDNI(txtdni.Text.Trim());
+                        var respuesta = await ConsultaDNI(txtdni.Text.Trim());
 
                         var obj = JsonConvert.DeserializeObject<Colaborador>(respuesta);
 
@@ -297,22 +273,21 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                         txtapel_paterno.Text = obj.apellidoPaterno;
                         txtapel_materno.Text = obj.apellidoMaterno;
                     }
-                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Algo Salio Mal ConsultaDNI() :( ");
                 throw;
             }
-            
         }
 
         public async Task<string> ConsultaDNI(string ls_dni)
         {
-            string url = "https://dniruc.apisperu.com/api/v1/dni/" + ls_dni + "?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InBhYmxvamMzMDA1QGdtYWlsLmNvbSJ9.ZuknLPwsDIINQaL0YfoOdXvtUouYB4dnhm4469HsMnM";
-            WebRequest oRequest = WebRequest.Create(url);
-            WebResponse oResponse = oRequest.GetResponse();
-            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
+            var url = "https://dniruc.apisperu.com/api/v1/dni/" + ls_dni +
+                      "?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InBhYmxvamMzMDA1QGdtYWlsLmNvbSJ9.ZuknLPwsDIINQaL0YfoOdXvtUouYB4dnhm4469HsMnM";
+            var oRequest = WebRequest.Create(url);
+            var oResponse = oRequest.GetResponse();
+            var sr = new StreamReader(oResponse.GetResponseStream());
             return await sr.ReadToEndAsync();
         }
     }

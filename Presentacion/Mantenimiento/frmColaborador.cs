@@ -4,13 +4,13 @@ using System.Windows.Forms;
 using _3mpacador4.Entidad;
 using _3mpacador4.Logica;
 using Devart.Data.MySql;
-using iText.Kernel.Colors;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
-
     public partial class frmColaborador : Form
-    {     
+    {
+        public static bool editar;
+        public static Colaborador cl;
 
         public frmColaborador()
         {
@@ -18,62 +18,59 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             MostrarColaborador();
         }
 
-        public static bool editar;
-        public static Colaborador cl = null;
-
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             var aux = new Colaborador();
 
-            frmAltaDNI F = new frmAltaDNI();
+            var F = new frmAltaDNI();
             F.CambiarTextoLabel("Ingreso de Colaborador");
-           // F.Panel.BackColor = Color.Green;
+            // F.Panel.BackColor = Color.Green;
             F.ShowDialog();
             MostrarColaborador();
         }
 
-       
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
         {
-            this.Close();
-        } 
+            Close();
+        }
 
         public void MostrarColaborador()
-        {           
-                MySqlCommand comando;
-                try
+        {
+            MySqlCommand comando;
+            try
+            {
+                datalistado.Rows.Clear();
+
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+
+                comando = new MySqlCommand("usp_tblcolaborador_select", ConexionGral.conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                using (var reader = comando.ExecuteReader())
                 {
-                    datalistado.Rows.Clear();
-
-                    if (ConexionGral.conexion.State == ConnectionState.Closed)
+                    while (reader.Read())
                     {
-                        ConexionGral.conectar();
+                        var c = new Colaborador();
+                        c.idcolaborador = Convert.ToInt32(reader["idcolaborador"]);
+                        c.dni = reader["dni"].ToString();
+                        c.nombres = reader["nombres"].ToString();
+                        c.apellidoPaterno = reader["apel_paterno"].ToString();
+                        c.apellidoMaterno = reader["apel_materno"].ToString();
+                        c.flag_estado = reader["flag_estado"].ToString();
+                        datalistado.Rows.Add(null, null, c.idcolaborador, c.dni, c.nombres, c.apellidoPaterno,
+                            c.apellidoMaterno, c.flag_estado == "1" ? true : false);
                     }
 
-                    comando = new MySqlCommand("usp_tblcolaborador_select", ConexionGral.conexion);
-                    comando.CommandType = CommandType.StoredProcedure;
+                    lblnro_reg.Text = datalistado.RowCount.ToString();
+                }
 
-                    using (MySqlDataReader reader = comando.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            Colaborador c = new Colaborador();
-                            c.idcolaborador = Convert.ToInt32(reader["idcolaborador"]);
-                            c.dni = reader["dni"].ToString();
-                            c.nombres = reader["nombres"].ToString();
-                            c.apellidoPaterno = reader["apel_paterno"].ToString();
-                            c.apellidoMaterno = reader["apel_materno"].ToString();
-                            c.flag_estado = reader["flag_estado"].ToString();
-                            datalistado.Rows.Add(null, null, c.idcolaborador, c.dni, c.nombres, c.apellidoPaterno, c.apellidoMaterno, c.flag_estado == "1" ? true : false);
-                        }
-                        lblnro_reg.Text = datalistado.RowCount.ToString();
-                    }
-                    ConexionGral.desconectar();
+                ConexionGral.desconectar();
             }
             catch (Exception ex)
             {
@@ -104,24 +101,23 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             }
             else if (datalistado.Columns[e.ColumnIndex].Index == 1) // ELIMINAR
             {
-                var rpta = MessageBox.Show( "¿ ESTA SEGURO DE ELIMINAR AL TRABAJADOR CON DNI " + datalistado.CurrentRow.Cells[3].Value.ToString() + " ?"
+                var rpta = MessageBox.Show(
+                    "¿ ESTA SEGURO DE ELIMINAR AL TRABAJADOR CON DNI " + datalistado.CurrentRow.Cells[3].Value + " ?"
                     , "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (rpta == DialogResult.Yes)
                 {
                     MySqlCommand comando;
                     try
                     {
-                        if (ConexionGral.conexion.State == ConnectionState.Closed)
-                        {
-                            ConexionGral.conectar();
-                        }
+                        if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
                         comando = new MySqlCommand("usp_tblcolaborador_delete", ConexionGral.conexion);
                         comando.CommandType = CommandType.StoredProcedure;
                         comando.Parameters.AddWithValue("p_id", Convert.ToInt32(datalistado.CurrentRow.Cells[2].Value));
                         comando.ExecuteNonQuery();
-                        MessageBox.Show("COLABORADOR SE ELIMINO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("COLABORADOR SE ELIMINO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
                         ConexionGral.desconectar();
-                        MostrarColaborador();                        
+                        MostrarColaborador();
                     }
                     catch (Exception ex)
                     {
