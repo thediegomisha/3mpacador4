@@ -418,5 +418,17 @@ namespace _3mpacador4.Properties {
                 this["token_reniec"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Impresora_valor {
+            get {
+                return ((string)(this["Impresora_valor"]));
+            }
+            set {
+                this["Impresora_valor"] = value;
+            }
+        }
     }
 }

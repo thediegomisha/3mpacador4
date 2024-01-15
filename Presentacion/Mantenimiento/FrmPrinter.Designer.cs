@@ -110,6 +110,7 @@
             this.Controls.Add(this.List_Printer);
             this.Name = "FrmPrinter";
             this.Text = "FrmPrinter";
+            this.Load += new System.EventHandler(this.FrmPrinter_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
