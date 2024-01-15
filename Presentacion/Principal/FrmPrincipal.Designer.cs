@@ -35,6 +35,7 @@
             this.btnJornal = new System.Windows.Forms.Button();
             this.btnTrazabilidadP = new System.Windows.Forms.Button();
             this.panelMantenimiento = new System.Windows.Forms.Panel();
+            this.btnImprimirCalibre = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnTerminal = new System.Windows.Forms.Button();
             this.btnProducto = new System.Windows.Forms.Button();
@@ -79,7 +80,6 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnImprimirCalibre = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
@@ -192,6 +192,23 @@
             this.panelMantenimiento.Name = "panelMantenimiento";
             this.panelMantenimiento.Size = new System.Drawing.Size(137, 285);
             this.panelMantenimiento.TabIndex = 12;
+            // 
+            // btnImprimirCalibre
+            // 
+            this.btnImprimirCalibre.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnImprimirCalibre.FlatAppearance.BorderSize = 0;
+            this.btnImprimirCalibre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimirCalibre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnImprimirCalibre.ForeColor = System.Drawing.Color.LightGray;
+            this.btnImprimirCalibre.Location = new System.Drawing.Point(0, 232);
+            this.btnImprimirCalibre.Name = "btnImprimirCalibre";
+            this.btnImprimirCalibre.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnImprimirCalibre.Size = new System.Drawing.Size(137, 33);
+            this.btnImprimirCalibre.TabIndex = 21;
+            this.btnImprimirCalibre.Text = "Imprimir Calibre";
+            this.btnImprimirCalibre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImprimirCalibre.UseVisualStyleBackColor = true;
+            this.btnImprimirCalibre.Click += new System.EventHandler(this.btnImprimirCalibre_Click_1);
             // 
             // btnUsuarios
             // 
@@ -780,22 +797,6 @@
             this.ToolStripStatusLabel.Name = "ToolStripStatusLabel";
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
-            // 
-            // btnImprimirCalibre
-            // 
-            this.btnImprimirCalibre.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnImprimirCalibre.FlatAppearance.BorderSize = 0;
-            this.btnImprimirCalibre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimirCalibre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnImprimirCalibre.ForeColor = System.Drawing.Color.LightGray;
-            this.btnImprimirCalibre.Location = new System.Drawing.Point(0, 232);
-            this.btnImprimirCalibre.Name = "btnImprimirCalibre";
-            this.btnImprimirCalibre.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnImprimirCalibre.Size = new System.Drawing.Size(137, 33);
-            this.btnImprimirCalibre.TabIndex = 21;
-            this.btnImprimirCalibre.Text = "Imprimir Calibre";
-            this.btnImprimirCalibre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimirCalibre.UseVisualStyleBackColor = true;
             // 
             // FrmPrincipal
             // 

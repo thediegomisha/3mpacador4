@@ -102,7 +102,7 @@ namespace _3mpacador4.Presentacion.Sistema
             this.btnimprimir.TabIndex = 87;
             this.btnimprimir.Text = "IMPRIMIR";
             this.btnimprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnimprimir.Click += new System.EventHandler(this.btnimprimir_Click);
+         //   this.btnimprimir.Click += new System.EventHandler(this.btnimprimir_Click);
             // 
             // btncancelar
             // 

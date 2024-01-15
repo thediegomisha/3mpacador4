@@ -1,10 +1,10 @@
 ﻿using _3mpacador4.Entidad;
 using _3mpacador4.Logica;
 using Devart.Data.MySql;
-using Gma.QrCodeNet.Encoding;
-using Gma.QrCodeNet.Encoding.Windows.Render;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
+//using Gma.QrCodeNet.Encoding;
+//using Gma.QrCodeNet.Encoding.Windows.Render;
+//using iTextSharp.text;
+//using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,9 +17,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Font = iTextSharp.text.Font;
-using Image = iTextSharp.text.Image;
-using Rectangle = iTextSharp.text.Rectangle;
+//using Font = iTextSharp.text.Font;
+//using Image = iTextSharp.text.Image;
+//using Rectangle = iTextSharp.text.Rectangle;
 //using SharpZebra.Printing;
 using System.Runtime.InteropServices;
 //using LibUsbDotNet.Main;
@@ -125,106 +125,106 @@ namespace _3mpacador4.Presentacion.Sistema
             }
         }
 
-        private void btnimprimir_Click(object sender, EventArgs e)
-        {           
+        //private void btnimprimir_Click(object sender, EventArgs e)
+        //{           
 
-            int li_calibre = Convert.ToInt32(nudcalibre.Value.ToString());
-            int nro_etiquetas = Convert.ToInt32(nudacantidad.Value.ToString());
+        //    int li_calibre = Convert.ToInt32(nudcalibre.Value.ToString());
+        //    int nro_etiquetas = Convert.ToInt32(nudacantidad.Value.ToString());
 
-            ActualizarCalibreQR(li_calibre, nro_etiquetas);
-            GenerarCalibreQR(li_calibre.ToString(), nro_etiquetas);
-        }
+        //    ActualizarCalibreQR(li_calibre, nro_etiquetas);
+        //    GenerarCalibreQR(li_calibre.ToString(), nro_etiquetas);
+        //}
 
         private void btncancelar_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        void GenerarCalibreQR(string ls_calibre, int li_cantidad) 
-        {
-            // Configurar el codificador QR
-            QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.H);
-            QrCode qrCode;
-            qrEncoder.TryEncode(ls_calibre, out qrCode);
+        //void GenerarCalibreQR(string ls_calibre, int li_cantidad) 
+        //{
+        //    // Configurar el codificador QR
+        //    QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.H);
+        //    QrCode qrCode;
+        //    qrEncoder.TryEncode(ls_calibre, out qrCode);
 
-            // Configurar el renderizador QR
-            GraphicsRenderer renderer = new GraphicsRenderer(new FixedModuleSize(5, QuietZoneModules.Two), Brushes.Black, Brushes.White);
+        //    // Configurar el renderizador QR
+        //    GraphicsRenderer renderer = new GraphicsRenderer(new FixedModuleSize(5, QuietZoneModules.Two), Brushes.Black, Brushes.White);
 
-            // Crear un bitmap para el código QR
-            DrawingSize dSize = renderer.SizeCalculator.GetSize(qrCode.Matrix.Width);
-            Bitmap imagenQR = new Bitmap(dSize.CodeWidth, dSize.CodeWidth);
+        //    // Crear un bitmap para el código QR
+        //    DrawingSize dSize = renderer.SizeCalculator.GetSize(qrCode.Matrix.Width);
+        //    Bitmap imagenQR = new Bitmap(dSize.CodeWidth, dSize.CodeWidth);
 
-            // Renderizar el código QR en el bitmap
-            using (Graphics g = Graphics.FromImage(imagenQR))
-            {
-                // Rellenar el fondo blanco
-                g.FillRectangle(Brushes.White, 0, 0, imagenQR.Width, imagenQR.Height);
+        //    // Renderizar el código QR en el bitmap
+        //    using (Graphics g = Graphics.FromImage(imagenQR))
+        //    {
+        //        // Rellenar el fondo blanco
+        //        g.FillRectangle(Brushes.White, 0, 0, imagenQR.Width, imagenQR.Height);
 
-                // Renderizar el código QR con borde negro
-                renderer.Draw(g, qrCode.Matrix);
+        //        // Renderizar el código QR con borde negro
+        //        renderer.Draw(g, qrCode.Matrix);
 
-                // Añadir el texto en el centro con borde negro y fondo blanco
-                using (System.Drawing.Font font = new System.Drawing.Font("Arial", 18, FontStyle.Bold))
-                {
-                    SizeF textSize = g.MeasureString(ls_calibre, font);
-                    float x = (imagenQR.Width - textSize.Width) / 2;
-                    float y = (imagenQR.Height - textSize.Height) / 2;
+        //        // Añadir el texto en el centro con borde negro y fondo blanco
+        //        using (System.Drawing.Font font = new System.Drawing.Font("Arial", 18, FontStyle.Bold))
+        //        {
+        //            SizeF textSize = g.MeasureString(ls_calibre, font);
+        //            float x = (imagenQR.Width - textSize.Width) / 2;
+        //            float y = (imagenQR.Height - textSize.Height) / 2;
 
-                    // Dibujar el texto con borde negro y fondo blanco
-                    using (Pen pen = new Pen(Brushes.Black, 2))
-                    {
-                        g.DrawRectangle(pen, x, y, textSize.Width, textSize.Height);
-                        g.FillRectangle(Brushes.White, x, y, textSize.Width, textSize.Height);
-                        g.DrawString(ls_calibre, font, Brushes.Black, x, y);
-                    }
-                }
-            }
+        //            // Dibujar el texto con borde negro y fondo blanco
+        //            using (Pen pen = new Pen(Brushes.Black, 2))
+        //            {
+        //                g.DrawRectangle(pen, x, y, textSize.Width, textSize.Height);
+        //                g.FillRectangle(Brushes.White, x, y, textSize.Width, textSize.Height);
+        //                g.DrawString(ls_calibre, font, Brushes.Black, x, y);
+        //            }
+        //        }
+        //    }
 
-            imagenQR.Save("codigoQR.png");
+        //    imagenQR.Save("codigoQR.png");
 
-            string ruta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ls_calibre + ".pdf");
-            using (FileStream fs = new FileStream(ruta, FileMode.Create, FileAccess.Write, FileShare.None))
-            {
-                Document doc = new Document();
-                PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+        //    string ruta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ls_calibre + ".pdf");
+        //    using (FileStream fs = new FileStream(ruta, FileMode.Create, FileAccess.Write, FileShare.None))
+        //    {
+        //        Document doc = new Document();
+        //        PdfWriter writer = PdfWriter.GetInstance(doc, fs);
 
-                doc.Open();
+        //        doc.Open();
 
-                PdfPTable table = new PdfPTable(5);
-                table.DefaultCell.Padding = 0;
-                iTextSharp.text.Font boldFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 9); // Fuente en negrita
-                for (int i = 0; i < li_cantidad; i++)
-                {
-                    string fileName = "codigoQR.png";
+        //        PdfPTable table = new PdfPTable(5);
+        //        table.DefaultCell.Padding = 0;
+        //        iTextSharp.text.Font boldFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 9); // Fuente en negrita
+        //        for (int i = 0; i < li_cantidad; i++)
+        //        {
+        //            string fileName = "codigoQR.png";
 
-                    // Obtener la ruta de la carpeta bin de la aplicación
-                    string binFolderPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        //            // Obtener la ruta de la carpeta bin de la aplicación
+        //            string binFolderPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
-                    // Combinar la ruta de la carpeta bin con el nombre del archivo
-                    string filePath = Path.Combine(binFolderPath, fileName);
+        //            // Combinar la ruta de la carpeta bin con el nombre del archivo
+        //            string filePath = Path.Combine(binFolderPath, fileName);
 
-                    // Crear un objeto Image con la imagen
-                    iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(filePath);
+        //            // Crear un objeto Image con la imagen
+        //            iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(filePath);
 
-                    PdfPCell qrCell = new PdfPCell();
-                    qrCell.PaddingTop = 1;
-                    qrCell.Border = 0;
-                    qrCell.HorizontalAlignment = Element.ALIGN_CENTER;
-                    qrCell.AddElement(image);
+        //            PdfPCell qrCell = new PdfPCell();
+        //            qrCell.PaddingTop = 1;
+        //            qrCell.Border = 0;
+        //            qrCell.HorizontalAlignment = Element.ALIGN_CENTER;
+        //            qrCell.AddElement(image);
 
-                    table.AddCell(qrCell);
-                }
+        //            table.AddCell(qrCell);
+        //        }
 
-                doc.Add(table);
+        //        doc.Add(table);
 
-                doc.Close();
-                writer.Close();
+        //        doc.Close();
+        //        writer.Close();
 
-                MessageBox.Show("SE GENERARON LOS QR :)", "CODIGOS QR");
-                Close();
+        //        MessageBox.Show("SE GENERARON LOS QR :)", "CODIGOS QR");
+        //        Close();
                 
-            }
-        }
+        //    }
+        //}
 
         private void button1_Click(object sender, EventArgs e)
         {

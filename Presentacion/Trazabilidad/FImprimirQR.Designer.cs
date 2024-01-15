@@ -90,7 +90,6 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             // pbQR
             // 
             this.pbQR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            //this.pbQR.Image = global::_3mpacador4.Properties.Resources.qr;
             this.pbQR.Location = new System.Drawing.Point(37, 12);
             this.pbQR.Name = "pbQR";
             this.pbQR.Size = new System.Drawing.Size(114, 90);
@@ -113,7 +112,6 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.Name = "FImprimirQR";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CODIGO QR";
-            this.Load += new System.EventHandler(this.FImprimirQR_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nudcantidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbQR)).EndInit();

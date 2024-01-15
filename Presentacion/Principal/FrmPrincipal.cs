@@ -240,7 +240,7 @@ namespace _3mpacador4.Presentacion
         private void btnColaborador_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
-            AbrirFormularioHijo(new frmAltaDNI());
+            AbrirFormularioHijo(new frmColaborador());
         }
 
         private void btnProductores_Click(object sender, EventArgs e)
@@ -297,7 +297,8 @@ namespace _3mpacador4.Presentacion
 
         }
 
-      private void btnImprimirCalibre_Click(object sender, EventArgs e)
+     
+        private void btnImprimirCalibre_Click_1(object sender, EventArgs e)
         {
             ocultarSubMenu();
             AbrirFormularioHijo(new FrmImprimeCalibre());
