@@ -45,7 +45,6 @@
             this.btnMantenimiento = new System.Windows.Forms.Button();
             this.panelSistema = new System.Windows.Forms.Panel();
             this.btnReniec = new System.Windows.Forms.Button();
-           // this.btnImprimeCalibre = new System.Windows.Forms.Button();
             this.BtnPesosDiversos = new System.Windows.Forms.Button();
             this.btnBD = new System.Windows.Forms.Button();
             this.btnPuertoSerie = new System.Windows.Forms.Button();
@@ -69,17 +68,18 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.LblVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.TxtVersion = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LBLUSER = new System.Windows.Forms.ToolStripStatusLabel();
             this.LBLUSUARIO = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LblIp = new System.Windows.Forms.ToolStripStatusLabel();
             this.TxtIp = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LblServer = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtServer = new System.Windows.Forms.ToolStripStatusLabel();
+            this.txtDatabase = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblDatabase = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.LBLUSER = new System.Windows.Forms.ToolStripStatusLabel();
-            this.LblIp = new System.Windows.Forms.ToolStripStatusLabel();
-            this.LblServer = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtDatabase = new System.Windows.Forms.ToolStripStatusLabel();
-            this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnImprimirCalibre = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
@@ -120,7 +120,7 @@
             this.panelTrazabilidad.Controls.Add(this.btnProceso);
             this.panelTrazabilidad.Controls.Add(this.btnJornal);
             this.panelTrazabilidad.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTrazabilidad.Location = new System.Drawing.Point(0, 1004);
+            this.panelTrazabilidad.Location = new System.Drawing.Point(0, 1031);
             this.panelTrazabilidad.Name = "panelTrazabilidad";
             this.panelTrazabilidad.Size = new System.Drawing.Size(137, 92);
             this.panelTrazabilidad.TabIndex = 15;
@@ -166,7 +166,7 @@
             this.btnTrazabilidadP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrazabilidadP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnTrazabilidadP.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 960);
+            this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 987);
             this.btnTrazabilidadP.Name = "btnTrazabilidadP";
             this.btnTrazabilidadP.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnTrazabilidadP.Size = new System.Drawing.Size(137, 44);
@@ -179,6 +179,7 @@
             // panelMantenimiento
             // 
             this.panelMantenimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panelMantenimiento.Controls.Add(this.btnImprimirCalibre);
             this.panelMantenimiento.Controls.Add(this.btnUsuarios);
             this.panelMantenimiento.Controls.Add(this.btnTerminal);
             this.panelMantenimiento.Controls.Add(this.btnProducto);
@@ -187,9 +188,9 @@
             this.panelMantenimiento.Controls.Add(this.btnColaborador);
             this.panelMantenimiento.Controls.Add(this.btnAcopiador);
             this.panelMantenimiento.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMantenimiento.Location = new System.Drawing.Point(0, 713);
+            this.panelMantenimiento.Location = new System.Drawing.Point(0, 702);
             this.panelMantenimiento.Name = "panelMantenimiento";
-            this.panelMantenimiento.Size = new System.Drawing.Size(137, 247);
+            this.panelMantenimiento.Size = new System.Drawing.Size(137, 285);
             this.panelMantenimiento.TabIndex = 12;
             // 
             // btnUsuarios
@@ -209,7 +210,7 @@
             this.btnUsuarios.UseVisualStyleBackColor = true;
             this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
-            // btnColaborador
+            // btnTerminal
             // 
             this.btnTerminal.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnTerminal.FlatAppearance.BorderSize = 0;
@@ -318,7 +319,7 @@
             this.btnMantenimiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMantenimiento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnMantenimiento.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnMantenimiento.Location = new System.Drawing.Point(0, 669);
+            this.btnMantenimiento.Location = new System.Drawing.Point(0, 658);
             this.btnMantenimiento.Name = "btnMantenimiento";
             this.btnMantenimiento.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnMantenimiento.Size = new System.Drawing.Size(137, 44);
@@ -338,28 +339,11 @@
             this.panelSistema.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSistema.Location = new System.Drawing.Point(0, 521);
             this.panelSistema.Name = "panelSistema";
-            this.panelSistema.Size = new System.Drawing.Size(137, 148);
+            this.panelSistema.Size = new System.Drawing.Size(137, 137);
             this.panelSistema.TabIndex = 11;
             // 
-            
-            //// btnImprimeCalibre
-            //// 
-            //this.btnImprimeCalibre.Dock = System.Windows.Forms.DockStyle.Top;
-            //this.btnImprimeCalibre.FlatAppearance.BorderSize = 0;
-            //this.btnImprimeCalibre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            //this.btnImprimeCalibre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            //this.btnImprimeCalibre.ForeColor = System.Drawing.Color.LightGray;
-            //this.btnImprimeCalibre.Location = new System.Drawing.Point(0, 99);
-            //this.btnImprimeCalibre.Name = "btnImprimeCalibre";
-            //this.btnImprimeCalibre.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            //this.btnImprimeCalibre.Size = new System.Drawing.Size(159, 33);
-            //this.btnImprimeCalibre.TabIndex = 7;
-            //this.btnImprimeCalibre.Text = "Imprime Calibre";
-            //this.btnImprimeCalibre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            //this.btnImprimeCalibre.UseVisualStyleBackColor = true;
-            //this.btnImprimeCalibre.Click += new System.EventHandler(this.btnImprimeCalibre_Click);
-
             // btnReniec
+            // 
             this.btnReniec.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnReniec.FlatAppearance.BorderSize = 0;
             this.btnReniec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -720,12 +704,26 @@
             this.TxtVersion.Size = new System.Drawing.Size(48, 20);
             this.TxtVersion.Text = "Version";
             // 
+            // LBLUSER
+            // 
+            this.LBLUSER.Image = ((System.Drawing.Image)(resources.GetObject("LBLUSER.Image")));
+            this.LBLUSER.Name = "LBLUSER";
+            this.LBLUSER.Size = new System.Drawing.Size(69, 20);
+            this.LBLUSER.Text = "Usuario :";
+            // 
             // LBLUSUARIO
             // 
             this.LBLUSUARIO.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBLUSUARIO.Name = "LBLUSUARIO";
             this.LBLUSUARIO.Size = new System.Drawing.Size(55, 20);
             this.LBLUSUARIO.Text = "Usuario";
+            // 
+            // LblIp
+            // 
+            this.LblIp.Image = ((System.Drawing.Image)(resources.GetObject("LblIp.Image")));
+            this.LblIp.Name = "LblIp";
+            this.LblIp.Size = new System.Drawing.Size(36, 20);
+            this.LblIp.Text = "IP:";
             // 
             // TxtIp
             // 
@@ -734,6 +732,13 @@
             this.TxtIp.Size = new System.Drawing.Size(44, 20);
             this.TxtIp.Text = "0.0.0.0";
             // 
+            // LblServer
+            // 
+            this.LblServer.Image = ((System.Drawing.Image)(resources.GetObject("LblServer.Image")));
+            this.LblServer.Name = "LblServer";
+            this.LblServer.Size = new System.Drawing.Size(58, 20);
+            this.LblServer.Text = "Server:";
+            // 
             // txtServer
             // 
             this.txtServer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -741,12 +746,26 @@
             this.txtServer.Size = new System.Drawing.Size(78, 20);
             this.txtServer.Text = "NameServer";
             // 
+            // txtDatabase
+            // 
+            this.txtDatabase.Image = ((System.Drawing.Image)(resources.GetObject("txtDatabase.Image")));
+            this.txtDatabase.Name = "txtDatabase";
+            this.txtDatabase.Size = new System.Drawing.Size(74, 20);
+            this.txtDatabase.Text = "DataBase:";
+            // 
             // lblDatabase
             // 
             this.lblDatabase.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDatabase.Name = "lblDatabase";
             this.lblDatabase.Size = new System.Drawing.Size(59, 20);
             this.lblDatabase.Text = "DataBase";
+            // 
+            // LblNombrePc
+            // 
+            this.LblNombrePc.Image = ((System.Drawing.Image)(resources.GetObject("LblNombrePc.Image")));
+            this.LblNombrePc.Name = "LblNombrePc";
+            this.LblNombrePc.Size = new System.Drawing.Size(126, 20);
+            this.LblNombrePc.Text = "Nombre de Equipo:";
             // 
             // txtNombreEquipo
             // 
@@ -762,40 +781,21 @@
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
             // 
-            // LBLUSER
+            // btnImprimirCalibre
             // 
-            this.LBLUSER.Image = ((System.Drawing.Image)(resources.GetObject("LBLUSER.Image")));
-            this.LBLUSER.Name = "LBLUSER";
-            this.LBLUSER.Size = new System.Drawing.Size(69, 20);
-            this.LBLUSER.Text = "Usuario :";
-            // 
-            // LblIp
-            // 
-            this.LblIp.Image = ((System.Drawing.Image)(resources.GetObject("LblIp.Image")));
-            this.LblIp.Name = "LblIp";
-            this.LblIp.Size = new System.Drawing.Size(36, 20);
-            this.LblIp.Text = "IP:";
-            // 
-            // LblServer
-            // 
-            this.LblServer.Image = ((System.Drawing.Image)(resources.GetObject("LblServer.Image")));
-            this.LblServer.Name = "LblServer";
-            this.LblServer.Size = new System.Drawing.Size(58, 20);
-            this.LblServer.Text = "Server:";
-            // 
-            // txtDatabase
-            // 
-            this.txtDatabase.Image = ((System.Drawing.Image)(resources.GetObject("txtDatabase.Image")));
-            this.txtDatabase.Name = "txtDatabase";
-            this.txtDatabase.Size = new System.Drawing.Size(74, 20);
-            this.txtDatabase.Text = "DataBase:";
-            // 
-            // LblNombrePc
-            // 
-            this.LblNombrePc.Image = ((System.Drawing.Image)(resources.GetObject("LblNombrePc.Image")));
-            this.LblNombrePc.Name = "LblNombrePc";
-            this.LblNombrePc.Size = new System.Drawing.Size(126, 20);
-            this.LblNombrePc.Text = "Nombre de Equipo:";
+            this.btnImprimirCalibre.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnImprimirCalibre.FlatAppearance.BorderSize = 0;
+            this.btnImprimirCalibre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimirCalibre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnImprimirCalibre.ForeColor = System.Drawing.Color.LightGray;
+            this.btnImprimirCalibre.Location = new System.Drawing.Point(0, 232);
+            this.btnImprimirCalibre.Name = "btnImprimirCalibre";
+            this.btnImprimirCalibre.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnImprimirCalibre.Size = new System.Drawing.Size(137, 33);
+            this.btnImprimirCalibre.TabIndex = 21;
+            this.btnImprimirCalibre.Text = "Imprimir Calibre";
+            this.btnImprimirCalibre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImprimirCalibre.UseVisualStyleBackColor = true;
             // 
             // FrmPrincipal
             // 
@@ -877,5 +877,6 @@
         private System.Windows.Forms.Button btnCLP;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnTerminal;
+        private System.Windows.Forms.Button btnImprimirCalibre;
     }
 }
