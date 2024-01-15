@@ -82,6 +82,7 @@
     </Reference>
     <Reference Include="Csv, Version=2.0.93.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Csv.2.0.93\lib\net40\Csv.dll</HintPath>
+    </Reference>
     <Reference Include="GlassButton">
       <HintPath>packages\GlassButton.dll</HintPath>
     </Reference>
