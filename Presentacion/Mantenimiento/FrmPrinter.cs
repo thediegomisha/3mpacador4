@@ -38,7 +38,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 List_Printer.Text = s_Default_Printer;
 
             //  lblprinter_choose.Text = Settings.Default.Impresora_valor;
-            lblprinter_choose.Text = Settings.Default.
+            lblprinter_choose.Text = Settings.Default.Impresora_valor;
 
         }
     }
