@@ -19,10 +19,14 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             InitializeComponent();
         }
 
-        private string Flag_tercero()
-        {
-            var flag_tercero = "";
+        public static int li_idgrupo = 0;
+        public static string ls_grupo_desc = "", ls_dni = "", ls_trabajador = "";
+        public static bool editar = false;
+
+        string Flag_tercero() {
+            string flag_tercero = "";
             if (cbflag_tercero.Checked)
+            {
                 flag_tercero = "1";
             else
                 flag_tercero = "0";
@@ -63,17 +67,21 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             dgvgrupo_turno_cab.Rows.Clear();
             var Lista = LGrupo_turno.Lista_grupo_turno(ls_fecha_produccion);
             foreach (var f in Lista)
-                dgvgrupo_turno_cab.Rows.Add(null, null, f.idgrupo, f.descripcion, f.idusuario, f.nom_usuario, f.idturno,
-                    f.nom_turno,
-                    f.fecha_produccion, f.fecha_inicio, f.fecha_fin, f.flag_tercero == "1" ? true : false,
-                    f.flag_estado == "1" ? true : false);
+            {
+                dgvgrupo_turno_cab.Rows.Add(null, null, f.idgrupo, f.descripcion, f.idusuario, f.nom_usuario, f.idturno, f.nom_turno,
+                                            f.fecha_produccion, f.fecha_inicio, f.fecha_fin, f.flag_tercero == "1" ? true : false, 
+                                            f.flag_estado == "1" ? true : false);
+            }
         }
 
-        private void Lista_Grupo_turno_det(int li_idgrupo)
+        void Lista_Grupo_turno_det(int li_idgrupo)
         {
             dgvlista_trab.Rows.Clear();
             var Lista = LGrupo_turno.Lista_grupo_turno_detalle(li_idgrupo);
-            foreach (var f in Lista) dgvlista_trab.Rows.Add(f.idgrupo, f.trabajador, null, f.ult_cantidad, null);
+            foreach (var f in Lista)
+            {
+                dgvlista_trab.Rows.Add(f.dni, f.trabajador, null, f.ult_cantidad, null);
+            }
         }
 
         private void btncrearturno_Click(object sender, EventArgs e)
@@ -104,7 +112,10 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                 aux.flag_tercero = Flag_tercero();
                 aux.flag_estado = "1";
 
-                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+                if (ConexionGral.conexion.State == ConnectionState.Closed)
+                {
+                    ConexionGral.conectar();
+                }
 
                 var comando = new MySqlCommand("usp_tblgrupo_turno_insert", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
@@ -122,6 +133,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                     MessageBoxIcon.Information);
                 Lista_Grupo_turno(aux.fecha_produccion.ToString("yyyy-MM-dd"));
                 ConexionGral.desconectar();
+                return;
             }
             catch (MySqlException ex)
             {
@@ -212,9 +224,8 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             if (e.ColumnIndex == 2 && e.RowIndex > -1)
             {
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-                var img = Resources.qr;
-                e.Graphics.DrawImage(img, e.CellBounds.Left + 30, e.CellBounds.Top + 3, 18,
-                    15); // centrar la imagen en el boton
+                var img = Properties.Resources.qr;
+                e.Graphics.DrawImage(img, e.CellBounds.Left + 30, e.CellBounds.Top + 3, 18, 15); // centrar la imagen en el boton
                 e.Handled = true;
             }
         }
@@ -226,40 +237,36 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             {
                 editar = true;
                 tbxdescripcion.Text = dgvgrupo_turno_cab.CurrentRow.Cells[3].Value.ToString();
-                cbturno.Text = dgvgrupo_turno_cab.CurrentRow.Cells[6].Value + " - " +
-                               dgvgrupo_turno_cab.CurrentRow.Cells[7].Value;
+                cbturno.Text = dgvgrupo_turno_cab.CurrentRow.Cells[6].Value.ToString() + " - " + dgvgrupo_turno_cab.CurrentRow.Cells[7].Value.ToString();
                 dtpfec_produccion.Value = Convert.ToDateTime(dgvgrupo_turno_cab.CurrentRow.Cells[8].Value);
                 dtpdesde.Value = Convert.ToDateTime(dgvgrupo_turno_cab.CurrentRow.Cells[9].Value);
                 dtphasta.Value = Convert.ToDateTime(dgvgrupo_turno_cab.CurrentRow.Cells[10].Value);
-                cbflag_tercero.Checked =
-                    dgvgrupo_turno_cab.CurrentRow.Cells[11].Value.ToString() == "True" ? true : false;
-                lblestado.Text = dgvgrupo_turno_cab.CurrentRow.Cells[12].Value.ToString() == "True"
-                    ? "ACTIVO"
-                    : "ANULADO";
+                cbflag_tercero.Checked = dgvgrupo_turno_cab.CurrentRow.Cells[11].Value.ToString() == "True" ? true : false;
+                lblestado.Text = dgvgrupo_turno_cab.CurrentRow.Cells[12].Value.ToString() == "True" ? "ACTIVO" : "ANULADO";
             }
             else if (dgvgrupo_turno_cab.Columns[e.ColumnIndex].Index == 1) // ELIMINAR
             {
-                var rpta = MessageBox.Show(
-                    @"¿ ESTA SEGURO DE ELIMINAR EL GRUPO " + dgvgrupo_turno_cab.CurrentRow.Cells[3].Value + " ?"
-                    , @"Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var rpta = MessageBox.Show("¿ ESTA SEGURO DE ELIMINAR EL GRUPO " + dgvgrupo_turno_cab.CurrentRow.Cells[3].Value.ToString() + " ?"
+                    , "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (rpta == DialogResult.Yes)
                 {
                     MySqlCommand comando;
                     try
                     {
-                        if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+                        if (ConexionGral.conexion.State == ConnectionState.Closed)
+                        {
+                            ConexionGral.conectar();
+                        }
                         comando = new MySqlCommand("usp_tblcolaborador_delete", ConexionGral.conexion);
                         comando.CommandType = CommandType.StoredProcedure;
-                        comando.Parameters.AddWithValue("p_id",
-                            Convert.ToInt32(dgvgrupo_turno_cab.CurrentRow.Cells[2].Value));
+                        comando.Parameters.AddWithValue("p_id", Convert.ToInt32(dgvgrupo_turno_cab.CurrentRow.Cells[2].Value));
                         comando.ExecuteNonQuery();
-                        MessageBox.Show(@"GRUPO TURNO SE ELIMINO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
+                        MessageBox.Show("GRUPO TURNO SE ELIMINO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ConexionGral.desconectar();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         throw;
                     }
                 }
@@ -272,17 +279,16 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             {
                 try
                 {
+
                     if (tbxdescripcion.Text.Length == 0)
                     {
-                        MessageBox.Show(@"Ingrese La Descripcion del Grupo", @"Aviso", MessageBoxButtons.OK,
-                            MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Ingrese La Descripcion del Grupo", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return;
                     }
 
                     if (cbturno.SelectedIndex == 0)
                     {
-                        MessageBox.Show(@"Seleccione un Turno", @"Aviso", MessageBoxButtons.OK,
-                            MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Seleccione un Turno", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return;
                     }
 
@@ -290,8 +296,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                     aux.idgrupo = Convert.ToInt32(dgvgrupo_turno_cab.CurrentRow.Cells[2].Value);
                     aux.descripcion = tbxdescripcion.Text.Trim();
                     aux.idusuario = Login.usuarioId1;
-                    aux.idturno =
-                        Convert.ToInt32(cbturno.Text.Substring(0, cbturno.Text.Contains("-").ToString().Length - 2));
+                    aux.idturno = Convert.ToInt32(cbturno.Text.Substring(0, cbturno.Text.Contains("-").ToString().Length - 2));
                     aux.fecha_produccion = Convert.ToDateTime(dtpfec_produccion.Value.ToShortDateString());
                     aux.fecha_inicio = Convert.ToDateTime(dtpdesde.Value);
                     aux.fecha_fin = Convert.ToDateTime(dtphasta.Value);
@@ -299,7 +304,10 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                     aux.flag_estado = "1";
 
 
-                    if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+                    if (ConexionGral.conexion.State == ConnectionState.Closed)
+                    {
+                        ConexionGral.conectar();
+                    }
 
                     var comando = new MySqlCommand("usp_tblgrupo_turno_update", ConexionGral.conexion);
                     comando.CommandType = CommandType.StoredProcedure;
@@ -314,20 +322,17 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                     comando.Parameters.AddWithValue("p_flag_estado", aux.flag_estado);
                     comando.Parameters.AddWithValue("p_id", aux.idgrupo);
                     comando.ExecuteNonQuery();
-                    MessageBox.Show(@"GRUPO TURNO ACTUALIZADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                    MessageBox.Show("GRUPO TURNO ACTUALIZADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Lista_Grupo_turno(aux.fecha_produccion.ToString("yyyy-MM-dd"));
                     ConexionGral.desconectar();
                     return;
+
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show(@"COLABORADOR NO REGISTRADO. 
-" + ex.Message, @"ERROR", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    MessageBox.Show("COLABORADOR NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     throw;
                 }
-
                 editar = false;
             }
         }
@@ -340,7 +345,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                 ls_grupo_desc = dgvgrupo_turno_cab.CurrentRow.Cells[3].Value.ToString();
 
                 lblidgrupo.Text = li_idgrupo.ToString();
-                lbldesc_grupo.Text = ls_grupo_desc;
+                lbldesc_grupo.Text = ls_grupo_desc.ToString();
                 lblnro_trab.Text = dgvlista_trab.RowCount.ToString();
 
                 Lista_Grupo_turno_det(li_idgrupo);

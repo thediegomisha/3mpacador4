@@ -35,6 +35,11 @@ namespace _3mpacador4.Presentacion.Reporte
         private void ImprimirPesos_Load(object sender, EventArgs e)
         {
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

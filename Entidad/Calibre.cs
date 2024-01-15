@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace _3mpacador4.Entidad
 {
-    public class Terminal
+    public class Calibre
     {
-        public int idterminal { get; set; }
-        public string descripcion { get; set; }
-        public string flag_estado { get; set; }
+        public int idcalibre { get; set; }
+        public int calibre { get; set; }
+        public int ultimo_nro_print { get; set; }
     }
 }

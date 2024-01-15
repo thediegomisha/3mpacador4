@@ -1,5 +1,15 @@
-﻿using System;
+﻿using _3mpacador4.Entidad;
+using _3mpacador4.Logica;
+using Devart.Data.MySql;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using _3mpacador4.Entidad;
 using _3mpacador4.Logica;
@@ -21,9 +31,13 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             var estado = "";
 
             if (cbxestado.Checked)
+            {
                 estado = "1";
+            }
             else
+            {
                 estado = "0";
+            }
 
             return estado;
         }
@@ -71,6 +85,8 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     MessageBoxIcon.Information);
                 LimpiarCampos();
                 ConexionGral.desconectar();
+                return;
+
             }
             catch (MySqlException ex)
             {
@@ -84,6 +100,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         {
             try
             {
+
                 if (txtDescripcion.Text.Length <= 0)
                 {
                     MessageBox.Show(@"Error, Ingrese Nombres del Colaborador", @"Aviso", MessageBoxButtons.OK,
@@ -110,6 +127,8 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     MessageBoxIcon.Information);
                 LimpiarCampos();
                 ConexionGral.desconectar();
+                return;
+
             }
             catch (MySqlException ex)
             {
@@ -127,7 +146,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            InsertarTerminal();
+            InsertarTerminal();           
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -144,15 +163,21 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 cbxestado.Text = @"INACTIVO";
 
             if (frmTerminal.editar)
+            {
                 if (frmTerminal.t.idterminal > 0)
                 {
                     id = frmTerminal.t.idterminal;
                     txtDescripcion.Text = frmTerminal.t.descripcion;
                     if (Convert.ToBoolean(frmTerminal.t.flag_estado))
+                    {
                         cbxestado.Checked = true;
+                    }
                     else
+                    {
                         cbxestado.Checked = false;
+                    }
                 }
+            }
         }
     }
 }

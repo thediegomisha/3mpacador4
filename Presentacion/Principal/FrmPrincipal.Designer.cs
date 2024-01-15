@@ -45,6 +45,7 @@
             this.btnMantenimiento = new System.Windows.Forms.Button();
             this.panelSistema = new System.Windows.Forms.Panel();
             this.btnReniec = new System.Windows.Forms.Button();
+            this.btnImprimeCalibre = new System.Windows.Forms.Button();
             this.BtnPesosDiversos = new System.Windows.Forms.Button();
             this.btnBD = new System.Windows.Forms.Button();
             this.btnPuertoSerie = new System.Windows.Forms.Button();
@@ -68,17 +69,17 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.LblVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.TxtVersion = new System.Windows.Forms.ToolStripStatusLabel();
-            this.LBLUSER = new System.Windows.Forms.ToolStripStatusLabel();
             this.LBLUSUARIO = new System.Windows.Forms.ToolStripStatusLabel();
-            this.LblIp = new System.Windows.Forms.ToolStripStatusLabel();
             this.TxtIp = new System.Windows.Forms.ToolStripStatusLabel();
-            this.LblServer = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtServer = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtDatabase = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblDatabase = new System.Windows.Forms.ToolStripStatusLabel();
-            this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LBLUSER = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LblIp = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LblServer = new System.Windows.Forms.ToolStripStatusLabel();
+            this.txtDatabase = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.PanelLadoIzq.SuspendLayout();
             this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
@@ -208,7 +209,7 @@
             this.btnUsuarios.UseVisualStyleBackColor = true;
             this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
-            // btnTerminal
+            // btnColaborador
             // 
             this.btnTerminal.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnTerminal.FlatAppearance.BorderSize = 0;
@@ -341,7 +342,22 @@
             this.panelSistema.TabIndex = 11;
             // 
             // btnReniec
+            // btnImprimeCalibre
             // 
+            this.btnImprimeCalibre.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnImprimeCalibre.FlatAppearance.BorderSize = 0;
+            this.btnImprimeCalibre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimeCalibre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnImprimeCalibre.ForeColor = System.Drawing.Color.LightGray;
+            this.btnImprimeCalibre.Location = new System.Drawing.Point(0, 99);
+            this.btnImprimeCalibre.Name = "btnImprimeCalibre";
+            this.btnImprimeCalibre.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnImprimeCalibre.Size = new System.Drawing.Size(159, 33);
+            this.btnImprimeCalibre.TabIndex = 7;
+            this.btnImprimeCalibre.Text = "Imprime Calibre";
+            this.btnImprimeCalibre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImprimeCalibre.UseVisualStyleBackColor = true;
+            this.btnImprimeCalibre.Click += new System.EventHandler(this.btnImprimeCalibre_Click);
             this.btnReniec.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnReniec.FlatAppearance.BorderSize = 0;
             this.btnReniec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -702,26 +718,12 @@
             this.TxtVersion.Size = new System.Drawing.Size(48, 20);
             this.TxtVersion.Text = "Version";
             // 
-            // LBLUSER
-            // 
-            this.LBLUSER.Image = ((System.Drawing.Image)(resources.GetObject("LBLUSER.Image")));
-            this.LBLUSER.Name = "LBLUSER";
-            this.LBLUSER.Size = new System.Drawing.Size(69, 20);
-            this.LBLUSER.Text = "Usuario :";
-            // 
             // LBLUSUARIO
             // 
             this.LBLUSUARIO.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBLUSUARIO.Name = "LBLUSUARIO";
             this.LBLUSUARIO.Size = new System.Drawing.Size(55, 20);
             this.LBLUSUARIO.Text = "Usuario";
-            // 
-            // LblIp
-            // 
-            this.LblIp.Image = ((System.Drawing.Image)(resources.GetObject("LblIp.Image")));
-            this.LblIp.Name = "LblIp";
-            this.LblIp.Size = new System.Drawing.Size(36, 20);
-            this.LblIp.Text = "IP:";
             // 
             // TxtIp
             // 
@@ -730,13 +732,6 @@
             this.TxtIp.Size = new System.Drawing.Size(44, 20);
             this.TxtIp.Text = "0.0.0.0";
             // 
-            // LblServer
-            // 
-            this.LblServer.Image = ((System.Drawing.Image)(resources.GetObject("LblServer.Image")));
-            this.LblServer.Name = "LblServer";
-            this.LblServer.Size = new System.Drawing.Size(58, 20);
-            this.LblServer.Text = "Server:";
-            // 
             // txtServer
             // 
             this.txtServer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -744,26 +739,12 @@
             this.txtServer.Size = new System.Drawing.Size(78, 20);
             this.txtServer.Text = "NameServer";
             // 
-            // txtDatabase
-            // 
-            this.txtDatabase.Image = ((System.Drawing.Image)(resources.GetObject("txtDatabase.Image")));
-            this.txtDatabase.Name = "txtDatabase";
-            this.txtDatabase.Size = new System.Drawing.Size(74, 20);
-            this.txtDatabase.Text = "DataBase:";
-            // 
             // lblDatabase
             // 
             this.lblDatabase.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDatabase.Name = "lblDatabase";
             this.lblDatabase.Size = new System.Drawing.Size(59, 20);
             this.lblDatabase.Text = "DataBase";
-            // 
-            // LblNombrePc
-            // 
-            this.LblNombrePc.Image = ((System.Drawing.Image)(resources.GetObject("LblNombrePc.Image")));
-            this.LblNombrePc.Name = "LblNombrePc";
-            this.LblNombrePc.Size = new System.Drawing.Size(126, 20);
-            this.LblNombrePc.Text = "Nombre de Equipo:";
             // 
             // txtNombreEquipo
             // 
@@ -778,6 +759,41 @@
             this.ToolStripStatusLabel.Name = "ToolStripStatusLabel";
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
+            // 
+            // LBLUSER
+            // 
+            this.LBLUSER.Image = ((System.Drawing.Image)(resources.GetObject("LBLUSER.Image")));
+            this.LBLUSER.Name = "LBLUSER";
+            this.LBLUSER.Size = new System.Drawing.Size(69, 20);
+            this.LBLUSER.Text = "Usuario :";
+            // 
+            // LblIp
+            // 
+            this.LblIp.Image = ((System.Drawing.Image)(resources.GetObject("LblIp.Image")));
+            this.LblIp.Name = "LblIp";
+            this.LblIp.Size = new System.Drawing.Size(36, 20);
+            this.LblIp.Text = "IP:";
+            // 
+            // LblServer
+            // 
+            this.LblServer.Image = ((System.Drawing.Image)(resources.GetObject("LblServer.Image")));
+            this.LblServer.Name = "LblServer";
+            this.LblServer.Size = new System.Drawing.Size(58, 20);
+            this.LblServer.Text = "Server:";
+            // 
+            // txtDatabase
+            // 
+            this.txtDatabase.Image = ((System.Drawing.Image)(resources.GetObject("txtDatabase.Image")));
+            this.txtDatabase.Name = "txtDatabase";
+            this.txtDatabase.Size = new System.Drawing.Size(74, 20);
+            this.txtDatabase.Text = "DataBase:";
+            // 
+            // LblNombrePc
+            // 
+            this.LblNombrePc.Image = ((System.Drawing.Image)(resources.GetObject("LblNombrePc.Image")));
+            this.LblNombrePc.Name = "LblNombrePc";
+            this.LblNombrePc.Size = new System.Drawing.Size(126, 20);
+            this.LblNombrePc.Text = "Nombre de Equipo:";
             // 
             // FrmPrincipal
             // 

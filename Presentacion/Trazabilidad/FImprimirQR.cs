@@ -197,8 +197,8 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                     var boldFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 9); // Fuente en negrita
                     foreach (var li in Lista_num_trab)
                     {
-                        var qrCode = new BarcodeQRCode(li.codigo, 150, 150, null);
-                        var img = qrCode.GetImage();
+                        BarcodeQRCode qrCode = new BarcodeQRCode(li.codigo, 150, 150, null);
+                        iTextSharp.text.Image img = qrCode.GetImage();
 
                         var qrCell = new PdfPCell();
                         qrCell.PaddingTop = 1;

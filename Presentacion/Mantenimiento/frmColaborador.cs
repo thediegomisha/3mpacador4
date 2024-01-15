@@ -7,6 +7,8 @@ using Devart.Data.MySql;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
+    
+
     public partial class frmColaborador : Form
     {
         public static bool editar;
@@ -22,9 +24,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         {
             var aux = new Colaborador();
 
-            var F = new frmAltaDNI();
-            F.CambiarTextoLabel("Ingreso de Colaborador");
-            // F.Panel.BackColor = Color.Green;
+            frmColaborador2 F = new frmColaborador2();
             F.ShowDialog();
             MostrarColaborador();
         }

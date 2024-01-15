@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using _3mpacador4.Presentacion;
+using _3mpacador4.Presentacion.Sistema;
+using _3mpacador4.Presentacion.Principal;
 
 namespace _3mpacador4
 {
