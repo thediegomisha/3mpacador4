@@ -290,7 +290,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 if (!string.IsNullOrEmpty(txtnumlote.Text))
                     BtnBuscar.PerformClick();
                 else
-                    MessageBox.Show("Ingrese el Peso Correcto");
+                    MessageBox.Show(@"Ingrese el Peso Correcto");
             }
         }
 

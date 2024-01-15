@@ -202,8 +202,8 @@
             this.GroupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.GroupBox3.BackColor = System.Drawing.SystemColors.Control;
             this.GroupBox3.Controls.Add(this.label13);
-            this.GroupBox3.Controls.Add(this.txtPesoManual);
             this.GroupBox3.Controls.Add(this.lblST);
+            this.GroupBox3.Controls.Add(this.txtPesoManual);
             this.GroupBox3.Controls.Add(this.lblpeso);
             this.GroupBox3.Location = new System.Drawing.Point(615, 501);
             this.GroupBox3.Margin = new System.Windows.Forms.Padding(4);
@@ -229,11 +229,11 @@
             // txtPesoManual
             // 
             this.txtPesoManual.BackColor = System.Drawing.Color.Black;
-            this.txtPesoManual.Font = new System.Drawing.Font("Microsoft Sans Serif", 110.25F, System.Drawing.FontStyle.Bold);
+            this.txtPesoManual.Font = new System.Drawing.Font("Microsoft Sans Serif", 99.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesoManual.ForeColor = System.Drawing.Color.Red;
             this.txtPesoManual.Location = new System.Drawing.Point(0, 20);
             this.txtPesoManual.Name = "txtPesoManual";
-            this.txtPesoManual.Size = new System.Drawing.Size(576, 174);
+            this.txtPesoManual.Size = new System.Drawing.Size(576, 158);
             this.txtPesoManual.TabIndex = 106;
             this.txtPesoManual.Text = "000.0 ";
             this.txtPesoManual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -256,7 +256,7 @@
             // 
             this.lblpeso.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblpeso.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblpeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 110.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblpeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 99.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblpeso.ForeColor = System.Drawing.Color.Lime;
             this.lblpeso.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblpeso.Location = new System.Drawing.Point(4, 22);

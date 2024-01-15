@@ -74,7 +74,7 @@ namespace _3mpacador4.Presentacion.Sistema
                     bloque.token_reniec = txttoken.Text
                         ;
                     bloque.Save();
-                    MessageBox.Show("Datos Guardados Satisfactoriamente !!!");
+                    MessageBox.Show(@"Datos Guardados Satisfactoriamente !!!");
                 }
             }
             catch (Exception ex)

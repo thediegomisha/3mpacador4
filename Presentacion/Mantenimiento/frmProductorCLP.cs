@@ -282,7 +282,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 if (!string.IsNullOrEmpty(txtCLP.Text))
                     btnBuscar.PerformClick();
                 else
-                    MessageBox.Show("Ingrese el Dato Correcto");
+                    MessageBox.Show(@"Ingrese el Dato Correcto");
             }
         }
 

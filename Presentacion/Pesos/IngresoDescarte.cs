@@ -417,7 +417,7 @@ namespace _3mpacador4
                 if (!string.IsNullOrEmpty(txtPesoManual.Text))
                     btnguardar.PerformClick();
                 else
-                    MessageBox.Show("Ingrese el Peso Correcto");
+                    MessageBox.Show(@"Ingrese el Peso Correcto");
             }
         }
 
@@ -464,7 +464,7 @@ namespace _3mpacador4
                 }
                 else
                 {
-                    MessageBox.Show("Error, el Peso tiene que ser mayor que 0", @"TARA JABA");
+                    MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"TARA JABA");
                     return;
                 }
 
@@ -474,7 +474,7 @@ namespace _3mpacador4
                 }
                 else
                 {
-                    MessageBox.Show("Error, el Peso tiene que ser mayor que 0", @"TARA PARIHUELA");
+                    MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"TARA PARIHUELA");
                     return;
                 }
 
@@ -489,7 +489,7 @@ namespace _3mpacador4
                     }
                     else
                     {
-                        MessageBox.Show("Error, el Peso tiene que ser mayor que 0", @"PESO BALANZA");
+                        MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"PESO BALANZA");
                         return;
                     }
                 }
@@ -501,7 +501,7 @@ namespace _3mpacador4
                     }
                     else
                     {
-                        MessageBox.Show("Error, el Peso tiene que ser mayor que 0", @"PESO BALANZA");
+                        MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"PESO BALANZA");
                         return;
                     }
                 }
@@ -514,7 +514,7 @@ namespace _3mpacador4
                 }
                 else
                 {
-                    MessageBox.Show("Error, El Turno debe ser Ingresado", @"TURNO");
+                    MessageBox.Show(@"Error, El Turno debe ser Ingresado", @"TURNO");
                     return;
                 }
 
@@ -524,7 +524,7 @@ namespace _3mpacador4
                 }
                 else
                 {
-                    MessageBox.Show("Error, El Turno debe ser Ingresado", @"TURNO");
+                    MessageBox.Show(@"Error, El Turno debe ser Ingresado", @"TURNO");
                     return;
                 }
 
@@ -724,7 +724,7 @@ namespace _3mpacador4
                     withBlock.DisplayMember = "numlote";
                     withBlock.ValueMember = "idlote";
                     withBlock.SelectedIndex = -1;
-                    MessageBox.Show("El Lote se cerro Satisfactoriamente !!!");
+                    MessageBox.Show(@"El Lote se cerro Satisfactoriamente !!!");
                     //}
                     //else
                     //{

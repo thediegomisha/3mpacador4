@@ -188,7 +188,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Algo salió mal en la consulta(): {ex.Message}", @"Error");
+                MessageBox.Show($@"Algo salió mal en la consulta(): {ex.Message}", @"Error");
             }
         }
 

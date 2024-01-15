@@ -48,7 +48,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 }
                 else
                 {
-                    MessageBox.Show("Error, La cantidad tiene que ser mayor que 0", @"CANTIDAD LOTE");
+                    MessageBox.Show(@"Error, La cantidad tiene que ser mayor que 0", @"CANTIDAD LOTE");
                 }
             }
             catch (Exception ex)

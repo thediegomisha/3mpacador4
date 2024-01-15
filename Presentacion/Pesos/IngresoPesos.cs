@@ -185,7 +185,7 @@ namespace _3mpacador4
                 if (!string.IsNullOrEmpty(TextoForm))
                 {
                     POSICION_INICIAL = Strings.InStr(TextoForm, PUNTO).ToString();
-                    stringinicio = Strings.Mid(TextoForm, (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 6d), 12);
+                    stringinicio = Strings.Mid(TextoForm, (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 7d), 13);
 
 
                     if (stringinicio.StartsWith(w))
@@ -196,7 +196,7 @@ namespace _3mpacador4
                         if (textoini == w + n + cero)
                         {
                             mostrarcaracter = Strings.Mid(TextoForm,
-                                (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 12d), 8);
+                                (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 11d), 8);
                             lblpeso.Text =
                                 Strings.FormatNumber(Conversion.Val(mostrarcaracter.Replace("+", " ")),
                                     2); // funcion REPLACE, REEMPLAZA EL SIGNO + POR UN ESPACIO EN BLANCO 05/12/19
@@ -658,7 +658,7 @@ namespace _3mpacador4
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -700,7 +700,7 @@ namespace _3mpacador4
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -746,7 +746,7 @@ namespace _3mpacador4
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -761,7 +761,7 @@ namespace _3mpacador4
                 if (!string.IsNullOrEmpty(txtPesoManual.Text))
                     btnguardar.PerformClick();
                 else
-                    MessageBox.Show("Ingrese el Peso Correcto");
+                    MessageBox.Show(@"Ingrese el Peso Correcto");
             }
         }
 
@@ -803,7 +803,7 @@ namespace _3mpacador4
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -899,7 +899,7 @@ namespace _3mpacador4
 
                 if (txtGuiaRemision.Text == string.Empty)
                 {
-                    MessageBox.Show("Error, Tiene que Ingresar el Numero de Guia", @"GUIA REMISION");
+                    MessageBox.Show(@"Error, Tiene que Ingresar el Numero de Guia", @"GUIA REMISION");
                     return;
                 }
                 else
@@ -913,7 +913,7 @@ namespace _3mpacador4
                 }
                 else
                 {
-                    MessageBox.Show("Error, el Peso tiene que ser mayor que 0", @"TARA JABA");
+                    MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"TARA JABA");
                     return;
                 }
 
@@ -923,7 +923,7 @@ namespace _3mpacador4
                 }
                 else
                 {
-                    MessageBox.Show("Error, el Peso tiene que ser mayor que 0", @"TARA PARIHUELA");
+                    MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"TARA PARIHUELA");
                     return;
                 }
 
@@ -938,7 +938,7 @@ namespace _3mpacador4
                     }
                     else
                     {
-                        MessageBox.Show("Error, el Peso tiene que ser mayor que 0", @"PESO BALANZA");
+                        MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"PESO BALANZA");
                         return;
                     }
                 }
@@ -950,7 +950,7 @@ namespace _3mpacador4
                     }
                     else
                     {
-                        MessageBox.Show("Error, el Peso tiene que ser mayor que 0", @"PESO BALANZA");
+                        MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"PESO BALANZA");
                         return;
                     }
                 }
@@ -962,7 +962,7 @@ namespace _3mpacador4
                 }
                 else
                 {
-                    MessageBox.Show("Error, El Turno debe ser Ingresado", @"TURNO");
+                    MessageBox.Show(@"Error, El Turno debe ser Ingresado", @"TURNO");
                     return;
                 }
 
@@ -972,7 +972,7 @@ namespace _3mpacador4
                 }
                 else
                 {
-                    MessageBox.Show("Error, El Turno debe ser Ingresado", @"TURNO");
+                    MessageBox.Show(@"Error, El Turno debe ser Ingresado", @"TURNO");
                     return;
                 }
 
@@ -984,7 +984,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -1162,7 +1162,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -1240,12 +1240,12 @@ namespace _3mpacador4
                     //    //lblpesoneto.Text = (datos.Rows[0]["PESO NETO"].ToString());
                     //    //lblcantjabas.Text = (datos.Rows[0]["CANT JABAS"].ToString());
                     else
-                        lblpais1.Text = "No Existe en la Lista !!!";
+                        lblpais1.Text = @"No Existe en la Lista !!!";
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -1300,7 +1300,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -1339,7 +1339,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -1374,7 +1374,7 @@ namespace _3mpacador4
                     withBlock.DisplayMember = "numlote";
                     withBlock.ValueMember = "idlote";
                     withBlock.SelectedIndex = -1;
-                    MessageBox.Show("El Lote se cerro Satisfactoriamente !!!");
+                    MessageBox.Show(@"El Lote se cerro Satisfactoriamente !!!");
                     //}
                     //else
                     //{
@@ -1384,7 +1384,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

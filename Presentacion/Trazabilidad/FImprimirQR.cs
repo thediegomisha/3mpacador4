@@ -222,7 +222,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                     doc.Close();
                     writer.Close();
 
-                    MessageBox.Show("SE GENERARON LOS QR :)", @"CODIGOS QR");
+                    MessageBox.Show(@"SE GENERARON LOS QR :)", @"CODIGOS QR");
                     Close();
                 }
             }

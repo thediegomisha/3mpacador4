@@ -81,7 +81,7 @@ namespace _3mpacador4.Presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Nombre de usuario o contraseña incorrectos");
+                    MessageBox.Show(@"Nombre de usuario o contraseña incorrectos");
                     txtlogin.Text = string.Empty;
                     txtpassword.Text = string.Empty;
                 }

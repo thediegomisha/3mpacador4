@@ -136,7 +136,7 @@ namespace _3mpacador4.Presentacion.Sistema
 
 
                     bloque.Save();
-                    MessageBox.Show("Datos Guardados Satisfactoriamente !!!");
+                    MessageBox.Show(@"Datos Guardados Satisfactoriamente !!!");
                 }
             }
             catch (Exception ex)
