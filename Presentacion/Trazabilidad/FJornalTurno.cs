@@ -89,7 +89,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             var Lista = LGrupo_turno.Lista_grupo_turno_detalle(li_idgrupo);
             foreach (var f in Lista)
             {
-                dgvlista_trab.Rows.Add(f.idgrupo, f.trabajador, null, f.ult_cantidad, null);
+                dgvlista_trab.Rows.Add(f.dni, f.trabajador, null, f.ult_cantidad, null);
             }
         }
 

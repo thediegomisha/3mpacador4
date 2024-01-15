@@ -54,6 +54,11 @@ namespace _3mpacador4.Presentacion.Reporte
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

@@ -111,7 +111,6 @@
             // 
             // pictureBox1
             // 
-            //this.pictureBox1.Image = global::_3mpacador4.Properties.Resources.TickeAgricolaPesos2;
             this.pictureBox1.Location = new System.Drawing.Point(30, 41);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(419, 328);
@@ -128,6 +127,7 @@
             this.button1.TabIndex = 97;
             this.button1.Text = "Imprimir";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnsalir
             // 

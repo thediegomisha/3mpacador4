@@ -262,6 +262,12 @@ namespace _3mpacador4.Presentacion
             AbrirFormularioHijo(new frmTerminal());
 
         }
+
+        private void btnImprimeCalibre_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new FrmImprimeCalibre());
+        }
     }
 }
 

@@ -12,7 +12,7 @@ namespace _3mpacador4.Logica
     public class LGrupo_turno
     {
 
-        public static Grupo_turno Entidad(MySqlDataReader lector)
+        /*public static Grupo_turno Entidad(MySqlDataReader lector)
         {
             var x = new Grupo_turno();
             x.idgrupo = Convert.ToInt32(lector[0]);
@@ -28,7 +28,7 @@ namespace _3mpacador4.Logica
             x.flag_estado = Convert.ToString(lector[10]);
 
             return x;
-        }
+        }*/
         public static List<Grupo_turno> Lista_grupo_turno(string ls_fecha_produccion)
         {
             var lista = new List<Grupo_turno>();
@@ -64,7 +64,7 @@ namespace _3mpacador4.Logica
             return lista;
         }
 
-        public static Grupo_turno_detalle Entidad2(MySqlDataReader lector)
+        /*public static Grupo_turno_detalle Entidad2(MySqlDataReader lector)
         {
             var x = new Grupo_turno_detalle();
             x.idgrupo = Convert.ToInt32(lector[0]);
@@ -73,7 +73,7 @@ namespace _3mpacador4.Logica
             x.ult_cantidad = Convert.ToInt32(lector[3]);
 
             return x;
-        }
+        }*/
         public static List<Grupo_turno_detalle> Lista_grupo_turno_detalle(int li_idgrupo)
         {
             var lista = new List<Grupo_turno_detalle>();
