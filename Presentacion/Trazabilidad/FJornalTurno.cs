@@ -1,19 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using _3mpacador4.Entidad;
 using _3mpacador4.Logica;
-using _3mpacador4.Properties;
 using Devart.Data.MySql;
 
 namespace _3mpacador4.Presentacion.Trazabilidad
 {
     public partial class FJornalTurno : Form
     {
-        public static int li_idgrupo;
-        public static string ls_grupo_desc = "", ls_dni = "", ls_trabajador = "";
-        public static bool editar;
-
         public FJornalTurno()
         {
             InitializeComponent();
@@ -23,17 +24,21 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         public static string ls_grupo_desc = "", ls_dni = "", ls_trabajador = "";
         public static bool editar = false;
 
-        string Flag_tercero() {
+        string Flag_tercero()
+        {
             string flag_tercero = "";
             if (cbflag_tercero.Checked)
             {
                 flag_tercero = "1";
+            }
             else
+            {
                 flag_tercero = "0";
+            }
             return flag_tercero;
         }
 
-        private void Cargar_turno()
+        void Cargar_turno()
         {
             MySqlCommand comando;
             try
@@ -41,35 +46,40 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                 cbturno.Items.Clear();
                 cbturno.Items.Add("< Seleccione >");
 
-                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+                if (ConexionGral.conexion.State == ConnectionState.Closed)
+                {
+                    ConexionGral.conectar();
+                }
 
                 comando = new MySqlCommand("usp_tblturno_Select", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
 
-                using (var reader = comando.ExecuteReader())
+                using (MySqlDataReader reader = comando.ExecuteReader())
                 {
-                    while (reader.Read()) cbturno.Items.Add(reader["idturno"] + " - " + reader["nombre"]);
+                    while (reader.Read())
+                    {
+                        cbturno.Items.Add(reader["idturno"].ToString() + " - " + reader["nombre"].ToString());
+                    }
                 }
-
                 ConexionGral.desconectar();
                 cbturno.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
                 ConexionGral.desconectar();
-                MessageBox.Show(ex.Message, @"Algo salio Mal :( ");
+                MessageBox.Show(ex.Message, "Algo salio Mal :( ");
                 throw;
             }
         }
 
-        private void Lista_Grupo_turno(string ls_fecha_produccion)
+        void Lista_Grupo_turno(string ls_fecha_produccion)
         {
             dgvgrupo_turno_cab.Rows.Clear();
             var Lista = LGrupo_turno.Lista_grupo_turno(ls_fecha_produccion);
             foreach (var f in Lista)
             {
                 dgvgrupo_turno_cab.Rows.Add(null, null, f.idgrupo, f.descripcion, f.idusuario, f.nom_usuario, f.idturno, f.nom_turno,
-                                            f.fecha_produccion, f.fecha_inicio, f.fecha_fin, f.flag_tercero == "1" ? true : false, 
+                                            f.fecha_produccion, f.fecha_inicio, f.fecha_fin, f.flag_tercero == "1" ? true : false,
                                             f.flag_estado == "1" ? true : false);
             }
         }
@@ -90,22 +100,20 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             {
                 if (tbxdescripcion.Text.Length == 0)
                 {
-                    MessageBox.Show(@"Ingrese La Descripcion del Grupo", @"Aviso", MessageBoxButtons.OK,
-                        MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Ingrese La Descripcion del Grupo", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
 
                 if (cbturno.SelectedIndex == 0)
                 {
-                    MessageBox.Show(@"Seleccione un Turno", @"Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Seleccione un Turno", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
 
                 var aux = new Grupo_turno();
                 aux.descripcion = tbxdescripcion.Text.Trim();
                 aux.idusuario = Login.usuarioId1;
-                aux.idturno =
-                    Convert.ToInt32(cbturno.Text.Substring(0, cbturno.Text.Contains("-").ToString().Length - 2));
+                aux.idturno = Convert.ToInt32(cbturno.Text.Substring(0, cbturno.Text.Contains("-").ToString().Length - 2));
                 aux.fecha_produccion = Convert.ToDateTime(dtpfec_produccion.Value.ToShortDateString());
                 aux.fecha_inicio = Convert.ToDateTime(dtpdesde.Value);
                 aux.fecha_fin = Convert.ToDateTime(dtphasta.Value);
@@ -129,16 +137,14 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                 comando.Parameters.AddWithValue("p_flag_tercero", aux.flag_tercero);
                 comando.Parameters.AddWithValue("p_flag_estado", aux.flag_estado);
                 comando.ExecuteNonQuery();
-                MessageBox.Show(@"COLABORADOR REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                MessageBox.Show("COLABORADOR REGISTRADO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Lista_Grupo_turno(aux.fecha_produccion.ToString("yyyy-MM-dd"));
                 ConexionGral.desconectar();
                 return;
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(@"COLABORADOR NO REGISTRADO. " + ex.Message, @"ERROR", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("COLABORADOR NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
         }
@@ -146,7 +152,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         private void FJornalTurno_Load(object sender, EventArgs e)
         {
             Cargar_turno();
-            lblusuario.Text = Login.usuarioId1 + " " + Login.nombre1 + " " + Login.apaterno1;
+            lblusuario.Text = Login.usuarioId1.ToString() + " " + Login.nombre1 + " " + Login.apaterno1;
         }
 
         private void btncancelar_Click(object sender, EventArgs e)
@@ -159,23 +165,24 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             Lista_Grupo_turno(dtpfecha_produccion_fil.Value.ToString("yyyy-MM-dd"));
         }
 
-        public bool Existe_dni(string rol, DataGridView dgv)
+        public bool Existe_dni(String rol, DataGridView dgv)
         {
-            var existe = false;
+            bool existe = false;
 
             foreach (DataGridViewRow f in dgv.Rows)
             {
-                var verifica = f.Cells[0].Value.ToString();
+                string verifica = f.Cells[0].Value.ToString();
                 if (rol == verifica)
                 {
-                    MessageBox.Show(@"EL DNI " + verifica + @" YA ESISTE EN LA LISTA DE TRABAJADORES", @"AVISO");
+                    MessageBox.Show("EL DNI " + verifica + " YA ESISTE EN LA LISTA DE TRABAJADORES", "AVISO");
                     existe = true;
                     break;
                 }
-
-                existe = false;
+                else
+                {
+                    existe = false;
+                }
             }
-
             return existe;
         }
 
@@ -183,14 +190,17 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         {
             try
             {
+
                 if (dgvlista_trab.RowCount <= 0)
                 {
-                    MessageBox.Show(@"No Hay Ningun Trabajador para Asignar al Grupo", @"Aviso", MessageBoxButtons.OK,
-                        MessageBoxIcon.Exclamation);
+                    MessageBox.Show("No Hay Ningun Trabajador para Asignar al Grupo", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
 
-                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+                if (ConexionGral.conexion.State == ConnectionState.Closed)
+                {
+                    ConexionGral.conectar();
+                }
 
                 foreach (DataGridViewRow f in dgvlista_trab.Rows)
                 {
@@ -206,15 +216,15 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                     comando.ExecuteNonQuery();
                 }
 
-                MessageBox.Show(@"TRABAJADORES ASIGNADOS AL GRUPO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                Lista_Grupo_turno_det(Convert.ToInt32(lblidgrupo.Text));
+                MessageBox.Show("TRABAJADORES ASIGNADOS AL GRUPO SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Lista_Grupo_turno_det(Convert.ToInt32(lblidgrupo.Text.ToString()));
                 ConexionGral.desconectar();
+                return;
+
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(@"TRABAJADOR NO REGISTRADO. " + ex.Message, @"ERROR", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("TRABAJADOR NO REGISTRADO. \n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
         }
@@ -356,8 +366,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         {
             if (dgvgrupo_turno_cab.SelectedRows.Count <= 0)
             {
-                MessageBox.Show(@"Debe Selecccionar un Grupo", @"Aviso...!!!", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
+                MessageBox.Show("Debe Selecccionar un Grupo", "Aviso...!!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
@@ -372,15 +381,26 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                 if (dgvlista_trab.RowCount > 0)
                 {
                     foreach (var y in FTraslado_trabajador.lista_datos)
-                        if (Existe_dni(y.dni, dgvlista_trab) == false)
+                    {
+                        if (Existe_dni(y.dni.ToString(), dgvlista_trab) == false)
+                        {
                             dgvlista_trab.Rows.Add(y.dni, y.trabajador);
+                        }
+                    }
                     lblnro_trab.Text = dgvlista_trab.RowCount.ToString();
                 }
                 else
                 {
-                    foreach (var y in FTraslado_trabajador.lista_datos) dgvlista_trab.Rows.Add(y.dni, y.trabajador);
+                    foreach (var y in FTraslado_trabajador.lista_datos)
+                    {
+                        dgvlista_trab.Rows.Add(y.dni, y.trabajador);
+                    }
                     lblnro_trab.Text = dgvlista_trab.RowCount.ToString();
                 }
+            }
+            else
+            {
+                return;
             }
         }
 

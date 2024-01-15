@@ -240,7 +240,7 @@
             // 
             // pbreniec
             // 
-            this.pbreniec.Image = global::_3mpacador4.Properties.Resources.Sunat_Logo_Vector;
+      //      this.pbreniec.Image = global::_3mpacador4.Properties.Resources.Sunat_Logo_Vector;
             this.pbreniec.Location = new System.Drawing.Point(12, 3);
             this.pbreniec.Name = "pbreniec";
             this.pbreniec.Size = new System.Drawing.Size(163, 62);

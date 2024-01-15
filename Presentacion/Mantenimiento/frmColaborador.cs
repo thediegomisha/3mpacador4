@@ -24,7 +24,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         {
             var aux = new Colaborador();
 
-            frmColaborador2 F = new frmColaborador2();
+            frmAltaDNI F = new frmAltaDNI();
             F.ShowDialog();
             MostrarColaborador();
         }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReniec));
-            this.PictureBox1 = new System.Windows.Forms.PictureBox();
+//            this.PictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnprobar = new System.Windows.Forms.Button();
             this.Label5 = new System.Windows.Forms.Label();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();

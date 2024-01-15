@@ -250,10 +250,10 @@
     <Compile Include="Entidad\Terminal.cs" />
     <Compile Include="ImpresionZPL.cs" />
     <Compile Include="Entidad\Sunat.cs" />
-    <Compile Include="Entidad\Terminal.cs" />
     <Compile Include="Logica\ClConexion.cs" />
     <Compile Include="Logica\ConexionGral.cs" />
     <Compile Include="Logica\ConnectionStringManager.cs" />
+    <Compile Include="Logica\FormUtils.cs" />
     <Compile Include="Logica\LGrupo_turno.cs" />
     <Compile Include="Presentacion\Mantenimiento\frmAcopiador.cs">
       <SubType>Form</SubType>
@@ -273,11 +273,11 @@
     <Compile Include="Presentacion\Mantenimiento\frmAltaRUC.Designer.cs">
       <DependentUpon>frmAltaRUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmColaborador.cs">
+    <Compile Include="Presentacion\Mantenimiento\frmcolaborador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmColaborador.Designer.cs">
-      <DependentUpon>frmColaborador.cs</DependentUpon>
+    <Compile Include="Presentacion\Mantenimiento\frmcolaborador.Designer.cs">
+      <DependentUpon>frmcolaborador.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Mantenimiento\frmMatCosecha.cs">
       <SubType>Form</SubType>
@@ -511,9 +511,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmAltaRUC.resx">
       <DependentUpon>frmAltaRUC.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmColaborador.resx">
-      <DependentUpon>frmColaborador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmMatCosecha.resx">
       <DependentUpon>frmMatCosecha.cs</DependentUpon>

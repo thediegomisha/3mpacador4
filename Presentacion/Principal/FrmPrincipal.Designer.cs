@@ -45,7 +45,7 @@
             this.btnMantenimiento = new System.Windows.Forms.Button();
             this.panelSistema = new System.Windows.Forms.Panel();
             this.btnReniec = new System.Windows.Forms.Button();
-            this.btnImprimeCalibre = new System.Windows.Forms.Button();
+           // this.btnImprimeCalibre = new System.Windows.Forms.Button();
             this.BtnPesosDiversos = new System.Windows.Forms.Button();
             this.btnBD = new System.Windows.Forms.Button();
             this.btnPuertoSerie = new System.Windows.Forms.Button();
@@ -341,23 +341,25 @@
             this.panelSistema.Size = new System.Drawing.Size(137, 148);
             this.panelSistema.TabIndex = 11;
             // 
+            
+            //// btnImprimeCalibre
+            //// 
+            //this.btnImprimeCalibre.Dock = System.Windows.Forms.DockStyle.Top;
+            //this.btnImprimeCalibre.FlatAppearance.BorderSize = 0;
+            //this.btnImprimeCalibre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            //this.btnImprimeCalibre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            //this.btnImprimeCalibre.ForeColor = System.Drawing.Color.LightGray;
+            //this.btnImprimeCalibre.Location = new System.Drawing.Point(0, 99);
+            //this.btnImprimeCalibre.Name = "btnImprimeCalibre";
+            //this.btnImprimeCalibre.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            //this.btnImprimeCalibre.Size = new System.Drawing.Size(159, 33);
+            //this.btnImprimeCalibre.TabIndex = 7;
+            //this.btnImprimeCalibre.Text = "Imprime Calibre";
+            //this.btnImprimeCalibre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            //this.btnImprimeCalibre.UseVisualStyleBackColor = true;
+            //this.btnImprimeCalibre.Click += new System.EventHandler(this.btnImprimeCalibre_Click);
+
             // btnReniec
-            // btnImprimeCalibre
-            // 
-            this.btnImprimeCalibre.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnImprimeCalibre.FlatAppearance.BorderSize = 0;
-            this.btnImprimeCalibre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimeCalibre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnImprimeCalibre.ForeColor = System.Drawing.Color.LightGray;
-            this.btnImprimeCalibre.Location = new System.Drawing.Point(0, 99);
-            this.btnImprimeCalibre.Name = "btnImprimeCalibre";
-            this.btnImprimeCalibre.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnImprimeCalibre.Size = new System.Drawing.Size(159, 33);
-            this.btnImprimeCalibre.TabIndex = 7;
-            this.btnImprimeCalibre.Text = "Imprime Calibre";
-            this.btnImprimeCalibre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimeCalibre.UseVisualStyleBackColor = true;
-            this.btnImprimeCalibre.Click += new System.EventHandler(this.btnImprimeCalibre_Click);
             this.btnReniec.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnReniec.FlatAppearance.BorderSize = 0;
             this.btnReniec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

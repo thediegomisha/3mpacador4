@@ -20,10 +20,10 @@ using System.Windows.Forms;
 using Font = iTextSharp.text.Font;
 using Image = iTextSharp.text.Image;
 using Rectangle = iTextSharp.text.Rectangle;
-using SharpZebra.Printing;
+//using SharpZebra.Printing;
 using System.Runtime.InteropServices;
-using LibUsbDotNet.Main;
-using LibUsbDotNet;
+//using LibUsbDotNet.Main;
+//using LibUsbDotNet;
 
 namespace _3mpacador4.Presentacion.Sistema
 {
