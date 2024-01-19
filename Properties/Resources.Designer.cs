@@ -93,6 +93,16 @@ namespace _3mpacador4.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Button_Close_24x24_ {
+            get {
+                object obj = ResourceManager.GetObject("Button_Close(24x24)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cancel {
             get {
                 object obj = ResourceManager.GetObject("cancel", resourceCulture);
@@ -163,6 +173,16 @@ namespace _3mpacador4.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap label {
+            get {
+                object obj = ResourceManager.GetObject("label", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logoagricola {
             get {
                 object obj = ResourceManager.GetObject("logoagricola", resourceCulture);
@@ -206,6 +226,16 @@ namespace _3mpacador4.Properties {
         internal static System.Drawing.Bitmap save {
             get {
                 object obj = ResourceManager.GetObject("save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sunat_Logo_Vector {
+            get {
+                object obj = ResourceManager.GetObject("Sunat Logo Vector", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,9 +293,9 @@ namespace _3mpacador4.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ticketagricola2 {
+        internal static System.Drawing.Bitmap ticketRecepcion {
             get {
-                object obj = ResourceManager.GetObject("ticketagricola2", resourceCulture);
+                object obj = ResourceManager.GetObject("ticketRecepcion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

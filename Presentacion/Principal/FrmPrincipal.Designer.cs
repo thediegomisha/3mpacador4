@@ -80,6 +80,7 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnImpresora = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
@@ -120,7 +121,7 @@
             this.panelTrazabilidad.Controls.Add(this.btnProceso);
             this.panelTrazabilidad.Controls.Add(this.btnJornal);
             this.panelTrazabilidad.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTrazabilidad.Location = new System.Drawing.Point(0, 1031);
+            this.panelTrazabilidad.Location = new System.Drawing.Point(0, 1069);
             this.panelTrazabilidad.Name = "panelTrazabilidad";
             this.panelTrazabilidad.Size = new System.Drawing.Size(137, 92);
             this.panelTrazabilidad.TabIndex = 15;
@@ -166,7 +167,7 @@
             this.btnTrazabilidadP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrazabilidadP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnTrazabilidadP.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 987);
+            this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 1025);
             this.btnTrazabilidadP.Name = "btnTrazabilidadP";
             this.btnTrazabilidadP.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnTrazabilidadP.Size = new System.Drawing.Size(137, 44);
@@ -188,7 +189,7 @@
             this.panelMantenimiento.Controls.Add(this.btnColaborador);
             this.panelMantenimiento.Controls.Add(this.btnAcopiador);
             this.panelMantenimiento.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMantenimiento.Location = new System.Drawing.Point(0, 702);
+            this.panelMantenimiento.Location = new System.Drawing.Point(0, 740);
             this.panelMantenimiento.Name = "panelMantenimiento";
             this.panelMantenimiento.Size = new System.Drawing.Size(137, 285);
             this.panelMantenimiento.TabIndex = 12;
@@ -336,7 +337,7 @@
             this.btnMantenimiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMantenimiento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnMantenimiento.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnMantenimiento.Location = new System.Drawing.Point(0, 658);
+            this.btnMantenimiento.Location = new System.Drawing.Point(0, 696);
             this.btnMantenimiento.Name = "btnMantenimiento";
             this.btnMantenimiento.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnMantenimiento.Size = new System.Drawing.Size(137, 44);
@@ -349,6 +350,7 @@
             // panelSistema
             // 
             this.panelSistema.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panelSistema.Controls.Add(this.btnImpresora);
             this.panelSistema.Controls.Add(this.btnReniec);
             this.panelSistema.Controls.Add(this.BtnPesosDiversos);
             this.panelSistema.Controls.Add(this.btnBD);
@@ -356,7 +358,7 @@
             this.panelSistema.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSistema.Location = new System.Drawing.Point(0, 521);
             this.panelSistema.Name = "panelSistema";
-            this.panelSistema.Size = new System.Drawing.Size(137, 137);
+            this.panelSistema.Size = new System.Drawing.Size(137, 175);
             this.panelSistema.TabIndex = 11;
             // 
             // btnReniec
@@ -798,6 +800,23 @@
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
             // 
+            // btnImpresora
+            // 
+            this.btnImpresora.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnImpresora.FlatAppearance.BorderSize = 0;
+            this.btnImpresora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImpresora.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnImpresora.ForeColor = System.Drawing.Color.LightGray;
+            this.btnImpresora.Location = new System.Drawing.Point(0, 132);
+            this.btnImpresora.Name = "btnImpresora";
+            this.btnImpresora.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnImpresora.Size = new System.Drawing.Size(137, 33);
+            this.btnImpresora.TabIndex = 8;
+            this.btnImpresora.Text = "Impresora";
+            this.btnImpresora.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImpresora.UseVisualStyleBackColor = true;
+            this.btnImpresora.Click += new System.EventHandler(this.btnImpresora_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -879,5 +898,6 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnTerminal;
         private System.Windows.Forms.Button btnImprimirCalibre;
+        private System.Windows.Forms.Button btnImpresora;
     }
 }

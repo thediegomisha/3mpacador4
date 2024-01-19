@@ -127,5 +127,10 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 }
             }
         }
+
+        private void frmColaborador_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

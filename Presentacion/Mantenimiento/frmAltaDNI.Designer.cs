@@ -35,21 +35,17 @@
             this.txtnombres = new System.Windows.Forms.TextBox();
             this.Label3 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
-         //   this.btnActualizar = new System.Windows.Forms.Button();
-         // this.txtapel_paterno = new MetroFramework.Controls.MetroTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtapel_materno = new System.Windows.Forms.TextBox();
-            this.txtapel_paterno = new System.Windows.Forms.TextBox();
             this.cbxreniec = new System.Windows.Forms.CheckBox();
             this.pbreniec = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cbxestado = new System.Windows.Forms.CheckBox();
-        //  this.txtapel_materno = new MetroFramework.Controls.MetroTextBox();
+            this.txtapel_materno = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtapel_paterno = new System.Windows.Forms.TextBox();
             this.btnActualizar = new Glass.GlassButton();
             this.btnCancelar = new Glass.GlassButton();
             this.btnGuardar = new Glass.GlassButton();
-       //   this.Panel1.SuspendLayout();
             this.Panel.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbreniec)).BeginInit();
@@ -62,7 +58,7 @@
             this.Panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel.Location = new System.Drawing.Point(0, 0);
             this.Panel.Name = "Panel";
-            this.Panel.Size = new System.Drawing.Size(718, 41);
+            this.Panel.Size = new System.Drawing.Size(607, 41);
             this.Panel.TabIndex = 32;
             // 
             // lbltitulo
@@ -79,17 +75,17 @@
             // Label4
             // 
             this.Label4.AutoSize = true;
-            this.Label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.Location = new System.Drawing.Point(45, 142);
+            this.Label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label4.Location = new System.Drawing.Point(14, 142);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(158, 21);
+            this.Label4.Size = new System.Drawing.Size(169, 21);
             this.Label4.TabIndex = 41;
             this.Label4.Text = "APELLIDO PATERNO :";
             // 
             // txtdni
             // 
             this.txtdni.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdni.Location = new System.Drawing.Point(220, 42);
+            this.txtdni.Location = new System.Drawing.Point(198, 42);
             this.txtdni.MaxLength = 10;
             this.txtdni.Name = "txtdni";
             this.txtdni.Size = new System.Drawing.Size(189, 29);
@@ -100,16 +96,16 @@
             // 
             this.txtnombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtnombres.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnombres.Location = new System.Drawing.Point(48, 107);
+            this.txtnombres.Location = new System.Drawing.Point(17, 107);
             this.txtnombres.Name = "txtnombres";
-            this.txtnombres.Size = new System.Drawing.Size(635, 29);
+            this.txtnombres.Size = new System.Drawing.Size(486, 29);
             this.txtnombres.TabIndex = 1;
             // 
             // Label3
             // 
             this.Label3.AutoSize = true;
             this.Label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(216, 18);
+            this.Label3.Location = new System.Drawing.Point(194, 18);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(44, 21);
             this.Label3.TabIndex = 33;
@@ -118,57 +114,13 @@
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(45, 83);
+            this.Label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.Location = new System.Drawing.Point(13, 83);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(91, 21);
+            this.Label2.Size = new System.Drawing.Size(96, 21);
             this.Label2.TabIndex = 34;
             this.Label2.Text = "NOMBRES :";
             // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnActualizar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.Location = new System.Drawing.Point(449, 321);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(82, 29);
-            this.btnActualizar.TabIndex = 38;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
-            // 
-            // txtapel_paterno
-            // 
-            this.txtapel_paterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            // 
-            // 
-            // 
-            //this.txtapel_paterno.CustomButton.Image = null;
-            //this.txtapel_paterno.CustomButton.Location = new System.Drawing.Point(278, 1);
-            //this.txtapel_paterno.CustomButton.Name = "";
-            //this.txtapel_paterno.CustomButton.Size = new System.Drawing.Size(27, 27);
-            //this.txtapel_paterno.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            //this.txtapel_paterno.CustomButton.TabIndex = 1;
-            //this.txtapel_paterno.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            //this.txtapel_paterno.CustomButton.UseSelectable = true;
-            //this.txtapel_paterno.CustomButton.Visible = false;
-            //this.txtapel_paterno.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            //this.txtapel_paterno.Lines = new string[0];
-            //this.txtapel_paterno.Location = new System.Drawing.Point(49, 167);
-            //this.txtapel_paterno.MaxLength = 32767;
-            //this.txtapel_paterno.Name = "txtapel_paterno";
-            //this.txtapel_paterno.PasswordChar = '\0';
-            //this.txtapel_paterno.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            //this.txtapel_paterno.SelectedText = "";
-            //this.txtapel_paterno.SelectionLength = 0;
-            //this.txtapel_paterno.SelectionStart = 0;
-            //this.txtapel_paterno.ShortcutsEnabled = true;
-            //this.txtapel_paterno.Size = new System.Drawing.Size(306, 29);
-            //this.txtapel_paterno.TabIndex = 49;
-            //this.txtapel_paterno.UseSelectable = true;
-            //this.txtapel_paterno.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            //this.txtapel_paterno.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //// 
             // panel2
             // 
             this.panel2.Controls.Add(this.cbxreniec);
@@ -185,26 +137,8 @@
             this.panel2.Controls.Add(this.Label2);
             this.panel2.Location = new System.Drawing.Point(-1, 48);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(718, 242);
+            this.panel2.Size = new System.Drawing.Size(601, 242);
             this.panel2.TabIndex = 0;
-            // 
-            // txtapel_materno
-            // 
-            this.txtapel_materno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtapel_materno.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtapel_materno.Location = new System.Drawing.Point(374, 167);
-            this.txtapel_materno.Name = "txtapel_materno";
-            this.txtapel_materno.Size = new System.Drawing.Size(309, 29);
-            this.txtapel_materno.TabIndex = 50;
-            // 
-            // txtapel_paterno
-            // 
-            this.txtapel_paterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtapel_paterno.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtapel_paterno.Location = new System.Drawing.Point(49, 167);
-            this.txtapel_paterno.Name = "txtapel_paterno";
-            this.txtapel_paterno.Size = new System.Drawing.Size(306, 29);
-            this.txtapel_paterno.TabIndex = 49;
             // 
             // cbxreniec
             // 
@@ -212,7 +146,7 @@
             this.cbxreniec.Checked = true;
             this.cbxreniec.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbxreniec.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxreniec.Location = new System.Drawing.Point(123, 51);
+            this.cbxreniec.Location = new System.Drawing.Point(95, 51);
             this.cbxreniec.Name = "cbxreniec";
             this.cbxreniec.Size = new System.Drawing.Size(82, 20);
             this.cbxreniec.TabIndex = 48;
@@ -223,7 +157,7 @@
             // pbreniec
             // 
             this.pbreniec.Image = global::_3mpacador4.Properties.Resources.reniec;
-            this.pbreniec.Location = new System.Drawing.Point(48, 9);
+            this.pbreniec.Location = new System.Drawing.Point(17, 3);
             this.pbreniec.Name = "pbreniec";
             this.pbreniec.Size = new System.Drawing.Size(67, 62);
             this.pbreniec.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -256,51 +190,38 @@
             // txtapel_materno
             // 
             this.txtapel_materno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtapel_materno.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtapel_materno.Location = new System.Drawing.Point(301, 167);
+            this.txtapel_materno.Name = "txtapel_materno";
+            this.txtapel_materno.Size = new System.Drawing.Size(276, 29);
+            this.txtapel_materno.TabIndex = 50;
             // 
-            // 
-            // 
-            //this.txtapel_materno.CustomButton.Image = null;
-            //this.txtapel_materno.CustomButton.Location = new System.Drawing.Point(281, 1);
-            //this.txtapel_materno.CustomButton.Name = "";
-            //this.txtapel_materno.CustomButton.Size = new System.Drawing.Size(27, 27);
-            //this.txtapel_materno.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            //this.txtapel_materno.CustomButton.TabIndex = 1;
-            //this.txtapel_materno.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            //this.txtapel_materno.CustomButton.UseSelectable = true;
-            //this.txtapel_materno.CustomButton.Visible = false;
-            //this.txtapel_materno.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            //this.txtapel_materno.Lines = new string[0];
-            //this.txtapel_materno.Location = new System.Drawing.Point(374, 167);
-            //this.txtapel_materno.MaxLength = 32767;
-            //this.txtapel_materno.Name = "txtapel_materno";
-            //this.txtapel_materno.PasswordChar = '\0';
-            //this.txtapel_materno.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            //this.txtapel_materno.SelectedText = "";
-            //this.txtapel_materno.SelectionLength = 0;
-            //this.txtapel_materno.SelectionStart = 0;
-            //this.txtapel_materno.ShortcutsEnabled = true;
-            //this.txtapel_materno.Size = new System.Drawing.Size(309, 29);
-            //this.txtapel_materno.TabIndex = 50;
-            //this.txtapel_materno.UseSelectable = true;
-            //this.txtapel_materno.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            //this.txtapel_materno.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //// 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(370, 142);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(297, 142);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(164, 21);
+            this.label5.Size = new System.Drawing.Size(175, 21);
             this.label5.TabIndex = 43;
             this.label5.Text = "APELLIDO MATERNO :";
+            // 
+            // txtapel_paterno
+            // 
+            this.txtapel_paterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtapel_paterno.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtapel_paterno.Location = new System.Drawing.Point(18, 167);
+            this.txtapel_paterno.Name = "txtapel_paterno";
+            this.txtapel_paterno.Size = new System.Drawing.Size(256, 29);
+            this.txtapel_paterno.TabIndex = 49;
             // 
             // btnActualizar
             // 
             this.btnActualizar.BackColor = System.Drawing.Color.Blue;
+            this.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnActualizar.Image = global::_3mpacador4.Properties.Resources.update;
-            this.btnActualizar.Location = new System.Drawing.Point(184, 310);
+            this.btnActualizar.Location = new System.Drawing.Point(184, 297);
             this.btnActualizar.Margin = new System.Windows.Forms.Padding(4);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.OuterBorderColor = System.Drawing.Color.Blue;
@@ -317,7 +238,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.GlowColor = System.Drawing.Color.Empty;
             this.btnCancelar.Image = global::_3mpacador4.Properties.Resources.cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(543, 310);
+            this.btnCancelar.Location = new System.Drawing.Point(461, 296);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.OuterBorderColor = System.Drawing.Color.Red;
@@ -333,7 +254,7 @@
             this.btnGuardar.BackColor = System.Drawing.Color.Blue;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnGuardar.Image = global::_3mpacador4.Properties.Resources.save;
-            this.btnGuardar.Location = new System.Drawing.Point(36, 310);
+            this.btnGuardar.Location = new System.Drawing.Point(36, 297);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.OuterBorderColor = System.Drawing.Color.Blue;
@@ -344,15 +265,12 @@
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // frmColaborador2
+            // frmAltaDNI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 368);
+            this.ClientSize = new System.Drawing.Size(607, 345);
             this.ControlBox = false;
-            this.Controls.Add(this.btnActualizar);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Panel);
             this.Controls.Add(this.btnCancelar);

@@ -70,10 +70,10 @@
             // Label4
             // 
             this.Label4.AutoSize = true;
-            this.Label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label4.Location = new System.Drawing.Point(14, 138);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(91, 21);
+            this.Label4.Size = new System.Drawing.Size(96, 21);
             this.Label4.TabIndex = 41;
             this.Label4.Text = "DIRECCION";
             // 
@@ -104,20 +104,20 @@
             // Label3
             // 
             this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.Location = new System.Drawing.Point(192, 11);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(50, 21);
+            this.Label3.Size = new System.Drawing.Size(54, 21);
             this.Label3.TabIndex = 33;
             this.Label3.Text = "R.U.C.";
             // 
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label2.Location = new System.Drawing.Point(15, 79);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(120, 21);
+            this.Label2.Size = new System.Drawing.Size(125, 21);
             this.Label2.TabIndex = 34;
             this.Label2.Text = "RAZON SOCIAL";
             // 
@@ -142,7 +142,7 @@
             this.txtdireccion.Multiline = true;
             this.txtdireccion.Name = "txtdireccion";
             this.txtdireccion.PasswordChar = '\0';
-            this.txtdireccion.WaterMark = "Ej: Jiron Santa Rosa 711";
+            this.txtdireccion.PromptText = "Ej: Jiron Santa Rosa 711";
             this.txtdireccion.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtdireccion.SelectedText = "";
             this.txtdireccion.SelectionLength = 0;
@@ -190,7 +190,7 @@
             this.txtruc.MaxLength = 32767;
             this.txtruc.Name = "txtruc";
             this.txtruc.PasswordChar = '\0';
-            this.txtruc.WaterMark = "Ej. 20552167466";
+            this.txtruc.PromptText = "Ej. 20552167466";
             this.txtruc.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtruc.SelectedText = "";
             this.txtruc.SelectionLength = 0;
@@ -225,7 +225,7 @@
             this.txtRazonSocial.Multiline = true;
             this.txtRazonSocial.Name = "txtRazonSocial";
             this.txtRazonSocial.PasswordChar = '\0';
-            this.txtRazonSocial.WaterMark = "Ej. ALMIK SAC";
+            this.txtRazonSocial.PromptText = "Ej. ALMIK SAC";
             this.txtRazonSocial.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtRazonSocial.SelectedText = "";
             this.txtRazonSocial.SelectionLength = 0;
@@ -240,7 +240,7 @@
             // 
             // pbreniec
             // 
-      //      this.pbreniec.Image = global::_3mpacador4.Properties.Resources.Sunat_Logo_Vector;
+            this.pbreniec.Image = global::_3mpacador4.Properties.Resources.Sunat_Logo_Vector;
             this.pbreniec.Location = new System.Drawing.Point(12, 3);
             this.pbreniec.Name = "pbreniec";
             this.pbreniec.Size = new System.Drawing.Size(163, 62);

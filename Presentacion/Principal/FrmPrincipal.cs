@@ -303,5 +303,12 @@ namespace _3mpacador4.Presentacion
             ocultarSubMenu();
             AbrirFormularioHijo(new FrmImprimeCalibre());
         }
+
+        private void btnImpresora_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            var form = new FrmPrinter();
+            form.ShowDialog();
+        }
     }
 }

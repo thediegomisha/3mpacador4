@@ -64,7 +64,7 @@ namespace _3mpacador4.Presentacion.Sistema
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
         }
@@ -111,7 +111,7 @@ namespace _3mpacador4.Presentacion.Sistema
                 comando.Parameters.AddWithValue("p_calibre", li_calibre);
                 comando.Parameters.AddWithValue("p_cantidad", li_cantidad);
                 comando.ExecuteNonQuery();
-                MessageBox.Show("CANTIDAD DE ETIQUETAS ACTUALIZADA SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(@"CANTIDAD DE ETIQUETAS ACTUALIZADA SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //LimpiarCampos();
                 ConexionGral.desconectar();
                 return;
@@ -120,7 +120,7 @@ namespace _3mpacador4.Presentacion.Sistema
             catch (MySqlException ex)
             {
                 ConexionGral.desconectar();
-                MessageBox.Show("ALGO SALIO MAL \n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("ALGO SALIO MAL \n" + ex.Message, @"ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
         }

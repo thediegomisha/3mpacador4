@@ -868,16 +868,22 @@ namespace _3mpacador4
 
         private void InsertarRegistro()
         {
+            float tarajaba = 0;
+            float taraparihuela = 0;
+            float pesobruto = 0;
+            float pesobrutoManual = 0;
+            txtPesoManual.Text = "0.0";
+
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
                 var comando = new MySqlCommand("usp_tblticketpesaje_Insert", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
 
-                var tarajaba = float.Parse(txttarajaba.Text);
-                var taraparihuela = float.Parse(txttaraParihuela.Text);
-                var pesobruto = float.Parse(lblpeso.Text);
-                var pesobrutoManual = float.Parse(txtPesoManual.Text);
+                 tarajaba = float.Parse(txttarajaba.Text);
+                 taraparihuela = float.Parse(txttaraParihuela.Text);
+                 pesobruto = float.Parse(lblpeso.Text);
+                 pesobrutoManual = float.Parse(txtPesoManual.Text);
 
 
                 comando.Parameters.AddWithValue("p_numdoc", lblcorrelativo.Text);

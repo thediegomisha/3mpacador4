@@ -701,7 +701,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
 
                 withBlock.Columns["LOTE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                withBlock.Columns["LOTE"].Width = 40;
+                withBlock.Columns["LOTE"].Width = 60;
 
 
                 withBlock.Columns["FECHA PESAJE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;

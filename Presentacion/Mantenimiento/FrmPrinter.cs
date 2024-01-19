@@ -41,5 +41,26 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             lblprinter_choose.Text = Settings.Default.Impresora_valor;
 
         }
+
+        private void btn_selecciona_Click(object sender, EventArgs e)
+        {
+            Settings.Default.Impresora_valor = List_Printer.Text;
+            lblprinter_choose.Text  = List_Printer.Text.ToString();
+            Settings.Default.Save();
+        }
+
+        private void btn_salir_Click(object sender, EventArgs e)
+        {
+            Settings.Default.Save();
+            this.Close();
+        }
+
+        private void List_Printer_DoubleClick(object sender, EventArgs e)
+        {
+            Settings.Default.Impresora_valor = List_Printer.Text;
+            lblprinter_choose.Text = List_Printer.Text.ToString( );
+            Settings.Default.Save();
+         //  this.Close();
+        }
     }
 }
