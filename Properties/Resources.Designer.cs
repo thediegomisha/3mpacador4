@@ -303,6 +303,26 @@ namespace _3mpacador4.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ticketRecepcion2 {
+            get {
+                object obj = ResourceManager.GetObject("ticketRecepcion2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ticketRecepcion21 {
+            get {
+                object obj = ResourceManager.GetObject("ticketRecepcion21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap trasladar {
             get {
                 object obj = ResourceManager.GetObject("trasladar", resourceCulture);

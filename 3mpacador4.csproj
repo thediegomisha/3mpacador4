@@ -655,6 +655,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="palta.ico" />
+    <None Include="Resources\ticketRecepcion21.png" />
+    <None Include="Resources\ticketRecepcion2.png" />
     <None Include="Resources\ticketRecepcion.png" />
     <None Include="Resources\cargando.gif" />
     <Content Include="Resources\Button_Close%2824x24%29.png" />

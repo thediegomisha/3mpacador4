@@ -106,7 +106,7 @@ namespace _3mpacador4
                 if (!string.IsNullOrEmpty(TextoForm))
                 {
                     POSICION_INICIAL = Strings.InStr(TextoForm, PUNTO).ToString();
-                    stringinicio = Strings.Mid(TextoForm, (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 6d), 12);
+                    stringinicio = Strings.Mid(TextoForm, (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 7d), 13);
 
 
                     if (stringinicio.StartsWith(w))
@@ -117,7 +117,7 @@ namespace _3mpacador4
                         if (textoini == w + n + cero)
                         {
                             mostrarcaracter = Strings.Mid(TextoForm,
-                                (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 12d), 8);
+                                (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 11d), 8);
                             lblpeso.Text =
                                 Strings.FormatNumber(Conversion.Val(mostrarcaracter.Replace("+", " ")),
                                     2); // funcion REPLACE, REEMPLAZA EL SIGNO + POR UN ESPACIO EN BLANCO 05/12/19
@@ -452,8 +452,7 @@ namespace _3mpacador4
                 comando.Parameters.AddWithValue("@idmetodocultivo", MySqlType.Int).Value = lblconvencional.Text;
                 comando.Parameters.AddWithValue("@idtiposervicio", MySqlType.Int).Value = lblservicio.Text;
                 comando.Parameters.AddWithValue("@idproducto", MySqlType.Int).Value = lblproducto.Text;
-                comando.Parameters.AddWithValue("@idlote", MySqlType.Int).Value =
-                    cboLote.GetItemText(cboLote.SelectedValue.ToString());
+                comando.Parameters.AddWithValue("@idlote", MySqlType.Int).Value = cboLote.GetItemText(cboLote.SelectedValue.ToString());
                 comando.Parameters.AddWithValue("@idvariedad", MySqlType.Int).Value = lblvariedad.Text;
 
                 comando.Parameters.AddWithValue("@idcliente", MySqlType.Int).Value = lblcliente.Text;

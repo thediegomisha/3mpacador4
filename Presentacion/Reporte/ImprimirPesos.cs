@@ -100,25 +100,27 @@ namespace _3mpacador4.Presentacion.Reporte
                        "O07KFC,P03IF8,,^FS");
 
                     //    ^FX Top section with logo, name and address.
-                        cadena.AppendLine("^CF0,90");
+                        cadena.AppendLine("^CF0,120");
                         cadena.AppendLine("^FO220,20^FDRECEPCION^FS");
 
                     //   ^FX Titulo con Informacion requerida.
-                        cadena.AppendLine("^CF0,40");
-                        cadena.AppendLine("^FO20,200 ^FDFECHA DE RECEPCION :^FS");
+                        cadena.AppendLine("^CF0,70");
+                        cadena.AppendLine("^FO20,240 ^FDCLP :^FS");
 
-                        cadena.AppendLine("^FO20,250 ^FDGUIA DE REMISION :^FS");
-                        cadena.AppendLine("^FO20,300 ^FDCLP :^FS");
-                        cadena.AppendLine("^FO20,350 ^FDPRODUCTOR :^FS");
-                        cadena.AppendLine("^FO20,440 ^FDVARIEDAD :^FS");
-                        cadena.AppendLine("^FO20,490 ^FDNo JABAS: ^FS");
-                        cadena.AppendLine("^FO20,540 ^FDPESO NETO: ^FS");
+                        cadena.AppendLine("^FO20,310 ^FDGUIA REMISION :^FS");
+                        cadena.AppendLine("^FO20,380 ^FDFECHA RECEPCION :^FS");
+                        cadena.AppendLine("^FO20,450 ^FDPRODUCTOR :^FS");
+                        cadena.AppendLine("^FO20,590 ^FDVARIEDAD :^FS");
+                        cadena.AppendLine("^FO20,660 ^FDNo JABAS: ^FS");
+                        cadena.AppendLine("^FO20,740 ^FDPESO NETO: ^FS");
+                        
+                        cadena.AppendLine("^FO870,1 ^BY4,2.0,65 ^BQN,2,10 ^FDJLDJuan Luis Diaz Aylands^FS");
 
                     //    ^FX Informacion que se necesita.
                         cadena.AppendLine("^CF0,40");
-                        cadena.AppendLine("^FO420,200 ^FD" + lblfecharecepcion.Text + " ^FS");
-                        cadena.AppendLine("^FO420,250 ^FD" + lblguiaremision.Text + " ^FS");
-                        cadena.AppendLine("^FO420,300 ^FD" + lblclp2.Text + " ^FS");
+                        cadena.AppendLine("^FO420,380 ^FD" + lblfecharecepcion.Text + " ^FS");
+                        cadena.AppendLine("^FO420,310 ^FD" + lblguiaremision.Text + " ^FS");
+                        cadena.AppendLine("^FO420,240 ^FD" + lblclp2.Text + " ^FS");
 
                     //    int contartexto = lblproductor2.ToString().Length;
 
@@ -135,14 +137,14 @@ namespace _3mpacador4.Presentacion.Reporte
                     //     }
                     //    }
 
-                        cadena.AppendLine("^FO420,350 ^FD" + (lblproductor2.Text) + " ^FS"); // 16 espacios
+                        cadena.AppendLine("^FO420,450 ^FD" + (lblproductor2.Text) + " ^FS"); // 16 espacios
 
-                        cadena.AppendLine("^FO420,440 ^FD" + lblvariedad.Text + " ^FS");
-                        cadena.AppendLine("^FO420,490 ^FD" + lbljabas.Text + " ^FS");
-                        cadena.AppendLine("^FO420,540 ^FD" + lblpesoneto.Text + " ^FS");
+                        cadena.AppendLine("^FO420,590 ^FD" + lblvariedad.Text + " ^FS");
+                        cadena.AppendLine("^FO420,660 ^FD" + lbljabas.Text + " ^FS");
+                        cadena.AppendLine("^FO420,740 ^FD" + lblpesoneto.Text + " ^FS");
 
                     //    ^ FX Contorno
-                        cadena.AppendLine("^FO5,5 ^GB830,580,3 ^FS");
+                        cadena.AppendLine("^FO5,5^GB1165,820,3^FS");
 
                         cadena.AppendLine("^XZ");
 

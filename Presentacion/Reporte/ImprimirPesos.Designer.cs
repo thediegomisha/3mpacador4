@@ -81,20 +81,20 @@
             // 
             this.lblclp2.AutoSize = true;
             this.lblclp2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblclp2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblclp2.Location = new System.Drawing.Point(214, 205);
+            this.lblclp2.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblclp2.Location = new System.Drawing.Point(127, 130);
             this.lblclp2.Name = "lblclp2";
-            this.lblclp2.Size = new System.Drawing.Size(138, 25);
+            this.lblclp2.Size = new System.Drawing.Size(199, 37);
             this.lblclp2.TabIndex = 94;
             this.lblclp2.Text = "016-15235-01";
             // 
             // lblproductor2
             // 
             this.lblproductor2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblproductor2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblproductor2.Location = new System.Drawing.Point(216, 234);
+            this.lblproductor2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblproductor2.Location = new System.Drawing.Point(226, 229);
             this.lblproductor2.Name = "lblproductor2";
-            this.lblproductor2.Size = new System.Drawing.Size(199, 58);
+            this.lblproductor2.Size = new System.Drawing.Size(331, 58);
             this.lblproductor2.TabIndex = 95;
             this.lblproductor2.Text = "JUAN LUIS DIAZ AYLAS";
             // 
@@ -102,16 +102,16 @@
             // 
             this.lblcliente2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lblcliente2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcliente2.Location = new System.Drawing.Point(26, 112);
+            this.lblcliente2.Location = new System.Drawing.Point(24, 94);
             this.lblcliente2.Name = "lblcliente2";
-            this.lblcliente2.Size = new System.Drawing.Size(392, 34);
+            this.lblcliente2.Size = new System.Drawing.Size(407, 34);
             this.lblcliente2.TabIndex = 96;
             this.lblcliente2.Text = "EXPORTADOR";
             // 
             // btnImprimir
             // 
             this.btnImprimir.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.Location = new System.Drawing.Point(197, 371);
+            this.btnImprimir.Location = new System.Drawing.Point(197, 409);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(89, 36);
             this.btnImprimir.TabIndex = 97;
@@ -122,7 +122,7 @@
             // btnsalir
             // 
             this.btnsalir.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnsalir.Location = new System.Drawing.Point(347, 371);
+            this.btnsalir.Location = new System.Drawing.Point(494, 409);
             this.btnsalir.Name = "btnsalir";
             this.btnsalir.Size = new System.Drawing.Size(84, 36);
             this.btnsalir.TabIndex = 97;
@@ -134,10 +134,10 @@
             // 
             this.lblfecharecepcion.AutoSize = true;
             this.lblfecharecepcion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblfecharecepcion.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblfecharecepcion.Location = new System.Drawing.Point(215, 146);
+            this.lblfecharecepcion.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblfecharecepcion.Location = new System.Drawing.Point(335, 199);
             this.lblfecharecepcion.Name = "lblfecharecepcion";
-            this.lblfecharecepcion.Size = new System.Drawing.Size(116, 25);
+            this.lblfecharecepcion.Size = new System.Drawing.Size(148, 32);
             this.lblfecharecepcion.TabIndex = 98;
             this.lblfecharecepcion.Text = "23/03/1978";
             // 
@@ -145,10 +145,10 @@
             // 
             this.lblguiaremision.AutoSize = true;
             this.lblguiaremision.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblguiaremision.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblguiaremision.Location = new System.Drawing.Point(215, 176);
+            this.lblguiaremision.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblguiaremision.Location = new System.Drawing.Point(275, 169);
             this.lblguiaremision.Name = "lblguiaremision";
-            this.lblguiaremision.Size = new System.Drawing.Size(99, 25);
+            this.lblguiaremision.Size = new System.Drawing.Size(124, 32);
             this.lblguiaremision.TabIndex = 100;
             this.lblguiaremision.Text = "EG07-021";
             // 
@@ -156,10 +156,10 @@
             // 
             this.lblvariedad.AutoSize = true;
             this.lblvariedad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblvariedad.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblvariedad.Location = new System.Drawing.Point(214, 280);
+            this.lblvariedad.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblvariedad.Location = new System.Drawing.Point(225, 285);
             this.lblvariedad.Name = "lblvariedad";
-            this.lblvariedad.Size = new System.Drawing.Size(106, 25);
+            this.lblvariedad.Size = new System.Drawing.Size(153, 37);
             this.lblvariedad.TabIndex = 101;
             this.lblvariedad.Text = "VARIEDAD";
             // 
@@ -167,10 +167,10 @@
             // 
             this.lbljabas.AutoSize = true;
             this.lbljabas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lbljabas.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbljabas.Location = new System.Drawing.Point(214, 309);
+            this.lbljabas.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbljabas.Location = new System.Drawing.Point(222, 317);
             this.lbljabas.Name = "lbljabas";
-            this.lbljabas.Size = new System.Drawing.Size(45, 25);
+            this.lbljabas.Size = new System.Drawing.Size(68, 40);
             this.lbljabas.TabIndex = 102;
             this.lbljabas.Text = "000";
             // 
@@ -178,19 +178,19 @@
             // 
             this.lblpesoneto.AutoSize = true;
             this.lblpesoneto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblpesoneto.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblpesoneto.Location = new System.Drawing.Point(214, 335);
+            this.lblpesoneto.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblpesoneto.Location = new System.Drawing.Point(222, 347);
             this.lblpesoneto.Name = "lblpesoneto";
-            this.lblpesoneto.Size = new System.Drawing.Size(72, 25);
+            this.lblpesoneto.Size = new System.Drawing.Size(110, 40);
             this.lblpesoneto.TabIndex = 103;
             this.lblpesoneto.Text = "000.00";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::_3mpacador4.Properties.Resources.ticketRecepcion;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 41);
+            this.pictureBox1.Image = global::_3mpacador4.Properties.Resources.ticketRecepcion21;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 36);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(419, 328);
+            this.pictureBox1.Size = new System.Drawing.Size(576, 367);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 92;
             this.pictureBox1.TabStop = false;
@@ -199,10 +199,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(440, 415);
-            this.Controls.Add(this.lblpesoneto);
-            this.Controls.Add(this.lbljabas);
+            this.ClientSize = new System.Drawing.Size(600, 450);
             this.Controls.Add(this.lblvariedad);
+            this.Controls.Add(this.lbljabas);
+            this.Controls.Add(this.lblpesoneto);
             this.Controls.Add(this.lblguiaremision);
             this.Controls.Add(this.lblfecharecepcion);
             this.Controls.Add(this.btnsalir);
@@ -231,7 +231,6 @@
         private System.Windows.Forms.Label label12;
         internal System.Windows.Forms.Label totalneto;
         internal System.Windows.Forms.Label Label15;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblclp2;
         private System.Windows.Forms.Label lblproductor2;
         private System.Windows.Forms.Label lblcliente2;
@@ -242,5 +241,6 @@
         private System.Windows.Forms.Label lblvariedad;
         private System.Windows.Forms.Label lbljabas;
         private System.Windows.Forms.Label lblpesoneto;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
