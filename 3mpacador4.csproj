@@ -475,6 +475,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RawPrinterHelper.cs" />
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmAcopiador.resx">
       <DependentUpon>frmAcopiador.cs</DependentUpon>
