@@ -29,11 +29,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://3.21.201.232/ftp/</InstallUrl>
+    <InstallUrl>http://3.21.201.232/3mpacadora/ftp/</InstallUrl>
     <MinimumRequiredVersion>1.0.0.5</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>22</ApplicationRevision>
+    <ApplicationRevision>26</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -400,6 +400,12 @@
     <Compile Include="Presentacion\Mantenimiento\FrmReniec.Designer.cs">
       <DependentUpon>FrmReniec.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Sistema\frmCampania.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Sistema\frmCampania.Designer.cs">
+      <DependentUpon>frmCampania.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Trazabilidad\FProgramaProceso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -561,6 +567,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\FrmReniec.resx">
       <DependentUpon>FrmReniec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Sistema\frmCampania.resx">
+      <DependentUpon>frmCampania.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Trazabilidad\FProgramaProceso.resx">
       <DependentUpon>FProgramaProceso.cs</DependentUpon>

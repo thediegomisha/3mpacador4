@@ -64,6 +64,7 @@
             this.lblcantjabas = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
             this.SuspendLayout();
@@ -318,28 +319,31 @@
             // 
             // datalistado
             // 
+            this.datalistado.AllowUserToAddRows = false;
+            this.datalistado.AllowUserToDeleteRows = false;
             this.datalistado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datalistado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.datalistado.Location = new System.Drawing.Point(0, 0);
             this.datalistado.Name = "datalistado";
+            this.datalistado.ReadOnly = true;
             this.datalistado.Size = new System.Drawing.Size(995, 346);
             this.datalistado.TabIndex = 0;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Maiandra GD", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(256, 9);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(337, 22);
+            this.label12.Size = new System.Drawing.Size(348, 24);
             this.label12.TabIndex = 38;
             this.label12.Text = "BOLETA DE PESADO LOTE / OPR :";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // txtnumlote
             // 
-            this.txtnumlote.Location = new System.Drawing.Point(591, 9);
+            this.txtnumlote.Location = new System.Drawing.Point(22, 26);
             this.txtnumlote.Name = "txtnumlote";
             this.txtnumlote.Size = new System.Drawing.Size(100, 20);
             this.txtnumlote.TabIndex = 39;
@@ -425,11 +429,24 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(607, 9);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(72, 24);
+            this.label16.TabIndex = 73;
+            this.label16.Text = "005-24";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // RptBoletaPesado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1029, 624);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblcantjabas);
             this.Controls.Add(this.label17);
@@ -512,5 +529,6 @@
         internal System.Windows.Forms.Label lblcantjabas;
         internal System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label16;
     }
 }

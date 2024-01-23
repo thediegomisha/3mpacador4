@@ -101,6 +101,8 @@
             this.totalgeneral = new System.Windows.Forms.Label();
             this.LBLLL = new System.Windows.Forms.Label();
             this.btnBuscarTodos = new System.Windows.Forms.Button();
+            this.fechaPeriodo = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
@@ -113,7 +115,7 @@
             // dtpfingresofin
             // 
             this.dtpfingresofin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfingresofin.Location = new System.Drawing.Point(228, 9);
+            this.dtpfingresofin.Location = new System.Drawing.Point(228, 28);
             this.dtpfingresofin.Name = "dtpfingresofin";
             this.dtpfingresofin.Size = new System.Drawing.Size(97, 20);
             this.dtpfingresofin.TabIndex = 0;
@@ -121,7 +123,7 @@
             // dtpprocesofin
             // 
             this.dtpprocesofin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpprocesofin.Location = new System.Drawing.Point(228, 35);
+            this.dtpprocesofin.Location = new System.Drawing.Point(228, 54);
             this.dtpprocesofin.Name = "dtpprocesofin";
             this.dtpprocesofin.Size = new System.Drawing.Size(97, 20);
             this.dtpprocesofin.TabIndex = 1;
@@ -129,7 +131,7 @@
             // dtpfingresoini
             // 
             this.dtpfingresoini.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfingresoini.Location = new System.Drawing.Point(125, 8);
+            this.dtpfingresoini.Location = new System.Drawing.Point(125, 27);
             this.dtpfingresoini.Name = "dtpfingresoini";
             this.dtpfingresoini.Size = new System.Drawing.Size(97, 20);
             this.dtpfingresoini.TabIndex = 4;
@@ -137,7 +139,7 @@
             // dtpprocesoini
             // 
             this.dtpprocesoini.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpprocesoini.Location = new System.Drawing.Point(125, 34);
+            this.dtpprocesoini.Location = new System.Drawing.Point(125, 53);
             this.dtpprocesoini.Name = "dtpprocesoini";
             this.dtpprocesoini.Size = new System.Drawing.Size(97, 20);
             this.dtpprocesoini.TabIndex = 5;
@@ -145,7 +147,7 @@
             // chkf_ing
             // 
             this.chkf_ing.AutoSize = true;
-            this.chkf_ing.Location = new System.Drawing.Point(105, 11);
+            this.chkf_ing.Location = new System.Drawing.Point(105, 30);
             this.chkf_ing.Name = "chkf_ing";
             this.chkf_ing.Size = new System.Drawing.Size(15, 14);
             this.chkf_ing.TabIndex = 6;
@@ -155,7 +157,7 @@
             // chkf_proc
             // 
             this.chkf_proc.AutoSize = true;
-            this.chkf_proc.Location = new System.Drawing.Point(105, 34);
+            this.chkf_proc.Location = new System.Drawing.Point(105, 53);
             this.chkf_proc.Name = "chkf_proc";
             this.chkf_proc.Size = new System.Drawing.Size(15, 14);
             this.chkf_proc.TabIndex = 7;
@@ -244,6 +246,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.fechaPeriodo);
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.cbAcopiador);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.chk_acopiador);
@@ -455,7 +459,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 35);
+            this.label2.Location = new System.Drawing.Point(7, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 13);
             this.label2.TabIndex = 1;
@@ -464,7 +468,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 11);
+            this.label1.Location = new System.Drawing.Point(7, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 13);
             this.label1.TabIndex = 0;
@@ -867,6 +871,25 @@
             this.btnBuscarTodos.UseVisualStyleBackColor = false;
             this.btnBuscarTodos.Click += new System.EventHandler(this.btnBuscarTodos_Click);
             // 
+            // fechaPeriodo
+            // 
+            this.fechaPeriodo.CustomFormat = "";
+            this.fechaPeriodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fechaPeriodo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.fechaPeriodo.Location = new System.Drawing.Point(125, 3);
+            this.fechaPeriodo.Name = "fechaPeriodo";
+            this.fechaPeriodo.Size = new System.Drawing.Size(97, 20);
+            this.fechaPeriodo.TabIndex = 29;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 6);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(58, 13);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "Campaña :";
+            // 
             // RptGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -998,5 +1021,7 @@
         internal System.Windows.Forms.Label lblinfo1;
         internal System.Windows.Forms.Label lblinfo3;
         internal System.Windows.Forms.Label lblinfo2;
+        private System.Windows.Forms.DateTimePicker fechaPeriodo;
+        private System.Windows.Forms.Label label8;
     }
 }

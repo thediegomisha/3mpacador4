@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using _3mpacador4.Presentacion;
+using _3mpacador4.Presentacion.Mantenimiento;
 using _3mpacador4.Presentacion.Sistema;
 using _3mpacador4.Presentacion.Principal;
 
@@ -16,7 +17,7 @@ namespace _3mpacador4
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new FrmPrincipal());
         }
     }
 }

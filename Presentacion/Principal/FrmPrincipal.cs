@@ -310,5 +310,12 @@ namespace _3mpacador4.Presentacion
             var form = new FrmPrinter();
             form.ShowDialog();
         }
+
+        private void btnperiodo_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            var form = new frmCampania();
+            form.ShowDialog();
+        }
     }
 }

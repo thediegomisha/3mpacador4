@@ -92,5 +92,10 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 ConexionGral.desconectar();
             }
         }
+
+        private void Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

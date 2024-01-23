@@ -4,7 +4,12 @@ using System.Drawing;
 using System.Windows.Forms;
 using _3mpacador4.Logica;
 using Devart.Data.MySql;
+using Microsoft.Office.Interop.Excel;
 using Microsoft.VisualBasic;
+using Constants = Microsoft.VisualBasic.Constants;
+using DataTable = System.Data.DataTable;
+using Font = System.Drawing.Font;
+
 // using static ICSharpCode.SharpZipLib.Zip.ExtendedUnixData;
 
 namespace _3mpacador4.Presentacion.Reporte
@@ -21,6 +26,8 @@ namespace _3mpacador4.Presentacion.Reporte
             fechasgrupo();
             checkboxgrupo();
             texboxgrupo();
+            fechaPeriodo.Format = DateTimePickerFormat.Custom;
+            fechaPeriodo.CustomFormat = "yyyy";
         }
 
         private void rpt1_Load(object sender, EventArgs e)
@@ -219,77 +226,18 @@ namespace _3mpacador4.Presentacion.Reporte
         }
 
 
-        //private void MostrarConsulta()
-        //{
-        //    try
-        //    {
-        //        if (ConexionGral.conexion.State == ConnectionState.Closed)
-        //        {
-        //            ConexionGral.conectar();
-        //        }
-
-        //        string procedimientoAlmacenado = DeterminarProcedimientoAlmacenado();
-        //        string bandera = DeterminarBandera();
-        //        string dtInicio = "null";
-        //        string dtFin = "null";
-
-        //        MySqlCommand comando = new MySqlCommand(procedimientoAlmacenado, ConexionGral.conexion);
-        //        comando.CommandType = CommandType.StoredProcedure;
-
-        //        if (!string.IsNullOrEmpty(bandera))
-        //        {
-        //            comando.Parameters.AddWithValue(bandera, MySqlType.Int).Value = flag.Text;
-        //        }
-
-        //        if (chkcliente.Checked && chkf_ing.Checked)
-        //        {
-        //            dtInicio = "p_fechainicio";
-        //            dtFin = "p_fechafin";
-        //            comando.Parameters.AddWithValue(dtInicio, MySqlType.Int).Value = dtpfingresoini.Value;
-        //            comando.Parameters.AddWithValue(dtFin, MySqlType.Int).Value = dtpfingresofin.Value;
-        //        }
-
-        //        var adaptador = new MySqlDataAdapter(comando);
-        //        var datos = new DataTable();
-        //        adaptador.Fill(datos);
-
-        //        if (datos != null && datos.Rows.Count > 0)
-        //        {
-        //            datalistado.DataSource = datos;
-        //            Tamanio();
-        //            ContarGeneral();
-        //            ContarJabaGeneral();
-        //            lblinfo1.Visible = false;
-        //        }
-        //        else
-        //        {
-        //            datalistado.DataSource = null;
-        //            lblinfo1.Visible = true;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //    finally
-        //    {
-        //        ConexionGral.desconectar();
-        //    }
-        //}
-
-
         private void mostrarconsulta()
         {
             try
             {
-                //   datalistado.Rows.Clear();
-
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 var procedimientoAlmacenado = DeterminarProcedimientoAlmacenado();
                 var bandera = DeterminarBandera();
                 var dtInicio = "null";
-                var dtFin = "null";
+                var dtFin = "null"; 
+                DateTime fechaseleccionada = fechaPeriodo.Value;
+                string añoseleccionado = fechaseleccionada.Year.ToString();
 
                 var iniciocadena = 0;
 
@@ -302,7 +250,8 @@ namespace _3mpacador4.Presentacion.Reporte
                     //     procedimientoalmacenado = "usp_tblticketpesaje_Exportador";
                     iniciocadena = cb_cliente.Text.IndexOf('-');
                     flag.Text = cb_cliente.Text.Substring(0, iniciocadena);
-                    //    bandera = "p_idcliente";
+                    añoseleccionado = "p_fechaanio";
+                    
                     dtInicio = "p_fechainicio";
                     dtFin = "p_fechafin";
                 }
@@ -311,25 +260,29 @@ namespace _3mpacador4.Presentacion.Reporte
                     //     procedimientoalmacenado = "usp_tblticketpesaje_Exportador";
                     iniciocadena = cb_cliente.Text.IndexOf('-');
                     flag.Text = cb_cliente.Text.Substring(0, iniciocadena);
-                    //  bandera = "p_idcliente";                   
+                 
+                                 
                 }
                 else if (chkproductor.Checked)
                 {
                     //     procedimientoalmacenado = "usp_tblticketpesaje_Productor";
                     iniciocadena = cb_productor.Text.IndexOf('-');
                     flag.Text = cb_productor.Text.Substring(0, iniciocadena);
+                    añoseleccionado = "p_fechaanio";
                     //   bandera = "p_idproductor";
                 }
                 else if (chkvariedad.Checked)
                 {
                     //    procedimientoalmacenado = "usp_tblticketpesaje_Variedad";                  
                     flag.Text = cb_variedad.SelectedValue.ToString();
+                    añoseleccionado = "p_fechaanio";
                     //    bandera = "p_variedad";
                 }
                 else if (chk_acopiador.Checked)
                 {
                     iniciocadena = cbAcopiador.Text.IndexOf('-');
                     flag.Text = cbAcopiador.Text.Substring(0, iniciocadena);
+                    añoseleccionado = "p_fechaanio";
                 }
                 else if (chkproductor.Checked == false && chkvariedad.Checked == false && chkcliente.Checked == false &&
                          chk_acopiador.Checked == false)
@@ -350,13 +303,20 @@ namespace _3mpacador4.Presentacion.Reporte
                     //comando.Parameters.AddWithValue(dtfin, MySqlType.Int).Value = dtpfingresofin.Value;
                 }
 
-                // comando.Parameters.AddWithValue(bandera, MySqlType.Int).Value = flag.Text;
+              
                 if (btnsearchallpress)
                 {
+                  
+                    comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Date).Value = añoseleccionado;
                 }
 
-                if (btnsearchpress) comando.Parameters.AddWithValue(bandera, MySqlType.Int).Value = flag.Text;
+                if (btnsearchpress)
+                {
+                    comando.Parameters.AddWithValue(bandera, MySqlType.Date).Value = flag .Text ;
+                    comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Date).Value = añoseleccionado;
 
+                }
+              
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
                 adaptador.Fill(datos);
@@ -382,7 +342,7 @@ namespace _3mpacador4.Presentacion.Reporte
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -693,16 +653,16 @@ namespace _3mpacador4.Presentacion.Reporte
             try
             {
                 var withBlock = datalistado;
-                withBlock.Columns["GUIA REMISION"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                withBlock.Columns["GUIA REMISION"].Width = 90;
-
-                withBlock.Columns["NUMDOC"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                withBlock.Columns["NUMDOC"].Width = 70;
 
 
                 withBlock.Columns["LOTE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 withBlock.Columns["LOTE"].Width = 60;
 
+                withBlock.Columns["GUIA REMISION"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                withBlock.Columns["GUIA REMISION"].Width = 110;
+
+                //withBlock.Columns["NUMDOC"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                //withBlock.Columns["NUMDOC"].Width = 70;
 
                 withBlock.Columns["FECHA PESAJE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 withBlock.Columns["FECHA PESAJE"].Width = 90;
@@ -712,19 +672,20 @@ namespace _3mpacador4.Presentacion.Reporte
                 }
                 else
                 {
-                    withBlock.Columns["H LLEGADA"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                    withBlock.Columns["H LLEGADA"].Width = 70;
+                    //withBlock.Columns["H LLEGADA"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    //withBlock.Columns["H LLEGADA"].Width = 70;
+
                     withBlock.Columns["PRODUCTO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     withBlock.Columns["PRODUCTO"].Width = 60;
-                    withBlock.Columns["PESO BRUTO"].DefaultCellStyle.Alignment =
-                        DataGridViewContentAlignment.MiddleRight;
-                    // .Columns("TURNO").DefaultCellStyle.Format = "#.#0"
-                    withBlock.Columns["PESO BRUTO"].Width = 80;
+                    //withBlock.Columns["PESO BRUTO"].DefaultCellStyle.Alignment =
+                    //    DataGridViewContentAlignment.MiddleRight;
+                    //// .Columns("TURNO").DefaultCellStyle.Format = "#.#0"
+                    //withBlock.Columns["PESO BRUTO"].Width = 80;
 
-                    withBlock.Columns["PESO JABAS"].DefaultCellStyle.Alignment =
-                        DataGridViewContentAlignment.MiddleRight;
-                    // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
-                    withBlock.Columns["PESO JABAS"].Width = 80;
+                    //withBlock.Columns["PESO JABAS"].DefaultCellStyle.Alignment =
+                    //    DataGridViewContentAlignment.MiddleRight;
+                    //// .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
+                    //withBlock.Columns["PESO JABAS"].Width = 80;
                 }
 
 
@@ -807,7 +768,7 @@ namespace _3mpacador4.Presentacion.Reporte
             if (e.RowIndex >= 0)
             {
                 var fila = datalistado.Rows[e.RowIndex];
-                lblpuntero.Text = fila.Cells[2].Value.ToString();
+                lblpuntero.Text = fila.Cells[0].Value.ToString();
                 mostrarconsulta2();
                 contardescarte();
                 sumanetodescarte();

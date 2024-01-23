@@ -148,6 +148,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                         cadena.AppendLine("^XZ");
 
+
                         RawPrinterHelper.EnviarCadenaToImpresora(Properties.Settings.Default.Impresora_valor.ToString(), cadena.ToString());
                         cadena.Clear();
                     //}
