@@ -313,7 +313,7 @@
             this.panel1.Controls.Add(this.datalistado);
             this.panel1.Location = new System.Drawing.Point(22, 235);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(694, 346);
+            this.panel1.Size = new System.Drawing.Size(709, 346);
             this.panel1.TabIndex = 37;
             // 
             // datalistado
@@ -325,7 +325,7 @@
             this.datalistado.Location = new System.Drawing.Point(0, 0);
             this.datalistado.Name = "datalistado";
             this.datalistado.ReadOnly = true;
-            this.datalistado.Size = new System.Drawing.Size(694, 346);
+            this.datalistado.Size = new System.Drawing.Size(709, 346);
             this.datalistado.TabIndex = 0;
             // 
             // label12

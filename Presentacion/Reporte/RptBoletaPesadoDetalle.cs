@@ -24,22 +24,26 @@ namespace _3mpacador4.Presentacion.Reporte
         {
             InitializeComponent();
             PrepGrid();
+            //contar();
+            //sumaneto();
 
-            Settings.License = LicenseType.Community;
+         //   Settings.License = LicenseType.Community;
 
             if (filaConDatos.Length >= 5)
             {
-                lblguiaingreso.Text = filaConDatos[0];
-                //   lblnumdoc.Text = filaConDatos[1];
-                lblnumlote.Text = filaConDatos[2];
+                lblnumlote.Text = filaConDatos[0];
+                lblguiaingreso.Text = filaConDatos[1];
+                //   lblnumdoc.Text = filaConDatos[2];
                 lblfechaingreso.Text = filaConDatos[3];
                 lblhoraingreso.Text = filaConDatos[4];
-                lblproducto.Text = filaConDatos[5];
-                lblvariedad.Text = filaConDatos[6];
-                lblcliente.Text = filaConDatos[7];
-                lblproductor.Text = filaConDatos[8];
-                lblclp.Text = filaConDatos[9];
-                //   lblservicio .Text = filaConDatos[4];
+                lblproducto.Text = filaConDatos[4];
+                lblvariedad.Text = filaConDatos[5];
+                lblcliente.Text = filaConDatos[6];
+                lblproductor.Text = filaConDatos[7];
+                lblclp.Text = filaConDatos[8];
+                lblcantjabas.Text = filaConDatos[9];
+                totalneto.Text = filaConDatos[10];
+                // lblservicio  .Text = filaConDatos[4];
                 //   lblmetodo.Text = filaConDatos[2];
 
                 datalistado.DataSource = data;

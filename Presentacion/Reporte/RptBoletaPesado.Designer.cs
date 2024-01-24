@@ -343,7 +343,7 @@
             // 
             // txtnumlote
             // 
-            this.txtnumlote.Location = new System.Drawing.Point(22, 26);
+            this.txtnumlote.Location = new System.Drawing.Point(611, 10);
             this.txtnumlote.Name = "txtnumlote";
             this.txtnumlote.Size = new System.Drawing.Size(100, 20);
             this.txtnumlote.TabIndex = 39;
@@ -433,7 +433,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(607, 9);
+            this.label16.Location = new System.Drawing.Point(386, 193);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(72, 24);

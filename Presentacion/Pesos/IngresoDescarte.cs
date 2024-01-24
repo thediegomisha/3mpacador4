@@ -2,6 +2,7 @@
 using System.Data;
 using System.Globalization;
 using System.IO.Ports;
+using System.Text;
 using System.Windows.Forms;
 using _3mpacador4.Logica;
 using _3mpacador4.Presentacion.Mantenimiento;
@@ -44,19 +45,45 @@ namespace _3mpacador4
             cargarinicial();
         }
 
+        //private void sppuerto_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        //{
+        //    string DatoInterrupcion;
+        //    try
+        //    {
+        //        DatoInterrupcion = sppuerto.ReadExisting();
+        //        PuertaAccesoInterrupcion(DatoInterrupcion);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Interaction.MsgBox("ERROR DATOS INTERRUPCION " + ex.Message, Constants.vbCritical);
+        //    }
+        //}
+
         private void sppuerto_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            string DatoInterrupcion;
             try
             {
-                DatoInterrupcion = sppuerto.ReadExisting();
-                PuertaAccesoInterrupcion(DatoInterrupcion);
+                // Es más eficiente leer los datos en un búfer
+                int bytesToRead = sppuerto.BytesToRead;
+                byte[] buffer = new byte[bytesToRead];
+                sppuerto.Read(buffer, 0, bytesToRead);
+
+                // Convierte los bytes a una cadena utilizando la codificación adecuada
+                string datosRecibidos = Encoding.UTF8.GetString(buffer);
+
+                // Llama a la función de manejo de datos
+                PuertaAccesoInterrupcion(datosRecibidos);
             }
             catch (Exception ex)
             {
-                Interaction.MsgBox("ERROR DATOS INTERRUPCION " + ex.Message, Constants.vbCritical);
+                // En lugar de mostrar un MsgBox, podrías registrar el error o manejarlo de manera diferente
+                // Aquí, se registra el error con más detalles, incluyendo el tipo de excepción y la traza de la pila
+              //  Console.WriteLine($"ERROR DATOS INTERRUPCION: {ex.GetType().Name} - {ex.Message}\n{ex.StackTrace}");
+
+                MessageBox.Show($"ERROR DATOS INTERRUPCION:  {ex.GetType().Name} - {ex.Message}\\n{ex.StackTrace}", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -536,7 +563,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

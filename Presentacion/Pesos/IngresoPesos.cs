@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.IO.Ports;
+using System.Text;
 using System.Windows.Forms;
 using _3mpacador4.Logica;
 using _3mpacador4.Presentacion.Mantenimiento;
@@ -45,17 +46,42 @@ namespace _3mpacador4
             cargarinicial();
         }
 
+        //private void sppuerto_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        //{
+        //    string DatoInterrupcion;
+        //    try
+        //    {
+        //        DatoInterrupcion = sppuerto.ReadExisting();
+        //        PuertaAccesoInterrupcion(DatoInterrupcion);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Interaction.MsgBox("ERROR DATOS INTERRUPCION " + ex.Message, Constants.vbCritical);
+        //    }
+        //}
+
         private void sppuerto_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            string DatoInterrupcion;
             try
             {
-                DatoInterrupcion = sppuerto.ReadExisting();
-                PuertaAccesoInterrupcion(DatoInterrupcion);
+                // Es más eficiente leer los datos en un búfer
+                int bytesToRead = sppuerto.BytesToRead;
+                byte[] buffer = new byte[bytesToRead];
+                sppuerto.Read(buffer, 0, bytesToRead);
+
+                // Convierte los bytes a una cadena utilizando la codificación adecuada
+                string datosRecibidos = Encoding.UTF8.GetString(buffer);
+
+                // Llama a la función de manejo de datos
+                PuertaAccesoInterrupcion(datosRecibidos);
             }
             catch (Exception ex)
             {
-                Interaction.MsgBox("ERROR DATOS INTERRUPCION " + ex.Message, Constants.vbCritical);
+                // En lugar de mostrar un MsgBox, podrías registrar el error o manejarlo de manera diferente
+                // Aquí, se registra el error con más detalles, incluyendo el tipo de excepción y la traza de la pila
+                //  Console.WriteLine($"ERROR DATOS INTERRUPCION: {ex.GetType().Name} - {ex.Message}\n{ex.StackTrace}");
+
+                MessageBox.Show($"ERROR DATOS INTERRUPCION:  {ex.GetType().Name} - {ex.Message}\\n{ex.StackTrace}", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -116,6 +142,7 @@ namespace _3mpacador4
             txtPesoManual.Visible = false;
             titulosjavasvisible();
             mostrarLote();
+            RecuperaCorrelativo();
             //    pictureBoxEspera.Visible = false;
         }
 
@@ -558,6 +585,61 @@ namespace _3mpacador4
                 Interaction.MsgBox("Error " + "Error " + ex.Message, Constants.vbCritical);
             }
         }
+
+        private void Cuentacorrelativo()
+        {
+            try
+            {
+                if (ConexionGral.conexion.State == ConnectionState.Closed)
+                {
+                    ConexionGral.conectar();
+                }
+
+                if (lblcorrelativo.Text != null)
+                {
+                    if (int.TryParse(lblcorrelativo.Text, out int currentCorrelativo))
+                    {
+                        correlativo = currentCorrelativo + 1;
+                        lblcorrelativo.Text = correlativo.ToString("0000");
+                    }
+                    else
+                    {
+                        lblcorrelativo.Text = "3";
+                    }
+                }
+
+                ConexionGral.desconectar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"ERROR CONTANDO CORRELATIVO: " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void RecuperaCorrelativo()
+        {
+            MySqlCommand comando;
+            try
+            {
+                if (ConexionGral.conexion.State == ConnectionState.Closed)
+                {
+                    ConexionGral.conectar();
+                }
+                comando = new MySqlCommand("usp_cuentaCorrelativoTicketPesaje", ConexionGral.conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                {
+                    correlativo = Convert.ToInt32(comando.ExecuteScalar()) + 1;
+                    lblcorrelativo.Text = correlativo.ToString("0000");
+                    comando.ExecuteNonQuery();
+                }
+                ConexionGral.desconectar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($@"Error al recuperar el correlativo: {ex.Message}", @"Error crítico", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         private void cboLote_DropDownClosed(object sender, EventArgs e)
         {
@@ -1002,6 +1084,7 @@ namespace _3mpacador4
         private void btnCerrarLote_Click(object sender, EventArgs e)
         {
             cerrarlote();
+            Cuentacorrelativo();
             mostrarLote();
             datalistado.DataSource = null;
             totalneto.Text = "0";
@@ -1141,8 +1224,10 @@ namespace _3mpacador4
                 comando.CommandType = (CommandType)4;
 
                 comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = cboLote.Text;
-                ;
-
+                String fechaaño = Settings.Default.periodo.ToString();
+                String[] partes = fechaaño.Split(' ')[0].Split('/');
+                String año = partes[2];
+                comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Text).Value = año;
 
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();

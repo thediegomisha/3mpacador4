@@ -43,6 +43,8 @@
             this.chkproductor = new System.Windows.Forms.CheckBox();
             this.chkcliente = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.fechaPeriodo = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
             this.cbAcopiador = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.chk_acopiador = new System.Windows.Forms.CheckBox();
@@ -101,8 +103,6 @@
             this.totalgeneral = new System.Windows.Forms.Label();
             this.LBLLL = new System.Windows.Forms.Label();
             this.btnBuscarTodos = new System.Windows.Forms.Button();
-            this.fechaPeriodo = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
@@ -285,8 +285,27 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(2, 33);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1213, 86);
+            this.panel1.Size = new System.Drawing.Size(1210, 86);
             this.panel1.TabIndex = 17;
+            // 
+            // fechaPeriodo
+            // 
+            this.fechaPeriodo.CustomFormat = "";
+            this.fechaPeriodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fechaPeriodo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.fechaPeriodo.Location = new System.Drawing.Point(125, 3);
+            this.fechaPeriodo.Name = "fechaPeriodo";
+            this.fechaPeriodo.Size = new System.Drawing.Size(97, 20);
+            this.fechaPeriodo.TabIndex = 29;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 6);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(58, 13);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "Campaña :";
             // 
             // cbAcopiador
             // 
@@ -480,7 +499,7 @@
             this.panel2.Controls.Add(this.datalistado);
             this.panel2.Location = new System.Drawing.Point(2, 117);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1213, 329);
+            this.panel2.Size = new System.Drawing.Size(1205, 329);
             this.panel2.TabIndex = 18;
             // 
             // lblinfo1
@@ -509,7 +528,7 @@
             this.datalistado.ReadOnly = true;
             this.datalistado.RowHeadersVisible = false;
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datalistado.Size = new System.Drawing.Size(1213, 329);
+            this.datalistado.Size = new System.Drawing.Size(1205, 329);
             this.datalistado.TabIndex = 0;
             this.datalistado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datalistado_CellClick);
             this.datalistado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datalistado_CellDoubleClick);
@@ -520,7 +539,7 @@
             this.panel3.Controls.Add(this.datalistado2);
             this.panel3.Location = new System.Drawing.Point(2, 479);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(722, 156);
+            this.panel3.Size = new System.Drawing.Size(708, 156);
             this.panel3.TabIndex = 19;
             // 
             // lblinfo3
@@ -547,7 +566,7 @@
             this.datalistado2.Name = "datalistado2";
             this.datalistado2.ReadOnly = true;
             this.datalistado2.RowHeadersVisible = false;
-            this.datalistado2.Size = new System.Drawing.Size(722, 156);
+            this.datalistado2.Size = new System.Drawing.Size(708, 156);
             this.datalistado2.TabIndex = 1;
             // 
             // btnAceptar
@@ -693,7 +712,7 @@
             // 
             this.panel4.Controls.Add(this.lblinfo2);
             this.panel4.Controls.Add(this.datalistado3);
-            this.panel4.Location = new System.Drawing.Point(730, 479);
+            this.panel4.Location = new System.Drawing.Point(722, 479);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(485, 156);
             this.panel4.TabIndex = 84;
@@ -871,30 +890,11 @@
             this.btnBuscarTodos.UseVisualStyleBackColor = false;
             this.btnBuscarTodos.Click += new System.EventHandler(this.btnBuscarTodos_Click);
             // 
-            // fechaPeriodo
-            // 
-            this.fechaPeriodo.CustomFormat = "";
-            this.fechaPeriodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fechaPeriodo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.fechaPeriodo.Location = new System.Drawing.Point(125, 3);
-            this.fechaPeriodo.Name = "fechaPeriodo";
-            this.fechaPeriodo.Size = new System.Drawing.Size(97, 20);
-            this.fechaPeriodo.TabIndex = 29;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(7, 6);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 13);
-            this.label8.TabIndex = 28;
-            this.label8.Text = "Campaña :";
-            // 
             // RptGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1222, 673);
+            this.ClientSize = new System.Drawing.Size(1213, 673);
             this.Controls.Add(this.btnBuscarTodos);
             this.Controls.Add(this.cantjbasgeneral);
             this.Controls.Add(this.lbll);

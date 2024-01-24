@@ -96,16 +96,16 @@
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(73, 81);
+            this.dateTimePicker1.Location = new System.Drawing.Point(82, 73);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(125, 29);
+            this.dateTimePicker1.Size = new System.Drawing.Size(110, 29);
             this.dateTimePicker1.TabIndex = 49;
             // 
             // frmCampania
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(279, 172);
+            this.ClientSize = new System.Drawing.Size(279, 159);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.Panel1);
             this.Controls.Add(this.btnCancelar);

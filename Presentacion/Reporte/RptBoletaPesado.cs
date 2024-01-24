@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using _3mpacador4.Logica;
+using _3mpacador4.Properties;
 using Devart.Data.MySql;
 using Microsoft.VisualBasic;
 //using Microsoft.Office.Interop.Excel;
@@ -42,6 +43,10 @@ namespace _3mpacador4.Presentacion.Reporte
                 comando.CommandType = (CommandType)4;
 
                 comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = txtnumlote.Text;
+                
+                var fechaperiodo = Settings.Default.periodo.ToString();
+
+                comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Int).Value = fechaperiodo;
 
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
@@ -67,7 +72,7 @@ namespace _3mpacador4.Presentacion.Reporte
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

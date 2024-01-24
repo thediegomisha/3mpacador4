@@ -53,7 +53,7 @@
             this.Label1.AutoSize = true;
             this.Label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.White;
-            this.Label1.Location = new System.Drawing.Point(12, 9);
+            this.Label1.Location = new System.Drawing.Point(41, 9);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(189, 21);
             this.Label1.TabIndex = 0;

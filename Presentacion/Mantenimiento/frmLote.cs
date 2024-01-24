@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using _3mpacador4.Logica;
+using _3mpacador4.Properties;
 using Devart.Data.MySql;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
@@ -37,6 +38,12 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 if (cantlote > 0)
                 {
                     comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = cantlote;
+
+                    String fechaaño =  Settings.Default.periodo.ToString();
+                    String[] partes = fechaaño.Split(' ')[0].Split('/');
+                    String año = partes[2];
+                    comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Text).Value = año;
+
 
                     comando.ExecuteNonQuery();
 

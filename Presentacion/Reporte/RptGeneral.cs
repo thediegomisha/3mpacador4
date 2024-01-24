@@ -661,8 +661,8 @@ namespace _3mpacador4.Presentacion.Reporte
                 withBlock.Columns["GUIA REMISION"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 withBlock.Columns["GUIA REMISION"].Width = 110;
 
-                //withBlock.Columns["NUMDOC"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                //withBlock.Columns["NUMDOC"].Width = 70;
+                withBlock.Columns["NUMDOC"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                withBlock.Columns["NUMDOC"].Width = 70;
 
                 withBlock.Columns["FECHA PESAJE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 withBlock.Columns["FECHA PESAJE"].Width = 90;

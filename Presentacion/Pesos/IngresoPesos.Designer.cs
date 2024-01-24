@@ -39,8 +39,8 @@
             this.cbvariedad = new System.Windows.Forms.ComboBox();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtPesoManual = new System.Windows.Forms.TextBox();
             this.lblST = new System.Windows.Forms.Label();
+            this.txtPesoManual = new System.Windows.Forms.TextBox();
             this.lblpeso = new System.Windows.Forms.Label();
             this.cbjabas = new System.Windows.Forms.ComboBox();
             this.cbcliente = new System.Windows.Forms.ComboBox();
@@ -226,19 +226,6 @@
             this.label13.TabIndex = 13;
             this.label13.Text = "US";
             // 
-            // txtPesoManual
-            // 
-            this.txtPesoManual.BackColor = System.Drawing.Color.Black;
-            this.txtPesoManual.Font = new System.Drawing.Font("Microsoft Sans Serif", 99.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesoManual.ForeColor = System.Drawing.Color.Red;
-            this.txtPesoManual.Location = new System.Drawing.Point(0, 20);
-            this.txtPesoManual.Name = "txtPesoManual";
-            this.txtPesoManual.Size = new System.Drawing.Size(576, 158);
-            this.txtPesoManual.TabIndex = 106;
-            this.txtPesoManual.Text = "000.0 ";
-            this.txtPesoManual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtPesoManual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesoManual_KeyPress);
-            // 
             // lblST
             // 
             this.lblST.AutoSize = true;
@@ -251,6 +238,19 @@
             this.lblST.Size = new System.Drawing.Size(40, 27);
             this.lblST.TabIndex = 13;
             this.lblST.Text = "ST";
+            // 
+            // txtPesoManual
+            // 
+            this.txtPesoManual.BackColor = System.Drawing.Color.Black;
+            this.txtPesoManual.Font = new System.Drawing.Font("Microsoft Sans Serif", 99.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesoManual.ForeColor = System.Drawing.Color.Red;
+            this.txtPesoManual.Location = new System.Drawing.Point(0, 20);
+            this.txtPesoManual.Name = "txtPesoManual";
+            this.txtPesoManual.Size = new System.Drawing.Size(576, 158);
+            this.txtPesoManual.TabIndex = 106;
+            this.txtPesoManual.Text = "000.0 ";
+            this.txtPesoManual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPesoManual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesoManual_KeyPress);
             // 
             // lblpeso
             // 
@@ -720,12 +720,12 @@
             // lblcorrelativo
             // 
             this.lblcorrelativo.AutoSize = true;
-            this.lblcorrelativo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcorrelativo.Font = new System.Drawing.Font("Futura Md BT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblcorrelativo.ForeColor = System.Drawing.Color.Blue;
             this.lblcorrelativo.Location = new System.Drawing.Point(144, 9);
             this.lblcorrelativo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblcorrelativo.Name = "lblcorrelativo";
-            this.lblcorrelativo.Size = new System.Drawing.Size(29, 17);
+            this.lblcorrelativo.Size = new System.Drawing.Size(39, 19);
             this.lblcorrelativo.TabIndex = 101;
             this.lblcorrelativo.Text = "000";
             // 
