@@ -46,11 +46,13 @@ namespace _3mpacador4.Presentacion.Sistema
                 chk_Despacho.Checked = true;
                 CBParidadDesp.Text = null;
             }
-
-            else if (Settings.Default.checked_bal2 == false)
+            else
             {
                 chk_Despacho.Checked = false;
+            }
 
+         //   else if (Settings.Default.checked_bal2 == false)
+          //  {
                 if (Settings.Default.ParidadDesp == "0")
                     CBParidadDesp.Text = "Ninguno";
                 else if (Settings.Default.ParidadDesp == "1")
@@ -62,10 +64,10 @@ namespace _3mpacador4.Presentacion.Sistema
                 CBDatosDesp.Text = Settings.Default.bitDatosDesp;
                 CBParidadDesp.Text = Settings.Default.ParidadDesp;
                 CBParadaDesp.Text = Settings.Default.ParadaDesp;
-            }
+           // }
         }
 
-        private void FrmPuertos_FormClosing(object sender, FormClosingEventArgs e)
+        private void GuardarValores()
         {
             try
             {
@@ -107,7 +109,8 @@ namespace _3mpacador4.Presentacion.Sistema
                     codigoparidad = (int)Parity.None;
                 else if (CBParidadDesp.Text == "Impar")
                     codigoparidad = (int)Parity.Odd;
-                else if (CBParidadDesp.Text == "Par") codigoparidad = (int)Parity.Even;
+                else if (CBParidadDesp.Text == "Par")
+                    codigoparidad = (int)Parity.Even;
 
                 var codigoparada = 0;
 
@@ -117,7 +120,8 @@ namespace _3mpacador4.Presentacion.Sistema
                     codigoparada = (int)StopBits.Two;
                 else if (CBParadaDesp.Text == "1.5")
                     codigoparada = (int)StopBits.OnePointFive;
-                else if (CBParadaDesp.Text == "0") codigoparada = (int)StopBits.None;
+                else if (CBParadaDesp.Text == "0")
+                    codigoparada = (int)StopBits.None;
 
                 Settings.Default.select_bal2 = CBDESPACHO.Text;
                 Settings.Default.BaudiosDesp = CBBaudiosDesp.Text;
@@ -131,6 +135,11 @@ namespace _3mpacador4.Presentacion.Sistema
             {
                 Interaction.MsgBox(ex.Message, Constants.vbCritical);
             }
+        }
+
+        private void FrmPuertos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           GuardarValores();
         }
 
         public void GetSerialPortNames()
@@ -155,9 +164,9 @@ namespace _3mpacador4.Presentacion.Sistema
                 if (!string.IsNullOrEmpty(CBRECEPCION.Text) | !string.IsNullOrEmpty(CBDESPACHO.Text))
                 {
                     if (CBRECEPCION.SelectedItem != CBDESPACHO.SelectedItem)
-                        Interaction.MsgBox("Sin Problemas");
+                        MessageBox.Show("Sin Problemas");
                     else if(CBRECEPCION.SelectedItem == CBDESPACHO.SelectedItem)
-                        Interaction.MsgBox("Atento, esta utilizando el mismo Puerto COM");
+                        MessageBox.Show( "Atento, esta utilizando el mismo Puerto COM");
                     //else
                     //    Interaction.MsgBox("Error, no puede seleccionar el mismo puerto COM");
                 }
@@ -166,8 +175,9 @@ namespace _3mpacador4.Presentacion.Sistema
                     Interaction.MsgBox("Tiene que Seleccionar Puertos Disponibles");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show($"Error Revisar Puertos:  {ex.GetType().Name} - {ex.Message}\\n{ex.StackTrace}", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -207,6 +217,7 @@ namespace _3mpacador4.Presentacion.Sistema
                 CBRECEPCION.Enabled = false;
                 CBParadaRecp.Enabled = false;
                 CBParidadRecp.Enabled = false;
+                CBRECEPCION.Text = null;
             }
         }
 
@@ -227,6 +238,7 @@ namespace _3mpacador4.Presentacion.Sistema
                 CBDESPACHO.Enabled = false;
                 CBParadaDesp.Enabled = false;
                 CBParidadDesp.Enabled = false;
+                CBDESPACHO.Text = null;
             }
         }
 
