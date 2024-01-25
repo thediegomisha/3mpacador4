@@ -195,7 +195,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -261,6 +261,11 @@ namespace _3mpacador4
                 comando = new MySqlCommand("usp_tbllote_Select_descarte", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
 
+                String fechaaño = Settings.Default.periodo.ToString();
+                String[] partes = fechaaño.Split(' ')[0].Split('/');
+                String año = partes[2];
+                comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Text).Value = año;
+
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
                 adaptador.Fill(datos);
@@ -296,7 +301,12 @@ namespace _3mpacador4
                 comando.CommandType = (CommandType)4;
 
                 comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = cboLote.Text;
-                ;
+
+
+                String fechaaño = Settings.Default.periodo.ToString();
+                String[] partes = fechaaño.Split(' ')[0].Split('/');
+                String año = partes[2];
+                comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Text).Value = año;
 
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
@@ -574,10 +584,21 @@ namespace _3mpacador4
 
         private void cboLote_DropDownClosed(object sender, EventArgs e)
         {
-            poblarLote();
-        }
+            try
+            {
+                if (!string.IsNullOrEmpty(cboLote.Text))
+                {
+                    poblarLote();
+                }
+            }
+            catch (Exception ex)
+            {
+                Interaction.MsgBox("Error " + "Error " + ex.Message, Constants.vbCritical);
+            }
 
-        private void btnCerrarLote_Click(object sender, EventArgs e)
+
+        }
+            private void btnCerrarLote_Click(object sender, EventArgs e)
         {
             cerrarlote();
             mostrarLote();

@@ -77,8 +77,6 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                // En lugar de mostrar un MsgBox, podrías registrar el error o manejarlo de manera diferente
-                // Aquí, se registra el error con más detalles, incluyendo el tipo de excepción y la traza de la pila
                 //  Console.WriteLine($"ERROR DATOS INTERRUPCION: {ex.GetType().Name} - {ex.Message}\n{ex.StackTrace}");
 
                 MessageBox.Show($"ERROR DATOS INTERRUPCION:  {ex.GetType().Name} - {ex.Message}\\n{ex.StackTrace}", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -790,6 +790,8 @@ namespace _3mpacador4.Presentacion.Reporte
                 comando.CommandType = (CommandType)4;
 
                 comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = lblpuntero.Text;
+                comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Int).Value = fechaPeriodo.Text;
+
 
                 var adaptador = new MySqlDataAdapter(comando);
                 // var datos = new DataTable();
@@ -823,7 +825,6 @@ namespace _3mpacador4.Presentacion.Reporte
             {
                 ConexionGral.desconectar();
             }
-
             return datos;
         }
 
@@ -838,6 +839,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 comando.CommandType = (CommandType)4;
 
                 comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = lblpuntero.Text;
+                comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Int).Value = fechaPeriodo.Text;
 
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
