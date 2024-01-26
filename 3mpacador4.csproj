@@ -83,6 +83,12 @@
     <Reference Include="Csv, Version=2.0.93.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Csv.2.0.93\lib\net40\Csv.dll</HintPath>
     </Reference>
+    <Reference Include="Devart.Data, Version=6.0.10.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <HintPath>packages\Devart.Data.6.0.10\lib\netstandard2.0\Devart.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data.MySql, Version=9.3.10.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <HintPath>packages\Devart.Data.MySql.9.3.10\lib\netstandard2.0\Devart.Data.MySql.dll</HintPath>
+    </Reference>
     <Reference Include="GlassButton">
       <HintPath>packages\GlassButton.dll</HintPath>
     </Reference>
@@ -94,6 +100,9 @@
     </Reference>
     <Reference Include="HarfBuzzSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <HintPath>packages\HarfBuzzSharp.7.3.0.1\lib\net462\HarfBuzzSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
@@ -216,15 +225,18 @@
     <Compile Include="Entidad\Grupo_turno.cs" />
     <Compile Include="Entidad\Lista_transferir_trab.cs" />
     <Compile Include="Entidad\Numerador_trab.cs" />
+    <Compile Include="Entidad\Packing_calibre_det.cs" />
+    <Compile Include="Entidad\Packing_calibre_cab.cs" />
     <Compile Include="Entidad\Programa_proceso.cs" />
     <Compile Include="Entidad\Terminal.cs" />
-    <Compile Include="ImpresionZPL.cs" />
     <Compile Include="Entidad\Sunat.cs" />
     <Compile Include="Logica\ClConexion.cs" />
     <Compile Include="Logica\ConexionGral.cs" />
     <Compile Include="Logica\ConnectionStringManager.cs" />
     <Compile Include="Logica\FormUtils.cs" />
+    <Compile Include="Logica\LConteo_manual.cs" />
     <Compile Include="Logica\LGrupo_turno.cs" />
+    <Compile Include="Logica\LPacking_calibre.cs" />
     <Compile Include="Logica\RawPrinterHelper.cs" />
     <Compile Include="Presentacion\Mantenimiento\frmAcopiador.cs">
       <SubType>Form</SubType>
@@ -375,6 +387,12 @@
     </Compile>
     <Compile Include="Presentacion\Principal\FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\FRptPackigCalibre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\FRptPackigCalibre.Designer.cs">
+      <DependentUpon>FRptPackigCalibre.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Reporte\ImprimirPesos.cs">
       <SubType>Form</SubType>
@@ -555,6 +573,9 @@
     <EmbeddedResource Include="Presentacion\Principal\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Reporte\FRptPackigCalibre.resx">
+      <DependentUpon>FRptPackigCalibre.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\ImprimirPesos.resx">
       <DependentUpon>ImprimirPesos.cs</DependentUpon>

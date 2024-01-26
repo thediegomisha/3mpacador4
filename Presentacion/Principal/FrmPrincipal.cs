@@ -317,5 +317,11 @@ namespace _3mpacador4.Presentacion
             var form = new frmCampania();
             form.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new FRptPackigCalibre());
+        }
     }
 }

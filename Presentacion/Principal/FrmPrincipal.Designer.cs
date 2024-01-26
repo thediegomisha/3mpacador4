@@ -82,6 +82,7 @@
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnperiodo = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
@@ -119,6 +120,7 @@
             // panelTrazabilidad
             // 
             this.panelTrazabilidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panelTrazabilidad.Controls.Add(this.button2);
             this.panelTrazabilidad.Controls.Add(this.btnProceso);
             this.panelTrazabilidad.Controls.Add(this.btnJornal);
             this.panelTrazabilidad.Dock = System.Windows.Forms.DockStyle.Top;
@@ -836,6 +838,23 @@
             this.btnperiodo.UseVisualStyleBackColor = true;
             this.btnperiodo.Click += new System.EventHandler(this.btnperiodo_Click);
             // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button2.ForeColor = System.Drawing.Color.LightGray;
+            this.button2.Location = new System.Drawing.Point(0, 66);
+            this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button2.Size = new System.Drawing.Size(137, 33);
+            this.button2.TabIndex = 17;
+            this.button2.Text = "Reporte Packing";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -919,5 +938,6 @@
         private System.Windows.Forms.Button btnImprimirCalibre;
         private System.Windows.Forms.Button btnImpresora;
         private System.Windows.Forms.Button btnperiodo;
+        private System.Windows.Forms.Button button2;
     }
 }

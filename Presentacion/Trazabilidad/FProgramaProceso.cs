@@ -162,6 +162,36 @@ namespace _3mpacador4.Presentacion.Reporte
             }
         }
 
+        private void Cargar_proceso_x_fecha(string ls_fecha_proceso)
+        {
+            MySqlCommand comando;
+            try
+            {
+                cbxproceso.Items.Clear();
+                cbxproceso.Items.Add("< Seleccione >");
+
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+
+                comando = new MySqlCommand("usp_tblprograma_proceso_x_fecha", ConexionGral.conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("p_fecha_proceso", ls_fecha_proceso);
+                using (var reader = comando.ExecuteReader())
+                {
+                    while (reader.Read()) 
+                        cbxproceso.Items.Add(reader["idproceso"] + " - " + reader["descripcion"]);
+                }
+
+                ConexionGral.desconectar();
+                cbxproceso.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                ConexionGral.desconectar();
+                MessageBox.Show(ex.Message, @"Algo salio Mal en usp_tblprograma_proceso_x_fecha :( ");
+                throw;
+            }
+        }
+
         private void poblarLote()
         {
             MySqlCommand comando = null;
@@ -228,68 +258,6 @@ namespace _3mpacador4.Presentacion.Reporte
             {
                 Interaction.MsgBox("Error " + "Error " + ex.Message, Constants.vbCritical);
             }
-        }
-
-        private void InsertarRegistro()
-        {
-            try
-            {
-                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
-                var comando = new MySqlCommand(
-                    "INSERT INTO tbltrazabilidad (numlote ,cliente,clp, productor ,producto ,variedad ,fproceso ,ingresoplanta ,cant_jabas ,destino ,calibre ,categoria ,presentacion ,cant_cajas)" +
-                    '\r'
-                    + "VALUES(@numlote, @cliente, @clp, @productor, @producto, @variedad, @fproceso, @ingresoplanta, @cant_jabas, @destino, @calibre, @categoria, @presentacion, @cant_cajas)",
-                    ConexionGral.conexion);
-
-                //float tarajaba = float.Parse(txttarajaba.Text);
-                //float taraparihuela = float.Parse(txttaraParihuela.Text);
-                //float pesobruto = float.Parse(lblpeso.Text);
-                //float pesobrutoManual = float.Parse(txtPesoManual.Text);
-
-                var numlote = Convert.ToInt32(cboLote.Text);
-
-                comando.Parameters.AddWithValue("@numlote", MySqlType.Int).Value = numlote;
-                comando.Parameters.AddWithValue("@cliente", lblcliente.Text);
-                comando.Parameters.AddWithValue("@clp", lblclp.Text);
-                comando.Parameters.AddWithValue("@productor", lblproductor.Text);
-
-                comando.Parameters.AddWithValue("@producto", lblproducto.Text);
-                comando.Parameters.AddWithValue("@variedad", lblvariedad.Text);
-                comando.Parameters.AddWithValue("@fproceso", Convert.ToDateTime(dtpf_proceso.Text));
-
-                //double pesoingreso = Convert.ToDouble(lblpesoneto.Text.ToString());
-
-                //comando.Parameters.AddWithValue("@ingresoplanta", MySqlType.Double).Value = pesoingreso;
-
-                //int cant_jabas = Convert.ToInt32(lblcantjabas.Text.ToString());
-
-                //comando.Parameters.AddWithValue("@cant_jabas", MySqlType.Int).Value = cant_jabas;
-
-                comando.Parameters.AddWithValue("@destino", MySqlType.Int).Value = cboDestino.Text;
-
-                //int calibre = Convert.ToInt32(cbCalibre.Text.ToString());
-
-                //comando.Parameters.AddWithValue("@calibre", MySqlType.Int).Value = calibre;
-                comando.Parameters.AddWithValue("@categoria", MySqlType.Int).Value = cbCategoria.Text;
-                comando.Parameters.AddWithValue("@presentacion", MySqlType.Text).Value = cbpresentacion.Text;
-
-                // double cant_cajas = Convert.ToDouble(txtcant_cajas.Text.ToString());
-
-                //comando.Parameters.AddWithValue("@cant_cajas", MySqlType.Int).Value = cant_cajas;
-
-
-                comando.ExecuteNonQuery();
-                MessageBox.Show(@"PESO REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
-                // limpiarcampos()
-                //    this.chkcapturapeso.Checked = false;
-                ConexionGral.desconectar();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            // cuentacorrelativo_BG()
         }
 
         private void btncrearprograma_Click(object sender, EventArgs e)
@@ -366,9 +334,7 @@ namespace _3mpacador4.Presentacion.Reporte
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(@"PROGRAMA NO REGISTRADO. 
-" + ex.Message, @"ERROR", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show(@"PROGRAMA NO REGISTRADO." + ex.Message, @"ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
         }
@@ -376,6 +342,96 @@ namespace _3mpacador4.Presentacion.Reporte
         private void btncancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        public void MostrarCalibres(string ls_fecha_proceso)
+        {
+            MySqlCommand comando;
+            try
+            {
+                int li_cantidad = 0;
+                dgvcalibres.Rows.Clear();
+
+                if (ConexionGral.conexion.State == ConnectionState.Closed)
+                {
+                    ConexionGral.conectar();
+                }
+
+                comando = new MySqlCommand("usp_tblcalibre_x_proceso", ConexionGral.conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("p_fecha_proceso", ls_fecha_proceso);
+                using (MySqlDataReader reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Calibre c = new Calibre();
+                        c.calibre = Convert.ToInt32(reader["calibre"]);
+                        c.ultimo_nro_print = Convert.ToInt32(reader["cantidad"]);
+                        dgvcalibres.Rows.Add(c.calibre, c.ultimo_nro_print);
+                        li_cantidad += c.ultimo_nro_print;
+                    }
+                    lbltotal_calibre.Text = li_cantidad.ToString();
+                }
+                ConexionGral.desconectar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+
+        private void dtpbuscar_fecproduccion_ValueChanged(object sender, EventArgs e)
+        {
+            Cargar_proceso_x_fecha(dtpbuscar_fecproduccion.Value.ToString("yyyy-MM-dd"));
+            MostrarCalibres(dtpbuscar_fecproduccion.Value.ToString("yyyy-MM-dd"));
+        }
+
+        private void btnconteo_manual_Click(object sender, EventArgs e)
+        {
+            bool lb_estado = false;
+            int li_idproceso;
+            string ls_fecha_produccion;            
+
+            if (cbxproceso.SelectedIndex == 0)
+            {
+                MessageBox.Show("Debe Seleccionar un Proceso Para la Fecha " + dtpbuscar_fecproduccion.Text.Trim(), "Avisoo...!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            ls_fecha_produccion = dtpbuscar_fecproduccion.Value.ToString("yyyy-MM-dd");
+            li_idproceso = Convert.ToInt32(cbxproceso.Text.Substring(0, cbxproceso.Text.Contains("-").ToString().Length - 2));
+
+            if (LConteo_manual.Existe_Conteo_manual_x_fecha(ls_fecha_produccion, li_idproceso) > 0)
+            {
+                MessageBox.Show("Ya se Genero el Ingreso Manual Para la Fecha " + dtpbuscar_fecproduccion.Text.Trim(), "Avisoo...!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var rpta = MessageBox.Show("¿ ESTA SEGUR@ DE GENERAR EL PROCESO MANUAL PARA LA FECHA " + dtpbuscar_fecproduccion.Text.Trim() + " PROCESO " + cbxproceso.Text.Trim() + " ?", "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (rpta == DialogResult.Yes)
+            {
+                for (int i = 0; i < dgvcalibres.RowCount; i++)
+                {
+                    if (Convert.ToInt32(dgvcalibres.Rows[i].Cells[1].Value) > 0 )
+                    {
+                        int li_calibre, li_cantidad;  
+                        
+                        li_calibre = Convert.ToInt32(dgvcalibres.Rows[i].Cells[0].Value);                        
+                        li_cantidad = Convert.ToInt32(dgvcalibres.Rows[i].Cells[1].Value);
+
+                        if (LConteo_manual.Conteo_Manual(li_idproceso, li_calibre, ls_fecha_produccion, li_cantidad) > 0)
+                        {
+                            lb_estado = true;
+                        }
+                    }
+                }
+
+                if (lb_estado)
+                {
+                    MessageBox.Show("SE INGRESARON LAS CANTIDADES POR CALIBRES CORRECTAMENTE", "AVISO...!!!", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }
