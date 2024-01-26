@@ -363,7 +363,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column1.HeaderText = "";
-            this.Column1.Image = global::_3mpacador4.Properties.Resources.Editar;
+            //this.Column1.Image = global::_3mpacador4.Properties.Resources.Editar;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;

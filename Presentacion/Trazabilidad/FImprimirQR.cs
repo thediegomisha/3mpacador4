@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using _3mpacador4.Entidad;
 using _3mpacador4.Logica;
 using Devart.Data.MySql;
+using RawDataPrint;
 //using Gma.QrCodeNet.Encoding;
 //using Gma.QrCodeNet.Encoding.Windows.Render;
 //using iTextSharp.text;
@@ -168,7 +169,51 @@ namespace _3mpacador4.Presentacion.Trazabilidad
 
         private void btngenerar_Click(object sender, EventArgs e)
         {
+            var nro_etiquetas = Convert.ToInt32(nudcantidad.Value.ToString());
+            if (nro_etiquetas > 0)
+            {
+                //ActualizarEtiquetas(li_idgrupo, ls_dni, nro_etiquetas);
+                //Lista_Num_trab(ls_dni, li_idgrupo);
+                Impresion_ZPL("27122023000170682917", 1);
 
+            }
+        }
+
+        public void Impresion_ZPL(string ls_codigo, int li_cantidad)
+        {
+            try
+            {
+                string cadena;
+                //PrintDialog pd = new PrintDialog();
+
+                int imp = 0;
+                for (imp = 1; imp <= li_cantidad; imp++)
+                {
+                    // INICIO
+                    cadena = "^XA" + Environment.NewLine;
+
+                    // COLUMNA 01
+                    cadena = cadena + "^FO30,20^BQN,2,9^FDMA," + ls_codigo + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,34^FO60,222^FD" + ls_codigo.Substring(12) + "^FS" + Environment.NewLine;
+
+                    // COLUMNA 02
+                    cadena = cadena + "^FO270,20^BQN,2,9^FDMA," + ls_codigo + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,34^FO305,222^FD" + ls_codigo.Substring(12) + "^FS" + Environment.NewLine;
+
+                    // COLUMNA 03
+                    cadena = cadena + "^FO510,20^BQN,2,9^FDMA," + ls_codigo + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,34^FO540,222^FD" + ls_codigo.Substring(12) + "^FS" + Environment.NewLine;
+
+                    // FIN
+                    cadena = cadena + "^XZ" + Environment.NewLine;
+                    RawPrinterHelper.EnviarCadenaToImpresora("ZplPrinter"/*cbximpresora.Text.Trim()*/, cadena);
+                    cadena = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR...");
+            }
         }
 
         //private void FImprimirQR_Load(object sender, EventArgs e)
