@@ -14,6 +14,8 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         {
             InitializeComponent();
             PrepGrid();
+            txtCLP.Enabled = false;
+            txtRazonSocial.Enabled = false;
         }
 
         private void limpiarcampos()
@@ -80,6 +82,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                         ocultar_columnas();
                         contar();
                         lblclptotal.Text = datos.Rows[0]["total_registros"].ToString();
+                        MarcarVencidas();
                     }
                     else
                     {
@@ -98,6 +101,29 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     comando.Dispose();
                 }
                 ConexionGral.desconectar();
+            }
+        }
+
+        private void MarcarVencidas()
+        {
+            DateTime fechaActual = DateTime.Today;
+
+            foreach (DataGridViewRow row in datalistado.Rows)
+            {
+                if (!row.IsNewRow) // Evita la fila de nueva entrada, si está presente
+                {
+                    DataGridViewCell celdaFecha = row.Cells[6]; // Suponiendo que la columna de fecha es la segunda (índice 1)
+                    DateTime fechaCelda;
+
+                    if (celdaFecha.Value != null && DateTime.TryParse(celdaFecha.Value.ToString(), out fechaCelda))
+                    {
+                        if (fechaCelda < fechaActual)
+                        {
+                           // celdaFecha.Style.BackColor = System.Drawing.Color.LightCoral; // Color de fondo para celdas retrasadas
+                            row.DefaultCellStyle.BackColor = System.Drawing.Color.Red; // Color de fondo para filas con fechas vencidas
+                        }
+                    }
+                }
             }
         }
 
@@ -315,11 +341,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     txtRazonSocial.Enabled = false;
                     chkrazonsocial.Checked = false;
                 }
-                else
-                {
-                    txtCLP.Enabled = false;
-                    txtRazonSocial.Enabled = false;
-                }
+               
             }
             catch (Exception exception)
             {
@@ -338,11 +360,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     chkclp.Checked = false;
                     txtCLP.Enabled = false;
                 }
-                else
-                {
-                    txtRazonSocial.Enabled = false;
-                    txtCLP.Enabled = false;
-                }
+               
             }
             catch (Exception exception)
             {

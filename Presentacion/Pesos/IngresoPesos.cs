@@ -402,6 +402,23 @@ namespace _3mpacador4
                         withBlock.DisplayMember = "RAZON SOCIAL";
                         withBlock.ValueMember = "clp";
                         withBlock.SelectedIndex = -1;
+
+                        foreach (DataRow row in datos.Rows)
+                         {
+                            DateTime fechaVencimiento = Convert.ToDateTime(row["ffincertificado"]);
+                            if (fechaVencimiento < DateTime.Today)
+                            {
+                                cbProductor.ForeColor = Color.Red; // Cambia el color del texto del ComboBox
+                                break; // Termina el bucle tan pronto como encuentre una fecha vencida
+                            }
+                            else
+                            {
+                                cbProductor.ForeColor = SystemColors.ControlText; // Color de texto predeterminado
+                            }
+                        }
+
+
+
                         //   poblarPais();
                     }
                     else
@@ -519,6 +536,8 @@ namespace _3mpacador4
             {
                 if (!string.IsNullOrEmpty(cbProductor.Text))
                 {
+                //    DateTime fechaActual = DateTime.Today;
+
                     lblCLP.Text = Convert.ToString(cbProductor.SelectedValue.ToString());
 
                     //int iniciocadena1 = cbProductor.Text.IndexOf('|');

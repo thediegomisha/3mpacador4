@@ -13,5 +13,10 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         {
             this.Close();
         }
+
+        private void btnGuardar_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }
