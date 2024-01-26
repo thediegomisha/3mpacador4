@@ -36,7 +36,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         public void mostraracopiador()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();

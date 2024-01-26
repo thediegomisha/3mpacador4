@@ -23,7 +23,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void mostrarLote()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -87,7 +87,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void mostrarDestino()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -132,7 +132,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void mostrarCalibre()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -178,7 +178,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void mostrarCategoria()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -224,7 +224,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void poblarLote()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -291,7 +291,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void LlamarJuliano()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();

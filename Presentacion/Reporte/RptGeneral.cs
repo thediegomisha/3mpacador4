@@ -186,7 +186,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void mostrarclientes()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             //  MostrarAnimacionEspera();
             try
             {
@@ -781,7 +781,7 @@ namespace _3mpacador4.Presentacion.Reporte
         {
             var datos = new DataTable();
 
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -830,7 +830,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void mostrarconsulta3()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -875,7 +875,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void mostrarproductor()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -915,7 +915,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void mostrarAcopiador()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -955,7 +955,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void mostrarVariedad()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -995,7 +995,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void mostrarMetodo()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -1035,7 +1035,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void mostrarDestino()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();

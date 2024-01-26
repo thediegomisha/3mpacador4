@@ -17,7 +17,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void InsertartipoProducto()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -63,7 +63,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         public void mostrarTipoProducto()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();

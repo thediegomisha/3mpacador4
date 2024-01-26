@@ -34,7 +34,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
 
         private void Lista_Num_trab(string ls_dni, int li_idgrupo_turno)
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 Lista_num_trab.Clear();

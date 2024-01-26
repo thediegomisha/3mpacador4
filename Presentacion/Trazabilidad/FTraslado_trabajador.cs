@@ -23,7 +23,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
 
         public void ListaTrabajadores()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 dgvlista1.Rows.Clear();

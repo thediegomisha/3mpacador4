@@ -22,7 +22,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            InsertarLote();
+                InsertarLote();
         }
 
         private void InsertarLote()
@@ -70,13 +70,19 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void mostrarUltimoRegistro()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tbllote_last_reg", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
+
+                String fechaaño = Settings.Default.periodo.ToString();
+                String[] partes = fechaaño.Split(' ')[0].Split('/');
+                String año = partes[2];
+                comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Text).Value = año;
+
 
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();

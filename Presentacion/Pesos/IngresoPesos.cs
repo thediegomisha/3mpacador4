@@ -331,7 +331,7 @@ namespace _3mpacador4
 
         private void mostrarlistadoproducto()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -375,7 +375,7 @@ namespace _3mpacador4
 
         private void mostrarproductor()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             //  MostrarAnimacionEspera();
             try
             {
@@ -423,7 +423,7 @@ namespace _3mpacador4
 
         private void mostrarclientes()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             //    MostrarAnimacionEspera();
             try
             {
@@ -469,7 +469,7 @@ namespace _3mpacador4
 
         private void mostrarLote()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -616,7 +616,7 @@ namespace _3mpacador4
 
         private void RecuperaCorrelativo()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null; 
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed)
@@ -701,7 +701,7 @@ namespace _3mpacador4
 
         private void mostrarlistadovariedad()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -748,7 +748,7 @@ namespace _3mpacador4
 
         private void mostrarturno()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -790,7 +790,7 @@ namespace _3mpacador4
 
         private void mostrarMetCultivo()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -847,7 +847,7 @@ namespace _3mpacador4
 
         private void mostrarservicio()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -902,7 +902,7 @@ namespace _3mpacador4
 
         private void mostrarjabas()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -1213,7 +1213,7 @@ namespace _3mpacador4
 
         private void mostrarconsulta()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -1297,7 +1297,7 @@ namespace _3mpacador4
 
         private void poblarPais()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -1361,7 +1361,7 @@ namespace _3mpacador4
 
         private void mostrarAcopiador()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -1399,7 +1399,7 @@ namespace _3mpacador4
 
         private void mostrarMaterialCosecha()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -1438,7 +1438,7 @@ namespace _3mpacador4
 
         private void cerrarlote()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();

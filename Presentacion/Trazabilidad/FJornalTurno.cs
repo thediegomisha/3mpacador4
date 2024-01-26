@@ -40,7 +40,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
 
         void Cargar_turno()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 cbturno.Items.Clear();
@@ -260,7 +260,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                     , @"Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (rpta == DialogResult.Yes)
                 {
-                    MySqlCommand comando;
+                    MySqlCommand comando = null;
                     try
                     {
                         if (ConexionGral.conexion.State == ConnectionState.Closed)

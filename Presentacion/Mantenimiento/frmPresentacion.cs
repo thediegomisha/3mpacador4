@@ -24,7 +24,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void mostrarPresentacion()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();

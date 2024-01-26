@@ -36,7 +36,7 @@ namespace _3mpacador4.Presentacion.Sistema
 
         public void MostrarCalibres()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 datalistado.Rows.Clear();

@@ -19,7 +19,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void Cargar_lote()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 cboLote.Items.Clear();
@@ -48,7 +48,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void Cargar_destino()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 cboDestino.Items.Clear();
@@ -77,7 +77,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void Cargar_categoria()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 cbCategoria.Items.Clear();
@@ -106,7 +106,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void Cargar_presentacion()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 cbpresentacion.Items.Clear();
@@ -135,7 +135,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void Cargar_terminal()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 cbxterminal.Items.Clear();
@@ -164,7 +164,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void poblarLote()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();

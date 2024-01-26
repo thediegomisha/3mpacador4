@@ -86,7 +86,7 @@
             // txtnumlote
             // 
             this.txtnumlote.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnumlote.Location = new System.Drawing.Point(82, 78);
+            this.txtnumlote.Location = new System.Drawing.Point(82, 73);
             this.txtnumlote.Name = "txtnumlote";
             this.txtnumlote.Size = new System.Drawing.Size(100, 29);
             this.txtnumlote.TabIndex = 46;

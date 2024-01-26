@@ -16,7 +16,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void InsertarMetodoCultivo()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -59,7 +59,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         public void mostrarMetodoCultivo()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();

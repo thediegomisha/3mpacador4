@@ -44,17 +44,27 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void consulta()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+                if (ConexionGral.conexion.State == ConnectionState.Closed)
+                {
+                    ConexionGral.conectar();
+                }
+               
 
-                comando = new MySqlCommand("usp_tblclp_Select", ConexionGral.conexion);
-                comando.CommandType = (CommandType)4;
-
-                comando.Parameters.AddWithValue("p_clp", MySqlType.Int).Value = txtCLP.Text;
-                ;
-
+                if (chkclp.Checked == true)
+                {
+                    comando = new MySqlCommand("usp_tblclp_Select", ConexionGral.conexion);
+                    comando.CommandType = (CommandType)4;
+                    comando.Parameters.AddWithValue("p_clp", MySqlType.Text ).Value = txtCLP.Text;
+                }
+                else if (chkrazonsocial .Checked == true)
+                {
+                    comando = new MySqlCommand("usp_tblclp_SelectbyName", ConexionGral.conexion);
+                    comando.CommandType = (CommandType)4;
+                    comando.Parameters.AddWithValue("p_razonsocial", MySqlType.Text).Value = txtRazonSocial.Text;
+                }
 
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
@@ -79,10 +89,14 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
+                if (comando != null)
+                {
+                    comando.Dispose();
+                }
                 ConexionGral.desconectar();
             }
         }
@@ -289,6 +303,51 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         private void frmProductorCLP_Activated(object sender, EventArgs e)
         {
             txtCLP.Focus();
+        }
+
+        private void chkclp_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkclp.Checked == true)
+                {
+                    txtCLP.Enabled = true;
+                    txtRazonSocial.Enabled = false;
+                    chkrazonsocial.Checked = false;
+                }
+                else
+                {
+                    txtCLP.Enabled = false;
+                    txtRazonSocial.Enabled = false;
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
+        }
+
+        private void chkrazonsocial_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkrazonsocial.Checked == true)
+                {
+                    txtRazonSocial.Enabled = true;
+                    chkclp.Checked = false;
+                    txtCLP.Enabled = false;
+                }
+                else
+                {
+                    txtRazonSocial.Enabled = false;
+                    txtCLP.Enabled = false;
+                }
+            }
+            catch (Exception exception)
+            {
+               
+            }
         }
     }
 }

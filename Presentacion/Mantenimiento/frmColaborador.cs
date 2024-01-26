@@ -42,7 +42,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         public void MostrarColaborador()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;    
             try
             {
                 datalistado.Rows.Clear();
@@ -106,7 +106,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     , @"Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (rpta == DialogResult.Yes)
                 {
-                    MySqlCommand comando;
+                    MySqlCommand comando = null;
                     try
                     {
                         if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();

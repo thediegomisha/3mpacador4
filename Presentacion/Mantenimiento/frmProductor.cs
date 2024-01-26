@@ -33,7 +33,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void mostrarclientes()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();

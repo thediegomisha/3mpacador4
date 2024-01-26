@@ -40,6 +40,10 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblclptotal = new System.Windows.Forms.Label();
+            this.chkclp = new System.Windows.Forms.CheckBox();
+            this.chkrazonsocial = new System.Windows.Forms.CheckBox();
+            this.txtRazonSocial = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.Panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
@@ -52,7 +56,7 @@
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(1145, 41);
+            this.Panel1.Size = new System.Drawing.Size(1156, 41);
             this.Panel1.TabIndex = 32;
             // 
             // Label1
@@ -111,12 +115,16 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txtRazonSocial);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.chkrazonsocial);
+            this.panel2.Controls.Add(this.chkclp);
             this.panel2.Controls.Add(this.datalistado);
             this.panel2.Controls.Add(this.txtCLP);
             this.panel2.Controls.Add(this.Label2);
             this.panel2.Location = new System.Drawing.Point(-1, 48);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1146, 348);
+            this.panel2.Size = new System.Drawing.Size(1157, 348);
             this.panel2.TabIndex = 59;
             // 
             // datalistado
@@ -130,7 +138,7 @@
             this.datalistado.Location = new System.Drawing.Point(3, 84);
             this.datalistado.Name = "datalistado";
             this.datalistado.RowHeadersVisible = false;
-            this.datalistado.Size = new System.Drawing.Size(1140, 261);
+            this.datalistado.Size = new System.Drawing.Size(1154, 261);
             this.datalistado.TabIndex = 107;
             this.datalistado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datalistado_CellDoubleClick);
             // 
@@ -157,10 +165,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(150, 421);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(145, 419);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 15);
+            this.label3.Size = new System.Drawing.Size(31, 18);
             this.label3.TabIndex = 114;
             this.label3.Text = "de ";
             // 
@@ -169,17 +177,55 @@
             this.lblclptotal.AutoSize = true;
             this.lblclptotal.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblclptotal.ForeColor = System.Drawing.Color.Blue;
-            this.lblclptotal.Location = new System.Drawing.Point(192, 417);
+            this.lblclptotal.Location = new System.Drawing.Point(196, 417);
             this.lblclptotal.Name = "lblclptotal";
             this.lblclptotal.Size = new System.Drawing.Size(20, 21);
             this.lblclptotal.TabIndex = 115;
             this.lblclptotal.Text = "0";
             // 
+            // chkclp
+            // 
+            this.chkclp.AutoSize = true;
+            this.chkclp.Location = new System.Drawing.Point(7, 17);
+            this.chkclp.Name = "chkclp";
+            this.chkclp.Size = new System.Drawing.Size(15, 14);
+            this.chkclp.TabIndex = 108;
+            this.chkclp.UseVisualStyleBackColor = true;
+            this.chkclp.CheckedChanged += new System.EventHandler(this.chkclp_CheckedChanged);
+            // 
+            // chkrazonsocial
+            // 
+            this.chkrazonsocial.AutoSize = true;
+            this.chkrazonsocial.Location = new System.Drawing.Point(367, 17);
+            this.chkrazonsocial.Name = "chkrazonsocial";
+            this.chkrazonsocial.Size = new System.Drawing.Size(15, 14);
+            this.chkrazonsocial.TabIndex = 109;
+            this.chkrazonsocial.UseVisualStyleBackColor = true;
+            this.chkrazonsocial.CheckedChanged += new System.EventHandler(this.chkrazonsocial_CheckedChanged);
+            // 
+            // txtRazonSocial
+            // 
+            this.txtRazonSocial.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRazonSocial.Location = new System.Drawing.Point(392, 35);
+            this.txtRazonSocial.Name = "txtRazonSocial";
+            this.txtRazonSocial.Size = new System.Drawing.Size(278, 29);
+            this.txtRazonSocial.TabIndex = 111;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(388, 11);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(207, 21);
+            this.label4.TabIndex = 110;
+            this.label4.Text = "Ingrese un Nombre a Buscar";
+            // 
             // frmProductorCLP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1145, 441);
+            this.ClientSize = new System.Drawing.Size(1156, 441);
             this.ControlBox = false;
             this.Controls.Add(this.lblclptotal);
             this.Controls.Add(this.label3);
@@ -218,5 +264,9 @@
         internal System.Windows.Forms.Label label22;
         internal System.Windows.Forms.Label label3;
         internal System.Windows.Forms.Label lblclptotal;
+        internal System.Windows.Forms.TextBox txtRazonSocial;
+        internal System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox chkrazonsocial;
+        private System.Windows.Forms.CheckBox chkclp;
     }
 }

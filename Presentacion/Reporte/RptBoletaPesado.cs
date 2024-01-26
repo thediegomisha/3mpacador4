@@ -34,7 +34,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void mostrarconsulta()
         {
-            MySqlCommand comando;
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
