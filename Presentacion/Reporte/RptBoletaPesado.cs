@@ -6,6 +6,11 @@ using _3mpacador4.Logica;
 using _3mpacador4.Properties;
 using Devart.Data.MySql;
 using Microsoft.VisualBasic;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
+using Settings = _3mpacador4.Properties.Settings;
+
 //using Microsoft.Office.Interop.Excel;
 //using objExcel  = Microsoft.Office.Interop.Excel;
 //using Microsoft.Office.Interop.Excel;
@@ -20,12 +25,32 @@ namespace _3mpacador4.Presentacion.Reporte
         private string nombreArchivo = "C:/archivo.xlsx";
 
         // Label[] labels = new Label[] { lblciente, label2, label3, label4, label5, label6 };
+      //  QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
 
 
         public RptBoletaPesado()
         {
             InitializeComponent();
             PrepGrid();
+        }
+
+        private void GenerarPDF()
+        {
+            // Configurar la licencia de QuestPDF
+            QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+        
+            var doc = Document.Create(container => container.Page(page =>
+            {
+                page.Size(PageSizes.A4);
+                page.Margin(2, Unit.Centimetre);
+                page.DefaultTextStyle(x => x.FontSize(12));
+
+                page.Content()
+                    .Column(x => x.Item().Text(Placeholders.Paragraph()));
+            }));
+
+            doc.GeneratePdf("simple.pdf");
+
         }
 
         private void RptBoletaPesado_Load(object sender, EventArgs e)
@@ -43,10 +68,13 @@ namespace _3mpacador4.Presentacion.Reporte
                 comando.CommandType = (CommandType)4;
 
                 comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = txtnumlote.Text;
-                
-                var fechaperiodo = Settings.Default.periodo.ToString();
 
-                comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Int).Value = fechaperiodo;
+                String fechaaño = Settings.Default.periodo.ToString();
+                String[] partes = fechaaño.Split(' ')[0].Split('/');
+                String año = partes[2];
+              
+
+                comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Int).Value = año;
 
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
@@ -302,6 +330,11 @@ namespace _3mpacador4.Presentacion.Reporte
         private void button1_Click(object sender, EventArgs e)
         {
             //    ExportarExcel( nombreArchivo);
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            GenerarPDF();
         }
 
 

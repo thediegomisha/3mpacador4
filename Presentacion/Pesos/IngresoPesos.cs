@@ -373,13 +373,15 @@ namespace _3mpacador4
             }
         }
 
+
         private void mostrarproductor()
         {
             MySqlCommand comando = null;
-            //  MostrarAnimacionEspera();
+
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+                if (ConexionGral.conexion.State == ConnectionState.Closed)
+                    ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblproductor_Select", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
@@ -388,43 +390,44 @@ namespace _3mpacador4
                 var datos = new DataTable();
                 adaptador.Fill(datos);
 
+                var withBlock = cbProductor;
+                withBlock.ForeColor = SystemColors.ControlText; // Restablecer el color predeterminado
+
+                //foreach (DataRow row in datos.Rows)
+                //{
+                //    object fechaCertificado = row["ffincertificado"];
+
+                //    if (fechaCertificado != DBNull.Value)
+                //    {
+                //        DateTime fechaVencimiento = Convert.ToDateTime(fechaCertificado);
+
+                //        // Verificar si la fecha está vencida
+                //        if (fechaVencimiento < DateTime.Today)
+                //        {
+                //            // Configurar el color solo si la fecha está vencida
+                //            int index = datos.Rows.IndexOf(row);
+                //            withBlock.ForeColor = Color.Red;
+                //            break; // Sal del bucle, ya que encontraste una fecha vencida
+                //        }
+                //    }
+                //}
+
+                // Configura los datos del ComboBox
+                if (datos != null && datos.Rows.Count > 0)
                 {
-                    var withBlock = cbProductor;
-                    if (datos != null && datos.Rows.Count > 0)
-                    {
-                        var dr = datos.NewRow();
-                        dr["clp"] = 0;
-                        dr["RAZON SOCIAL"] = "Nuevo ...";
-                        datos.Rows.InsertAt(dr, 0);
+                    var dr = datos.NewRow();
+                    dr["clp"] = 0;
+                    dr["RAZON SOCIAL"] = "Nuevo ...";
+                    datos.Rows.InsertAt(dr, 0);
 
-
-                        withBlock.DataSource = datos;
-                        withBlock.DisplayMember = "RAZON SOCIAL";
-                        withBlock.ValueMember = "clp";
-                        withBlock.SelectedIndex = -1;
-
-                        foreach (DataRow row in datos.Rows)
-                         {
-                            DateTime fechaVencimiento = Convert.ToDateTime(row["ffincertificado"]);
-                            if (fechaVencimiento < DateTime.Today)
-                            {
-                                cbProductor.ForeColor = Color.Red; // Cambia el color del texto del ComboBox
-                                break; // Termina el bucle tan pronto como encuentre una fecha vencida
-                            }
-                            else
-                            {
-                                cbProductor.ForeColor = SystemColors.ControlText; // Color de texto predeterminado
-                            }
-                        }
-
-
-
-                        //   poblarPais();
-                    }
-                    else
-                    {
-                        withBlock.DataSource = null;
-                    }
+                    withBlock.DataSource = datos;
+                    withBlock.DisplayMember = "RAZON SOCIAL";
+                    withBlock.ValueMember = "clp";
+                    withBlock.SelectedIndex = -1;
+                }
+                else
+                {
+                    withBlock.DataSource = null;
                 }
             }
             catch (Exception ex)
@@ -436,6 +439,157 @@ namespace _3mpacador4
                 ConexionGral.desconectar();
             }
         }
+
+        //private void mostrarproductor()
+        //{
+        //    MySqlCommand comando = null;
+
+        //    try
+        //    {
+        //        if (ConexionGral.conexion.State == ConnectionState.Closed)
+        //            ConexionGral.conectar();
+
+        //        comando = new MySqlCommand("usp_tblproductor_Select", ConexionGral.conexion);
+        //        comando.CommandType = (CommandType)4;
+
+        //        var adaptador = new MySqlDataAdapter(comando);
+        //        var datos = new DataTable();
+        //        adaptador.Fill(datos);
+
+        //        var withBlock = cbProductor;
+        //        bool algunaFechaVencida = false;
+
+        //        foreach (DataRow row in datos.Rows)
+        //        {
+        //            object fechaCertificado = row["ffincertificado"];
+
+        //            if (fechaCertificado != DBNull.Value)
+        //            {
+        //                DateTime fechaVencimiento = Convert.ToDateTime(fechaCertificado);
+
+        //                // Si alguna fecha está vencida, marca la bandera
+        //                if (fechaVencimiento < DateTime.Today)
+        //                {
+        //                    algunaFechaVencida = true;
+        //                    break; // Sal del bucle, ya que encontraste una fecha vencida
+        //                }
+        //            }
+        //        }
+
+        //        // Establece el color del ComboBox basado en si alguna fecha está vencida
+        //        if (algunaFechaVencida)
+        //        {
+        //            withBlock.ForeColor = Color.Red; // Cambia el color del texto del ComboBox a rojo
+        //        }
+        //        else
+        //        {
+        //            withBlock.ForeColor = SystemColors.ControlText; // Color de texto predeterminado si no hay fechas vencidas
+        //        }
+
+        //        // Configura los datos del ComboBox
+        //        if (datos != null && datos.Rows.Count > 0)
+        //        {
+        //            var dr = datos.NewRow();
+        //            dr["clp"] = 0;
+        //            dr["RAZON SOCIAL"] = "Nuevo ...";
+        //            datos.Rows.InsertAt(dr, 0);
+
+        //            withBlock.DataSource = datos;
+        //            withBlock.DisplayMember = "RAZON SOCIAL";
+        //            withBlock.ValueMember = "clp";
+        //            withBlock.SelectedIndex = -1;
+        //        }
+        //        else
+        //        {
+        //            withBlock.DataSource = null;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    finally
+        //    {
+        //        ConexionGral.desconectar();
+        //    }
+        //}
+
+
+        //private void mostrarproductor()
+        //{
+        //    MySqlCommand comando = null;
+        //    //  MostrarAnimacionEspera();
+        //    try
+        //    {
+        //        if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+
+        //        comando = new MySqlCommand("usp_tblproductor_Select", ConexionGral.conexion);
+        //        comando.CommandType = (CommandType)4;
+
+        //        var adaptador = new MySqlDataAdapter(comando);
+        //        var datos = new DataTable();
+        //        adaptador.Fill(datos);
+
+        //        {
+        //            var withBlock = cbProductor;
+        //            if (datos != null && datos.Rows.Count > 0)
+        //            {
+        //                var dr = datos.NewRow();
+        //                dr["clp"] = 0;
+        //                dr["RAZON SOCIAL"] = "Nuevo ...";
+        //                datos.Rows.InsertAt(dr, 0);
+
+
+        //                withBlock.DataSource = datos;
+        //                withBlock.DisplayMember = "RAZON SOCIAL";
+        //                withBlock.ValueMember = "clp";
+        //                withBlock.SelectedIndex = -1;
+
+        //                bool algunaFechaVencida = false; 
+        //                foreach (DataRow row in datos.Rows)
+        //                {
+        //                    object fechaCertificado = row["ffincertificado"];
+
+        //                    //   DateTime fechaVencimiento;
+
+        //                    if (fechaCertificado != DBNull.Value)
+        //                    {
+        //                        DateTime fechaVencimiento = Convert.ToDateTime(fechaCertificado);
+
+        //                        if (fechaVencimiento < DateTime.Today)
+        //                        {
+        //                            algunaFechaVencida = true; // Hay al menos una fecha vencida
+        //                            break; // Termina el bucle tan pronto como encuentre una fecha vencida
+        //                        }
+        //                    }
+        //                }
+
+        //                // Establecer el color del ComboBox después de evaluar todas las fechas
+        //                if (algunaFechaVencida)
+        //                {
+        //                    cbProductor.ForeColor = Color.Red; // Cambia el color del texto del ComboBox a rojo
+        //                }
+        //                else
+        //                {
+        //                    cbProductor.ForeColor = SystemColors.ControlText; // Color de texto predeterminado si no hay fechas vencidas
+        //                }
+
+        //            }
+        //            else
+        //            {
+        //                withBlock.DataSource = null;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    finally
+        //    {
+        //        ConexionGral.desconectar();
+        //    }
+        //}
 
 
         private void mostrarclientes()
@@ -671,8 +825,7 @@ namespace _3mpacador4
                     //combo += - 1;
                     //label4 .Text = combo.ToString();
 
-
-                    if (cboLote.Text == "Nuevo ...")
+                    if (cboLote.Text == @"Nuevo ...")
                     {
                         var form = new frmLote();
                         form.ShowDialog();

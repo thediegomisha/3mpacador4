@@ -157,6 +157,10 @@ namespace _3mpacador4.Presentacion.Reporte
 
         void GeneraPDF(Packing_calibre_cab p)
         {
+            try
+            {
+
+            
             var doc = new Document(PageSize.A4.Rotate(), 30, 20, 30, 20);
             PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(AppDomain.CurrentDomain.BaseDirectory + "RESUMEN_BALANCE_MASA"+dtpf_produccion.Value.ToString("ddMMyyyy")+".pdf", FileMode.Create));
 
@@ -766,8 +770,14 @@ namespace _3mpacador4.Presentacion.Reporte
             doc.Add(TTabla07);
 
             doc.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
         }
-
 
         public class CustomPdfPageEvent : PdfPageEventHelper
         {

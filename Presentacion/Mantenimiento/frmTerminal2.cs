@@ -11,9 +11,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using _3mpacador4.Entidad;
-using _3mpacador4.Logica;
-using Devart.Data.MySql;
+//using _3mpacador4.Entidad;
+//using _3mpacador4.Logica;
+//using Devart.Data.MySql;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {

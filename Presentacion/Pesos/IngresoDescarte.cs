@@ -657,6 +657,11 @@ namespace _3mpacador4
                 comando.CommandType = (CommandType)4;
 
                 comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = cboLote.Text;
+
+                String fechaaño = Settings.Default.periodo.ToString();
+                String[] partes = fechaaño.Split(' ')[0].Split('/');
+                String año = partes[2];
+                comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Text).Value = año;
                 ;
 
                 var adaptador = new MySqlDataAdapter(comando);
