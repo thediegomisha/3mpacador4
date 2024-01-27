@@ -573,8 +573,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Datos\" />
-    <Folder Include="packages\SkiaSharp.NativeAssets.macOS.2.88.7\build\net462\" />
+    <Folder Include="Datos\" />    
   </ItemGroup>
   <ItemGroup>
     <None Include="Recursos\ICUSB2322F.C.jpg" />
@@ -692,6 +691,4 @@
       <Version>8.0.0</Version>
     </PackageReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="packages\HarfBuzzSharp.NativeAssets.macOS.7.3.0\build\net462\HarfBuzzSharp.NativeAssets.macOS.targets" Condition="Exists('packages\HarfBuzzSharp.NativeAssets.macOS.7.3.0\build\net462\HarfBuzzSharp.NativeAssets.macOS.targets')" />
- </Project>
+  </Project>
