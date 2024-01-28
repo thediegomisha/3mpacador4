@@ -1124,7 +1124,7 @@ namespace _3mpacador4
             float taraparihuela = 0;
             float pesobruto = 0;
             float pesobrutoManual = 0;
-            txtPesoManual.Text = "0.0";
+           // txtPesoManual.Text = "0";
 
             try
             {
@@ -1137,108 +1137,116 @@ namespace _3mpacador4
                  pesobruto = float.Parse(lblpeso.Text);
                  pesobrutoManual = float.Parse(txtPesoManual.Text);
 
+                 if (cboLote.SelectedItem != null)
+                {
+                    comando.Parameters.AddWithValue("p_numdoc", lblcorrelativo.Text);
+                    comando.Parameters.AddWithValue("p_horallegada", DateTime.Now);
+                    comando.Parameters.AddWithValue("p_horapesaje", DateTime.Now);
+                    comando.Parameters.AddWithValue("p_fecha_ticket", Convert.ToDateTime(fpesaje.Text));
+                    comando.Parameters.AddWithValue("p_idmetodocultivo", MySqlType.Int).Value =
+                        cbMetodoCultivo.GetItemText(cbMetodoCultivo.SelectedValue);
+                    comando.Parameters.AddWithValue("p_idtiposervicio", MySqlType.Int).Value =
+                        cbTipoServicio.GetItemText(cbTipoServicio.SelectedValue);
+                    comando.Parameters.AddWithValue("p_idproducto", MySqlType.Int).Value =
+                        cbProducto.GetItemText(cbProducto.SelectedValue);
+                    comando.Parameters.AddWithValue("p_idlote", MySqlType.Int).Value =
+                        cboLote.GetItemText(cboLote.SelectedValue.ToString());
+                    comando.Parameters.AddWithValue("p_idvariedad", MySqlType.Int).Value =
+                        cbvariedad.GetItemText(cbvariedad.SelectedValue);
+                    comando.Parameters.AddWithValue("p_idcliente", MySqlType.Int).Value = label12.Text;
+                    comando.Parameters.AddWithValue("p_idacopiador", MySqlType.Int).Value = label35.Text;
 
-                comando.Parameters.AddWithValue("p_numdoc", lblcorrelativo.Text);
-                comando.Parameters.AddWithValue("p_horallegada", DateTime.Now);
-                comando.Parameters.AddWithValue("p_horapesaje", DateTime.Now);
-                comando.Parameters.AddWithValue("p_fecha_ticket", Convert.ToDateTime(fpesaje.Text));
-                comando.Parameters.AddWithValue("p_idmetodocultivo", MySqlType.Int).Value =
-                    cbMetodoCultivo.GetItemText(cbMetodoCultivo.SelectedValue);
-                comando.Parameters.AddWithValue("p_idtiposervicio", MySqlType.Int).Value =
-                    cbTipoServicio.GetItemText(cbTipoServicio.SelectedValue);
-                comando.Parameters.AddWithValue("p_idproducto", MySqlType.Int).Value =
-                    cbProducto.GetItemText(cbProducto.SelectedValue);
-                comando.Parameters.AddWithValue("p_idlote", MySqlType.Int).Value =
-                    cboLote.GetItemText(cboLote.SelectedValue.ToString());
-                comando.Parameters.AddWithValue("p_idvariedad", MySqlType.Int).Value =
-                    cbvariedad.GetItemText(cbvariedad.SelectedValue);
-                comando.Parameters.AddWithValue("p_idcliente", MySqlType.Int).Value = label12.Text;
-                comando.Parameters.AddWithValue("p_idacopiador", MySqlType.Int).Value = label35.Text;
-
-                if (txtGuiaRemision.Text == string.Empty)
-                {
-                    MessageBox.Show(@"Error, Tiene que Ingresar el Numero de Guia", @"GUIA REMISION");
-                    return;
-                }
-                else
-                {
-                    comando.Parameters.AddWithValue("p_num_guia", MySqlType.Text).Value = txtGuiaRemision.Text;
-                }
-
-                if (tarajaba > 0)
-                {
-                    comando.Parameters.AddWithValue("p_tara_java", MySqlType.Double).Value = txttarajaba.Text;
-                }
-                else
-                {
-                    MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"TARA JABA");
-                    return;
-                }
-
-                if (taraparihuela > 0)
-                {
-                    comando.Parameters.AddWithValue("p_tara_pallet", MySqlType.Double).Value = txttaraParihuela.Text;
-                }
-                else
-                {
-                    MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"TARA PARIHUELA");
-                    return;
-                }
-
-                comando.Parameters.AddWithValue("p_cant_jabas", MySqlType.Double).Value =
-                    cbjabas.GetItemText(cbjabas.SelectedValue);
-
-                if (chkPesoManual.Checked == false)
-                {
-                    if (pesobruto > 0)
+                    if (txtGuiaRemision.Text == string.Empty)
                     {
-                        comando.Parameters.AddWithValue("p_peso_bruto", MySqlType.Double).Value = lblpeso.Text;
+                        MessageBox.Show(@"Error, Tiene que Ingresar el Numero de Guia", @"GUIA REMISION");
+                        return;
                     }
                     else
                     {
-                        MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"PESO BALANZA");
-                        return;
+                        comando.Parameters.AddWithValue("p_num_guia", MySqlType.Text).Value = txtGuiaRemision.Text;
                     }
-                }
-                else
-                {
-                    if (pesobrutoManual > 0)
+
+                    if (tarajaba > 0)
                     {
-                        comando.Parameters.AddWithValue("p_peso_bruto", MySqlType.Double).Value = txtPesoManual.Text;
+                        comando.Parameters.AddWithValue("p_tara_java", MySqlType.Double).Value = txttarajaba.Text;
                     }
                     else
                     {
-                        MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"PESO BALANZA");
+                        MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"TARA JABA");
                         return;
                     }
-                }
 
-                if (!string.IsNullOrEmpty(cboturno.Text))
-                {
-                    comando.Parameters.AddWithValue("p_turno", MySqlType.Int).Value =
-                        cboturno.GetItemText(cboturno.SelectedValue);
-                }
-                else
-                {
-                    MessageBox.Show(@"Error, El Turno debe ser Ingresado", @"TURNO");
-                    return;
-                }
+                    if (taraparihuela > 0)
+                    {
+                        comando.Parameters.AddWithValue("p_tara_pallet", MySqlType.Double).Value = txttaraParihuela.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"TARA PARIHUELA");
+                        return;
+                    }
 
-                if (!string.IsNullOrEmpty(lblCLP.Text))
-                {
-                    comando.Parameters.AddWithValue("p_idclp", MySqlType.Int).Value = lblCLP.Text;
-                }
-                else
-                {
-                    MessageBox.Show(@"Error, El Turno debe ser Ingresado", @"TURNO");
-                    return;
-                }
+                    comando.Parameters.AddWithValue("p_cant_jabas", MySqlType.Double).Value =
+                        cbjabas.GetItemText(cbjabas.SelectedValue);
 
-                comando.ExecuteNonQuery();
-                MessageBox.Show(@"PESO REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
-                // limpiarcampos()
-                //    this.chkcapturapeso.Checked = false;
+                    pesobrutoManual = float.Parse(txtPesoManual.Text);
+                    if (chkPesoManual.Checked == false)
+                    {
+                        if (pesobruto > 0)
+                        {
+                            comando.Parameters.AddWithValue("p_peso_bruto", MySqlType.Double).Value = lblpeso.Text;
+                        }
+                        else
+                        {
+                            MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"PESO BALANZA");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        if (pesobrutoManual > 0)
+                        {
+                            comando.Parameters.AddWithValue("p_peso_bruto", MySqlType.Double).Value = txtPesoManual.Text;
+                        }
+                        else
+                        {
+                            MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"PESO BALANZA");
+                            return;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(cboturno.Text))
+                    {
+                        comando.Parameters.AddWithValue("p_turno", MySqlType.Int).Value =
+                            cboturno.GetItemText(cboturno.SelectedValue);
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"Error, El Turno debe ser Ingresado", @"TURNO");
+                        return;
+                    }
+
+                    if (!string.IsNullOrEmpty(lblCLP.Text))
+                    {
+                        comando.Parameters.AddWithValue("p_idclp", MySqlType.Int).Value = lblCLP.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"Error, El Turno debe ser Ingresado", @"TURNO");
+                        return;
+                    }
+
+                    comando.ExecuteNonQuery();
+                    MessageBox.Show(@"PESO REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
+                    // limpiarcampos()
+                    //    this.chkcapturapeso.Checked = false;
+                }
+                 else
+                 {
+                     MessageBox.Show(@"Por favor, seleccione un Lote antes de continuar.", "Error de selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     return;
+                }
             }
             catch (Exception ex)
             {
@@ -1390,35 +1398,45 @@ namespace _3mpacador4
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
-                comando = new MySqlCommand("usp_tblticketpesaje_Selectlote", ConexionGral.conexion);
-                comando.CommandType = (CommandType)4;
 
-                comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = cboLote.Text;
-                String fechaaño = Settings.Default.periodo.ToString();
-                String[] partes = fechaaño.Split(' ')[0].Split('/');
-                String año = partes[2];
-                comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Text).Value = año;
-
-                var adaptador = new MySqlDataAdapter(comando);
-                var datos = new DataTable();
-                adaptador.Fill(datos);
-
+                if (cboLote.SelectedItem != null)
                 {
-                    var withBlock = datalistado;
-                    if (datos != null && datos.Rows.Count > 0)
+                    comando = new MySqlCommand("usp_tblticketpesaje_Selectlote", ConexionGral.conexion);
+                    comando.CommandType = (CommandType)4;
+
+
+                    comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = cboLote.Text;
+                    String fechaaño = Settings.Default.periodo.ToString();
+                    String[] partes = fechaaño.Split(' ')[0].Split('/');
+                    String año = partes[2];
+                    comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Text).Value = año;
+
+                    var adaptador = new MySqlDataAdapter(comando);
+                    var datos = new DataTable();
+                    adaptador.Fill(datos);
+
                     {
-                        var dr = datos.NewRow();
-                        withBlock.DataSource = datos;
-                        //tamanio();
-                        //ocultar_columnas();
-                        //actualizardatos();
-                        sumaneto();
-                        contar();
+                        var withBlock = datalistado;
+                        if (datos != null && datos.Rows.Count > 0)
+                        {
+                            var dr = datos.NewRow();
+                            withBlock.DataSource = datos;
+                            //tamanio();
+                            //ocultar_columnas();
+                            //actualizardatos();
+                            sumaneto();
+                            contar();
+                        }
+                        else
+                        {
+                            withBlock.DataSource = null;
+                        }
                     }
-                    else
-                    {
-                        withBlock.DataSource = null;
-                    }
+                }
+                else
+                {
+                    MessageBox.Show(@"Por favor, seleccione un Lote antes de continuar.", "Error de selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
             catch (Exception ex)

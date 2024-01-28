@@ -248,7 +248,7 @@
             this.txtPesoManual.Name = "txtPesoManual";
             this.txtPesoManual.Size = new System.Drawing.Size(576, 158);
             this.txtPesoManual.TabIndex = 106;
-            this.txtPesoManual.Text = "000.0 ";
+            this.txtPesoManual.Text = "000.0";
             this.txtPesoManual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPesoManual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesoManual_KeyPress);
             // 

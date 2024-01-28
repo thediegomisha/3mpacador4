@@ -9,6 +9,7 @@ using Microsoft.VisualBasic;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
+using QuestPDF.Previewer;
 using Settings = _3mpacador4.Properties.Settings;
 
 //using Microsoft.Office.Interop.Excel;
@@ -39,18 +40,44 @@ namespace _3mpacador4.Presentacion.Reporte
             // Configurar la licencia de QuestPDF
             QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
         
-            var doc = Document.Create(container => container.Page(page =>
+            var doc = Document.Create(contenedor => contenedor.Page(pagina =>
             {
-                page.Size(PageSizes.A4);
-                page.Margin(2, Unit.Centimetre);
-                page.DefaultTextStyle(x => x.FontSize(12));
+                pagina.Size(PageSizes.A4);
+                pagina.Margin(2, Unit.Centimetre);
+                pagina.DefaultTextStyle(x => x.FontSize(12));
 
-                page.Content()
+                pagina.Content()
                     .Column(x => x.Item().Text(Placeholders.Paragraph()));
             }));
 
             doc.GeneratePdf("simple.pdf");
 
+        }
+
+        private void GenerarPDF2()
+        {
+          
+            QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+
+           Document.Create(contenedor =>
+            {
+                contenedor.Page(pagina =>
+                {
+                    pagina.Size(PageSizes.A4);
+                    pagina.Margin(1,QuestPDF.Infrastructure.Unit.Centimetre);
+
+                    pagina.Header().Text("Aprendamos .NET")
+                        .Bold().FontSize(35).FontColor(Colors.Red.Medium);
+
+                    pagina.Content().Column(columna =>
+                    {
+                        columna.Spacing(20);
+                        columna.Item().Text(Placeholders.LoremIpsum());
+                        columna.Item().Image(Placeholders.Image(200, 100));
+                    });
+
+                });
+            }).GeneratePdf("simple.pdf");
         }
 
         private void RptBoletaPesado_Load(object sender, EventArgs e)
@@ -334,7 +361,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            GenerarPDF();
+            GenerarPDF2();
         }
 
 
