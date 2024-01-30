@@ -131,7 +131,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.lblcolumnas.Name = "lblcolumnas";
             this.lblcolumnas.Size = new System.Drawing.Size(67, 26);
             this.lblcolumnas.TabIndex = 128;
-            this.lblcolumnas.Text = "3";
+            this.lblcolumnas.Text = "4";
             this.lblcolumnas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
@@ -149,7 +149,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.nudacantidad_filas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudacantidad_filas.Location = new System.Drawing.Point(164, 22);
             this.nudacantidad_filas.Maximum = new decimal(new int[] {
-            500,
+            250,
             0,
             0,
             0});

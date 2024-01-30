@@ -148,21 +148,18 @@ namespace _3mpacador4.Presentacion.Sistema
                     cadena = "^XA" + Environment.NewLine;
 
                     // COLUMNA 01
-                    cadena = cadena + "^FO50,10^BQN,2,6^FDMA," + ls_calibre + "^FS" + Environment.NewLine;
-                    //cadena = cadena + "^FO160,135^GB70,65,65,W^FS" + Environment.NewLine;
-                    /*cadena = cadena + "^FO160,135^GB70,65,3,B^FS" + Environment.NewLine;*/
-                    cadena = cadena + "^CF0,40^FO95,145^FD" + ls_calibre + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO10^BQN,2,6^FDMA," + ls_calibre + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,40^FO132,60^FD" + ls_calibre + "^FS" + Environment.NewLine;
 
                     // COLUMNA 02
-                    cadena = cadena + "^FO350,10^BQN,2,6^FDMA," + ls_calibre + "^FS" + Environment.NewLine;
-                    //cadena = cadena + "^FO420,135^GB70,65,65,W^FS" + Environment.NewLine;
-                    /*cadena = cadena + "^FO420,135^GB70,65,3,B^FS" + Environment.NewLine;*/
-                    cadena = cadena + "^CF0,40^FO395,145^FD" + ls_calibre + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO225^BQN,2,6^FDMA," + ls_calibre + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,40^FO352,60^FD" + ls_calibre + "^FS" + Environment.NewLine;
                     // COLUMNA 03
-                    cadena = cadena + "^FO650,10^BQN,2,6^FDMA," + ls_calibre + "^FS" + Environment.NewLine;
-                    //cadena = cadena + "^FO685,135^GB70,65,65,W^FS" + Environment.NewLine;
-                    /*cadena = cadena + "^FO685,135^GB70,65,3,B^FS" + Environment.NewLine;*/
-                    cadena = cadena + "^CF0,40^FO695,145^FD" + ls_calibre + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO435^BQN,2,6^FDMA," + ls_calibre + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,40^FO562,60^FD" + ls_calibre + "^FS" + Environment.NewLine;
+                    // COLUMNA 03
+                    cadena = cadena + "^FO635^BQN,2,6^FDMA," + ls_calibre + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,40^FO762,60^FD" + ls_calibre + "^FS" + Environment.NewLine;
 
                     // FIN
                     cadena = cadena + "^XZ" + Environment.NewLine;

@@ -175,16 +175,19 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             var nro_etiquetas = Convert.ToInt32(lblcantidad_tikects.Text.ToString());
             if (nro_etiquetas > 0)
             {
-               // ActualizarEtiquetas(li_idgrupo, ls_dni, nro_etiquetas);
-                Lista_Num_trab(ls_dni, li_idgrupo);
+
+                Impresion_ZPL(Convert.ToInt32(nudacantidad_filas.Value));
+                
+                // ActualizarEtiquetas(li_idgrupo, ls_dni, nro_etiquetas);
+                /*Lista_Num_trab(ls_dni, li_idgrupo);
                 foreach (Numerador_trab n in Lista_num_trab)
                 {
                     Impresion_ZPL(n, 1);
-                }           
+                } */          
             }
         }
 
-        public void Impresion_ZPL(Numerador_trab n, int li_cantidad_filas)
+        public void Impresion_ZPL(/*Numerador_trab n,*/ int li_cantidad_filas)
         {
             try
             {
@@ -197,8 +200,20 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                     // INICIO
                     cadena = "^XA" + Environment.NewLine;
 
+                    cadena = cadena + "^FO20^BQN,2,6^FDMA,20240118000170682917^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,25^FO30,128^FD70682917^FS" + Environment.NewLine;
+
+                    cadena = cadena + "^FO235^BQN,2,6^FDMA,20240118000270682917^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,25^FO245,128^FD70682917^FS" + Environment.NewLine;
+
+                    cadena = cadena + "^FO450^BQN,2,6^FDMA,20240118000370682917^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,25^FO460,128^FD70682917^FS" + Environment.NewLine;
+
+                    cadena = cadena + "^FO665^BQN,2,6^FDMA,20240118000470682917^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,25^FO675,128^FD70682917^FS" + Environment.NewLine;
+
                     // COLUMNA 01
-                    cadena = cadena + "^FO50,10^BQN,2,6^FDMA," + n.codigo + "^FS" + Environment.NewLine;
+                    /*cadena = cadena + "^FO50,10^BQN,2,6^FDMA," + n.codigo + "^FS" + Environment.NewLine;
                     cadena = cadena + "^CF0,30^FO55,145^FD" + n.codigo.Substring(12) + "^FS" + Environment.NewLine;
 
                     // COLUMNA 02
@@ -208,6 +223,10 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                     // COLUMNA 03
                     cadena = cadena + "^FO650,10^BQN,2,6^FDMA," + n.codigo + "^FS" + Environment.NewLine;
                     cadena = cadena + "^CF0,30^FO655,145^FD" + n.codigo.Substring(12) + "^FS" + Environment.NewLine;
+                    
+                    // COLUMNA 04
+                    cadena = cadena + "^FO650,10^BQN,2,6^FDMA," + n.codigo + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,30^FO655,145^FD" + n.codigo.Substring(12) + "^FS" + Environment.NewLine;*/
 
                     // FIN
                     cadena = cadena + "^XZ" + Environment.NewLine;

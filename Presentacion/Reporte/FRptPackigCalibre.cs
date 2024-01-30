@@ -28,15 +28,51 @@ namespace _3mpacador4.Presentacion.Reporte
         public static string ls_ruta_pdf = "";
         string ls_idcliente = "" , ls_cliente = "";
 
-        int li_idlote = 0;
+        int li_idlote;
         decimal ldc_kilos_descarte, ldc_kilos_muestra, ldc_porc_descarte, ldc_porc_muestra,
             ldc_porc_ingresado, ldc_porc_procesado, ldc_kilos_ingresados, ldc_kilos_procesados;
 
-        private void dgvpacking_calibre_cab_SelectionChanged(object sender, EventArgs e)
+        private void FRptPackigCalibre_Load(object sender, EventArgs e)
         {
-            if (dgvpacking_calibre_cab.RowCount >0)
+            Cargar_Cliente();
+        }
+
+        void Mostrar_Cabecera() 
+        {
+            dgvpacking_calibre_cab.Rows.Clear();
+            li_idlote = 0;
+            ldc_kilos_descarte = 0; ldc_kilos_muestra = 0; ldc_porc_descarte = 0; ldc_porc_muestra = 0;
+            ldc_porc_ingresado = 0; ldc_porc_procesado = 0; ldc_kilos_ingresados = 0;
+ 
+           
+            var Lista_cab = LPacking_calibre.Lista_packing_calibre_cab(dtpf_produccion.Value.ToString("yyyy-MM-dd"));
+            foreach (var f in Lista_cab)
+            {
+                dgvpacking_calibre_cab.Rows.Add(f.nom_planta, f.idproducto, f.producto, f.idacopiador, f.nom_acopiador, f.ruc_a,
+                                                f.fecha_produccion.ToShortDateString(), f.idclp, f.idlote, f.lote, f.num_guia, f.idvariedad, f.variedad,
+                                                f.idcliente, f.nom_cliente, f.ruc_c, f.cantidad_jabas, f.peso_bruto.ToString("###,##0.00"), f.peso_jabas,
+                                                f.peso_neto.ToString("###,##0.00"), f.peso_promedio); 
+            }
+
+            if (dgvpacking_calibre_cab.SelectedRows.Count > 0)
             {
                 li_idlote = Convert.ToInt32(dgvpacking_calibre_cab.CurrentRow.Cells[8].Value);
+                Mostrar_detalle_resumen("%", li_idlote);
+                //Limpiar_descarte_resumen();
+            }
+        }
+
+        private void btnbuscar_trab_Click(object sender, EventArgs e)
+        {
+            Mostrar_Cabecera();
+        }
+
+        private void cbxcliente_SelectedValueChanged(object sender, EventArgs e)
+        {
+            li_idlote = 0;
+            if (dgvpacking_calibre_cab.RowCount > 0)
+            {
+                li_idlote = Convert.ToInt32(dgvpacking_calibre_cab.CurrentRow.Cells[8].Value.ToString());
                 ls_idcliente = ""; ls_cliente = "";
                 if (cbxcliente.SelectedIndex == 0)
                 {
@@ -57,19 +93,15 @@ namespace _3mpacador4.Presentacion.Reporte
                 }
 
                 Mostrar_detalle_resumen(ls_idcliente, li_idlote);
-            }            
+            }
         }
 
-        private void FRptPackigCalibre_Load(object sender, EventArgs e)
+        private void dgvpacking_calibre_cab_SelectionChanged(object sender, EventArgs e)
         {
-            Cargar_Cliente();
-        }
-
-        private void cbxcliente_SelectedValueChanged(object sender, EventArgs e)
-        {
+            li_idlote = 0;
             if (dgvpacking_calibre_cab.RowCount > 0)
             {
-                li_idlote = Convert.ToInt32(dgvpacking_calibre_cab.CurrentRow.Cells[8].Value);
+                li_idlote = Convert.ToInt32(dgvpacking_calibre_cab.CurrentRow.Cells[8].Value.ToString());
                 ls_idcliente = ""; ls_cliente = "";
                 if (cbxcliente.SelectedIndex == 0)
                 {
@@ -86,7 +118,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 }
                 else
                 {
-                    ls_cliente = cbxcliente.Text.Substring(cbxcliente.Text.Contains("-").ToString().Length - 1);
+                    ls_cliente = cbxcliente.Text.Substring(cbxcliente.Text.Contains("-").ToString().Length - 2);
                 }
 
                 Mostrar_detalle_resumen(ls_idcliente, li_idlote);
@@ -112,31 +144,6 @@ namespace _3mpacador4.Presentacion.Reporte
             tbxporcentaje_desc_mues.Clear();
             tbxporcentaje_deshidratacion.Clear();
         }
-
-        private void btnbuscar_trab_Click(object sender, EventArgs e)
-        {
-            ldc_kilos_descarte = 0; ldc_kilos_muestra = 0; ldc_porc_descarte = 0; ldc_porc_muestra = 0;
-            ldc_porc_ingresado = 0; ldc_porc_procesado = 0; ldc_kilos_ingresados = 0; /*ldc_kilos_procesados = 0;*/
-            //Cargar_Cliente();
-            dgvpacking_calibre_cab.Rows.Clear();
-            var Lista_cab = LPacking_calibre.Lista_packing_calibre_cab(dtpf_produccion.Value.ToString("yyyy-MM-dd"));
-            foreach (var f in Lista_cab)
-            {
-                dgvpacking_calibre_cab.Rows.Add(f.nom_planta, f.idproducto, f.producto, f.idacopiador, f.nom_acopiador, f.ruc_a,
-                                                f.fecha_produccion.ToShortDateString(), f.idclp, f.idlote, f.lote, f.num_guia, f.idvariedad, f.variedad,
-                                                f.idcliente, f.nom_cliente, f.ruc_c, f.cantidad_jabas, f.peso_bruto.ToString("###,##0.00"), f.peso_jabas,
-                                                f.peso_neto.ToString("###,##0.00"), f.peso_promedio);
-                //ldc_kilos_ingresados += f.peso_neto;
-            }
-
-            //tbxkilos_ingreso.Text = ldc_kilos_ingresados.ToString("###,##0.00");
-            
-            if (dgvpacking_calibre_det.RowCount == 0)
-            {
-                Limpiar_descarte_resumen();
-            }
-        }
-
 
         void Mostrar_detalle_resumen(string ls_idcliente, int li_idlote)
         {
@@ -231,27 +238,31 @@ namespace _3mpacador4.Presentacion.Reporte
                 int fila_suma_kilos = dgvpacking_calibre_det.Rows.Add(null, "TOTAL KILOS", C08.ToString("###,##0.00"), C10.ToString("###,##0.00"), C12.ToString("###,##0.00"), C14.ToString("###,##0.00"), C16.ToString("###,##0.00"), C18.ToString("###,##0.00"), C20.ToString("###,##0.00"), C22.ToString("###,##0.00"), C24.ToString("###,##0.00"), C26.ToString("###,##0.00"), C28.ToString("###,##0.00"), C30.ToString("###,##0.00"), C32.ToString("###,##0.00"), null, null, null);
                 dgvpacking_calibre_det.Rows[fila_suma_kilos].DefaultCellStyle.Font = new System.Drawing.Font(dgvpacking_calibre_det.Font, System.Drawing.FontStyle.Bold);
 
-                C08 = 0; C10 = 0; C12 = 0; C14 = 0; C16 = 0; C18 = 0; C20 = 0; C22 = 0; C24 = 0; C26 = 0; C28 = 0; C30 = 0; C32 = 0;
 
-                foreach (DataGridViewRow fila in dgvpacking_calibre_det.Rows)
+                if (Total_kilos > 0)
                 {
-                    C08 += (Convert.ToDecimal(fila.Cells[2].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
-                    C10 += (Convert.ToDecimal(fila.Cells[3].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
-                    C12 += (Convert.ToDecimal(fila.Cells[4].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
-                    C14 += (Convert.ToDecimal(fila.Cells[5].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
-                    C16 += (Convert.ToDecimal(fila.Cells[6].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
-                    C18 += (Convert.ToDecimal(fila.Cells[7].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
-                    C20 += (Convert.ToDecimal(fila.Cells[8].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
-                    C22 += (Convert.ToDecimal(fila.Cells[9].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
-                    C24 += (Convert.ToDecimal(fila.Cells[10].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
-                    C26 += (Convert.ToDecimal(fila.Cells[11].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
-                    C28 += (Convert.ToDecimal(fila.Cells[12].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
-                    C30 += (Convert.ToDecimal(fila.Cells[13].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
-                    C32 += (Convert.ToDecimal(fila.Cells[14].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                    C08 = 0; C10 = 0; C12 = 0; C14 = 0; C16 = 0; C18 = 0; C20 = 0; C22 = 0; C24 = 0; C26 = 0; C28 = 0; C30 = 0; C32 = 0;
 
-                }
-                int fila_suma_porcentaje = dgvpacking_calibre_det.Rows.Add(null, "% EXPORTABLE", C08.ToString("###,##0.000"), C10.ToString("###,##0.000"), C12.ToString("###,##0.000"), C14.ToString("###,##0.000"), C16.ToString("###,##0.000"), C18.ToString("###,##0.000"), C20.ToString("###,##0.000"), C22.ToString("###,##0.000"), C24.ToString("###,##0.000"), C26.ToString("###,##0.000"), C28.ToString("###,##0.000"), C30.ToString("###,##0.000"), C32.ToString("###,##0.000"), null, null, null);
-                dgvpacking_calibre_det.Rows[fila_suma_porcentaje].DefaultCellStyle.Font = new System.Drawing.Font(dgvpacking_calibre_det.Font, System.Drawing.FontStyle.Bold);
+                    foreach (DataGridViewRow fila in dgvpacking_calibre_det.Rows)
+                    {
+                        C08 += (Convert.ToDecimal(fila.Cells[2].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                        C10 += (Convert.ToDecimal(fila.Cells[3].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                        C12 += (Convert.ToDecimal(fila.Cells[4].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                        C14 += (Convert.ToDecimal(fila.Cells[5].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                        C16 += (Convert.ToDecimal(fila.Cells[6].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                        C18 += (Convert.ToDecimal(fila.Cells[7].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                        C20 += (Convert.ToDecimal(fila.Cells[8].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                        C22 += (Convert.ToDecimal(fila.Cells[9].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                        C24 += (Convert.ToDecimal(fila.Cells[10].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                        C26 += (Convert.ToDecimal(fila.Cells[11].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                        C28 += (Convert.ToDecimal(fila.Cells[12].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                        C30 += (Convert.ToDecimal(fila.Cells[13].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                        C32 += (Convert.ToDecimal(fila.Cells[14].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+
+                    }
+                    int fila_suma_porcentaje = dgvpacking_calibre_det.Rows.Add(null, "% EXPORTABLE", C08.ToString("###,##0.000"), C10.ToString("###,##0.000"), C12.ToString("###,##0.000"), C14.ToString("###,##0.000"), C16.ToString("###,##0.000"), C18.ToString("###,##0.000"), C20.ToString("###,##0.000"), C22.ToString("###,##0.000"), C24.ToString("###,##0.000"), C26.ToString("###,##0.000"), C28.ToString("###,##0.000"), C30.ToString("###,##0.000"), C32.ToString("###,##0.000"), null, null, null);
+                    dgvpacking_calibre_det.Rows[fila_suma_porcentaje].DefaultCellStyle.Font = new System.Drawing.Font(dgvpacking_calibre_det.Font, System.Drawing.FontStyle.Bold);
+                }                
             }
         }
 

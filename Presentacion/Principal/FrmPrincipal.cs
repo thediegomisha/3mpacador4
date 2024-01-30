@@ -323,5 +323,11 @@ namespace _3mpacador4.Presentacion
             ocultarSubMenu();
             AbrirFormularioHijo(new FRptPackigCalibre());
         }
+
+        private void btnActualizaFProduccion_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new FActualizaFechaProduccion());
+        }
     }
 }

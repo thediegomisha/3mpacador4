@@ -94,5 +94,33 @@ namespace _3mpacador4.Logica
                 throw;
             }
         }
+
+        public static bool Actualiza_Fecha_produccion(int idlote, string fecha_ticket, string fecha_produccion)
+        {
+            try
+            {
+                bool rpta = false;
+
+                if (ConexionGral.conexion.State == ConnectionState.Closed)
+                    ConexionGral.conectar();
+
+                var comando = new MySqlCommand(@"update tblticketpesaje t set t.fecha_produccion = @fecha_produccion
+                                                where t.idlote = @idlote and t.fecha_ticket = @fecha_ticket ", ConexionGral.conexion);
+                //comando.CommandType = CommandType.Text;
+
+                comando.Parameters.AddWithValue("@idlote", idlote);
+                comando.Parameters.AddWithValue("@fecha_ticket", fecha_ticket);
+                comando.Parameters.AddWithValue("@fecha_produccion", fecha_produccion);
+                rpta = Convert.ToBoolean(comando.ExecuteNonQuery());
+
+                ConexionGral.desconectar();
+                return rpta;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(@"OCURRIO UN ERROR EN usp_conteo_cajas_manual " + ex.Message, @"ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
     }
 }

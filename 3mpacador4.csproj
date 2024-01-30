@@ -247,6 +247,12 @@
     <Compile Include="Logica\LGrupo_turno.cs" />
     <Compile Include="Logica\LPacking_calibre.cs" />
     <Compile Include="Logica\RawPrinterHelper.cs" />
+    <Compile Include="Presentacion\Mantenimiento\FActualizaFechaProduccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\FActualizaFechaProduccion.Designer.cs">
+      <DependentUpon>FActualizaFechaProduccion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Mantenimiento\frmAcopiador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -519,6 +525,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Presentacion\Mantenimiento\FActualizaFechaProduccion.resx">
+      <DependentUpon>FActualizaFechaProduccion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmAcopiador.resx">
       <DependentUpon>frmAcopiador.cs</DependentUpon>
     </EmbeddedResource>
