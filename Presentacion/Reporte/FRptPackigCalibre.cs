@@ -10,8 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using _3mpacador4.Entidad;
 using _3mpacador4.Logica;
+using _3mpacador4.Properties;
+using Devart.Data.MySql;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using _3mpacador4.Presentacion.Trazabilidad;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
@@ -21,42 +24,140 @@ namespace _3mpacador4.Presentacion.Reporte
         {
             InitializeComponent();
         }
+
+        public static string ls_ruta_pdf = "";
+        string ls_idcliente = "" , ls_cliente = "";
+
         int li_idlote = 0;
         decimal ldc_kilos_descarte, ldc_kilos_muestra, ldc_porc_descarte, ldc_porc_muestra,
             ldc_porc_ingresado, ldc_porc_procesado, ldc_kilos_ingresados, ldc_kilos_procesados;
 
+        private void dgvpacking_calibre_cab_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvpacking_calibre_cab.RowCount >0)
+            {
+                li_idlote = Convert.ToInt32(dgvpacking_calibre_cab.CurrentRow.Cells[8].Value);
+                ls_idcliente = ""; ls_cliente = "";
+                if (cbxcliente.SelectedIndex == 0)
+                {
+                    ls_idcliente = "%";
+                }
+                else
+                {
+                    ls_idcliente = cbxcliente.Text.Substring(0, cbxcliente.Text.Contains("-").ToString().Length - 2);
+                }
+
+                if (cbxcliente.SelectedIndex == 0)
+                {
+                    ls_cliente = "TODOS";
+                }
+                else
+                {
+                    ls_cliente = cbxcliente.Text.Substring(cbxcliente.Text.Contains("-").ToString().Length - 1);
+                }
+
+                Mostrar_detalle_resumen(ls_idcliente, li_idlote);
+            }            
+        }
+
+        private void FRptPackigCalibre_Load(object sender, EventArgs e)
+        {
+            Cargar_Cliente();
+        }
+
+        private void cbxcliente_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (dgvpacking_calibre_cab.RowCount > 0)
+            {
+                li_idlote = Convert.ToInt32(dgvpacking_calibre_cab.CurrentRow.Cells[8].Value);
+                ls_idcliente = ""; ls_cliente = "";
+                if (cbxcliente.SelectedIndex == 0)
+                {
+                    ls_idcliente = "%";
+                }
+                else
+                {
+                    ls_idcliente = cbxcliente.Text.Substring(0, cbxcliente.Text.Contains("-").ToString().Length - 2);
+                }
+
+                if (cbxcliente.SelectedIndex == 0)
+                {
+                    ls_cliente = "TODOS";
+                }
+                else
+                {
+                    ls_cliente = cbxcliente.Text.Substring(cbxcliente.Text.Contains("-").ToString().Length - 1);
+                }
+
+                Mostrar_detalle_resumen(ls_idcliente, li_idlote);
+            }
+        }
+
+        void Limpiar_descarte_resumen() {
+            tbxkilos_descarte.Clear();
+            tbxkilos_muestra.Clear();
+            tbxtotal_kilos_muestra.Clear();
+
+            tbxporcentaje_descarte.Clear();
+            tbxporcentaje_muestra.Clear();
+            tbxtotal_porcentaje_muestra.Clear();
+
+            tbxkilos_ingreso.Clear();
+            tbxkilos_proceso.Clear();
+            tbxkilos_descarte_muestra.Clear();
+            tbxkilos_deshidratacion.Clear();
+
+            tbxporcentaje_ingreso.Clear();
+            tbxporcentaje_proceso.Clear();
+            tbxporcentaje_desc_mues.Clear();
+            tbxporcentaje_deshidratacion.Clear();
+        }
+
         private void btnbuscar_trab_Click(object sender, EventArgs e)
         {
             ldc_kilos_descarte = 0; ldc_kilos_muestra = 0; ldc_porc_descarte = 0; ldc_porc_muestra = 0;
-            ldc_porc_ingresado = 0; ldc_porc_procesado = 0; ldc_kilos_ingresados = 0; ldc_kilos_procesados = 0;
-
+            ldc_porc_ingresado = 0; ldc_porc_procesado = 0; ldc_kilos_ingresados = 0; /*ldc_kilos_procesados = 0;*/
+            //Cargar_Cliente();
             dgvpacking_calibre_cab.Rows.Clear();
             var Lista_cab = LPacking_calibre.Lista_packing_calibre_cab(dtpf_produccion.Value.ToString("yyyy-MM-dd"));
             foreach (var f in Lista_cab)
             {
                 dgvpacking_calibre_cab.Rows.Add(f.nom_planta, f.idproducto, f.producto, f.idacopiador, f.nom_acopiador, f.ruc_a,
                                                 f.fecha_produccion.ToShortDateString(), f.idclp, f.idlote, f.lote, f.num_guia, f.idvariedad, f.variedad,
-                                                f.idcliente, f.nom_cliente, f.ruc_c, f.cantidad_jabas, f.peso_bruto, f.peso_jabas, 
-                                                f.peso_neto, f.peso_promedio);
-                ldc_kilos_ingresados += f.peso_neto;
+                                                f.idcliente, f.nom_cliente, f.ruc_c, f.cantidad_jabas, f.peso_bruto.ToString("###,##0.00"), f.peso_jabas,
+                                                f.peso_neto.ToString("###,##0.00"), f.peso_promedio);
+                //ldc_kilos_ingresados += f.peso_neto;
             }
 
-            tbxkilos_ingreso.Text = ldc_kilos_ingresados.ToString("###,##0.00");
+            //tbxkilos_ingreso.Text = ldc_kilos_ingresados.ToString("###,##0.00");
+            
+            if (dgvpacking_calibre_det.RowCount == 0)
+            {
+                Limpiar_descarte_resumen();
+            }
+        }
 
+
+        void Mostrar_detalle_resumen(string ls_idcliente, int li_idlote)
+        {
+            ldc_kilos_procesados = 0;
+            ldc_kilos_ingresados = Convert.ToDecimal(dgvpacking_calibre_cab.CurrentRow.Cells[19].Value);
             dgvpacking_calibre_det.Rows.Clear();
-            var Lista_det = LPacking_calibre.Lista_packing_calibre_det(dtpf_produccion.Value.ToString("yyyy-MM-dd"));
+            var Lista_det = LPacking_calibre.Lista_packing_calibre_det(dtpf_produccion.Value.ToString("yyyy-MM-dd"), ls_idcliente, li_idlote);
             foreach (var f in Lista_det)
             {
-                dgvpacking_calibre_det.Rows.Add(f.presentacion, f.categoria, f.C8, f.C10, f.C12, f.C14, f.C16, f.C18, f.C20, f.C22, f.C24, f.C26, f.C28, f.C30, f.C32, f.cantidad, f.sobrepeso, f.kilos);
-                ldc_kilos_procesados += f.kilos;
+                dgvpacking_calibre_det.Rows.Add(f.presentacion, f.categoria, f.C8, f.C10, f.C12, f.C14, f.C16, f.C18, f.C20, f.C22, f.C24, f.C26, f.C28, f.C30, f.C32, f.cantidad, f.sobrepeso, f.kilos.ToString("###,##0.000"));
+                //ldc_kilos_procesados += f.kilos;
             }
 
+            ldc_kilos_procesados = LPacking_calibre.Kilos_Proceso_x_fecha(dtpf_produccion.Value.ToString("yyyy-MM-dd"));
             tbxkilos_proceso.Text = ldc_kilos_procesados.ToString("###,##0.00");
 
-            if (dgvpacking_calibre_det.RowCount > 0)
+            if (dgvpacking_calibre_cab.RowCount > 0 && dgvpacking_calibre_det.RowCount > 0)
             {
-                // PARA DESCARTE Y MUESTREO
-                li_idlote = Convert.ToInt32(dgvpacking_calibre_cab.CurrentRow.Cells[8].Value);
+                tbxkilos_ingreso.Text = ldc_kilos_ingresados.ToString("###,##0.00");
+
+                // PARA DESCARTE Y MUESTREO                
                 ldc_kilos_descarte = LConteo_manual.Kilos_Descarte(li_idlote);
                 ldc_kilos_muestra = LConteo_manual.Kilos_Muestra();
 
@@ -78,7 +179,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 tbxporcentaje_ingreso.Text = ldc_porc_ingresado.ToString();
                 tbxporcentaje_proceso.Text = ldc_porc_procesado.ToString("###,##0.000");
-                tbxporcentaje_desc_mues.Text = tbxtotal_porcentaje_muestra.Text;                
+                tbxporcentaje_desc_mues.Text = tbxtotal_porcentaje_muestra.Text;
                 tbxporcentaje_deshidratacion.Text = ((ldc_porc_ingresado) - (ldc_porc_procesado + ldc_porc_descarte + ldc_porc_muestra)).ToString("###,##0.000");
 
 
@@ -104,7 +205,7 @@ namespace _3mpacador4.Presentacion.Reporte
                     Total_kilos += Convert.ToDecimal(fila.Cells[17].Value);
                 }
 
-                int fila_suma_cajas = dgvpacking_calibre_det.Rows.Add(null, "TOTAL CAJAS", C08, C10, C12, C14, C16, C18, C20, C22, C24, C26, C28, C30, C32, Total_cant, "0.00", Total_kilos);
+                int fila_suma_cajas = dgvpacking_calibre_det.Rows.Add(null, "TOTAL CAJAS", C08, C10, C12, C14, C16, C18, C20, C22, C24, C26, C28, C30, C32, Total_cant, "0.00", Total_kilos.ToString("###,##0.000"));
                 dgvpacking_calibre_det.Rows[fila_suma_cajas].DefaultCellStyle.Font = new System.Drawing.Font(dgvpacking_calibre_det.Font, System.Drawing.FontStyle.Bold);
 
 
@@ -125,40 +226,41 @@ namespace _3mpacador4.Presentacion.Reporte
                     C28 += Convert.ToDecimal(fila.Cells[12].Value) * Convert.ToDecimal(fila.Cells[16].Value);
                     C30 += Convert.ToDecimal(fila.Cells[13].Value) * Convert.ToDecimal(fila.Cells[16].Value);
                     C32 += Convert.ToDecimal(fila.Cells[14].Value) * Convert.ToDecimal(fila.Cells[16].Value);
-                 
+
                 }
-                int fila_suma_kilos = dgvpacking_calibre_det.Rows.Add(null, "TOTAL KILOS", C08.ToString("#0.00"), C10.ToString("#0.00"), C12.ToString("#0.00"), C14.ToString("#0.00"), C16.ToString("#0.00"), C18.ToString("#0.00"), C20.ToString("#0.00"), C22.ToString("#0.00"), C24.ToString("###.00"), C26.ToString("#0.00"), C28.ToString("#0.00"), C30.ToString("#0.00"), C32.ToString("#0.00"), null, null, null);
+                int fila_suma_kilos = dgvpacking_calibre_det.Rows.Add(null, "TOTAL KILOS", C08.ToString("###,##0.00"), C10.ToString("###,##0.00"), C12.ToString("###,##0.00"), C14.ToString("###,##0.00"), C16.ToString("###,##0.00"), C18.ToString("###,##0.00"), C20.ToString("###,##0.00"), C22.ToString("###,##0.00"), C24.ToString("###,##0.00"), C26.ToString("###,##0.00"), C28.ToString("###,##0.00"), C30.ToString("###,##0.00"), C32.ToString("###,##0.00"), null, null, null);
                 dgvpacking_calibre_det.Rows[fila_suma_kilos].DefaultCellStyle.Font = new System.Drawing.Font(dgvpacking_calibre_det.Font, System.Drawing.FontStyle.Bold);
 
                 C08 = 0; C10 = 0; C12 = 0; C14 = 0; C16 = 0; C18 = 0; C20 = 0; C22 = 0; C24 = 0; C26 = 0; C28 = 0; C30 = 0; C32 = 0;
 
                 foreach (DataGridViewRow fila in dgvpacking_calibre_det.Rows)
                 {
-                    C08 += (Convert.ToDecimal(fila.Cells[2].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos)*100;
-                    C10 += (Convert.ToDecimal(fila.Cells[3].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos)*100;
-                    C12 += (Convert.ToDecimal(fila.Cells[4].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos)*100;
-                    C14 += (Convert.ToDecimal(fila.Cells[5].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos)*100;
-                    C16 += (Convert.ToDecimal(fila.Cells[6].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos)*100;
-                    C18 += (Convert.ToDecimal(fila.Cells[7].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos)*100;
-                    C20 += (Convert.ToDecimal(fila.Cells[8].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos)*100;
-                    C22 += (Convert.ToDecimal(fila.Cells[9].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos)*100;
-                    C24 += (Convert.ToDecimal(fila.Cells[10].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos)*100;
-                    C26 += (Convert.ToDecimal(fila.Cells[11].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos)*100;
-                    C28 += (Convert.ToDecimal(fila.Cells[12].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos)*100;
-                    C30 += (Convert.ToDecimal(fila.Cells[13].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos)*100;
-                    C32 += (Convert.ToDecimal(fila.Cells[14].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos)*100;
+                    C08 += (Convert.ToDecimal(fila.Cells[2].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                    C10 += (Convert.ToDecimal(fila.Cells[3].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                    C12 += (Convert.ToDecimal(fila.Cells[4].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                    C14 += (Convert.ToDecimal(fila.Cells[5].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                    C16 += (Convert.ToDecimal(fila.Cells[6].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                    C18 += (Convert.ToDecimal(fila.Cells[7].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                    C20 += (Convert.ToDecimal(fila.Cells[8].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                    C22 += (Convert.ToDecimal(fila.Cells[9].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                    C24 += (Convert.ToDecimal(fila.Cells[10].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                    C26 += (Convert.ToDecimal(fila.Cells[11].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                    C28 += (Convert.ToDecimal(fila.Cells[12].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                    C30 += (Convert.ToDecimal(fila.Cells[13].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
+                    C32 += (Convert.ToDecimal(fila.Cells[14].Value) * Convert.ToDecimal(fila.Cells[16].Value) / Total_kilos) * 100;
 
                 }
-                int fila_suma_porcentaje = dgvpacking_calibre_det.Rows.Add(null, "% EXPORTABLE", C08.ToString("#0.000"), C10.ToString("#0.000"), C12.ToString("#0.000"), C14.ToString("#0.000"), C16.ToString("#0.000"), C18.ToString("#0.000"), C20.ToString("#0.000"), C22.ToString("#0.000"), C24.ToString("###.00"), C26.ToString("#0.000"), C28.ToString("#0.000"), C30.ToString("#0.00"), C32.ToString("#0.000"), null, null, null);
+                int fila_suma_porcentaje = dgvpacking_calibre_det.Rows.Add(null, "% EXPORTABLE", C08.ToString("###,##0.000"), C10.ToString("###,##0.000"), C12.ToString("###,##0.000"), C14.ToString("###,##0.000"), C16.ToString("###,##0.000"), C18.ToString("###,##0.000"), C20.ToString("###,##0.000"), C22.ToString("###,##0.000"), C24.ToString("###,##0.000"), C26.ToString("###,##0.000"), C28.ToString("###,##0.000"), C30.ToString("###,##0.000"), C32.ToString("###,##0.000"), null, null, null);
                 dgvpacking_calibre_det.Rows[fila_suma_porcentaje].DefaultCellStyle.Font = new System.Drawing.Font(dgvpacking_calibre_det.Font, System.Drawing.FontStyle.Bold);
             }
-
         }
 
         void GeneraPDF(Packing_calibre_cab p)
         {
             var doc = new Document(PageSize.A4.Rotate(), 30, 20, 30, 20);
-            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(AppDomain.CurrentDomain.BaseDirectory + "RESUMEN_BALANCE_MASA"+dtpf_produccion.Value.ToString("ddMMyyyy")+".pdf", FileMode.Create));
+
+            ls_ruta_pdf = AppDomain.CurrentDomain.BaseDirectory + "RESUMEN_BALANCE_MASA" + dtpf_produccion.Value.ToString("ddMMyyyy") + ".pdf";
+            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(ls_ruta_pdf, FileMode.Create));
 
             // estas dos lineas es para el encavezado
             var tipo = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, false);
@@ -166,9 +268,8 @@ namespace _3mpacador4.Presentacion.Reporte
             var titulo_tabla = new iTextSharp.text.Font(tipo, 13, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
             var fuente1 = new iTextSharp.text.Font(tipo, 9, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
             var fuente2 = new iTextSharp.text.Font(tipo, 9, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-            var fuente3 = new iTextSharp.text.Font(tipo, 8, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
-            var fuente4 = new iTextSharp.text.Font(tipo, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-            var fuente_pp2 = new iTextSharp.text.Font(tipo, 7, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+            var fuente3 = new iTextSharp.text.Font(tipo, 7, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+            var fuente4 = new iTextSharp.text.Font(tipo, 7, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
             writer.PageEvent = new CustomPdfPageEvent();
 
@@ -182,6 +283,22 @@ namespace _3mpacador4.Presentacion.Reporte
             doc.Add(logo);
 
             var espacio = new Paragraph("\n");
+
+            var TTabla = new PdfPTable(2);
+            var colum = new[] { 263, 300 };
+            TTabla.SetWidths(colum);
+            TTabla.WidthPercentage = 100;
+            TTabla.HorizontalAlignment = Element.ALIGN_CENTER;
+
+            var tclien = new PdfPCell(new Paragraph("CLIENTE : ", fuente1));
+            tclien.HorizontalAlignment = Element.ALIGN_RIGHT;
+            tclien.Border = 0;
+            var tcliente = new PdfPCell(new Paragraph(ls_cliente, fuente1));
+            tcliente.HorizontalAlignment = Element.ALIGN_LEFT;
+            tcliente.Border = 0;
+
+            TTabla.AddCell(tclien);
+            TTabla.AddCell(tcliente);
 
             var TTabla01 = new PdfPTable(4);
             var columnas = new[] { 40, 80, 40, 80 };
@@ -263,7 +380,7 @@ namespace _3mpacador4.Presentacion.Reporte
             n_guia.BackgroundColor = BaseColor.LIGHT_GRAY;
             n_guia.PaddingBottom = 5f;
 
-            var clien = new PdfPCell(new Paragraph("CLIENTE", fuente1));
+            var clien = new PdfPCell(new Paragraph("CLIENTE INGRESO", fuente1));
             clien.HorizontalAlignment = Element.ALIGN_CENTER;
             clien.BackgroundColor = BaseColor.LIGHT_GRAY;
             clien.PaddingBottom = 5f;
@@ -747,6 +864,7 @@ namespace _3mpacador4.Presentacion.Reporte
             doc.Add(espacio);
             doc.Add(espacio);
             doc.Add(espacio);
+            doc.Add(TTabla);
             doc.Add(espacio);
             doc.Add(TTabla01);
             doc.Add(espacio);
@@ -767,7 +885,6 @@ namespace _3mpacador4.Presentacion.Reporte
 
             doc.Close();
         }
-
 
         public class CustomPdfPageEvent : PdfPageEventHelper
         {
@@ -831,16 +948,58 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void btnimprimir_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dgvpacking_calibre_cab.RowCount; i++)
+            if (dgvpacking_calibre_cab.RowCount == 0)
             {
-                Packing_calibre_cab pcc = new Packing_calibre_cab();
-                pcc.nom_acopiador = dgvpacking_calibre_cab.Rows[i].Cells[4].Value.ToString();
-                pcc.nom_planta = dgvpacking_calibre_cab.Rows[i].Cells[0].Value.ToString();
-                pcc.fecha_produccion = Convert.ToDateTime(dgvpacking_calibre_cab.Rows[i].Cells[6].Value.ToString());
-                pcc.variedad = dgvpacking_calibre_cab.Rows[i].Cells[12].Value.ToString();
+                MessageBox.Show("NO HAY INFORMACION DE INGRESO", "Avisoo...!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                GeneraPDF(pcc);
-            }            
+            if (dgvpacking_calibre_det.RowCount == 0)
+            {
+                MessageBox.Show("NO HAY INFORMACION DE PROCESO", "Avisoo...!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Packing_calibre_cab pcc = new Packing_calibre_cab();
+            pcc.nom_acopiador = dgvpacking_calibre_cab.CurrentRow.Cells[4].Value.ToString();
+            pcc.nom_planta = dgvpacking_calibre_cab.CurrentRow.Cells[0].Value.ToString();
+            pcc.fecha_produccion = Convert.ToDateTime(dgvpacking_calibre_cab.CurrentRow.Cells[6].Value.ToString());
+            pcc.variedad = dgvpacking_calibre_cab.CurrentRow.Cells[12].Value.ToString();
+
+            GeneraPDF(pcc);
+
+            var f = new FVisorPDF();
+            f.ShowDialog();
+        }
+
+        private void Cargar_Cliente()
+        {
+            MySqlCommand comando = null;
+            try
+            {
+                cbxcliente.Items.Clear();
+                cbxcliente.Items.Add("<<< Todos Los Clientes >>>");
+
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+
+                comando = new MySqlCommand("usp_tblcliente_lista", ConexionGral.conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("p_anio", Convert.ToInt32(dtpf_produccion.Value.Year));
+
+                using (var reader = comando.ExecuteReader())
+                {
+                    while (reader.Read()) cbxcliente.Items.Add(reader["idcliente"] + " - " + reader["razon_social"]);
+                }
+
+                ConexionGral.desconectar();
+                cbxcliente.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                ConexionGral.desconectar();
+                MessageBox.Show(ex.Message, @"Algo salio Mal en usp_tblcliente_lista :( ");
+                throw;
+            }
         }
     }
 }

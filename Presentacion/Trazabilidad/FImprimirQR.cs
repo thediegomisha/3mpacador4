@@ -4,7 +4,9 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Drawing.Printing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using _3mpacador4.Entidad;
 using _3mpacador4.Logica;
@@ -24,6 +26,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         private bool lb_estado_impresion;
 
         private int li_idgrupo;
+        public Numerador_trab n_trab = null;
         private List<Numerador_trab> Lista_num_trab = new List<Numerador_trab>();
         private string ls_dni = "";
 
@@ -52,14 +55,14 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                 {
                     while (reader.Read())
                     {
-                        var c = new Numerador_trab();
-                        c.codigo = Convert.ToString(reader["codigo"]);
-                        c.fecha_produccion = Convert.ToDateTime(reader["fecha_produccion"]);
-                        c.numerador = Convert.ToString(reader["numerador"]);
-                        c.dni = Convert.ToString(reader["dni"]);
-                        c.item = Convert.ToInt32(reader["item"]);
-                        c.idgrupo_turno = Convert.ToInt32(reader["idgrupo_turno"]);
-                        Lista_num_trab.Add(c);
+                        n_trab = new Numerador_trab();
+                        n_trab.codigo = Convert.ToString(reader["codigo"]);
+                        n_trab.fecha_produccion = Convert.ToDateTime(reader["fecha_produccion"]);
+                        n_trab.numerador = Convert.ToString(reader["numerador"]);
+                        n_trab.dni = Convert.ToString(reader["dni"]);
+                        n_trab.item = Convert.ToInt32(reader["item"]);
+                        n_trab.idgrupo_turno = Convert.ToInt32(reader["idgrupo_turno"]);
+                        Lista_num_trab.Add(n_trab);
                     }
                 }
 
@@ -169,17 +172,19 @@ namespace _3mpacador4.Presentacion.Trazabilidad
 
         private void btngenerar_Click(object sender, EventArgs e)
         {
-            var nro_etiquetas = Convert.ToInt32(nudcantidad.Value.ToString());
+            var nro_etiquetas = Convert.ToInt32(lblcantidad_tikects.Text.ToString());
             if (nro_etiquetas > 0)
             {
-                //ActualizarEtiquetas(li_idgrupo, ls_dni, nro_etiquetas);
-                //Lista_Num_trab(ls_dni, li_idgrupo);
-                Impresion_ZPL("27122023000170682917", 1);
-
+               // ActualizarEtiquetas(li_idgrupo, ls_dni, nro_etiquetas);
+                Lista_Num_trab(ls_dni, li_idgrupo);
+                foreach (Numerador_trab n in Lista_num_trab)
+                {
+                    Impresion_ZPL(n, 1);
+                }           
             }
         }
 
-        public void Impresion_ZPL(string ls_codigo, int li_cantidad)
+        public void Impresion_ZPL(Numerador_trab n, int li_cantidad_filas)
         {
             try
             {
@@ -187,26 +192,26 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                 //PrintDialog pd = new PrintDialog();
 
                 int imp = 0;
-                for (imp = 1; imp <= li_cantidad; imp++)
+                for (imp = 1; imp <= li_cantidad_filas; imp++)
                 {
                     // INICIO
                     cadena = "^XA" + Environment.NewLine;
 
                     // COLUMNA 01
-                    cadena = cadena + "^FO30,20^BQN,2,9^FDMA," + ls_codigo + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,34^FO60,222^FD" + ls_codigo.Substring(12) + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO50,10^BQN,2,6^FDMA," + n.codigo + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,30^FO55,145^FD" + n.codigo.Substring(12) + "^FS" + Environment.NewLine;
 
                     // COLUMNA 02
-                    cadena = cadena + "^FO270,20^BQN,2,9^FDMA," + ls_codigo + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,34^FO305,222^FD" + ls_codigo.Substring(12) + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO350,10^BQN,2,6^FDMA," + n.codigo + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,30^FO355,145^FD" + n.codigo.Substring(12) + "^FS" + Environment.NewLine;
 
                     // COLUMNA 03
-                    cadena = cadena + "^FO510,20^BQN,2,9^FDMA," + ls_codigo + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,34^FO540,222^FD" + ls_codigo.Substring(12) + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO650,10^BQN,2,6^FDMA," + n.codigo + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,30^FO655,145^FD" + n.codigo.Substring(12) + "^FS" + Environment.NewLine;
 
                     // FIN
                     cadena = cadena + "^XZ" + Environment.NewLine;
-                    RawPrinterHelper.EnviarCadenaToImpresora("ZplPrinter"/*cbximpresora.Text.Trim()*/, cadena);
+                    RawPrinterHelper.EnviarCadenaToImpresora(cbximpresora.Text.Trim(), cadena);
                     cadena = "";
                 }
             }
@@ -214,6 +219,59 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             {
                 MessageBox.Show(ex.Message, "ERROR...");
             }
+        }
+
+        private void LlenarComboBoxImpresoras()
+        {
+            // Obtener la colección de impresoras instaladas
+            System.Drawing.Printing.PrinterSettings.StringCollection impresoras = System.Drawing.Printing.PrinterSettings.InstalledPrinters;
+
+            // Limpiar el ComboBox antes de agregar las impresoras
+            cbximpresora.Items.Clear();
+
+            // Agregar cada impresora al ComboBox
+            foreach (string impresora in impresoras)
+            {
+                cbximpresora.Items.Add(impresora);
+            }
+
+            // Seleccionar la primera impresora en la lista (si hay al menos una)
+            if (cbximpresora.Items.Count > 0)
+            {
+                cbximpresora.SelectedIndex = 0;
+            }
+        }
+
+        private void SetImpresoraPredeterminada(string nombreImpresora)
+        {
+            // Obtener la colección de impresoras instaladas.
+            PrinterSettings.InstalledPrinters.Cast<string>().ToList();
+
+            // Obtener el valor de registro actual para la impresora predeterminada.
+            string keyName = @"Software\Microsoft\Windows NT\CurrentVersion\Windows";
+            Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(keyName, true);
+
+            // Establecer la impresora seleccionada como predeterminada.
+            key.SetValue("Device", nombreImpresora + "," + "winspool", Microsoft.Win32.RegistryValueKind.String);
+
+        }
+
+        private void cbximpresora_SelectedValueChanged(object sender, EventArgs e)
+        {
+            SetImpresoraPredeterminada(cbximpresora.Text.ToString());
+        }
+
+        private void FImprimirQR_Load(object sender, EventArgs e)
+        {
+            li_idgrupo = FJornalTurno.li_idgrupo;
+            ls_dni = FJornalTurno.ls_dni;
+            lbltrabajador.Text = FJornalTurno.ls_trabajador;
+            LlenarComboBoxImpresoras();
+        }
+
+        private void nudacantidad_filas_ValueChanged(object sender, EventArgs e)
+        {
+            lblcantidad_tikects.Text = Convert.ToString(Convert.ToInt32(nudacantidad_filas.Value) * Convert.ToInt32(lblcolumnas.Text.Trim()));
         }
 
         //private void FImprimirQR_Load(object sender, EventArgs e)

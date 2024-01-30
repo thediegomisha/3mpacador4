@@ -5,6 +5,7 @@ using _3mpacador4.Entidad;
 using _3mpacador4.Logica;
 using Devart.Data.MySql;
 using Microsoft.VisualBasic;
+using _3mpacador4.Presentacion.Trazabilidad;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
@@ -16,6 +17,9 @@ namespace _3mpacador4.Presentacion.Reporte
             Cargar_lote();
         }
 
+        public static string ls_fecha_produccion = "";
+
+        public static Programa_proceso pp = null;
 
         private void Cargar_lote()
         {
@@ -29,6 +33,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 comando = new MySqlCommand("usp_tbllote_SelectTraceability", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("p_anio", Convert.ToInt32(dtpbuscar_fecproduccion.Value.Year));
 
                 using (var reader = comando.ExecuteReader())
                 {
@@ -160,37 +165,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 MessageBox.Show(ex.Message, @"Algo salio Mal en usp_tblcategoria_Select :( ");
                 throw;
             }
-        }
-
-        private void Cargar_proceso_x_fecha(string ls_fecha_proceso)
-        {
-            MySqlCommand comando;
-            try
-            {
-                cbxproceso.Items.Clear();
-                cbxproceso.Items.Add("< Seleccione >");
-
-                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
-
-                comando = new MySqlCommand("usp_tblprograma_proceso_x_fecha", ConexionGral.conexion);
-                comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("p_fecha_proceso", ls_fecha_proceso);
-                using (var reader = comando.ExecuteReader())
-                {
-                    while (reader.Read()) 
-                        cbxproceso.Items.Add(reader["idproceso"] + " - " + reader["descripcion"]);
-                }
-
-                ConexionGral.desconectar();
-                cbxproceso.SelectedIndex = 0;
-            }
-            catch (Exception ex)
-            {
-                ConexionGral.desconectar();
-                MessageBox.Show(ex.Message, @"Algo salio Mal en usp_tblprograma_proceso_x_fecha :( ");
-                throw;
-            }
-        }
+        }       
 
         private void poblarLote()
         {
@@ -203,6 +178,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 comando.CommandType = (CommandType)4;
 
                 comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = cboLote.Text;
+                comando.Parameters.AddWithValue("p_fechaanio", Convert.ToInt32(dtpbuscar_fecproduccion.Value.Year));
 
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
@@ -260,6 +236,36 @@ namespace _3mpacador4.Presentacion.Reporte
             }
         }
 
+        private void Cargar_Cliente()
+        {
+            MySqlCommand comando = null;
+            try
+            {
+                cbxcliente.Items.Clear();
+                cbxcliente.Items.Add("< Seleccione >");
+
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+
+                comando = new MySqlCommand("usp_tblcliente_lista", ConexionGral.conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("p_anio", Convert.ToInt32(dtpbuscar_fecproduccion.Value.Year));
+
+                using (var reader = comando.ExecuteReader())
+                {
+                    while (reader.Read()) cbxcliente.Items.Add(reader["idcliente"] + " - " + reader["razon_social"]);
+                }
+
+                ConexionGral.desconectar();
+                cbxcliente.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                ConexionGral.desconectar();
+                MessageBox.Show(ex.Message, @"Algo salio Mal en usp_tblcliente_lista :( ");
+                throw;
+            }
+        }
+
         private void btncrearprograma_Click(object sender, EventArgs e)
         {
             try
@@ -310,8 +316,9 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
-                var cmd = new MySqlCommand("select idlote from tbllote where numlote = @idlote", ConexionGral.conexion);
+                var cmd = new MySqlCommand("select idlote from tbllote where numlote = @idlote and periodo = @anio", ConexionGral.conexion);
                 cmd.Parameters.AddWithValue("@idlote", cboLote.Text.Trim());
+                cmd.Parameters.AddWithValue("@anio", Convert.ToString(dtpbuscar_fecproduccion.Value.Year));
                 aux.idlote = Convert.ToInt32(cmd.ExecuteScalar());
 
                 var comando = new MySqlCommand("usp_tblprograma_proceso_insert", ConexionGral.conexion);
@@ -344,7 +351,7 @@ namespace _3mpacador4.Presentacion.Reporte
             Close();
         }
 
-        public void MostrarCalibres(string ls_fecha_proceso)
+        public void MostrarCalibres(string ls_fecha_proceso, string ls_idcliente)
         {
             MySqlCommand comando;
             try
@@ -360,6 +367,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 comando = new MySqlCommand("usp_tblcalibre_x_proceso", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.AddWithValue("p_fecha_proceso", ls_fecha_proceso);
+                comando.Parameters.AddWithValue("p_idcliente", ls_idcliente);
                 using (MySqlDataReader reader = comando.ExecuteReader())
                 {
                     while (reader.Read())
@@ -383,32 +391,45 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void dtpbuscar_fecproduccion_ValueChanged(object sender, EventArgs e)
         {
-            Cargar_proceso_x_fecha(dtpbuscar_fecproduccion.Value.ToString("yyyy-MM-dd"));
-            MostrarCalibres(dtpbuscar_fecproduccion.Value.ToString("yyyy-MM-dd"));
+            Limpiar();
         }
 
         private void btnconteo_manual_Click(object sender, EventArgs e)
         {
             bool lb_estado = false;
-            int li_idproceso;
-            string ls_fecha_produccion;            
+            int li_idproceso = 0, li_idlote = 0, li_idcategoria = 0, li_idpresentacion = 0, li_idcliente = 0;
+            string ls_fecha_produccion, ls_cliente = "";            
 
-            if (cbxproceso.SelectedIndex == 0)
+            if (lblid_proceso.ToString().Length == 0)
             {
                 MessageBox.Show("Debe Seleccionar un Proceso Para la Fecha " + dtpbuscar_fecproduccion.Text.Trim(), "Avisoo...!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            ls_fecha_produccion = dtpbuscar_fecproduccion.Value.ToString("yyyy-MM-dd");
-            li_idproceso = Convert.ToInt32(cbxproceso.Text.Substring(0, cbxproceso.Text.Contains("-").ToString().Length - 2));
-
-            if (LConteo_manual.Existe_Conteo_manual_x_fecha(ls_fecha_produccion, li_idproceso) > 0)
+            if (cbxcliente.SelectedIndex == 0)
             {
-                MessageBox.Show("Ya se Genero el Ingreso Manual Para la Fecha " + dtpbuscar_fecproduccion.Text.Trim(), "Avisoo...!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe Seleccionar un Cliente Para la Fecha " + dtpbuscar_fecproduccion.Text.Trim(), "Avisoo...!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            var rpta = MessageBox.Show("¿ ESTA SEGUR@ DE GENERAR EL PROCESO MANUAL PARA LA FECHA " + dtpbuscar_fecproduccion.Text.Trim() + " PROCESO " + cbxproceso.Text.Trim() + " ?", "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            ls_fecha_produccion = dtpbuscar_fecproduccion.Value.ToString("yyyy-MM-dd");
+            li_idproceso = Convert.ToInt32(lblid_proceso.Text.Trim());
+            li_idlote = Convert.ToInt32(lblid_lote.Text.Trim());
+            li_idcategoria = Convert.ToInt32(lblid_categoria.Text.Trim());
+            li_idpresentacion = Convert.ToInt32(lblid_presentacion.Text.Trim());
+            li_idcliente = Convert.ToInt32(cbxcliente.Text.Substring(0, cbxcliente.Text.Contains("-").ToString().Length - 2));
+            ls_cliente = cbxcliente.Text.Substring(cbxcliente.Text.Contains("-").ToString().Length - 1);
+
+            if (LConteo_manual.Existe_Conteo_manual_x_fecha(ls_fecha_produccion, li_idlote, li_idcategoria, li_idpresentacion, li_idcliente) > 0)
+            {
+                MessageBox.Show("Ya se Genero el Ingreso Manual del CLIENTE : "+ ls_cliente + 
+                    " N° LOTE : " +lblnum_lote.Text.Trim()+" CATEGORIA : " +  lblcategoria +" PRESENTACION : " + lblpresentacion +
+                    " Para la Fecha " + dtpbuscar_fecproduccion.Text.Trim(), 
+                    "Avisoo...!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var rpta = MessageBox.Show("¿ ESTA SEGUR@ DE GENERAR EL PROCESO MANUAL DEL CLIENTE : " + ls_cliente +" PARA LA FECHA : " + dtpbuscar_fecproduccion.Text.Trim() + " PROCESO " + lblid_proceso.Text.Trim() + " ?", "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (rpta == DialogResult.Yes)
             {
                 for (int i = 0; i < dgvcalibres.RowCount; i++)
@@ -420,7 +441,7 @@ namespace _3mpacador4.Presentacion.Reporte
                         li_calibre = Convert.ToInt32(dgvcalibres.Rows[i].Cells[0].Value);                        
                         li_cantidad = Convert.ToInt32(dgvcalibres.Rows[i].Cells[1].Value);
 
-                        if (LConteo_manual.Conteo_Manual(li_idproceso, li_calibre, ls_fecha_produccion, li_cantidad) > 0)
+                        if (LConteo_manual.Conteo_Manual(li_idproceso, li_calibre, ls_fecha_produccion, li_cantidad, li_idcliente) > 0)
                         {
                             lb_estado = true;
                         }
@@ -432,6 +453,133 @@ namespace _3mpacador4.Presentacion.Reporte
                     MessageBox.Show("SE INGRESARON LAS CANTIDADES POR CALIBRES CORRECTAMENTE", "AVISO...!!!", MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
             }
+        }
+
+        private void FProgramaProceso_Load(object sender, EventArgs e)
+        {
+            Cargar_Cliente();
+        }
+
+        private void cbxregistro_manual_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxregistro_manual.Checked)
+            {
+                gbregistro_manual.Visible = true;
+            }
+            else
+            {                
+                gbregistro_manual.Visible = false;
+            }
+        }
+
+        private void rbregistrar_CheckedChanged(object sender, EventArgs e)
+        {
+            Limpiar();
+            if (rbregistrar.Checked)
+            {
+                btnmostrar_conteo_manual.Enabled = false;
+                btnconteo_manual.Enabled = true;
+                cbxtodos_cli.Enabled = false;
+                btnbuscar_proceso.Enabled = true;
+            }            
+        }
+
+        private void rbbuscar_CheckedChanged(object sender, EventArgs e)
+        {
+            Limpiar();
+            if (rbbuscar.Checked)
+            {
+                btnmostrar_conteo_manual.Enabled = true;
+                btnconteo_manual.Enabled = false;
+                cbxtodos_cli.Enabled = true;
+                btnbuscar_proceso.Enabled = false;
+            }
+        }
+
+        private void btnbuscar_proceso_Click(object sender, EventArgs e)
+        {
+            ls_fecha_produccion = dtpbuscar_fecproduccion.Value.ToString("yyyy-MM-dd");
+
+            pp = new Programa_proceso();
+            var f = new FBuscar_proceso();
+            f.ShowDialog();
+
+            if (pp.idproceso > 0)
+            {
+                lblid_proceso.Text = pp.idproceso.ToString();
+
+                lblid_lote.Text = pp.idlote.ToString();
+                lblnum_lote.Text = pp.numlote.ToString();
+
+                lblid_destino.Text = pp.iddestino.ToString();
+                lbldestino.Text = pp.destino.ToString();
+
+                lblid_categoria.Text = pp.idcategoria.ToString();
+                lblcategoria.Text = pp.categoria.ToString();
+
+                lblid_presentacion.Text = pp.idpresentacion.ToString();
+                lblpresentacion.Text = pp.presentacion.ToString();
+            }
+        }
+
+        private void btnmostrar_conteo_manual_Click(object sender, EventArgs e)
+        {
+            Mostrar_conteo();
+        }
+
+        void Limpiar() 
+        {
+            lblid_proceso.Text = "";
+            lblid_lote.Text = "";
+            lblnum_lote.Text = "";
+            lblid_destino.Text = "";
+            lbldestino.Text = "";
+            lblid_categoria.Text = "";
+            lblcategoria.Text = "";
+            lblid_presentacion.Text = "";
+            lblpresentacion.Text = "";
+            cbxtodos_cli.Checked = false;
+        }
+
+        private void cbxtodos_cli_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxtodos_cli.Checked)
+            {
+                cbxcliente.SelectedIndex = 0;
+                cbxcliente.Enabled = false;
+                Mostrar_conteo();
+            }
+            else
+            {
+                cbxcliente.Enabled = true;
+            }
+        }
+
+        void Mostrar_conteo() 
+        {
+            string ls_idcliente = "";
+
+            if (cbxtodos_cli.Checked)
+            {
+                ls_idcliente = "%";
+            }
+            else
+            {
+                if (cbxcliente.SelectedIndex > 0)
+                {
+                    ls_idcliente = cbxcliente.Text.Substring(0, cbxcliente.Text.Contains("-").ToString().Length - 2);
+                }
+            }
+
+            MostrarCalibres(dtpbuscar_fecproduccion.Value.ToString("yyyy-MM-dd"), ls_idcliente);
+        }
+
+        private void cbxcliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbxcliente.SelectedIndex > 0)
+            {
+                Mostrar_conteo();
+            }           
         }
     }
 }

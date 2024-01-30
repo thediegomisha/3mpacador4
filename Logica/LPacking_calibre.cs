@@ -56,7 +56,26 @@ namespace _3mpacador4.Logica
             return lista;
         }
 
-        public static List<Packing_calibre_det> Lista_packing_calibre_det(string ls_fecha_produccion)
+        public static decimal Kilos_Proceso_x_fecha(string ls_fecha_produccion)
+        {
+            decimal li_rpta = 0;
+            if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+
+            string sql = @"select ifnull(sum(x.kilos),0) from(
+                            select (count(cj.calibre) * (case when s.nombre = '4' then 4.18 else (case when s.nombre = '5.6' then 5.845 else 10.185 end) end))  as kilos
+                            from tblconteo_jabas cj 
+                            inner join tblprograma_proceso pp on cj.idproceso = pp.idproceso 
+                            inner join tblpresentacion s on pp.idpresentacion = s.idpresentacion
+                            where cj.calibre = cj.calibre and pp.fecha_produccion = @fecha_produccion
+                            group by s.nombre) x";
+            var cmd = new MySqlCommand(sql, ConexionGral.conexion);
+            cmd.Parameters.AddWithValue("@fecha_produccion", ls_fecha_produccion);
+            li_rpta = Convert.ToDecimal(cmd.ExecuteScalar());
+            ConexionGral.desconectar();
+            return li_rpta;
+        }
+
+        public static List<Packing_calibre_det> Lista_packing_calibre_det(string ls_fecha_produccion, string ls_id_cliente, int li_idlote)
         {
             var lista = new List<Packing_calibre_det>();
             if (ConexionGral.conexion.State == ConnectionState.Closed)
@@ -67,6 +86,8 @@ namespace _3mpacador4.Logica
             var comando = new MySqlCommand("usp_rpt_packing_calibre_det", ConexionGral.conexion);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("p_fecha_produccion", ls_fecha_produccion);
+            comando.Parameters.AddWithValue("p_idcliente", ls_id_cliente);
+            comando.Parameters.AddWithValue("p_idlote", li_idlote);
 
             using (MySqlDataReader reader = comando.ExecuteReader())
             {

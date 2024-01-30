@@ -117,7 +117,7 @@ namespace _3mpacador4.Presentacion.Sistema
                     "¿ ESTA SEGUR@ DE IMPRIMIR "+lblcantidad_tikects.Text.Trim() + " TICKETS DEL CALIBRE " + nudcalibre.Value.ToString()+" ?", "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (rpta == DialogResult.Yes)
             {
-                ActualizarCalibreQR(li_calibre, nro_etiquetas);
+                //ActualizarCalibreQR(li_calibre, nro_etiquetas);
                 Impresion_ZPL(li_calibre.ToString(), nro_etiquetas);
                 MessageBox.Show("IMPRESION DE TICKETS ", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -148,22 +148,21 @@ namespace _3mpacador4.Presentacion.Sistema
                     cadena = "^XA" + Environment.NewLine;
 
                     // COLUMNA 01
-                    cadena = cadena + "^FO55,10^BQN,2,9^FDMA," + ls_calibre + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^FO160,135^GB70,65,65,W^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO50,10^BQN,2,6^FDMA," + ls_calibre + "^FS" + Environment.NewLine;
+                    //cadena = cadena + "^FO160,135^GB70,65,65,W^FS" + Environment.NewLine;
                     /*cadena = cadena + "^FO160,135^GB70,65,3,B^FS" + Environment.NewLine;*/
-                    cadena = cadena + "^CF0,65^FO165,142^FD" + ls_calibre + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,40^FO95,145^FD" + ls_calibre + "^FS" + Environment.NewLine;
 
                     // COLUMNA 02
-                    cadena = cadena + "^FO315,10^BQN,2,9^FDMA," + ls_calibre + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^FO420,135^GB70,65,65,W^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO350,10^BQN,2,6^FDMA," + ls_calibre + "^FS" + Environment.NewLine;
+                    //cadena = cadena + "^FO420,135^GB70,65,65,W^FS" + Environment.NewLine;
                     /*cadena = cadena + "^FO420,135^GB70,65,3,B^FS" + Environment.NewLine;*/
-                    cadena = cadena + "^CF0,65^FO425,142^FD" + ls_calibre + "^FS" + Environment.NewLine;
-
+                    cadena = cadena + "^CF0,40^FO395,145^FD" + ls_calibre + "^FS" + Environment.NewLine;
                     // COLUMNA 03
-                    cadena = cadena + "^FO580,10^BQN,2,9^FDMA," + ls_calibre + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^FO685,135^GB70,65,65,W^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO650,10^BQN,2,6^FDMA," + ls_calibre + "^FS" + Environment.NewLine;
+                    //cadena = cadena + "^FO685,135^GB70,65,65,W^FS" + Environment.NewLine;
                     /*cadena = cadena + "^FO685,135^GB70,65,3,B^FS" + Environment.NewLine;*/
-                    cadena = cadena + "^CF0,65^FO690,142^FD" + ls_calibre + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,40^FO695,145^FD" + ls_calibre + "^FS" + Environment.NewLine;
 
                     // FIN
                     cadena = cadena + "^XZ" + Environment.NewLine;

@@ -29,14 +29,14 @@ namespace _3mpacador4.Presentacion.Reporte
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtpf_produccion = new System.Windows.Forms.DateTimePicker();
             this.label18 = new System.Windows.Forms.Label();
             this.dgvpacking_calibre_cab = new System.Windows.Forms.DataGridView();
@@ -61,7 +61,6 @@ namespace _3mpacador4.Presentacion.Reporte
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnbuscar_trab = new Glass.GlassButton();
             this.dgvpacking_calibre_det = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,7 +80,6 @@ namespace _3mpacador4.Presentacion.Reporte
             this.Column35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnimprimir = new Glass.GlassButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -109,6 +107,10 @@ namespace _3mpacador4.Presentacion.Reporte
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.cbxcliente = new System.Windows.Forms.ComboBox();
+            this.btnimprimir = new Glass.GlassButton();
+            this.btnbuscar_trab = new Glass.GlassButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvpacking_calibre_cab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvpacking_calibre_det)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -144,14 +146,14 @@ namespace _3mpacador4.Presentacion.Reporte
             this.dgvpacking_calibre_cab.AllowUserToDeleteRows = false;
             this.dgvpacking_calibre_cab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvpacking_calibre_cab.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvpacking_calibre_cab.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvpacking_calibre_cab.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvpacking_calibre_cab.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
@@ -180,11 +182,12 @@ namespace _3mpacador4.Presentacion.Reporte
             this.dgvpacking_calibre_cab.ReadOnly = true;
             this.dgvpacking_calibre_cab.RowHeadersVisible = false;
             this.dgvpacking_calibre_cab.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvpacking_calibre_cab.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvpacking_calibre_cab.RowsDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvpacking_calibre_cab.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvpacking_calibre_cab.Size = new System.Drawing.Size(1080, 97);
             this.dgvpacking_calibre_cab.TabIndex = 92;
+            this.dgvpacking_calibre_cab.SelectionChanged += new System.EventHandler(this.dgvpacking_calibre_cab_SelectionChanged);
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -297,7 +300,7 @@ namespace _3mpacador4.Presentacion.Reporte
             // 
             // Column14
             // 
-            this.Column14.HeaderText = "NOMBRE CLIENTE";
+            this.Column14.HeaderText = "CLIENTE INGRESO";
             this.Column14.Name = "Column14";
             this.Column14.ReadOnly = true;
             this.Column14.Width = 200;
@@ -335,28 +338,12 @@ namespace _3mpacador4.Presentacion.Reporte
             // 
             // Column20
             // 
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column20.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = null;
+            this.Column20.DefaultCellStyle = dataGridViewCellStyle10;
             this.Column20.HeaderText = "PESO PROMEDIO";
             this.Column20.Name = "Column20";
             this.Column20.ReadOnly = true;
-            // 
-            // btnbuscar_trab
-            // 
-            this.btnbuscar_trab.BackColor = System.Drawing.Color.Blue;
-            this.btnbuscar_trab.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnbuscar_trab.Image = global::_3mpacador4.Properties.Resources.buscar;
-            this.btnbuscar_trab.Location = new System.Drawing.Point(285, 12);
-            this.btnbuscar_trab.Margin = new System.Windows.Forms.Padding(4);
-            this.btnbuscar_trab.Name = "btnbuscar_trab";
-            this.btnbuscar_trab.OuterBorderColor = System.Drawing.Color.Blue;
-            this.btnbuscar_trab.ShineColor = System.Drawing.Color.Navy;
-            this.btnbuscar_trab.Size = new System.Drawing.Size(134, 45);
-            this.btnbuscar_trab.TabIndex = 96;
-            this.btnbuscar_trab.Text = "MOSTRAR";
-            this.btnbuscar_trab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnbuscar_trab.Click += new System.EventHandler(this.btnbuscar_trab_Click);
             // 
             // dgvpacking_calibre_det
             // 
@@ -364,14 +351,14 @@ namespace _3mpacador4.Presentacion.Reporte
             this.dgvpacking_calibre_det.AllowUserToDeleteRows = false;
             this.dgvpacking_calibre_det.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvpacking_calibre_det.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvpacking_calibre_det.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvpacking_calibre_det.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvpacking_calibre_det.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -392,13 +379,13 @@ namespace _3mpacador4.Presentacion.Reporte
             this.Column35,
             this.Column36,
             this.Column37});
-            this.dgvpacking_calibre_det.Location = new System.Drawing.Point(12, 169);
+            this.dgvpacking_calibre_det.Location = new System.Drawing.Point(12, 224);
             this.dgvpacking_calibre_det.Name = "dgvpacking_calibre_det";
             this.dgvpacking_calibre_det.ReadOnly = true;
             this.dgvpacking_calibre_det.RowHeadersVisible = false;
             this.dgvpacking_calibre_det.RowHeadersWidth = 51;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvpacking_calibre_det.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvpacking_calibre_det.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvpacking_calibre_det.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvpacking_calibre_det.Size = new System.Drawing.Size(1080, 180);
             this.dgvpacking_calibre_det.TabIndex = 97;
@@ -511,8 +498,8 @@ namespace _3mpacador4.Presentacion.Reporte
             // 
             // Column35
             // 
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column35.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column35.DefaultCellStyle = dataGridViewCellStyle13;
             this.Column35.HeaderText = "CANTIDAD";
             this.Column35.Name = "Column35";
             this.Column35.ReadOnly = true;
@@ -520,9 +507,9 @@ namespace _3mpacador4.Presentacion.Reporte
             // 
             // Column36
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column36.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column36.DefaultCellStyle = dataGridViewCellStyle14;
             this.Column36.HeaderText = "SOBREPESO";
             this.Column36.Name = "Column36";
             this.Column36.ReadOnly = true;
@@ -530,28 +517,13 @@ namespace _3mpacador4.Presentacion.Reporte
             // 
             // Column37
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column37.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column37.DefaultCellStyle = dataGridViewCellStyle15;
             this.Column37.HeaderText = "KILOS";
             this.Column37.Name = "Column37";
             this.Column37.ReadOnly = true;
             this.Column37.Width = 90;
-            // 
-            // btnimprimir
-            // 
-            this.btnimprimir.BackColor = System.Drawing.Color.Blue;
-            this.btnimprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnimprimir.Location = new System.Drawing.Point(427, 12);
-            this.btnimprimir.Margin = new System.Windows.Forms.Padding(4);
-            this.btnimprimir.Name = "btnimprimir";
-            this.btnimprimir.OuterBorderColor = System.Drawing.Color.Blue;
-            this.btnimprimir.ShineColor = System.Drawing.Color.Navy;
-            this.btnimprimir.Size = new System.Drawing.Size(134, 45);
-            this.btnimprimir.TabIndex = 98;
-            this.btnimprimir.Text = "IMPRIMIR REPORTE";
-            this.btnimprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnimprimir.Click += new System.EventHandler(this.btnimprimir_Click);
             // 
             // label1
             // 
@@ -839,9 +811,9 @@ namespace _3mpacador4.Presentacion.Reporte
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 360);
+            this.groupBox1.Location = new System.Drawing.Point(12, 410);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(407, 191);
+            this.groupBox1.Size = new System.Drawing.Size(407, 179);
             this.groupBox1.TabIndex = 124;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DESCARTE / MUESTREO";
@@ -863,18 +835,74 @@ namespace _3mpacador4.Presentacion.Reporte
             this.groupBox2.Controls.Add(this.tbxporcentaje_desc_mues);
             this.groupBox2.Controls.Add(this.tbxporcentaje_proceso);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(427, 360);
+            this.groupBox2.Location = new System.Drawing.Point(427, 410);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(416, 191);
+            this.groupBox2.Size = new System.Drawing.Size(416, 179);
             this.groupBox2.TabIndex = 125;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "RESUMEN";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(9, 196);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(67, 17);
+            this.label27.TabIndex = 127;
+            this.label27.Text = "CLIENTE :";
+            // 
+            // cbxcliente
+            // 
+            this.cbxcliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxcliente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxcliente.FormattingEnabled = true;
+            this.cbxcliente.Location = new System.Drawing.Point(80, 192);
+            this.cbxcliente.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxcliente.Name = "cbxcliente";
+            this.cbxcliente.Size = new System.Drawing.Size(339, 25);
+            this.cbxcliente.TabIndex = 126;
+            this.cbxcliente.SelectedValueChanged += new System.EventHandler(this.cbxcliente_SelectedValueChanged);
+            // 
+            // btnimprimir
+            // 
+            this.btnimprimir.BackColor = System.Drawing.Color.Blue;
+            this.btnimprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnimprimir.Image = global::_3mpacador4.Properties.Resources.Pdf;
+            this.btnimprimir.Location = new System.Drawing.Point(427, 172);
+            this.btnimprimir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnimprimir.Name = "btnimprimir";
+            this.btnimprimir.OuterBorderColor = System.Drawing.Color.Blue;
+            this.btnimprimir.ShineColor = System.Drawing.Color.Navy;
+            this.btnimprimir.Size = new System.Drawing.Size(148, 45);
+            this.btnimprimir.TabIndex = 98;
+            this.btnimprimir.Text = "VER REPORTE EN PDF";
+            this.btnimprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnimprimir.Click += new System.EventHandler(this.btnimprimir_Click);
+            // 
+            // btnbuscar_trab
+            // 
+            this.btnbuscar_trab.BackColor = System.Drawing.Color.Blue;
+            this.btnbuscar_trab.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnbuscar_trab.Image = global::_3mpacador4.Properties.Resources.buscar;
+            this.btnbuscar_trab.Location = new System.Drawing.Point(285, 12);
+            this.btnbuscar_trab.Margin = new System.Windows.Forms.Padding(4);
+            this.btnbuscar_trab.Name = "btnbuscar_trab";
+            this.btnbuscar_trab.OuterBorderColor = System.Drawing.Color.Blue;
+            this.btnbuscar_trab.ShineColor = System.Drawing.Color.Navy;
+            this.btnbuscar_trab.Size = new System.Drawing.Size(134, 45);
+            this.btnbuscar_trab.TabIndex = 96;
+            this.btnbuscar_trab.Text = "MOSTRAR";
+            this.btnbuscar_trab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnbuscar_trab.Click += new System.EventHandler(this.btnbuscar_trab_Click);
             // 
             // FRptPackigCalibre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1104, 563);
+            this.ClientSize = new System.Drawing.Size(1104, 601);
+            this.Controls.Add(this.label27);
+            this.Controls.Add(this.cbxcliente);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnimprimir);
@@ -885,6 +913,7 @@ namespace _3mpacador4.Presentacion.Reporte
             this.Controls.Add(this.label18);
             this.Name = "FRptPackigCalibre";
             this.Text = "FRptPackigCalibre";
+            this.Load += new System.EventHandler(this.FRptPackigCalibre_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvpacking_calibre_cab)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvpacking_calibre_det)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -949,6 +978,8 @@ namespace _3mpacador4.Presentacion.Reporte
         internal System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label27;
+        internal System.Windows.Forms.ComboBox cbxcliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
