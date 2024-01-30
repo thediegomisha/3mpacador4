@@ -1,15 +1,19 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using _3mpacador4.Logica;
 using _3mpacador4.Properties;
 using Devart.Data.MySql;
+using iText.Layout.Element;
 using Microsoft.VisualBasic;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 using QuestPDF.Previewer;
+using IContainer = QuestPDF.Infrastructure.IContainer;
 using Settings = _3mpacador4.Properties.Settings;
 
 //using Microsoft.Office.Interop.Excel;
@@ -19,6 +23,8 @@ using Settings = _3mpacador4.Properties.Settings;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
+
+
     public partial class RptBoletaPesado : Form
 
     {
@@ -54,31 +60,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         }
 
-        private void GenerarPDF2()
-        {
-          
-            QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
-
-           Document.Create(contenedor =>
-            {
-                contenedor.Page(pagina =>
-                {
-                    pagina.Size(PageSizes.A4);
-                    pagina.Margin(1,QuestPDF.Infrastructure.Unit.Centimetre);
-
-                    pagina.Header().Text("Aprendamos .NET")
-                        .Bold().FontSize(35).FontColor(Colors.Red.Medium);
-
-                    pagina.Content().Column(columna =>
-                    {
-                        columna.Spacing(20);
-                        columna.Item().Text(Placeholders.LoremIpsum());
-                        columna.Item().Image(Placeholders.Image(200, 100));
-                    });
-
-                });
-            }).GeneratePdf("simple.pdf");
-        }
+      
 
         private void RptBoletaPesado_Load(object sender, EventArgs e)
         {
@@ -361,363 +343,178 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            GenerarPDF2();
+         GenerarPDF2();
+        // mostrarconsulta2();
+        //  CrearPDF();
+        }
+
+        private void mostrarconsulta2()
+        {
+            MySqlCommand comando = null;
+            MySqlDataReader reader = null;
+            try
+            {
+
+                datalistado.Rows.Clear();
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+
+                comando = new MySqlCommand("usp_tblticketpesaje_RptBoletaPesado", ConexionGral.conexion);
+                comando.CommandType = (CommandType)4;
+
+                comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = txtnumlote.Text;
+
+                String fechaaño = Settings.Default.periodo.ToString();
+                String[] partes = fechaaño.Split(' ')[0].Split('/');
+                String año = partes[2];
+                comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Int).Value = año;
+
+                reader = comando.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    DataTable dataTable = new DataTable();
+                    dataTable.Load(reader);
+                    datalistado.DataSource = dataTable;
+                    ocultar_columnas();
+                    actualizardatos();
+                }
+                else
+                {
+                    datalistado.DataSource = null;
+                }                                                                                                                                                                                                                               
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Cerrar el reader
+                if (reader != null && !reader.IsClosed)
+                    reader.Close();
+
+                // Cerrar la conexión
+                ConexionGral.desconectar();
+            }
+        }
+
+        const string LogoPath = "logoagricola.png";
+
+        private void GenerarPDF2()
+        {
+
+            QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+
+            Document.Create(contenedor =>
+            {
+                contenedor.Page(pagina =>
+                {
+                    pagina.Size(PageSizes.A4);
+                    pagina.Margin(1, QuestPDF.Infrastructure.Unit.Centimetre);
+                    pagina.DefaultTextStyle(x => x.FontSize(12));
+
+                    pagina.Header().Element(CrearCabecera);
+                    pagina.Content().Padding(20).Element(CrearContenido);
+                    pagina.Footer().Element(CrearFooter);
+                });
+            }).GeneratePdf("simple.pdf");
+        }
+
+       void CrearCabecera(IContainer container)
+        {
+            container.Column(col =>
+            {
+               //   col.Item().Image(LogoPath);
+                
+
+                col.Item().Row(row =>
+                    {
+                        row.RelativeItem().AlignLeft()
+                            .Row(rowitem =>
+                            {
+                                rowitem.AutoItem().Width(200).Height(200).Image(LogoPath);
+                            });
+
+                        row.RelativeItem().Text("Boleta de Pesaje N° ");
+                    }
+
+                    );
+               // col.Item().Text("Boleta de Pesaje N° ");
+            });
         }
 
 
-        //private void BTNEXPORTAR_Click(object sender, EventArgs e)
-        //{
-        //    WINPESFARD.My.MyProject.Forms.F_MovBalanza_Pesfard.RELLENARGRILLAMOVBAL();
-        //    WINPESFARD.My.MyProject.Forms.F_Romaneo_liquidacion_Pesfard.resultadoromaneo();
-        //    try
-        //    {
-
-        //        // Me.Cursor = Cursors.WaitCursor
-
-        //        // Creamos un objeto Excel.
-        //        Microsoft.Office.Interop.Excel.Application Mi_Excel;
-        //        // Creamos un objeto WorkBook. Para crear el documento Excel.
-        //        Microsoft.Office.Interop.Excel.Workbook LibroExcel;
-        //        // Creamos un objeto WorkSheet. Para crear la hoja del documento.
-        //        Microsoft.Office.Interop.Excel.Worksheet HojaExcel = null;
-        //        // Iniciamos una instancia a Excel, y Hacemos visibles para ver como se va creando el reporte,
-        //        // podemos hacerlo visible al final si se desea.
-        //        Mi_Excel = new Microsoft.Office.Interop.Excel.Application();
-
-
-        //        // /* Ahora creamos un nuevo documento y seleccionamos la primera hoja del
-        //        // * documento en la cual crearemos nuestro informe.
-        //        // */
-
-        //        // AÑADIR MAS HOJAS AL LIBRO EXCEL
-        //        Mi_Excel.SheetsInNewWorkbook = 3;
-
-
-        //        // Form_MovBalanz.grillamovbalanza.DataSource = dstables(0)
-
-        //        // Creamos una instancia del Workbooks de excel.
-        //        LibroExcel = Mi_Excel.Workbooks.Add();
-
-        //        // Creamos una instancia de la primera hoja de trabajo de excel
-        //        HojaExcel = (Microsoft.Office.Interop.Excel.Worksheet)LibroExcel.Worksheets[1];
-
-        //        // Cambiamos el nombre de las hojas trabajo de excel
-        //        LibroExcel.Worksheets["Hoja1"].Name = "LIQUIDACION";
-        //        LibroExcel.Worksheets["Hoja2"].Name = "MOVIMIENTO";
-        //        LibroExcel.Worksheets["Hoja3"].Name = "ROMANEO";
-
-
-        //        // HojaExcel.Cells.Borders(Excel.XlBordersIndex.xlEdgeBottom).LineStyle = Excel.XlLineStyle.xlContinuous
-        //        // HojaExcel.Cells.Borders(Excel.XlBordersIndex.xlEdgeBottom).LineStyle = Excel.XlLineStyle.xlContinuous
-        //        // HojaExcel.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter
-
-        //        HojaExcel.Visible = Microsoft.Office.Interop.Excel.XlSheetVisibility.xlSheetVisible;
-
-
-        //        // Hacemos esta hoja sea visible en pantalla
-        //        // (como seleccionamos la primera esto no es necesario
-        //        // si seleccionamos una diferente a la primera si lo
-        //        // necesitariamos).
-
-        //        HojaExcel.Activate();
-
-        //        // Crear el encabezado de nuestro informe.
-        //        // La primera línea une las celdas y las convierte en una sola.
-        //        HojaExcel.get_Range("B1:G1").Merge();
-
-        //        // La segunda línea Asigna el nombre del encabezado.
-        //        // HojaExcel.Range("A1:E1").Value = "----------------------------------------------"
-        //        // La tercera línea asigna negrita al titulo.
-        //        HojaExcel.get_Range("B1:G1").Font.Bold = true;
-        //        // La cuarta línea asigna un Size a titulo de 15.
-        //        HojaExcel.get_Range("B1:G1").Font.Size = 15;
-
-        //        // Crear el subencabezado de nuestro informe
-        //        HojaExcel.get_Range("B2:G2").Merge();
-        //        HojaExcel.get_Range("B2:G2").set_Value(value: "DESMOTADORA ALTO AMAZONAS");
-        //        HojaExcel.get_Range("B2:G2").Font.Bold = true;
-        //        HojaExcel.get_Range("B2:G2").Font.Size = 24;
-
-        //        HojaExcel.get_Range("B3:G3").Merge();
-        //        HojaExcel.get_Range("B3:G3").set_Value(value: "DE: JAIME VERA MEDINA");
-        //        HojaExcel.get_Range("B3:G3").Font.Italic = true;
-        //        HojaExcel.get_Range("B3:G3").Font.Size = 12;
-
-        //        HojaExcel.get_Range("B4:D4").Merge();
-        //        HojaExcel.get_Range("B4:D4").set_Value(value: "R.U.C. :  1097538811");
-        //        HojaExcel.get_Range("B4:G4").Font.Bold = true;
-        //        HojaExcel.get_Range("B4:G4").Font.Size = 13;
-
-        //        HojaExcel.get_Range("B5:G5").Merge();
-        //        HojaExcel.get_Range("B5:G5").set_Value(value: "Via Los Libertadores Km. 6 San Clemente - PISCO");
-        //        HojaExcel.get_Range("B5:G5").Font.Italic = true;
-        //        HojaExcel.get_Range("B5:G5").Font.Size = 13;
-
-        //        HojaExcel.get_Range("C6:F6").Merge();
-        //        HojaExcel.get_Range("C6").set_Value(value: "LIQUIDACION DE SERVICIO Nº");
-        //        HojaExcel.get_Range("G6").set_Value(value: "00" + this.TextBox1.Text);
-        //        HojaExcel.get_Range("C6:G6").Font.Bold = true;
-        //        HojaExcel.get_Range("C6:G6").Font.Size = 16;
-
-
-        //        // //ENCABEZADO DATOS DEL CLIENTE
-        //        // // B8:G8  B12:G12
-
-        //        // // DIBUJA UN BORDE ALREDEDOR DE TODO ESE PARAMETRO
-        //        HojaExcel.get_Range("B8:G8", "B12:G12").BorderAround();
-
-        //        HojaExcel.get_Range("B8").set_Value(value: "FECHA :");
-        //        HojaExcel.get_Range("D8").set_Value(value: (object)this.DateTimePicker1.Value.Date);
-        //        HojaExcel.get_Range("B8").Font.Bold = true;
-        //        HojaExcel.get_Range("B8:D8").Font.Size = 12;
-
-        //        HojaExcel.get_Range("B9").set_Value(value: "CLIENTE :");
-        //        HojaExcel.get_Range("D9").set_Value(value: this.COMBOCLIENTE.Text);
-        //        HojaExcel.get_Range("B9:D9").Font.Bold = true;
-        //        HojaExcel.get_Range("B9:D9").Font.Size = 12;
-
-        //        HojaExcel.get_Range("B10").set_Value(value: "VARIEDAD :");
-        //        HojaExcel.get_Range("D10").set_Value(value: this.COMBOVARIEDAD.Text);
-        //        HojaExcel.get_Range("B10:D10").Font.Bold = true;
-        //        HojaExcel.get_Range("B10:D10").Font.Size = 12;
-
-        //        HojaExcel.get_Range("B11").set_Value(value: "ESTADO :");
-        //        HojaExcel.get_Range("D11").set_Value(value: this.COMBOESTADO.Text);
-        //        HojaExcel.get_Range("B11:D11").Font.Bold = true;
-        //        HojaExcel.get_Range("B11:D11").Font.Size = 12;
-
-        //        HojaExcel.get_Range("F11").set_Value(value: "OP :");
-        //        HojaExcel.get_Range("G11").set_Value(value: this.LBLOP.Text);
-        //        HojaExcel.get_Range("F11:G11").Font.Bold = true;
-        //        HojaExcel.get_Range("F11:G11").Font.Size = 12;
-
-        //        HojaExcel.get_Range("B12").set_Value(value: "LOTE :");
-        //        HojaExcel.get_Range("F12").set_Value(value: this.COMBOLOTE.Text);
-        //        HojaExcel.get_Range("B12:F12").Font.Bold = true;
-        //        HojaExcel.get_Range("B12:F12").Font.Size = 12;
-
-        //        // //
-        //        HojaExcel.get_Range("B14:F14", "B16:F16").BorderAround();
-
-        //        HojaExcel.get_Range("B14").set_Value(value: "INGRESO ALGODON RAMA :");
-        //        HojaExcel.get_Range("F14").set_Value(value: this.LBLING_RAMA_TOTAL.Text);
-        //        HojaExcel.get_Range("E14").set_Value(value: "QQ :");
-        //        HojaExcel.get_Range("B14:F14").Font.Bold = true;
-        //        HojaExcel.get_Range("B14").Font.Size = 12;
-
-        //        HojaExcel.get_Range("B15").set_Value(value: "RAMA PROCESADA :");
-        //        HojaExcel.get_Range("F15").set_Value(value: this.LBLINGRESORAMA.Text);
-        //        HojaExcel.get_Range("E15").set_Value(value: "QQ :");
-        //        HojaExcel.get_Range("B15").Font.Bold = false;
-        //        HojaExcel.get_Range("B15").Font.Size = 12;
-
-        //        HojaExcel.get_Range("B16").set_Value(value: "RAMA SIN PROCESAR :");
-        //        HojaExcel.get_Range("F16").set_Value(value: this.LBL_SIN_PROCESAR.Text);
-        //        HojaExcel.get_Range("E16").set_Value(value: "QQ :");
-        //        HojaExcel.get_Range("B16").Font.Bold = false;
-        //        HojaExcel.get_Range("B16").Font.Size = 12;
-
-
-        //        // //
-        //        HojaExcel.get_Range("B18:F18", "B21:F21").BorderAround();
-
-        //        HojaExcel.get_Range("B18").set_Value(value: "TOTAL FARDOS:");
-        //        HojaExcel.get_Range("E18").set_Value(value: "UNIDAD:");
-        //        HojaExcel.get_Range("F18").set_Value(value: this.LBLTOTALFARDOS.Text);
-        //        HojaExcel.get_Range("B18").Font.Bold = false;
-        //        HojaExcel.get_Range("B18").Font.Size = 12;
-
-        //        HojaExcel.get_Range("B19").set_Value(value: "PESO BRUTO:");
-        //        HojaExcel.get_Range("E19").set_Value(value: "QQ :");
-        //        HojaExcel.get_Range("F19").set_Value(value: this.LBLPESOBRUTO.Text);
-        //        HojaExcel.get_Range("B19").Font.Bold = false;
-        //        HojaExcel.get_Range("B19").Font.Size = 12;
-
-        //        HojaExcel.get_Range("B20").set_Value(value: "PESO TARA:");
-        //        HojaExcel.get_Range("E20").set_Value(value: "QQ :");
-        //        HojaExcel.get_Range("F20").set_Value(value: this.LBLPESOTARA.Text);
-        //        HojaExcel.get_Range("B20").Font.Bold = false;
-        //        HojaExcel.get_Range("B20").Font.Size = 12;
-
-        //        HojaExcel.get_Range("B21").set_Value(value: "PESO NETO ALGODON FIBRA:");
-        //        HojaExcel.get_Range("E21").set_Value(value: "QQ :");
-        //        HojaExcel.get_Range("F21").set_Value(value: this.LBLNETOFIBRA.Text);
-        //        HojaExcel.get_Range("B21").Font.Bold = false;
-
-        //        // //
-        //        HojaExcel.get_Range("B23:F23", "B25:F25").BorderAround();
-
-        //        HojaExcel.get_Range("B23").set_Value(value: "ACUDE (Procesado) :");
-        //        HojaExcel.get_Range("D23").set_Value(value: this.LBLACUDEPORCENTAJE.Text + this.Label16.Text);
-        //        HojaExcel.get_Range("F23").set_Value(value: this.LBLACUDE.Text);
-        //        HojaExcel.get_Range("B23:F23").Font.Bold = true;
-        //        HojaExcel.get_Range("B23").Font.Size = 12;
-
-        //        HojaExcel.get_Range("B25").set_Value(value: "PEPA:");
-        //        HojaExcel.get_Range("D25").set_Value(value: "QQ :");
-        //        HojaExcel.get_Range("D25").set_Value(value: this.TXTPEPA.Text + " " + this.Label16.Text);
-        //        HojaExcel.get_Range("F25").set_Value(value: this.LBLPEPA.Text);
-        //        HojaExcel.get_Range("B25:F25").Font.Bold = true;
-        //        HojaExcel.get_Range("B25:F25").Font.Size = 12;
-
-        //        // //
-        //        HojaExcel.get_Range("B27:F27", "B32:F32").BorderAround();
-
-        //        HojaExcel.get_Range("B27").set_Value(value: "COSTO SERVICIO QUINTAL POR FIBRA:");
-        //        HojaExcel.get_Range("F27").set_Value(value: this.TXTCOSTOFIBRA.Text);
-        //        HojaExcel.get_Range("B27").Font.Bold = false;
-        //        HojaExcel.get_Range("B27").Font.Size = 12;
-
-        //        HojaExcel.get_Range("B28").set_Value(value: "CANTIDAD:");
-        //        HojaExcel.get_Range("F28").set_Value(value: this.LBLCANTIDAD.Text);
-        //        HojaExcel.get_Range("B28").Font.Bold = false;
-        //        HojaExcel.get_Range("B28").Font.Size = 12;
-
-        //        HojaExcel.get_Range("B29").set_Value(value: "SUB-TOTAL:");
-        //        HojaExcel.get_Range("F29").set_Value(value: this.LBLSUBTOTAL.Text);
-        //        HojaExcel.get_Range("B29").Font.Bold = false;
-        //        HojaExcel.get_Range("B29").Font.Size = 12;
-
-        //        HojaExcel.get_Range("B30").set_Value(value: "I.G.V.:");
-        //        HojaExcel.get_Range("F30").set_Value(value: this.lblIGV.Text);
-        //        HojaExcel.get_Range("B30").Font.Bold = false;
-        //        HojaExcel.get_Range("B30").Font.Size = 12;
-
-        //        HojaExcel.get_Range("B31").set_Value(value: "TOTAL USD $:");
-        //        HojaExcel.get_Range("F31").set_Value(value: this.LBLTOTAL.Text);
-        //        HojaExcel.get_Range("B31").Font.Bold = false;
-        //        HojaExcel.get_Range("B31").Font.Size = 12;
-
-        //        HojaExcel.get_Range("B32").Merge();
-        //        HojaExcel.get_Range("B32").set_Value(value: "T/C SUNAT VENTA:");
-        //        HojaExcel.get_Range("D32").set_Value(value: this.TXTTIPOCAMBIO.Text);
-        //        HojaExcel.get_Range("F32").set_Value(value: this.LBLTOTALGENERAL.Text);
-        //        HojaExcel.get_Range("B32:F32").Font.Bold = true;
-        //        HojaExcel.get_Range("F32").Font.Size = 12;
-
-        //        // HOJA DE MOVIMIENTO DE BALANZA
-        //        HojaExcel = (Microsoft.Office.Interop.Excel.Worksheet)LibroExcel.Worksheets[2];
-        //        HojaExcel.get_Range("D2:E2").Merge();
-        //        HojaExcel.get_Range("D2:E2").set_Value(value: "MOVIMIENTO DE BALANZA");
-        //        HojaExcel.get_Range("D2:E2").Font.Bold = true;
-        //        HojaExcel.get_Range("D2:E2").Font.Size = 18;
-
-
-        //        // HojaExcel.Columns(9, 10).NumberFormat = "#,##0.00"
-
-        //        // Dim chartRange As Excel.Range
-
-        //        // chartRange = HojaExcel.Range("b1", "e1")
-        //        // chartRange.Merge()
-        //        // chartRange.FormulaR1C1 = "MARK LIST"
-        //        // chartRange.HorizontalAlignment = 3
-        //        // chartRange.VerticalAlignment = 3
-
-
-        //        // //contamos las filas y columnas de la grilla
-        //        int NCol = WINPESFARD.My.MyProject.Forms.F_MovBalanza_Pesfard.grillamovbalanza.ColumnCount;
-        //        int NRow = WINPESFARD.My.MyProject.Forms.F_MovBalanza_Pesfard.grillamovbalanza.RowCount;
-
-        //        for (int i = 1, loopTo = NCol; i <= loopTo; i++)
-        //        {
-
-        //            {
-        //                ref var withBlock = ref HojaExcel;
-        //                withBlock.get_Range(withBlock.Cells.get_Item(4, i), withBlock.Cells.get_Item(4, i)).BorderAround();
-        //            }
-
-        //            HojaExcel.Cells.set_Item((object)4, (object)i, WINPESFARD.My.MyProject.Forms.F_MovBalanza_Pesfard.grillamovbalanza.Columns[i - 1].Name.ToString());
-        //        }
-        //        for (int Fila = 0, loopTo1 = NRow - 1; Fila <= loopTo1; Fila++)
-        //        {
-        //            for (int Col = 0, loopTo2 = NCol - 1; Col <= loopTo2; Col++)
-        //            {
-        //                {
-        //                    ref var withBlock1 = ref HojaExcel;
-        //                    withBlock1.get_Range(withBlock1.Cells.get_Item(Fila + 5, Col + 1), withBlock1.Cells.get_Item(Fila + 5, Col + 1)).BorderAround();
-        //                }
-        //                HojaExcel.Cells.set_Item((object)(Fila + 5), (object)(Col + 1), WINPESFARD.My.MyProject.Forms.F_MovBalanza_Pesfard.grillamovbalanza[Col, Fila].Value);
-        //            }
-        //        }
-
-        //        HojaExcel.Rows.get_Item(4).Font.Bold = (object)1;
-        //        HojaExcel.Rows.get_Item(4).HorizontalAlignment = (object)3;
-        //        HojaExcel.Columns.AutoFit();
-
-        //        // HOJA DE ROMANEO
-        //        HojaExcel = (Microsoft.Office.Interop.Excel.Worksheet)LibroExcel.Worksheets[3];
-
-        //        HojaExcel.get_Range("B1:I1").Merge();
-        //        HojaExcel.get_Range("B1:I1").set_Value(value: "DESMOTADORA ALTO AMAZONAS");
-        //        HojaExcel.get_Range("B1:I1").Font.Bold = true;
-        //        HojaExcel.get_Range("B1:I1").Font.Size = 24;
-
-        //        HojaExcel.get_Range("B2:F2").Merge();
-        //        HojaExcel.get_Range("B2:F2").set_Value(value: "DE: JAIME VERA MEDINA");
-        //        HojaExcel.get_Range("B2:F2").Font.Italic = true;
-        //        HojaExcel.get_Range("B2:F2").Font.Size = 12;
-
-        //        HojaExcel.get_Range("B3:G3").Merge();
-        //        HojaExcel.get_Range("B3:D3").set_Value(value: "R.U.C. :  1097538811");
-        //        HojaExcel.get_Range("B3:F3").Font.Bold = true;
-        //        HojaExcel.get_Range("B3:F3").Font.Size = 13;
-
-        //        HojaExcel.get_Range("B4:G4").Merge();
-        //        HojaExcel.get_Range("B4:F4").set_Value(value: "Via Los Libertadores Km. 6 San Clemente - PISCO");
-        //        HojaExcel.get_Range("B4:F4").Font.Italic = true;
-        //        HojaExcel.get_Range("B4:F4").Font.Size = 13;
-
-        //        HojaExcel.get_Range("D5:i5").Merge();
-        //        HojaExcel.get_Range("D5:i5").set_Value(value: "ROMANEO DE DESPACHO");
-        //        HojaExcel.get_Range("D5:i5").Font.Bold = true;
-        //        HojaExcel.get_Range("D5:i5").Font.Size = 20;
-
-        //        // //CONTAMOS LAS COLUMNAS Y FILAS    
-        //        int NColr = WINPESFARD.My.MyProject.Forms.F_Romaneo_liquidacion_Pesfard.grillaaromaneo.ColumnCount;
-        //        int NRowr = WINPESFARD.My.MyProject.Forms.F_Romaneo_liquidacion_Pesfard.grillaaromaneo.RowCount;
-
-        //        for (int ir = 1, loopTo3 = NColr; ir <= loopTo3; ir++)
-        //        {
-        //            {
-        //                ref var withBlock2 = ref HojaExcel;
-        //                // .Range(.Cells(5, 2), .Cells(5, 10)).BorderAround()
-        //                withBlock2.get_Range(withBlock2.Cells.get_Item(7, ir + 1), withBlock2.Cells.get_Item(7, ir + 1)).BorderAround();
-        //            }
-        //            HojaExcel.Cells.set_Item((object)7, (object)(ir + 1), WINPESFARD.My.MyProject.Forms.F_Romaneo_liquidacion_Pesfard.grillaaromaneo.Columns[ir - 1].Name.ToString());
-        //        }
-
-        //        for (int Filar = 0, loopTo4 = NRowr - 1; Filar <= loopTo4; Filar++)
-        //        {
-        //            for (int Colr = 0, loopTo5 = NColr - 1; Colr <= loopTo5; Colr++)
-        //            {
-        //                {
-        //                    ref var withBlock3 = ref HojaExcel;
-        //                    // .Range(.Cells(5, 2), .Cells(5, 10)).BorderAround()
-        //                    withBlock3.get_Range(withBlock3.Cells.get_Item(Filar + 8, Colr + 2), withBlock3.Cells.get_Item(Filar + 8, Colr + 2)).BorderAround();
-        //                }
-        //                HojaExcel.Cells.set_Item((object)(Filar + 8), (object)(Colr + 2), WINPESFARD.My.MyProject.Forms.F_Romaneo_liquidacion_Pesfard.grillaaromaneo[Colr, Filar].Value);
-
-        //            }
-
-        //        }
-
-        //        HojaExcel.Rows.get_Item(7).Font.Bold = (object)1;
-        //        HojaExcel.Rows.get_Item(7).HorizontalAlignment = (object)3;
-        //        HojaExcel.Columns.AutoFit();
-
-        //        Mi_Excel.Visible = true;
-
-        //        Mi_Excel = null;
-        //        LibroExcel = null;
-        //        HojaExcel = null;
-        //        FileSystem.FileClose(1);
-        //        GC.Collect();
-        //    }
-
-        //    catch (Exception ex)
-        //    {
-        //    }
-
-        //}
+        void CrearContenido(IContainer container)
+        {
+            container.Column(col =>
+            {
+                col.Item().Text("Algun Texto");
+                col.Item().Text("Algun Texto");
+                col.Item().Text(string.Empty);
+                col.Item().Table(table =>
+                {
+                    table.ColumnsDefinition(columns =>
+                    {
+                        columns.RelativeColumn(1);
+                        columns.RelativeColumn(1);
+                        columns.RelativeColumn(1);
+                        columns.RelativeColumn(1);
+                        columns.RelativeColumn(1);
+                        columns.RelativeColumn(1);
+                        columns.RelativeColumn(1);
+                        
+                    });
+                    table.Header(header =>
+                    {
+                        header.Cell().BorderBottom(1).Text("Column 1").Bold();
+                        header.Cell().BorderBottom(1).Text("Column 2").Bold();
+                        header.Cell().BorderBottom(1).Text("Column 3").Bold();
+                        header.Cell().BorderBottom(1).Text("Column 4").Bold();
+                        header.Cell().BorderBottom(1).Text("Column 5").Bold();
+                        header.Cell().BorderBottom(1).Text("Column 6").Bold();
+                        header.Cell().BorderBottom(1).Text("Column 7").Bold();
+                       
+                    });
+                    for (int i = 0; i < 8; i++)
+                    {
+                        table.Cell().Text($"Row {i}, Purto Floro Nomas");
+                        table.Cell().Text($"Row {i}, Col 2");
+                        table.Cell().Text($"Row {i}, Col 3");
+                        table.Cell().Text($"Row {i}, Col 4");
+                        table.Cell().Text($"Row {i}, Col 5");
+                        table.Cell().Text($"Row {i}, Col 6");
+                        table.Cell().Text($"Row {i}, Col 7");
+                    }
+                });
+                col.Item().Text(string.Empty);
+                col.Item().Text(string.Empty);
+                col.Item().Text("Items");
+                col.Item().Text("Cant Jabas");
+                col.Item().Text("Total Neto");
+
+            });
+        }
+
+        private void CrearFooter(IContainer container)
+        {
+            container.Background("#8fce00").Padding(5).Row(row =>
+            {
+                row.RelativeItem().Padding(0).Column(col =>
+                {
+                    col.Item()
+                        .Hyperlink("https://agricoladelsurpisco.com/")
+                        .Text("agricoladelsurpisco.com"); //.ApplyCommonTextStyle();
+                });
+                row.RelativeItem().AlignRight().Text(text =>
+                {
+                    text.CurrentPageNumber();//.ApplyCommonTextStyle();
+                    text.Span(" / ");//.ApplyCommonTextStyle();
+                    text.TotalPages(); //.ApplyCommonTextStyle();
+                });
+            });
+        }
+
+       
     }
 }

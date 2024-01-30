@@ -33,7 +33,7 @@
     <MinimumRequiredVersion>1.0.0.5</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>34</ApplicationRevision>
+    <ApplicationRevision>41</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -71,8 +71,7 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>palta.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>_3mpacador4.Program</StartupObject>
@@ -140,6 +139,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidad\Reportes\BoletaModel.cs" />
     <Compile Include="Entidad\Calibre.cs" />
     <Compile Include="Entidad\Colaborador.cs" />
     <Compile Include="Entidad\Grupo_turno_detalle.cs" />
@@ -149,6 +149,7 @@
     <Compile Include="Entidad\Packing_calibre_det.cs" />
     <Compile Include="Entidad\Packing_calibre_cab.cs" />
     <Compile Include="Entidad\Programa_proceso.cs" />
+    <Compile Include="Entidad\Reportes\CreateBoletaDetalle.cs" />
     <Compile Include="Entidad\Terminal.cs" />
     <Compile Include="Entidad\Sunat.cs" />
     <Compile Include="Logica\ClConexion.cs" />
@@ -266,6 +267,12 @@
     </Compile>
     <Compile Include="Presentacion\Mantenimiento\frmTerminal2.designer.cs">
       <DependentUpon>frmTerminal2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\frmUsuarios.Designer.cs">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Mantenimiento\MantoProductor.cs">
       <SubType>Form</SubType>
@@ -479,6 +486,9 @@
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmTerminal2.resx">
       <DependentUpon>frmTerminal2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\frmUsuarios.resx">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\MantoProductor.resx">
       <DependentUpon>MantoProductor.cs</DependentUpon>
     </EmbeddedResource>
@@ -503,6 +513,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\FRptPackigCalibre.resx">
       <DependentUpon>FRptPackigCalibre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Reporte\Impresion.resx">
+      <DependentUpon>Impresion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\ImprimirPesos.resx">
       <DependentUpon>ImprimirPesos.cs</DependentUpon>
@@ -615,6 +628,7 @@
     <None Include="Resources\ticketRecepcion2.png" />
     <None Include="Resources\ticketRecepcion.png" />
     <None Include="Resources\cargando.gif" />
+    <None Include="Recursos\logoagricola.png" />
     <Content Include="Resources\Button_Close%2824x24%29.png" />
     <Content Include="Resources\LOGO AGRICOLA DEL SUR.png" />
     <Content Include="Resources\palta.ico" />

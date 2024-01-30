@@ -294,9 +294,10 @@ namespace _3mpacador4.Presentacion
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-
+            ocultarSubMenu();
+            var form = new frmUsuarios();
+            form.ShowDialog();
         }
-
      
         private void btnImprimirCalibre_Click_1(object sender, EventArgs e)
         {

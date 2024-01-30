@@ -92,14 +92,23 @@ namespace _3mpacador4
 
         private void btnguardar_Click(object sender, EventArgs e)
         {
-            borrarmensajeerror();
-            if (validarcampos())
+            try
             {
-                InsertarRegistro();
-                mostrarconsulta();
-                txtPesoManual.Focus();
-                txtPesoManual.Text = string.Empty;
+                borrarmensajeerror();
+                if (validarcampos())
+                {
+                    InsertarRegistro();
+                    mostrarconsulta();
+                    txtPesoManual.Focus();
+                    txtPesoManual.Text = string.Empty;
+                }
             }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
+           
         }
 
         private void IngresoPesos_Load(object sender, EventArgs e)
@@ -133,7 +142,7 @@ namespace _3mpacador4
                 if (!string.IsNullOrEmpty(TextoForm))
                 {
                     POSICION_INICIAL = Strings.InStr(TextoForm, PUNTO).ToString();
-                    stringinicio = Strings.Mid(TextoForm, (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 7d), 13);
+                    stringinicio = Strings.Mid(TextoForm, (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 7d), 14);
 
 
                     if (stringinicio.StartsWith(w))
@@ -144,7 +153,7 @@ namespace _3mpacador4
                         if (textoini == w + n + cero)
                         {
                             mostrarcaracter = Strings.Mid(TextoForm,
-                                (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 11d), 8);
+                                (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 10d), 7);
                             lblpeso.Text =
                                 Strings.FormatNumber(Conversion.Val(mostrarcaracter.Replace("+", " ")),
                                     2); // funcion REPLACE, REEMPLAZA EL SIGNO + POR UN ESPACIO EN BLANCO 05/12/19
@@ -195,16 +204,26 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error cbJabas DropDownClosed" + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void PuertaAccesoInterrupcion(string BufferIn)
         {
-            object[] TextoInterrupcion = { BufferIn };
-            DelegadoAcceso DelegadoInterrupcion;
-            DelegadoInterrupcion = AccesoFromPrincipal;
-            BeginInvoke(DelegadoInterrupcion, TextoInterrupcion);
+            try
+            {
+                object[] TextoInterrupcion = { BufferIn };
+                DelegadoAcceso DelegadoInterrupcion;
+                DelegadoInterrupcion = AccesoFromPrincipal;
+                BeginInvoke(DelegadoInterrupcion, TextoInterrupcion);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(@"Error PuertaAccesoInterrupcion" + e.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                throw;
+            }
+           
         }
 
         public void conectarserial()
@@ -235,7 +254,7 @@ namespace _3mpacador4
                     }
                     else
                     {
-                        Interaction.MsgBox("CONEXION FALLIDA!", MsgBoxStyle.Critical);
+                        MessageBox.Show(@"Error CONEXION FALLIDA" ,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         bloque.Close();
                     }
                 }
@@ -282,7 +301,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error mostrarLote" + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -341,7 +360,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error poblarLote " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -387,7 +406,7 @@ namespace _3mpacador4
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error mostrarjabas" + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -439,7 +458,7 @@ namespace _3mpacador4
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error mostrarturno " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -573,7 +592,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error InsertarRegistro " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -593,7 +612,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                Interaction.MsgBox("Error " + "Error " + ex.Message, Constants.vbCritical);
+                Interaction.MsgBox("Error cboLote_DropDownClosed" + "Error " + ex.Message, Constants.vbCritical);
             }
 
 
@@ -688,7 +707,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error mostrarconsulta " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -786,7 +805,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error cerrarlote" + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

@@ -95,14 +95,33 @@ namespace _3mpacador4
 
         private void btnguardar_Click(object sender, EventArgs e)
         {
-            borrarmensajeerror();
-            if (validarcampos())
+            try
             {
-                InsertarRegistro();
-                mostrarconsulta();
-                txtPesoManual.Focus();
-                txtPesoManual.Text = string.Empty;
+                borrarmensajeerror();
+                if (validarcampos())
+                {
+                    
+                    if (chkPesoManual.Checked == false || chkPesoManual.Checked ==true && txtPesoManual .Text != null )
+                    {
+                        InsertarRegistro();
+                        mostrarconsulta();
+                        txtPesoManual.Focus();
+                        txtPesoManual.Text = string.Empty;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error en btnguardar_Click - ", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                }
             }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
+          
         }
 
         public void titulosjavasvisible()
@@ -210,7 +229,7 @@ namespace _3mpacador4
                 if (!string.IsNullOrEmpty(TextoForm))
                 {
                     POSICION_INICIAL = Strings.InStr(TextoForm, PUNTO).ToString();
-                    stringinicio = Strings.Mid(TextoForm, (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 7d), 13);
+                    stringinicio = Strings.Mid(TextoForm, (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 7d), 14);
 
 
                     if (stringinicio.StartsWith(w))
@@ -221,7 +240,7 @@ namespace _3mpacador4
                         if (textoini == w + n + cero)
                         {
                             mostrarcaracter = Strings.Mid(TextoForm,
-                                (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 11d), 8);
+                                (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 10d), 7);
                             lblpeso.Text =
                                 Strings.FormatNumber(Conversion.Val(mostrarcaracter.Replace("+", " ")),
                                     2); // funcion REPLACE, REEMPLAZA EL SIGNO + POR UN ESPACIO EN BLANCO 05/12/19
@@ -391,28 +410,7 @@ namespace _3mpacador4
                 adaptador.Fill(datos);
 
                 var withBlock = cbProductor;
-                withBlock.ForeColor = SystemColors.ControlText; // Restablecer el color predeterminado
-
-                //foreach (DataRow row in datos.Rows)
-                //{
-                //    object fechaCertificado = row["ffincertificado"];
-
-                //    if (fechaCertificado != DBNull.Value)
-                //    {
-                //        DateTime fechaVencimiento = Convert.ToDateTime(fechaCertificado);
-
-                //        // Verificar si la fecha está vencida
-                //        if (fechaVencimiento < DateTime.Today)
-                //        {
-                //            // Configurar el color solo si la fecha está vencida
-                //            int index = datos.Rows.IndexOf(row);
-                //            withBlock.ForeColor = Color.Red;
-                //            break; // Sal del bucle, ya que encontraste una fecha vencida
-                //        }
-                //    }
-                //}
-
-                // Configura los datos del ComboBox
+                withBlock.ForeColor = SystemColors.ControlText; 
                 if (datos != null && datos.Rows.Count > 0)
                 {
                     var dr = datos.NewRow();
@@ -796,7 +794,15 @@ namespace _3mpacador4
                 {
                     ConexionGral.conectar();
                 }
-                comando = new MySqlCommand("usp_cuentaCorrelativoTicketPesaje", ConexionGral.conexion);
+
+                if (lblcorrelativo.Text != null || Convert.ToInt32(lblcorrelativo.Text) > 0)
+                {
+                    comando = new MySqlCommand("usp_cuentaCorrelativoTicketPesaje", ConexionGral.conexion);
+                }
+                else
+                {
+                    comando = new MySqlCommand("usp_cuentaCorrelativoTicketPesaje", ConexionGral.conexion);
+                }
                 comando.CommandType = CommandType.StoredProcedure;
                 {
                     correlativo = Convert.ToInt32(comando.ExecuteScalar()) + 1;
@@ -1124,7 +1130,15 @@ namespace _3mpacador4
             float taraparihuela = 0;
             float pesobruto = 0;
             float pesobrutoManual = 0;
-           // txtPesoManual.Text = "0";
+            if (txtPesoManual != null)
+            {
+                txtPesoManual.ToString();
+            }
+            else
+            {
+                txtPesoManual.Text = "0";
+            }
+          
 
             try
             {
@@ -1250,7 +1264,7 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error en InsertarRegistro - " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -1404,7 +1418,6 @@ namespace _3mpacador4
                     comando = new MySqlCommand("usp_tblticketpesaje_Selectlote", ConexionGral.conexion);
                     comando.CommandType = (CommandType)4;
 
-
                     comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = cboLote.Text;
                     String fechaaño = Settings.Default.periodo.ToString();
                     String[] partes = fechaaño.Split(' ')[0].Split('/');
@@ -1421,10 +1434,7 @@ namespace _3mpacador4
                         {
                             var dr = datos.NewRow();
                             withBlock.DataSource = datos;
-                            //tamanio();
-                            //ocultar_columnas();
-                            //actualizardatos();
-                            sumaneto();
+                          sumaneto();
                             contar();
                         }
                         else

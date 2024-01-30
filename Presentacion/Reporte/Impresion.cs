@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _3mpacador4.Entidad;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
@@ -52,6 +53,15 @@ public partial class Impresion : Form
 
             // Mostrar el documento PDF
             System.Diagnostics.Process.Start(tempFilePath);
+        }
+
+
+        private void RecuperarInfo()
+        {
+            BoletaModel oBoletaModel = new BoletaModel();
+
+            int Numlote; int .TryParse(textBox1.Text, out Numlote);
+            oBoletaModel.Numlote = Numlote;
         }
     }
 

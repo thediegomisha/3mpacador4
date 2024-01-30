@@ -739,6 +739,7 @@
             this.datalistado3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.datalistado3.Location = new System.Drawing.Point(0, 0);
             this.datalistado3.Name = "datalistado3";
+            this.datalistado3.ReadOnly = true;
             this.datalistado3.RowHeadersVisible = false;
             this.datalistado3.Size = new System.Drawing.Size(485, 156);
             this.datalistado3.TabIndex = 1;
