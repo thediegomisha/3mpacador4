@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using _3mpacador4.Logica;
+using _3mpacador4.Properties;
 using Devart.Data.MySql;
 using Microsoft.VisualBasic;
 
@@ -30,6 +31,13 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 comando = new MySqlCommand("usp_tbllote_SelectTraceability", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
+
+                String fechaaño = Settings.Default.periodo.ToString();
+                String[] partes = fechaaño.Split(' ')[0].Split('/');
+                String año = partes[2];
+
+
+                comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Int).Value = año;
 
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
@@ -233,7 +241,13 @@ namespace _3mpacador4.Presentacion.Reporte
                 comando.CommandType = (CommandType)4;
 
                 comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = cboLote.Text;
-                ;
+
+                String fechaaño = Settings.Default.periodo.ToString();
+                String[] partes = fechaaño.Split(' ')[0].Split('/');
+                String año = partes[2];
+
+
+                comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Int).Value = año;
 
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
@@ -244,11 +258,31 @@ namespace _3mpacador4.Presentacion.Reporte
                     if (datos != null && datos.Rows.Count > 0)
                     {
                         CodCliente.Text = datos.Rows[0]["CODTRA"].ToString();
+                        CODCLI.Text = datos.Rows[0]["CODTRA"].ToString();
+
                         CodPalta.Text = datos.Rows[0]["CODTRA2"].ToString();
+                        CODFRUT.Text = datos.Rows[0]["CODTRA2"].ToString();
+
                         codPacking.Text = "01";
+                        CODPLAN.Text = "01";
+
                         CodProductor.Text = datos.Rows[0]["CODTRA3"].ToString();
+                        CODPROD.Text = datos.Rows[0]["CODTRA3"].ToString();
+
+                        String numero = "";
+                        numero = datos.Rows[0]["NUMDOC"].ToString();
+                        if (numero.StartsWith("0") && numero.Length > 1)
+                        {
+                            // Elimina el primer carácter (el cero)
+                            numero = numero.Substring(1);
+                        }
+
+                        CODCAM.Text = numero.ToString();
+                        CodCamion.Text = numero.ToString();
+
 
                         lblcliente.Text = datos.Rows[0]["RAZON SOCIAL"].ToString();
+
                         lblcliente2.Text = datos.Rows[0]["RAZON SOCIAL"].ToString();
 
                         lblproductor.Text = datos.Rows[0]["PRODUCTOR"].ToString();
@@ -311,6 +345,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 var dayOfYear = Convert.ToInt32(comando.Parameters["p_juliano"].Value);
 
                 lbljuliano.Text = dayOfYear.ToString();
+                CODJUL .Text = dayOfYear.ToString();
             }
             catch (Exception ex)
             {
@@ -338,5 +373,7 @@ namespace _3mpacador4.Presentacion.Reporte
         {
             Close();
         }
+
+       
     }
 }

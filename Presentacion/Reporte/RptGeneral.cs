@@ -249,7 +249,7 @@ namespace _3mpacador4.Presentacion.Reporte
                     //     procedimientoalmacenado = "usp_tblticketpesaje_Exportador";
                     iniciocadena = cb_cliente.Text.IndexOf('-');
                     flag.Text = cb_cliente.Text.Substring(0, iniciocadena);
-                    añoseleccionado = "p_fechaanio";
+                   // añoseleccionado = "p_fechaanio";
                     
                     dtInicio = "p_fechainicio";
                     dtFin = "p_fechafin";
@@ -267,21 +267,22 @@ namespace _3mpacador4.Presentacion.Reporte
                     //     procedimientoalmacenado = "usp_tblticketpesaje_Productor";
                     iniciocadena = cb_productor.Text.IndexOf('-');
                     flag.Text = cb_productor.Text.Substring(0, iniciocadena);
-                    añoseleccionado = "p_fechaanio";
+                 //   añoseleccionado = "p_fechaanio";
                     //   bandera = "p_idproductor";
                 }
                 else if (chkvariedad.Checked)
                 {
                     //    procedimientoalmacenado = "usp_tblticketpesaje_Variedad";                  
                     flag.Text = cb_variedad.SelectedValue.ToString();
-                    añoseleccionado = "p_fechaanio";
+                 //   añoseleccionado = "p_fechaanio";
                     //    bandera = "p_variedad";
                 }
+                //    procedimientoalmacenado = "usp_tblticketpesaje_Acopiador";   
                 else if (chk_acopiador.Checked)
                 {
                     iniciocadena = cbAcopiador.Text.IndexOf('-');
                     flag.Text = cbAcopiador.Text.Substring(0, iniciocadena);
-                    añoseleccionado = "p_fechaanio";
+                //    añoseleccionado = "p_fechaanio";
                 }
                 else if (chkproductor.Checked == false && chkvariedad.Checked == false && chkcliente.Checked == false &&
                          chk_acopiador.Checked == false)
@@ -371,6 +372,8 @@ namespace _3mpacador4.Presentacion.Reporte
                 return "p_idcliente";
             if (chkproductor.Checked)
                 return "p_idproductor";
+            if (chk_acopiador.Checked)
+                return "p_idacopiador";
             if (chkvariedad.Checked)
                 return "p_variedad";
             return null;

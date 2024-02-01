@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.PanelLadoIzq = new System.Windows.Forms.Panel();
             this.panelTrazabilidad = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.btnProceso = new System.Windows.Forms.Button();
             this.btnJornal = new System.Windows.Forms.Button();
             this.btnTrazabilidadP = new System.Windows.Forms.Button();
@@ -45,6 +46,7 @@
             this.btnAcopiador = new System.Windows.Forms.Button();
             this.btnMantenimiento = new System.Windows.Forms.Button();
             this.panelSistema = new System.Windows.Forms.Panel();
+            this.btnperiodo = new System.Windows.Forms.Button();
             this.btnImpresora = new System.Windows.Forms.Button();
             this.btnReniec = new System.Windows.Forms.Button();
             this.BtnPesosDiversos = new System.Windows.Forms.Button();
@@ -63,8 +65,8 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.panelPesos = new System.Windows.Forms.Panel();
             this.btnDescarte = new System.Windows.Forms.Button();
-            this.btnRecepcionPesos = new System.Windows.Forms.Button();
-            this.btnPesos = new System.Windows.Forms.Button();
+            this.btnIngresos = new System.Windows.Forms.Button();
+            this.btnRecepcion = new System.Windows.Forms.Button();
             this.PanelLogo = new System.Windows.Forms.Panel();
             this.PanelFormularioHijo = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -81,8 +83,6 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnperiodo = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
@@ -109,7 +109,7 @@
             this.PanelLadoIzq.Controls.Add(this.PanelBuscar);
             this.PanelLadoIzq.Controls.Add(this.btnBuscar);
             this.PanelLadoIzq.Controls.Add(this.panelPesos);
-            this.PanelLadoIzq.Controls.Add(this.btnPesos);
+            this.PanelLadoIzq.Controls.Add(this.btnRecepcion);
             this.PanelLadoIzq.Controls.Add(this.PanelLogo);
             this.PanelLadoIzq.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelLadoIzq.Location = new System.Drawing.Point(0, 0);
@@ -128,6 +128,23 @@
             this.panelTrazabilidad.Name = "panelTrazabilidad";
             this.panelTrazabilidad.Size = new System.Drawing.Size(137, 92);
             this.panelTrazabilidad.TabIndex = 15;
+            // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button2.ForeColor = System.Drawing.Color.LightGray;
+            this.button2.Location = new System.Drawing.Point(0, 66);
+            this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button2.Size = new System.Drawing.Size(137, 33);
+            this.button2.TabIndex = 17;
+            this.button2.Text = "Reporte Packing";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnProceso
             // 
@@ -183,10 +200,10 @@
             // panelMantenimiento
             // 
             this.panelMantenimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.panelMantenimiento.Controls.Add(this.btnImprimirCalibre);
             this.panelMantenimiento.Controls.Add(this.btnUsuarios);
             this.panelMantenimiento.Controls.Add(this.btnTerminal);
             this.panelMantenimiento.Controls.Add(this.btnProducto);
+            this.panelMantenimiento.Controls.Add(this.btnImprimirCalibre);
             this.panelMantenimiento.Controls.Add(this.btnProductores);
             this.panelMantenimiento.Controls.Add(this.btnClientes);
             this.panelMantenimiento.Controls.Add(this.btnColaborador);
@@ -204,7 +221,7 @@
             this.btnImprimirCalibre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimirCalibre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnImprimirCalibre.ForeColor = System.Drawing.Color.LightGray;
-            this.btnImprimirCalibre.Location = new System.Drawing.Point(0, 232);
+            this.btnImprimirCalibre.Location = new System.Drawing.Point(0, 132);
             this.btnImprimirCalibre.Name = "btnImprimirCalibre";
             this.btnImprimirCalibre.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnImprimirCalibre.Size = new System.Drawing.Size(137, 33);
@@ -221,7 +238,7 @@
             this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUsuarios.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnUsuarios.ForeColor = System.Drawing.Color.LightGray;
-            this.btnUsuarios.Location = new System.Drawing.Point(0, 199);
+            this.btnUsuarios.Location = new System.Drawing.Point(0, 232);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnUsuarios.Size = new System.Drawing.Size(137, 33);
@@ -238,7 +255,7 @@
             this.btnTerminal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTerminal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnTerminal.ForeColor = System.Drawing.Color.LightGray;
-            this.btnTerminal.Location = new System.Drawing.Point(0, 165);
+            this.btnTerminal.Location = new System.Drawing.Point(0, 198);
             this.btnTerminal.Name = "btnTerminal";
             this.btnTerminal.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnTerminal.Size = new System.Drawing.Size(137, 34);
@@ -255,7 +272,7 @@
             this.btnProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProducto.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnProducto.ForeColor = System.Drawing.Color.LightGray;
-            this.btnProducto.Location = new System.Drawing.Point(0, 132);
+            this.btnProducto.Location = new System.Drawing.Point(0, 165);
             this.btnProducto.Name = "btnProducto";
             this.btnProducto.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnProducto.Size = new System.Drawing.Size(137, 33);
@@ -353,17 +370,34 @@
             // panelSistema
             // 
             this.panelSistema.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.panelSistema.Controls.Add(this.btnperiodo);
-            this.panelSistema.Controls.Add(this.btnImpresora);
             this.panelSistema.Controls.Add(this.btnReniec);
             this.panelSistema.Controls.Add(this.BtnPesosDiversos);
-            this.panelSistema.Controls.Add(this.btnBD);
+            this.panelSistema.Controls.Add(this.btnImpresora);
             this.panelSistema.Controls.Add(this.btnPuertoSerie);
+            this.panelSistema.Controls.Add(this.btnperiodo);
+            this.panelSistema.Controls.Add(this.btnBD);
             this.panelSistema.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSistema.Location = new System.Drawing.Point(0, 521);
             this.panelSistema.Name = "panelSistema";
             this.panelSistema.Size = new System.Drawing.Size(137, 213);
             this.panelSistema.TabIndex = 11;
+            // 
+            // btnperiodo
+            // 
+            this.btnperiodo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnperiodo.FlatAppearance.BorderSize = 0;
+            this.btnperiodo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnperiodo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnperiodo.ForeColor = System.Drawing.Color.LightGray;
+            this.btnperiodo.Location = new System.Drawing.Point(0, 33);
+            this.btnperiodo.Name = "btnperiodo";
+            this.btnperiodo.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnperiodo.Size = new System.Drawing.Size(137, 33);
+            this.btnperiodo.TabIndex = 9;
+            this.btnperiodo.Text = "Campaña";
+            this.btnperiodo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnperiodo.UseVisualStyleBackColor = true;
+            this.btnperiodo.Click += new System.EventHandler(this.btnperiodo_Click);
             // 
             // btnImpresora
             // 
@@ -372,7 +406,7 @@
             this.btnImpresora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImpresora.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnImpresora.ForeColor = System.Drawing.Color.LightGray;
-            this.btnImpresora.Location = new System.Drawing.Point(0, 132);
+            this.btnImpresora.Location = new System.Drawing.Point(0, 99);
             this.btnImpresora.Name = "btnImpresora";
             this.btnImpresora.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnImpresora.Size = new System.Drawing.Size(137, 33);
@@ -389,7 +423,7 @@
             this.btnReniec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReniec.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnReniec.ForeColor = System.Drawing.Color.LightGray;
-            this.btnReniec.Location = new System.Drawing.Point(0, 99);
+            this.btnReniec.Location = new System.Drawing.Point(0, 165);
             this.btnReniec.Name = "btnReniec";
             this.btnReniec.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnReniec.Size = new System.Drawing.Size(137, 33);
@@ -406,7 +440,7 @@
             this.BtnPesosDiversos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnPesosDiversos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.BtnPesosDiversos.ForeColor = System.Drawing.Color.LightGray;
-            this.BtnPesosDiversos.Location = new System.Drawing.Point(0, 66);
+            this.BtnPesosDiversos.Location = new System.Drawing.Point(0, 132);
             this.BtnPesosDiversos.Name = "BtnPesosDiversos";
             this.BtnPesosDiversos.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.BtnPesosDiversos.Size = new System.Drawing.Size(137, 33);
@@ -423,7 +457,7 @@
             this.btnBD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBD.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnBD.ForeColor = System.Drawing.Color.LightGray;
-            this.btnBD.Location = new System.Drawing.Point(0, 33);
+            this.btnBD.Location = new System.Drawing.Point(0, 0);
             this.btnBD.Name = "btnBD";
             this.btnBD.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnBD.Size = new System.Drawing.Size(137, 33);
@@ -440,7 +474,7 @@
             this.btnPuertoSerie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPuertoSerie.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnPuertoSerie.ForeColor = System.Drawing.Color.LightGray;
-            this.btnPuertoSerie.Location = new System.Drawing.Point(0, 0);
+            this.btnPuertoSerie.Location = new System.Drawing.Point(0, 66);
             this.btnPuertoSerie.Name = "btnPuertoSerie";
             this.btnPuertoSerie.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnPuertoSerie.Size = new System.Drawing.Size(137, 33);
@@ -525,7 +559,7 @@
             this.button12.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.button12.Size = new System.Drawing.Size(137, 33);
             this.button12.TabIndex = 5;
-            this.button12.Text = "rpt Boleta";
+            this.button12.Text = "Rpt Boleta";
             this.button12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
@@ -629,7 +663,7 @@
             // 
             this.panelPesos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
             this.panelPesos.Controls.Add(this.btnDescarte);
-            this.panelPesos.Controls.Add(this.btnRecepcionPesos);
+            this.panelPesos.Controls.Add(this.btnIngresos);
             this.panelPesos.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelPesos.Location = new System.Drawing.Point(0, 91);
             this.panelPesos.Name = "panelPesos";
@@ -653,39 +687,39 @@
             this.btnDescarte.UseVisualStyleBackColor = true;
             this.btnDescarte.Click += new System.EventHandler(this.btnDescarte_Click);
             // 
-            // btnRecepcionPesos
+            // btnIngresos
             // 
-            this.btnRecepcionPesos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRecepcionPesos.FlatAppearance.BorderSize = 0;
-            this.btnRecepcionPesos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRecepcionPesos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnRecepcionPesos.ForeColor = System.Drawing.Color.LightGray;
-            this.btnRecepcionPesos.Location = new System.Drawing.Point(0, 0);
-            this.btnRecepcionPesos.Name = "btnRecepcionPesos";
-            this.btnRecepcionPesos.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnRecepcionPesos.Size = new System.Drawing.Size(137, 33);
-            this.btnRecepcionPesos.TabIndex = 4;
-            this.btnRecepcionPesos.Text = "Recepcion";
-            this.btnRecepcionPesos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRecepcionPesos.UseVisualStyleBackColor = true;
-            this.btnRecepcionPesos.Click += new System.EventHandler(this.btnRecepcionPesos_Click);
+            this.btnIngresos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnIngresos.FlatAppearance.BorderSize = 0;
+            this.btnIngresos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIngresos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnIngresos.ForeColor = System.Drawing.Color.LightGray;
+            this.btnIngresos.Location = new System.Drawing.Point(0, 0);
+            this.btnIngresos.Name = "btnIngresos";
+            this.btnIngresos.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnIngresos.Size = new System.Drawing.Size(137, 33);
+            this.btnIngresos.TabIndex = 4;
+            this.btnIngresos.Text = "Ingresos";
+            this.btnIngresos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIngresos.UseVisualStyleBackColor = true;
+            this.btnIngresos.Click += new System.EventHandler(this.btnRecepcionPesos_Click);
             // 
-            // btnPesos
+            // btnRecepcion
             // 
-            this.btnPesos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPesos.FlatAppearance.BorderSize = 0;
-            this.btnPesos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnPesos.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnPesos.Location = new System.Drawing.Point(0, 53);
-            this.btnPesos.Name = "btnPesos";
-            this.btnPesos.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnPesos.Size = new System.Drawing.Size(137, 38);
-            this.btnPesos.TabIndex = 7;
-            this.btnPesos.Text = "Pesos";
-            this.btnPesos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPesos.UseVisualStyleBackColor = true;
-            this.btnPesos.Click += new System.EventHandler(this.btnSubmenu1_Click);
+            this.btnRecepcion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRecepcion.FlatAppearance.BorderSize = 0;
+            this.btnRecepcion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRecepcion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnRecepcion.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnRecepcion.Location = new System.Drawing.Point(0, 53);
+            this.btnRecepcion.Name = "btnRecepcion";
+            this.btnRecepcion.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnRecepcion.Size = new System.Drawing.Size(137, 38);
+            this.btnRecepcion.TabIndex = 7;
+            this.btnRecepcion.Text = "Recepcion";
+            this.btnRecepcion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRecepcion.UseVisualStyleBackColor = true;
+            this.btnRecepcion.Click += new System.EventHandler(this.btnSubmenu1_Click);
             // 
             // PanelLogo
             // 
@@ -821,40 +855,6 @@
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
             // 
-            // btnperiodo
-            // 
-            this.btnperiodo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnperiodo.FlatAppearance.BorderSize = 0;
-            this.btnperiodo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnperiodo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnperiodo.ForeColor = System.Drawing.Color.LightGray;
-            this.btnperiodo.Location = new System.Drawing.Point(0, 165);
-            this.btnperiodo.Name = "btnperiodo";
-            this.btnperiodo.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnperiodo.Size = new System.Drawing.Size(137, 33);
-            this.btnperiodo.TabIndex = 9;
-            this.btnperiodo.Text = "Campaña";
-            this.btnperiodo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnperiodo.UseVisualStyleBackColor = true;
-            this.btnperiodo.Click += new System.EventHandler(this.btnperiodo_Click);
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.Color.LightGray;
-            this.button2.Location = new System.Drawing.Point(0, 66);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(137, 33);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "Reporte Packing";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -888,7 +888,7 @@
         private System.Windows.Forms.Panel PanelLadoIzq;
         private System.Windows.Forms.Panel PanelLogo;
         private System.Windows.Forms.Panel PanelFormularioHijo;
-        private System.Windows.Forms.Button btnPesos;
+        private System.Windows.Forms.Button btnRecepcion;
         private System.Windows.Forms.Button btnMantenimiento;
         private System.Windows.Forms.Panel panelSistema;
         private System.Windows.Forms.Button btnReniec;
@@ -919,7 +919,7 @@
         public System.Windows.Forms.ToolStripStatusLabel TxtVersion;
         private System.Windows.Forms.Panel panelPesos;
         private System.Windows.Forms.Button btnDescarte;
-        private System.Windows.Forms.Button btnRecepcionPesos;
+        private System.Windows.Forms.Button btnIngresos;
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnTrazabilidadP;
         private System.Windows.Forms.Button btnUsuarios;

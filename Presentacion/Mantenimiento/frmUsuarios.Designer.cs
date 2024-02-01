@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuarios));
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,15 +47,17 @@
             this.txtclave1 = new System.Windows.Forms.TextBox();
             this.txtLogin = new System.Windows.Forms.TextBox();
             this.txtAMaterno = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picFoto = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnBuscarDni = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.datalistado = new System.Windows.Forms.DataGridView();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnBuscarDni = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbusuario = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picFoto)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
@@ -118,6 +122,7 @@
             this.btnExaminar.TabIndex = 10;
             this.btnExaminar.Text = "Examinar";
             this.btnExaminar.UseVisualStyleBackColor = true;
+            this.btnExaminar.Click += new System.EventHandler(this.btnExaminar_Click);
             // 
             // btnModificar
             // 
@@ -165,6 +170,7 @@
             this.txtclave2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtclave2.Location = new System.Drawing.Point(284, 162);
             this.txtclave2.Name = "txtclave2";
+            this.txtclave2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtclave2.Size = new System.Drawing.Size(244, 22);
             this.txtclave2.TabIndex = 15;
             // 
@@ -173,6 +179,7 @@
             this.txtnombres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnombres.Location = new System.Drawing.Point(168, 24);
             this.txtnombres.Name = "txtnombres";
+            this.txtnombres.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtnombres.Size = new System.Drawing.Size(394, 22);
             this.txtnombres.TabIndex = 16;
             // 
@@ -181,6 +188,7 @@
             this.txtAPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAPaterno.Location = new System.Drawing.Point(12, 70);
             this.txtAPaterno.Name = "txtAPaterno";
+            this.txtAPaterno.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtAPaterno.Size = new System.Drawing.Size(262, 22);
             this.txtAPaterno.TabIndex = 17;
             // 
@@ -189,6 +197,7 @@
             this.txtclave1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtclave1.Location = new System.Drawing.Point(12, 162);
             this.txtclave1.Name = "txtclave1";
+            this.txtclave1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtclave1.Size = new System.Drawing.Size(244, 22);
             this.txtclave1.TabIndex = 18;
             // 
@@ -197,6 +206,7 @@
             this.txtLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLogin.Location = new System.Drawing.Point(12, 116);
             this.txtLogin.Name = "txtLogin";
+            this.txtLogin.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtLogin.Size = new System.Drawing.Size(190, 22);
             this.txtLogin.TabIndex = 19;
             // 
@@ -205,19 +215,22 @@
             this.txtAMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAMaterno.Location = new System.Drawing.Point(300, 70);
             this.txtAMaterno.Name = "txtAMaterno";
+            this.txtAMaterno.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtAMaterno.Size = new System.Drawing.Size(262, 22);
             this.txtAMaterno.TabIndex = 20;
             // 
-            // pictureBox1
+            // picFoto
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(193, 196);
-            this.pictureBox1.TabIndex = 22;
-            this.pictureBox1.TabStop = false;
+            this.picFoto.Location = new System.Drawing.Point(12, 12);
+            this.picFoto.Name = "picFoto";
+            this.picFoto.Size = new System.Drawing.Size(193, 196);
+            this.picFoto.TabIndex = 22;
+            this.picFoto.TabStop = false;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cbusuario);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnBuscarDni);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.txtAMaterno);
@@ -235,6 +248,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(573, 196);
             this.panel1.TabIndex = 23;
+            // 
+            // btnBuscarDni
+            // 
+            this.btnBuscarDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarDni.Location = new System.Drawing.Point(13, 9);
+            this.btnBuscarDni.Name = "btnBuscarDni";
+            this.btnBuscarDni.Size = new System.Drawing.Size(123, 39);
+            this.btnBuscarDni.TabIndex = 25;
+            this.btnBuscarDni.Text = "Buscar DNI";
+            this.btnBuscarDni.UseVisualStyleBackColor = true;
+            this.btnBuscarDni.Click += new System.EventHandler(this.btnBuscarDni_Click);
             // 
             // label5
             // 
@@ -262,6 +286,14 @@
             this.datalistado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.datalistado.BackgroundColor = System.Drawing.Color.White;
             this.datalistado.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datalistado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.datalistado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datalistado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Editar,
@@ -270,10 +302,13 @@
             this.datalistado.Location = new System.Drawing.Point(0, 0);
             this.datalistado.Name = "datalistado";
             this.datalistado.ReadOnly = true;
+            this.datalistado.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.datalistado.RowHeadersVisible = false;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datalistado.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datalistado.Size = new System.Drawing.Size(773, 257);
-            this.datalistado.TabIndex = 25;
+            this.datalistado.TabIndex = 1;
             // 
             // Editar
             // 
@@ -295,16 +330,26 @@
             this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Eliminar.Width = 5;
             // 
-            // btnBuscarDni
+            // label1
             // 
-            this.btnBuscarDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarDni.Location = new System.Drawing.Point(13, 9);
-            this.btnBuscarDni.Name = "btnBuscarDni";
-            this.btnBuscarDni.Size = new System.Drawing.Size(123, 39);
-            this.btnBuscarDni.TabIndex = 25;
-            this.btnBuscarDni.Text = "Buscar DNI";
-            this.btnBuscarDni.UseVisualStyleBackColor = true;
-            this.btnBuscarDni.Click += new System.EventHandler(this.btnBuscarDni_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(217, 97);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(119, 16);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Tipo de Usuario";
+            // 
+            // cbusuario
+            // 
+            this.cbusuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbusuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbusuario.FormattingEnabled = true;
+            this.cbusuario.Location = new System.Drawing.Point(217, 115);
+            this.cbusuario.Name = "cbusuario";
+            this.cbusuario.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cbusuario.Size = new System.Drawing.Size(121, 23);
+            this.cbusuario.TabIndex = 27;
             // 
             // frmUsuarios
             // 
@@ -313,7 +358,7 @@
             this.ClientSize = new System.Drawing.Size(799, 556);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.picFoto);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnBorrar);
@@ -323,7 +368,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmUsuarios";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFoto)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -349,13 +394,15 @@
         private System.Windows.Forms.TextBox txtclave1;
         private System.Windows.Forms.TextBox txtLogin;
         private System.Windows.Forms.TextBox txtAMaterno;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picFoto;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel2;
-        public System.Windows.Forms.DataGridView datalistado;
+        private System.Windows.Forms.Button btnBuscarDni;
+        internal System.Windows.Forms.DataGridView datalistado;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn Eliminar;
-        private System.Windows.Forms.Button btnBuscarDni;
+        private System.Windows.Forms.ComboBox cbusuario;
+        private System.Windows.Forms.Label label1;
     }
 }
