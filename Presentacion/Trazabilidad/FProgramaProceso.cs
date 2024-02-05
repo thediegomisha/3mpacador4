@@ -20,6 +20,7 @@ namespace _3mpacador4.Presentacion.Reporte
         public static string ls_fecha_produccion = "";
 
         public static Programa_proceso pp = null;
+        string ls_tipo = "";
 
         private void Cargar_lote()
         {
@@ -351,7 +352,7 @@ namespace _3mpacador4.Presentacion.Reporte
             Close();
         }
 
-        public void MostrarCalibres(string ls_fecha_proceso, string ls_idcliente)
+        public void MostrarCalibres(string ls_fecha_proceso, string ls_idcliente, string ls_tipo)
         {
             MySqlCommand comando;
             try
@@ -368,15 +369,16 @@ namespace _3mpacador4.Presentacion.Reporte
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.AddWithValue("p_fecha_proceso", ls_fecha_proceso);
                 comando.Parameters.AddWithValue("p_idcliente", ls_idcliente);
+                comando.Parameters.AddWithValue("p_tipo", ls_tipo);
                 using (MySqlDataReader reader = comando.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        Calibre c = new Calibre();
+                        /*Calibre c = new Calibre();
                         c.calibre = Convert.ToInt32(reader["calibre"]);
-                        c.ultimo_nro_print = Convert.ToInt32(reader["cantidad"]);
-                        dgvcalibres.Rows.Add(c.calibre, c.ultimo_nro_print);
-                        li_cantidad += c.ultimo_nro_print;
+                        c.ultimo_nro_print = Convert.ToInt32(reader["cantidad"]);*/
+                        dgvcalibres.Rows.Add(Convert.ToInt32(reader["calibre"]), Convert.ToInt32(reader["cantidad"]), Convert.ToInt32(reader["nro_pallet"]));
+                        li_cantidad += Convert.ToInt32(reader["cantidad"]);
                     }
                     lbltotal_calibre.Text = li_cantidad.ToString();
                 }
@@ -422,9 +424,9 @@ namespace _3mpacador4.Presentacion.Reporte
 
             if (LConteo_manual.Existe_Conteo_manual_x_fecha(ls_fecha_produccion, li_idlote, li_idcategoria, li_idpresentacion, li_idcliente) > 0)
             {
-                MessageBox.Show("Ya se Genero el Ingreso Manual del CLIENTE : "+ ls_cliente + 
-                    " N° LOTE : " +lblnum_lote.Text.Trim()+" CATEGORIA : " +  lblcategoria +" PRESENTACION : " + lblpresentacion +
-                    " Para la Fecha " + dtpbuscar_fecproduccion.Text.Trim(), 
+                MessageBox.Show(@"Ya se Genero el Ingreso Manual del CLIENTE : "+ ls_cliente +
+                                 " N° LOTE : " +lblnum_lote.Text.Trim()+" CATEGORIA : " +  lblcategoria.Text +
+                                 " PRESENTACION : " + lblpresentacion.Text + " Para la Fecha " + dtpbuscar_fecproduccion.Text.Trim(), 
                     "Avisoo...!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -436,12 +438,13 @@ namespace _3mpacador4.Presentacion.Reporte
                 {
                     if (Convert.ToInt32(dgvcalibres.Rows[i].Cells[1].Value) > 0 )
                     {
-                        int li_calibre, li_cantidad;  
+                        int li_calibre, li_cantidad, li_nro_pallet;  
                         
                         li_calibre = Convert.ToInt32(dgvcalibres.Rows[i].Cells[0].Value);                        
                         li_cantidad = Convert.ToInt32(dgvcalibres.Rows[i].Cells[1].Value);
+                        li_nro_pallet = Convert.ToInt32(dgvcalibres.Rows[i].Cells[2].Value);
 
-                        if (LConteo_manual.Conteo_Manual(li_idproceso, li_calibre, ls_fecha_produccion, li_cantidad, li_idcliente) > 0)
+                        if (LConteo_manual.Conteo_Manual(li_idproceso, li_calibre, ls_fecha_produccion, li_cantidad, li_idcliente, li_nro_pallet) > 0)
                         {
                             lb_estado = true;
                         }
@@ -451,6 +454,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 if (lb_estado)
                 {
                     MessageBox.Show("SE INGRESARON LAS CANTIDADES POR CALIBRES CORRECTAMENTE", "AVISO...!!!", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    Mostrar_conteo();
                 }
             }
         }
@@ -481,6 +485,8 @@ namespace _3mpacador4.Presentacion.Reporte
                 btnconteo_manual.Enabled = true;
                 cbxtodos_cli.Enabled = false;
                 btnbuscar_proceso.Enabled = true;
+                ls_tipo = "R";
+                cbxcliente.SelectedIndex = 0;
             }            
         }
 
@@ -493,6 +499,8 @@ namespace _3mpacador4.Presentacion.Reporte
                 btnconteo_manual.Enabled = false;
                 cbxtodos_cli.Enabled = true;
                 btnbuscar_proceso.Enabled = false;
+                ls_tipo = "B";
+                cbxcliente.SelectedIndex = 0;
             }
         }
 
@@ -571,7 +579,28 @@ namespace _3mpacador4.Presentacion.Reporte
                 }
             }
 
-            MostrarCalibres(dtpbuscar_fecproduccion.Value.ToString("yyyy-MM-dd"), ls_idcliente);
+            if (rbregistrar.Checked)
+            {
+                ls_tipo = "R";
+            }
+            else if (rbbuscar.Checked)
+            {
+                ls_tipo = "B";
+            }
+
+            MostrarCalibres(dtpbuscar_fecproduccion.Value.ToString("yyyy-MM-dd"), ls_idcliente, ls_tipo);
+
+            if (rbregistrar.Checked)
+            {
+                dgvcalibres.Columns[3].Visible = true;
+                dgvcalibres.Columns[4].Visible = true;
+            }
+            else
+            {
+                dgvcalibres.Columns[3].Visible = false;
+                dgvcalibres.Columns[4].Visible = false;
+            }
+           
         }
 
         private void cbxcliente_SelectedIndexChanged(object sender, EventArgs e)
@@ -580,6 +609,38 @@ namespace _3mpacador4.Presentacion.Reporte
             {
                 Mostrar_conteo();
             }           
+        }
+
+        private void dgvcalibres_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvcalibres.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                if (e.ColumnIndex == 3)
+                {
+                    e.Value = "-";                    
+
+                }
+                else if (e.ColumnIndex == 4)
+                {
+                    e.Value = "=";
+                }
+            }
+        }
+
+        private void dgvcalibres_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvcalibres.Columns[3].Index && e.RowIndex >= 0)
+            {
+                dgvcalibres.Rows.RemoveAt(e.RowIndex);
+            }
+
+            if (e.ColumnIndex == dgvcalibres.Columns[4].Index && e.RowIndex >= 0)
+            {
+                // Obtiene la posición de la fila seleccionada
+                int rowIndex = e.RowIndex;   
+
+                dgvcalibres.Rows.Insert(rowIndex + 1, dgvcalibres.Rows[rowIndex].Cells[0].Value, 0, "");
+            }
         }
     }
 }

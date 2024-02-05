@@ -63,7 +63,7 @@ namespace _3mpacador4.Logica
             return li_rpta;
         }
 
-        public static int Conteo_Manual(int idproceso, int calibre, string fecha_produccion, int cantidad, int li_idcliente)
+        public static int Conteo_Manual(int idproceso, int calibre, string fecha_produccion, int cantidad, int li_idcliente, int li_nro_pallet)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace _3mpacador4.Logica
                 comando.Parameters.AddWithValue("p_calibre", calibre);
                 comando.Parameters.AddWithValue("p_fecha_produccion", fecha_produccion);
                 comando.Parameters.AddWithValue("p_idusuario", 1);
-                comando.Parameters.AddWithValue("p_nro_pallet", 0);
+                comando.Parameters.AddWithValue("p_nro_pallet", li_nro_pallet);
                 comando.Parameters.AddWithValue("p_cantidad_x_calibre", cantidad);
                 comando.Parameters.AddWithValue("p_idcliente", li_idcliente);
                 rpta = comando.ExecuteNonQuery();                

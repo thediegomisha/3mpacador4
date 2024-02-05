@@ -23,7 +23,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
 {
     public partial class FImprimirQR : Form
     {
-        private bool lb_estado_impresion;
+        //private bool lb_estado_impresion;
 
         private int li_idgrupo;
         public Numerador_trab n_trab = null;
@@ -170,63 +170,87 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             }
         }
 
+        private bool Generar_Numeradores(int li_idgrupo, string ls_dni, int cantidad)
+        {
+            try
+            {
+                bool rpta = false;
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+
+                var comando = new MySqlCommand("usp_tblnumerador_trab_insert", ConexionGral.conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("p_idgrupo", li_idgrupo);
+                comando.Parameters.AddWithValue("p_dni", ls_dni);
+                comando.Parameters.AddWithValue("p_cantidad", cantidad);
+                rpta = Convert.ToBoolean(comando.ExecuteNonQuery());
+                //MessageBox.Show(@"CANTIDAD DE ETIQUETAS GENERADAS SATISFACTORIAMENTE.", @"Mensaje",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //LimpiarCampos();
+                ConexionGral.desconectar();
+                return rpta;
+            }
+            catch (MySqlException ex)
+            {
+                ConexionGral.desconectar();
+                MessageBox.Show("ALGO SALIO MAL \n" + ex.Message, @"ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+
         private void btngenerar_Click(object sender, EventArgs e)
         {
             var nro_etiquetas = Convert.ToInt32(lblcantidad_tikects.Text.ToString());
             if (nro_etiquetas > 0)
             {
 
-                Impresion_ZPL(Convert.ToInt32(nudacantidad_filas.Value));
                 
-                // ActualizarEtiquetas(li_idgrupo, ls_dni, nro_etiquetas);
-                /*Lista_Num_trab(ls_dni, li_idgrupo);
-                foreach (Numerador_trab n in Lista_num_trab)
+                if (Generar_Numeradores(li_idgrupo, ls_dni, nro_etiquetas))
                 {
-                    Impresion_ZPL(n, 1);
-                } */          
+                    Lista_Num_trab(ls_dni, li_idgrupo);
+                    Impresion_ZPL(/*Convert.ToInt32(nudacantidad_filas.Value)*/);
+                }   
             }
         }
 
-        public void Impresion_ZPL(/*Numerador_trab n,*/ int li_cantidad_filas)
+        public void Impresion_ZPL(/*Numerador_trab n, int li_cantidad_filas*/)
         {
             try
             {
                 string cadena;
-                //PrintDialog pd = new PrintDialog();
 
-                int imp = 0;
-                for (imp = 1; imp <= li_cantidad_filas; imp++)
+                //int imp = 0;
+
+                // CONVERTIRNO LA LISTA DE ENTIDADES A UN ARREGLO BIDIMENCIONAL
+                int filas = Lista_num_trab.Count;
+                object[,] Arreglo = new object[filas, 1];
+
+                // AGREGO LOS VALORES AL ARREGLO
+                for (int i = 0; i < filas; i++)
                 {
+                    Arreglo[i, 0] = Lista_num_trab[i].codigo;
+                    /*Arreglo[i, 1] = Lista_num_trab[i].codigo;
+                    Arreglo[i, 2] = Lista_num_trab[i].codigo;
+                    Arreglo[i, 3] = Lista_num_trab[i].codigo;*/
+                }
+
+                //int fila = 0;
+                // RECORRO LAS FILAS
+                for (int i = 0; i < nudacantidad_filas.Value; i++)
+                {
+                    //fila = fila + 1;
                     // INICIO
                     cadena = "^XA" + Environment.NewLine;
 
-                    cadena = cadena + "^FO20^BQN,2,6^FDMA,20240118000170682917^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,25^FO30,128^FD70682917^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO20^BQN,2,6^FDMA," + Arreglo[i, 0].ToString() + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,25^FO30,128^FD" + Arreglo[i, 0].ToString().Trim().Substring(12) + "^FS" + Environment.NewLine;
 
-                    cadena = cadena + "^FO235^BQN,2,6^FDMA,20240118000270682917^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,25^FO245,128^FD70682917^FS" + Environment.NewLine;
-
-                    cadena = cadena + "^FO450^BQN,2,6^FDMA,20240118000370682917^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,25^FO460,128^FD70682917^FS" + Environment.NewLine;
-
-                    cadena = cadena + "^FO665^BQN,2,6^FDMA,20240118000470682917^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,25^FO675,128^FD70682917^FS" + Environment.NewLine;
-
-                    // COLUMNA 01
-                    /*cadena = cadena + "^FO50,10^BQN,2,6^FDMA," + n.codigo + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,30^FO55,145^FD" + n.codigo.Substring(12) + "^FS" + Environment.NewLine;
-
-                    // COLUMNA 02
-                    cadena = cadena + "^FO350,10^BQN,2,6^FDMA," + n.codigo + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,30^FO355,145^FD" + n.codigo.Substring(12) + "^FS" + Environment.NewLine;
-
-                    // COLUMNA 03
-                    cadena = cadena + "^FO650,10^BQN,2,6^FDMA," + n.codigo + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,30^FO655,145^FD" + n.codigo.Substring(12) + "^FS" + Environment.NewLine;
-                    
-                    // COLUMNA 04
-                    cadena = cadena + "^FO650,10^BQN,2,6^FDMA," + n.codigo + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,30^FO655,145^FD" + n.codigo.Substring(12) + "^FS" + Environment.NewLine;*/
+                    cadena = cadena + "^FO235^BQN,2,6^FDMA," + Arreglo[i, 0].ToString().Trim() + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,25^FO245,128^FD" + Arreglo[i, 0].ToString().Trim().Substring(12) + "^FS" + Environment.NewLine;
+                                                                       
+                    cadena = cadena + "^FO450^BQN,2,6^FDMA," + Arreglo[i, 0].ToString().Trim() + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,25^FO460,128^FD" + Arreglo[i, 0].ToString().Trim().Substring(12) + "^FS" + Environment.NewLine;
+                                                                       
+                    cadena = cadena + "^FO665^BQN,2,6^FDMA," + Arreglo[i, 0].ToString().Trim() + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,25^FO675,128^FD" + Arreglo[i, 0].ToString().Trim().Substring(12) + "^FS" + Environment.NewLine;
 
                     // FIN
                     cadena = cadena + "^XZ" + Environment.NewLine;

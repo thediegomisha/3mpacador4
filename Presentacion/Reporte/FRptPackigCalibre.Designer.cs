@@ -29,14 +29,18 @@ namespace _3mpacador4.Presentacion.Reporte
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtpf_produccion = new System.Windows.Forms.DateTimePicker();
             this.label18 = new System.Windows.Forms.Label();
             this.dgvpacking_calibre_cab = new System.Windows.Forms.DataGridView();
@@ -62,24 +66,6 @@ namespace _3mpacador4.Presentacion.Reporte
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvpacking_calibre_det = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -111,10 +97,42 @@ namespace _3mpacador4.Presentacion.Reporte
             this.cbxcliente = new System.Windows.Forms.ComboBox();
             this.btnimprimir = new Glass.GlassButton();
             this.btnbuscar_trab = new Glass.GlassButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dgvsobrepeso = new System.Windows.Forms.DataGridView();
+            this.Column40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column47 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column43 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column44 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column48 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column45 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column46 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvpacking_calibre_cab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvpacking_calibre_det)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvsobrepeso)).BeginInit();
             this.SuspendLayout();
             // 
             // dtpf_produccion
@@ -146,14 +164,14 @@ namespace _3mpacador4.Presentacion.Reporte
             this.dgvpacking_calibre_cab.AllowUserToDeleteRows = false;
             this.dgvpacking_calibre_cab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvpacking_calibre_cab.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvpacking_calibre_cab.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvpacking_calibre_cab.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvpacking_calibre_cab.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
@@ -177,15 +195,15 @@ namespace _3mpacador4.Presentacion.Reporte
             this.Column18,
             this.Column19,
             this.Column20});
-            this.dgvpacking_calibre_cab.Location = new System.Drawing.Point(12, 66);
+            this.dgvpacking_calibre_cab.Location = new System.Drawing.Point(12, 64);
             this.dgvpacking_calibre_cab.Name = "dgvpacking_calibre_cab";
             this.dgvpacking_calibre_cab.ReadOnly = true;
             this.dgvpacking_calibre_cab.RowHeadersVisible = false;
             this.dgvpacking_calibre_cab.RowHeadersWidth = 51;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvpacking_calibre_cab.RowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvpacking_calibre_cab.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvpacking_calibre_cab.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvpacking_calibre_cab.Size = new System.Drawing.Size(1080, 97);
+            this.dgvpacking_calibre_cab.Size = new System.Drawing.Size(1080, 144);
             this.dgvpacking_calibre_cab.TabIndex = 92;
             this.dgvpacking_calibre_cab.SelectionChanged += new System.EventHandler(this.dgvpacking_calibre_cab_SelectionChanged);
             // 
@@ -338,9 +356,9 @@ namespace _3mpacador4.Presentacion.Reporte
             // 
             // Column20
             // 
-            dataGridViewCellStyle10.Format = "N2";
-            dataGridViewCellStyle10.NullValue = null;
-            this.Column20.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column20.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column20.HeaderText = "PESO PROMEDIO";
             this.Column20.Name = "Column20";
             this.Column20.ReadOnly = true;
@@ -351,14 +369,14 @@ namespace _3mpacador4.Presentacion.Reporte
             this.dgvpacking_calibre_det.AllowUserToDeleteRows = false;
             this.dgvpacking_calibre_det.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvpacking_calibre_det.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvpacking_calibre_det.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvpacking_calibre_det.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvpacking_calibre_det.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -379,16 +397,506 @@ namespace _3mpacador4.Presentacion.Reporte
             this.Column35,
             this.Column36,
             this.Column37});
-            this.dgvpacking_calibre_det.Location = new System.Drawing.Point(12, 224);
+            this.dgvpacking_calibre_det.Location = new System.Drawing.Point(12, 267);
             this.dgvpacking_calibre_det.Name = "dgvpacking_calibre_det";
             this.dgvpacking_calibre_det.ReadOnly = true;
             this.dgvpacking_calibre_det.RowHeadersVisible = false;
             this.dgvpacking_calibre_det.RowHeadersWidth = 51;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvpacking_calibre_det.RowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvpacking_calibre_det.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvpacking_calibre_det.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvpacking_calibre_det.Size = new System.Drawing.Size(1080, 180);
+            this.dgvpacking_calibre_det.Size = new System.Drawing.Size(1081, 187);
             this.dgvpacking_calibre_det.TabIndex = 97;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(42, 53);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 17);
+            this.label1.TabIndex = 99;
+            this.label1.Text = "DESCARTE :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(46, 89);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(76, 17);
+            this.label2.TabIndex = 100;
+            this.label2.Text = "MUESTRA :";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(5, 120);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(117, 17);
+            this.label3.TabIndex = 101;
+            this.label3.Text = "TOTAL GENERAL :";
+            // 
+            // tbxkilos_descarte
+            // 
+            this.tbxkilos_descarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxkilos_descarte.Location = new System.Drawing.Point(125, 53);
+            this.tbxkilos_descarte.Name = "tbxkilos_descarte";
+            this.tbxkilos_descarte.ReadOnly = true;
+            this.tbxkilos_descarte.Size = new System.Drawing.Size(100, 24);
+            this.tbxkilos_descarte.TabIndex = 102;
+            this.tbxkilos_descarte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // tbxkilos_muestra
+            // 
+            this.tbxkilos_muestra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxkilos_muestra.Location = new System.Drawing.Point(125, 84);
+            this.tbxkilos_muestra.Name = "tbxkilos_muestra";
+            this.tbxkilos_muestra.ReadOnly = true;
+            this.tbxkilos_muestra.Size = new System.Drawing.Size(100, 24);
+            this.tbxkilos_muestra.TabIndex = 103;
+            this.tbxkilos_muestra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // tbxtotal_kilos_muestra
+            // 
+            this.tbxtotal_kilos_muestra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxtotal_kilos_muestra.Location = new System.Drawing.Point(125, 115);
+            this.tbxtotal_kilos_muestra.Name = "tbxtotal_kilos_muestra";
+            this.tbxtotal_kilos_muestra.ReadOnly = true;
+            this.tbxtotal_kilos_muestra.Size = new System.Drawing.Size(100, 24);
+            this.tbxtotal_kilos_muestra.TabIndex = 104;
+            this.tbxtotal_kilos_muestra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // tbxtotal_porcentaje_muestra
+            // 
+            this.tbxtotal_porcentaje_muestra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxtotal_porcentaje_muestra.Location = new System.Drawing.Point(230, 115);
+            this.tbxtotal_porcentaje_muestra.Name = "tbxtotal_porcentaje_muestra";
+            this.tbxtotal_porcentaje_muestra.ReadOnly = true;
+            this.tbxtotal_porcentaje_muestra.Size = new System.Drawing.Size(89, 24);
+            this.tbxtotal_porcentaje_muestra.TabIndex = 107;
+            this.tbxtotal_porcentaje_muestra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // tbxporcentaje_muestra
+            // 
+            this.tbxporcentaje_muestra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxporcentaje_muestra.Location = new System.Drawing.Point(230, 84);
+            this.tbxporcentaje_muestra.Name = "tbxporcentaje_muestra";
+            this.tbxporcentaje_muestra.ReadOnly = true;
+            this.tbxporcentaje_muestra.Size = new System.Drawing.Size(89, 24);
+            this.tbxporcentaje_muestra.TabIndex = 106;
+            this.tbxporcentaje_muestra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // tbxporcentaje_descarte
+            // 
+            this.tbxporcentaje_descarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxporcentaje_descarte.Location = new System.Drawing.Point(230, 53);
+            this.tbxporcentaje_descarte.Name = "tbxporcentaje_descarte";
+            this.tbxporcentaje_descarte.ReadOnly = true;
+            this.tbxporcentaje_descarte.Size = new System.Drawing.Size(89, 24);
+            this.tbxporcentaje_descarte.TabIndex = 105;
+            this.tbxporcentaje_descarte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(125, 33);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(89, 17);
+            this.label4.TabIndex = 108;
+            this.label4.Text = "KILOS";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(230, 33);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(89, 17);
+            this.label5.TabIndex = 109;
+            this.label5.Text = "PORCENTAJE";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(263, 28);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 17);
+            this.label6.TabIndex = 120;
+            this.label6.Text = "PORCENTAJE";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(158, 28);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(89, 17);
+            this.label7.TabIndex = 119;
+            this.label7.Text = "KILOS";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tbxporcentaje_desc_mues
+            // 
+            this.tbxporcentaje_desc_mues.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxporcentaje_desc_mues.Location = new System.Drawing.Point(263, 106);
+            this.tbxporcentaje_desc_mues.Name = "tbxporcentaje_desc_mues";
+            this.tbxporcentaje_desc_mues.ReadOnly = true;
+            this.tbxporcentaje_desc_mues.Size = new System.Drawing.Size(89, 24);
+            this.tbxporcentaje_desc_mues.TabIndex = 118;
+            this.tbxporcentaje_desc_mues.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // tbxporcentaje_proceso
+            // 
+            this.tbxporcentaje_proceso.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxporcentaje_proceso.Location = new System.Drawing.Point(263, 77);
+            this.tbxporcentaje_proceso.Name = "tbxporcentaje_proceso";
+            this.tbxporcentaje_proceso.ReadOnly = true;
+            this.tbxporcentaje_proceso.Size = new System.Drawing.Size(89, 24);
+            this.tbxporcentaje_proceso.TabIndex = 117;
+            this.tbxporcentaje_proceso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // tbxporcentaje_ingreso
+            // 
+            this.tbxporcentaje_ingreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxporcentaje_ingreso.Location = new System.Drawing.Point(263, 48);
+            this.tbxporcentaje_ingreso.Name = "tbxporcentaje_ingreso";
+            this.tbxporcentaje_ingreso.ReadOnly = true;
+            this.tbxporcentaje_ingreso.Size = new System.Drawing.Size(89, 24);
+            this.tbxporcentaje_ingreso.TabIndex = 116;
+            this.tbxporcentaje_ingreso.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbxkilos_descarte_muestra
+            // 
+            this.tbxkilos_descarte_muestra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxkilos_descarte_muestra.Location = new System.Drawing.Point(158, 107);
+            this.tbxkilos_descarte_muestra.Name = "tbxkilos_descarte_muestra";
+            this.tbxkilos_descarte_muestra.ReadOnly = true;
+            this.tbxkilos_descarte_muestra.Size = new System.Drawing.Size(100, 24);
+            this.tbxkilos_descarte_muestra.TabIndex = 115;
+            this.tbxkilos_descarte_muestra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // tbxkilos_proceso
+            // 
+            this.tbxkilos_proceso.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxkilos_proceso.Location = new System.Drawing.Point(158, 77);
+            this.tbxkilos_proceso.Name = "tbxkilos_proceso";
+            this.tbxkilos_proceso.ReadOnly = true;
+            this.tbxkilos_proceso.Size = new System.Drawing.Size(100, 24);
+            this.tbxkilos_proceso.TabIndex = 114;
+            this.tbxkilos_proceso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // tbxkilos_ingreso
+            // 
+            this.tbxkilos_ingreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxkilos_ingreso.Location = new System.Drawing.Point(158, 48);
+            this.tbxkilos_ingreso.Name = "tbxkilos_ingreso";
+            this.tbxkilos_ingreso.ReadOnly = true;
+            this.tbxkilos_ingreso.Size = new System.Drawing.Size(100, 24);
+            this.tbxkilos_ingreso.TabIndex = 113;
+            this.tbxkilos_ingreso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(13, 110);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(144, 17);
+            this.label8.TabIndex = 112;
+            this.label8.Text = "DESCARTE MUESTRA :";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(6, 81);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(151, 17);
+            this.label9.TabIndex = 111;
+            this.label9.Text = "RESULTADO PROCESO :";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(11, 50);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(146, 17);
+            this.label10.TabIndex = 110;
+            this.label10.Text = "INGRESO A PROCESO :";
+            // 
+            // tbxporcentaje_deshidratacion
+            // 
+            this.tbxporcentaje_deshidratacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxporcentaje_deshidratacion.Location = new System.Drawing.Point(263, 136);
+            this.tbxporcentaje_deshidratacion.Name = "tbxporcentaje_deshidratacion";
+            this.tbxporcentaje_deshidratacion.ReadOnly = true;
+            this.tbxporcentaje_deshidratacion.Size = new System.Drawing.Size(89, 24);
+            this.tbxporcentaje_deshidratacion.TabIndex = 123;
+            this.tbxporcentaje_deshidratacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // tbxkilos_deshidratacion
+            // 
+            this.tbxkilos_deshidratacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxkilos_deshidratacion.Location = new System.Drawing.Point(158, 136);
+            this.tbxkilos_deshidratacion.Name = "tbxkilos_deshidratacion";
+            this.tbxkilos_deshidratacion.ReadOnly = true;
+            this.tbxkilos_deshidratacion.Size = new System.Drawing.Size(100, 24);
+            this.tbxkilos_deshidratacion.TabIndex = 122;
+            this.tbxkilos_deshidratacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(29, 140);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(128, 17);
+            this.label11.TabIndex = 121;
+            this.label11.Text = "DESHIDRATACIÓN :";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tbxkilos_descarte);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.tbxkilos_muestra);
+            this.groupBox1.Controls.Add(this.tbxtotal_kilos_muestra);
+            this.groupBox1.Controls.Add(this.tbxporcentaje_descarte);
+            this.groupBox1.Controls.Add(this.tbxporcentaje_muestra);
+            this.groupBox1.Controls.Add(this.tbxtotal_porcentaje_muestra);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(12, 463);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(330, 179);
+            this.groupBox1.TabIndex = 124;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "DESCARTE / MUESTREO";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.tbxkilos_proceso);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.tbxporcentaje_deshidratacion);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.tbxkilos_deshidratacion);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.tbxkilos_ingreso);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.tbxkilos_descarte_muestra);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.tbxporcentaje_ingreso);
+            this.groupBox2.Controls.Add(this.tbxporcentaje_desc_mues);
+            this.groupBox2.Controls.Add(this.tbxporcentaje_proceso);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(348, 463);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(368, 179);
+            this.groupBox2.TabIndex = 125;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "RESUMEN";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(12, 239);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(67, 17);
+            this.label27.TabIndex = 127;
+            this.label27.Text = "CLIENTE :";
+            // 
+            // cbxcliente
+            // 
+            this.cbxcliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxcliente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxcliente.FormattingEnabled = true;
+            this.cbxcliente.Location = new System.Drawing.Point(81, 235);
+            this.cbxcliente.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxcliente.Name = "cbxcliente";
+            this.cbxcliente.Size = new System.Drawing.Size(339, 25);
+            this.cbxcliente.TabIndex = 126;
+            this.cbxcliente.SelectedValueChanged += new System.EventHandler(this.cbxcliente_SelectedValueChanged);
+            // 
+            // btnimprimir
+            // 
+            this.btnimprimir.BackColor = System.Drawing.Color.Blue;
+            this.btnimprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnimprimir.Image = global::_3mpacador4.Properties.Resources.Pdf;
+            this.btnimprimir.Location = new System.Drawing.Point(428, 215);
+            this.btnimprimir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnimprimir.Name = "btnimprimir";
+            this.btnimprimir.OuterBorderColor = System.Drawing.Color.Blue;
+            this.btnimprimir.ShineColor = System.Drawing.Color.Navy;
+            this.btnimprimir.Size = new System.Drawing.Size(148, 45);
+            this.btnimprimir.TabIndex = 98;
+            this.btnimprimir.Text = "VER REPORTE EN PDF";
+            this.btnimprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnimprimir.Click += new System.EventHandler(this.btnimprimir_Click);
+            // 
+            // btnbuscar_trab
+            // 
+            this.btnbuscar_trab.BackColor = System.Drawing.Color.Blue;
+            this.btnbuscar_trab.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnbuscar_trab.Image = global::_3mpacador4.Properties.Resources.buscar;
+            this.btnbuscar_trab.Location = new System.Drawing.Point(285, 12);
+            this.btnbuscar_trab.Margin = new System.Windows.Forms.Padding(4);
+            this.btnbuscar_trab.Name = "btnbuscar_trab";
+            this.btnbuscar_trab.OuterBorderColor = System.Drawing.Color.Blue;
+            this.btnbuscar_trab.ShineColor = System.Drawing.Color.Navy;
+            this.btnbuscar_trab.Size = new System.Drawing.Size(134, 45);
+            this.btnbuscar_trab.TabIndex = 96;
+            this.btnbuscar_trab.Text = "MOSTRAR";
+            this.btnbuscar_trab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnbuscar_trab.Click += new System.EventHandler(this.btnbuscar_trab_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.dgvsobrepeso);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(722, 463);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(369, 178);
+            this.groupBox3.TabIndex = 129;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "SOBREPESO POR PRESENTACION";
+            // 
+            // dgvsobrepeso
+            // 
+            this.dgvsobrepeso.AllowUserToAddRows = false;
+            this.dgvsobrepeso.AllowUserToDeleteRows = false;
+            this.dgvsobrepeso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvsobrepeso.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column40,
+            this.Column47,
+            this.Column43,
+            this.Column44,
+            this.Column41,
+            this.Column42,
+            this.Column48,
+            this.Column45,
+            this.Column49,
+            this.Column46});
+            this.dgvsobrepeso.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvsobrepeso.Location = new System.Drawing.Point(3, 16);
+            this.dgvsobrepeso.Name = "dgvsobrepeso";
+            this.dgvsobrepeso.RowHeadersVisible = false;
+            this.dgvsobrepeso.Size = new System.Drawing.Size(363, 159);
+            this.dgvsobrepeso.TabIndex = 129;
+            this.dgvsobrepeso.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvsobrepeso_CellClick);
+            this.dgvsobrepeso.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvsobrepeso_CellEndEdit);
+            this.dgvsobrepeso.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvsobrepeso_CellFormatting);
+            // 
+            // Column40
+            // 
+            this.Column40.HeaderText = "IDLOTE";
+            this.Column40.Name = "Column40";
+            this.Column40.Visible = false;
+            this.Column40.Width = 30;
+            // 
+            // Column47
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column47.DefaultCellStyle = dataGridViewCellStyle9;
+            this.Column47.HeaderText = "LOTE";
+            this.Column47.Name = "Column47";
+            this.Column47.ReadOnly = true;
+            this.Column47.Width = 75;
+            // 
+            // Column43
+            // 
+            this.Column43.HeaderText = "IDPRE";
+            this.Column43.Name = "Column43";
+            this.Column43.Visible = false;
+            this.Column43.Width = 30;
+            // 
+            // Column44
+            // 
+            this.Column44.HeaderText = "PRESENTACION";
+            this.Column44.Name = "Column44";
+            this.Column44.ReadOnly = true;
+            this.Column44.Width = 150;
+            // 
+            // Column41
+            // 
+            this.Column41.HeaderText = "IDCAT";
+            this.Column41.Name = "Column41";
+            this.Column41.Visible = false;
+            this.Column41.Width = 30;
+            // 
+            // Column42
+            // 
+            this.Column42.HeaderText = "CATEGORIA";
+            this.Column42.Name = "Column42";
+            this.Column42.ReadOnly = true;
+            this.Column42.Width = 85;
+            // 
+            // Column48
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column48.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Column48.HeaderText = "CANTIDAD";
+            this.Column48.Name = "Column48";
+            this.Column48.ReadOnly = true;
+            this.Column48.Width = 75;
+            // 
+            // Column45
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N3";
+            dataGridViewCellStyle11.NullValue = null;
+            this.Column45.DefaultCellStyle = dataGridViewCellStyle11;
+            this.Column45.HeaderText = "SOBREPESO";
+            this.Column45.Name = "Column45";
+            this.Column45.Width = 85;
+            // 
+            // Column49
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N3";
+            dataGridViewCellStyle12.NullValue = null;
+            this.Column49.DefaultCellStyle = dataGridViewCellStyle12;
+            this.Column49.HeaderText = "KILOS";
+            this.Column49.Name = "Column49";
+            this.Column49.ReadOnly = true;
+            this.Column49.Width = 75;
+            // 
+            // Column46
+            // 
+            this.Column46.HeaderText = "";
+            this.Column46.Name = "Column46";
+            this.Column46.Width = 75;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -498,8 +1006,8 @@ namespace _3mpacador4.Presentacion.Reporte
             // 
             // Column35
             // 
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column35.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column35.DefaultCellStyle = dataGridViewCellStyle5;
             this.Column35.HeaderText = "CANTIDAD";
             this.Column35.Name = "Column35";
             this.Column35.ReadOnly = true;
@@ -507,9 +1015,9 @@ namespace _3mpacador4.Presentacion.Reporte
             // 
             // Column36
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column36.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column36.DefaultCellStyle = dataGridViewCellStyle6;
             this.Column36.HeaderText = "SOBREPESO";
             this.Column36.Name = "Column36";
             this.Column36.ReadOnly = true;
@@ -517,390 +1025,20 @@ namespace _3mpacador4.Presentacion.Reporte
             // 
             // Column37
             // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column37.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column37.DefaultCellStyle = dataGridViewCellStyle7;
             this.Column37.HeaderText = "KILOS";
             this.Column37.Name = "Column37";
             this.Column37.ReadOnly = true;
             this.Column37.Width = 90;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(65, 53);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 17);
-            this.label1.TabIndex = 99;
-            this.label1.Text = "DESCARTE :";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(69, 89);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 17);
-            this.label2.TabIndex = 100;
-            this.label2.Text = "MUESTRA :";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(28, 120);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(117, 17);
-            this.label3.TabIndex = 101;
-            this.label3.Text = "TOTAL GENERAL :";
-            // 
-            // tbxkilos_descarte
-            // 
-            this.tbxkilos_descarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxkilos_descarte.Location = new System.Drawing.Point(152, 53);
-            this.tbxkilos_descarte.Name = "tbxkilos_descarte";
-            this.tbxkilos_descarte.ReadOnly = true;
-            this.tbxkilos_descarte.Size = new System.Drawing.Size(100, 24);
-            this.tbxkilos_descarte.TabIndex = 102;
-            this.tbxkilos_descarte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // tbxkilos_muestra
-            // 
-            this.tbxkilos_muestra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxkilos_muestra.Location = new System.Drawing.Point(152, 84);
-            this.tbxkilos_muestra.Name = "tbxkilos_muestra";
-            this.tbxkilos_muestra.ReadOnly = true;
-            this.tbxkilos_muestra.Size = new System.Drawing.Size(100, 24);
-            this.tbxkilos_muestra.TabIndex = 103;
-            this.tbxkilos_muestra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // tbxtotal_kilos_muestra
-            // 
-            this.tbxtotal_kilos_muestra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxtotal_kilos_muestra.Location = new System.Drawing.Point(152, 115);
-            this.tbxtotal_kilos_muestra.Name = "tbxtotal_kilos_muestra";
-            this.tbxtotal_kilos_muestra.ReadOnly = true;
-            this.tbxtotal_kilos_muestra.Size = new System.Drawing.Size(100, 24);
-            this.tbxtotal_kilos_muestra.TabIndex = 104;
-            this.tbxtotal_kilos_muestra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // tbxtotal_porcentaje_muestra
-            // 
-            this.tbxtotal_porcentaje_muestra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxtotal_porcentaje_muestra.Location = new System.Drawing.Point(267, 115);
-            this.tbxtotal_porcentaje_muestra.Name = "tbxtotal_porcentaje_muestra";
-            this.tbxtotal_porcentaje_muestra.ReadOnly = true;
-            this.tbxtotal_porcentaje_muestra.Size = new System.Drawing.Size(89, 24);
-            this.tbxtotal_porcentaje_muestra.TabIndex = 107;
-            this.tbxtotal_porcentaje_muestra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // tbxporcentaje_muestra
-            // 
-            this.tbxporcentaje_muestra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxporcentaje_muestra.Location = new System.Drawing.Point(267, 84);
-            this.tbxporcentaje_muestra.Name = "tbxporcentaje_muestra";
-            this.tbxporcentaje_muestra.ReadOnly = true;
-            this.tbxporcentaje_muestra.Size = new System.Drawing.Size(89, 24);
-            this.tbxporcentaje_muestra.TabIndex = 106;
-            this.tbxporcentaje_muestra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // tbxporcentaje_descarte
-            // 
-            this.tbxporcentaje_descarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxporcentaje_descarte.Location = new System.Drawing.Point(267, 53);
-            this.tbxporcentaje_descarte.Name = "tbxporcentaje_descarte";
-            this.tbxporcentaje_descarte.ReadOnly = true;
-            this.tbxporcentaje_descarte.Size = new System.Drawing.Size(89, 24);
-            this.tbxporcentaje_descarte.TabIndex = 105;
-            this.tbxporcentaje_descarte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(152, 33);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 17);
-            this.label4.TabIndex = 108;
-            this.label4.Text = "KILOS";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(267, 33);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 17);
-            this.label5.TabIndex = 109;
-            this.label5.Text = "PORCENTAJE";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(296, 28);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 17);
-            this.label6.TabIndex = 120;
-            this.label6.Text = "PORCENTAJE";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(182, 28);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 17);
-            this.label7.TabIndex = 119;
-            this.label7.Text = "KILOS";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tbxporcentaje_desc_mues
-            // 
-            this.tbxporcentaje_desc_mues.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxporcentaje_desc_mues.Location = new System.Drawing.Point(296, 106);
-            this.tbxporcentaje_desc_mues.Name = "tbxporcentaje_desc_mues";
-            this.tbxporcentaje_desc_mues.ReadOnly = true;
-            this.tbxporcentaje_desc_mues.Size = new System.Drawing.Size(89, 24);
-            this.tbxporcentaje_desc_mues.TabIndex = 118;
-            this.tbxporcentaje_desc_mues.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // tbxporcentaje_proceso
-            // 
-            this.tbxporcentaje_proceso.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxporcentaje_proceso.Location = new System.Drawing.Point(296, 77);
-            this.tbxporcentaje_proceso.Name = "tbxporcentaje_proceso";
-            this.tbxporcentaje_proceso.ReadOnly = true;
-            this.tbxporcentaje_proceso.Size = new System.Drawing.Size(89, 24);
-            this.tbxporcentaje_proceso.TabIndex = 117;
-            this.tbxporcentaje_proceso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // tbxporcentaje_ingreso
-            // 
-            this.tbxporcentaje_ingreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxporcentaje_ingreso.Location = new System.Drawing.Point(296, 48);
-            this.tbxporcentaje_ingreso.Name = "tbxporcentaje_ingreso";
-            this.tbxporcentaje_ingreso.ReadOnly = true;
-            this.tbxporcentaje_ingreso.Size = new System.Drawing.Size(89, 24);
-            this.tbxporcentaje_ingreso.TabIndex = 116;
-            this.tbxporcentaje_ingreso.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tbxkilos_descarte_muestra
-            // 
-            this.tbxkilos_descarte_muestra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxkilos_descarte_muestra.Location = new System.Drawing.Point(182, 107);
-            this.tbxkilos_descarte_muestra.Name = "tbxkilos_descarte_muestra";
-            this.tbxkilos_descarte_muestra.ReadOnly = true;
-            this.tbxkilos_descarte_muestra.Size = new System.Drawing.Size(100, 24);
-            this.tbxkilos_descarte_muestra.TabIndex = 115;
-            this.tbxkilos_descarte_muestra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // tbxkilos_proceso
-            // 
-            this.tbxkilos_proceso.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxkilos_proceso.Location = new System.Drawing.Point(182, 77);
-            this.tbxkilos_proceso.Name = "tbxkilos_proceso";
-            this.tbxkilos_proceso.ReadOnly = true;
-            this.tbxkilos_proceso.Size = new System.Drawing.Size(100, 24);
-            this.tbxkilos_proceso.TabIndex = 114;
-            this.tbxkilos_proceso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // tbxkilos_ingreso
-            // 
-            this.tbxkilos_ingreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxkilos_ingreso.Location = new System.Drawing.Point(182, 48);
-            this.tbxkilos_ingreso.Name = "tbxkilos_ingreso";
-            this.tbxkilos_ingreso.ReadOnly = true;
-            this.tbxkilos_ingreso.Size = new System.Drawing.Size(100, 24);
-            this.tbxkilos_ingreso.TabIndex = 113;
-            this.tbxkilos_ingreso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(31, 110);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(144, 17);
-            this.label8.TabIndex = 112;
-            this.label8.Text = "DESCARTE MUESTRA :";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(24, 81);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(151, 17);
-            this.label9.TabIndex = 111;
-            this.label9.Text = "RESULTADO PROCESO :";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(29, 50);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(146, 17);
-            this.label10.TabIndex = 110;
-            this.label10.Text = "INGRESO A PROCESO :";
-            // 
-            // tbxporcentaje_deshidratacion
-            // 
-            this.tbxporcentaje_deshidratacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxporcentaje_deshidratacion.Location = new System.Drawing.Point(296, 136);
-            this.tbxporcentaje_deshidratacion.Name = "tbxporcentaje_deshidratacion";
-            this.tbxporcentaje_deshidratacion.ReadOnly = true;
-            this.tbxporcentaje_deshidratacion.Size = new System.Drawing.Size(89, 24);
-            this.tbxporcentaje_deshidratacion.TabIndex = 123;
-            this.tbxporcentaje_deshidratacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // tbxkilos_deshidratacion
-            // 
-            this.tbxkilos_deshidratacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxkilos_deshidratacion.Location = new System.Drawing.Point(182, 136);
-            this.tbxkilos_deshidratacion.Name = "tbxkilos_deshidratacion";
-            this.tbxkilos_deshidratacion.ReadOnly = true;
-            this.tbxkilos_deshidratacion.Size = new System.Drawing.Size(100, 24);
-            this.tbxkilos_deshidratacion.TabIndex = 122;
-            this.tbxkilos_deshidratacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(47, 140);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(128, 17);
-            this.label11.TabIndex = 121;
-            this.label11.Text = "DESHIDRATACIÓN :";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.tbxkilos_descarte);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.tbxkilos_muestra);
-            this.groupBox1.Controls.Add(this.tbxtotal_kilos_muestra);
-            this.groupBox1.Controls.Add(this.tbxporcentaje_descarte);
-            this.groupBox1.Controls.Add(this.tbxporcentaje_muestra);
-            this.groupBox1.Controls.Add(this.tbxtotal_porcentaje_muestra);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 410);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(407, 179);
-            this.groupBox1.TabIndex = 124;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "DESCARTE / MUESTREO";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.tbxkilos_proceso);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.tbxporcentaje_deshidratacion);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.tbxkilos_deshidratacion);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.tbxkilos_ingreso);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.tbxkilos_descarte_muestra);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.tbxporcentaje_ingreso);
-            this.groupBox2.Controls.Add(this.tbxporcentaje_desc_mues);
-            this.groupBox2.Controls.Add(this.tbxporcentaje_proceso);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(427, 410);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(416, 179);
-            this.groupBox2.TabIndex = 125;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "RESUMEN";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(9, 196);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(67, 17);
-            this.label27.TabIndex = 127;
-            this.label27.Text = "CLIENTE :";
-            // 
-            // cbxcliente
-            // 
-            this.cbxcliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxcliente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxcliente.FormattingEnabled = true;
-            this.cbxcliente.Location = new System.Drawing.Point(80, 192);
-            this.cbxcliente.Margin = new System.Windows.Forms.Padding(4);
-            this.cbxcliente.Name = "cbxcliente";
-            this.cbxcliente.Size = new System.Drawing.Size(339, 25);
-            this.cbxcliente.TabIndex = 126;
-            this.cbxcliente.SelectedValueChanged += new System.EventHandler(this.cbxcliente_SelectedValueChanged);
-            // 
-            // btnimprimir
-            // 
-            this.btnimprimir.BackColor = System.Drawing.Color.Blue;
-            this.btnimprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnimprimir.Image = global::_3mpacador4.Properties.Resources.Pdf;
-            this.btnimprimir.Location = new System.Drawing.Point(427, 172);
-            this.btnimprimir.Margin = new System.Windows.Forms.Padding(4);
-            this.btnimprimir.Name = "btnimprimir";
-            this.btnimprimir.OuterBorderColor = System.Drawing.Color.Blue;
-            this.btnimprimir.ShineColor = System.Drawing.Color.Navy;
-            this.btnimprimir.Size = new System.Drawing.Size(148, 45);
-            this.btnimprimir.TabIndex = 98;
-            this.btnimprimir.Text = "VER REPORTE EN PDF";
-            this.btnimprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnimprimir.Click += new System.EventHandler(this.btnimprimir_Click);
-            // 
-            // btnbuscar_trab
-            // 
-            this.btnbuscar_trab.BackColor = System.Drawing.Color.Blue;
-            this.btnbuscar_trab.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnbuscar_trab.Image = global::_3mpacador4.Properties.Resources.buscar;
-            this.btnbuscar_trab.Location = new System.Drawing.Point(285, 12);
-            this.btnbuscar_trab.Margin = new System.Windows.Forms.Padding(4);
-            this.btnbuscar_trab.Name = "btnbuscar_trab";
-            this.btnbuscar_trab.OuterBorderColor = System.Drawing.Color.Blue;
-            this.btnbuscar_trab.ShineColor = System.Drawing.Color.Navy;
-            this.btnbuscar_trab.Size = new System.Drawing.Size(134, 45);
-            this.btnbuscar_trab.TabIndex = 96;
-            this.btnbuscar_trab.Text = "MOSTRAR";
-            this.btnbuscar_trab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnbuscar_trab.Click += new System.EventHandler(this.btnbuscar_trab_Click);
-            // 
             // FRptPackigCalibre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1104, 601);
+            this.ClientSize = new System.Drawing.Size(1104, 654);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.cbxcliente);
             this.Controls.Add(this.groupBox2);
@@ -920,6 +1058,8 @@ namespace _3mpacador4.Presentacion.Reporte
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvsobrepeso)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -932,24 +1072,6 @@ namespace _3mpacador4.Presentacion.Reporte
         private System.Windows.Forms.DataGridView dgvpacking_calibre_cab;
         private Glass.GlassButton btnbuscar_trab;
         private System.Windows.Forms.DataGridView dgvpacking_calibre_det;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column25;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column26;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column27;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column28;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column29;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column30;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column31;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column32;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column33;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column34;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column35;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column36;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column37;
         private Glass.GlassButton btnimprimir;
         internal System.Windows.Forms.Label label1;
         internal System.Windows.Forms.Label label2;
@@ -1001,5 +1123,35 @@ namespace _3mpacador4.Presentacion.Reporte
         private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DataGridView dgvsobrepeso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column40;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column47;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column43;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column44;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column41;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column42;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column48;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column45;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column49;
+        private System.Windows.Forms.DataGridViewButtonColumn Column46;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column27;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column28;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column30;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column31;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column32;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column33;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column34;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column35;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column36;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column37;
     }
 }

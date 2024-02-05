@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using _3mpacador4.Entidad;
 using System.Data;
 using Devart.Data.MySql;
+using System.Windows.Forms;
 
 namespace _3mpacador4.Logica
 {
@@ -56,20 +57,21 @@ namespace _3mpacador4.Logica
             return lista;
         }
 
-        public static decimal Kilos_Proceso_x_fecha(string ls_fecha_produccion)
+        public static decimal Kilos_Proceso_x_fecha(string ls_fecha_produccion, int li_idlote)
         {
             decimal li_rpta = 0;
             if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
             string sql = @"select ifnull(sum(x.kilos),0) from(
-                            select (count(cj.calibre) * (case when s.nombre = '4' then 4.18 else (case when s.nombre = '5.6' then 5.845 else 10.185 end) end))  as kilos
+                            select (count(cj.calibre) * (usf_soprepeso(pp.idlote,pp.fecha_produccion, pp.idcategoria, pp.idpresentacion)))  as kilos
                             from tblconteo_jabas cj 
                             inner join tblprograma_proceso pp on cj.idproceso = pp.idproceso 
                             inner join tblpresentacion s on pp.idpresentacion = s.idpresentacion
-                            where cj.calibre = cj.calibre and pp.fecha_produccion = @fecha_produccion
+                            where cj.calibre = cj.calibre and pp.fecha_produccion = @fecha_produccion and pp.idlote = @idlote
                             group by s.nombre) x";
             var cmd = new MySqlCommand(sql, ConexionGral.conexion);
             cmd.Parameters.AddWithValue("@fecha_produccion", ls_fecha_produccion);
+            cmd.Parameters.AddWithValue("@idlote", li_idlote);
             li_rpta = Convert.ToDecimal(cmd.ExecuteScalar());
             ConexionGral.desconectar();
             return li_rpta;
@@ -118,5 +120,35 @@ namespace _3mpacador4.Logica
             ConexionGral.desconectar();
             return lista;
         }
+
+        public static bool Sobrepeso_Insert_update(int idlote, string fecha_produccion, int idcategoria, int idpresentacion, decimal sobrepeso)
+        {
+            try
+            {
+                bool rpta = false;
+
+                if (ConexionGral.conexion.State == ConnectionState.Closed)
+                    ConexionGral.conectar();
+
+                var comando = new MySqlCommand(@"usp_tblsobrepeso_insert_update", ConexionGral.conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.AddWithValue("p_idlote", idlote);
+                comando.Parameters.AddWithValue("p_fecha_produccion", fecha_produccion);
+                comando.Parameters.AddWithValue("p_idcategoria", idcategoria);                
+                comando.Parameters.AddWithValue("p_idpresentacion", idpresentacion);
+                comando.Parameters.AddWithValue("p_ult_sobrepeso", sobrepeso);
+                rpta = Convert.ToBoolean(comando.ExecuteNonQuery());
+
+                ConexionGral.desconectar();
+                return rpta;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(@"OCURRIO UN ERROR EN usp_tblsobrepeso_insert_update " + ex.Message, @"ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+
     }
 }

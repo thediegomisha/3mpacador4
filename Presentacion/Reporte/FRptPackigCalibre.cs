@@ -58,13 +58,95 @@ namespace _3mpacador4.Presentacion.Reporte
             {
                 li_idlote = Convert.ToInt32(dgvpacking_calibre_cab.CurrentRow.Cells[8].Value);
                 Mostrar_detalle_resumen("%", li_idlote);
+                Mostrar_sobrepeso(li_idlote);
                 //Limpiar_descarte_resumen();
+            }
+        }
+        void Mostrar_sobrepeso(int li_idlote) 
+        {
+            MySqlCommand comando = null;
+            try
+            {
+                dgvsobrepeso.Rows.Clear();
+
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+
+                comando = new MySqlCommand("usp_tblsobrepeso_lote", ConexionGral.conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("p_idlote", li_idlote);
+                comando.Parameters.AddWithValue("p_fecha_produccion", dtpf_produccion.Value.ToString("yyyy-MM-dd"));
+
+                using (var reader = comando.ExecuteReader())
+                {
+                    while (reader.Read()) 
+                        dgvsobrepeso.Rows.Add(reader["idlote"], reader["lote"], reader["idpresentacion"], 
+                                              reader["presentacion"], reader["idcategoria"], reader["categoria"], 
+                                              reader["cantidad_cajas"], reader["ult_sobrepeso"], 
+                                              (Convert.ToInt32(reader["cantidad_cajas"].ToString()) * Convert.ToDecimal(reader["ult_sobrepeso"].ToString())));
+                }
+
+                ConexionGral.desconectar();
+            }
+            catch (Exception ex)
+            {
+                ConexionGral.desconectar();
+                MessageBox.Show(ex.Message, @"Algo salio Mal en usp_tblsobrepeso_lote :( ");
+                throw;
             }
         }
 
         private void btnbuscar_trab_Click(object sender, EventArgs e)
         {
             Mostrar_Cabecera();
+        }
+
+        private void dgvsobrepeso_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvsobrepeso.Columns[e.ColumnIndex].Index == 9)
+            {
+                var rpta = MessageBox.Show("¿ ESTA SEGURO QUE DESEA MODIFICAR EL SOBREPESO ?", "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (rpta == DialogResult.Yes)
+                {
+                    int li_idlote, li_idcategoria, li_idpresentacion;
+                    string ls_fecha_produccion;
+                    decimal ldc_sobrepeso;
+                    
+
+                    li_idlote = Convert.ToInt32(dgvsobrepeso.CurrentRow.Cells[0].Value);
+                    ls_fecha_produccion = Convert.ToDateTime(dgvpacking_calibre_cab.CurrentRow.Cells[6].Value).ToString("yyyy-MM-dd");
+                    li_idcategoria = Convert.ToInt32(dgvsobrepeso.CurrentRow.Cells[4].Value);
+                    li_idpresentacion = Convert.ToInt32(dgvsobrepeso.CurrentRow.Cells[2].Value);
+                    ldc_sobrepeso = Convert.ToDecimal(dgvsobrepeso.CurrentRow.Cells[7].Value);
+
+                    if (LPacking_calibre.Sobrepeso_Insert_update(li_idlote, ls_fecha_produccion, li_idcategoria, li_idpresentacion, ldc_sobrepeso))
+                    {
+                        MessageBox.Show("SE ACTUALIZO EL SOBREPESO", "Aviso...!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+        }
+
+        private void dgvsobrepeso_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvsobrepeso.Columns[7].Index)
+            {
+                int cantidad = Convert.ToInt32(dgvsobrepeso.Rows[e.RowIndex].Cells[6].Value);
+                decimal precio = Convert.ToDecimal(dgvsobrepeso.Rows[e.RowIndex].Cells[7].Value);
+
+                decimal total = cantidad * precio;
+                dgvsobrepeso.Rows[e.RowIndex].Cells[8].Value = total;
+            }
+        }
+
+        private void dgvsobrepeso_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvsobrepeso.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                if (e.ColumnIndex == 9)
+                {
+                    e.Value = "Aplicar";
+                }
+            }
         }
 
         private void cbxcliente_SelectedValueChanged(object sender, EventArgs e)
@@ -122,6 +204,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 }
 
                 Mostrar_detalle_resumen(ls_idcliente, li_idlote);
+                Mostrar_sobrepeso(li_idlote);
             }
         }
 
@@ -157,7 +240,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 //ldc_kilos_procesados += f.kilos;
             }
 
-            ldc_kilos_procesados = LPacking_calibre.Kilos_Proceso_x_fecha(dtpf_produccion.Value.ToString("yyyy-MM-dd"));
+            ldc_kilos_procesados = LPacking_calibre.Kilos_Proceso_x_fecha(dtpf_produccion.Value.ToString("yyyy-MM-dd"), li_idlote);
             tbxkilos_proceso.Text = ldc_kilos_procesados.ToString("###,##0.00");
 
             if (dgvpacking_calibre_cab.RowCount > 0 && dgvpacking_calibre_det.RowCount > 0)
@@ -426,29 +509,33 @@ namespace _3mpacador4.Presentacion.Reporte
             TTablaLista1.SetWidths(ancho2);
             TTablaLista1.WidthPercentage = 100;
 
-            foreach (DataGridViewRow ele in dgvpacking_calibre_cab.Rows)
+            //foreach (DataGridViewRow ele in dgvpacking_calibre_cab.Rows)
+            //{                
+            //}
+
+            if (dgvpacking_calibre_cab.SelectedRows.Count > 0)
             {
-                var fecha = new PdfPCell(new Paragraph(ele.Cells[6].Value.ToString(), fuente2));
+                var fecha = new PdfPCell(new Paragraph(dgvpacking_calibre_cab.CurrentRow.Cells[6].Value.ToString(), fuente2));
                 fecha.HorizontalAlignment = Element.ALIGN_CENTER;
 
-                var lote = new PdfPCell(new Paragraph(ele.Cells[9].Value.ToString(), fuente2));
+                var lote = new PdfPCell(new Paragraph(dgvpacking_calibre_cab.CurrentRow.Cells[9].Value.ToString(), fuente2));
                 lote.HorizontalAlignment = Element.ALIGN_CENTER;
 
-                var clp1 = new PdfPCell(new Paragraph(ele.Cells[7].Value.ToString(), fuente2));
+                var clp1 = new PdfPCell(new Paragraph(dgvpacking_calibre_cab.CurrentRow.Cells[7].Value.ToString(), fuente2));
                 clp1.HorizontalAlignment = Element.ALIGN_CENTER;
 
-                var num_guia = new PdfPCell(new Paragraph(ele.Cells[10].Value.ToString(), fuente2));
+                var num_guia = new PdfPCell(new Paragraph(dgvpacking_calibre_cab.CurrentRow.Cells[10].Value.ToString(), fuente2));
                 num_guia.HorizontalAlignment = Element.ALIGN_CENTER;
 
-                var cliente = new PdfPCell(new Paragraph(ele.Cells[14].Value.ToString(), fuente2));
+                var cliente = new PdfPCell(new Paragraph(dgvpacking_calibre_cab.CurrentRow.Cells[14].Value.ToString(), fuente2));
 
-                var cantidad = new PdfPCell(new Paragraph(ele.Cells[16].Value.ToString(), fuente2));
+                var cantidad = new PdfPCell(new Paragraph(dgvpacking_calibre_cab.CurrentRow.Cells[16].Value.ToString(), fuente2));
                 cantidad.HorizontalAlignment = Element.ALIGN_CENTER;
 
-                var kilos = new PdfPCell(new Paragraph(ele.Cells[19].Value.ToString(), fuente2));
+                var kilos = new PdfPCell(new Paragraph(dgvpacking_calibre_cab.CurrentRow.Cells[19].Value.ToString(), fuente2));
                 kilos.HorizontalAlignment = Element.ALIGN_RIGHT;
 
-                var prm_jabas = new PdfPCell(new Paragraph(ele.Cells[20].Value.ToString(), fuente2));
+                var prm_jabas = new PdfPCell(new Paragraph(dgvpacking_calibre_cab.CurrentRow.Cells[20].Value.ToString(), fuente2));
                 prm_jabas.HorizontalAlignment = Element.ALIGN_RIGHT;
 
 
@@ -460,7 +547,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 TTablaLista1.AddCell(new PdfPCell(cantidad));
                 TTablaLista1.AddCell(new PdfPCell(kilos));
                 TTablaLista1.AddCell(new PdfPCell(prm_jabas));
-            }           
+            }
 
             // TITULO TABLA03
             var TTabla03 = new PdfPTable(1);
@@ -909,8 +996,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
             public override void OnStartPage(PdfWriter writer, Document document)
             {
-                base.OnStartPage(writer, document);          
-
+                base.OnStartPage(writer, document); 
                 string pageText = "RESUMEN BALANCE DE MASA DE PRODUCCION";
 
                 // Crear una instancia de PdfContentByte para trabajar con el contenido de la página
@@ -928,6 +1014,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 canvas.ShowText(pageText);
                 canvas.EndText();
             }
+
             public override void OnEndPage(PdfWriter writer, Document document)
             {
                 base.OnEndPage(writer, document);
