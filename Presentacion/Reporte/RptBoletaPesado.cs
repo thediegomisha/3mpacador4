@@ -15,7 +15,7 @@ using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 using QuestPDF.Previewer;
-using QuestPDFTester;
+//using QuestPDFTester;
 using static QuestPDF.Helpers.Colors;
 using IContainer = QuestPDF.Infrastructure.IContainer;
 using Settings = _3mpacador4.Properties.Settings;
