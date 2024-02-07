@@ -49,14 +49,14 @@
             this.txtAMaterno = new System.Windows.Forms.TextBox();
             this.picFoto = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbusuario = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnBuscarDni = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.datalistado = new System.Windows.Forms.DataGridView();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbusuario = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.picFoto)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -224,6 +224,7 @@
             this.picFoto.Location = new System.Drawing.Point(12, 12);
             this.picFoto.Name = "picFoto";
             this.picFoto.Size = new System.Drawing.Size(193, 196);
+            this.picFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picFoto.TabIndex = 22;
             this.picFoto.TabStop = false;
             // 
@@ -249,6 +250,27 @@
             this.panel1.Size = new System.Drawing.Size(573, 196);
             this.panel1.TabIndex = 23;
             // 
+            // cbusuario
+            // 
+            this.cbusuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbusuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbusuario.FormattingEnabled = true;
+            this.cbusuario.Location = new System.Drawing.Point(217, 115);
+            this.cbusuario.Name = "cbusuario";
+            this.cbusuario.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cbusuario.Size = new System.Drawing.Size(121, 23);
+            this.cbusuario.TabIndex = 27;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(217, 97);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(119, 16);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Tipo de Usuario";
+            // 
             // btnBuscarDni
             // 
             this.btnBuscarDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -273,9 +295,9 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.datalistado);
-            this.panel2.Location = new System.Drawing.Point(12, 268);
+            this.panel2.Location = new System.Drawing.Point(6, 268);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(773, 257);
+            this.panel2.Size = new System.Drawing.Size(779, 257);
             this.panel2.TabIndex = 24;
             // 
             // datalistado
@@ -307,7 +329,7 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.datalistado.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datalistado.Size = new System.Drawing.Size(773, 257);
+            this.datalistado.Size = new System.Drawing.Size(779, 257);
             this.datalistado.TabIndex = 1;
             // 
             // Editar
@@ -329,27 +351,6 @@
             this.Eliminar.ReadOnly = true;
             this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Eliminar.Width = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(217, 97);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 16);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "Tipo de Usuario";
-            // 
-            // cbusuario
-            // 
-            this.cbusuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbusuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbusuario.FormattingEnabled = true;
-            this.cbusuario.Location = new System.Drawing.Point(217, 115);
-            this.cbusuario.Name = "cbusuario";
-            this.cbusuario.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cbusuario.Size = new System.Drawing.Size(121, 23);
-            this.cbusuario.TabIndex = 27;
             // 
             // frmUsuarios
             // 

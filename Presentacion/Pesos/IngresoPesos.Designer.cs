@@ -1056,6 +1056,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.IngresoPesos_Load);
+            this.Shown += new System.EventHandler(this.IngresoPesos_Shown);
             this.GroupBox3.ResumeLayout(false);
             this.GroupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

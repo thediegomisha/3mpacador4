@@ -157,10 +157,10 @@ namespace _3mpacador4
             timer1.Start();
             // temporizador();
             txtPesoManual.Visible = false;
-            titulosjavasvisible();
-            mostrarLote();
             RecuperaCorrelativo();
-            //    pictureBoxEspera.Visible = false;
+            titulosjavasvisible();
+           // mostrarLote();
+           
         }
 
         private void cbMetodoCultivo_DropDownClosed(object sender, EventArgs e)
@@ -1398,6 +1398,11 @@ namespace _3mpacador4
             {
                 Interaction.MsgBox("Error " + "Error " + ex.Message, Constants.vbCritical);
             }
+        }
+
+        private void IngresoPesos_Shown(object sender, EventArgs e)
+        {
+           mostrarLote();
         }
 
         private void button1_Click(object sender, EventArgs e)
