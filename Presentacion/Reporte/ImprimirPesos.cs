@@ -71,7 +71,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            // impresora_termico();
+             // impresora_termico();
             GenerarPDF2();
         }
 
@@ -182,31 +182,54 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 col.Item().Row(row =>
                 {
-                    row.RelativeItem().AlignLeft()
-                        .Row(rowitem =>
-                        {
-                            rowitem.AutoItem().Width(120).Height(50).Image(LogoPath);
-                            rowitem.AutoItem().AlignLeft().Text("RECEPCION").SemiBold().FontSize(28)
-                                .FontColor(Colors.Blue.Medium);
-
-                        });
-                    //    col.Spacing(10);
-                    //col.Item().Table(table =>
-                    //{
-                    //    table.ColumnsDefinition(columns =>
+                    //row.RelativeItem().AlignLeft()
+                    //    .Row(rowitem =>
                     //    {
-                    //  //      columns.RelativeColumn();
-                    //        columns.RelativeColumn();
+                    //        rowitem.AutoItem().Width(120).Height(50).Image(LogoPath);
+                    //        rowitem.AutoItem().AlignLeft().Text("RECEPCION").SemiBold().FontSize(28)
+                    //            .FontColor(Colors.Blue.Medium);
+
                     //    });
-                    //    table.Cell().AlignLeft().Text("RECEPCION").SemiBold().FontSize(18)
-                    //        .FontColor(Colors.Blue.Medium);
-                    //    //table.Cell().AlignLeft().Text("  " + lblnumlote.Text).SemiBold().FontSize(18)
-                    //    //    .FontColor(Colors.Black);
-                    // //   col.Spacing(10);
-                    //    //col.Item().AlignCenter().Text("Boleta de Pesado - Lote N° ")
-                    //    //    .SemiBold().FontSize(18).FontColor(Colors.Orange.Medium);
-                    //    //col.Spacing(10);
-                    //});
+
+
+                    row.RelativeItem().AlignRight().Width(250).Height(65)
+                       .Row(rowitem =>
+                        {
+                         //   rowitem.AutoItem().Width(65).Height(65).Image(QRCodeGenerator.GenerateQRCodeBytes("https://laptrinhvb.net/bai-viet/chuyen-de-csharp/---Csharp----Huong-dan-tao-ung-dung-dock-windows-giong-Taskbar/2f0a9a79ff1bafd4.html", 170, 170));
+
+
+                            rowitem.AutoItem().Container().Width(4);
+                            rowitem.RelativeItem().Border(0.5f).Padding(2).Column(column =>
+                            {
+                                column.Item().Container().Height(2);
+                                column.Item().Row(row2 =>
+                                {
+                                    row2.Spacing(12);
+                                    row2.AutoItem().Text($"123: LAPTRINHVB-03-BCT/02").FontSize(9).Italic();
+
+                                });
+                                column.Item().Row(row2 =>
+                                {
+                                    row2.Spacing(12);
+                                    row2.AutoItem().Text($"123: 21/11/2023").FontSize(9).Italic();
+
+                                });
+                                column.Item().Row(row2 =>
+                                {
+                                    row2.Spacing(12);
+                                    row2.AutoItem().Text($"123: 22/03/2023").FontSize(9).Italic();
+
+                                });
+                                column.Item().Row(row2 =>
+                                {
+                                    row2.Spacing(5);
+                                    row2.AutoItem().Text($"123: 01").FontSize(9).Italic();
+
+                                });
+
+                            });
+                        });
+
                 });
                 col.Item().Table(table =>
                 {
@@ -239,7 +262,6 @@ namespace _3mpacador4.Presentacion.Reporte
                 });
             });
         }
-
 
         void CrearContenido(IContainer container)
         {

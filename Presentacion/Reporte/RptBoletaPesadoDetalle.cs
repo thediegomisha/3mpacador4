@@ -299,6 +299,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 contenedor.Page(pagina =>
                 {
                     pagina.Size(PageSizes.A4);
+                    pagina.Size(PageSizes.A4.Portrait());
                     pagina.Margin(2, QuestPDF.Infrastructure.Unit.Millimetre);
                     pagina.DefaultTextStyle(x => x.FontSize(14));
 
