@@ -343,7 +343,9 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                     MessageBox.Show("COLABORADOR NO REGISTRADO. \n" + ex.Message, @"ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     throw;
                 }
+/*
                 editar = false;
+*/
             }
         }
 

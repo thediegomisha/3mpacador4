@@ -63,7 +63,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.lblnumlote = new System.Windows.Forms.Label();
-            this.BtnExportar = new System.Windows.Forms.Button();
+            this.BtnImprimir = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
             this.SuspendLayout();
@@ -424,22 +424,22 @@
             this.lblnumlote.Text = "000";
             this.lblnumlote.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // BtnExportar
+            // BtnImprimir
             // 
-            this.BtnExportar.Location = new System.Drawing.Point(545, 4);
-            this.BtnExportar.Name = "BtnExportar";
-            this.BtnExportar.Size = new System.Drawing.Size(93, 29);
-            this.BtnExportar.TabIndex = 72;
-            this.BtnExportar.Text = "button1";
-            this.BtnExportar.UseVisualStyleBackColor = true;
-            this.BtnExportar.Click += new System.EventHandler(this.BtnExportar_Click);
+            this.BtnImprimir.Location = new System.Drawing.Point(545, 4);
+            this.BtnImprimir.Name = "BtnImprimir";
+            this.BtnImprimir.Size = new System.Drawing.Size(93, 29);
+            this.BtnImprimir.TabIndex = 72;
+            this.BtnImprimir.Text = "Imprimir";
+            this.BtnImprimir.UseVisualStyleBackColor = true;
+            this.BtnImprimir.Click += new System.EventHandler(this.BtnExportar_Click);
             // 
             // RptBoletaPesadoDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(737, 624);
-            this.Controls.Add(this.BtnExportar);
+            this.Controls.Add(this.BtnImprimir);
             this.Controls.Add(this.lblcantjabas);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.LBLCONTAR);
@@ -525,6 +525,6 @@
         internal System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label lblnumlote;
-        private System.Windows.Forms.Button BtnExportar;
+        private System.Windows.Forms.Button BtnImprimir;
     }
 }

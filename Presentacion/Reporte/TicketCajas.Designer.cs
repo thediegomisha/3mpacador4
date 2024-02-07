@@ -81,6 +81,18 @@
             this.btnsalir = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.CODPLAN = new System.Windows.Forms.Label();
+            this.CODCAM = new System.Windows.Forms.Label();
+            this.CODFRUT = new System.Windows.Forms.Label();
+            this.CODPROD = new System.Windows.Forms.Label();
+            this.CODCLI = new System.Windows.Forms.Label();
+            this.CODJUL = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -340,11 +352,11 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Maiandra GD", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(256, 9);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(195, 22);
+            this.label12.Size = new System.Drawing.Size(200, 24);
             this.label12.TabIndex = 38;
             this.label12.Text = "IMPRESION TICKET";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -533,7 +545,7 @@
             // CodCliente
             // 
             this.CodCliente.AutoSize = true;
-            this.CodCliente.BackColor = System.Drawing.Color.Black;
+            this.CodCliente.BackColor = System.Drawing.Color.Red;
             this.CodCliente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CodCliente.ForeColor = System.Drawing.Color.White;
             this.CodCliente.Location = new System.Drawing.Point(502, 334);
@@ -546,7 +558,7 @@
             // CodProductor
             // 
             this.CodProductor.AutoSize = true;
-            this.CodProductor.BackColor = System.Drawing.Color.Black;
+            this.CodProductor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.CodProductor.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CodProductor.ForeColor = System.Drawing.Color.White;
             this.CodProductor.Location = new System.Drawing.Point(608, 334);
@@ -559,7 +571,7 @@
             // CodPalta
             // 
             this.CodPalta.AutoSize = true;
-            this.CodPalta.BackColor = System.Drawing.Color.Black;
+            this.CodPalta.BackColor = System.Drawing.Color.Blue;
             this.CodPalta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CodPalta.ForeColor = System.Drawing.Color.White;
             this.CodPalta.Location = new System.Drawing.Point(526, 334);
@@ -572,7 +584,7 @@
             // CodCamion
             // 
             this.CodCamion.AutoSize = true;
-            this.CodCamion.BackColor = System.Drawing.Color.Black;
+            this.CodCamion.BackColor = System.Drawing.Color.IndianRed;
             this.CodCamion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CodCamion.ForeColor = System.Drawing.Color.White;
             this.CodCamion.Location = new System.Drawing.Point(550, 334);
@@ -585,7 +597,7 @@
             // codPacking
             // 
             this.codPacking.AutoSize = true;
-            this.codPacking.BackColor = System.Drawing.Color.Black;
+            this.codPacking.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.codPacking.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.codPacking.ForeColor = System.Drawing.Color.White;
             this.codPacking.Location = new System.Drawing.Point(583, 334);
@@ -642,7 +654,6 @@
             // 
             // pictureBox1
             // 
-            //this.pictureBox1.Image = global::_3mpacador4.Properties.Resources.ticketagricola2;
             this.pictureBox1.Location = new System.Drawing.Point(451, 64);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox1.Name = "pictureBox1";
@@ -688,11 +699,167 @@
             this.label15.TabIndex = 100;
             this.label15.Text = "10";
             // 
+            // CODPLAN
+            // 
+            this.CODPLAN.AutoSize = true;
+            this.CODPLAN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.CODPLAN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CODPLAN.ForeColor = System.Drawing.Color.White;
+            this.CODPLAN.Location = new System.Drawing.Point(29, 492);
+            this.CODPLAN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CODPLAN.Name = "CODPLAN";
+            this.CODPLAN.Size = new System.Drawing.Size(28, 21);
+            this.CODPLAN.TabIndex = 106;
+            this.CODPLAN.Text = "00";
+            // 
+            // CODCAM
+            // 
+            this.CODCAM.AutoSize = true;
+            this.CODCAM.BackColor = System.Drawing.Color.IndianRed;
+            this.CODCAM.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CODCAM.ForeColor = System.Drawing.Color.White;
+            this.CODCAM.Location = new System.Drawing.Point(29, 471);
+            this.CODCAM.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CODCAM.Name = "CODCAM";
+            this.CODCAM.Size = new System.Drawing.Size(37, 21);
+            this.CODCAM.TabIndex = 105;
+            this.CODCAM.Text = "000";
+            // 
+            // CODFRUT
+            // 
+            this.CODFRUT.AutoSize = true;
+            this.CODFRUT.BackColor = System.Drawing.Color.Blue;
+            this.CODFRUT.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CODFRUT.ForeColor = System.Drawing.Color.White;
+            this.CODFRUT.Location = new System.Drawing.Point(29, 450);
+            this.CODFRUT.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CODFRUT.Name = "CODFRUT";
+            this.CODFRUT.Size = new System.Drawing.Size(28, 21);
+            this.CODFRUT.TabIndex = 104;
+            this.CODFRUT.Text = "00";
+            // 
+            // CODPROD
+            // 
+            this.CODPROD.AutoSize = true;
+            this.CODPROD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.CODPROD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CODPROD.ForeColor = System.Drawing.Color.White;
+            this.CODPROD.Location = new System.Drawing.Point(29, 513);
+            this.CODPROD.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CODPROD.Name = "CODPROD";
+            this.CODPROD.Size = new System.Drawing.Size(37, 21);
+            this.CODPROD.TabIndex = 103;
+            this.CODPROD.Text = "000";
+            // 
+            // CODCLI
+            // 
+            this.CODCLI.AutoSize = true;
+            this.CODCLI.BackColor = System.Drawing.Color.Red;
+            this.CODCLI.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CODCLI.ForeColor = System.Drawing.Color.White;
+            this.CODCLI.Location = new System.Drawing.Point(29, 429);
+            this.CODCLI.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CODCLI.Name = "CODCLI";
+            this.CODCLI.Size = new System.Drawing.Size(28, 21);
+            this.CODCLI.TabIndex = 102;
+            this.CODCLI.Text = "00";
+            // 
+            // CODJUL
+            // 
+            this.CODJUL.AutoSize = true;
+            this.CODJUL.BackColor = System.Drawing.Color.Black;
+            this.CODJUL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CODJUL.ForeColor = System.Drawing.Color.White;
+            this.CODJUL.Location = new System.Drawing.Point(29, 408);
+            this.CODJUL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CODJUL.Name = "CODJUL";
+            this.CODJUL.Size = new System.Drawing.Size(37, 21);
+            this.CODJUL.TabIndex = 101;
+            this.CODJUL.Text = "JUL";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(106, 411);
+            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(111, 17);
+            this.label30.TabIndex = 107;
+            this.label30.Text = "DIAS EN JULIANO";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(103, 496);
+            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(123, 17);
+            this.label31.TabIndex = 108;
+            this.label31.Text = "COD EMPACADORA";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(103, 517);
+            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(114, 17);
+            this.label32.TabIndex = 109;
+            this.label32.Text = "COD PRODUCTOR";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(106, 475);
+            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(94, 17);
+            this.label33.TabIndex = 111;
+            this.label33.Text = "NUM CAMION";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(106, 453);
+            this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(78, 17);
+            this.label34.TabIndex = 110;
+            this.label34.Text = "COD FRUTO";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Location = new System.Drawing.Point(105, 433);
+            this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(87, 17);
+            this.label35.TabIndex = 112;
+            this.label35.Text = "COD CLIENTE";
+            // 
             // TicketCajas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(907, 532);
+            this.ClientSize = new System.Drawing.Size(907, 554);
+            this.Controls.Add(this.label35);
+            this.Controls.Add(this.label33);
+            this.Controls.Add(this.label34);
+            this.Controls.Add(this.label32);
+            this.Controls.Add(this.label31);
+            this.Controls.Add(this.label30);
+            this.Controls.Add(this.CODPLAN);
+            this.Controls.Add(this.CODCAM);
+            this.Controls.Add(this.CODFRUT);
+            this.Controls.Add(this.CODPROD);
+            this.Controls.Add(this.CODCLI);
+            this.Controls.Add(this.CODJUL);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.btnsalir);
@@ -810,5 +977,17 @@
         private System.Windows.Forms.Button btnsalir;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label CODPLAN;
+        private System.Windows.Forms.Label CODCAM;
+        private System.Windows.Forms.Label CODFRUT;
+        private System.Windows.Forms.Label CODPROD;
+        private System.Windows.Forms.Label CODCLI;
+        private System.Windows.Forms.Label CODJUL;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label35;
     }
 }

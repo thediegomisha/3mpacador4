@@ -64,7 +64,7 @@
             this.lblcantjabas = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
             this.SuspendLayout();
@@ -314,7 +314,7 @@
             this.panel1.Controls.Add(this.datalistado);
             this.panel1.Location = new System.Drawing.Point(22, 235);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(995, 346);
+            this.panel1.Size = new System.Drawing.Size(821, 346);
             this.panel1.TabIndex = 37;
             // 
             // datalistado
@@ -326,32 +326,33 @@
             this.datalistado.Location = new System.Drawing.Point(0, 0);
             this.datalistado.Name = "datalistado";
             this.datalistado.ReadOnly = true;
-            this.datalistado.Size = new System.Drawing.Size(995, 346);
+            this.datalistado.Size = new System.Drawing.Size(821, 346);
             this.datalistado.TabIndex = 0;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(256, 9);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(29, 10);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(348, 24);
+            this.label12.Size = new System.Drawing.Size(434, 29);
             this.label12.TabIndex = 38;
             this.label12.Text = "BOLETA DE PESADO LOTE / OPR :";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // txtnumlote
             // 
-            this.txtnumlote.Location = new System.Drawing.Point(611, 10);
+            this.txtnumlote.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnumlote.Location = new System.Drawing.Point(470, 10);
             this.txtnumlote.Name = "txtnumlote";
-            this.txtnumlote.Size = new System.Drawing.Size(100, 20);
+            this.txtnumlote.Size = new System.Drawing.Size(100, 29);
             this.txtnumlote.TabIndex = 39;
             this.txtnumlote.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnumlote_KeyPress);
             // 
             // BtnBuscar
             // 
-            this.BtnBuscar.Location = new System.Drawing.Point(720, 7);
+            this.BtnBuscar.Location = new System.Drawing.Point(587, 16);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(75, 23);
             this.BtnBuscar.TabIndex = 40;
@@ -363,7 +364,7 @@
             // 
             this.totalneto.AutoSize = true;
             this.totalneto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalneto.Location = new System.Drawing.Point(740, 600);
+            this.totalneto.Location = new System.Drawing.Point(551, 600);
             this.totalneto.Name = "totalneto";
             this.totalneto.Size = new System.Drawing.Size(19, 20);
             this.totalneto.TabIndex = 66;
@@ -373,7 +374,7 @@
             // 
             this.Label15.AutoSize = true;
             this.Label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label15.Location = new System.Drawing.Point(741, 584);
+            this.Label15.Location = new System.Drawing.Point(552, 584);
             this.Label15.Name = "Label15";
             this.Label15.Size = new System.Drawing.Size(73, 15);
             this.Label15.TabIndex = 67;
@@ -383,7 +384,7 @@
             // 
             this.LBLCONTAR.AutoSize = true;
             this.LBLCONTAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBLCONTAR.Location = new System.Drawing.Point(225, 600);
+            this.LBLCONTAR.Location = new System.Drawing.Point(36, 600);
             this.LBLCONTAR.Name = "LBLCONTAR";
             this.LBLCONTAR.Size = new System.Drawing.Size(19, 20);
             this.LBLCONTAR.TabIndex = 68;
@@ -393,7 +394,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(226, 584);
+            this.label14.Location = new System.Drawing.Point(37, 584);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(84, 15);
             this.label14.TabIndex = 69;
@@ -403,7 +404,7 @@
             // 
             this.lblcantjabas.AutoSize = true;
             this.lblcantjabas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcantjabas.Location = new System.Drawing.Point(494, 600);
+            this.lblcantjabas.Location = new System.Drawing.Point(305, 600);
             this.lblcantjabas.Name = "lblcantjabas";
             this.lblcantjabas.Size = new System.Drawing.Size(19, 20);
             this.lblcantjabas.TabIndex = 70;
@@ -413,7 +414,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(495, 584);
+            this.label17.Location = new System.Drawing.Point(306, 584);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(78, 15);
             this.label17.TabIndex = 71;
@@ -421,7 +422,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(930, 48);
+            this.button1.Location = new System.Drawing.Point(673, 16);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 72;
@@ -429,24 +430,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label16
+            // btnImprimir
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(386, 193);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(72, 24);
-            this.label16.TabIndex = 73;
-            this.label16.Text = "005-24";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnImprimir.Location = new System.Drawing.Point(754, 16);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(75, 23);
+            this.btnImprimir.TabIndex = 73;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // RptBoletaPesado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1029, 624);
-            this.Controls.Add(this.label16);
+            this.ClientSize = new System.Drawing.Size(864, 624);
+            this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblcantjabas);
             this.Controls.Add(this.label17);
@@ -529,6 +528,6 @@
         internal System.Windows.Forms.Label lblcantjabas;
         internal System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }

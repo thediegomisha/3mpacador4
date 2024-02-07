@@ -81,7 +81,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 String fechaaño = Settings.Default.periodo.ToString();
                 String[] partes = fechaaño.Split(' ')[0].Split('/');
                 String año = partes[2];
-                comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Text).Value = año;
+                comando.Parameters.AddWithValue("p_fechaanio", MySqlType.VarChar).Value = año;
 
 
                 var adaptador = new MySqlDataAdapter(comando);
@@ -91,14 +91,20 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 {
                     if (datos != null && datos.Rows.Count > 0)
                     {
-                        var dr = datos.NewRow();
-                        txtnumlote.Text = datos.Rows[0]["siguienteregistro"].ToString();
+                        //  var dr = datos.NewRow();
+                        txtnumlote.Text = datos.Rows[0]["siguienteRegistro"].ToString();
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Construye un mensaje detallado incluyendo el tipo de excepción y la pila de llamadas.
+                string errorMessage = $"Se ha producido un error: {ex.GetType().Name}\n\n";
+                errorMessage += $"Mensaje de error: {ex.Message}\n\n";
+                errorMessage += $"Detalles del error:\n{ex.StackTrace}";
+
+                // Muestra el mensaje detallado en el cuadro de diálogo.
+                MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

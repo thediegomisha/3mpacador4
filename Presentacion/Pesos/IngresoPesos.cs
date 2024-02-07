@@ -95,14 +95,33 @@ namespace _3mpacador4
 
         private void btnguardar_Click(object sender, EventArgs e)
         {
-            borrarmensajeerror();
-            if (validarcampos())
+            try
             {
-                InsertarRegistro();
-                mostrarconsulta();
-                txtPesoManual.Focus();
-                txtPesoManual.Text = string.Empty;
+                borrarmensajeerror();
+                if (validarcampos())
+                {
+                    
+                    if (chkPesoManual.Checked == false || chkPesoManual.Checked ==true && txtPesoManual .Text != null )
+                    {
+                        InsertarRegistro();
+                        mostrarconsulta();
+                        txtPesoManual.Focus();
+                        txtPesoManual.Text = string.Empty;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error en btnguardar_Click - ", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                }
             }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
+          
         }
 
         public void titulosjavasvisible()
@@ -138,10 +157,10 @@ namespace _3mpacador4
             timer1.Start();
             // temporizador();
             txtPesoManual.Visible = false;
-            titulosjavasvisible();
-            mostrarLote();
             RecuperaCorrelativo();
-            //    pictureBoxEspera.Visible = false;
+            titulosjavasvisible();
+           // mostrarLote();
+           
         }
 
         private void cbMetodoCultivo_DropDownClosed(object sender, EventArgs e)
@@ -210,7 +229,7 @@ namespace _3mpacador4
                 if (!string.IsNullOrEmpty(TextoForm))
                 {
                     POSICION_INICIAL = Strings.InStr(TextoForm, PUNTO).ToString();
-                    stringinicio = Strings.Mid(TextoForm, (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 7d), 13);
+                    stringinicio = Strings.Mid(TextoForm, (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 7d), 14);
 
 
                     if (stringinicio.StartsWith(w))
@@ -221,7 +240,7 @@ namespace _3mpacador4
                         if (textoini == w + n + cero)
                         {
                             mostrarcaracter = Strings.Mid(TextoForm,
-                                (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 11d), 8);
+                                (int)Math.Round(Convert.ToDouble(POSICION_INICIAL) + 10d), 7);
                             lblpeso.Text =
                                 Strings.FormatNumber(Conversion.Val(mostrarcaracter.Replace("+", " ")),
                                     2); // funcion REPLACE, REEMPLAZA EL SIGNO + POR UN ESPACIO EN BLANCO 05/12/19
@@ -373,13 +392,15 @@ namespace _3mpacador4
             }
         }
 
+
         private void mostrarproductor()
         {
             MySqlCommand comando = null;
-            //  MostrarAnimacionEspera();
+
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+                if (ConexionGral.conexion.State == ConnectionState.Closed)
+                    ConexionGral.conectar();
 
                 comando = new MySqlCommand("usp_tblproductor_Select", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
@@ -388,43 +409,23 @@ namespace _3mpacador4
                 var datos = new DataTable();
                 adaptador.Fill(datos);
 
+                var withBlock = cbProductor;
+                withBlock.ForeColor = SystemColors.ControlText; 
+                if (datos != null && datos.Rows.Count > 0)
                 {
-                    var withBlock = cbProductor;
-                    if (datos != null && datos.Rows.Count > 0)
-                    {
-                        var dr = datos.NewRow();
-                        dr["clp"] = 0;
-                        dr["RAZON SOCIAL"] = "Nuevo ...";
-                        datos.Rows.InsertAt(dr, 0);
+                    var dr = datos.NewRow();
+                    dr["clp"] = 0;
+                    dr["RAZON SOCIAL"] = "Nuevo ...";
+                    datos.Rows.InsertAt(dr, 0);
 
-
-                        withBlock.DataSource = datos;
-                        withBlock.DisplayMember = "RAZON SOCIAL";
-                        withBlock.ValueMember = "clp";
-                        withBlock.SelectedIndex = -1;
-
-                        foreach (DataRow row in datos.Rows)
-                         {
-                            DateTime fechaVencimiento = Convert.ToDateTime(row["ffincertificado"]);
-                            if (fechaVencimiento < DateTime.Today)
-                            {
-                                cbProductor.ForeColor = Color.Red; // Cambia el color del texto del ComboBox
-                                break; // Termina el bucle tan pronto como encuentre una fecha vencida
-                            }
-                            else
-                            {
-                                cbProductor.ForeColor = SystemColors.ControlText; // Color de texto predeterminado
-                            }
-                        }
-
-
-
-                        //   poblarPais();
-                    }
-                    else
-                    {
-                        withBlock.DataSource = null;
-                    }
+                    withBlock.DataSource = datos;
+                    withBlock.DisplayMember = "RAZON SOCIAL";
+                    withBlock.ValueMember = "clp";
+                    withBlock.SelectedIndex = -1;
+                }
+                else
+                {
+                    withBlock.DataSource = null;
                 }
             }
             catch (Exception ex)
@@ -436,6 +437,157 @@ namespace _3mpacador4
                 ConexionGral.desconectar();
             }
         }
+
+        //private void mostrarproductor()
+        //{
+        //    MySqlCommand comando = null;
+
+        //    try
+        //    {
+        //        if (ConexionGral.conexion.State == ConnectionState.Closed)
+        //            ConexionGral.conectar();
+
+        //        comando = new MySqlCommand("usp_tblproductor_Select", ConexionGral.conexion);
+        //        comando.CommandType = (CommandType)4;
+
+        //        var adaptador = new MySqlDataAdapter(comando);
+        //        var datos = new DataTable();
+        //        adaptador.Fill(datos);
+
+        //        var withBlock = cbProductor;
+        //        bool algunaFechaVencida = false;
+
+        //        foreach (DataRow row in datos.Rows)
+        //        {
+        //            object fechaCertificado = row["ffincertificado"];
+
+        //            if (fechaCertificado != DBNull.Value)
+        //            {
+        //                DateTime fechaVencimiento = Convert.ToDateTime(fechaCertificado);
+
+        //                // Si alguna fecha está vencida, marca la bandera
+        //                if (fechaVencimiento < DateTime.Today)
+        //                {
+        //                    algunaFechaVencida = true;
+        //                    break; // Sal del bucle, ya que encontraste una fecha vencida
+        //                }
+        //            }
+        //        }
+
+        //        // Establece el color del ComboBox basado en si alguna fecha está vencida
+        //        if (algunaFechaVencida)
+        //        {
+        //            withBlock.ForeColor = Color.Red; // Cambia el color del texto del ComboBox a rojo
+        //        }
+        //        else
+        //        {
+        //            withBlock.ForeColor = SystemColors.ControlText; // Color de texto predeterminado si no hay fechas vencidas
+        //        }
+
+        //        // Configura los datos del ComboBox
+        //        if (datos != null && datos.Rows.Count > 0)
+        //        {
+        //            var dr = datos.NewRow();
+        //            dr["clp"] = 0;
+        //            dr["RAZON SOCIAL"] = "Nuevo ...";
+        //            datos.Rows.InsertAt(dr, 0);
+
+        //            withBlock.DataSource = datos;
+        //            withBlock.DisplayMember = "RAZON SOCIAL";
+        //            withBlock.ValueMember = "clp";
+        //            withBlock.SelectedIndex = -1;
+        //        }
+        //        else
+        //        {
+        //            withBlock.DataSource = null;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    finally
+        //    {
+        //        ConexionGral.desconectar();
+        //    }
+        //}
+
+
+        //private void mostrarproductor()
+        //{
+        //    MySqlCommand comando = null;
+        //    //  MostrarAnimacionEspera();
+        //    try
+        //    {
+        //        if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+
+        //        comando = new MySqlCommand("usp_tblproductor_Select", ConexionGral.conexion);
+        //        comando.CommandType = (CommandType)4;
+
+        //        var adaptador = new MySqlDataAdapter(comando);
+        //        var datos = new DataTable();
+        //        adaptador.Fill(datos);
+
+        //        {
+        //            var withBlock = cbProductor;
+        //            if (datos != null && datos.Rows.Count > 0)
+        //            {
+        //                var dr = datos.NewRow();
+        //                dr["clp"] = 0;
+        //                dr["RAZON SOCIAL"] = "Nuevo ...";
+        //                datos.Rows.InsertAt(dr, 0);
+
+
+        //                withBlock.DataSource = datos;
+        //                withBlock.DisplayMember = "RAZON SOCIAL";
+        //                withBlock.ValueMember = "clp";
+        //                withBlock.SelectedIndex = -1;
+
+        //                bool algunaFechaVencida = false; 
+        //                foreach (DataRow row in datos.Rows)
+        //                {
+        //                    object fechaCertificado = row["ffincertificado"];
+
+        //                    //   DateTime fechaVencimiento;
+
+        //                    if (fechaCertificado != DBNull.Value)
+        //                    {
+        //                        DateTime fechaVencimiento = Convert.ToDateTime(fechaCertificado);
+
+        //                        if (fechaVencimiento < DateTime.Today)
+        //                        {
+        //                            algunaFechaVencida = true; // Hay al menos una fecha vencida
+        //                            break; // Termina el bucle tan pronto como encuentre una fecha vencida
+        //                        }
+        //                    }
+        //                }
+
+        //                // Establecer el color del ComboBox después de evaluar todas las fechas
+        //                if (algunaFechaVencida)
+        //                {
+        //                    cbProductor.ForeColor = Color.Red; // Cambia el color del texto del ComboBox a rojo
+        //                }
+        //                else
+        //                {
+        //                    cbProductor.ForeColor = SystemColors.ControlText; // Color de texto predeterminado si no hay fechas vencidas
+        //                }
+
+        //            }
+        //            else
+        //            {
+        //                withBlock.DataSource = null;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    finally
+        //    {
+        //        ConexionGral.desconectar();
+        //    }
+        //}
 
 
         private void mostrarclientes()
@@ -642,7 +794,15 @@ namespace _3mpacador4
                 {
                     ConexionGral.conectar();
                 }
-                comando = new MySqlCommand("usp_cuentaCorrelativoTicketPesaje", ConexionGral.conexion);
+
+                if (lblcorrelativo.Text != null || Convert.ToInt32(lblcorrelativo.Text) > 0)
+                {
+                    comando = new MySqlCommand("usp_cuentaCorrelativoTicketPesaje", ConexionGral.conexion);
+                }
+                else
+                {
+                    comando = new MySqlCommand("usp_cuentaCorrelativoTicketPesaje", ConexionGral.conexion);
+                }
                 comando.CommandType = CommandType.StoredProcedure;
                 {
                     correlativo = Convert.ToInt32(comando.ExecuteScalar()) + 1;
@@ -671,8 +831,7 @@ namespace _3mpacador4
                     //combo += - 1;
                     //label4 .Text = combo.ToString();
 
-
-                    if (cboLote.Text == "Nuevo ...")
+                    if (cboLote.Text == @"Nuevo ...")
                     {
                         var form = new frmLote();
                         form.ShowDialog();
@@ -971,7 +1130,15 @@ namespace _3mpacador4
             float taraparihuela = 0;
             float pesobruto = 0;
             float pesobrutoManual = 0;
-            txtPesoManual.Text = "0.0";
+            if (txtPesoManual != null)
+            {
+                txtPesoManual.ToString();
+            }
+            else
+            {
+                txtPesoManual.Text = "0";
+            }
+          
 
             try
             {
@@ -984,112 +1151,120 @@ namespace _3mpacador4
                  pesobruto = float.Parse(lblpeso.Text);
                  pesobrutoManual = float.Parse(txtPesoManual.Text);
 
+                 if (cboLote.SelectedItem != null)
+                {
+                    comando.Parameters.AddWithValue("p_numdoc", lblcorrelativo.Text);
+                    comando.Parameters.AddWithValue("p_horallegada", DateTime.Now);
+                    comando.Parameters.AddWithValue("p_horapesaje", DateTime.Now);
+                    comando.Parameters.AddWithValue("p_fecha_ticket", Convert.ToDateTime(fpesaje.Text));
+                    comando.Parameters.AddWithValue("p_idmetodocultivo", MySqlType.Int).Value =
+                        cbMetodoCultivo.GetItemText(cbMetodoCultivo.SelectedValue);
+                    comando.Parameters.AddWithValue("p_idtiposervicio", MySqlType.Int).Value =
+                        cbTipoServicio.GetItemText(cbTipoServicio.SelectedValue);
+                    comando.Parameters.AddWithValue("p_idproducto", MySqlType.Int).Value =
+                        cbProducto.GetItemText(cbProducto.SelectedValue);
+                    comando.Parameters.AddWithValue("p_idlote", MySqlType.Int).Value =
+                        cboLote.GetItemText(cboLote.SelectedValue.ToString());
+                    comando.Parameters.AddWithValue("p_idvariedad", MySqlType.Int).Value =
+                        cbvariedad.GetItemText(cbvariedad.SelectedValue);
+                    comando.Parameters.AddWithValue("p_idcliente", MySqlType.Int).Value = label12.Text;
+                    comando.Parameters.AddWithValue("p_idacopiador", MySqlType.Int).Value = label35.Text;
 
-                comando.Parameters.AddWithValue("p_numdoc", lblcorrelativo.Text);
-                comando.Parameters.AddWithValue("p_horallegada", DateTime.Now);
-                comando.Parameters.AddWithValue("p_horapesaje", DateTime.Now);
-                comando.Parameters.AddWithValue("p_fecha_ticket", Convert.ToDateTime(fpesaje.Text));
-                comando.Parameters.AddWithValue("p_idmetodocultivo", MySqlType.Int).Value =
-                    cbMetodoCultivo.GetItemText(cbMetodoCultivo.SelectedValue);
-                comando.Parameters.AddWithValue("p_idtiposervicio", MySqlType.Int).Value =
-                    cbTipoServicio.GetItemText(cbTipoServicio.SelectedValue);
-                comando.Parameters.AddWithValue("p_idproducto", MySqlType.Int).Value =
-                    cbProducto.GetItemText(cbProducto.SelectedValue);
-                comando.Parameters.AddWithValue("p_idlote", MySqlType.Int).Value =
-                    cboLote.GetItemText(cboLote.SelectedValue.ToString());
-                comando.Parameters.AddWithValue("p_idvariedad", MySqlType.Int).Value =
-                    cbvariedad.GetItemText(cbvariedad.SelectedValue);
-                comando.Parameters.AddWithValue("p_idcliente", MySqlType.Int).Value = label12.Text;
-                comando.Parameters.AddWithValue("p_idacopiador", MySqlType.Int).Value = label35.Text;
-
-                if (txtGuiaRemision.Text == string.Empty)
-                {
-                    MessageBox.Show(@"Error, Tiene que Ingresar el Numero de Guia", @"GUIA REMISION");
-                    return;
-                }
-                else
-                {
-                    comando.Parameters.AddWithValue("p_num_guia", MySqlType.Text).Value = txtGuiaRemision.Text;
-                }
-
-                if (tarajaba > 0)
-                {
-                    comando.Parameters.AddWithValue("p_tara_java", MySqlType.Double).Value = txttarajaba.Text;
-                }
-                else
-                {
-                    MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"TARA JABA");
-                    return;
-                }
-
-                if (taraparihuela > 0)
-                {
-                    comando.Parameters.AddWithValue("p_tara_pallet", MySqlType.Double).Value = txttaraParihuela.Text;
-                }
-                else
-                {
-                    MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"TARA PARIHUELA");
-                    return;
-                }
-
-                comando.Parameters.AddWithValue("p_cant_jabas", MySqlType.Double).Value =
-                    cbjabas.GetItemText(cbjabas.SelectedValue);
-
-                if (chkPesoManual.Checked == false)
-                {
-                    if (pesobruto > 0)
+                    if (txtGuiaRemision.Text == string.Empty)
                     {
-                        comando.Parameters.AddWithValue("p_peso_bruto", MySqlType.Double).Value = lblpeso.Text;
+                        MessageBox.Show(@"Error, Tiene que Ingresar el Numero de Guia", @"GUIA REMISION");
+                        return;
                     }
                     else
                     {
-                        MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"PESO BALANZA");
-                        return;
+                        comando.Parameters.AddWithValue("p_num_guia", MySqlType.Text).Value = txtGuiaRemision.Text;
                     }
-                }
-                else
-                {
-                    if (pesobrutoManual > 0)
+
+                    if (tarajaba > 0)
                     {
-                        comando.Parameters.AddWithValue("p_peso_bruto", MySqlType.Double).Value = txtPesoManual.Text;
+                        comando.Parameters.AddWithValue("p_tara_java", MySqlType.Double).Value = txttarajaba.Text;
                     }
                     else
                     {
-                        MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"PESO BALANZA");
+                        MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"TARA JABA");
                         return;
                     }
-                }
 
-                if (!string.IsNullOrEmpty(cboturno.Text))
-                {
-                    comando.Parameters.AddWithValue("p_turno", MySqlType.Int).Value =
-                        cboturno.GetItemText(cboturno.SelectedValue);
-                }
-                else
-                {
-                    MessageBox.Show(@"Error, El Turno debe ser Ingresado", @"TURNO");
-                    return;
-                }
+                    if (taraparihuela > 0)
+                    {
+                        comando.Parameters.AddWithValue("p_tara_pallet", MySqlType.Double).Value = txttaraParihuela.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"TARA PARIHUELA");
+                        return;
+                    }
 
-                if (!string.IsNullOrEmpty(lblCLP.Text))
-                {
-                    comando.Parameters.AddWithValue("p_idclp", MySqlType.Int).Value = lblCLP.Text;
-                }
-                else
-                {
-                    MessageBox.Show(@"Error, El Turno debe ser Ingresado", @"TURNO");
-                    return;
-                }
+                    comando.Parameters.AddWithValue("p_cant_jabas", MySqlType.Double).Value =
+                        cbjabas.GetItemText(cbjabas.SelectedValue);
 
-                comando.ExecuteNonQuery();
-                MessageBox.Show(@"PESO REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
-                // limpiarcampos()
-                //    this.chkcapturapeso.Checked = false;
+                    pesobrutoManual = float.Parse(txtPesoManual.Text);
+                    if (chkPesoManual.Checked == false)
+                    {
+                        if (pesobruto > 0)
+                        {
+                            comando.Parameters.AddWithValue("p_peso_bruto", MySqlType.Double).Value = lblpeso.Text;
+                        }
+                        else
+                        {
+                            MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"PESO BALANZA");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        if (pesobrutoManual > 0)
+                        {
+                            comando.Parameters.AddWithValue("p_peso_bruto", MySqlType.Double).Value = txtPesoManual.Text;
+                        }
+                        else
+                        {
+                            MessageBox.Show(@"Error, el Peso tiene que ser mayor que 0", @"PESO BALANZA");
+                            return;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(cboturno.Text))
+                    {
+                        comando.Parameters.AddWithValue("p_turno", MySqlType.Int).Value =
+                            cboturno.GetItemText(cboturno.SelectedValue);
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"Error, El Turno debe ser Ingresado", @"TURNO");
+                        return;
+                    }
+
+                    if (!string.IsNullOrEmpty(lblCLP.Text))
+                    {
+                        comando.Parameters.AddWithValue("p_idclp", MySqlType.Int).Value = lblCLP.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"Error, El Turno debe ser Ingresado", @"TURNO");
+                        return;
+                    }
+
+                    comando.ExecuteNonQuery();
+                    MessageBox.Show(@"PESO REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
+                    // limpiarcampos()
+                    //    this.chkcapturapeso.Checked = false;
+                }
+                 else
+                 {
+                     MessageBox.Show(@"Por favor, seleccione un Lote antes de continuar.", "Error de selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     return;
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error en InsertarRegistro - " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -1225,6 +1400,11 @@ namespace _3mpacador4
             }
         }
 
+        private void IngresoPesos_Shown(object sender, EventArgs e)
+        {
+           mostrarLote();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
@@ -1237,35 +1417,41 @@ namespace _3mpacador4
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
-                comando = new MySqlCommand("usp_tblticketpesaje_Selectlote", ConexionGral.conexion);
-                comando.CommandType = (CommandType)4;
 
-                comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = cboLote.Text;
-                String fechaaño = Settings.Default.periodo.ToString();
-                String[] partes = fechaaño.Split(' ')[0].Split('/');
-                String año = partes[2];
-                comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Text).Value = año;
-
-                var adaptador = new MySqlDataAdapter(comando);
-                var datos = new DataTable();
-                adaptador.Fill(datos);
-
+                if (cboLote.SelectedItem != null)
                 {
-                    var withBlock = datalistado;
-                    if (datos != null && datos.Rows.Count > 0)
+                    comando = new MySqlCommand("usp_tblticketpesaje_Selectlote", ConexionGral.conexion);
+                    comando.CommandType = (CommandType)4;
+
+                    comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = cboLote.Text;
+                    String fechaaño = Settings.Default.periodo.ToString();
+                    String[] partes = fechaaño.Split(' ')[0].Split('/');
+                    String año = partes[2];
+                    comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Text).Value = año;
+
+                    var adaptador = new MySqlDataAdapter(comando);
+                    var datos = new DataTable();
+                    adaptador.Fill(datos);
+
                     {
-                        var dr = datos.NewRow();
-                        withBlock.DataSource = datos;
-                        //tamanio();
-                        //ocultar_columnas();
-                        //actualizardatos();
-                        sumaneto();
-                        contar();
+                        var withBlock = datalistado;
+                        if (datos != null && datos.Rows.Count > 0)
+                        {
+                            var dr = datos.NewRow();
+                            withBlock.DataSource = datos;
+                          sumaneto();
+                            contar();
+                        }
+                        else
+                        {
+                            withBlock.DataSource = null;
+                        }
                     }
-                    else
-                    {
-                        withBlock.DataSource = null;
-                    }
+                }
+                else
+                {
+                    MessageBox.Show(@"Por favor, seleccione un Lote antes de continuar.", "Error de selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
             catch (Exception ex)

@@ -248,7 +248,7 @@
             this.txtPesoManual.Name = "txtPesoManual";
             this.txtPesoManual.Size = new System.Drawing.Size(576, 158);
             this.txtPesoManual.TabIndex = 106;
-            this.txtPesoManual.Text = "000.0 ";
+            this.txtPesoManual.Text = "000.0";
             this.txtPesoManual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPesoManual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesoManual_KeyPress);
             // 
@@ -1056,6 +1056,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.IngresoPesos_Load);
+            this.Shown += new System.EventHandler(this.IngresoPesos_Shown);
             this.GroupBox3.ResumeLayout(false);
             this.GroupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
