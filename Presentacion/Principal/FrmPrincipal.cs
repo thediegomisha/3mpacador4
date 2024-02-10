@@ -330,5 +330,11 @@ namespace _3mpacador4.Presentacion
             ocultarSubMenu();
             AbrirFormularioHijo(new FActualizaFechaProduccion());
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new FRptKardexLote());
+        }
     }
 }

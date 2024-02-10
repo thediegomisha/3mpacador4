@@ -189,7 +189,7 @@ namespace _3mpacador4.Presentacion.Reporte
                     var withBlock = cboLote;
                     if (datos.Rows.Count != 0)
                     {
-                        lblcliente.Text = datos.Rows[0]["RAZON SOCIAL"].ToString();
+                        lblcliente_desc.Text = datos.Rows[0]["RAZON SOCIAL"].ToString();
                         lblproductor.Text = datos.Rows[0]["PRODUCTOR"].ToString();
                         //  lblmetodo.Text = datos.Rows[0]["PRODUCTOR"].ToString();
                         lblproducto.Text = datos.Rows[0]["PRODUCTO"].ToString();
@@ -297,22 +297,23 @@ namespace _3mpacador4.Presentacion.Reporte
                     return;
                 }
 
+                if (cbxcliente.SelectedIndex == 0)
+                {
+                    MessageBox.Show(@"Seleccione un Cliente", @"Aviso", MessageBoxButtons.OK,
+                        MessageBoxIcon.Exclamation);
+                    return;
+                }
+
                 var aux = new Programa_proceso();
                 aux.fecha_proceso = Convert.ToDateTime(dtpf_proceso.Value);
-                aux.idgrupo_turno = 1; // 
-                aux.iddestino =
-                    Convert.ToInt32(cboDestino.Text.Substring(0, cboDestino.Text.Contains("-").ToString().Length - 2));
-                aux.idcategoria =
-                    Convert.ToInt32(cbCategoria.Text.Substring(0,
-                        cbCategoria.Text.Contains("-").ToString().Length - 2));
-                aux.idpresentacion =
-                    Convert.ToInt32(cbpresentacion.Text.Substring(0,
-                        cbpresentacion.Text.Contains("-").ToString().Length - 2));
-                aux.idterminal =
-                    Convert.ToInt32(cbxterminal.Text.Substring(0,
-                        cbxterminal.Text.Contains("-").ToString().Length - 2));
-                aux.idusuario = 4;
-                aux.flag_estado = "1";
+                //aux.idgrupo_turno = 1; 
+                aux.iddestino       = Convert.ToInt32(cboDestino.Text.Substring(0, cboDestino.Text.Contains("-").ToString().Length - 2));
+                aux.idcategoria     = Convert.ToInt32(cbCategoria.Text.Substring(0,cbCategoria.Text.Contains("-").ToString().Length - 2));
+                aux.idpresentacion  = Convert.ToInt32(cbpresentacion.Text.Substring(0,cbpresentacion.Text.Contains("-").ToString().Length - 2));
+                aux.idcliente       = Convert.ToInt32(cbxcliente.Text.Substring(0, cbxcliente.Text.Contains("-").ToString().Length - 2));
+                aux.idterminal      = Convert.ToInt32(cbxterminal.Text.Substring(0,cbxterminal.Text.Contains("-").ToString().Length - 2));
+                aux.idusuario       = Login.usuarioId1;
+                aux.flag_estado     = "1";
 
 
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -327,10 +328,11 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 comando.Parameters.AddWithValue("p_fecha_produccion", aux.fecha_proceso);
                 comando.Parameters.AddWithValue("p_idlote", aux.idlote);
-                comando.Parameters.AddWithValue("p_idgrupo_turno", aux.idgrupo_turno);
+                //comando.Parameters.AddWithValue("p_idgrupo_turno", aux.idgrupo_turno);
                 comando.Parameters.AddWithValue("p_iddestino", aux.iddestino);
                 comando.Parameters.AddWithValue("p_idcategoria", aux.idcategoria);
                 comando.Parameters.AddWithValue("p_idpresentacion", aux.idpresentacion);
+                comando.Parameters.AddWithValue("p_idcliente", aux.idcliente);
                 comando.Parameters.AddWithValue("p_idterminal", aux.idterminal);
                 comando.Parameters.AddWithValue("p_idusuario", aux.idusuario);
                 comando.Parameters.AddWithValue("p_flag_estado", aux.flag_estado);
@@ -343,6 +345,9 @@ namespace _3mpacador4.Presentacion.Reporte
             catch (MySqlException ex)
             {
                 MessageBox.Show(@"PROGRAMA NO REGISTRADO." + ex.Message, @"ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboLote.SelectedIndex = 0;
+                cbxcliente.SelectedIndex = 0;
+                cbxterminal.SelectedIndex = 0;
                 throw;
             }
         }
@@ -352,7 +357,7 @@ namespace _3mpacador4.Presentacion.Reporte
             Close();
         }
 
-        public void MostrarCalibres(string ls_fecha_proceso, string ls_idcliente, string ls_tipo)
+        public void MostrarCalibres(string ls_fecha_proceso, int li_idproceso, string ls_tipo)
         {
             MySqlCommand comando;
             try
@@ -368,7 +373,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 comando = new MySqlCommand("usp_tblcalibre_x_proceso", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.AddWithValue("p_fecha_proceso", ls_fecha_proceso);
-                comando.Parameters.AddWithValue("p_idcliente", ls_idcliente);
+                comando.Parameters.AddWithValue("p_idproceso", li_idproceso);
                 comando.Parameters.AddWithValue("p_tipo", ls_tipo);
                 using (MySqlDataReader reader = comando.ExecuteReader())
                 {
@@ -399,39 +404,31 @@ namespace _3mpacador4.Presentacion.Reporte
         private void btnconteo_manual_Click(object sender, EventArgs e)
         {
             bool lb_estado = false;
-            int li_idproceso = 0, li_idlote = 0, li_idcategoria = 0, li_idpresentacion = 0, li_idcliente = 0;
+            int li_idproceso = 0, li_idusuario = 0, li_idcliente = 0;
             string ls_fecha_produccion, ls_cliente = "";            
 
-            if (lblid_proceso.ToString().Length == 0)
+            if (lblid_proceso.Text.Length == 0)
             {
                 MessageBox.Show("Debe Seleccionar un Proceso Para la Fecha " + dtpbuscar_fecproduccion.Text.Trim(), "Avisoo...!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (cbxcliente.SelectedIndex == 0)
-            {
-                MessageBox.Show("Debe Seleccionar un Cliente Para la Fecha " + dtpbuscar_fecproduccion.Text.Trim(), "Avisoo...!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             ls_fecha_produccion = dtpbuscar_fecproduccion.Value.ToString("yyyy-MM-dd");
             li_idproceso = Convert.ToInt32(lblid_proceso.Text.Trim());
-            li_idlote = Convert.ToInt32(lblid_lote.Text.Trim());
-            li_idcategoria = Convert.ToInt32(lblid_categoria.Text.Trim());
-            li_idpresentacion = Convert.ToInt32(lblid_presentacion.Text.Trim());
-            li_idcliente = Convert.ToInt32(cbxcliente.Text.Substring(0, cbxcliente.Text.Contains("-").ToString().Length - 2));
-            ls_cliente = cbxcliente.Text.Substring(cbxcliente.Text.Contains("-").ToString().Length - 1);
+            li_idcliente = Convert.ToInt32(lblid_cliente.Text.Trim());
+            ls_cliente = lblcliente.Text.Trim();
+            li_idusuario = Login.usuarioId1;
 
-            if (LConteo_manual.Existe_Conteo_manual_x_fecha(ls_fecha_produccion, li_idlote, li_idcategoria, li_idpresentacion, li_idcliente) > 0)
+            if (LConteo_manual.Existe_Conteo_manual_x_fecha(li_idproceso) > 0)
             {
                 MessageBox.Show(@"Ya se Genero el Ingreso Manual del CLIENTE : "+ ls_cliente +
-                                 " N° LOTE : " +lblnum_lote.Text.Trim()+" CATEGORIA : " +  lblcategoria.Text +
-                                 " PRESENTACION : " + lblpresentacion.Text + " Para la Fecha " + dtpbuscar_fecproduccion.Text.Trim(), 
+                                 " N° LOTE : " +lblnum_lote.Text.Trim()+" DESTINO :"+ lbldestino.Text.Trim() +" CATEGORIA : " +  lblcategoria.Text +
+                                 " PRESENTACION : " + lblpresentacion.Text + " FECHA DE PRODUCCION : " + dtpbuscar_fecproduccion.Text.Trim(), 
                     "Avisoo...!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            var rpta = MessageBox.Show("¿ ESTA SEGUR@ DE GENERAR EL PROCESO MANUAL DEL CLIENTE : " + ls_cliente +" PARA LA FECHA : " + dtpbuscar_fecproduccion.Text.Trim() + " PROCESO " + lblid_proceso.Text.Trim() + " ?", "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var rpta = MessageBox.Show("¿ ESTA SEGUR@ DE GENERAR EL PROCESO MANUAL DEL CLIENTE : " + ls_cliente +" PARA LA FECHA : " + dtpbuscar_fecproduccion.Text.Trim() + " PROCESO N° " + lblid_proceso.Text.Trim() + " ?", "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (rpta == DialogResult.Yes)
             {
                 for (int i = 0; i < dgvcalibres.RowCount; i++)
@@ -444,7 +441,7 @@ namespace _3mpacador4.Presentacion.Reporte
                         li_cantidad = Convert.ToInt32(dgvcalibres.Rows[i].Cells[1].Value);
                         li_nro_pallet = Convert.ToInt32(dgvcalibres.Rows[i].Cells[2].Value);
 
-                        if (LConteo_manual.Conteo_Manual(li_idproceso, li_calibre, ls_fecha_produccion, li_cantidad, li_idcliente, li_nro_pallet) > 0)
+                        if (LConteo_manual.Conteo_Manual(li_idproceso, li_calibre, ls_fecha_produccion, li_idusuario, li_nro_pallet, li_cantidad, li_idcliente) > 0)
                         {
                             lb_estado = true;
                         }
@@ -481,12 +478,8 @@ namespace _3mpacador4.Presentacion.Reporte
             Limpiar();
             if (rbregistrar.Checked)
             {
-                btnmostrar_conteo_manual.Enabled = false;
                 btnconteo_manual.Enabled = true;
-                cbxtodos_cli.Enabled = false;
-                btnbuscar_proceso.Enabled = true;
-                ls_tipo = "R";
-                cbxcliente.SelectedIndex = 0;
+                ls_tipo = "R";                
             }            
         }
 
@@ -495,12 +488,8 @@ namespace _3mpacador4.Presentacion.Reporte
             Limpiar();
             if (rbbuscar.Checked)
             {
-                btnmostrar_conteo_manual.Enabled = true;
                 btnconteo_manual.Enabled = false;
-                cbxtodos_cli.Enabled = true;
-                btnbuscar_proceso.Enabled = false;
                 ls_tipo = "B";
-                cbxcliente.SelectedIndex = 0;
             }
         }
 
@@ -527,12 +516,17 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 lblid_presentacion.Text = pp.idpresentacion.ToString();
                 lblpresentacion.Text = pp.presentacion.ToString();
+
+                lblid_cliente.Text = pp.idcliente.ToString();
+                lblcliente.Text = pp.cliente.ToString();
             }
+
+            Mostrar_conteo();
         }
 
         private void btnmostrar_conteo_manual_Click(object sender, EventArgs e)
         {
-            Mostrar_conteo();
+            //Mostrar_conteo();
         }
 
         void Limpiar() 
@@ -546,38 +540,16 @@ namespace _3mpacador4.Presentacion.Reporte
             lblcategoria.Text = "";
             lblid_presentacion.Text = "";
             lblpresentacion.Text = "";
-            cbxtodos_cli.Checked = false;
+            lblid_cliente.Text = "";
+            lblcliente.Text = "";            
+            lbltotal_calibre.Text = "";
+            dgvcalibres.Rows.Clear();
         }
 
-        private void cbxtodos_cli_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbxtodos_cli.Checked)
-            {
-                cbxcliente.SelectedIndex = 0;
-                cbxcliente.Enabled = false;
-                Mostrar_conteo();
-            }
-            else
-            {
-                cbxcliente.Enabled = true;
-            }
-        }
 
         void Mostrar_conteo() 
         {
-            string ls_idcliente = "";
-
-            if (cbxtodos_cli.Checked)
-            {
-                ls_idcliente = "%";
-            }
-            else
-            {
-                if (cbxcliente.SelectedIndex > 0)
-                {
-                    ls_idcliente = cbxcliente.Text.Substring(0, cbxcliente.Text.Contains("-").ToString().Length - 2);
-                }
-            }
+            int li_idproceso = 0;
 
             if (rbregistrar.Checked)
             {
@@ -586,9 +558,10 @@ namespace _3mpacador4.Presentacion.Reporte
             else if (rbbuscar.Checked)
             {
                 ls_tipo = "B";
-            }
+                li_idproceso = Convert.ToInt32(lblid_proceso.Text.Length == 0 ? "0" : lblid_proceso.Text.Trim());
+            }           
 
-            MostrarCalibres(dtpbuscar_fecproduccion.Value.ToString("yyyy-MM-dd"), ls_idcliente, ls_tipo);
+            MostrarCalibres(dtpbuscar_fecproduccion.Value.ToString("yyyy-MM-dd"), li_idproceso, ls_tipo);
 
             if (rbregistrar.Checked)
             {
@@ -599,17 +572,9 @@ namespace _3mpacador4.Presentacion.Reporte
             {
                 dgvcalibres.Columns[3].Visible = false;
                 dgvcalibres.Columns[4].Visible = false;
-            }
-           
+            }  
         }
 
-        private void cbxcliente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbxcliente.SelectedIndex > 0)
-            {
-                Mostrar_conteo();
-            }           
-        }
 
         private void dgvcalibres_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -641,6 +606,20 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 dgvcalibres.Rows.Insert(rowIndex + 1, dgvcalibres.Rows[rowIndex].Cells[0].Value, 0, "");
             }
+        }
+
+        private void dgvcalibres_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            int cantidad = 0;
+            if (e.ColumnIndex == dgvcalibres.Columns[1].Index || e.ColumnIndex == dgvcalibres.Columns[2].Index)
+            {
+                for (int i = 0; i < dgvcalibres.Rows.Count; i++)
+                {
+                    cantidad += Convert.ToInt32(dgvcalibres.Rows[i].Cells[1].Value);
+                }              
+            }
+
+            lbltotal_calibre.Text = cantidad.ToString();
         }
     }
 }
