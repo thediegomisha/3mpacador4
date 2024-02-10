@@ -6,7 +6,6 @@ using _3mpacador4.Logica;
 using Devart.Data.MySql;
 using Microsoft.VisualBasic;
 using _3mpacador4.Presentacion.Trazabilidad;
-using _3mpacador4.Presentacion.Sistema;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
@@ -15,15 +14,43 @@ namespace _3mpacador4.Presentacion.Reporte
         public FProgramaProceso()
         {
             InitializeComponent();
+            Cargar_lote();
         }
 
-        public static int li_idproceso = 0;
-        public static string ls_fecha_produccion = "", ls_dec_programacion = "";
-        public static bool lb_ver_prog_manual = false;
+        public static string ls_fecha_produccion = "";
 
-        public static Lote l = null;
         public static Programa_proceso pp = null;
         string ls_tipo = "";
+
+        private void Cargar_lote()
+        {
+            MySqlCommand comando = null;
+            try
+            {
+                cboLote.Items.Clear();
+                cboLote.Items.Add("< Seleccione >");
+
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+
+                comando = new MySqlCommand("usp_tbllote_SelectTraceability", ConexionGral.conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("p_anio", Convert.ToInt32(dtpbuscar_fecproduccion.Value.Year));
+
+                using (var reader = comando.ExecuteReader())
+                {
+                    while (reader.Read()) cboLote.Items.Add(reader["numlote"].ToString());
+                }
+
+                ConexionGral.desconectar();
+                cboLote.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                ConexionGral.desconectar();
+                MessageBox.Show(ex.Message, @"Algo salio Mal :( ");
+                throw;
+            }
+        }
 
         private void Cargar_destino()
         {
@@ -112,7 +139,7 @@ namespace _3mpacador4.Presentacion.Reporte
             }
         }
 
-        /*private void Cargar_terminal()
+        private void Cargar_terminal()
         {
             MySqlCommand comando = null;
             try
@@ -139,7 +166,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 MessageBox.Show(ex.Message, @"Algo salio Mal en usp_tblcategoria_Select :( ");
                 throw;
             }
-        }       */
+        }       
 
         private void poblarLote()
         {
@@ -148,26 +175,39 @@ namespace _3mpacador4.Presentacion.Reporte
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
-                comando = new MySqlCommand("usp_tblticketpesaje_Select_x_lote", ConexionGral.conexion);
-                comando.CommandType = CommandType.StoredProcedure;
+                comando = new MySqlCommand("usp_tblticketpesaje_Select_Trazability", ConexionGral.conexion);
+                comando.CommandType = (CommandType)4;
 
-                comando.Parameters.AddWithValue("p_idlote", MySqlType.Int).Value = lblidlote.Text;
+                comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = cboLote.Text;
+                comando.Parameters.AddWithValue("p_fechaanio", Convert.ToInt32(dtpbuscar_fecproduccion.Value.Year));
 
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
                 adaptador.Fill(datos);
 
                 {
+                    var withBlock = cboLote;
                     if (datos.Rows.Count != 0)
                     {
                         lblcliente_desc.Text = datos.Rows[0]["RAZON SOCIAL"].ToString();
                         lblproductor.Text = datos.Rows[0]["PRODUCTOR"].ToString();
+                        //  lblmetodo.Text = datos.Rows[0]["PRODUCTOR"].ToString();
                         lblproducto.Text = datos.Rows[0]["PRODUCTO"].ToString();
+                        //  lblservicio.Text = datos.Rows[0]["PRODUCTOR"].ToString();
+                        //  lblacopiador.Text = datos.Rows[0]["PRODUCTOR"].ToString();
+                        // lblguiaingreso.Text = datos.Rows[0]["PRODUCTOR"].ToString();
+                        //  lblruc_dni.Text = datos.Rows[0]["PRODUCTOR"].ToString();
                         lblclp.Text = datos.Rows[0]["CODIGO PRODUCCION"].ToString();
                         lblvariedad.Text = datos.Rows[0]["VARIEDAD"].ToString();
-                        lblruc_dni.Text = datos.Rows[0]["R.U.C."].ToString();
-                        lblguiaingreso.Text = datos.Rows[0]["NUM_GUIA"].ToString();
-                        lblacopiador.Text = datos.Rows[0]["ACOPIADOR"].ToString();
+                        //lblfechaingreso.Text = datos.Rows[0]["FECHA PESAJE"].ToString();
+                        //    lblhoraingreso.Text = datos.Rows[0]["PRODUCTOR"].ToString();
+
+                        //lblpesoneto.Text = (datos.Rows[0]["PESO NETO"].ToString());
+                        //lblcantjabas.Text = (datos.Rows[0]["CANT JABAS"].ToString());
+                    }
+                    else
+                    {
+                        withBlock.DataSource = null;
                     }
                 }
                 ConexionGral.desconectar();
@@ -175,6 +215,25 @@ namespace _3mpacador4.Presentacion.Reporte
             catch (Exception ex)
             {
                 MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cboLote_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cboLote.SelectedIndex > 0)
+                {
+                    poblarLote();
+                    Cargar_destino();
+                    Cargar_categoria();
+                    Cargar_presentacion();
+                    Cargar_terminal();
+                }
+            }
+            catch (Exception ex)
+            {
+                Interaction.MsgBox("Error " + "Error " + ex.Message, Constants.vbCritical);
             }
         }
 
@@ -208,44 +267,11 @@ namespace _3mpacador4.Presentacion.Reporte
             }
         }
 
-        string Evalua_programacion() {
-            string rpta = "";
-            MySqlCommand comando = null;
-            try
-            {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                    ConexionGral.conectar();
-
-                comando = new MySqlCommand("usp_tblprograma_proceso_evalua", ConexionGral.conexion);
-                comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("p_idlote", lblidlote.Text.Trim());
-                comando.Parameters.AddWithValue("p_iddestino", cboDestino.Text.Substring(0, cboDestino.Text.Contains("-").ToString().Length - 2));
-                comando.Parameters.AddWithValue("p_idcategoria", cbCategoria.Text.Substring(0, cbCategoria.Text.Contains("-").ToString().Length - 2));
-                comando.Parameters.AddWithValue("p_idpresentacion", cbpresentacion.Text.Substring(0, cbpresentacion.Text.Contains("-").ToString().Length - 2));
-                comando.Parameters.AddWithValue("p_idcliente", cbxcliente.Text.Substring(0, cbxcliente.Text.Contains("-").ToString().Length - 2));
-
-                comando.Parameters.Add("p_rpta", MySqlType.VarChar, 50).Direction = ParameterDirection.Output;
-                comando.ExecuteNonQuery();
-                rpta = comando.Parameters["p_rpta"].Value.ToString();
-
-                ConexionGral.desconectar();
-            }
-            catch (Exception ex)
-            {
-                ConexionGral.desconectar();
-                MessageBox.Show(ex.Message, @"Algo salio Mal en usp_tblcliente_lista :( ");
-                throw;
-            }
-
-            return rpta;
-        }
-
         private void btncrearprograma_Click(object sender, EventArgs e)
         {
             try
             {
-                string rpta = "";
-                if (lblidlote.Text.Trim().Length == 0)
+                if (cboLote.SelectedIndex == 0)
                 {
                     MessageBox.Show(@"Seleccione Un Lote", @"Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
@@ -278,29 +304,24 @@ namespace _3mpacador4.Presentacion.Reporte
                     return;
                 }
 
-                rpta = Evalua_programacion();
-
-                if (rpta != "OK")
-                {
-                    MessageBox.Show(rpta, @"Aviso", MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-                    Limpiar_prog();
-                    return;
-                }
-
                 var aux = new Programa_proceso();
                 aux.fecha_proceso = Convert.ToDateTime(dtpf_proceso.Value);
                 //aux.idgrupo_turno = 1; 
-                aux.idlote          = Convert.ToInt32(lblidlote.Text.Trim());
                 aux.iddestino       = Convert.ToInt32(cboDestino.Text.Substring(0, cboDestino.Text.Contains("-").ToString().Length - 2));
                 aux.idcategoria     = Convert.ToInt32(cbCategoria.Text.Substring(0,cbCategoria.Text.Contains("-").ToString().Length - 2));
                 aux.idpresentacion  = Convert.ToInt32(cbpresentacion.Text.Substring(0,cbpresentacion.Text.Contains("-").ToString().Length - 2));
                 aux.idcliente       = Convert.ToInt32(cbxcliente.Text.Substring(0, cbxcliente.Text.Contains("-").ToString().Length - 2));
-                aux.idterminal      = 1;
+                aux.idterminal      = Convert.ToInt32(cbxterminal.Text.Substring(0,cbxterminal.Text.Contains("-").ToString().Length - 2));
                 aux.idusuario       = Login.usuarioId1;
                 aux.flag_estado     = "1";
 
 
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+
+                var cmd = new MySqlCommand("select idlote from tbllote where numlote = @idlote and periodo = @anio", ConexionGral.conexion);
+                cmd.Parameters.AddWithValue("@idlote", cboLote.Text.Trim());
+                cmd.Parameters.AddWithValue("@anio", Convert.ToString(dtpbuscar_fecproduccion.Value.Year));
+                aux.idlote = Convert.ToInt32(cmd.ExecuteScalar());
 
                 var comando = new MySqlCommand("usp_tblprograma_proceso_insert", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
@@ -316,15 +337,17 @@ namespace _3mpacador4.Presentacion.Reporte
                 comando.Parameters.AddWithValue("p_idusuario", aux.idusuario);
                 comando.Parameters.AddWithValue("p_flag_estado", aux.flag_estado);
                 comando.ExecuteNonQuery();
-                MessageBox.Show(@"PROGRAMA REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(@"PROGRAMA REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 //Lista_Grupo_turno(aux.fecha_produccion.ToString("yyyy-MM-dd"));
                 ConexionGral.desconectar();
-                Limpiar_prog();
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show(@"PROGRAMA NO REGISTRADO." + ex.Message, @"ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Limpiar_prog();
+                cboLote.SelectedIndex = 0;
+                cbxcliente.SelectedIndex = 0;
+                cbxterminal.SelectedIndex = 0;
                 throw;
             }
         }
@@ -435,11 +458,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void FProgramaProceso_Load(object sender, EventArgs e)
         {
-            Cargar_destino();
-            Cargar_categoria();
-            Cargar_presentacion();
             Cargar_Cliente();
-            Cargar_lotes_x_fecha();
         }
 
         private void cbxregistro_manual_CheckedChanged(object sender, EventArgs e)
@@ -476,7 +495,6 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void btnbuscar_proceso_Click(object sender, EventArgs e)
         {
-            lb_ver_prog_manual = true;
             ls_fecha_produccion = dtpbuscar_fecproduccion.Value.ToString("yyyy-MM-dd");
 
             pp = new Programa_proceso();
@@ -504,34 +522,11 @@ namespace _3mpacador4.Presentacion.Reporte
             }
 
             Mostrar_conteo();
-            lb_ver_prog_manual = false;
         }
 
         private void btnmostrar_conteo_manual_Click(object sender, EventArgs e)
         {
             //Mostrar_conteo();
-        }
-
-        void Limpiar_prog() 
-        {
-            dtpf_proceso.Value = DateTime.Now;
-            lblidlote.Text = "";
-            lbllote.Text = "";
-            lblcliente_desc.Text = "";
-            lblproductor.Text = "";
-            lblproducto.Text = "";
-            lblguiaingreso.Text = "";
-            lblruc_dni.Text = "";
-            lblclp.Text = "";
-            lblacopiador.Text = "";
-            lblvariedad.Text = "";
-            lblruc_dni.Text = "";
-            lblguiaingreso.Text = "";
-            lblacopiador.Text = "";
-            cboDestino.SelectedIndex = 0;
-            cbCategoria.SelectedIndex = 0;
-            cbpresentacion.SelectedIndex = 0;
-            cbxcliente.SelectedIndex = 0;
         }
 
         void Limpiar() 
@@ -548,7 +543,7 @@ namespace _3mpacador4.Presentacion.Reporte
             lblid_cliente.Text = "";
             lblcliente.Text = "";            
             lbltotal_calibre.Text = "";
-            dgvcalibres.Rows.Clear();            
+            dgvcalibres.Rows.Clear();
         }
 
 
@@ -626,97 +621,5 @@ namespace _3mpacador4.Presentacion.Reporte
 
             lbltotal_calibre.Text = cantidad.ToString();
         }
-        // PARA LA IMPRESION DE ETIQUETAS
-        void Cargar_lotes_x_fecha()
-        {
-            dgvlote_x_fec.Rows.Clear();
-            var Lista = LPrograma_proceso.Lista_lotes_x_fecha(dtpfilfproduccion.Value.ToString("yyyy-MM-dd"));
-            foreach (var f in Lista)
-            {
-                dgvlote_x_fec.Rows.Add(f.idlote, f.numlote, f.cantidad_jabas, f.kilos);
-            }
-            if (dgvlote_x_fec.RowCount <= 0)
-            {
-                dgvprog_x_lote.Rows.Clear();
-            }
-        }
-
-        void Cargar_programacion_x_lote(int li_idlote)
-        {
-            dgvprog_x_lote.Rows.Clear();
-            var Lista = LPrograma_proceso.Lista_programacion_x_lote(li_idlote);
-            foreach (var f in Lista)
-            {
-                dgvprog_x_lote.Rows.Add(f.idproceso, f.fecha_proceso.ToShortDateString(), f.numlote, f.cliente, f.destino, f.categoria, f.presentacion);
-            }
-        }
-
-        private void dtpfilfproduccion_ValueChanged(object sender, EventArgs e)
-        {
-            Cargar_lotes_x_fecha();
-        }
-
-        private void dgvlote_x_fec_SelectionChanged(object sender, EventArgs e)
-        {
-            Cargar_programacion_x_lote(Convert.ToInt32(dgvlote_x_fec.CurrentRow.Cells[0].Value));
-        }
-
-        private void btnlista_programaciones_Click(object sender, EventArgs e)
-        {
-            pp = new Programa_proceso();
-            var f = new FBuscar_proceso();
-            f.ShowDialog();
-            if (pp.idproceso > 0)
-            {
-                dtpf_proceso.Value = pp.fecha_proceso;
-                lblidlote.Text = pp.idlote.ToString();
-                lbllote.Text = pp.numlote;
-                cboDestino.Text = pp.iddestino.ToString()+" - " +pp.destino.ToString();
-                cbCategoria.Text = pp.idcategoria.ToString() + " - " + pp.categoria.ToString();
-                cbpresentacion.Text = pp.idpresentacion.ToString()+" - "+pp.nombre.ToString();
-                cbxcliente.Text = pp.idcliente.ToString()+" - "+pp.cliente.ToString();
-                if (lblidlote.Text.Trim().Length > 0)
-                {
-                    poblarLote();
-                }
-            }
-        }
-
-        private void btnbuscar_lote_Click(object sender, EventArgs e)
-        {
-            l = new Lote();
-            var F = new FBuscarLote();
-            F.ShowDialog();
-            if (l.idlote > 0)
-            {
-                lblidlote.Text = l.idlote.ToString();
-                lbllote.Text = l.lote;
-                poblarLote();
-            }
-        }
-
-        private void btnpallet_x_fecha_Click(object sender, EventArgs e)
-        {
-            ls_fecha_produccion = dtpfilfproduccion.Value.ToString("yyyy-MM-dd");
-            var f = new FPalletFecha();
-            f.ShowDialog();
-        }
-
-        private void dgvprog_x_lote_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dgvprog_x_lote.Columns[7].Index && e.RowIndex >= 0)
-            {
-                li_idproceso = Convert.ToInt32(dgvprog_x_lote.CurrentRow.Cells[0].Value);
-                ls_fecha_produccion = dgvprog_x_lote.CurrentRow.Cells[1].Value.ToString();
-                ls_dec_programacion = dgvprog_x_lote.CurrentRow.Cells[2].Value.ToString() + " (" +
-                                      dgvprog_x_lote.CurrentRow.Cells[3].Value.ToString() + ", " +
-                                      dgvprog_x_lote.CurrentRow.Cells[4].Value.ToString() + ", " +
-                                      dgvprog_x_lote.CurrentRow.Cells[5].Value.ToString() + ", " +
-                                      dgvprog_x_lote.CurrentRow.Cells[6].Value.ToString() + ")";
-                var f = new FrmImprimeCalibre();
-                f.ShowDialog();
-            }
-        }
-
     }
 }

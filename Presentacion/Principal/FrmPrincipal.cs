@@ -283,7 +283,7 @@ namespace _3mpacador4.Presentacion
         {
             ocultarSubMenu();
             var form = new FrmReniec();
-            form.ShowDialog();            
+            form.ShowDialog();
         }
 
         private void btnJornal_Click(object sender, EventArgs e)
@@ -297,6 +297,12 @@ namespace _3mpacador4.Presentacion
             ocultarSubMenu();
             var form = new frmUsuarios();
             form.ShowDialog();
+        }
+     
+        private void btnImprimirCalibre_Click_1(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new FrmImprimeCalibre());
         }
 
         private void btnImpresora_Click(object sender, EventArgs e)
@@ -329,12 +335,6 @@ namespace _3mpacador4.Presentacion
         {
             ocultarSubMenu();
             AbrirFormularioHijo(new FRptKardexLote());
-        }
-
-        private void btnMuestreo_Click(object sender, EventArgs e)
-        {
-            var form = new FMuestreo();
-            AbrirFormularioHijo(new FMuestreo());
         }
     }
 }

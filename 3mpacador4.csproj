@@ -345,6 +345,12 @@
     <Compile Include="Presentacion\Principal\FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Reporte\FRptKardexLote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\FRptKardexLote.Designer.cs">
+      <DependentUpon>FRptKardexLote.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Reporte\FRptPackigCalibre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -551,6 +557,9 @@
     <EmbeddedResource Include="Presentacion\Principal\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Reporte\FRptKardexLote.resx">
+      <DependentUpon>FRptKardexLote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\FRptPackigCalibre.resx">
       <DependentUpon>FRptPackigCalibre.cs</DependentUpon>

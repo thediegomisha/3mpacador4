@@ -15,14 +15,10 @@ namespace _3mpacador4.Entidad
         public string categoria { get; set; }
         public int idpresentacion { get; set; }
         public string presentacion { get; set; }
-        public string nombre { get; set; }
         public int idcliente { get; set; }
         public string cliente { get; set; }
         public int idterminal { get; set; }
         public int idusuario { get; set; }
         public string flag_estado { get; set; }
-
-        public int cantidad_jabas { get; set; }
-        public decimal kilos { get; set; }
     }
 }
