@@ -36,6 +36,7 @@
             this.btnJornal = new System.Windows.Forms.Button();
             this.btnTrazabilidadP = new System.Windows.Forms.Button();
             this.panelMantenimiento = new System.Windows.Forms.Panel();
+            this.btnActualizaFProduccion = new System.Windows.Forms.Button();
             this.btnImprimirCalibre = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnTerminal = new System.Windows.Forms.Button();
@@ -46,12 +47,12 @@
             this.btnAcopiador = new System.Windows.Forms.Button();
             this.btnMantenimiento = new System.Windows.Forms.Button();
             this.panelSistema = new System.Windows.Forms.Panel();
-            this.btnperiodo = new System.Windows.Forms.Button();
-            this.btnImpresora = new System.Windows.Forms.Button();
             this.btnReniec = new System.Windows.Forms.Button();
             this.BtnPesosDiversos = new System.Windows.Forms.Button();
-            this.btnBD = new System.Windows.Forms.Button();
+            this.btnImpresora = new System.Windows.Forms.Button();
             this.btnPuertoSerie = new System.Windows.Forms.Button();
+            this.btnperiodo = new System.Windows.Forms.Button();
+            this.btnBD = new System.Windows.Forms.Button();
             this.btnSistema = new System.Windows.Forms.Button();
             this.panelReportes = new System.Windows.Forms.Panel();
             this.button10 = new System.Windows.Forms.Button();
@@ -83,8 +84,7 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnActualizaFProduccion = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
@@ -126,7 +126,7 @@
             this.panelTrazabilidad.Controls.Add(this.btnProceso);
             this.panelTrazabilidad.Controls.Add(this.btnJornal);
             this.panelTrazabilidad.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTrazabilidad.Location = new System.Drawing.Point(0, 1107);
+            this.panelTrazabilidad.Location = new System.Drawing.Point(0, 1133);
             this.panelTrazabilidad.Name = "panelTrazabilidad";
             this.panelTrazabilidad.Size = new System.Drawing.Size(137, 92);
             this.panelTrazabilidad.TabIndex = 15;
@@ -189,7 +189,7 @@
             this.btnTrazabilidadP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrazabilidadP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnTrazabilidadP.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 1063);
+            this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 1089);
             this.btnTrazabilidadP.Name = "btnTrazabilidadP";
             this.btnTrazabilidadP.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnTrazabilidadP.Size = new System.Drawing.Size(137, 44);
@@ -202,8 +202,6 @@
             // panelMantenimiento
             // 
             this.panelMantenimiento.Controls.Add(this.btnActualizaFProduccion);
-            this.panelMantenimiento.Controls.Add(this.btnImprimirCalibre);
-            this.panelMantenimiento.Controls.Add(this.btnImprimirCalibre);
             this.panelMantenimiento.Controls.Add(this.btnUsuarios);
             this.panelMantenimiento.Controls.Add(this.btnTerminal);
             this.panelMantenimiento.Controls.Add(this.btnProducto);
@@ -213,10 +211,27 @@
             this.panelMantenimiento.Controls.Add(this.btnColaborador);
             this.panelMantenimiento.Controls.Add(this.btnAcopiador);
             this.panelMantenimiento.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMantenimiento.Location = new System.Drawing.Point(0, 778);
+            this.panelMantenimiento.Location = new System.Drawing.Point(0, 804);
             this.panelMantenimiento.Name = "panelMantenimiento";
             this.panelMantenimiento.Size = new System.Drawing.Size(137, 285);
             this.panelMantenimiento.TabIndex = 12;
+            // 
+            // btnActualizaFProduccion
+            // 
+            this.btnActualizaFProduccion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnActualizaFProduccion.FlatAppearance.BorderSize = 0;
+            this.btnActualizaFProduccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizaFProduccion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnActualizaFProduccion.ForeColor = System.Drawing.Color.LightGray;
+            this.btnActualizaFProduccion.Location = new System.Drawing.Point(0, 265);
+            this.btnActualizaFProduccion.Name = "btnActualizaFProduccion";
+            this.btnActualizaFProduccion.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnActualizaFProduccion.Size = new System.Drawing.Size(137, 33);
+            this.btnActualizaFProduccion.TabIndex = 22;
+            this.btnActualizaFProduccion.Text = "Actualiza F. Produccion";
+            this.btnActualizaFProduccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnActualizaFProduccion.UseVisualStyleBackColor = true;
+            this.btnActualizaFProduccion.Click += new System.EventHandler(this.btnActualizaFProduccion_Click);
             // 
             // btnImprimirCalibre
             // 
@@ -361,7 +376,7 @@
             this.btnMantenimiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMantenimiento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnMantenimiento.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnMantenimiento.Location = new System.Drawing.Point(0, 734);
+            this.btnMantenimiento.Location = new System.Drawing.Point(0, 760);
             this.btnMantenimiento.Name = "btnMantenimiento";
             this.btnMantenimiento.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnMantenimiento.Size = new System.Drawing.Size(137, 44);
@@ -381,44 +396,10 @@
             this.panelSistema.Controls.Add(this.btnperiodo);
             this.panelSistema.Controls.Add(this.btnBD);
             this.panelSistema.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSistema.Location = new System.Drawing.Point(0, 521);
+            this.panelSistema.Location = new System.Drawing.Point(0, 547);
             this.panelSistema.Name = "panelSistema";
             this.panelSistema.Size = new System.Drawing.Size(137, 213);
             this.panelSistema.TabIndex = 11;
-            // btnperiodo
-            // 
-            this.btnperiodo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnperiodo.FlatAppearance.BorderSize = 0;
-            this.btnperiodo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnperiodo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnperiodo.ForeColor = System.Drawing.Color.LightGray;
-            this.btnperiodo.Location = new System.Drawing.Point(0, 165);
-            this.btnperiodo.Name = "btnperiodo";
-            this.btnperiodo.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnperiodo.Size = new System.Drawing.Size(137, 33);
-            this.btnperiodo.TabIndex = 9;
-            this.btnperiodo.Text = "Campaña";
-            this.btnperiodo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnperiodo.UseVisualStyleBackColor = true;
-            this.btnperiodo.Click += new System.EventHandler(this.btnperiodo_Click);
-            // 
-            // 
-            // btnImpresora
-            // 
-            this.btnImpresora.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnImpresora.FlatAppearance.BorderSize = 0;
-            this.btnImpresora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImpresora.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnImpresora.ForeColor = System.Drawing.Color.LightGray;
-            this.btnImpresora.Location = new System.Drawing.Point(0, 99);
-            this.btnImpresora.Name = "btnImpresora";
-            this.btnImpresora.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnImpresora.Size = new System.Drawing.Size(137, 33);
-            this.btnImpresora.TabIndex = 8;
-            this.btnImpresora.Text = "Impresora";
-            this.btnImpresora.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImpresora.UseVisualStyleBackColor = true;
-            this.btnImpresora.Click += new System.EventHandler(this.btnImpresora_Click);
             // 
             // btnReniec
             // 
@@ -454,22 +435,22 @@
             this.BtnPesosDiversos.UseVisualStyleBackColor = true;
             this.BtnPesosDiversos.Click += new System.EventHandler(this.BtnPesosDiversos_Click);
             // 
-            // btnBD
+            // btnImpresora
             // 
-            this.btnBD.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBD.FlatAppearance.BorderSize = 0;
-            this.btnBD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBD.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnBD.ForeColor = System.Drawing.Color.LightGray;
-            this.btnBD.Location = new System.Drawing.Point(0, 0);
-            this.btnBD.Name = "btnBD";
-            this.btnBD.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnBD.Size = new System.Drawing.Size(137, 33);
-            this.btnBD.TabIndex = 5;
-            this.btnBD.Text = "Base de Datos";
-            this.btnBD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBD.UseVisualStyleBackColor = true;
-            this.btnBD.Click += new System.EventHandler(this.btnBD_Click);
+            this.btnImpresora.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnImpresora.FlatAppearance.BorderSize = 0;
+            this.btnImpresora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImpresora.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnImpresora.ForeColor = System.Drawing.Color.LightGray;
+            this.btnImpresora.Location = new System.Drawing.Point(0, 99);
+            this.btnImpresora.Name = "btnImpresora";
+            this.btnImpresora.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnImpresora.Size = new System.Drawing.Size(137, 33);
+            this.btnImpresora.TabIndex = 8;
+            this.btnImpresora.Text = "Impresora";
+            this.btnImpresora.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImpresora.UseVisualStyleBackColor = true;
+            this.btnImpresora.Click += new System.EventHandler(this.btnImpresora_Click);
             // 
             // btnPuertoSerie
             // 
@@ -488,6 +469,40 @@
             this.btnPuertoSerie.UseVisualStyleBackColor = true;
             this.btnPuertoSerie.Click += new System.EventHandler(this.btnPuertoSerie_Click);
             // 
+            // btnperiodo
+            // 
+            this.btnperiodo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnperiodo.FlatAppearance.BorderSize = 0;
+            this.btnperiodo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnperiodo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnperiodo.ForeColor = System.Drawing.Color.LightGray;
+            this.btnperiodo.Location = new System.Drawing.Point(0, 33);
+            this.btnperiodo.Name = "btnperiodo";
+            this.btnperiodo.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnperiodo.Size = new System.Drawing.Size(137, 33);
+            this.btnperiodo.TabIndex = 9;
+            this.btnperiodo.Text = "Campaña";
+            this.btnperiodo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnperiodo.UseVisualStyleBackColor = true;
+            this.btnperiodo.Click += new System.EventHandler(this.btnperiodo_Click);
+            // 
+            // btnBD
+            // 
+            this.btnBD.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBD.FlatAppearance.BorderSize = 0;
+            this.btnBD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBD.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnBD.ForeColor = System.Drawing.Color.LightGray;
+            this.btnBD.Location = new System.Drawing.Point(0, 0);
+            this.btnBD.Name = "btnBD";
+            this.btnBD.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnBD.Size = new System.Drawing.Size(137, 33);
+            this.btnBD.TabIndex = 5;
+            this.btnBD.Text = "Base de Datos";
+            this.btnBD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBD.UseVisualStyleBackColor = true;
+            this.btnBD.Click += new System.EventHandler(this.btnBD_Click);
+            // 
             // btnSistema
             // 
             this.btnSistema.Dock = System.Windows.Forms.DockStyle.Top;
@@ -495,7 +510,7 @@
             this.btnSistema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSistema.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnSistema.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnSistema.Location = new System.Drawing.Point(0, 477);
+            this.btnSistema.Location = new System.Drawing.Point(0, 503);
             this.btnSistema.Name = "btnSistema";
             this.btnSistema.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnSistema.Size = new System.Drawing.Size(137, 44);
@@ -508,6 +523,7 @@
             // panelReportes
             // 
             this.panelReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panelReportes.Controls.Add(this.button3);
             this.panelReportes.Controls.Add(this.button10);
             this.panelReportes.Controls.Add(this.button11);
             this.panelReportes.Controls.Add(this.button12);
@@ -515,7 +531,7 @@
             this.panelReportes.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelReportes.Location = new System.Drawing.Point(0, 332);
             this.panelReportes.Name = "panelReportes";
-            this.panelReportes.Size = new System.Drawing.Size(137, 145);
+            this.panelReportes.Size = new System.Drawing.Size(137, 171);
             this.panelReportes.TabIndex = 9;
             // 
             // button10
@@ -858,23 +874,23 @@
             this.ToolStripStatusLabel.Name = "ToolStripStatusLabel";
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
-            // btnActualizaFProduccion
             // 
-            this.btnActualizaFProduccion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnActualizaFProduccion.FlatAppearance.BorderSize = 0;
-            this.btnActualizaFProduccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizaFProduccion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnActualizaFProduccion.ForeColor = System.Drawing.Color.LightGray;
-            this.btnActualizaFProduccion.Location = new System.Drawing.Point(0, 265);
-            this.btnActualizaFProduccion.Name = "btnActualizaFProduccion";
-            this.btnActualizaFProduccion.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnActualizaFProduccion.Size = new System.Drawing.Size(137, 33);
-            this.btnActualizaFProduccion.TabIndex = 22;
-            this.btnActualizaFProduccion.Text = "Actualiza F. Produccion";
-            this.btnActualizaFProduccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnActualizaFProduccion.UseVisualStyleBackColor = true;
-            this.btnActualizaFProduccion.Click += new System.EventHandler(this.btnActualizaFProduccion_Click);
+            // button3
             // 
+            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button3.ForeColor = System.Drawing.Color.LightGray;
+            this.button3.Location = new System.Drawing.Point(0, 132);
+            this.button3.Name = "button3";
+            this.button3.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button3.Size = new System.Drawing.Size(137, 33);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Kardex Lote";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // FrmPrincipal
             // 
@@ -961,5 +977,6 @@
         private System.Windows.Forms.Button btnperiodo;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnActualizaFProduccion;
+        private System.Windows.Forms.Button button3;
     }
 }

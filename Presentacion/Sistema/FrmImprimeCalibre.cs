@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows.Forms;
 using RawDataPrint;
 using System.Data;
+using System.Collections.Generic;
 
 namespace _3mpacador4.Presentacion.Sistema
 {
@@ -17,7 +18,9 @@ namespace _3mpacador4.Presentacion.Sistema
             InitializeComponent();
         }
 
-        public void MostrarCalibres()
+        private List<string> Lista_cod = new List<string>();
+
+        /*public void MostrarCalibres()
         {
             MySqlCommand comando = null;
             try
@@ -50,7 +53,7 @@ namespace _3mpacador4.Presentacion.Sistema
                 MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
-        }
+        }*/
 
         private void LlenarComboBoxImpresoras()
         {
@@ -73,13 +76,50 @@ namespace _3mpacador4.Presentacion.Sistema
             }
         }
 
-        private void FrmImprimeCalibre_Load(object sender, EventArgs e)
+        private void Lista_codigos(int li_calibre, string ls_fecha_produccion)
         {
-            MostrarCalibres();
-            LlenarComboBoxImpresoras();
+            MySqlCommand comando = null;
+            try
+            {
+                Lista_cod.Clear();
+
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+                comando = new MySqlCommand(@"select c.codigo from tblnumerador_calibre c
+                                            where c.calibre = @calibre and 
+                                            c.fecha_produccion = @fecha_produccion and 
+                                            item = (select max(x.item) from tblnumerador_calibre x
+                                                    where x.calibre = c.calibre and x.fecha_produccion = c.fecha_produccion);", ConexionGral.conexion);
+                //comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@calibre", li_calibre);
+                comando.Parameters.AddWithValue("@fecha_produccion", ls_fecha_produccion);
+
+                Lista_cod = new List<string>();
+
+                using (var reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Lista_cod.Add(reader["codigo"].ToString());
+                    }
+                }
+
+                ConexionGral.desconectar();
+            }
+            catch (Exception ex)
+            {
+                ConexionGral.desconectar();
+                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
         }
 
-        void ActualizarCalibreQR(int li_calibre, int li_cantidad) {
+        private void FrmImprimeCalibre_Load(object sender, EventArgs e)
+        {
+            LlenarComboBoxImpresoras();
+            lblcantidad_tikects.Text = Convert.ToString(Convert.ToInt32(nudacantidad_filas.Value) * 4);
+        }
+
+        void Numeror_x_Calibre(int li_calibre, int li_cantidad, string ls_fecha_produccion) {
 
             try
             {
@@ -88,12 +128,13 @@ namespace _3mpacador4.Presentacion.Sistema
                     ConexionGral.conectar();
                 }
 
-                var comando = new MySqlCommand("usp_tblcalibre_update_ultimo_nro", ConexionGral.conexion);
+                var comando = new MySqlCommand("usp_tblnumerador_calibre_insert", ConexionGral.conexion);
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.AddWithValue("p_calibre", li_calibre);
                 comando.Parameters.AddWithValue("p_cantidad", li_cantidad);
+                comando.Parameters.AddWithValue("p_fecha_produccion", ls_fecha_produccion);
                 comando.ExecuteNonQuery();
-                MessageBox.Show(@"CANTIDAD DE ETIQUETAS ACTUALIZADA SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show(@"CANTIDAD DE ETIQUETAS ACTUALIZADA SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //MessageBox.Show("CANTIDAD DE ETIQUETAS ACTUALIZADA SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //LimpiarCampos();
                 ConexionGral.desconectar();
@@ -113,16 +154,18 @@ namespace _3mpacador4.Presentacion.Sistema
             int li_calibre = Convert.ToInt32(nudcalibre.Value.ToString());
             int nro_etiquetas = Convert.ToInt32(nudacantidad_filas.Value.ToString());
 
-            var rpta = MessageBox.Show(
-                    "¿ ESTA SEGUR@ DE IMPRIMIR "+lblcantidad_tikects.Text.Trim() + " TICKETS DEL CALIBRE " + nudcalibre.Value.ToString()+" ?", "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (rpta == DialogResult.Yes)
+            if (dgvlista.Rows.Count == 0)
             {
-                //ActualizarCalibreQR(li_calibre, nro_etiquetas);
-                Impresion_ZPL(li_calibre.ToString(), nro_etiquetas);
-                MessageBox.Show("IMPRESION DE TICKETS ", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("NO HAY INFORMACION PARA IMPRIMIR TICKETS", "Aviso...!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-                
+            var rpta = MessageBox.Show("¿ ESTA SEGUR@ DE IMPRIMIR "+lblcantidad_tikects.Text.Trim() + " TICKETS DEL CALIBRE " + nudcalibre.Value.ToString()+" ?", "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (rpta == DialogResult.Yes)
+            {
+                Impresion_ZPL(li_calibre.ToString(), nro_etiquetas);
+                MessageBox.Show("IMPRESION DE TICKETS ", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }  
         }
 
         private void btncancelar_Click(object sender, EventArgs e)
@@ -142,24 +185,41 @@ namespace _3mpacador4.Presentacion.Sistema
                 string cadena;
 
                 int imp = 0;
-                for (imp = 1; imp <= li_cantidad; imp++)
+                for (imp = 0; imp <= dgvlista.Rows.Count - 1; imp++)
                 {
+                    string ls_codigo1 = "", ls_codigo2 = "", ls_codigo3 = "", ls_codigo4 = "";
+                    string ls_print1 = "", ls_print2 = "", ls_print3 = "", ls_print4 = "";
+
+                    ls_codigo1 = dgvlista.Rows[imp].Cells[0].Value != null ? dgvlista.Rows[imp].Cells[0].Value.ToString() : "";
+                    ls_print1 = ls_codigo1 != "" ? ls_codigo1.Substring(12) : "";
+                    
+                    ls_codigo2 = dgvlista.Rows[imp].Cells[1].Value != null ? dgvlista.Rows[imp].Cells[1].Value.ToString() : "";
+                    ls_print2 = ls_codigo2 != "" ? ls_codigo2.Substring(12) : "";
+                    
+                    ls_codigo3 = dgvlista.Rows[imp].Cells[2].Value != null ? dgvlista.Rows[imp].Cells[2].Value.ToString() : "";
+                    ls_print3 = ls_codigo3 != "" ? ls_codigo3.Substring(12) : "";
+                    
+                    ls_codigo4 = dgvlista.Rows[imp].Cells[3].Value != null ? dgvlista.Rows[imp].Cells[3].Value.ToString() : "";
+                    ls_print4 = ls_codigo4 != "" ? ls_codigo4.Substring(12) : "";
+
                     // INICIO
                     cadena = "^XA" + Environment.NewLine;
 
                     // COLUMNA 01
-                    cadena = cadena + "^FO10^BQN,2,6^FDMA," + ls_calibre + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,40^FO132,60^FD" + ls_calibre + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO10^BQN,2,6^FDMA," + ls_codigo1 + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,40^FO132,60^FD" + ls_print1 + "^FS" + Environment.NewLine;
 
                     // COLUMNA 02
-                    cadena = cadena + "^FO225^BQN,2,6^FDMA," + ls_calibre + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,40^FO352,60^FD" + ls_calibre + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO225^BQN,2,6^FDMA," + ls_codigo2 + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,40^FO352,60^FD" + ls_print2 + "^FS" + Environment.NewLine;
+                    
                     // COLUMNA 03
-                    cadena = cadena + "^FO435^BQN,2,6^FDMA," + ls_calibre + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,40^FO562,60^FD" + ls_calibre + "^FS" + Environment.NewLine;
-                    // COLUMNA 03
-                    cadena = cadena + "^FO635^BQN,2,6^FDMA," + ls_calibre + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,40^FO762,60^FD" + ls_calibre + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO435^BQN,2,6^FDMA," + ls_codigo3 + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,40^FO562,60^FD" + ls_print3 + "^FS" + Environment.NewLine;
+                    
+                    //COLUMNA 04
+                    cadena = cadena + "^FO635^BQN,2,6^FDMA," + ls_codigo4 + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,40^FO762,60^FD" + ls_print4 + "^FS" + Environment.NewLine;
 
                     // FIN
                     cadena = cadena + "^XZ" + Environment.NewLine;
@@ -195,6 +255,50 @@ namespace _3mpacador4.Presentacion.Sistema
         {
             lblcantidad_tikects.Text = Convert.ToString(Convert.ToInt32(nudacantidad_filas.Value) * Convert.ToInt32(lblcolumnas.Text.Trim()));
         }
+
+        private void btngenerar_Click(object sender, EventArgs e)
+        {
+
+            int li_calibre = 0, li_cantidad = 0;
+            string ls_fecha_produccion = "";
+
+            li_calibre = Convert.ToInt32(nudcalibre.Value);
+            li_cantidad = Convert.ToInt32(lblcantidad_tikects.Text.Trim());
+            ls_fecha_produccion = dtpf_proceso.Value.ToString("yyyy-MM-dd");
+
+            var rpta = MessageBox.Show("¿ ESTA SEGURO DE GENERAR " + li_cantidad.ToString() + " TICKETS DEL CALIBRE "+ li_calibre.ToString() + " DE FECHA : " + dtpf_proceso.Value.ToShortDateString() + " ?", "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (rpta == DialogResult.Yes)
+            {
+                Numeror_x_Calibre(li_calibre, li_cantidad, ls_fecha_produccion);
+
+                Lista_codigos(li_calibre, ls_fecha_produccion);
+
+                List<List<string>> filasSeparadas = SepararEnFilas(Lista_cod, 4);
+
+                foreach (var fila in filasSeparadas)
+                {
+                    dgvlista.Rows.Add(fila.ToArray());
+                }
+            }              
+        }
+
+        static List<List<string>> SepararEnFilas(List<string> listaOriginal, int columnasPorFila)
+        {
+            List<List<string>> filasSeparadas = new List<List<string>>();
+
+            for (int i = 0; i < listaOriginal.Count; i += columnasPorFila)
+            {
+                // Obtiene una porción de la lista con el número de columnas especificado
+                List<string> fila = listaOriginal.GetRange(i, Math.Min(columnasPorFila, listaOriginal.Count - i));
+
+                // Agrega la fila a la lista de filas separadas
+                filasSeparadas.Add(fila);
+            }
+
+            return filasSeparadas;
+        }
+
+      
 
 
         //static void PrintPage(object sender, PrintPageEventArgs e)

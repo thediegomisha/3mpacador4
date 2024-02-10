@@ -32,6 +32,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvlista = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +43,8 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvlista)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +54,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.dgvlista.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -67,14 +70,16 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.Column4,
             this.Column5,
             this.Column6,
-            this.Column7});
+            this.Column7,
+            this.Column10,
+            this.Column11});
             this.dgvlista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvlista.Location = new System.Drawing.Point(0, 0);
             this.dgvlista.Name = "dgvlista";
             this.dgvlista.ReadOnly = true;
             this.dgvlista.RowHeadersVisible = false;
             this.dgvlista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvlista.Size = new System.Drawing.Size(640, 235);
+            this.dgvlista.Size = new System.Drawing.Size(789, 235);
             this.dgvlista.TabIndex = 0;
             this.dgvlista.DoubleClick += new System.EventHandler(this.dgvlista_DoubleClick);
             // 
@@ -131,7 +136,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.Column5.HeaderText = "CATEGORIA";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
-            this.Column5.Width = 130;
+            this.Column5.Width = 120;
             // 
             // Column6
             // 
@@ -146,13 +151,30 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.Column7.HeaderText = "PRESENTACION";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
-            this.Column7.Width = 200;
+            this.Column7.Width = 120;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "ID";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Visible = false;
+            this.Column10.Width = 30;
+            // 
+            // Column11
+            // 
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column11.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column11.HeaderText = "CLIENTE";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Width = 240;
             // 
             // FBuscar_proceso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 235);
+            this.ClientSize = new System.Drawing.Size(789, 235);
             this.Controls.Add(this.dgvlista);
             this.MaximizeBox = false;
             this.Name = "FBuscar_proceso";
@@ -175,5 +197,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
     }
 }

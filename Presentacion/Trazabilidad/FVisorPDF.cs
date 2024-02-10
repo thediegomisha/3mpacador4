@@ -15,7 +15,15 @@ namespace _3mpacador4.Presentacion.Trazabilidad
 
         private void FVisorPDF_Load(object sender, EventArgs e)
         {
-            pvvisor.LoadFromFile(FRptPackigCalibre.ls_ruta_pdf);                      
+            if (FRptPackigCalibre.ls_ruta_pdf.Length > 0)
+            {
+                pvvisor.LoadFromFile(FRptPackigCalibre.ls_ruta_pdf);
+            } 
+            else if (FRptKardexLote.ls_ruta_pdf.Length > 0) 
+            {
+                pvvisor.LoadFromFile(FRptKardexLote.ls_ruta_pdf);
+            }
+                              
         }
 
         private void FVisorPDF_FormClosing(object sender, FormClosingEventArgs e)
@@ -23,6 +31,10 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             if (File.Exists(FRptPackigCalibre.ls_ruta_pdf))
             {
                 File.Delete(FRptPackigCalibre.ls_ruta_pdf);
+            }
+            else if (File.Exists(FRptKardexLote.ls_ruta_pdf))
+            {
+                File.Delete(FRptKardexLote.ls_ruta_pdf);
             }
         }
     }

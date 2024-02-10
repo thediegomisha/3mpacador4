@@ -13,25 +13,17 @@ namespace _3mpacador4.Logica
     public class LConteo_manual
     {
 
-        public static int Existe_Conteo_manual_x_fecha(string ls_fecha_produccion, int li_idlote, int li_categoria, int li_idpresentacion, int li_idcliente)
+        public static int Existe_Conteo_manual_x_fecha(int li_idproceso)
         {
             int li_rpta = 0;
             if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
             
             string sql = @"select count(*) from tblconteo_jabas cj 
                             inner join tblprograma_proceso pp on cj.idproceso = pp.idproceso
-                            where cj.fecha_produccion = @fecha_produccion and 
-                            pp.idlote = @idlote and
-                            pp.idcategoria = @idcategoria and
-                            pp.idpresentacion = @idpresentacion and 
-                            cj.idcliente = @idcliente and
+                            where cj.idproceso = @idproceso and
                             pp.flag_estado <> '0'";
             var cmd = new MySqlCommand(sql, ConexionGral.conexion);
-            cmd.Parameters.AddWithValue("@fecha_produccion", ls_fecha_produccion);
-            cmd.Parameters.AddWithValue("@idlote", li_idlote);
-            cmd.Parameters.AddWithValue("@idcategoria", li_categoria);
-            cmd.Parameters.AddWithValue("@idpresentacion", li_idpresentacion);
-            cmd.Parameters.AddWithValue("@idcliente", li_idcliente);
+            cmd.Parameters.AddWithValue("@idproceso", li_idproceso);
             li_rpta = Convert.ToInt32(cmd.ExecuteScalar());
             ConexionGral.desconectar();
             return li_rpta;
@@ -63,7 +55,7 @@ namespace _3mpacador4.Logica
             return li_rpta;
         }
 
-        public static int Conteo_Manual(int idproceso, int calibre, string fecha_produccion, int cantidad, int li_idcliente, int li_nro_pallet)
+        public static int Conteo_Manual(int idproceso, int calibre, string fecha_produccion, int idusuario, int li_nro_pallet, int cantidad, int li_idcliente)
         {
             try
             {
@@ -79,7 +71,7 @@ namespace _3mpacador4.Logica
                 comando.Parameters.AddWithValue("p_idterminal", 1);
                 comando.Parameters.AddWithValue("p_calibre", calibre);
                 comando.Parameters.AddWithValue("p_fecha_produccion", fecha_produccion);
-                comando.Parameters.AddWithValue("p_idusuario", 1);
+                comando.Parameters.AddWithValue("p_idusuario", idusuario);
                 comando.Parameters.AddWithValue("p_nro_pallet", li_nro_pallet);
                 comando.Parameters.AddWithValue("p_cantidad_x_calibre", cantidad);
                 comando.Parameters.AddWithValue("p_idcliente", li_idcliente);

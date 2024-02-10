@@ -49,7 +49,7 @@
             this.lblruc_dni = new System.Windows.Forms.Label();
             this.lblguiaingreso = new System.Windows.Forms.Label();
             this.cboLote = new System.Windows.Forms.ComboBox();
-            this.lblcliente = new System.Windows.Forms.Label();
+            this.lblcliente_desc = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.dtpf_proceso = new System.Windows.Forms.DateTimePicker();
             this.label18 = new System.Windows.Forms.Label();
@@ -72,6 +72,11 @@
             this.dtpbuscar_fecproduccion = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvcalibres = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -82,9 +87,9 @@
             this.lblpresentacion = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnmostrar_conteo_manual = new Glass.GlassButton();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.cbxtodos_cli = new System.Windows.Forms.CheckBox();
+            this.lblid_cliente = new System.Windows.Forms.Label();
+            this.lblcliente = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.btnbuscar_proceso = new Glass.GlassButton();
             this.lblid_proceso = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
@@ -100,18 +105,13 @@
             this.rbbuscar = new System.Windows.Forms.RadioButton();
             this.rbregistrar = new System.Windows.Forms.RadioButton();
             this.cbxregistro_manual = new System.Windows.Forms.CheckBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvcalibres)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.gbregistro_manual.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -267,15 +267,15 @@
             this.cboLote.TabIndex = 72;
             this.cboLote.SelectedIndexChanged += new System.EventHandler(this.cboLote_SelectedIndexChanged);
             // 
-            // lblcliente
+            // lblcliente_desc
             // 
-            this.lblcliente.AutoSize = true;
-            this.lblcliente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcliente.Location = new System.Drawing.Point(113, 24);
-            this.lblcliente.Name = "lblcliente";
-            this.lblcliente.Size = new System.Drawing.Size(47, 17);
-            this.lblcliente.TabIndex = 74;
-            this.lblcliente.Text = "Cliente";
+            this.lblcliente_desc.AutoSize = true;
+            this.lblcliente_desc.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcliente_desc.Location = new System.Drawing.Point(113, 24);
+            this.lblcliente_desc.Name = "lblcliente_desc";
+            this.lblcliente_desc.Size = new System.Drawing.Size(47, 17);
+            this.lblcliente_desc.TabIndex = 74;
+            this.lblcliente_desc.Text = "Cliente";
             // 
             // label16
             // 
@@ -385,7 +385,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lblcliente);
+            this.groupBox1.Controls.Add(this.lblcliente_desc);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label9);
@@ -403,7 +403,7 @@
             this.groupBox1.Controls.Add(this.lblvariedad);
             this.groupBox1.Location = new System.Drawing.Point(22, 93);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(868, 119);
+            this.groupBox1.Size = new System.Drawing.Size(868, 103);
             this.groupBox1.TabIndex = 89;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DATOS DEL LOTE";
@@ -493,17 +493,17 @@
             this.cbxterminal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxterminal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxterminal.FormattingEnabled = true;
-            this.cbxterminal.Location = new System.Drawing.Point(138, 219);
+            this.cbxterminal.Location = new System.Drawing.Point(596, 203);
             this.cbxterminal.Margin = new System.Windows.Forms.Padding(4);
             this.cbxterminal.Name = "cbxterminal";
-            this.cbxterminal.Size = new System.Drawing.Size(293, 25);
+            this.cbxterminal.Size = new System.Drawing.Size(285, 25);
             this.cbxterminal.TabIndex = 112;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(52, 223);
+            this.label1.Location = new System.Drawing.Point(511, 207);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 17);
             this.label1.TabIndex = 111;
@@ -514,7 +514,7 @@
             this.dtpbuscar_fecproduccion.CalendarFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpbuscar_fecproduccion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpbuscar_fecproduccion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpbuscar_fecproduccion.Location = new System.Drawing.Point(161, 23);
+            this.dtpbuscar_fecproduccion.Location = new System.Drawing.Point(154, 23);
             this.dtpbuscar_fecproduccion.Margin = new System.Windows.Forms.Padding(4);
             this.dtpbuscar_fecproduccion.Name = "dtpbuscar_fecproduccion";
             this.dtpbuscar_fecproduccion.Size = new System.Drawing.Size(136, 25);
@@ -526,7 +526,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(40, 29);
+            this.label2.Location = new System.Drawing.Point(33, 29);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(115, 17);
@@ -563,12 +563,61 @@
             this.dgvcalibres.Size = new System.Drawing.Size(354, 319);
             this.dgvcalibres.TabIndex = 116;
             this.dgvcalibres.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvcalibres_CellContentClick);
+            this.dgvcalibres.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvcalibres_CellEndEdit);
             this.dgvcalibres.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvcalibres_CellFormatting);
+            // 
+            // Column1
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column1.HeaderText = "CALIBRE";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 90;
+            // 
+            // Column3
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column3.HeaderText = "CANTIDAD";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 90;
+            // 
+            // Column2
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column2.HeaderText = "N° PALLET";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 90;
+            // 
+            // Column4
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column4.HeaderText = "";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 30;
+            // 
+            // Column5
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Column5.HeaderText = "";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 30;
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.dgvcalibres);
-            this.groupBox4.Location = new System.Drawing.Point(501, 19);
+            this.groupBox4.Location = new System.Drawing.Point(480, 19);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(360, 338);
             this.groupBox4.TabIndex = 122;
@@ -579,7 +628,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(83, 116);
+            this.label5.Location = new System.Drawing.Point(76, 116);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(72, 17);
             this.label5.TabIndex = 123;
@@ -589,7 +638,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(502, 357);
+            this.label10.Location = new System.Drawing.Point(481, 357);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(86, 25);
             this.label10.TabIndex = 125;
@@ -599,7 +648,7 @@
             // 
             this.lbltotal_calibre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbltotal_calibre.Font = new System.Drawing.Font("Segoe UI Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltotal_calibre.Location = new System.Drawing.Point(592, 357);
+            this.lbltotal_calibre.Location = new System.Drawing.Point(571, 357);
             this.lbltotal_calibre.Name = "lbltotal_calibre";
             this.lbltotal_calibre.Size = new System.Drawing.Size(97, 25);
             this.lbltotal_calibre.TabIndex = 126;
@@ -611,18 +660,17 @@
             this.cbxcliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxcliente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxcliente.FormattingEnabled = true;
-            this.cbxcliente.Location = new System.Drawing.Point(16, 20);
+            this.cbxcliente.Location = new System.Drawing.Point(135, 203);
             this.cbxcliente.Margin = new System.Windows.Forms.Padding(4);
             this.cbxcliente.Name = "cbxcliente";
-            this.cbxcliente.Size = new System.Drawing.Size(339, 25);
+            this.cbxcliente.Size = new System.Drawing.Size(333, 25);
             this.cbxcliente.TabIndex = 128;
-            this.cbxcliente.SelectedIndexChanged += new System.EventHandler(this.cbxcliente_SelectedIndexChanged);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(68, 144);
+            this.label14.Location = new System.Drawing.Point(61, 144);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(87, 17);
             this.label14.TabIndex = 130;
@@ -632,7 +680,7 @@
             // 
             this.lblcategoria.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblcategoria.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcategoria.Location = new System.Drawing.Point(204, 142);
+            this.lblcategoria.Location = new System.Drawing.Point(197, 142);
             this.lblcategoria.Name = "lblcategoria";
             this.lblcategoria.Size = new System.Drawing.Size(205, 22);
             this.lblcategoria.TabIndex = 131;
@@ -641,7 +689,7 @@
             // 
             this.lblpresentacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblpresentacion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblpresentacion.Location = new System.Drawing.Point(204, 170);
+            this.lblpresentacion.Location = new System.Drawing.Point(197, 170);
             this.lblpresentacion.Name = "lblpresentacion";
             this.lblpresentacion.Size = new System.Drawing.Size(205, 22);
             this.lblpresentacion.TabIndex = 133;
@@ -650,7 +698,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(44, 172);
+            this.label19.Location = new System.Drawing.Point(37, 172);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(111, 17);
             this.label19.TabIndex = 132;
@@ -658,8 +706,9 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.btnmostrar_conteo_manual);
-            this.groupBox5.Controls.Add(this.groupBox6);
+            this.groupBox5.Controls.Add(this.lblid_cliente);
+            this.groupBox5.Controls.Add(this.lblcliente);
+            this.groupBox5.Controls.Add(this.label15);
             this.groupBox5.Controls.Add(this.btnbuscar_proceso);
             this.groupBox5.Controls.Add(this.lblid_proceso);
             this.groupBox5.Controls.Add(this.label31);
@@ -680,58 +729,45 @@
             this.groupBox5.Controls.Add(this.label14);
             this.groupBox5.Location = new System.Drawing.Point(8, 39);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(487, 318);
+            this.groupBox5.Size = new System.Drawing.Size(455, 318);
             this.groupBox5.TabIndex = 134;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "DATOS :";
             // 
-            // btnmostrar_conteo_manual
+            // lblid_cliente
             // 
-            this.btnmostrar_conteo_manual.BackColor = System.Drawing.Color.Blue;
-            this.btnmostrar_conteo_manual.Enabled = false;
-            this.btnmostrar_conteo_manual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnmostrar_conteo_manual.Image = global::_3mpacador4.Properties.Resources.buscar;
-            this.btnmostrar_conteo_manual.Location = new System.Drawing.Point(249, 259);
-            this.btnmostrar_conteo_manual.Margin = new System.Windows.Forms.Padding(4);
-            this.btnmostrar_conteo_manual.Name = "btnmostrar_conteo_manual";
-            this.btnmostrar_conteo_manual.OuterBorderColor = System.Drawing.Color.Blue;
-            this.btnmostrar_conteo_manual.ShineColor = System.Drawing.Color.Navy;
-            this.btnmostrar_conteo_manual.Size = new System.Drawing.Size(160, 40);
-            this.btnmostrar_conteo_manual.TabIndex = 144;
-            this.btnmostrar_conteo_manual.Text = "MOSTRAR CONTEO MANUAL";
-            this.btnmostrar_conteo_manual.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnmostrar_conteo_manual.Click += new System.EventHandler(this.btnmostrar_conteo_manual_Click);
+            this.lblid_cliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblid_cliente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblid_cliente.Location = new System.Drawing.Point(154, 200);
+            this.lblid_cliente.Name = "lblid_cliente";
+            this.lblid_cliente.Size = new System.Drawing.Size(37, 22);
+            this.lblid_cliente.TabIndex = 146;
+            this.lblid_cliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // groupBox6
+            // lblcliente
             // 
-            this.groupBox6.Controls.Add(this.cbxcliente);
-            this.groupBox6.Controls.Add(this.cbxtodos_cli);
-            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(47, 197);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(362, 55);
-            this.groupBox6.TabIndex = 143;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "CLIENTE";
+            this.lblcliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblcliente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcliente.Location = new System.Drawing.Point(197, 200);
+            this.lblcliente.Name = "lblcliente";
+            this.lblcliente.Size = new System.Drawing.Size(205, 22);
+            this.lblcliente.TabIndex = 145;
             // 
-            // cbxtodos_cli
+            // label15
             // 
-            this.cbxtodos_cli.AutoSize = true;
-            this.cbxtodos_cli.Enabled = false;
-            this.cbxtodos_cli.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxtodos_cli.Location = new System.Drawing.Point(275, -2);
-            this.cbxtodos_cli.Name = "cbxtodos_cli";
-            this.cbxtodos_cli.Size = new System.Drawing.Size(73, 19);
-            this.cbxtodos_cli.TabIndex = 137;
-            this.cbxtodos_cli.Text = "TODOS";
-            this.cbxtodos_cli.UseVisualStyleBackColor = true;
-            this.cbxtodos_cli.CheckedChanged += new System.EventHandler(this.cbxtodos_cli_CheckedChanged);
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(81, 205);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(67, 17);
+            this.label15.TabIndex = 137;
+            this.label15.Text = "CLIENTE :";
             // 
             // btnbuscar_proceso
             // 
             this.btnbuscar_proceso.BackColor = System.Drawing.Color.Blue;
             this.btnbuscar_proceso.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnbuscar_proceso.Location = new System.Drawing.Point(205, 56);
+            this.btnbuscar_proceso.Location = new System.Drawing.Point(198, 56);
             this.btnbuscar_proceso.Margin = new System.Windows.Forms.Padding(4);
             this.btnbuscar_proceso.Name = "btnbuscar_proceso";
             this.btnbuscar_proceso.OuterBorderColor = System.Drawing.Color.Blue;
@@ -746,7 +782,7 @@
             // 
             this.lblid_proceso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblid_proceso.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblid_proceso.Location = new System.Drawing.Point(161, 56);
+            this.lblid_proceso.Location = new System.Drawing.Point(154, 56);
             this.lblid_proceso.Name = "lblid_proceso";
             this.lblid_proceso.Size = new System.Drawing.Size(37, 22);
             this.lblid_proceso.TabIndex = 142;
@@ -756,7 +792,7 @@
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(81, 57);
+            this.label31.Location = new System.Drawing.Point(74, 57);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(74, 17);
             this.label31.TabIndex = 141;
@@ -766,7 +802,7 @@
             // 
             this.lblid_destino.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblid_destino.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblid_destino.Location = new System.Drawing.Point(161, 114);
+            this.lblid_destino.Location = new System.Drawing.Point(154, 114);
             this.lblid_destino.Name = "lblid_destino";
             this.lblid_destino.Size = new System.Drawing.Size(37, 22);
             this.lblid_destino.TabIndex = 140;
@@ -777,12 +813,12 @@
             this.btnconteo_manual.BackColor = System.Drawing.Color.Blue;
             this.btnconteo_manual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnconteo_manual.Image = global::_3mpacador4.Properties.Resources.save;
-            this.btnconteo_manual.Location = new System.Drawing.Point(47, 259);
+            this.btnconteo_manual.Location = new System.Drawing.Point(154, 243);
             this.btnconteo_manual.Margin = new System.Windows.Forms.Padding(4);
             this.btnconteo_manual.Name = "btnconteo_manual";
             this.btnconteo_manual.OuterBorderColor = System.Drawing.Color.Blue;
             this.btnconteo_manual.ShineColor = System.Drawing.Color.Navy;
-            this.btnconteo_manual.Size = new System.Drawing.Size(160, 40);
+            this.btnconteo_manual.Size = new System.Drawing.Size(167, 40);
             this.btnconteo_manual.TabIndex = 90;
             this.btnconteo_manual.Text = "GENERAR CONTEO MANUAL";
             this.btnconteo_manual.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -792,7 +828,7 @@
             // 
             this.lbldestino.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbldestino.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldestino.Location = new System.Drawing.Point(204, 114);
+            this.lbldestino.Location = new System.Drawing.Point(197, 114);
             this.lbldestino.Name = "lbldestino";
             this.lbldestino.Size = new System.Drawing.Size(205, 22);
             this.lbldestino.TabIndex = 139;
@@ -801,7 +837,7 @@
             // 
             this.lblid_lote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblid_lote.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblid_lote.Location = new System.Drawing.Point(161, 85);
+            this.lblid_lote.Location = new System.Drawing.Point(154, 85);
             this.lblid_lote.Name = "lblid_lote";
             this.lblid_lote.Size = new System.Drawing.Size(37, 22);
             this.lblid_lote.TabIndex = 138;
@@ -811,7 +847,7 @@
             // 
             this.lblnum_lote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblnum_lote.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblnum_lote.Location = new System.Drawing.Point(204, 85);
+            this.lblnum_lote.Location = new System.Drawing.Point(197, 85);
             this.lblnum_lote.Name = "lblnum_lote";
             this.lblnum_lote.Size = new System.Drawing.Size(205, 22);
             this.lblnum_lote.TabIndex = 137;
@@ -820,7 +856,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(108, 86);
+            this.label25.Location = new System.Drawing.Point(101, 86);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(47, 17);
             this.label25.TabIndex = 136;
@@ -830,7 +866,7 @@
             // 
             this.lblid_presentacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblid_presentacion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblid_presentacion.Location = new System.Drawing.Point(161, 170);
+            this.lblid_presentacion.Location = new System.Drawing.Point(154, 170);
             this.lblid_presentacion.Name = "lblid_presentacion";
             this.lblid_presentacion.Size = new System.Drawing.Size(37, 22);
             this.lblid_presentacion.TabIndex = 135;
@@ -840,7 +876,7 @@
             // 
             this.lblid_categoria.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblid_categoria.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblid_categoria.Location = new System.Drawing.Point(161, 142);
+            this.lblid_categoria.Location = new System.Drawing.Point(154, 142);
             this.lblid_categoria.Name = "lblid_categoria";
             this.lblid_categoria.Size = new System.Drawing.Size(37, 22);
             this.lblid_categoria.TabIndex = 134;
@@ -899,63 +935,27 @@
             this.cbxregistro_manual.UseVisualStyleBackColor = true;
             this.cbxregistro_manual.CheckedChanged += new System.EventHandler(this.cbxregistro_manual_CheckedChanged);
             // 
-            // Column1
+            // label12
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column1.HeaderText = "CALIBRE";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 90;
-            // 
-            // Column3
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column3.HeaderText = "CANTIDAD";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 90;
-            // 
-            // Column2
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column2.HeaderText = "N° PALLET";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 90;
-            // 
-            // Column4
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Column4.HeaderText = "";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 30;
-            // 
-            // Column5
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Column5.HeaderText = "";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 30;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(64, 206);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(67, 17);
+            this.label12.TabIndex = 75;
+            this.label12.Text = "CLIENTE :";
             // 
             // FProgramaProceso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(902, 755);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.cbxcliente);
             this.Controls.Add(this.cbxregistro_manual);
-            this.Controls.Add(this.gbregistro_manual);
-            this.Controls.Add(this.cbxterminal);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbxterminal);
+            this.Controls.Add(this.gbregistro_manual);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -979,8 +979,6 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.gbregistro_manual.ResumeLayout(false);
             this.gbregistro_manual.PerformLayout();
             this.ResumeLayout(false);
@@ -1005,7 +1003,7 @@
         private System.Windows.Forms.Label lblruc_dni;
         private System.Windows.Forms.Label lblguiaingreso;
         internal System.Windows.Forms.ComboBox cboLote;
-        private System.Windows.Forms.Label lblcliente;
+        private System.Windows.Forms.Label lblcliente_desc;
         private System.Windows.Forms.Label label16;
         internal System.Windows.Forms.DateTimePicker dtpf_proceso;
         internal System.Windows.Forms.Label label18;
@@ -1051,15 +1049,16 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label lblid_presentacion;
         private System.Windows.Forms.Label lblid_categoria;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.CheckBox cbxtodos_cli;
         private System.Windows.Forms.RadioButton rbbuscar;
         private System.Windows.Forms.RadioButton rbregistrar;
-        private Glass.GlassButton btnmostrar_conteo_manual;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewButtonColumn Column4;
         private System.Windows.Forms.DataGridViewButtonColumn Column5;
+        private System.Windows.Forms.Label lblid_cliente;
+        private System.Windows.Forms.Label lblcliente;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label12;
     }
 }

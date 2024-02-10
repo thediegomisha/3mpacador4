@@ -30,7 +30,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                 using (var reader = comando.ExecuteReader())
                 {
                     while (reader.Read())
-                        dgvlista.Rows.Add(reader["idproceso"], reader["idlote"], reader["numlote"], reader["iddestino"], reader["destino"], reader["idcategoria"], reader["categoria"], reader["idpresentacion"], reader["presentacion"]);
+                        dgvlista.Rows.Add(reader["idproceso"], reader["idlote"], reader["numlote"], reader["iddestino"], reader["destino"], reader["idcategoria"], reader["categoria"], reader["idpresentacion"], reader["presentacion"], reader["idcliente"], reader["cliente"]);
                 }
 
                 ConexionGral.desconectar();
@@ -62,6 +62,8 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                 FProgramaProceso.pp.categoria = Convert.ToString(dgvlista.CurrentRow.Cells[6].Value);
                 FProgramaProceso.pp.idpresentacion = Convert.ToInt32(dgvlista.CurrentRow.Cells[7].Value);
                 FProgramaProceso.pp.presentacion = Convert.ToString(dgvlista.CurrentRow.Cells[8].Value);
+                FProgramaProceso.pp.idcliente = Convert.ToInt32(dgvlista.CurrentRow.Cells[9].Value);
+                FProgramaProceso.pp.cliente = Convert.ToString(dgvlista.CurrentRow.Cells[10].Value);
                 Close();
             }
         }
