@@ -7,6 +7,7 @@ using System.Diagnostics;
 using QuestPDF.Infrastructure;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
+using ZXing;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
@@ -66,7 +67,6 @@ namespace _3mpacador4.Presentacion.Reporte
             lblvariedad.Text = IngresoPesos.cbvariedad.Text.ToString();
             lbljabas .Text = IngresoPesos .cbjabas .Text.ToString();
             lblpesoneto.Text = IngresoPesos.lblpeso.Text;
-
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
@@ -182,54 +182,14 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 col.Item().Row(row =>
                 {
-                    //row.RelativeItem().AlignLeft()
-                    //    .Row(rowitem =>
-                    //    {
-                    //        rowitem.AutoItem().Width(120).Height(50).Image(LogoPath);
-                    //        rowitem.AutoItem().AlignLeft().Text("RECEPCION").SemiBold().FontSize(28)
-                    //            .FontColor(Colors.Blue.Medium);
-
-                    //    });
-
-
-                    row.RelativeItem().AlignRight().Width(250).Height(65)
-                       .Row(rowitem =>
+                    row.RelativeItem().AlignLeft()
+                        .Row(rowitem =>
                         {
-                         //   rowitem.AutoItem().Width(65).Height(65).Image(QRCodeGenerator.GenerateQRCodeBytes("https://laptrinhvb.net/bai-viet/chuyen-de-csharp/---Csharp----Huong-dan-tao-ung-dung-dock-windows-giong-Taskbar/2f0a9a79ff1bafd4.html", 170, 170));
+                            rowitem.AutoItem().Width(120).Height(50).Image(LogoPath);
+                            rowitem.AutoItem().AlignLeft().Text("RECEPCION").SemiBold().FontSize(28)
+                                .FontColor(Colors.Blue.Medium);
 
-
-                            rowitem.AutoItem().Container().Width(4);
-                            rowitem.RelativeItem().Border(0.5f).Padding(2).Column(column =>
-                            {
-                                column.Item().Container().Height(2);
-                                column.Item().Row(row2 =>
-                                {
-                                    row2.Spacing(12);
-                                    row2.AutoItem().Text($"123: LAPTRINHVB-03-BCT/02").FontSize(9).Italic();
-
-                                });
-                                column.Item().Row(row2 =>
-                                {
-                                    row2.Spacing(12);
-                                    row2.AutoItem().Text($"123: 21/11/2023").FontSize(9).Italic();
-
-                                });
-                                column.Item().Row(row2 =>
-                                {
-                                    row2.Spacing(12);
-                                    row2.AutoItem().Text($"123: 22/03/2023").FontSize(9).Italic();
-
-                                });
-                                column.Item().Row(row2 =>
-                                {
-                                    row2.Spacing(5);
-                                    row2.AutoItem().Text($"123: 01").FontSize(9).Italic();
-
-                                });
-
-                            });
                         });
-
                 });
                 col.Item().Table(table =>
                 {
@@ -237,28 +197,42 @@ namespace _3mpacador4.Presentacion.Reporte
                     {
                         columns.RelativeColumn();
                         columns.RelativeColumn();
-                        //columns.RelativeColumn();
-                        //columns.RelativeColumn();
                     });
-                    table.Cell().Text("Cliente :");
-                    table.Cell().Text(lblcliente2.Text).FontSize(12).FontColor(Colors.Black).Bold();
-                    table.Cell().Text("Guia de Remision :");
-                    table.Cell().Text(lblcliente2.Text).FontSize(12).FontColor(Colors.Black).Bold();
 
-                    table.Cell().Text("Productor :");
-                    table.Cell().Text(lblcliente2.Text).FontSize(12).FontColor(Colors.Black).Bold();
-                    table.Cell().Text("RUC / DNI :");
-                    table.Cell().Text(lblcliente2.Text).FontSize(12).FontColor(Colors.Black).Bold();
+                    //table.Cell().Text("PALLET N° :").FontSize(14).FontColor(Colors.Black).Bold();
+                    //table.Cell().Text("000").FontSize(16).FontColor(Colors.Black).Bold();
 
-                    table.Cell().Text("etodo :");
-                    table.Cell().Text(lblcliente2.Text).FontSize(12).FontColor(Colors.Black).Bold();
-                    table.Cell().Text("CLP :");
-                    table.Cell().Text(lblcliente2.Text);
+                    table.Cell().Text("EXPORTADOR :").FontSize(14).FontColor(Colors.Black).Bold();
+                    table.Cell().Text(lblcliente2.Text).FontSize(16).FontColor(Colors.Black).Bold();
 
-                    table.Cell().Text("Producto :");
-                    table.Cell().Text(lblcliente2.Text).FontSize(12).FontColor(Colors.Black).Bold();
-                    table.Cell().Text("Variedad :");
-                    table.Cell().Text(lblvariedad.Text).FontSize(12).FontColor(Colors.Black).Bold();
+                    table.Cell().Text("CLP :").FontSize(14).FontColor(Colors.Black).Bold();
+                    table.Cell().Text(lblclp2.Text).FontSize(16).FontColor(Colors.Black).Bold();
+
+                    table.Cell().Text("GUIA DE REMISION:").FontSize(14).FontColor(Colors.Black).Bold();
+                    table.Cell().Text(lblguiaremision.Text).FontSize(14).FontColor(Colors.Black).Bold();
+
+                    table.Cell().Text("FECHA DE RECEPCION:").FontSize(14).FontColor(Colors.Black).Bold();
+                    table.Cell().Text(lblfecharecepcion.Text).FontSize(14).FontColor(Colors.Black).Bold();
+
+                    int cortecadena = lblproductor2.Text.IndexOf("||");
+                 
+                    if (cortecadena != -1)
+                    {
+                        string parteCortada = lblproductor2.Text.Substring(0, cortecadena).Trim(); // Agregamos 3 para omitir el delimitador y los espacios que lo siguen
+                   
+                    table.Cell().Text("PRODUCTOR :").FontSize(14).FontColor(Colors.Black).Bold();
+                    table.Cell().Text(parteCortada).FontSize(14).FontColor(Colors.Black).Bold();
+                    }
+                    table.Cell().Text("VARIEDAD :").FontSize(14).FontColor(Colors.Black).Bold();
+                    table.Cell().Text(lblvariedad.Text).FontSize(16).FontColor(Colors.Black).Bold();
+
+                    table.Cell().Text("N° DE JABAS :").FontSize(14).FontColor(Colors.Black).Bold();
+                    table.Cell().Text(lbljabas.Text).FontSize(16).FontColor(Colors.Black).Bold();
+                   
+
+                    table.Cell().Text("PESO NETO:").FontSize(14).FontColor(Colors.Black).Bold();
+                    table.Cell().Text(lblpesoneto.Text).FontSize(16).FontColor(Colors.Black).Bold();
+                   
                 });
             });
         }
@@ -315,8 +289,6 @@ namespace _3mpacador4.Presentacion.Reporte
                         columns.RelativeColumn(1);
 
                     });
-
-
 
                     table.Header(header =>
                     {
