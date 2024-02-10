@@ -33,7 +33,7 @@
     <MinimumRequiredVersion>1.0.0.5</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>43</ApplicationRevision>
+    <ApplicationRevision>45</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -97,20 +97,8 @@
       <HintPath>packages\Microsoft.Extensions.DependencyModel.7.0.0\lib\net462\Microsoft.Extensions.DependencyModel.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="QuestPDF, Version=2023.12.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\QuestPDF.2023.12.4\lib\netstandard2.0\QuestPDF.dll</HintPath>
-    </Reference>
-    <Reference Include="SkiaSharp, Version=2.88.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>packages\SkiaSharp.2.88.7\lib\net462\SkiaSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="SkiaSharp.HarfBuzz, Version=2.88.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>packages\SkiaSharp.HarfBuzz.2.88.7\lib\net462\SkiaSharp.HarfBuzz.dll</HintPath>
     </Reference>
     <Reference Include="Spire.Pdf, Version=8.6.0.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
       <HintPath>packages\FreeSpire.PDFViewer.7.6.0\lib\net46\Spire.Pdf.dll</HintPath>
@@ -166,7 +154,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entidad\Lote.cs" />
     <Compile Include="Entidad\Reportes\BoletaModel.cs" />
     <Compile Include="Entidad\Calibre.cs" />
     <Compile Include="Entidad\Colaborador.cs" />
@@ -183,12 +170,12 @@
     <Compile Include="Logica\ClConexion.cs" />
     <Compile Include="Logica\ConexionGral.cs" />
     <Compile Include="Logica\ConnectionStringManager.cs" />
+    <Compile Include="Logica\Documentos.cs" />
     <Compile Include="Logica\FormUtils.cs" />
+    <Compile Include="Logica\GenerarCodigoQr.cs" />
     <Compile Include="Logica\LConteo_manual.cs" />
     <Compile Include="Logica\LGrupo_turno.cs" />
-    <Compile Include="Logica\LMuestreo.cs" />
     <Compile Include="Logica\LPacking_calibre.cs" />
-    <Compile Include="Logica\LPrograma_proceso.cs" />
     <Compile Include="Logica\RawPrinterHelper.cs" />
     <Compile Include="Presentacion\Mantenimiento\FActualizaFechaProduccion.cs">
       <SubType>Form</SubType>
@@ -201,6 +188,12 @@
     </Compile>
     <Compile Include="Presentacion\Mantenimiento\frmAcopiador.Designer.cs">
       <DependentUpon>frmAcopiador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\FrmAgregarDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\FrmAgregarDoc.Designer.cs">
+      <DependentUpon>FrmAgregarDoc.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Mantenimiento\frmAltaDNI.cs">
       <SubType>Form</SubType>
@@ -352,29 +345,11 @@
     <Compile Include="Presentacion\Principal\FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Reporte\FRptKardexLote.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Reporte\FRptKardexLote.Designer.cs">
-      <DependentUpon>FRptKardexLote.cs</DependentUpon>
-    </Compile>
     <Compile Include="Presentacion\Reporte\FRptPackigCalibre.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentacion\Reporte\FRptPackigCalibre.Designer.cs">
       <DependentUpon>FRptPackigCalibre.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Presentacion\Reporte\FSobrepesoLoteCliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Reporte\FSobrepesoLoteCliente.Designer.cs">
-      <DependentUpon>FSobrepesoLoteCliente.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Presentacion\Reporte\Impresion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Reporte\Impresion.Designer.cs">
-      <DependentUpon>Impresion.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Reporte\ImprimirPesos.cs">
       <SubType>Form</SubType>
@@ -406,29 +381,11 @@
     <Compile Include="Presentacion\Sistema\frmCampania.Designer.cs">
       <DependentUpon>frmCampania.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Trazabilidad\FBuscarLote.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Trazabilidad\FBuscarLote.Designer.cs">
-      <DependentUpon>FBuscarLote.cs</DependentUpon>
-    </Compile>
     <Compile Include="Presentacion\Trazabilidad\FBuscar_proceso.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentacion\Trazabilidad\FBuscar_proceso.Designer.cs">
       <DependentUpon>FBuscar_proceso.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Presentacion\Trazabilidad\FMuestreo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Trazabilidad\FMuestreo.Designer.cs">
-      <DependentUpon>FMuestreo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Presentacion\Trazabilidad\FPalletFecha.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Trazabilidad\FPalletFecha.Designer.cs">
-      <DependentUpon>FPalletFecha.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Trazabilidad\FProgramaProceso.cs">
       <SubType>Form</SubType>
@@ -516,6 +473,9 @@
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmAcopiador.resx">
       <DependentUpon>frmAcopiador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\FrmAgregarDoc.resx">
+      <DependentUpon>FrmAgregarDoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmAltaDNI.resx">
       <DependentUpon>frmAltaDNI.cs</DependentUpon>
     </EmbeddedResource>
@@ -592,17 +552,8 @@
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Reporte\FRptKardexLote.resx">
-      <DependentUpon>FRptKardexLote.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\FRptPackigCalibre.resx">
       <DependentUpon>FRptPackigCalibre.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Reporte\FSobrepesoLoteCliente.resx">
-      <DependentUpon>FSobrepesoLoteCliente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Reporte\Impresion.resx">
-      <DependentUpon>Impresion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\ImprimirPesos.resx">
       <DependentUpon>ImprimirPesos.cs</DependentUpon>
@@ -619,17 +570,8 @@
     <EmbeddedResource Include="Presentacion\Sistema\frmCampania.resx">
       <DependentUpon>frmCampania.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Trazabilidad\FBuscarLote.resx">
-      <DependentUpon>FBuscarLote.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Trazabilidad\FBuscar_proceso.resx">
       <DependentUpon>FBuscar_proceso.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Trazabilidad\FMuestreo.resx">
-      <DependentUpon>FMuestreo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Trazabilidad\FPalletFecha.resx">
-      <DependentUpon>FPalletFecha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Trazabilidad\FProgramaProceso.resx">
       <DependentUpon>FProgramaProceso.cs</DependentUpon>
@@ -812,6 +754,9 @@
     </PackageReference>
     <PackageReference Include="System.Text.Encoding.CodePages">
       <Version>8.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="ZXing.Net">
+      <Version>0.16.9</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />

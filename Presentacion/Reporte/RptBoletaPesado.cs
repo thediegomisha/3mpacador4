@@ -410,89 +410,156 @@ namespace _3mpacador4.Presentacion.Reporte
                 contenedor.Page(pagina =>
                 {
                     pagina.Size(PageSizes.A4);
-                    pagina.Margin(0, QuestPDF.Infrastructure.Unit.Centimetre);
+                    pagina.Size(PageSizes.A4.Portrait());
+                    pagina.Margin(2, QuestPDF.Infrastructure.Unit.Millimetre);
                     pagina.DefaultTextStyle(x => x.FontSize(14));
 
                     pagina.Header().Element(CrearCabecera);
                     pagina.Content().Padding(20).Element(CrearContenido);
                     pagina.Footer().Element(CrearFooter);
                 });
-            }).GeneratePdf("simple.pdf");
-            Process.Start("simple.pdf");
+            }).GeneratePdf("Theathoq.pdf");
+            Process.Start("Theathoq.pdf");
         }
 
-       void CrearCabecera(IContainer container)
+        void CrearCabecera(IContainer container)
         {
             container.Column(col =>
             {
-               //   col.Item().Image(LogoPath);
+
+                col.Item().Row(
+                    row =>
+                    {
+                        row.RelativeItem().AlignLeft()
+
+                            .Row(rowitem =>
+                            {
+
+                                rowitem.AutoItem().Container().Width(4);
+                                rowitem.RelativeItem().Padding(0).Column(column =>
+                                {
+                                    column.Item().Container().Height(2);
+                                    rowitem.AutoItem().Width(160).Height(80).Image(LogoPath);
+                                });
+                            });
+
+                        row.RelativeItem().AlignCenter()
+
+                            .Row(rowitem =>
+                            {
+                                rowitem.AutoItem().Container().Width(4);
+                                rowitem.RelativeItem().Padding(2).Column(column =>
+                                {
+                                    column.Item().Container().Height(3);
+                                    column.Item().Row(row2 =>
+                                    {
+                                        row2.Spacing(8);
+                                        row2.AutoItem().Text($"RECEPCION DE MATERIA PRIMA").SemiBold().FontSize(12)
+                                            .FontColor(Colors.Orange.Medium);
+
+                                    });
+                                    //column.Item().Row(row2 =>
+                                    //{
+                                    //    row2.Spacing(8);
+                                    //    row2.AutoItem().Text($"SGSFGSFGSG").FontSize(9).FontColor("#000");
+
+                                    //});
+                                });
+                            });
+
+                        row.RelativeItem().AlignRight().Width(150).Height(45)
+
+                            .Row(rowitem =>
+                            {
+                                //   rowitem.AutoItem().Width(65).Height(65).Image(QRCodeGenerator.GenerateQRCodeBytes("https://laptrinhvb.net/bai-viet/chuyen-de-csharp/---Csharp----Huong-dan-tao-ung-dung-dock-windows-giong-Taskbar/2f0a9a79ff1bafd4.html", 170, 170));
+
+                                rowitem.AutoItem().Container().Width(4);
+                                rowitem.RelativeItem().Border(0.5f).Padding(1).Column(column =>
+                                {
+                                    column.Item().Container().Height(2);
+                                    column.Item().Row(row2 =>
+                                    {
+                                        row2.Spacing(12);
+                                        row2.AutoItem().Text($"CODIGO : AGS-PRO-R-01").FontSize(9).Italic();
+
+                                    });
+                                    column.Item().Row(row2 =>
+                                    {
+                                        row2.Spacing(12);
+                                        row2.AutoItem().Text($"FECHA: 27/10/2023").FontSize(9).Italic();
+
+                                    });
+                                    column.Item().Row(row2 =>
+                                    {
+                                        row2.Spacing(12);
+                                        row2.AutoItem().AlignCenter().Text($"VERSION : 02").FontSize(9).Italic();
+
+                                    });
 
 
-               col.Item().Row(row =>
-               {
-                   row.RelativeItem().AlignLeft()
-                       .Row(rowitem =>
-                       {
-                           rowitem.AutoItem().Width(180).Height(80).Image(LogoPath);
-                       });
-                   //    col.Spacing(10);
-                   col.Item().Table(table =>
-                   {
-                       table.ColumnsDefinition(columns =>
-                       {
-                           columns.RelativeColumn();
-                           columns.RelativeColumn();
-                       });
-                       table.Cell().AlignRight().Text("          Boleta de Pesado - Lote N° ").SemiBold().FontSize(18)
-                           .FontColor(Colors.Orange.Medium);
-                       table.Cell().AlignLeft().Text( "  " +txtnumlote.Text).SemiBold().FontSize(18)
-                           .FontColor(Colors.Black);
-                       col.Spacing(10);
-                       //col.Item().AlignCenter().Text("Boleta de Pesado - Lote N° ")
-                       //    .SemiBold().FontSize(18).FontColor(Colors.Orange.Medium);
-                       //col.Spacing(10);
-                   });
-               });
-                col.Item().Table(table =>
+                                });
+                            });
+                    });
+
+
+                col.Item().Row(row =>
+                {
+                    col.Item().Table(table =>
                     {
                         table.ColumnsDefinition(columns =>
                         {
                             columns.RelativeColumn();
-                            columns.RelativeColumn();
-                            columns.RelativeColumn();
-                            columns.RelativeColumn();
+                            //columns.RelativeColumn();
+                            //columns.RelativeColumn();
                         });
-                        table.Cell().Text("        Cliente :");
-                        table.Cell().Text(lblcliente.Text ).FontSize(12).FontColor(Colors.Black).Bold();
-                        table.Cell().Text("   Guia de Remision :");
-                        table.Cell().Text(lblguiaingreso.Text ).FontSize(12).FontColor(Colors.Black).Bold();
-
-                        table.Cell().Text("        Productor :");
-                        table.Cell().Text(lblproductor.Text).FontSize(12).FontColor(Colors.Black).Bold();
-                        table.Cell().Text("   RUC / DNI :");
-                        table.Cell().Text(lblruc_dni .Text ).FontSize(12).FontColor(Colors.Black).Bold();
-                        
-                        table.Cell().Text("        Metodo :");
-                        table.Cell().Text(lblmetodo.Text).FontSize(12).FontColor(Colors.Black).Bold();
-                        table.Cell().Text("   CLP :");
-                        table.Cell().Text(lblclp .Text );
-                        
-                        table.Cell().Text("        Producto :");
-                        table.Cell().Text(lblproducto .Text ).FontSize(12).FontColor(Colors.Black).Bold(); 
-                        table.Cell().Text("   Variedad :");
-                        table.Cell().Text(lblvariedad .Text ).FontSize(12).FontColor(Colors.Black).Bold();
-                       
-                        table.Cell().Text("        Tipo de Servicio :");
-                        table.Cell().Text(lblservicio .Text ).FontSize(12).FontColor(Colors.Black).Bold();
-                        table.Cell().Text("   Fecha Ingreso :");
-                        table.Cell().Text(lblfechaingreso .Text ).FontSize(12).FontColor(Colors.Black).Bold();
-
-                        table.Cell().Text("        Acopiador :");
-                        table.Cell().Text(lblacopiador .Text ).FontSize(12).FontColor(Colors.Black).Bold();
-                        table.Cell().Text("   Hora Ingreso");
-                        table.Cell().Text(lblhoraingreso .Text ).FontSize(12).FontColor(Colors.Black).Bold();
+                        //table.Cell().AlignCenter().Text(String.Empty).SemiBold().FontSize(18)
+                        //    .FontColor(Colors.Black);
+                        table.Cell().AlignCenter().Text("LOTE N° " + txtnumlote.Text).SemiBold().FontSize(18)
+                            .FontColor(Colors.Black);
                     });
-             });
+                });
+
+
+                col.Item().Table(table =>
+                {
+                    table.ColumnsDefinition(columns =>
+                    {
+                        columns.RelativeColumn();
+                        columns.RelativeColumn();
+                        columns.RelativeColumn();
+                        columns.RelativeColumn();
+                    });
+                    table.Cell().Text("        Cliente :");
+                    table.Cell().Text(lblcliente.Text).FontSize(10).FontColor(Colors.Black).Bold();
+                    table.Cell().Text("   Guia de Remision :");
+                    table.Cell().Text(lblguiaingreso.Text).FontSize(10).FontColor(Colors.Black).Bold();
+
+                    table.Cell().Text("        Productor :");
+                    table.Cell().Text(lblproductor.Text).FontSize(10).FontColor(Colors.Black).Bold();
+                    table.Cell().Text("   RUC / DNI :");
+                    table.Cell().Text(lblruc_dni.Text).FontSize(10).FontColor(Colors.Black).Bold();
+
+                    table.Cell().Text("        Metodo :");
+                    table.Cell().Text(lblmetodo.Text).FontSize(10).FontColor(Colors.Black).Bold();
+                    table.Cell().Text("   CLP :");
+                    table.Cell().Text(lblclp.Text);
+
+                    table.Cell().Text("        Producto :");
+                    table.Cell().Text(lblproducto.Text).FontSize(10).FontColor(Colors.Black).Bold();
+                    table.Cell().Text("   Variedad :");
+                    table.Cell().Text(lblvariedad.Text).FontSize(10).FontColor(Colors.Black).Bold();
+
+                    table.Cell().Text("        Tipo de Servicio :");
+                    table.Cell().Text(lblservicio.Text).FontSize(10).FontColor(Colors.Black).Bold();
+                    table.Cell().Text("   Fecha Ingreso :");
+                    table.Cell().Text(lblfechaingreso.Text).FontSize(10).FontColor(Colors.Black).Bold();
+
+                    table.Cell().Text("        Acopiador :");
+                    table.Cell().Text(lblacopiador.Text).FontSize(10).FontColor(Colors.Black).Bold();
+                    table.Cell().Text("   Hora Ingreso");
+                    table.Cell().Text(lblhoraingreso.Text).FontSize(10).FontColor(Colors.Black).Bold();
+                });
+            });
         }
 
 
@@ -546,48 +613,44 @@ namespace _3mpacador4.Presentacion.Reporte
                         columns.RelativeColumn(1);
                         columns.RelativeColumn(1);
                         columns.RelativeColumn(1);
-                        
+
                     });
 
-
-                    
                     table.Header(header =>
-                {
-                    //foreach (DataGridViewRow row in datalistado.Rows)
-                    //{
-                        header.Cell().Element(CellStyle).Text("T. JABA").FontSize(12).FontColor(Colors.White)
+                    {
+                        //foreach (DataGridViewRow row in datalistado.Rows)
+                        //{
+                        header.Cell().Element(CellStyle).Text("T. JABA").FontSize(10).FontColor(Colors.White)
                             .Bold();
-                        header.Cell().Element(CellStyle).Text("T. PARIH").FontSize(12).FontColor(Colors.White)
+                        header.Cell().Element(CellStyle).Text("T. PARIH").FontSize(10).FontColor(Colors.White)
                             .Bold();
-                        header.Cell().Element(CellStyle).Text("CANT JABAS").FontSize(12).FontColor(Colors.White)
+                        header.Cell().Element(CellStyle).Text("CANT JABAS").FontSize(10).FontColor(Colors.White)
                             .Bold();
-                        header.Cell().Element(CellStyle).Text("PESO BRUTO").FontSize(12).FontColor(Colors.White)
+                        header.Cell().Element(CellStyle).Text("PESO BRUTO").FontSize(10).FontColor(Colors.White)
                             .Bold();
-                        header.Cell().Element(CellStyle).Text("PESO JABAS").FontSize(12).FontColor(Colors.White)
+                        header.Cell().Element(CellStyle).Text("PESO JABAS").FontSize(10).FontColor(Colors.White)
                             .Bold();
-                        header.Cell().Element(CellStyle).Text("PESO NETO").FontSize(12).FontColor(Colors.White)
+                        header.Cell().Element(CellStyle).Text("PESO NETO").FontSize(10).FontColor(Colors.White)
                             .Bold();
-                        header.Cell().Element(CellStyle).Text("PROM").FontSize(12).FontColor(Colors.White).Bold();
+                        header.Cell().Element(CellStyle).Text("PROM").FontSize(10).FontColor(Colors.White).Bold();
 
                         QuestPDF.Infrastructure.IContainer
                             CellStyle(QuestPDF.Infrastructure.IContainer containers) =>
                             DefaultCellStyle(containers, Colors.Blue.Medium);
-                    //}
-                
-                });
+                        //}
 
-                foreach (DataGridViewRow row in datalistado.Rows)
-                {
+                    });
 
-                    table.Cell().Element(CellStyle2).Text(row.Cells["T. JABA"].Value).FontSize(10);
-                    table.Cell().Element(CellStyle2).Text(row.Cells["T.PARIH"].Value).FontSize(10);
-                    table.Cell().Element(CellStyle2).Text(row.Cells["CANT JABAS"].Value).FontSize(10);
-                    table.Cell().Element(CellStyle2).Text(row.Cells["PESO BRUTO"].Value).FontSize(10);
-                    table.Cell().Element(CellStyle2).Text(row.Cells["PESO JABAS"].Value).FontSize(10);
-                    table.Cell().Element(CellStyle2).Text(row.Cells["PESO NETO"].Value).FontSize(10);
-                        table.Cell().Element(CellStyle2).Text(row.Cells["PROMEDIO"].Value).FontSize(10);
-                      
-                        //   i++;
+                    foreach (DataGridViewRow row in datalistado.Rows)
+                    {
+                        table.Cell().Element(CellStyle2).Text(row.Cells["T. JABA"].Value).FontSize(9);
+                        table.Cell().Element(CellStyle2).Text(row.Cells["T.PARIH"].Value).FontSize(9);
+                        table.Cell().Element(CellStyle2).Text(row.Cells["CANT JABAS"].Value).FontSize(9);
+                        table.Cell().Element(CellStyle2).Text(row.Cells["PESO BRUTO"].Value).FontSize(9);
+                        table.Cell().Element(CellStyle2).Text(row.Cells["PESO JABAS"].Value).FontSize(9);
+                        table.Cell().Element(CellStyle2).Text(row.Cells["PESO NETO"].Value).FontSize(9);
+                        table.Cell().Element(CellStyle2).Text(row.Cells["PROMEDIO"].Value).FontSize(9);
+
 
                         QuestPDF.Infrastructure.IContainer CellStyle2(QuestPDF.Infrastructure.IContainer containers) => DefaultCellStyle2(containers, Colors.Blue.Medium);
 
@@ -607,12 +670,6 @@ namespace _3mpacador4.Presentacion.Reporte
                         columns.RelativeColumn();
 
                     });
-                    table.Cell().Text(String.Empty);
-                    table.Cell().Text(String.Empty);
-                    table.Cell().Text(String.Empty);
-                    table.Cell().Text(String.Empty);
-                    table.Cell().Text(String.Empty);
-                    table.Cell().Text(String.Empty);
 
                     table.Cell().Text("Items");
                     table.Cell().Text($"{datalistado.RowCount}").FontSize(12).FontColor(Colors.Black).Bold();
@@ -628,9 +685,7 @@ namespace _3mpacador4.Presentacion.Reporte
                     table.Cell().Text(String.Empty);
                 });
                 col.Item().AlignCenter().Text(String.Empty);
-                col.Item().AlignCenter().Text(String.Empty);
-                col.Item().AlignCenter().Text(String.Empty);
-                col.Item().AlignCenter().Text(String.Empty);
+
 
                 col.Item().Table(table =>
                 {
@@ -650,7 +705,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                     table.Cell().Text("V.B");
 
-                //    col.Item().AlignCenter().Text("V.B");
+                    //    col.Item().AlignCenter().Text("V.B");
 
                 });
             });
@@ -675,6 +730,6 @@ namespace _3mpacador4.Presentacion.Reporte
             });
         }
 
-       
+
     }
 }

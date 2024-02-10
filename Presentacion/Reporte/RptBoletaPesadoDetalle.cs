@@ -3,10 +3,12 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
+using _3mpacador4.Logica;
 using Microsoft.VisualBasic;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
+// using QuestPDFTester;
 
 //using QuestPDF;
 //using QuestPDF.Infrastructure;
@@ -47,11 +49,13 @@ namespace _3mpacador4.Presentacion.Reporte
                 lblproductor.Text = filaConDatos[7];
                 lblclp.Text = filaConDatos[8];
                 lblcantjabas.Text = filaConDatos[9];
-                totalneto.Text = filaConDatos[10];
+                totalneto.Text = Convert.ToDecimal(filaConDatos[10]).ToString("N2");
+                
                 // lblservicio  .Text = filaConDatos[4];
                 //   lblmetodo.Text = filaConDatos[2];
 
                 datalistado.DataSource = data;
+                LBLCONTAR.Text = datalistado.RowCount.ToString();
                 ocultar_columnas2();
             }
         }
@@ -221,44 +225,7 @@ namespace _3mpacador4.Presentacion.Reporte
             // datalistado.Columns(3).Visible = False
         }
 
-        public void contar()
-        {
-            var contarfila = datalistado.RowCount - 1;
-            var contador = 0;
-            while (contarfila >= 0)
-            {
-                contador = contador + 1;
-                contarfila = contarfila - 1;
-            }
-
-            LBLCONTAR.Text = Strings.FormatNumber(contador, 0);
-        }
-
-        public void sumaneto()
-        {
-            try
-            {
-                double total = 0;
-                double cantjabas = 0;
-
-                foreach (DataGridViewRow row in datalistado.Rows)
-                {
-                    total += Convert.ToDouble(row.Cells["PESO NETO"].Value);
-                    cantjabas += Convert.ToDouble(row.Cells["CANT JABAS"].Value);
-                }
-
-                totalneto.Text = Strings.FormatNumber(total, 2);
-                lblcantjabas.Text = Strings.FormatNumber(cantjabas, 0);
-            }
-
-            catch (Exception ex)
-            {
-                Interaction.MsgBox(ex.Message, Constants.vbCritical);
-            }
-        }
-
-
-        private void button1_Click(object sender, EventArgs e)
+       private void button1_Click(object sender, EventArgs e)
         {
             //  ExportarExcel( nombreArchivo);
         }
@@ -315,32 +282,97 @@ namespace _3mpacador4.Presentacion.Reporte
         {
             container.Column(col =>
             {
-                //   col.Item().Image(LogoPath);
+
+                col.Item().Row(
+                    row =>
+                    {
+                        row.RelativeItem().AlignLeft()
+
+                            .Row(rowitem =>
+                            {
+
+                                rowitem.AutoItem().Container().Width(4);
+                                rowitem.RelativeItem().Padding(0).Column(column =>
+                                {
+                                    column.Item().Container().Height(2);
+                                    rowitem.AutoItem().Width(160).Height(80).Image(LogoPath);
+                                });
+                            });
+
+                        row.RelativeItem().AlignCenter()
+
+                            .Row(rowitem =>
+                            {
+                                rowitem.AutoItem().Container().Width(4);
+                                rowitem.RelativeItem().Padding(2).Column(column =>
+                                {
+                                    column.Item().Container().Height(3);
+                                    column.Item().Row(row2 =>
+                                    {
+                                        row2.Spacing(8);
+                                        row2.AutoItem().Text($"RECEPCION DE MATERIA PRIMA").SemiBold().FontSize(12)
+                                            .FontColor(Colors.Orange.Medium);
+
+                                    });
+                                   
+                                });
+                            });
+                       
+
+
+                        row.RelativeItem().AlignRight().Width(150).Height(45)
+
+                            .Row(rowitem =>
+                            {
+                                //   rowitem.AutoItem().Width(65).Height(65).Image(QRCodeGenerator.GenerateQRCodeBytes("https://laptrinhvb.net/bai-viet/chuyen-de-csharp/---Csharp----Huong-dan-tao-ung-dung-dock-windows-giong-Taskbar/2f0a9a79ff1bafd4.html", 170, 170));
+                             //   rowitem.AutoItem().Width(65).Height(65).Image(GenerarCodigoQr.ReadImageFileToBytes(LogoPath));
+                                rowitem.AutoItem().Container().Width(4);
+                                rowitem.RelativeItem().Border(0.5f).Padding(1).Column(column =>
+                                {
+                                    column.Item().Container().Height(2);
+                                    column.Item().Row(row2 =>
+                                    {
+                                        row2.Spacing(12);
+                                        row2.AutoItem().Text($"CODIGO : AGS-PRO-R-01").FontSize(9).Italic();
+
+                                    });
+                                    column.Item().Row(row2 =>
+                                    {
+                                        row2.Spacing(12);
+                                        row2.AutoItem().Text($"FECHA: 27/10/2023").FontSize(9).Italic();
+
+                                    });
+                                    column.Item().Row(row2 =>
+                                    {
+                                        row2.Spacing(12);
+                                        row2.AutoItem().AlignCenter().Text($"VERSION : 02").FontSize(9).Italic();
+
+                                    });
+
+
+                                });
+                            });
+                    });
+
 
                 col.Item().Row(row =>
                 {
-                   
                     col.Item().Table(table =>
                     {
                         table.ColumnsDefinition(columns =>
                         {
-                         //  columns.RelativeColumn();
                             columns.RelativeColumn();
+                            //columns.RelativeColumn();
+                            //columns.RelativeColumn();
                         });
-
-                        row.RelativeItem().AlignLeft()
-                            .Row(rowitem =>
-                            {
-                                rowitem.AutoItem().Width(160).Height(80).Image(LogoPath);
-                                rowitem.AutoItem().AlignLeft().Text("    RECEPCION DE MATERIA PRIMA").SemiBold().FontSize(18)
-                                    .FontColor(Colors.Orange.Medium);
-                            });
-
+                        //table.Cell().AlignCenter().Text(String.Empty).SemiBold().FontSize(18)
+                        //    .FontColor(Colors.Black);
                         table.Cell().AlignCenter().Text("LOTE N° " + lblnumlote.Text).SemiBold().FontSize(18)
                             .FontColor(Colors.Black);
-                        // col.Spacing(10);
                     });
                 });
+
+               
                 col.Item().Table(table =>
                 {
                     table.ColumnsDefinition(columns =>
