@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IngresoPesos));
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -110,6 +111,7 @@
             this.label37 = new System.Windows.Forms.Label();
             this.PanelJabas = new System.Windows.Forms.Panel();
             this.btnDocumentos = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.GroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
@@ -373,7 +375,7 @@
             this.cbProductor.Location = new System.Drawing.Point(17, 193);
             this.cbProductor.Margin = new System.Windows.Forms.Padding(4);
             this.cbProductor.Name = "cbProductor";
-            this.cbProductor.Size = new System.Drawing.Size(384, 25);
+            this.cbProductor.Size = new System.Drawing.Size(356, 25);
             this.cbProductor.TabIndex = 70;
             this.cbProductor.DropDownClosed += new System.EventHandler(this.cbProductor_DropDownClosed);
             // 
@@ -492,7 +494,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(442, 175);
+            this.label27.Location = new System.Drawing.Point(439, 175);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(111, 17);
@@ -792,6 +794,7 @@
             this.datalistado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datalistado.Location = new System.Drawing.Point(889, 116);
             this.datalistado.Name = "datalistado";
+            this.datalistado.ReadOnly = true;
             this.datalistado.RowHeadersVisible = false;
             this.datalistado.Size = new System.Drawing.Size(307, 298);
             this.datalistado.TabIndex = 106;
@@ -892,6 +895,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.Location = new System.Drawing.Point(787, 270);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(96, 61);
@@ -991,11 +995,20 @@
             this.btnDocumentos.UseVisualStyleBackColor = true;
             this.btnDocumentos.Click += new System.EventHandler(this.btnDocumentos_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(392, 192);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(37, 26);
+            this.button3.TabIndex = 125;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // IngresoPesos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1208, 681);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.btnDocumentos);
             this.Controls.Add(this.cbMatCosecha);
             this.Controls.Add(this.PanelJabas);
@@ -1164,6 +1177,7 @@
         internal System.Windows.Forms.Label label37;
         private System.Windows.Forms.Panel PanelJabas;
         private System.Windows.Forms.Button btnDocumentos;
+        private System.Windows.Forms.Button button3;
     }
 }
 

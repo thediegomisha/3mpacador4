@@ -32,7 +32,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         private void btnExaminar_Click(object sender, EventArgs e)
         {
             openFileDialog1.InitialDirectory = "C:\\Documentos";
-            openFileDialog1.Filter = "Archivo PDF (*.pdf)|*.PDF";
+            openFileDialog1.Filter = "Archivo PDF (*.*)|*.*";
             openFileDialog1.FilterIndex = 1;
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)

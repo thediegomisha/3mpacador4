@@ -810,8 +810,9 @@ namespace _3mpacador4.Presentacion.Reporte
                         //tamanio();
                         ocultar_columnas2();
                         //actualizardatos();
-                     //   sumaneto();
+                        sumaneto();
                         contar();
+
                         string resultado = (comando.Parameters["p_resultado"].Value.ToString());
                         totalneto.Text = resultado;
                         lblinfo3.Visible = false;
@@ -1159,7 +1160,7 @@ namespace _3mpacador4.Presentacion.Reporte
                     cantjabas += Convert.ToDouble(row.Cells["CANT JABAS"].Value);
                 }
 
-                totalneto.Text = Strings.FormatNumber(total, 2);
+               // totalneto.Text = Strings.FormatNumber(total, 2);
                 lblcantjabas.Text = Strings.FormatNumber(cantjabas, 0);
             }
             catch (Exception ex)
@@ -1255,5 +1256,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 FH.ShowDialog();
             }
         }
+
+     
     }
 }

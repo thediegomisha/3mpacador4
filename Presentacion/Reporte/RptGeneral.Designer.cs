@@ -72,7 +72,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblinfo3 = new System.Windows.Forms.Label();
             this.datalistado2 = new System.Windows.Forms.DataGridView();
-            this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.lblcantjabas = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -569,15 +568,6 @@
             this.datalistado2.Size = new System.Drawing.Size(708, 156);
             this.datalistado2.TabIndex = 1;
             // 
-            // btnAceptar
-            // 
-            this.btnAceptar.Location = new System.Drawing.Point(30, 4);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 20;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            // 
             // btnCerrar
             // 
             this.btnCerrar.Location = new System.Drawing.Point(149, 4);
@@ -924,7 +914,6 @@
             this.Controls.Add(this.totalneto);
             this.Controls.Add(this.Label15);
             this.Controls.Add(this.btnCerrar);
-            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -986,7 +975,6 @@
         private System.Windows.Forms.DataGridView datalistado;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView datalistado2;
-        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCerrar;
         internal System.Windows.Forms.Label lblcantjabas;
         internal System.Windows.Forms.Label label17;

@@ -16,13 +16,17 @@ namespace _3mpacador4
 {
     public partial class IngresoPesos : Form
     {
+        private readonly string cero = Convert.ToString('0'); // HEXADECIMAL
+        private readonly string n = Convert.ToString('n'); // HEXADECIMAL
+        private readonly string PUNTO = Convert.ToString('.');
+
+        private readonly string w = Convert.ToString('w'); // HEXADECIMAL
         private int a, b, c, d;
 
         private int a1, b1, c1, d1, e2, f1, g1, h1;
         private int aux = 0;
-        private readonly string cero = Convert.ToString('0'); // HEXADECIMAL
         private int contador = 0;
-        private int correlativo = 0;
+        private int correlativo;
         private string CR = Convert.ToString('\r');
         private CultureInfo en = new CultureInfo("es-MX");
         private string LF = Convert.ToString('\n');
@@ -30,20 +34,17 @@ namespace _3mpacador4
         private string MAS = Convert.ToString('+');
         private string menos = Convert.ToString('-');
         private string mostrarcaracter;
-        private readonly string n = Convert.ToString('n'); // HEXADECIMAL
 
         private string POSICION_INICIAL;
-        private readonly string PUNTO = Convert.ToString('.');
         private string salidacontrol;
         private string stringinicio;
-
-        private readonly string w = Convert.ToString('w'); // HEXADECIMAL
 
         public IngresoPesos()
         {
             InitializeComponent();
             conectarserial();
             cargarinicial();
+
         }
 
         // Método público que devuelve el texto del Label
@@ -69,12 +70,12 @@ namespace _3mpacador4
             try
             {
                 // Es más eficiente leer los datos en un búfer
-                int bytesToRead = sppuerto.BytesToRead;
-                byte[] buffer = new byte[bytesToRead];
+                var bytesToRead = sppuerto.BytesToRead;
+                var buffer = new byte[bytesToRead];
                 sppuerto.Read(buffer, 0, bytesToRead);
 
                 // Convierte los bytes a una cadena utilizando la codificación adecuada
-                string datosRecibidos = Encoding.UTF8.GetString(buffer);
+                var datosRecibidos = Encoding.UTF8.GetString(buffer);
 
                 // Llama a la función de manejo de datos
                 PuertaAccesoInterrupcion(datosRecibidos);
@@ -83,7 +84,8 @@ namespace _3mpacador4
             {
                 //  Console.WriteLine($"ERROR DATOS INTERRUPCION: {ex.GetType().Name} - {ex.Message}\n{ex.StackTrace}");
 
-                MessageBox.Show($"ERROR DATOS INTERRUPCION:  {ex.GetType().Name} - {ex.Message}\\n{ex.StackTrace}", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"ERROR DATOS INTERRUPCION:  {ex.GetType().Name} - {ex.Message}\\n{ex.StackTrace}",
+                    @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -104,8 +106,7 @@ namespace _3mpacador4
                 borrarmensajeerror();
                 if (validarcampos())
                 {
-                    
-                    if (chkPesoManual.Checked == false || chkPesoManual.Checked ==true && txtPesoManual .Text != null )
+                    if (chkPesoManual.Checked == false || (chkPesoManual.Checked == true && txtPesoManual.Text != null))
                     {
                         InsertarRegistro();
                         mostrarconsulta();
@@ -114,10 +115,9 @@ namespace _3mpacador4
                     }
                     else
                     {
-                        MessageBox.Show("Error en btnguardar_Click - ", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        MessageBox.Show("Error en btnguardar_Click - ", @"Error", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                     }
-
                 }
             }
             catch (Exception exception)
@@ -125,7 +125,6 @@ namespace _3mpacador4
                 Console.WriteLine(exception);
                 throw;
             }
-          
         }
 
         public void titulosjavasvisible()
@@ -163,8 +162,8 @@ namespace _3mpacador4
             txtPesoManual.Visible = false;
             RecuperaCorrelativo();
             titulosjavasvisible();
-           // mostrarLote();
-           
+            PrepGrid();
+            // mostrarLote();
         }
 
         private void cbMetodoCultivo_DropDownClosed(object sender, EventArgs e)
@@ -414,7 +413,7 @@ namespace _3mpacador4
                 adaptador.Fill(datos);
 
                 var withBlock = cbProductor;
-                withBlock.ForeColor = SystemColors.ControlText; 
+                withBlock.ForeColor = SystemColors.ControlText;
                 if (datos != null && datos.Rows.Count > 0)
                 {
                     var dr = datos.NewRow();
@@ -442,162 +441,10 @@ namespace _3mpacador4
             }
         }
 
-        //private void mostrarproductor()
-        //{
-        //    MySqlCommand comando = null;
-
-        //    try
-        //    {
-        //        if (ConexionGral.conexion.State == ConnectionState.Closed)
-        //            ConexionGral.conectar();
-
-        //        comando = new MySqlCommand("usp_tblproductor_Select", ConexionGral.conexion);
-        //        comando.CommandType = (CommandType)4;
-
-        //        var adaptador = new MySqlDataAdapter(comando);
-        //        var datos = new DataTable();
-        //        adaptador.Fill(datos);
-
-        //        var withBlock = cbProductor;
-        //        bool algunaFechaVencida = false;
-
-        //        foreach (DataRow row in datos.Rows)
-        //        {
-        //            object fechaCertificado = row["ffincertificado"];
-
-        //            if (fechaCertificado != DBNull.Value)
-        //            {
-        //                DateTime fechaVencimiento = Convert.ToDateTime(fechaCertificado);
-
-        //                // Si alguna fecha está vencida, marca la bandera
-        //                if (fechaVencimiento < DateTime.Today)
-        //                {
-        //                    algunaFechaVencida = true;
-        //                    break; // Sal del bucle, ya que encontraste una fecha vencida
-        //                }
-        //            }
-        //        }
-
-        //        // Establece el color del ComboBox basado en si alguna fecha está vencida
-        //        if (algunaFechaVencida)
-        //        {
-        //            withBlock.ForeColor = Color.Red; // Cambia el color del texto del ComboBox a rojo
-        //        }
-        //        else
-        //        {
-        //            withBlock.ForeColor = SystemColors.ControlText; // Color de texto predeterminado si no hay fechas vencidas
-        //        }
-
-        //        // Configura los datos del ComboBox
-        //        if (datos != null && datos.Rows.Count > 0)
-        //        {
-        //            var dr = datos.NewRow();
-        //            dr["clp"] = 0;
-        //            dr["RAZON SOCIAL"] = "Nuevo ...";
-        //            datos.Rows.InsertAt(dr, 0);
-
-        //            withBlock.DataSource = datos;
-        //            withBlock.DisplayMember = "RAZON SOCIAL";
-        //            withBlock.ValueMember = "clp";
-        //            withBlock.SelectedIndex = -1;
-        //        }
-        //        else
-        //        {
-        //            withBlock.DataSource = null;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //    finally
-        //    {
-        //        ConexionGral.desconectar();
-        //    }
-        //}
-
-
-        //private void mostrarproductor()
-        //{
-        //    MySqlCommand comando = null;
-        //    //  MostrarAnimacionEspera();
-        //    try
-        //    {
-        //        if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
-
-        //        comando = new MySqlCommand("usp_tblproductor_Select", ConexionGral.conexion);
-        //        comando.CommandType = (CommandType)4;
-
-        //        var adaptador = new MySqlDataAdapter(comando);
-        //        var datos = new DataTable();
-        //        adaptador.Fill(datos);
-
-        //        {
-        //            var withBlock = cbProductor;
-        //            if (datos != null && datos.Rows.Count > 0)
-        //            {
-        //                var dr = datos.NewRow();
-        //                dr["clp"] = 0;
-        //                dr["RAZON SOCIAL"] = "Nuevo ...";
-        //                datos.Rows.InsertAt(dr, 0);
-
-
-        //                withBlock.DataSource = datos;
-        //                withBlock.DisplayMember = "RAZON SOCIAL";
-        //                withBlock.ValueMember = "clp";
-        //                withBlock.SelectedIndex = -1;
-
-        //                bool algunaFechaVencida = false; 
-        //                foreach (DataRow row in datos.Rows)
-        //                {
-        //                    object fechaCertificado = row["ffincertificado"];
-
-        //                    //   DateTime fechaVencimiento;
-
-        //                    if (fechaCertificado != DBNull.Value)
-        //                    {
-        //                        DateTime fechaVencimiento = Convert.ToDateTime(fechaCertificado);
-
-        //                        if (fechaVencimiento < DateTime.Today)
-        //                        {
-        //                            algunaFechaVencida = true; // Hay al menos una fecha vencida
-        //                            break; // Termina el bucle tan pronto como encuentre una fecha vencida
-        //                        }
-        //                    }
-        //                }
-
-        //                // Establecer el color del ComboBox después de evaluar todas las fechas
-        //                if (algunaFechaVencida)
-        //                {
-        //                    cbProductor.ForeColor = Color.Red; // Cambia el color del texto del ComboBox a rojo
-        //                }
-        //                else
-        //                {
-        //                    cbProductor.ForeColor = SystemColors.ControlText; // Color de texto predeterminado si no hay fechas vencidas
-        //                }
-
-        //            }
-        //            else
-        //            {
-        //                withBlock.DataSource = null;
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //    finally
-        //    {
-        //        ConexionGral.desconectar();
-        //    }
-        //}
-
-
         private void mostrarclientes()
         {
             MySqlCommand comando = null;
-            //    MostrarAnimacionEspera();
+        
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
@@ -692,7 +539,7 @@ namespace _3mpacador4
             {
                 if (!string.IsNullOrEmpty(cbProductor.Text))
                 {
-                //    DateTime fechaActual = DateTime.Today;
+                    //    DateTime fechaActual = DateTime.Today;
 
                     lblCLP.Text = Convert.ToString(cbProductor.SelectedValue.ToString());
 
@@ -763,14 +610,11 @@ namespace _3mpacador4
         {
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 if (lblcorrelativo.Text != null)
                 {
-                    if (int.TryParse(lblcorrelativo.Text, out int currentCorrelativo))
+                    if (int.TryParse(lblcorrelativo.Text, out var currentCorrelativo))
                     {
                         correlativo = currentCorrelativo + 1;
                         lblcorrelativo.Text = correlativo.ToString("0000");
@@ -785,28 +629,22 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"ERROR CONTANDO CORRELATIVO: " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"ERROR CONTANDO CORRELATIVO: " + ex.Message, @"Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
         private void RecuperaCorrelativo()
         {
-            MySqlCommand comando = null; 
+            MySqlCommand comando = null;
             try
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed)
-                {
-                    ConexionGral.conectar();
-                }
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
                 if (lblcorrelativo.Text != null || Convert.ToInt32(lblcorrelativo.Text) > 0)
-                {
                     comando = new MySqlCommand("usp_cuentaCorrelativoTicketPesaje", ConexionGral.conexion);
-                }
                 else
-                {
                     comando = new MySqlCommand("usp_cuentaCorrelativoTicketPesaje", ConexionGral.conexion);
-                }
                 comando.CommandType = CommandType.StoredProcedure;
                 {
                     correlativo = Convert.ToInt32(comando.ExecuteScalar()) + 1;
@@ -817,7 +655,8 @@ namespace _3mpacador4
             }
             catch (Exception ex)
             {
-                MessageBox.Show($@"Error al recuperar el correlativo: {ex.Message}", @"Error crítico", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($@"Error al recuperar el correlativo: {ex.Message}", @"Error crítico",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1075,12 +914,40 @@ namespace _3mpacador4
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Instancio el Formulario Hijo al Padre
-            var FH = new ImprimirPesos();
-            //Indico al Formulario quien es el Propietario
-            AddOwnedForm(FH);
-            FH.ShowDialog();
+            try
+            {
+                borrarmensajeerror();
+                if (validarcampos())
+                {
+                    if (chkPesoManual.Checked == false || (chkPesoManual.Checked && txtPesoManual.Text != null))
+                    {
+                        InsertarRegistro();
+                        mostrarconsulta();
+                        //Instancio el Formulario Hijo al Padre
+                        var FH = new ImprimirPesos();
+                        //Indico al Formulario quien es el Propietario
+                        AddOwnedForm(FH);
+                        FH.ShowDialog();
+                        txtPesoManual.Focus();
+                        txtPesoManual.Text = "0.0";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error en btnguardar_Click - ", @"Error", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
         }
+
+       
+          
+      
 
         private void mostrarjabas()
         {
@@ -1134,15 +1001,11 @@ namespace _3mpacador4
             float taraparihuela = 0;
             float pesobruto = 0;
             float pesobrutoManual = 0;
-            if (txtPesoManual != null)
-            {
+            if (txtPesoManual.Text !=  string .Empty )
                 txtPesoManual.ToString();
-            }
             else
-            {
-                txtPesoManual.Text = "0";
-            }
-          
+                txtPesoManual.Text = "0.0";
+
 
             try
             {
@@ -1150,12 +1013,12 @@ namespace _3mpacador4
                 var comando = new MySqlCommand("usp_tblticketpesaje_Insert", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
 
-                 tarajaba = float.Parse(txttarajaba.Text);
-                 taraparihuela = float.Parse(txttaraParihuela.Text);
-                 pesobruto = float.Parse(lblpeso.Text);
-                 pesobrutoManual = float.Parse(txtPesoManual.Text);
+                tarajaba = float.Parse(txttarajaba.Text);
+                taraparihuela = float.Parse(txttaraParihuela.Text);
+                pesobruto = float.Parse(lblpeso.Text);
+                pesobrutoManual = float.Parse(txtPesoManual.Text);
 
-                 if (cboLote.SelectedItem != null)
+                if (cboLote.SelectedItem != null)
                 {
                     comando.Parameters.AddWithValue("p_numdoc", lblcorrelativo.Text);
                     comando.Parameters.AddWithValue("p_horallegada", DateTime.Now);
@@ -1196,7 +1059,8 @@ namespace _3mpacador4
 
                     if (taraparihuela > 0)
                     {
-                        comando.Parameters.AddWithValue("p_tara_pallet", MySqlType.Double).Value = txttaraParihuela.Text;
+                        comando.Parameters.AddWithValue("p_tara_pallet", MySqlType.Double).Value =
+                            txttaraParihuela.Text;
                     }
                     else
                     {
@@ -1212,7 +1076,7 @@ namespace _3mpacador4
                     {
                         if (pesobruto > 0)
                         {
-                            comando.Parameters.AddWithValue("p_peso_bruto", MySqlType.Double).Value = lblpeso.Text;
+                            comando.Parameters.AddWithValue("p_peso_bruto", MySqlType.Double).Value = pesobruto;
                         }
                         else
                         {
@@ -1224,7 +1088,8 @@ namespace _3mpacador4
                     {
                         if (pesobrutoManual > 0)
                         {
-                            comando.Parameters.AddWithValue("p_peso_bruto", MySqlType.Double).Value = txtPesoManual.Text;
+                            comando.Parameters.AddWithValue("p_peso_bruto", MySqlType.Double).Value =
+                                pesobrutoManual;
                         }
                         else
                         {
@@ -1260,15 +1125,16 @@ namespace _3mpacador4
                     // limpiarcampos()
                     //    this.chkcapturapeso.Checked = false;
                 }
-                 else
-                 {
-                     MessageBox.Show(@"Por favor, seleccione un Lote antes de continuar.", "Error de selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                     return;
+                else
+                {
+                    MessageBox.Show(@"Por favor, seleccione un Lote antes de continuar.", "Error de selección",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Error en InsertarRegistro - " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Error en InsertarRegistro - " + ex.Message, @"Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
             finally
             {
@@ -1406,7 +1272,7 @@ namespace _3mpacador4
 
         private void IngresoPesos_Shown(object sender, EventArgs e)
         {
-           mostrarLote();
+            mostrarLote();
         }
 
         private void btnDocumentos_Click(object sender, EventArgs e)
@@ -1434,9 +1300,9 @@ namespace _3mpacador4
                     comando.CommandType = (CommandType)4;
 
                     comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = cboLote.Text;
-                    String fechaaño = Settings.Default.periodo.ToString();
-                    String[] partes = fechaaño.Split(' ')[0].Split('/');
-                    String año = partes[2];
+                    var fechaaño = Settings.Default.periodo;
+                    var partes = fechaaño.Split(' ')[0].Split('/');
+                    var año = partes[2];
                     comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Text).Value = año;
 
                     var adaptador = new MySqlDataAdapter(comando);
@@ -1449,7 +1315,8 @@ namespace _3mpacador4
                         {
                             var dr = datos.NewRow();
                             withBlock.DataSource = datos;
-                          sumaneto();
+                            tamanio();
+                            sumaneto();
                             contar();
                         }
                         else
@@ -1460,8 +1327,8 @@ namespace _3mpacador4
                 }
                 else
                 {
-                    MessageBox.Show(@"Por favor, seleccione un Lote antes de continuar.", "Error de selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    MessageBox.Show(@"Por favor, seleccione un Lote antes de continuar.", "Error de selección",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -1696,6 +1563,127 @@ namespace _3mpacador4
             }
         }
 
+        private void PrepGrid()
+        {
+            {
+                var withBlock = datalistado;
+                withBlock.SuspendLayout();
+
+                // propiedades que establecen el color de fondo del control DataGridView,
+                // 'color del texto y tipo de fuente (tipo, tamaño y estilo)
+                // 
+                withBlock.BackgroundColor = Color.Black;
+                withBlock.ForeColor = Color.Maroon;
+                withBlock.Font = new Font("Tahoma", 10.0f, FontStyle.Regular, GraphicsUnit.Point, 0);
+
+                // 
+                // establecer color de resaltado (opcional)
+                // 
+                withBlock.DefaultCellStyle.SelectionBackColor = Color.Red;
+                withBlock.DefaultCellStyle.SelectionForeColor = Color.Yellow;
+
+                // 
+                // propiedades relacionadas con agregar / eliminar filas
+                // 
+                withBlock.AllowUserToAddRows = false;
+                withBlock.AllowUserToDeleteRows = false;
+
+                // 
+                // propiedades relacionadas con cambiar el tamaño de columnas / filas en la celda tingkal
+                // 
+                withBlock.AllowUserToResizeColumns = false;
+                withBlock.AllowUserToResizeRows = false;
+
+                // 
+                // propiedades que permiten al usuario ordenar columnas
+                // 'haciendo clic en los encabezados de columna
+                withBlock.AllowUserToOrderColumns = false;
+
+                withBlock.BorderStyle = BorderStyle.None;
+
+                // propiedades que regulan las líneas uniformes de "cosméticos"
+                // 
+                withBlock.AlternatingRowsDefaultCellStyle.BackColor = Color.LemonChiffon;
+
+                // propiedades relacionadas con el formato del encabezado de columna / encabezado de columna
+                // NB. para poder aplicar ForeColor y BackColor al encabezado, luego
+                // La propiedad EnableHeadersVisualStyles debe establecerse en FALSE
+                // 
+                withBlock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+                withBlock.ColumnHeadersHeight = 40;
+                withBlock.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                withBlock.ColumnHeadersDefaultCellStyle.Font =
+                    new Font("Tahoma", 10.0f, FontStyle.Bold, GraphicsUnit.Point, 0);
+                withBlock.EnableHeadersVisualStyles = false;
+                withBlock.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                withBlock.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+                withBlock.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+
+                // 
+                // dado que DataGridView es solo para mostrar datos, no para medios de entrada de datos
+                // luego ocultar RowHeader será mejor visto
+                // 
+                withBlock.RowHeadersVisible = false;
+                withBlock.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                // 
+
+                // establecer columnas y filas de cambio de tamaño automático
+                withBlock.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                withBlock.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+
+                // 
+                // determina la altura de todas las filas
+                // 
+                withBlock.RowTemplate.Height = 20;
+
+                // establecer el modo de selección
+                // 
+                withBlock.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+
+                // 'establecer selección múltiple (elija más de 1 fila)  '
+                withBlock.MultiSelect = true;
+
+                // el siguiente es el formato por columna
+                // ajusta la posición del texto en la celda
+
+                withBlock.ResumeLayout();
+                withBlock.PerformLayout();
+            }
+        }
+
+        private void tamanio()
+        {
+            try
+            {
+                var withBlock = datalistado;
+
+
+                withBlock.Columns["N° PALLET"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                withBlock.Columns["N° PALLET"].Width = 60;
+
+                withBlock.Columns["CANT JABAS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                withBlock.Columns["CANT JABAS"].Width = 50;
+                
+                withBlock.Columns["PESO BRUTO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                // .Columns("TURNO").DefaultCellStyle.Format = "#.#0"
+                withBlock.Columns["PESO BRUTO"].Width = 80;
+
+                withBlock.Columns["PESO NETO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                withBlock.Columns["PESO NETO"].DefaultCellStyle.Format = "#.#0";
+                // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
+                withBlock.Columns["PESO NETO"].Width = 80;
+
+            }
+            catch (Exception)
+            {
+                //  throw;
+            }
+
+            {
+            }
+        }
+
+     
         private delegate void DelegadoAcceso(string Adicionartexto);
     }
 }
