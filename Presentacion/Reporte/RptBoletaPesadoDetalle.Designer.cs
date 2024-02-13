@@ -430,12 +430,15 @@
             // 
             // BtnImprimir
             // 
+            this.BtnImprimir.BackColor = System.Drawing.Color.Teal;
+            this.BtnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnImprimir.ForeColor = System.Drawing.Color.White;
             this.BtnImprimir.Location = new System.Drawing.Point(565, 4);
             this.BtnImprimir.Name = "BtnImprimir";
             this.BtnImprimir.Size = new System.Drawing.Size(93, 29);
             this.BtnImprimir.TabIndex = 72;
-            this.BtnImprimir.Text = "Imprimir";
-            this.BtnImprimir.UseVisualStyleBackColor = true;
+            this.BtnImprimir.Text = "IMPRIMIR";
+            this.BtnImprimir.UseVisualStyleBackColor = false;
             this.BtnImprimir.Click += new System.EventHandler(this.BtnExportar_Click);
             // 
             // pictureBox1
@@ -450,30 +453,35 @@
             // 
             // btnDescarte
             // 
+            this.btnDescarte.BackColor = System.Drawing.Color.Teal;
             this.btnDescarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDescarte.Location = new System.Drawing.Point(643, 197);
+            this.btnDescarte.ForeColor = System.Drawing.Color.White;
+            this.btnDescarte.Location = new System.Drawing.Point(634, 197);
             this.btnDescarte.Name = "btnDescarte";
-            this.btnDescarte.Size = new System.Drawing.Size(83, 30);
+            this.btnDescarte.Size = new System.Drawing.Size(92, 30);
             this.btnDescarte.TabIndex = 74;
             this.btnDescarte.Text = "DESCARTE";
-            this.btnDescarte.UseVisualStyleBackColor = true;
+            this.btnDescarte.UseVisualStyleBackColor = false;
             this.btnDescarte.Click += new System.EventHandler(this.btnDescarte_Click);
             // 
             // btnAdjuntos
             // 
+            this.btnAdjuntos.BackColor = System.Drawing.Color.Teal;
             this.btnAdjuntos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdjuntos.ForeColor = System.Drawing.Color.White;
             this.btnAdjuntos.Location = new System.Drawing.Point(414, 218);
             this.btnAdjuntos.Name = "btnAdjuntos";
             this.btnAdjuntos.Size = new System.Drawing.Size(178, 30);
             this.btnAdjuntos.TabIndex = 75;
             this.btnAdjuntos.Text = "DOCUMENTOS ADJUNTOS";
-            this.btnAdjuntos.UseVisualStyleBackColor = true;
+            this.btnAdjuntos.UseVisualStyleBackColor = false;
             this.btnAdjuntos.Click += new System.EventHandler(this.btnAdjuntos_Click);
             // 
             // RptBoletaPesadoDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(737, 656);
             this.Controls.Add(this.btnAdjuntos);
             this.Controls.Add(this.btnDescarte);

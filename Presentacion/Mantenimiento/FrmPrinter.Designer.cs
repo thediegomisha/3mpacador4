@@ -81,18 +81,23 @@
             // 
             // btn_selecciona
             // 
-            this.btn_selecciona.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_selecciona.BackColor = System.Drawing.Color.Teal;
+            this.btn_selecciona.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_selecciona.ForeColor = System.Drawing.Color.White;
             this.btn_selecciona.Location = new System.Drawing.Point(32, 141);
             this.btn_selecciona.Name = "btn_selecciona";
             this.btn_selecciona.Size = new System.Drawing.Size(150, 34);
             this.btn_selecciona.TabIndex = 7;
             this.btn_selecciona.Text = "Seleccionar &Impresora";
-            this.btn_selecciona.UseVisualStyleBackColor = true;
+            this.btn_selecciona.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btn_selecciona.UseVisualStyleBackColor = false;
             this.btn_selecciona.Click += new System.EventHandler(this.btn_selecciona_Click);
             // 
             // btn_salir
             // 
-            this.btn_salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_salir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_salir.ForeColor = System.Drawing.Color.White;
             this.btn_salir.Image = global::_3mpacador4.Properties.Resources.Button_Close_24x24_;
             this.btn_salir.Location = new System.Drawing.Point(264, 141);
             this.btn_salir.Name = "btn_salir";
@@ -100,7 +105,7 @@
             this.btn_salir.TabIndex = 8;
             this.btn_salir.Text = "&Salir";
             this.btn_salir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_salir.UseVisualStyleBackColor = true;
+            this.btn_salir.UseVisualStyleBackColor = false;
             this.btn_salir.Click += new System.EventHandler(this.btn_salir_Click);
             // 
             // pictureBox1

@@ -40,9 +40,9 @@
             this.btnActualizar = new System.Windows.Forms.Button();
             this.txtregion = new MetroFramework.Controls.MetroTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnBuscarCLP = new System.Windows.Forms.Button();
             this.txtclp = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnBuscarCLP = new System.Windows.Forms.Button();
             this.Panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -88,26 +88,30 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(610, 258);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(98, 29);
             this.btnCancelar.TabIndex = 36;
             this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
+            this.btnGuardar.BackColor = System.Drawing.Color.Teal;
             this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.Location = new System.Drawing.Point(329, 258);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(82, 29);
             this.btnGuardar.TabIndex = 37;
             this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // txtRazonSocial
@@ -140,14 +144,16 @@
             // 
             // btnActualizar
             // 
+            this.btnActualizar.BackColor = System.Drawing.Color.Teal;
             this.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnActualizar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.ForeColor = System.Drawing.Color.White;
             this.btnActualizar.Location = new System.Drawing.Point(449, 258);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(82, 29);
             this.btnActualizar.TabIndex = 38;
             this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.UseVisualStyleBackColor = false;
             // 
             // txtregion
             // 
@@ -168,7 +174,7 @@
             this.txtregion.MaxLength = 32767;
             this.txtregion.Name = "txtregion";
             this.txtregion.PasswordChar = '\0';
-            this.txtregion.WaterMark = "Ej: Jiron Santa Rosa 711";
+            this.txtregion.PromptText = "Ej: Jiron Santa Rosa 711";
             this.txtregion.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtregion.SelectedText = "";
             this.txtregion.SelectionLength = 0;
@@ -197,6 +203,20 @@
             this.panel2.Size = new System.Drawing.Size(718, 204);
             this.panel2.TabIndex = 59;
             // 
+            // btnBuscarCLP
+            // 
+            this.btnBuscarCLP.BackColor = System.Drawing.Color.Teal;
+            this.btnBuscarCLP.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscarCLP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarCLP.ForeColor = System.Drawing.Color.White;
+            this.btnBuscarCLP.Location = new System.Drawing.Point(366, 94);
+            this.btnBuscarCLP.Name = "btnBuscarCLP";
+            this.btnBuscarCLP.Size = new System.Drawing.Size(82, 29);
+            this.btnBuscarCLP.TabIndex = 45;
+            this.btnBuscarCLP.Text = "Buscar CLP";
+            this.btnBuscarCLP.UseVisualStyleBackColor = false;
+            this.btnBuscarCLP.Click += new System.EventHandler(this.btnBuscarCLP_Click);
+            // 
             // txtclp
             // 
             this.txtclp.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -214,18 +234,6 @@
             this.label5.Size = new System.Drawing.Size(46, 21);
             this.label5.TabIndex = 43;
             this.label5.Text = "C.L.P.";
-            // 
-            // btnBuscarCLP
-            // 
-            this.btnBuscarCLP.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscarCLP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarCLP.Location = new System.Drawing.Point(366, 94);
-            this.btnBuscarCLP.Name = "btnBuscarCLP";
-            this.btnBuscarCLP.Size = new System.Drawing.Size(82, 29);
-            this.btnBuscarCLP.TabIndex = 45;
-            this.btnBuscarCLP.Text = "Buscar CLP";
-            this.btnBuscarCLP.UseVisualStyleBackColor = true;
-            this.btnBuscarCLP.Click += new System.EventHandler(this.btnBuscarCLP_Click);
             // 
             // frmProductor2
             // 

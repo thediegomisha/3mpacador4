@@ -43,7 +43,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(54, 28);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(350, 20);
             this.label1.TabIndex = 0;
@@ -52,68 +52,77 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(51, 83);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(141, 20);
+            this.label2.Size = new System.Drawing.Size(125, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Ruta del Archivo";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(54, 122);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 94);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(146, 20);
+            this.label3.Size = new System.Drawing.Size(128, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Titulo del Archivo";
             // 
             // txtruta
             // 
+            this.txtruta.BackColor = System.Drawing.Color.White;
             this.txtruta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtruta.Location = new System.Drawing.Point(242, 83);
+            this.txtruta.Location = new System.Drawing.Point(146, 49);
             this.txtruta.Name = "txtruta";
             this.txtruta.ReadOnly = true;
-            this.txtruta.Size = new System.Drawing.Size(206, 26);
+            this.txtruta.Size = new System.Drawing.Size(237, 26);
             this.txtruta.TabIndex = 3;
             // 
             // txttitulo
             // 
             this.txttitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttitulo.Location = new System.Drawing.Point(242, 122);
+            this.txttitulo.Location = new System.Drawing.Point(146, 94);
             this.txttitulo.Name = "txttitulo";
-            this.txttitulo.Size = new System.Drawing.Size(206, 26);
+            this.txttitulo.Size = new System.Drawing.Size(237, 26);
             this.txttitulo.TabIndex = 4;
             // 
             // btnExaminar
             // 
-            this.btnExaminar.Location = new System.Drawing.Point(473, 28);
+            this.btnExaminar.BackColor = System.Drawing.Color.Teal;
+            this.btnExaminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExaminar.ForeColor = System.Drawing.Color.White;
+            this.btnExaminar.Location = new System.Drawing.Point(398, 44);
             this.btnExaminar.Name = "btnExaminar";
-            this.btnExaminar.Size = new System.Drawing.Size(91, 23);
+            this.btnExaminar.Size = new System.Drawing.Size(91, 31);
             this.btnExaminar.TabIndex = 5;
             this.btnExaminar.Text = "EXAMINAR";
-            this.btnExaminar.UseVisualStyleBackColor = true;
+            this.btnExaminar.UseVisualStyleBackColor = false;
             this.btnExaminar.Click += new System.EventHandler(this.btnExaminar_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(362, 180);
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(293, 135);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(90, 38);
             this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "CANCELAR";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(152, 180);
+            this.btnGuardar.BackColor = System.Drawing.Color.Teal;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(103, 135);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardar.Size = new System.Drawing.Size(90, 38);
             this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "GUARDAR";
-            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // openFileDialog1
@@ -124,7 +133,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 230);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(501, 186);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnExaminar);
@@ -135,7 +145,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmAgregarDoc";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmAgregarDoc";
+            this.Text = "Agregar";
             this.ResumeLayout(false);
             this.PerformLayout();
 
