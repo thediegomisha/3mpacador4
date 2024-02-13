@@ -282,7 +282,7 @@
             this.panel1.Controls.Add(this.chkf_ing);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(2, 33);
+            this.panel1.Location = new System.Drawing.Point(2, 34);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1210, 86);
             this.panel1.TabIndex = 17;
@@ -570,12 +570,15 @@
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(149, 4);
+            this.btnCerrar.BackColor = System.Drawing.Color.Teal;
+            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.ForeColor = System.Drawing.Color.White;
+            this.btnCerrar.Location = new System.Drawing.Point(138, 2);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCerrar.Size = new System.Drawing.Size(75, 31);
             this.btnCerrar.TabIndex = 21;
-            this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Text = "CERRAR";
+            this.btnCerrar.UseVisualStyleBackColor = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // lblcantjabas
@@ -791,11 +794,11 @@
             this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(274, 2);
+            this.btnBuscar.Location = new System.Drawing.Point(252, 2);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 30);
+            this.btnBuscar.Size = new System.Drawing.Size(81, 32);
             this.btnBuscar.TabIndex = 97;
-            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.Text = "B&USCAR";
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -873,11 +876,11 @@
             this.btnBuscarTodos.BackColor = System.Drawing.Color.Blue;
             this.btnBuscarTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscarTodos.ForeColor = System.Drawing.Color.White;
-            this.btnBuscarTodos.Location = new System.Drawing.Point(370, 0);
+            this.btnBuscarTodos.Location = new System.Drawing.Point(371, 1);
             this.btnBuscarTodos.Name = "btnBuscarTodos";
-            this.btnBuscarTodos.Size = new System.Drawing.Size(75, 34);
+            this.btnBuscarTodos.Size = new System.Drawing.Size(87, 35);
             this.btnBuscarTodos.TabIndex = 104;
-            this.btnBuscarTodos.Text = "Buscar Todos";
+            this.btnBuscarTodos.Text = "BUSCAR T&ODOS";
             this.btnBuscarTodos.UseVisualStyleBackColor = false;
             this.btnBuscarTodos.Click += new System.EventHandler(this.btnBuscarTodos_Click);
             // 
