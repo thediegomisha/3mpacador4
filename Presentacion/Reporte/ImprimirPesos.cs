@@ -67,6 +67,7 @@ namespace _3mpacador4.Presentacion.Reporte
             lblvariedad.Text = IngresoPesos.cbvariedad.Text.ToString();
             lbljabas .Text = IngresoPesos .cbjabas .Text.ToString();
             lblpesoneto.Text = IngresoPesos.lblpeso.Text;
+            lblnumlote.Text = IngresoPesos.cboLote.Text;
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
@@ -170,8 +171,8 @@ namespace _3mpacador4.Presentacion.Reporte
               //      pagina.Content().Padding(20).Element(CrearContenido);
                    // pagina.Footer().Element(CrearFooter);
                 });
-            }).GeneratePdf("Theathoq.pdf");
-            Process.Start("Theathoq.pdf");
+            }).GeneratePdf(lblnumlote.Text +".pdf");
+            Process.Start(lblnumlote.Text + ".pdf");
         }
 
         void CrearCabecera(IContainer container)
@@ -188,6 +189,8 @@ namespace _3mpacador4.Presentacion.Reporte
                             rowitem.AutoItem().Width(120).Height(50).Image(LogoPath);
                             rowitem.AutoItem().AlignLeft().Text("RECEPCION").SemiBold().FontSize(28)
                                 .FontColor(Colors.Blue.Medium);
+                            rowitem.AutoItem().AlignRight().Text("  LT N° " + lblnumlote.Text).SemiBold().FontSize(18)
+                                .FontColor(Colors.Red.Medium);
 
                         });
                 });
@@ -203,7 +206,7 @@ namespace _3mpacador4.Presentacion.Reporte
                     //table.Cell().Text("000").FontSize(16).FontColor(Colors.Black).Bold();
 
                     table.Cell().Text("EXPORTADOR :").FontSize(14).FontColor(Colors.Black).Bold();
-                    table.Cell().Text(lblcliente2.Text).FontSize(16).FontColor(Colors.Black).Bold();
+                    table.Cell().Text(lblcliente2.Text).FontSize(12).FontColor(Colors.Black).Bold();
 
                     table.Cell().Text("CLP :").FontSize(14).FontColor(Colors.Black).Bold();
                     table.Cell().Text(lblclp2.Text).FontSize(16).FontColor(Colors.Black).Bold();
@@ -221,7 +224,7 @@ namespace _3mpacador4.Presentacion.Reporte
                         string parteCortada = lblproductor2.Text.Substring(0, cortecadena).Trim(); // Agregamos 3 para omitir el delimitador y los espacios que lo siguen
                    
                     table.Cell().Text("PRODUCTOR :").FontSize(14).FontColor(Colors.Black).Bold();
-                    table.Cell().Text(parteCortada).FontSize(14).FontColor(Colors.Black).Bold();
+                    table.Cell().Text(parteCortada).FontSize(12).FontColor(Colors.Black).Bold();
                     }
                     table.Cell().Text("VARIEDAD :").FontSize(14).FontColor(Colors.Black).Bold();
                     table.Cell().Text(lblvariedad.Text).FontSize(16).FontColor(Colors.Black).Bold();
@@ -230,7 +233,7 @@ namespace _3mpacador4.Presentacion.Reporte
                     table.Cell().Text(lbljabas.Text).FontSize(16).FontColor(Colors.Black).Bold();
                    
 
-                    table.Cell().Text("PESO NETO:").FontSize(14).FontColor(Colors.Black).Bold();
+                    table.Cell().Text("PESO BRUTO:").FontSize(14).FontColor(Colors.Black).Bold();
                     table.Cell().Text(lblpesoneto.Text).FontSize(16).FontColor(Colors.Black).Bold();
                    
                 });

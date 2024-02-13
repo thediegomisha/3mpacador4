@@ -33,7 +33,7 @@
     <MinimumRequiredVersion>1.0.0.5</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>45</ApplicationRevision>
+    <ApplicationRevision>49</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -345,6 +345,12 @@
     <Compile Include="Presentacion\Principal\FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Reporte\FrmDocAdjuntos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\FrmDocAdjuntos.Designer.cs">
+      <DependentUpon>FrmDocAdjuntos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Reporte\FRptKardexLote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -362,6 +368,12 @@
     </Compile>
     <Compile Include="Presentacion\Reporte\ImprimirPesos.Designer.cs">
       <DependentUpon>ImprimirPesos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\RptBoletaPesadoDetalleDescarte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\RptBoletaPesadoDetalleDescarte.Designer.cs">
+      <DependentUpon>RptBoletaPesadoDetalleDescarte.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Reporte\RptBoletaPesadoDetalle.cs">
       <SubType>Form</SubType>
@@ -558,6 +570,9 @@
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Reporte\FrmDocAdjuntos.resx">
+      <DependentUpon>FrmDocAdjuntos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\FRptKardexLote.resx">
       <DependentUpon>FRptKardexLote.cs</DependentUpon>
     </EmbeddedResource>
@@ -566,6 +581,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\ImprimirPesos.resx">
       <DependentUpon>ImprimirPesos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Reporte\RptBoletaPesadoDetalleDescarte.resx">
+      <DependentUpon>RptBoletaPesadoDetalleDescarte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\RptBoletaPesadoDetalle.resx">
       <DependentUpon>RptBoletaPesadoDetalle.cs</DependentUpon>
@@ -681,9 +699,9 @@
     <None Include="Resources\ticketRecepcion2.png" />
     <None Include="Resources\ticketRecepcion.png" />
     <None Include="Resources\cargando.gif" />
-    <EmbeddedResource Include="Recursos\logoagricola.png">
+    <Resource Include="Recursos\logoagricola.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </Resource>
     <Content Include="Resources\Button_Close%2824x24%29.png" />
     <Content Include="Resources\LOGO AGRICOLA DEL SUR.png" />
     <Content Include="Resources\palta.ico" />
@@ -695,7 +713,7 @@
     <None Include="Resources\buscar.png" />
     <None Include="Resources\Editar1.png" />
     <None Include="Resources\new1.png" />
-    <None Include="Resources\logoagricola.png" />
+    <Content Include="Resources\logoagricola.png" />
     <None Include="Resources\Eliminar.png" />
     <None Include="Resources\Editar.png" />
     <None Include="Resources\Editar.bmp" />

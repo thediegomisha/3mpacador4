@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrinter));
             this.List_Printer = new System.Windows.Forms.ListBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.Label3 = new System.Windows.Forms.Label();
             this.lblprinter_choose = new System.Windows.Forms.Label();
             this.btn_selecciona = new System.Windows.Forms.Button();
             this.btn_salir = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // List_Printer
@@ -60,9 +63,9 @@
             // Label3
             // 
             this.Label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(273, 30);
+            this.Label3.Location = new System.Drawing.Point(342, 12);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(133, 35);
+            this.Label3.Size = new System.Drawing.Size(100, 55);
             this.Label3.TabIndex = 5;
             this.Label3.Text = "Impresora elegida para imprimir";
             // 
@@ -100,11 +103,22 @@
             this.btn_salir.UseVisualStyleBackColor = true;
             this.btn_salir.Click += new System.EventHandler(this.btn_salir_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(273, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(63, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmPrinter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(444, 182);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.btn_selecciona);
             this.Controls.Add(this.Label3);
@@ -118,6 +132,7 @@
             this.Name = "FrmPrinter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmPrinter_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,5 +146,6 @@
         internal System.Windows.Forms.Label lblprinter_choose;
         internal System.Windows.Forms.Button btn_salir;
         internal System.Windows.Forms.Button btn_selecciona;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

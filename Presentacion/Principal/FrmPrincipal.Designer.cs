@@ -37,10 +37,10 @@
             this.btnTrazabilidadP = new System.Windows.Forms.Button();
             this.panelMantenimiento = new System.Windows.Forms.Panel();
             this.btnActualizaFProduccion = new System.Windows.Forms.Button();
-            this.btnImprimirCalibre = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnTerminal = new System.Windows.Forms.Button();
             this.btnProducto = new System.Windows.Forms.Button();
+            this.btnImprimirCalibre = new System.Windows.Forms.Button();
             this.btnProductores = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnColaborador = new System.Windows.Forms.Button();
@@ -55,6 +55,7 @@
             this.btnBD = new System.Windows.Forms.Button();
             this.btnSistema = new System.Windows.Forms.Button();
             this.panelReportes = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
@@ -84,7 +85,7 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PanelLadoIzq.SuspendLayout();
             this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
@@ -92,8 +93,10 @@
             this.panelReportes.SuspendLayout();
             this.PanelBuscar.SuspendLayout();
             this.panelPesos.SuspendLayout();
+            this.PanelLogo.SuspendLayout();
             this.PanelFormularioHijo.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelLadoIzq
@@ -233,23 +236,6 @@
             this.btnActualizaFProduccion.UseVisualStyleBackColor = true;
             this.btnActualizaFProduccion.Click += new System.EventHandler(this.btnActualizaFProduccion_Click);
             // 
-            // btnImprimirCalibre
-            // 
-            this.btnImprimirCalibre.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnImprimirCalibre.FlatAppearance.BorderSize = 0;
-            this.btnImprimirCalibre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimirCalibre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnImprimirCalibre.ForeColor = System.Drawing.Color.LightGray;
-            this.btnImprimirCalibre.Location = new System.Drawing.Point(0, 132);
-            this.btnImprimirCalibre.Name = "btnImprimirCalibre";
-            this.btnImprimirCalibre.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnImprimirCalibre.Size = new System.Drawing.Size(137, 33);
-            this.btnImprimirCalibre.TabIndex = 21;
-            this.btnImprimirCalibre.Text = "Imprimir Calibre";
-            this.btnImprimirCalibre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimirCalibre.UseVisualStyleBackColor = true;
-            this.btnImprimirCalibre.Click += new System.EventHandler(this.btnImprimirCalibre_Click_1);
-            // 
             // btnUsuarios
             // 
             this.btnUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
@@ -300,6 +286,23 @@
             this.btnProducto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProducto.UseVisualStyleBackColor = true;
             this.btnProducto.Click += new System.EventHandler(this.btnProducto_Click);
+            // 
+            // btnImprimirCalibre
+            // 
+            this.btnImprimirCalibre.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnImprimirCalibre.FlatAppearance.BorderSize = 0;
+            this.btnImprimirCalibre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimirCalibre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnImprimirCalibre.ForeColor = System.Drawing.Color.LightGray;
+            this.btnImprimirCalibre.Location = new System.Drawing.Point(0, 132);
+            this.btnImprimirCalibre.Name = "btnImprimirCalibre";
+            this.btnImprimirCalibre.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnImprimirCalibre.Size = new System.Drawing.Size(137, 33);
+            this.btnImprimirCalibre.TabIndex = 21;
+            this.btnImprimirCalibre.Text = "Imprimir Calibre";
+            this.btnImprimirCalibre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImprimirCalibre.UseVisualStyleBackColor = true;
+            this.btnImprimirCalibre.Click += new System.EventHandler(this.btnImprimirCalibre_Click_1);
             // 
             // btnProductores
             // 
@@ -534,6 +537,23 @@
             this.panelReportes.Size = new System.Drawing.Size(137, 171);
             this.panelReportes.TabIndex = 9;
             // 
+            // button3
+            // 
+            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button3.ForeColor = System.Drawing.Color.LightGray;
+            this.button3.Location = new System.Drawing.Point(0, 132);
+            this.button3.Name = "button3";
+            this.button3.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button3.Size = new System.Drawing.Size(137, 33);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Kardex Lote";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // button10
             // 
             this.button10.Dock = System.Windows.Forms.DockStyle.Top;
@@ -743,7 +763,8 @@
             // 
             // PanelLogo
             // 
-            this.PanelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.PanelLogo.BackColor = System.Drawing.Color.White;
+            this.PanelLogo.Controls.Add(this.pictureBox1);
             this.PanelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelLogo.Location = new System.Drawing.Point(0, 0);
             this.PanelLogo.Name = "PanelLogo";
@@ -875,22 +896,16 @@
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
             // 
-            // button3
+            // pictureBox1
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button3.ForeColor = System.Drawing.Color.LightGray;
-            this.button3.Location = new System.Drawing.Point(0, 132);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button3.Size = new System.Drawing.Size(137, 33);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Kardex Lote";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::_3mpacador4.Properties.Resources.logoagricola;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(137, 53);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmPrincipal
             // 
@@ -912,10 +927,12 @@
             this.panelReportes.ResumeLayout(false);
             this.PanelBuscar.ResumeLayout(false);
             this.panelPesos.ResumeLayout(false);
+            this.PanelLogo.ResumeLayout(false);
             this.PanelFormularioHijo.ResumeLayout(false);
             this.PanelFormularioHijo.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -978,5 +995,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnActualizaFProduccion;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

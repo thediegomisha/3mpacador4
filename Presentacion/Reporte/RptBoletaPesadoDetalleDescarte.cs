@@ -18,7 +18,7 @@ using QuestPDF.Infrastructure;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
-    public partial class RptBoletaPesadoDetalle : Form
+    public partial class RptBoletaPesadoDetalleDescarte : Form
 
     {
         //  String nombreArchivo = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -27,7 +27,7 @@ namespace _3mpacador4.Presentacion.Reporte
         // Label[] labels = new Label[] { lblciente, label2, label3, label4, label5, label6 };
 
 
-        public RptBoletaPesadoDetalle(string[] filaConDatos, DataTable data)
+        public RptBoletaPesadoDetalleDescarte(string[] filaConDatos, DataTable data)
         {
             InitializeComponent();
             PrepGrid();
@@ -585,38 +585,6 @@ namespace _3mpacador4.Presentacion.Reporte
         private void BtnExportar_Click(object sender, EventArgs e)
         {
             GenerarPDF2();
-        }
-
-        private void btnAdjuntos_Click(object sender, EventArgs e)
-        {
-            //Instancio el Formulario Hijo al Padre
-            var FH = new FrmDocAdjuntos();
-            //Indico al Formulario quien es el Propietario
-            AddOwnedForm(FH);
-            FH.ShowDialog();
-        }
-
-        private void btnDescarte_Click(object sender, EventArgs e)
-        {
-            //{
-            //    //Hace un chequeo si se hizo click en una fila
-            //    if (e.RowIndex >= 0)
-            //    {
-            //        // EVALUA la fila que se clickeo
-            //        var filasseleccionada = datalistado.Rows[e.RowIndex];
-
-            //        var filaConDatos = new string[filasseleccionada.Cells.Count];
-
-            //        for (var i = 0; i < filasseleccionada.Cells.Count; i++)
-            //            filaConDatos[i] = filasseleccionada.Cells[i].Value.ToString();
-
-            //        var resultados = mostrarconsulta2();
-
-            //        var FH = new RptBoletaPesadoDetalle(filaConDatos, resultados);
-
-            //        FH.ShowDialog();
-            //    }
-            //}
         }
     }
 }
