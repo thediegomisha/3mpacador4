@@ -48,9 +48,8 @@ namespace _3mpacador4
         }
 
         // Método público que devuelve el texto del Label
-        public string MiVariable { get; set; } = "007";
-
-
+        public string VarIngresoPeso { get; set; } = "";
+       
         //private void sppuerto_DataReceived(object sender, SerialDataReceivedEventArgs e)
         //{
         //    string DatoInterrupcion;
@@ -1277,6 +1276,7 @@ namespace _3mpacador4
 
         private void btnDocumentos_Click(object sender, EventArgs e)
         {
+            VarIngresoPeso = cboLote.SelectedValue.ToString();
             FrmAgregarDoc F = new FrmAgregarDoc();
             F.ShowDialog();
         }

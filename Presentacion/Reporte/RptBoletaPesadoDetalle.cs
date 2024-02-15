@@ -2,40 +2,33 @@
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using _3mpacador4.Logica;
 using Microsoft.VisualBasic;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
-// using QuestPDFTester;
+using QuestPDF;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
-//using QuestPDF;
-//using QuestPDF.Infrastructure;
-//using Microsoft.Office.Interop.Excel;
-//using objExcel  = Microsoft.Office.Interop.Excel;
-//using Microsoft.Office.Interop.Excel;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
-    public partial class RptBoletaPesadoDetalle : Form
+   
+
+    public partial class RptBoletaPesadoDetalle : Form 
 
     {
         //  String nombreArchivo = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         private string nombreArchivo = "C:/archivo.xlsx";
+        public string VarBolPesoDetalle { get; set; } = ""; // Asigna un valor predeterminado si es necesario
 
-        // Label[] labels = new Label[] { lblciente, label2, label3, label4, label5, label6 };
-
-
-        public RptBoletaPesadoDetalle(string[] filaConDatos, DataTable data)
+       public RptBoletaPesadoDetalle(string[] filaConDatos, DataTable data)
         {
             InitializeComponent();
             PrepGrid();
-            //contar();
-            //sumaneto();
-
-         //   Settings.License = LicenseType.Community;
-
+            
             if (filaConDatos.Length >= 5)
             {
                 lblnumlote.Text = filaConDatos[0];
@@ -59,11 +52,18 @@ namespace _3mpacador4.Presentacion.Reporte
                 ocultar_columnas2();
             }
         }
-        
-        private void RptBoletaPesado_Load(object sender, EventArgs e)
-        {
-        }
 
+        public RptBoletaPesadoDetalle()
+        {
+         //   VariablePesoDetalle = lblnumlote.Text;
+        }
+              
+
+        public void RptBoletaPesado_Load(object sender, EventArgs e)
+        {
+          //
+        }
+       
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
@@ -255,7 +255,7 @@ namespace _3mpacador4.Presentacion.Reporte
             datalistado.Columns[8].Visible = false;
         }
 
-        const string LogoPath = "logoagricola.png";
+
         private void GenerarPDF2()
         {
 
@@ -280,6 +280,11 @@ namespace _3mpacador4.Presentacion.Reporte
 
         void CrearCabecera(IContainer container)
         {
+         
+       //     string UserPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+       //     string LogoPath = Path.Combine(UserPath, "logoagricola.png");
+        const string LogoPath = (@"Resources\logoagricola.png");
+
             container.Column(col =>
             {
 
@@ -295,7 +300,12 @@ namespace _3mpacador4.Presentacion.Reporte
                                 rowitem.RelativeItem().Padding(0).Column(column =>
                                 {
                                     column.Item().Container().Height(2);
-                                    rowitem.AutoItem().Width(160).Height(80).Image(LogoPath);
+
+                                    if (File.Exists(LogoPath))
+                                    {
+                                        rowitem.AutoItem().Width(160).Height(80).Image(LogoPath);
+                                    }
+                                    
                                 });
                             });
 
@@ -413,9 +423,8 @@ namespace _3mpacador4.Presentacion.Reporte
                 });
             });
         }
-
-
-        void CrearContenido(IContainer container)
+         
+    void CrearContenido(IContainer container)
         {
             container.Column(col =>
             {
@@ -588,12 +597,13 @@ namespace _3mpacador4.Presentacion.Reporte
         }
 
         private void btnAdjuntos_Click(object sender, EventArgs e)
-        {
-            //Instancio el Formulario Hijo al Padre
-            var FH = new FrmDocAdjuntos();
-            //Indico al Formulario quien es el Propietario
-            AddOwnedForm(FH);
-            FH.ShowDialog();
+        {            
+            VarBolPesoDetalle = lblnumlote.Text;
+
+            FrmDocAdjuntos frmDocAdjuntos = new FrmDocAdjuntos();
+
+            AddOwnedForm(frmDocAdjuntos);
+            frmDocAdjuntos.Show();
         }
 
         private void btnDescarte_Click(object sender, EventArgs e)

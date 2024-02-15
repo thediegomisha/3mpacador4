@@ -317,7 +317,7 @@
             this.panel1.Controls.Add(this.datalistado);
             this.panel1.Location = new System.Drawing.Point(22, 271);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(709, 346);
+            this.panel1.Size = new System.Drawing.Size(736, 346);
             this.panel1.TabIndex = 37;
             // 
             // datalistado
@@ -329,7 +329,7 @@
             this.datalistado.Location = new System.Drawing.Point(0, 0);
             this.datalistado.Name = "datalistado";
             this.datalistado.ReadOnly = true;
-            this.datalistado.Size = new System.Drawing.Size(709, 346);
+            this.datalistado.Size = new System.Drawing.Size(736, 346);
             this.datalistado.TabIndex = 0;
             // 
             // label12
@@ -348,7 +348,7 @@
             // 
             this.totalneto.AutoSize = true;
             this.totalneto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalneto.Location = new System.Drawing.Point(541, 636);
+            this.totalneto.Location = new System.Drawing.Point(573, 636);
             this.totalneto.Name = "totalneto";
             this.totalneto.Size = new System.Drawing.Size(19, 20);
             this.totalneto.TabIndex = 66;
@@ -358,7 +358,7 @@
             // 
             this.Label15.AutoSize = true;
             this.Label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label15.Location = new System.Drawing.Point(542, 620);
+            this.Label15.Location = new System.Drawing.Point(574, 620);
             this.Label15.Name = "Label15";
             this.Label15.Size = new System.Drawing.Size(73, 15);
             this.Label15.TabIndex = 67;
@@ -456,7 +456,7 @@
             this.btnDescarte.BackColor = System.Drawing.Color.Teal;
             this.btnDescarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDescarte.ForeColor = System.Drawing.Color.White;
-            this.btnDescarte.Location = new System.Drawing.Point(634, 197);
+            this.btnDescarte.Location = new System.Drawing.Point(666, 198);
             this.btnDescarte.Name = "btnDescarte";
             this.btnDescarte.Size = new System.Drawing.Size(92, 30);
             this.btnDescarte.TabIndex = 74;
@@ -482,7 +482,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(737, 656);
+            this.ClientSize = new System.Drawing.Size(770, 656);
             this.Controls.Add(this.btnAdjuntos);
             this.Controls.Add(this.btnDescarte);
             this.Controls.Add(this.pictureBox1);

@@ -33,7 +33,7 @@
     <MinimumRequiredVersion>1.0.0.5</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>49</ApplicationRevision>
+    <ApplicationRevision>51</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -76,6 +76,7 @@
   <PropertyGroup>
     <StartupObject>_3mpacador4.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup />
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
@@ -345,6 +346,12 @@
     <Compile Include="Presentacion\Principal\FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\R00t\FrmMod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\R00t\FrmMod.Designer.cs">
+      <DependentUpon>FrmMod.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Reporte\FrmDocAdjuntos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -569,6 +576,9 @@
     <EmbeddedResource Include="Presentacion\Principal\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\R00t\FrmMod.resx">
+      <DependentUpon>FrmMod.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\FrmDocAdjuntos.resx">
       <DependentUpon>FrmDocAdjuntos.cs</DependentUpon>

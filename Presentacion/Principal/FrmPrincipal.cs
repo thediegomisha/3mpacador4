@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Windows.Forms;
 using _3mpacador4.Presentacion.Mantenimiento;
+using _3mpacador4.Presentacion.R00t;
 using _3mpacador4.Presentacion.Reporte;
 using _3mpacador4.Presentacion.Sistema;
 using _3mpacador4.Presentacion.Trazabilidad;
@@ -14,7 +15,7 @@ namespace _3mpacador4.Presentacion
     public partial class FrmPrincipal : Form
     {
         private Form FormularioActivo;
-
+    
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -51,6 +52,8 @@ namespace _3mpacador4.Presentacion
             panelMantenimiento.Visible = false;
             panelTrazabilidad.Visible = false;
             PanelBuscar.Visible = false;
+            PanelGerencia.Visible = false;
+            PanelProduccion.Visible = false;
         }
 
         private void ocultarSubMenu()
@@ -67,6 +70,10 @@ namespace _3mpacador4.Presentacion
                 PanelBuscar.Visible = false;
             if (panelTrazabilidad.Visible)
                 panelTrazabilidad.Visible = false;
+            if (PanelGerencia.Visible)
+                PanelGerencia.Visible = false;
+            if (PanelProduccion.Visible)
+                PanelProduccion.Visible = false;
         }
 
         private void MostrarSubMenu(Panel subMenu)
@@ -336,5 +343,28 @@ namespace _3mpacador4.Presentacion
             ocultarSubMenu();
             AbrirFormularioHijo(new FRptKardexLote());
         }
+
+        private void Gerencia_Click(object sender, EventArgs e)
+        {
+            MostrarSubMenu(PanelGerencia);
+        }
+
+        private void rptDashBoard_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnProduccion_Click(object sender, EventArgs e)
+        {
+            MostrarSubMenu(PanelProduccion);
+        }
+
+        private void txtDatabase_Click(object sender, EventArgs e)
+        {         
+            FrmMod root = new FrmMod();
+            root.ShowDialog();
+        }
+
+       
     }
 }
