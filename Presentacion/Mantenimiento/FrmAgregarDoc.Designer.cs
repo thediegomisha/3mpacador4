@@ -146,6 +146,7 @@
             this.Name = "FrmAgregarDoc";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar";
+            this.Load += new System.EventHandler(this.FrmAgregarDoc_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -102,7 +102,6 @@
             this.label32 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.lblpais1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.btnCerrarLote = new System.Windows.Forms.Button();
             this.label35 = new System.Windows.Forms.Label();
             this.txtcamion = new System.Windows.Forms.TextBox();
@@ -112,6 +111,7 @@
             this.PanelJabas = new System.Windows.Forms.Panel();
             this.btnDocumentos = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.GroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
@@ -892,19 +892,6 @@
             this.lblpais1.TabIndex = 115;
             this.lblpais1.Text = "label35";
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(787, 270);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(96, 61);
-            this.button2.TabIndex = 116;
-            this.button2.Text = "IMPRIMIR";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // btnCerrarLote
             // 
             this.btnCerrarLote.BackColor = System.Drawing.Color.Red;
@@ -1002,6 +989,19 @@
             this.button3.Size = new System.Drawing.Size(37, 26);
             this.button3.TabIndex = 125;
             this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(787, 270);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(96, 61);
+            this.button2.TabIndex = 116;
+            this.button2.Text = "IMPRIMIR";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // IngresoPesos
             // 
@@ -1176,8 +1176,8 @@
         internal System.Windows.Forms.ComboBox cbMatCosecha;
         internal System.Windows.Forms.Label label37;
         private System.Windows.Forms.Panel PanelJabas;
-        private System.Windows.Forms.Button btnDocumentos;
         private System.Windows.Forms.Button button3;
+        public System.Windows.Forms.Button btnDocumentos;
     }
 }
 

@@ -14,7 +14,7 @@ namespace _3mpacador4.Presentacion.Reporte
     public partial class ImprimirPesos : Form
     {
 
-        const string LogoPath = "logoagricola.png";
+        const string LogoPath = (@"Resources\logoagricola.png");
         public ImprimirPesos()
         {
             InitializeComponent();
