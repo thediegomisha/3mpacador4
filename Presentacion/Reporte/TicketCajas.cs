@@ -269,17 +269,16 @@ namespace _3mpacador4.Presentacion.Reporte
                         CodProductor.Text = datos.Rows[0]["CODTRA3"].ToString();
                         CODPROD.Text = datos.Rows[0]["CODTRA3"].ToString();
 
-                        String numero = "";
-                        numero = datos.Rows[0]["NUMDOC"].ToString();
-                        if (numero.StartsWith("0") && numero.Length > 1)
-                        {
-                            // Elimina el primer carácter (el cero)
-                            numero = numero.Substring(1);
-                        }
+                        //String numero = "";
+                        //numero = datos.Rows[0]["NUMDOC"].ToString();
+                        //if (numero.StartsWith("0") && numero.Length > 1)
+                        //{
+                        //    // Elimina el primer carácter (el cero)
+                        //    numero = numero.Substring(1);
+                        //}
 
-                        CODCAM.Text = numero.ToString();
-                        CodCamion.Text = numero.ToString();
-
+                        CODLOTE.Text = datos.Rows[0]["LOTE"].ToString();
+                        CodigoLote.Text = datos.Rows[0]["LOTE"].ToString();
 
                         lblcliente.Text = datos.Rows[0]["RAZON SOCIAL"].ToString();
 
@@ -337,12 +336,12 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 comando.Parameters.AddWithValue("dayOfYear", selectedDate);
 
-                comando.Parameters.Add("p_juliano", MySqlType.Int).Direction = ParameterDirection.Output;
+                comando.Parameters.Add("p_juliano", MySqlType.VarChar).Direction = ParameterDirection.Output;
 
 
                 comando.ExecuteNonQuery();
 
-                var dayOfYear = Convert.ToInt32(comando.Parameters["p_juliano"].Value);
+                var dayOfYear = (comando.Parameters["p_juliano"].Value);
 
                 lbljuliano.Text = dayOfYear.ToString();
                 CODJUL .Text = dayOfYear.ToString();

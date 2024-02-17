@@ -54,6 +54,7 @@ namespace _3mpacador4.Presentacion
             PanelBuscar.Visible = false;
             PanelGerencia.Visible = false;
             PanelProduccion.Visible = false;
+            PanelCalidad.Visible = false;
         }
 
         private void ocultarSubMenu()
@@ -74,6 +75,9 @@ namespace _3mpacador4.Presentacion
                 PanelGerencia.Visible = false;
             if (PanelProduccion.Visible)
                 PanelProduccion.Visible = false;
+            if (PanelCalidad.Visible)
+                PanelCalidad.Visible = false;
+
         }
 
         private void MostrarSubMenu(Panel subMenu)
@@ -365,6 +369,19 @@ namespace _3mpacador4.Presentacion
             root.ShowDialog();
         }
 
-       
+        private void btnCalidad_Click(object sender, EventArgs e)
+        {
+            MostrarSubMenu(PanelCalidad);
+        }
+
+        private void btnAutSalida_Click(object sender, EventArgs e)
+        {
+            //  ocultarSubMenu();
+            //  AbrirFormularioHijo(new FrmAutorizacion());
+
+
+            FrmAutorizacion salida = new FrmAutorizacion();
+            salida.ShowDialog();
+        }
     }
 }

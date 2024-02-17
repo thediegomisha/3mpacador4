@@ -71,7 +71,7 @@
             this.CodCliente = new System.Windows.Forms.Label();
             this.CodProductor = new System.Windows.Forms.Label();
             this.CodPalta = new System.Windows.Forms.Label();
-            this.CodCamion = new System.Windows.Forms.Label();
+            this.CodigoLote = new System.Windows.Forms.Label();
             this.codPacking = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.lblclp2 = new System.Windows.Forms.Label();
@@ -82,7 +82,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.CODPLAN = new System.Windows.Forms.Label();
-            this.CODCAM = new System.Windows.Forms.Label();
+            this.CODLOTE = new System.Windows.Forms.Label();
             this.CODFRUT = new System.Windows.Forms.Label();
             this.CODPROD = new System.Windows.Forms.Label();
             this.CODCLI = new System.Windows.Forms.Label();
@@ -581,18 +581,18 @@
             this.CodPalta.TabIndex = 89;
             this.CodPalta.Text = "00";
             // 
-            // CodCamion
+            // CodigoLote
             // 
-            this.CodCamion.AutoSize = true;
-            this.CodCamion.BackColor = System.Drawing.Color.IndianRed;
-            this.CodCamion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CodCamion.ForeColor = System.Drawing.Color.White;
-            this.CodCamion.Location = new System.Drawing.Point(550, 334);
-            this.CodCamion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.CodCamion.Name = "CodCamion";
-            this.CodCamion.Size = new System.Drawing.Size(37, 21);
-            this.CodCamion.TabIndex = 90;
-            this.CodCamion.Text = "000";
+            this.CodigoLote.AutoSize = true;
+            this.CodigoLote.BackColor = System.Drawing.Color.IndianRed;
+            this.CodigoLote.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CodigoLote.ForeColor = System.Drawing.Color.White;
+            this.CodigoLote.Location = new System.Drawing.Point(550, 334);
+            this.CodigoLote.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CodigoLote.Name = "CodigoLote";
+            this.CodigoLote.Size = new System.Drawing.Size(37, 21);
+            this.CodigoLote.TabIndex = 90;
+            this.CodigoLote.Text = "000";
             // 
             // codPacking
             // 
@@ -712,18 +712,18 @@
             this.CODPLAN.TabIndex = 106;
             this.CODPLAN.Text = "00";
             // 
-            // CODCAM
+            // CODLOTE
             // 
-            this.CODCAM.AutoSize = true;
-            this.CODCAM.BackColor = System.Drawing.Color.IndianRed;
-            this.CODCAM.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CODCAM.ForeColor = System.Drawing.Color.White;
-            this.CODCAM.Location = new System.Drawing.Point(29, 471);
-            this.CODCAM.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.CODCAM.Name = "CODCAM";
-            this.CODCAM.Size = new System.Drawing.Size(37, 21);
-            this.CODCAM.TabIndex = 105;
-            this.CODCAM.Text = "000";
+            this.CODLOTE.AutoSize = true;
+            this.CODLOTE.BackColor = System.Drawing.Color.IndianRed;
+            this.CODLOTE.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CODLOTE.ForeColor = System.Drawing.Color.White;
+            this.CODLOTE.Location = new System.Drawing.Point(29, 471);
+            this.CODLOTE.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CODLOTE.Name = "CODLOTE";
+            this.CODLOTE.Size = new System.Drawing.Size(37, 21);
+            this.CODLOTE.TabIndex = 105;
+            this.CODLOTE.Text = "000";
             // 
             // CODFRUT
             // 
@@ -817,9 +817,9 @@
             this.label33.Location = new System.Drawing.Point(106, 475);
             this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(94, 17);
+            this.label33.Size = new System.Drawing.Size(72, 17);
             this.label33.TabIndex = 111;
-            this.label33.Text = "NUM CAMION";
+            this.label33.Text = "NUM LOTE";
             // 
             // label34
             // 
@@ -855,7 +855,7 @@
             this.Controls.Add(this.label31);
             this.Controls.Add(this.label30);
             this.Controls.Add(this.CODPLAN);
-            this.Controls.Add(this.CODCAM);
+            this.Controls.Add(this.CODLOTE);
             this.Controls.Add(this.CODFRUT);
             this.Controls.Add(this.CODPROD);
             this.Controls.Add(this.CODCLI);
@@ -865,7 +865,7 @@
             this.Controls.Add(this.btnsalir);
             this.Controls.Add(this.lblcliente2);
             this.Controls.Add(this.codPacking);
-            this.Controls.Add(this.CodCamion);
+            this.Controls.Add(this.CodigoLote);
             this.Controls.Add(this.CodPalta);
             this.Controls.Add(this.CodProductor);
             this.Controls.Add(this.CodCliente);
@@ -967,7 +967,7 @@
         private System.Windows.Forms.Label CodCliente;
         private System.Windows.Forms.Label CodProductor;
         private System.Windows.Forms.Label CodPalta;
-        private System.Windows.Forms.Label CodCamion;
+        private System.Windows.Forms.Label CodigoLote;
         private System.Windows.Forms.Label codPacking;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label21;
@@ -978,7 +978,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label CODPLAN;
-        private System.Windows.Forms.Label CODCAM;
+        private System.Windows.Forms.Label CODLOTE;
         private System.Windows.Forms.Label CODFRUT;
         private System.Windows.Forms.Label CODPROD;
         private System.Windows.Forms.Label CODCLI;

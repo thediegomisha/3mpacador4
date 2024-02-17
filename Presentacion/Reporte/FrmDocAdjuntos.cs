@@ -25,6 +25,7 @@ namespace _3mpacador4.Presentacion.Reporte
         private void LlenarData()
         {
             datalistado.DataSource = objDoc.ListarDocumentos();
+            lblcontar.Text = datalistado.RowCount.ToString();
         }
 
         private void FrmDocAdjuntos_Load(object sender, EventArgs e)
