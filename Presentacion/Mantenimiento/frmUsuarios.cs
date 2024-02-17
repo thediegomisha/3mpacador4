@@ -35,7 +35,9 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         {
             var aux = new Colaborador();
 
-            frmAltaDNI F = new frmAltaDNI();
+            var F = new frmAltaDNI();
+            F.CambiarTextoLabel("Ingreso de Usuarios");
+            F.Panel.BackColor = Color.Red;
             F.ShowDialog();
            // MostrarColaborador();
         }
@@ -132,6 +134,11 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 picFoto.Image.Save(memoria, System.Drawing.Imaging.ImageFormat.Png);
                 imagenByte = memoria.ToArray();
             }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

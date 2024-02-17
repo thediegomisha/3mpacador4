@@ -208,6 +208,18 @@
     <Compile Include="Presentacion\Mantenimiento\frmAltaRUC.Designer.cs">
       <DependentUpon>frmAltaRUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Mantenimiento\FrmAutorizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\FrmAutorizacion.Designer.cs">
+      <DependentUpon>FrmAutorizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\FrmCalidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Mantenimiento\FrmCalidad.Designer.cs">
+      <DependentUpon>FrmCalidad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Mantenimiento\frmcolaborador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -506,6 +518,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmAltaRUC.resx">
       <DependentUpon>frmAltaRUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\FrmAutorizacion.resx">
+      <DependentUpon>FrmAutorizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\FrmCalidad.resx">
+      <DependentUpon>FrmCalidad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\frmColaborador.resx">
       <DependentUpon>frmcolaborador.cs</DependentUpon>

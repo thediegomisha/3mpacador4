@@ -69,6 +69,14 @@
             this.btnDescarte = new System.Windows.Forms.Button();
             this.btnIngresos = new System.Windows.Forms.Button();
             this.btnRecepcion = new System.Windows.Forms.Button();
+            this.PanelProduccion = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.btnProduccion = new System.Windows.Forms.Button();
+            this.PanelCalidad = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.btnIngDocumentos = new System.Windows.Forms.Button();
+            this.btnCalidad = new System.Windows.Forms.Button();
             this.PanelGerencia = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.rptDashBoard = new System.Windows.Forms.Button();
@@ -90,10 +98,7 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.PanelProduccion = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
-            this.btnProduccion = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnAutSalida = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
@@ -101,12 +106,13 @@
             this.panelReportes.SuspendLayout();
             this.PanelBuscar.SuspendLayout();
             this.panelPesos.SuspendLayout();
+            this.PanelProduccion.SuspendLayout();
+            this.PanelCalidad.SuspendLayout();
             this.PanelGerencia.SuspendLayout();
             this.PanelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelFormularioHijo.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.PanelProduccion.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelLadoIzq
@@ -127,6 +133,8 @@
             this.PanelLadoIzq.Controls.Add(this.btnRecepcion);
             this.PanelLadoIzq.Controls.Add(this.PanelProduccion);
             this.PanelLadoIzq.Controls.Add(this.btnProduccion);
+            this.PanelLadoIzq.Controls.Add(this.PanelCalidad);
+            this.PanelLadoIzq.Controls.Add(this.btnCalidad);
             this.PanelLadoIzq.Controls.Add(this.PanelGerencia);
             this.PanelLadoIzq.Controls.Add(this.Gerencia);
             this.PanelLadoIzq.Controls.Add(this.PanelLogo);
@@ -143,7 +151,7 @@
             this.panelTrazabilidad.Controls.Add(this.btnProceso);
             this.panelTrazabilidad.Controls.Add(this.btnJornal);
             this.panelTrazabilidad.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTrazabilidad.Location = new System.Drawing.Point(0, 1371);
+            this.panelTrazabilidad.Location = new System.Drawing.Point(0, 1522);
             this.panelTrazabilidad.Name = "panelTrazabilidad";
             this.panelTrazabilidad.Size = new System.Drawing.Size(120, 92);
             this.panelTrazabilidad.TabIndex = 15;
@@ -206,7 +214,7 @@
             this.btnTrazabilidadP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrazabilidadP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnTrazabilidadP.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 1327);
+            this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 1478);
             this.btnTrazabilidadP.Name = "btnTrazabilidadP";
             this.btnTrazabilidadP.Size = new System.Drawing.Size(120, 44);
             this.btnTrazabilidadP.TabIndex = 14;
@@ -227,7 +235,7 @@
             this.panelMantenimiento.Controls.Add(this.btnColaborador);
             this.panelMantenimiento.Controls.Add(this.btnAcopiador);
             this.panelMantenimiento.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMantenimiento.Location = new System.Drawing.Point(0, 1029);
+            this.panelMantenimiento.Location = new System.Drawing.Point(0, 1180);
             this.panelMantenimiento.Name = "panelMantenimiento";
             this.panelMantenimiento.Size = new System.Drawing.Size(120, 298);
             this.panelMantenimiento.TabIndex = 12;
@@ -401,7 +409,7 @@
             this.btnMantenimiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMantenimiento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnMantenimiento.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnMantenimiento.Location = new System.Drawing.Point(0, 985);
+            this.btnMantenimiento.Location = new System.Drawing.Point(0, 1136);
             this.btnMantenimiento.Name = "btnMantenimiento";
             this.btnMantenimiento.Size = new System.Drawing.Size(120, 44);
             this.btnMantenimiento.TabIndex = 12;
@@ -420,7 +428,7 @@
             this.panelSistema.Controls.Add(this.btnperiodo);
             this.panelSistema.Controls.Add(this.btnBD);
             this.panelSistema.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSistema.Location = new System.Drawing.Point(0, 772);
+            this.panelSistema.Location = new System.Drawing.Point(0, 923);
             this.panelSistema.Name = "panelSistema";
             this.panelSistema.Size = new System.Drawing.Size(120, 213);
             this.panelSistema.TabIndex = 11;
@@ -534,7 +542,7 @@
             this.btnSistema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSistema.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnSistema.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnSistema.Location = new System.Drawing.Point(0, 728);
+            this.btnSistema.Location = new System.Drawing.Point(0, 879);
             this.btnSistema.Name = "btnSistema";
             this.btnSistema.Size = new System.Drawing.Size(120, 44);
             this.btnSistema.TabIndex = 10;
@@ -552,7 +560,7 @@
             this.panelReportes.Controls.Add(this.button12);
             this.panelReportes.Controls.Add(this.button13);
             this.panelReportes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelReportes.Location = new System.Drawing.Point(0, 557);
+            this.panelReportes.Location = new System.Drawing.Point(0, 708);
             this.panelReportes.Name = "panelReportes";
             this.panelReportes.Size = new System.Drawing.Size(120, 171);
             this.panelReportes.TabIndex = 9;
@@ -648,7 +656,7 @@
             this.btnSubmenu2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmenu2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnSubmenu2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnSubmenu2.Location = new System.Drawing.Point(0, 513);
+            this.btnSubmenu2.Location = new System.Drawing.Point(0, 664);
             this.btnSubmenu2.Name = "btnSubmenu2";
             this.btnSubmenu2.Size = new System.Drawing.Size(120, 44);
             this.btnSubmenu2.TabIndex = 8;
@@ -663,7 +671,7 @@
             this.PanelBuscar.Controls.Add(this.button1);
             this.PanelBuscar.Controls.Add(this.btnCLP);
             this.PanelBuscar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelBuscar.Location = new System.Drawing.Point(0, 440);
+            this.PanelBuscar.Location = new System.Drawing.Point(0, 591);
             this.PanelBuscar.Name = "PanelBuscar";
             this.PanelBuscar.Size = new System.Drawing.Size(120, 73);
             this.PanelBuscar.TabIndex = 19;
@@ -708,7 +716,7 @@
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnBuscar.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnBuscar.Location = new System.Drawing.Point(0, 402);
+            this.btnBuscar.Location = new System.Drawing.Point(0, 553);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(120, 38);
             this.btnBuscar.TabIndex = 18;
@@ -720,12 +728,13 @@
             // panelPesos
             // 
             this.panelPesos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panelPesos.Controls.Add(this.btnAutSalida);
             this.panelPesos.Controls.Add(this.btnDescarte);
             this.panelPesos.Controls.Add(this.btnIngresos);
             this.panelPesos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelPesos.Location = new System.Drawing.Point(0, 316);
+            this.panelPesos.Location = new System.Drawing.Point(0, 435);
             this.panelPesos.Name = "panelPesos";
-            this.panelPesos.Size = new System.Drawing.Size(120, 86);
+            this.panelPesos.Size = new System.Drawing.Size(120, 118);
             this.panelPesos.TabIndex = 2;
             // 
             // btnDescarte
@@ -769,7 +778,7 @@
             this.btnRecepcion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecepcion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnRecepcion.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnRecepcion.Location = new System.Drawing.Point(0, 278);
+            this.btnRecepcion.Location = new System.Drawing.Point(0, 397);
             this.btnRecepcion.Name = "btnRecepcion";
             this.btnRecepcion.Size = new System.Drawing.Size(120, 38);
             this.btnRecepcion.TabIndex = 7;
@@ -777,6 +786,126 @@
             this.btnRecepcion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRecepcion.UseVisualStyleBackColor = true;
             this.btnRecepcion.Click += new System.EventHandler(this.btnSubmenu1_Click);
+            // 
+            // PanelProduccion
+            // 
+            this.PanelProduccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.PanelProduccion.Controls.Add(this.button7);
+            this.PanelProduccion.Controls.Add(this.button5);
+            this.PanelProduccion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelProduccion.Location = new System.Drawing.Point(0, 324);
+            this.PanelProduccion.Name = "PanelProduccion";
+            this.PanelProduccion.Size = new System.Drawing.Size(120, 73);
+            this.PanelProduccion.TabIndex = 21;
+            // 
+            // button7
+            // 
+            this.button7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button7.ForeColor = System.Drawing.Color.LightGray;
+            this.button7.Location = new System.Drawing.Point(0, 33);
+            this.button7.Name = "button7";
+            this.button7.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.button7.Size = new System.Drawing.Size(120, 33);
+            this.button7.TabIndex = 17;
+            this.button7.Text = "Pendiente";
+            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button5.ForeColor = System.Drawing.Color.LightGray;
+            this.button5.Location = new System.Drawing.Point(0, 0);
+            this.button5.Name = "button5";
+            this.button5.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.button5.Size = new System.Drawing.Size(120, 33);
+            this.button5.TabIndex = 16;
+            this.button5.Text = "Pendiente";
+            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // btnProduccion
+            // 
+            this.btnProduccion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnProduccion.FlatAppearance.BorderSize = 0;
+            this.btnProduccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProduccion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnProduccion.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnProduccion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProduccion.Location = new System.Drawing.Point(0, 291);
+            this.btnProduccion.Name = "btnProduccion";
+            this.btnProduccion.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnProduccion.Size = new System.Drawing.Size(120, 33);
+            this.btnProduccion.TabIndex = 15;
+            this.btnProduccion.Text = "Produccion";
+            this.btnProduccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProduccion.UseVisualStyleBackColor = true;
+            this.btnProduccion.Click += new System.EventHandler(this.btnProduccion_Click);
+            // 
+            // PanelCalidad
+            // 
+            this.PanelCalidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.PanelCalidad.Controls.Add(this.button6);
+            this.PanelCalidad.Controls.Add(this.btnIngDocumentos);
+            this.PanelCalidad.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelCalidad.Location = new System.Drawing.Point(0, 216);
+            this.PanelCalidad.Name = "PanelCalidad";
+            this.PanelCalidad.Size = new System.Drawing.Size(120, 75);
+            this.PanelCalidad.TabIndex = 22;
+            // 
+            // button6
+            // 
+            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button6.ForeColor = System.Drawing.Color.LightGray;
+            this.button6.Location = new System.Drawing.Point(0, 33);
+            this.button6.Name = "button6";
+            this.button6.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.button6.Size = new System.Drawing.Size(120, 33);
+            this.button6.TabIndex = 8;
+            this.button6.Text = "Pendiente";
+            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // btnIngDocumentos
+            // 
+            this.btnIngDocumentos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnIngDocumentos.FlatAppearance.BorderSize = 0;
+            this.btnIngDocumentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIngDocumentos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnIngDocumentos.ForeColor = System.Drawing.Color.LightGray;
+            this.btnIngDocumentos.Location = new System.Drawing.Point(0, 0);
+            this.btnIngDocumentos.Name = "btnIngDocumentos";
+            this.btnIngDocumentos.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnIngDocumentos.Size = new System.Drawing.Size(120, 33);
+            this.btnIngDocumentos.TabIndex = 7;
+            this.btnIngDocumentos.Text = "Ingresar Documentos";
+            this.btnIngDocumentos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIngDocumentos.UseVisualStyleBackColor = true;
+            // 
+            // btnCalidad
+            // 
+            this.btnCalidad.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCalidad.FlatAppearance.BorderSize = 0;
+            this.btnCalidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCalidad.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnCalidad.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnCalidad.Location = new System.Drawing.Point(0, 172);
+            this.btnCalidad.Name = "btnCalidad";
+            this.btnCalidad.Size = new System.Drawing.Size(120, 44);
+            this.btnCalidad.TabIndex = 23;
+            this.btnCalidad.Text = "Calidad";
+            this.btnCalidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCalidad.UseVisualStyleBackColor = true;
+            this.btnCalidad.Click += new System.EventHandler(this.btnCalidad_Click);
             // 
             // PanelGerencia
             // 
@@ -985,66 +1114,22 @@
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
             // 
-            // PanelProduccion
+            // btnAutSalida
             // 
-            this.PanelProduccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.PanelProduccion.Controls.Add(this.button7);
-            this.PanelProduccion.Controls.Add(this.button5);
-            this.PanelProduccion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelProduccion.Location = new System.Drawing.Point(0, 205);
-            this.PanelProduccion.Name = "PanelProduccion";
-            this.PanelProduccion.Size = new System.Drawing.Size(120, 73);
-            this.PanelProduccion.TabIndex = 21;
-            // 
-            // button5
-            // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button5.ForeColor = System.Drawing.Color.LightGray;
-            this.button5.Location = new System.Drawing.Point(0, 0);
-            this.button5.Name = "button5";
-            this.button5.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button5.Size = new System.Drawing.Size(120, 33);
-            this.button5.TabIndex = 16;
-            this.button5.Text = "Pendiente";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // btnProduccion
-            // 
-            this.btnProduccion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnProduccion.FlatAppearance.BorderSize = 0;
-            this.btnProduccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProduccion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnProduccion.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnProduccion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProduccion.Location = new System.Drawing.Point(0, 172);
-            this.btnProduccion.Name = "btnProduccion";
-            this.btnProduccion.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnProduccion.Size = new System.Drawing.Size(120, 33);
-            this.btnProduccion.TabIndex = 15;
-            this.btnProduccion.Text = "Produccion";
-            this.btnProduccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProduccion.UseVisualStyleBackColor = true;
-            this.btnProduccion.Click += new System.EventHandler(this.btnProduccion_Click);
-            // 
-            // button7
-            // 
-            this.button7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button7.ForeColor = System.Drawing.Color.LightGray;
-            this.button7.Location = new System.Drawing.Point(0, 33);
-            this.button7.Name = "button7";
-            this.button7.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button7.Size = new System.Drawing.Size(120, 33);
-            this.button7.TabIndex = 17;
-            this.button7.Text = "Pendiente";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnAutSalida.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAutSalida.FlatAppearance.BorderSize = 0;
+            this.btnAutSalida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutSalida.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnAutSalida.ForeColor = System.Drawing.Color.LightGray;
+            this.btnAutSalida.Location = new System.Drawing.Point(0, 66);
+            this.btnAutSalida.Name = "btnAutSalida";
+            this.btnAutSalida.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnAutSalida.Size = new System.Drawing.Size(120, 33);
+            this.btnAutSalida.TabIndex = 10;
+            this.btnAutSalida.Text = "Aut. Salida";
+            this.btnAutSalida.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAutSalida.UseVisualStyleBackColor = true;
+            this.btnAutSalida.Click += new System.EventHandler(this.btnAutSalida_Click);
             // 
             // FrmPrincipal
             // 
@@ -1066,6 +1151,8 @@
             this.panelReportes.ResumeLayout(false);
             this.PanelBuscar.ResumeLayout(false);
             this.panelPesos.ResumeLayout(false);
+            this.PanelProduccion.ResumeLayout(false);
+            this.PanelCalidad.ResumeLayout(false);
             this.PanelGerencia.ResumeLayout(false);
             this.PanelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1073,7 +1160,6 @@
             this.PanelFormularioHijo.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.PanelProduccion.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1145,5 +1231,10 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btnProduccion;
+        private System.Windows.Forms.Panel PanelCalidad;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnIngDocumentos;
+        private System.Windows.Forms.Button btnCalidad;
+        private System.Windows.Forms.Button btnAutSalida;
     }
 }
