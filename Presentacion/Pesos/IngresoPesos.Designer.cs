@@ -883,14 +883,13 @@
             // lblpais1
             // 
             this.lblpais1.AutoSize = true;
-            this.lblpais1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblpais1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblpais1.ForeColor = System.Drawing.Color.Blue;
             this.lblpais1.Location = new System.Drawing.Point(919, 55);
             this.lblpais1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblpais1.Name = "lblpais1";
-            this.lblpais1.Size = new System.Drawing.Size(66, 21);
+            this.lblpais1.Size = new System.Drawing.Size(0, 37);
             this.lblpais1.TabIndex = 115;
-            this.lblpais1.Text = "label35";
             // 
             // btnCerrarLote
             // 
@@ -973,13 +972,15 @@
             // 
             // btnDocumentos
             // 
+            this.btnDocumentos.BackColor = System.Drawing.Color.Teal;
             this.btnDocumentos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDocumentos.ForeColor = System.Drawing.Color.White;
             this.btnDocumentos.Location = new System.Drawing.Point(448, 420);
             this.btnDocumentos.Name = "btnDocumentos";
-            this.btnDocumentos.Size = new System.Drawing.Size(126, 41);
+            this.btnDocumentos.Size = new System.Drawing.Size(102, 41);
             this.btnDocumentos.TabIndex = 124;
             this.btnDocumentos.Text = "Documentos";
-            this.btnDocumentos.UseVisualStyleBackColor = true;
+            this.btnDocumentos.UseVisualStyleBackColor = false;
             this.btnDocumentos.Click += new System.EventHandler(this.btnDocumentos_Click);
             // 
             // button3

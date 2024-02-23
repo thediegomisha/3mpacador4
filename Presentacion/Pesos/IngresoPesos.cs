@@ -49,7 +49,8 @@ namespace _3mpacador4
 
         // Método público que devuelve el texto del Label
         public string VarIngresoPeso { get; set; } = "";
-       
+        public string VarNumlote { get; set; } = "";
+
         //private void sppuerto_DataReceived(object sender, SerialDataReceivedEventArgs e)
         //{
         //    string DatoInterrupcion;
@@ -1277,6 +1278,7 @@ namespace _3mpacador4
         private void btnDocumentos_Click(object sender, EventArgs e)
         {
             VarIngresoPeso = cboLote.SelectedValue.ToString();
+            VarNumlote = cboLote.Text;
             FrmAgregarDoc F = new FrmAgregarDoc();
             F.ShowDialog();
         }
@@ -1398,20 +1400,9 @@ namespace _3mpacador4
                     //var withBlock = this.cboLote;
                     if (datos != null && datos.Rows.Count > 0)
                         lblpais1.Text = datos.Rows[0]["ORIGEN"].ToString();
-                    //    ////  lblmetodo.Text = datos.Rows[0]["PRODUCTOR"].ToString();
-                    //    //lblproducto.Text = datos.Rows[0]["PRODUCTO"].ToString();
-                    //    ////  lblservicio.Text = datos.Rows[0]["PRODUCTOR"].ToString();
-                    //    ////  lblacopiador.Text = datos.Rows[0]["PRODUCTOR"].ToString();
-                    //    //// lblguiaingreso.Text = datos.Rows[0]["PRODUCTOR"].ToString();
-                    //    ////  lblruc_dni.Text = datos.Rows[0]["PRODUCTOR"].ToString();
-                    //    //lblclp.Text = datos.Rows[0]["CODIGO PRODUCCION"].ToString();
-                    //    //lblvariedad.Text = datos.Rows[0]["VARIEDAD"].ToString();
-                    //    //lblfechaingreso.Text = datos.Rows[0]["FECHA PESAJE"].ToString();
-                    //    ////    lblhoraingreso.Text = datos.Rows[0]["PRODUCTOR"].ToString();
-                    //    //lblpesoneto.Text = (datos.Rows[0]["PESO NETO"].ToString());
-                    //    //lblcantjabas.Text = (datos.Rows[0]["CANT JABAS"].ToString());
+                    
                     else
-                        lblpais1.Text = @"No Existe en la Lista !!!";
+                        lblpais1.Text = @"EUROPA";
                 }
             }
             catch (Exception ex)

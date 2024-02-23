@@ -66,6 +66,7 @@
             this.btnCLP = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.panelPesos = new System.Windows.Forms.Panel();
+            this.btnAutSalida = new System.Windows.Forms.Button();
             this.btnDescarte = new System.Windows.Forms.Button();
             this.btnIngresos = new System.Windows.Forms.Button();
             this.btnRecepcion = new System.Windows.Forms.Button();
@@ -98,7 +99,6 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnAutSalida = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
@@ -141,7 +141,7 @@
             this.PanelLadoIzq.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelLadoIzq.Location = new System.Drawing.Point(0, 0);
             this.PanelLadoIzq.Name = "PanelLadoIzq";
-            this.PanelLadoIzq.Size = new System.Drawing.Size(137, 749);
+            this.PanelLadoIzq.Size = new System.Drawing.Size(152, 749);
             this.PanelLadoIzq.TabIndex = 0;
             // 
             // panelTrazabilidad
@@ -153,7 +153,7 @@
             this.panelTrazabilidad.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTrazabilidad.Location = new System.Drawing.Point(0, 1522);
             this.panelTrazabilidad.Name = "panelTrazabilidad";
-            this.panelTrazabilidad.Size = new System.Drawing.Size(120, 92);
+            this.panelTrazabilidad.Size = new System.Drawing.Size(135, 92);
             this.panelTrazabilidad.TabIndex = 15;
             // 
             // button2
@@ -166,7 +166,7 @@
             this.button2.Location = new System.Drawing.Point(0, 66);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(120, 33);
+            this.button2.Size = new System.Drawing.Size(135, 33);
             this.button2.TabIndex = 17;
             this.button2.Text = "Reporte Packing";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -183,7 +183,7 @@
             this.btnProceso.Location = new System.Drawing.Point(0, 33);
             this.btnProceso.Name = "btnProceso";
             this.btnProceso.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnProceso.Size = new System.Drawing.Size(120, 33);
+            this.btnProceso.Size = new System.Drawing.Size(135, 33);
             this.btnProceso.TabIndex = 16;
             this.btnProceso.Text = "Prog Proceso";
             this.btnProceso.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -200,7 +200,7 @@
             this.btnJornal.Location = new System.Drawing.Point(0, 0);
             this.btnJornal.Name = "btnJornal";
             this.btnJornal.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnJornal.Size = new System.Drawing.Size(120, 33);
+            this.btnJornal.Size = new System.Drawing.Size(135, 33);
             this.btnJornal.TabIndex = 15;
             this.btnJornal.Text = "Prog Jornal";
             this.btnJornal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -216,7 +216,7 @@
             this.btnTrazabilidadP.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 1478);
             this.btnTrazabilidadP.Name = "btnTrazabilidadP";
-            this.btnTrazabilidadP.Size = new System.Drawing.Size(120, 44);
+            this.btnTrazabilidadP.Size = new System.Drawing.Size(135, 44);
             this.btnTrazabilidadP.TabIndex = 14;
             this.btnTrazabilidadP.Text = "Trazabilidad";
             this.btnTrazabilidadP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -237,7 +237,7 @@
             this.panelMantenimiento.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMantenimiento.Location = new System.Drawing.Point(0, 1180);
             this.panelMantenimiento.Name = "panelMantenimiento";
-            this.panelMantenimiento.Size = new System.Drawing.Size(120, 298);
+            this.panelMantenimiento.Size = new System.Drawing.Size(135, 298);
             this.panelMantenimiento.TabIndex = 12;
             // 
             // btnActualizaFProduccion
@@ -251,7 +251,7 @@
             this.btnActualizaFProduccion.Location = new System.Drawing.Point(0, 265);
             this.btnActualizaFProduccion.Name = "btnActualizaFProduccion";
             this.btnActualizaFProduccion.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnActualizaFProduccion.Size = new System.Drawing.Size(120, 33);
+            this.btnActualizaFProduccion.Size = new System.Drawing.Size(135, 33);
             this.btnActualizaFProduccion.TabIndex = 22;
             this.btnActualizaFProduccion.Text = "Actualiza F. Produccion";
             this.btnActualizaFProduccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -269,7 +269,7 @@
             this.btnUsuarios.Location = new System.Drawing.Point(0, 232);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnUsuarios.Size = new System.Drawing.Size(120, 33);
+            this.btnUsuarios.Size = new System.Drawing.Size(135, 33);
             this.btnUsuarios.TabIndex = 16;
             this.btnUsuarios.Text = "Usuarios";
             this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -287,7 +287,7 @@
             this.btnTerminal.Location = new System.Drawing.Point(0, 198);
             this.btnTerminal.Name = "btnTerminal";
             this.btnTerminal.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnTerminal.Size = new System.Drawing.Size(120, 34);
+            this.btnTerminal.Size = new System.Drawing.Size(135, 34);
             this.btnTerminal.TabIndex = 16;
             this.btnTerminal.Text = "Terminal";
             this.btnTerminal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -305,7 +305,7 @@
             this.btnProducto.Location = new System.Drawing.Point(0, 165);
             this.btnProducto.Name = "btnProducto";
             this.btnProducto.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnProducto.Size = new System.Drawing.Size(120, 33);
+            this.btnProducto.Size = new System.Drawing.Size(135, 33);
             this.btnProducto.TabIndex = 20;
             this.btnProducto.Text = "Productos";
             this.btnProducto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -323,7 +323,7 @@
             this.btnImprimirCalibre.Location = new System.Drawing.Point(0, 132);
             this.btnImprimirCalibre.Name = "btnImprimirCalibre";
             this.btnImprimirCalibre.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnImprimirCalibre.Size = new System.Drawing.Size(120, 33);
+            this.btnImprimirCalibre.Size = new System.Drawing.Size(135, 33);
             this.btnImprimirCalibre.TabIndex = 21;
             this.btnImprimirCalibre.Text = "Imprimir Calibre";
             this.btnImprimirCalibre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -341,7 +341,7 @@
             this.btnProductores.Location = new System.Drawing.Point(0, 99);
             this.btnProductores.Name = "btnProductores";
             this.btnProductores.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnProductores.Size = new System.Drawing.Size(120, 33);
+            this.btnProductores.Size = new System.Drawing.Size(135, 33);
             this.btnProductores.TabIndex = 17;
             this.btnProductores.Text = "Productores";
             this.btnProductores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -359,7 +359,7 @@
             this.btnClientes.Location = new System.Drawing.Point(0, 66);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnClientes.Size = new System.Drawing.Size(120, 33);
+            this.btnClientes.Size = new System.Drawing.Size(135, 33);
             this.btnClientes.TabIndex = 15;
             this.btnClientes.Text = "Clientes";
             this.btnClientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -377,7 +377,7 @@
             this.btnColaborador.Location = new System.Drawing.Point(0, 33);
             this.btnColaborador.Name = "btnColaborador";
             this.btnColaborador.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnColaborador.Size = new System.Drawing.Size(120, 33);
+            this.btnColaborador.Size = new System.Drawing.Size(135, 33);
             this.btnColaborador.TabIndex = 19;
             this.btnColaborador.Text = "Colaborador";
             this.btnColaborador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -395,7 +395,7 @@
             this.btnAcopiador.Location = new System.Drawing.Point(0, 0);
             this.btnAcopiador.Name = "btnAcopiador";
             this.btnAcopiador.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnAcopiador.Size = new System.Drawing.Size(120, 33);
+            this.btnAcopiador.Size = new System.Drawing.Size(135, 33);
             this.btnAcopiador.TabIndex = 18;
             this.btnAcopiador.Text = "Acopiadores";
             this.btnAcopiador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -411,7 +411,7 @@
             this.btnMantenimiento.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnMantenimiento.Location = new System.Drawing.Point(0, 1136);
             this.btnMantenimiento.Name = "btnMantenimiento";
-            this.btnMantenimiento.Size = new System.Drawing.Size(120, 44);
+            this.btnMantenimiento.Size = new System.Drawing.Size(135, 44);
             this.btnMantenimiento.TabIndex = 12;
             this.btnMantenimiento.Text = "Mantenimiento";
             this.btnMantenimiento.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -430,7 +430,7 @@
             this.panelSistema.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSistema.Location = new System.Drawing.Point(0, 923);
             this.panelSistema.Name = "panelSistema";
-            this.panelSistema.Size = new System.Drawing.Size(120, 213);
+            this.panelSistema.Size = new System.Drawing.Size(135, 213);
             this.panelSistema.TabIndex = 11;
             // 
             // btnReniec
@@ -443,7 +443,7 @@
             this.btnReniec.Location = new System.Drawing.Point(0, 165);
             this.btnReniec.Name = "btnReniec";
             this.btnReniec.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnReniec.Size = new System.Drawing.Size(120, 33);
+            this.btnReniec.Size = new System.Drawing.Size(135, 33);
             this.btnReniec.TabIndex = 7;
             this.btnReniec.Text = "button16";
             this.btnReniec.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -460,7 +460,7 @@
             this.BtnPesosDiversos.Location = new System.Drawing.Point(0, 132);
             this.BtnPesosDiversos.Name = "BtnPesosDiversos";
             this.BtnPesosDiversos.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.BtnPesosDiversos.Size = new System.Drawing.Size(120, 33);
+            this.BtnPesosDiversos.Size = new System.Drawing.Size(135, 33);
             this.BtnPesosDiversos.TabIndex = 6;
             this.BtnPesosDiversos.Text = "Pesos Diversos";
             this.BtnPesosDiversos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -477,7 +477,7 @@
             this.btnImpresora.Location = new System.Drawing.Point(0, 99);
             this.btnImpresora.Name = "btnImpresora";
             this.btnImpresora.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnImpresora.Size = new System.Drawing.Size(120, 33);
+            this.btnImpresora.Size = new System.Drawing.Size(135, 33);
             this.btnImpresora.TabIndex = 8;
             this.btnImpresora.Text = "Impresora";
             this.btnImpresora.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -494,7 +494,7 @@
             this.btnPuertoSerie.Location = new System.Drawing.Point(0, 66);
             this.btnPuertoSerie.Name = "btnPuertoSerie";
             this.btnPuertoSerie.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnPuertoSerie.Size = new System.Drawing.Size(120, 33);
+            this.btnPuertoSerie.Size = new System.Drawing.Size(135, 33);
             this.btnPuertoSerie.TabIndex = 4;
             this.btnPuertoSerie.Text = "Puerto Serial";
             this.btnPuertoSerie.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -511,7 +511,7 @@
             this.btnperiodo.Location = new System.Drawing.Point(0, 33);
             this.btnperiodo.Name = "btnperiodo";
             this.btnperiodo.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnperiodo.Size = new System.Drawing.Size(120, 33);
+            this.btnperiodo.Size = new System.Drawing.Size(135, 33);
             this.btnperiodo.TabIndex = 9;
             this.btnperiodo.Text = "Campaña";
             this.btnperiodo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -528,7 +528,7 @@
             this.btnBD.Location = new System.Drawing.Point(0, 0);
             this.btnBD.Name = "btnBD";
             this.btnBD.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnBD.Size = new System.Drawing.Size(120, 33);
+            this.btnBD.Size = new System.Drawing.Size(135, 33);
             this.btnBD.TabIndex = 5;
             this.btnBD.Text = "Base de Datos";
             this.btnBD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -544,7 +544,7 @@
             this.btnSistema.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnSistema.Location = new System.Drawing.Point(0, 879);
             this.btnSistema.Name = "btnSistema";
-            this.btnSistema.Size = new System.Drawing.Size(120, 44);
+            this.btnSistema.Size = new System.Drawing.Size(135, 44);
             this.btnSistema.TabIndex = 10;
             this.btnSistema.Text = "Sistema";
             this.btnSistema.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -562,7 +562,7 @@
             this.panelReportes.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelReportes.Location = new System.Drawing.Point(0, 708);
             this.panelReportes.Name = "panelReportes";
-            this.panelReportes.Size = new System.Drawing.Size(120, 171);
+            this.panelReportes.Size = new System.Drawing.Size(135, 171);
             this.panelReportes.TabIndex = 9;
             // 
             // button3
@@ -575,7 +575,7 @@
             this.button3.Location = new System.Drawing.Point(0, 132);
             this.button3.Name = "button3";
             this.button3.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button3.Size = new System.Drawing.Size(120, 33);
+            this.button3.Size = new System.Drawing.Size(135, 33);
             this.button3.TabIndex = 8;
             this.button3.Text = "Kardex Lote";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -592,7 +592,7 @@
             this.button10.Location = new System.Drawing.Point(0, 99);
             this.button10.Name = "button10";
             this.button10.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button10.Size = new System.Drawing.Size(120, 33);
+            this.button10.Size = new System.Drawing.Size(135, 33);
             this.button10.TabIndex = 7;
             this.button10.Text = "Impresion";
             this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -609,7 +609,7 @@
             this.button11.Location = new System.Drawing.Point(0, 66);
             this.button11.Name = "button11";
             this.button11.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button11.Size = new System.Drawing.Size(120, 33);
+            this.button11.Size = new System.Drawing.Size(135, 33);
             this.button11.TabIndex = 6;
             this.button11.Text = "Trazabilidad";
             this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -625,7 +625,7 @@
             this.button12.Location = new System.Drawing.Point(0, 33);
             this.button12.Name = "button12";
             this.button12.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button12.Size = new System.Drawing.Size(120, 33);
+            this.button12.Size = new System.Drawing.Size(135, 33);
             this.button12.TabIndex = 5;
             this.button12.Text = "Rpt Boleta";
             this.button12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -642,7 +642,7 @@
             this.button13.Location = new System.Drawing.Point(0, 0);
             this.button13.Name = "button13";
             this.button13.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button13.Size = new System.Drawing.Size(120, 33);
+            this.button13.Size = new System.Drawing.Size(135, 33);
             this.button13.TabIndex = 4;
             this.button13.Text = "Rpt General";
             this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -658,7 +658,7 @@
             this.btnSubmenu2.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnSubmenu2.Location = new System.Drawing.Point(0, 664);
             this.btnSubmenu2.Name = "btnSubmenu2";
-            this.btnSubmenu2.Size = new System.Drawing.Size(120, 44);
+            this.btnSubmenu2.Size = new System.Drawing.Size(135, 44);
             this.btnSubmenu2.TabIndex = 8;
             this.btnSubmenu2.Text = "Reportes";
             this.btnSubmenu2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -673,7 +673,7 @@
             this.PanelBuscar.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelBuscar.Location = new System.Drawing.Point(0, 591);
             this.PanelBuscar.Name = "PanelBuscar";
-            this.PanelBuscar.Size = new System.Drawing.Size(120, 73);
+            this.PanelBuscar.Size = new System.Drawing.Size(135, 73);
             this.PanelBuscar.TabIndex = 19;
             // 
             // button1
@@ -686,7 +686,7 @@
             this.button1.Location = new System.Drawing.Point(0, 33);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(120, 33);
+            this.button1.Size = new System.Drawing.Size(135, 33);
             this.button1.TabIndex = 16;
             this.button1.Text = "Pendiente";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -702,7 +702,7 @@
             this.btnCLP.Location = new System.Drawing.Point(0, 0);
             this.btnCLP.Name = "btnCLP";
             this.btnCLP.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnCLP.Size = new System.Drawing.Size(120, 33);
+            this.btnCLP.Size = new System.Drawing.Size(135, 33);
             this.btnCLP.TabIndex = 15;
             this.btnCLP.Text = "por CLP";
             this.btnCLP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -718,7 +718,7 @@
             this.btnBuscar.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnBuscar.Location = new System.Drawing.Point(0, 553);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(120, 38);
+            this.btnBuscar.Size = new System.Drawing.Size(135, 38);
             this.btnBuscar.TabIndex = 18;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -734,8 +734,25 @@
             this.panelPesos.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelPesos.Location = new System.Drawing.Point(0, 435);
             this.panelPesos.Name = "panelPesos";
-            this.panelPesos.Size = new System.Drawing.Size(120, 118);
+            this.panelPesos.Size = new System.Drawing.Size(135, 118);
             this.panelPesos.TabIndex = 2;
+            // 
+            // btnAutSalida
+            // 
+            this.btnAutSalida.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAutSalida.FlatAppearance.BorderSize = 0;
+            this.btnAutSalida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutSalida.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnAutSalida.ForeColor = System.Drawing.Color.LightGray;
+            this.btnAutSalida.Location = new System.Drawing.Point(0, 66);
+            this.btnAutSalida.Name = "btnAutSalida";
+            this.btnAutSalida.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnAutSalida.Size = new System.Drawing.Size(135, 33);
+            this.btnAutSalida.TabIndex = 10;
+            this.btnAutSalida.Text = "Aut. Salida";
+            this.btnAutSalida.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAutSalida.UseVisualStyleBackColor = true;
+            this.btnAutSalida.Click += new System.EventHandler(this.btnAutSalida_Click);
             // 
             // btnDescarte
             // 
@@ -747,7 +764,7 @@
             this.btnDescarte.Location = new System.Drawing.Point(0, 33);
             this.btnDescarte.Name = "btnDescarte";
             this.btnDescarte.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnDescarte.Size = new System.Drawing.Size(120, 33);
+            this.btnDescarte.Size = new System.Drawing.Size(135, 33);
             this.btnDescarte.TabIndex = 9;
             this.btnDescarte.Text = "Descarte";
             this.btnDescarte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -764,7 +781,7 @@
             this.btnIngresos.Location = new System.Drawing.Point(0, 0);
             this.btnIngresos.Name = "btnIngresos";
             this.btnIngresos.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnIngresos.Size = new System.Drawing.Size(120, 33);
+            this.btnIngresos.Size = new System.Drawing.Size(135, 33);
             this.btnIngresos.TabIndex = 4;
             this.btnIngresos.Text = "Ingresos";
             this.btnIngresos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -780,7 +797,7 @@
             this.btnRecepcion.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnRecepcion.Location = new System.Drawing.Point(0, 397);
             this.btnRecepcion.Name = "btnRecepcion";
-            this.btnRecepcion.Size = new System.Drawing.Size(120, 38);
+            this.btnRecepcion.Size = new System.Drawing.Size(135, 38);
             this.btnRecepcion.TabIndex = 7;
             this.btnRecepcion.Text = "Recepcion";
             this.btnRecepcion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -795,7 +812,7 @@
             this.PanelProduccion.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelProduccion.Location = new System.Drawing.Point(0, 324);
             this.PanelProduccion.Name = "PanelProduccion";
-            this.PanelProduccion.Size = new System.Drawing.Size(120, 73);
+            this.PanelProduccion.Size = new System.Drawing.Size(135, 73);
             this.PanelProduccion.TabIndex = 21;
             // 
             // button7
@@ -808,7 +825,7 @@
             this.button7.Location = new System.Drawing.Point(0, 33);
             this.button7.Name = "button7";
             this.button7.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button7.Size = new System.Drawing.Size(120, 33);
+            this.button7.Size = new System.Drawing.Size(135, 33);
             this.button7.TabIndex = 17;
             this.button7.Text = "Pendiente";
             this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -824,7 +841,7 @@
             this.button5.Location = new System.Drawing.Point(0, 0);
             this.button5.Name = "button5";
             this.button5.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button5.Size = new System.Drawing.Size(120, 33);
+            this.button5.Size = new System.Drawing.Size(135, 33);
             this.button5.TabIndex = 16;
             this.button5.Text = "Pendiente";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -841,7 +858,7 @@
             this.btnProduccion.Location = new System.Drawing.Point(0, 291);
             this.btnProduccion.Name = "btnProduccion";
             this.btnProduccion.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnProduccion.Size = new System.Drawing.Size(120, 33);
+            this.btnProduccion.Size = new System.Drawing.Size(135, 33);
             this.btnProduccion.TabIndex = 15;
             this.btnProduccion.Text = "Produccion";
             this.btnProduccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -856,7 +873,7 @@
             this.PanelCalidad.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelCalidad.Location = new System.Drawing.Point(0, 216);
             this.PanelCalidad.Name = "PanelCalidad";
-            this.PanelCalidad.Size = new System.Drawing.Size(120, 75);
+            this.PanelCalidad.Size = new System.Drawing.Size(135, 75);
             this.PanelCalidad.TabIndex = 22;
             // 
             // button6
@@ -869,7 +886,7 @@
             this.button6.Location = new System.Drawing.Point(0, 33);
             this.button6.Name = "button6";
             this.button6.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button6.Size = new System.Drawing.Size(120, 33);
+            this.button6.Size = new System.Drawing.Size(135, 33);
             this.button6.TabIndex = 8;
             this.button6.Text = "Pendiente";
             this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -885,7 +902,7 @@
             this.btnIngDocumentos.Location = new System.Drawing.Point(0, 0);
             this.btnIngDocumentos.Name = "btnIngDocumentos";
             this.btnIngDocumentos.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnIngDocumentos.Size = new System.Drawing.Size(120, 33);
+            this.btnIngDocumentos.Size = new System.Drawing.Size(135, 33);
             this.btnIngDocumentos.TabIndex = 7;
             this.btnIngDocumentos.Text = "Ingresar Documentos";
             this.btnIngDocumentos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -900,7 +917,7 @@
             this.btnCalidad.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnCalidad.Location = new System.Drawing.Point(0, 172);
             this.btnCalidad.Name = "btnCalidad";
-            this.btnCalidad.Size = new System.Drawing.Size(120, 44);
+            this.btnCalidad.Size = new System.Drawing.Size(135, 44);
             this.btnCalidad.TabIndex = 23;
             this.btnCalidad.Text = "Calidad";
             this.btnCalidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -915,7 +932,7 @@
             this.PanelGerencia.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelGerencia.Location = new System.Drawing.Point(0, 97);
             this.PanelGerencia.Name = "PanelGerencia";
-            this.PanelGerencia.Size = new System.Drawing.Size(120, 75);
+            this.PanelGerencia.Size = new System.Drawing.Size(135, 75);
             this.PanelGerencia.TabIndex = 20;
             // 
             // button4
@@ -928,7 +945,7 @@
             this.button4.Location = new System.Drawing.Point(0, 33);
             this.button4.Name = "button4";
             this.button4.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button4.Size = new System.Drawing.Size(120, 33);
+            this.button4.Size = new System.Drawing.Size(135, 33);
             this.button4.TabIndex = 8;
             this.button4.Text = "KPI";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -944,7 +961,7 @@
             this.rptDashBoard.Location = new System.Drawing.Point(0, 0);
             this.rptDashBoard.Name = "rptDashBoard";
             this.rptDashBoard.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.rptDashBoard.Size = new System.Drawing.Size(120, 33);
+            this.rptDashBoard.Size = new System.Drawing.Size(135, 33);
             this.rptDashBoard.TabIndex = 7;
             this.rptDashBoard.Text = "DashBoard";
             this.rptDashBoard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -960,7 +977,7 @@
             this.Gerencia.ForeColor = System.Drawing.Color.Gainsboro;
             this.Gerencia.Location = new System.Drawing.Point(0, 53);
             this.Gerencia.Name = "Gerencia";
-            this.Gerencia.Size = new System.Drawing.Size(120, 44);
+            this.Gerencia.Size = new System.Drawing.Size(135, 44);
             this.Gerencia.TabIndex = 15;
             this.Gerencia.Text = "Gerencia";
             this.Gerencia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -974,7 +991,7 @@
             this.PanelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelLogo.Location = new System.Drawing.Point(0, 0);
             this.PanelLogo.Name = "PanelLogo";
-            this.PanelLogo.Size = new System.Drawing.Size(120, 53);
+            this.PanelLogo.Size = new System.Drawing.Size(135, 53);
             this.PanelLogo.TabIndex = 1;
             // 
             // pictureBox1
@@ -983,7 +1000,7 @@
             this.pictureBox1.Image = global::_3mpacador4.Properties.Resources.logoagricola;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(120, 53);
+            this.pictureBox1.Size = new System.Drawing.Size(135, 53);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -992,10 +1009,10 @@
             // 
             this.PanelFormularioHijo.Controls.Add(this.toolStrip1);
             this.PanelFormularioHijo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelFormularioHijo.Location = new System.Drawing.Point(137, 0);
+            this.PanelFormularioHijo.Location = new System.Drawing.Point(152, 0);
             this.PanelFormularioHijo.MinimumSize = new System.Drawing.Size(206, 600);
             this.PanelFormularioHijo.Name = "PanelFormularioHijo";
-            this.PanelFormularioHijo.Size = new System.Drawing.Size(1080, 749);
+            this.PanelFormularioHijo.Size = new System.Drawing.Size(1065, 749);
             this.PanelFormularioHijo.TabIndex = 1;
             // 
             // toolStrip1
@@ -1017,7 +1034,7 @@
             this.ToolStripStatusLabel});
             this.toolStrip1.Location = new System.Drawing.Point(0, 724);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1080, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1065, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -1113,23 +1130,6 @@
             this.ToolStripStatusLabel.Name = "ToolStripStatusLabel";
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
-            // 
-            // btnAutSalida
-            // 
-            this.btnAutSalida.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAutSalida.FlatAppearance.BorderSize = 0;
-            this.btnAutSalida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAutSalida.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnAutSalida.ForeColor = System.Drawing.Color.LightGray;
-            this.btnAutSalida.Location = new System.Drawing.Point(0, 66);
-            this.btnAutSalida.Name = "btnAutSalida";
-            this.btnAutSalida.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnAutSalida.Size = new System.Drawing.Size(120, 33);
-            this.btnAutSalida.TabIndex = 10;
-            this.btnAutSalida.Text = "Aut. Salida";
-            this.btnAutSalida.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAutSalida.UseVisualStyleBackColor = true;
-            this.btnAutSalida.Click += new System.EventHandler(this.btnAutSalida_Click);
             // 
             // FrmPrincipal
             // 

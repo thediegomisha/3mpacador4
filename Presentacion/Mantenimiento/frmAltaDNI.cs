@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Net;
@@ -9,12 +10,14 @@ using _3mpacador4.Logica;
 using _3mpacador4.Properties;
 using Devart.Data.MySql;
 using Newtonsoft.Json;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
     public partial class frmAltaDNI : Form
     {
         private int id;
+        public event EventHandler<Dictionary<string, string>> DatosEnviados;
 
         public frmAltaDNI()
         {
@@ -102,6 +105,8 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             }
         }
 
+     
+
         private void ActualizarColaborador()
         {
             try
@@ -188,11 +193,11 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             }
         }
 
-        public void CambiarTextoLabel(string nuevoTexto)
+        public void CambiarTextoLabel(string nuevoTexto, string nuevotexto2)
         {
             lbltitulo.Text = nuevoTexto;
+            btnGuardar.Text = nuevotexto2;
         }
-
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -201,8 +206,40 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            InsertarColaborador();
-            // this.Close();
+            if (lbltitulo.Text == "Ingreso de Usuarios")
+            {
+                //         InsertarUsuario();
+                enviardatos();
+            }
+            else if (lbltitulo.Text == "Ingreso de Colaborador")
+            {
+                InsertarColaborador();
+            }           
+        }
+     
+        public void enviardatos()
+        {
+            try
+            {
+
+                // Crear un diccionario para almacenar los datos de los TextBox
+                Dictionary<string, string> datos = new Dictionary<string, string>();
+                datos.Add("txtdni", txtdni.Text);
+                datos.Add("txtnombres", txtnombres.Text);
+                datos.Add("txtapellidop", txtapel_paterno.Text);
+                datos.Add("txtapellidom", txtapel_materno.Text);
+
+                // Verificar si hay suscriptores al evento antes de activarlo
+                DatosEnviados?.Invoke(this, datos);
+
+                // Cerrar el formulario actual después de enviar los datos
+                this.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
 

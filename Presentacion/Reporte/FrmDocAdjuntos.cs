@@ -79,5 +79,10 @@ namespace _3mpacador4.Presentacion.Reporte
                 throw;
             }
         }
+
+        private void FrmDocAdjuntos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) Close();
+        }
     }
 }
