@@ -83,6 +83,11 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                         contar();
                         lblclptotal.Text = datos.Rows[0]["total_registros"].ToString();
                         MarcarVencidas();
+                        if (chkrazonsocial.Checked != true)
+                        {
+                            poblarPais();
+                        }
+                       
                     }
                     else
                     {
@@ -121,6 +126,8 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                         {
                            // celdaFecha.Style.BackColor = System.Drawing.Color.LightCoral; // Color de fondo para celdas retrasadas
                             row.DefaultCellStyle.BackColor = System.Drawing.Color.Red; // Color de fondo para filas con fechas vencidas
+                            row.DefaultCellStyle.ForeColor = System.Drawing.Color.White; // Color de la letra para filas con fechas vencidas
+
                         }
                     }
                 }
@@ -139,17 +146,17 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 // establecer modo de ajuste
                 // .Columns("NOMBRE_PRODUCTO").DefaultCellStyle.WrapMode = DataGridViewTriState.True
                 withBlock.Columns["CLP"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                withBlock.Columns["CLP"].Width = 110;
+                withBlock.Columns["CLP"].Width = 90;
 
                 withBlock.Columns["REGION"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                withBlock.Columns["REGION"].Width = 130;
+                withBlock.Columns["REGION"].Width = 100;
 
                 withBlock.Columns["VARIEDAD"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                withBlock.Columns["VARIEDAD"].Width = 150;
+                withBlock.Columns["VARIEDAD"].Width = 90;
 
 
                 withBlock.Columns["RAZONSOCIAL"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                withBlock.Columns["RAZONSOCIAL"].Width = 300;
+                withBlock.Columns["RAZONSOCIAL"].Width = 200;
 
 
                 withBlock.Columns["NOMBRELUGAR"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -171,12 +178,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             }
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            LBLCONTAR.Text = string.Empty;
-            consulta();
-        }
-
+       
         public void contar()
         {
             var contarfila = datalistado.RowCount - 1;
@@ -219,7 +221,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 // 
                 withBlock.BackgroundColor = Color.Black;
                 withBlock.ForeColor = Color.Maroon;
-                withBlock.Font = new Font("Tahoma", 11.0f, FontStyle.Regular, GraphicsUnit.Point, 0);
+                withBlock.Font = new Font("Tahoma", 9.0f, FontStyle.Regular, GraphicsUnit.Point, 0);
 
                 // 
                 // establecer color de resaltado (opcional)
@@ -258,7 +260,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 withBlock.ColumnHeadersHeight = 40;
                 withBlock.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 withBlock.ColumnHeadersDefaultCellStyle.Font =
-                    new Font("Tahoma", 11.0f, FontStyle.Bold, GraphicsUnit.Point, 0);
+                    new Font("Tahoma", 9.0f, FontStyle.Bold, GraphicsUnit.Point, 0);
                 withBlock.EnableHeadersVisualStyles = false;
                 withBlock.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
                 withBlock.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
@@ -366,6 +368,69 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             {
                
             }
+        }
+
+        private void txtRazonSocial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Enter)
+            {
+                if (!string.IsNullOrEmpty(txtRazonSocial.Text))
+                    btnBuscar.PerformClick();
+                else
+                    MessageBox.Show(@"Ingrese un apellido");
+            }
+        }
+
+        private void poblarPais()
+        {
+            MySqlCommand comando = null;
+            try
+            {
+                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+
+                comando = new MySqlCommand("usp_tblhabilitadodestino_Select", ConexionGral.conexion);
+                comando.CommandType = (CommandType)4;
+
+                comando.Parameters.AddWithValue("p_clp", MySqlType.Int).Value = txtCLP.Text;
+                ;
+
+                var adaptador = new MySqlDataAdapter(comando);
+                var datos = new DataTable();
+                adaptador.Fill(datos);
+
+                {
+                    //var withBlock = this.cboLote;
+                    if (datos != null && datos.Rows.Count > 0)
+                        lblpais1.Text = datos.Rows[0]["ORIGEN"].ToString();
+
+                    else
+                        lblpais1.Text = @"EUROPA";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionGral.desconectar();
+            }
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            LBLCONTAR.Text = string.Empty;
+            consulta();
+        }
+
+        private void frmProductorCLP_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) Close();
         }
     }
 }

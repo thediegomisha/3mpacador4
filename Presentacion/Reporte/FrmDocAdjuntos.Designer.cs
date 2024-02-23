@@ -124,6 +124,7 @@
             this.Name = "FrmDocAdjuntos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmDocAdjuntos_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmDocAdjuntos_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
