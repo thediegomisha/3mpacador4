@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows.Forms;
 using RawDataPrint;
 using System.Data;
+using _3mpacador4.Presentacion.Reporte;
 using System.Collections.Generic;
 
 namespace _3mpacador4.Presentacion.Sistema
@@ -116,10 +117,15 @@ namespace _3mpacador4.Presentacion.Sistema
         private void FrmImprimeCalibre_Load(object sender, EventArgs e)
         {
             LlenarComboBoxImpresoras();
+
+            lblfproduccion.Text = FProgramaProceso.ls_fecha_produccion;
+            lblidproceso.Text = FProgramaProceso.li_idproceso.ToString();
+            lbldesc_programacion.Text = FProgramaProceso.ls_dec_programacion;
+
             lblcantidad_tikects.Text = Convert.ToString(Convert.ToInt32(nudacantidad_filas.Value) * 4);
         }
 
-        void Numeror_x_Calibre(int li_calibre, int li_cantidad, string ls_fecha_produccion) {
+        void Numeror_x_Calibre(int li_calibre, int li_cantidad, int li_idproceso, string ls_fecha_produccion) {
 
             try
             {
@@ -132,11 +138,9 @@ namespace _3mpacador4.Presentacion.Sistema
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.AddWithValue("p_calibre", li_calibre);
                 comando.Parameters.AddWithValue("p_cantidad", li_cantidad);
+                comando.Parameters.AddWithValue("p_idproceso", li_idproceso);
                 comando.Parameters.AddWithValue("p_fecha_produccion", ls_fecha_produccion);
                 comando.ExecuteNonQuery();
-                //MessageBox.Show(@"CANTIDAD DE ETIQUETAS ACTUALIZADA SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //MessageBox.Show("CANTIDAD DE ETIQUETAS ACTUALIZADA SATISFACTORIAMENTE.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //LimpiarCampos();
                 ConexionGral.desconectar();
                 return;
 
@@ -190,35 +194,35 @@ namespace _3mpacador4.Presentacion.Sistema
                     string ls_print1 = "", ls_print2 = "", ls_print3 = "", ls_print4 = "";
 
                     ls_codigo1 = dgvlista.Rows[imp].Cells[0].Value != null ? dgvlista.Rows[imp].Cells[0].Value.ToString() : "";
-                    ls_print1 = ls_codigo1 != "" ? ls_codigo1.Substring(12) : "";
+                    ls_print1 = ls_codigo1 != "" ? ls_codigo1.Substring(12,2) : "";
                     
                     ls_codigo2 = dgvlista.Rows[imp].Cells[1].Value != null ? dgvlista.Rows[imp].Cells[1].Value.ToString() : "";
-                    ls_print2 = ls_codigo2 != "" ? ls_codigo2.Substring(12) : "";
+                    ls_print2 = ls_codigo2 != "" ? ls_codigo2.Substring(12,2) : "";
                     
                     ls_codigo3 = dgvlista.Rows[imp].Cells[2].Value != null ? dgvlista.Rows[imp].Cells[2].Value.ToString() : "";
-                    ls_print3 = ls_codigo3 != "" ? ls_codigo3.Substring(12) : "";
+                    ls_print3 = ls_codigo3 != "" ? ls_codigo3.Substring(12,2) : "";
                     
                     ls_codigo4 = dgvlista.Rows[imp].Cells[3].Value != null ? dgvlista.Rows[imp].Cells[3].Value.ToString() : "";
-                    ls_print4 = ls_codigo4 != "" ? ls_codigo4.Substring(12) : "";
+                    ls_print4 = ls_codigo4 != "" ? ls_codigo4.Substring(12,2) : "";
 
                     // INICIO
                     cadena = "^XA" + Environment.NewLine;
 
                     // COLUMNA 01
-                    cadena = cadena + "^FO10^BQN,2,6^FDMA," + ls_codigo1 + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,40^FO132,60^FD" + ls_print1 + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO15,15^BQN,2,6^FDMA," + ls_codigo1 + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,40^FO140,70^FD" + ls_print1 + "^FS" + Environment.NewLine;
 
                     // COLUMNA 02
-                    cadena = cadena + "^FO225^BQN,2,6^FDMA," + ls_codigo2 + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,40^FO352,60^FD" + ls_print2 + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO230,15^BQN,2,6^FDMA," + ls_codigo2 + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,40^FO355,70^FD" + ls_print2 + "^FS" + Environment.NewLine;
                     
                     // COLUMNA 03
-                    cadena = cadena + "^FO435^BQN,2,6^FDMA," + ls_codigo3 + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,40^FO562,60^FD" + ls_print3 + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO445,15^BQN,2,6^FDMA," + ls_codigo3 + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,40^FO570,70^FD" + ls_print3 + "^FS" + Environment.NewLine;
                     
                     //COLUMNA 04
-                    cadena = cadena + "^FO635^BQN,2,6^FDMA," + ls_codigo4 + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,40^FO762,60^FD" + ls_print4 + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO652,15^BQN,2,6^FDMA," + ls_codigo4 + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,40^FO777,70^FD" + ls_print4 + "^FS" + Environment.NewLine;
 
                     // FIN
                     cadena = cadena + "^XZ" + Environment.NewLine;
@@ -258,17 +262,18 @@ namespace _3mpacador4.Presentacion.Sistema
         private void btngenerar_Click(object sender, EventArgs e)
         {
 
-            int li_calibre = 0, li_cantidad = 0;
+            int li_calibre = 0, li_cantidad = 0, li_idproceso = 0;
             string ls_fecha_produccion = "";
 
             li_calibre = Convert.ToInt32(nudcalibre.Value);
             li_cantidad = Convert.ToInt32(lblcantidad_tikects.Text.Trim());
-            ls_fecha_produccion = dtpf_proceso.Value.ToString("yyyy-MM-dd");
+            li_idproceso = Convert.ToInt32(lblidproceso.Text.Trim());
+            ls_fecha_produccion = Convert.ToDateTime(lblfproduccion.Text).ToString("yyyy-MM-dd");
 
-            var rpta = MessageBox.Show("¿ ESTA SEGURO DE GENERAR " + li_cantidad.ToString() + " TICKETS DEL CALIBRE "+ li_calibre.ToString() + " DE FECHA : " + dtpf_proceso.Value.ToShortDateString() + " ?", "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var rpta = MessageBox.Show("¿ ESTA SEGURO DE GENERAR " + li_cantidad.ToString() + " TICKETS DEL CALIBRE "+ li_calibre.ToString() + " DE FECHA : " + lblfproduccion.Text.Trim() + " ?", "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (rpta == DialogResult.Yes)
             {
-                Numeror_x_Calibre(li_calibre, li_cantidad, ls_fecha_produccion);
+                Numeror_x_Calibre(li_calibre, li_cantidad, li_idproceso, ls_fecha_produccion);
 
                 Lista_codigos(li_calibre, ls_fecha_produccion);
 
