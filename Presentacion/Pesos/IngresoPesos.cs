@@ -46,10 +46,6 @@ namespace _3mpacador4
             cargarinicial();
         }
 
-        // Método público que devuelve el texto del Label
-        public string MiVariable { get; set; } = "007";
-
-
         //private void sppuerto_DataReceived(object sender, SerialDataReceivedEventArgs e)
         //{
         //    string DatoInterrupcion;
@@ -828,7 +824,7 @@ namespace _3mpacador4
             {
                 if (!string.IsNullOrEmpty(cboLote.Text))
                 {
-                    lbllote.Text = cboLote.GetItemText(cboLote.SelectedValue.ToString());
+                    label21.Text = cboLote.GetItemText(cboLote.SelectedValue.ToString());
                     label4.Text = cboLote.Text;
                     mostrarclientes();
                     //int combo = Convert.ToInt32(label21.ToString());
@@ -1407,12 +1403,6 @@ namespace _3mpacador4
         private void IngresoPesos_Shown(object sender, EventArgs e)
         {
            mostrarLote();
-        }
-
-        private void btnDocumentos_Click(object sender, EventArgs e)
-        {
-            FrmAgregarDoc F = new FrmAgregarDoc();
-            F.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)

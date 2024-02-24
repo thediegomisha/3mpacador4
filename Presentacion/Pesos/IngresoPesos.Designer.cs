@@ -54,7 +54,7 @@
             this.cbProductor = new System.Windows.Forms.ComboBox();
             this.cboturno = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.lbllote = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.sppuerto = new System.IO.Ports.SerialPort(this.components);
@@ -109,7 +109,6 @@
             this.cbMatCosecha = new System.Windows.Forms.ComboBox();
             this.label37 = new System.Windows.Forms.Label();
             this.PanelJabas = new System.Windows.Forms.Panel();
-            this.btnDocumentos = new System.Windows.Forms.Button();
             this.GroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
@@ -398,15 +397,15 @@
             this.label20.TabIndex = 67;
             this.label20.Text = "N° PLACA";
             // 
-            // lbllote
+            // label21
             // 
-            this.lbllote.AutoSize = true;
-            this.lbllote.Location = new System.Drawing.Point(154, 62);
-            this.lbllote.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbllote.Name = "lbllote";
-            this.lbllote.Size = new System.Drawing.Size(15, 17);
-            this.lbllote.TabIndex = 66;
-            this.lbllote.Text = "0";
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(154, 62);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(50, 17);
+            this.label21.TabIndex = 66;
+            this.label21.Text = "label21";
             // 
             // label23
             // 
@@ -980,23 +979,11 @@
             this.PanelJabas.Size = new System.Drawing.Size(333, 111);
             this.PanelJabas.TabIndex = 123;
             // 
-            // btnDocumentos
-            // 
-            this.btnDocumentos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDocumentos.Location = new System.Drawing.Point(448, 420);
-            this.btnDocumentos.Name = "btnDocumentos";
-            this.btnDocumentos.Size = new System.Drawing.Size(126, 41);
-            this.btnDocumentos.TabIndex = 124;
-            this.btnDocumentos.Text = "Documentos";
-            this.btnDocumentos.UseVisualStyleBackColor = true;
-            this.btnDocumentos.Click += new System.EventHandler(this.btnDocumentos_Click);
-            // 
             // IngresoPesos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1208, 681);
-            this.Controls.Add(this.btnDocumentos);
             this.Controls.Add(this.cbMatCosecha);
             this.Controls.Add(this.PanelJabas);
             this.Controls.Add(this.label37);
@@ -1047,7 +1034,7 @@
             this.Controls.Add(this.cbProductor);
             this.Controls.Add(this.cboturno);
             this.Controls.Add(this.label20);
-            this.Controls.Add(this.lbllote);
+            this.Controls.Add(this.label21);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.cbcliente);
@@ -1104,7 +1091,7 @@
         internal System.Windows.Forms.DateTimePicker fpesaje;
         internal System.Windows.Forms.ComboBox cboturno;
         internal System.Windows.Forms.Label label20;
-        internal System.Windows.Forms.Label lbllote;
+        internal System.Windows.Forms.Label label21;
         internal System.Windows.Forms.Label label23;
         internal System.Windows.Forms.Label label24;
         private System.IO.Ports.SerialPort sppuerto;
@@ -1163,7 +1150,6 @@
         internal System.Windows.Forms.ComboBox cbMatCosecha;
         internal System.Windows.Forms.Label label37;
         private System.Windows.Forms.Panel PanelJabas;
-        private System.Windows.Forms.Button btnDocumentos;
     }
 }
 

@@ -788,14 +788,12 @@ namespace _3mpacador4.Presentacion.Reporte
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
-                comando = new MySqlCommand("usp_rptticketpesajedetalle2", ConexionGral.conexion);
+                comando = new MySqlCommand("usp_tblticketpesaje_RptBoletaPesado", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
 
                 comando.Parameters.AddWithValue("p_numlote", MySqlType.Int).Value = lblpuntero.Text;
                 comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Int).Value = fechaPeriodo.Text;
 
-                    comando.Parameters.Add("p_resultado", MySqlType.Text);
-                    comando.Parameters["p_resultado"].Direction = ParameterDirection.Output;
 
                 var adaptador = new MySqlDataAdapter(comando);
                 // var datos = new DataTable();
@@ -810,10 +808,8 @@ namespace _3mpacador4.Presentacion.Reporte
                         //tamanio();
                         ocultar_columnas2();
                         //actualizardatos();
-                     //   sumaneto();
+                        sumaneto();
                         contar();
-                        string resultado = (comando.Parameters["p_resultado"].Value.ToString());
-                        totalneto.Text = resultado;
                         lblinfo3.Visible = false;
                     }
                     else
