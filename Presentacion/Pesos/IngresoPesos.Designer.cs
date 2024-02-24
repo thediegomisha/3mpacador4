@@ -873,7 +873,7 @@
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(919, 33);
+            this.label34.Location = new System.Drawing.Point(895, 33);
             this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(125, 17);
@@ -885,7 +885,7 @@
             this.lblpais1.AutoSize = true;
             this.lblpais1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblpais1.ForeColor = System.Drawing.Color.Blue;
-            this.lblpais1.Location = new System.Drawing.Point(919, 55);
+            this.lblpais1.Location = new System.Drawing.Point(893, 55);
             this.lblpais1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblpais1.Name = "lblpais1";
             this.lblpais1.Size = new System.Drawing.Size(0, 37);
@@ -1152,7 +1152,6 @@
         internal System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkPesoManual;
         private System.Windows.Forms.TextBox txtPesoManual;
-        private System.Windows.Forms.DataGridView datalistado;
         private System.Windows.Forms.Label label4;
         internal System.Windows.Forms.Label lblcantjabas;
         internal System.Windows.Forms.Label label5;
@@ -1179,6 +1178,7 @@
         private System.Windows.Forms.Panel PanelJabas;
         private System.Windows.Forms.Button button3;
         public System.Windows.Forms.Button btnDocumentos;
+        public System.Windows.Forms.DataGridView datalistado;
     }
 }
 

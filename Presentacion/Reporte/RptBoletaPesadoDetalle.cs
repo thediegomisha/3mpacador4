@@ -279,10 +279,7 @@ namespace _3mpacador4.Presentacion.Reporte
         }
 
         void CrearCabecera(IContainer container)
-        {
-         
-       //     string UserPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-       //     string LogoPath = Path.Combine(UserPath, "logoagricola.png");
+        {      
         const string LogoPath = (@"Resources\logoagricola.png");
 
             container.Column(col =>

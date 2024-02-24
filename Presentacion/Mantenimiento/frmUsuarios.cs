@@ -269,6 +269,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     comando.ExecuteNonQuery();
                     MessageBox.Show(@"USUARIO REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
+                    mostrarUsuarios();
 
                     if (MessageBox.Show(@"Desea ingresar otro Usuario?", @"Atención", MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question) == DialogResult.No) Close();

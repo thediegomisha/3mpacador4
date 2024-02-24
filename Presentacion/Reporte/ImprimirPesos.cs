@@ -8,6 +8,7 @@ using QuestPDF.Infrastructure;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using ZXing;
+using System.IO;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
@@ -29,17 +30,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void ticket()
         {
-            // Instanciamos el Formulario PADRE
-
             var IngresoPesos = Owner as IngresoPesos;
-
-            //  lblproductor2.Text = (IngresoPesos.cbProductor.Text);
-            //IngresoPesos.cbcliente.Text = 
-            //IngresoPesos.cbProductor.Text = 
-            //IngresoPesos.lblCLP.Text = 
-
-
-            // mostrarconsulta2();
         }
 
         private void ImprimirPesos_Load(object sender, EventArgs e)
@@ -66,13 +57,32 @@ namespace _3mpacador4.Presentacion.Reporte
             lblproductor2.Text = IngresoPesos.cbProductor.Text.ToString();
             lblvariedad.Text = IngresoPesos.cbvariedad.Text.ToString();
             lbljabas .Text = IngresoPesos .cbjabas .Text.ToString();
-            lblpesoneto.Text = IngresoPesos.lblpeso.Text;
+          //  lblpesoneto.Text = IngresoPesos.lblpeso.Text;
             lblnumlote.Text = IngresoPesos.cboLote.Text;
+
+            // Si hay filas
+            if (IngresoPesos.datalistado.Rows.Count > 0)
+            {
+                // Seleccionar la última fila
+                IngresoPesos.datalistado.Rows[IngresoPesos.datalistado.Rows.Count - 1].Selected = true;
+
+                // Leer el valor de una celda específica
+                string nombre = IngresoPesos.datalistado.CurrentRow.Cells["PESO NETO"].Value.ToString();
+                lblpesoneto.Text = nombre;
+
+                // Leer todas las celdas de la fila
+                for (int i = 0; i < IngresoPesos.datalistado.ColumnCount; i++)
+                {
+                    string valor = IngresoPesos.datalistado.CurrentRow.Cells[i].Value.ToString();
+                    // Procesar el valor
+                 //   lblpesoneto.Text = valor;
+                }
+            }
+
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-             // impresora_termico();
             GenerarPDF2();
         }
 
@@ -152,10 +162,8 @@ namespace _3mpacador4.Presentacion.Reporte
                MessageBox.Show($@"Error: {ex.Message}", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void GenerarPDF2()
         {
-
             QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
 
             Document.Create(contenedor =>
@@ -177,6 +185,8 @@ namespace _3mpacador4.Presentacion.Reporte
 
         void CrearCabecera(IContainer container)
         {
+            const string LogoPath = (@"Resources\logoagricola.png");
+
             container.Column(col =>
             {
                 //   col.Item().Image(LogoPath);
@@ -186,7 +196,10 @@ namespace _3mpacador4.Presentacion.Reporte
                     row.RelativeItem().AlignLeft()
                         .Row(rowitem =>
                         {
-                            rowitem.AutoItem().Width(120).Height(50).Image(LogoPath);
+                            if (File.Exists(LogoPath))
+                            {
+                                rowitem.AutoItem().Width(120).Height(50).Image(LogoPath);
+                            }
                             rowitem.AutoItem().AlignLeft().Text("RECEPCION").SemiBold().FontSize(28)
                                 .FontColor(Colors.Blue.Medium);
                             rowitem.AutoItem().AlignRight().Text("  LT N° " + lblnumlote.Text).SemiBold().FontSize(18)
@@ -396,6 +409,11 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 });
             });
+        }
+
+        private void ImprimirPesos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) Close();
         }
 
         //private void CrearFooter(IContainer container)

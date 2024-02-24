@@ -115,6 +115,7 @@
             this.KeyPreview = true;
             this.Name = "frmLote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLote_KeyDown);
             this.Panel1.ResumeLayout(false);
             this.Panel1.PerformLayout();
             this.ResumeLayout(false);

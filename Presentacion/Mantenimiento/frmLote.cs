@@ -116,5 +116,10 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         {
 
         }
+
+        private void frmLote_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) Close();
+        }
     }
 }
