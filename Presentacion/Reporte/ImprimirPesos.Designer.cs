@@ -234,6 +234,7 @@
             this.Name = "ImprimirPesos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.ImprimirPesos_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ImprimirPesos_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
