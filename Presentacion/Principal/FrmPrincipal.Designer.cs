@@ -37,7 +37,6 @@
             this.btnTrazabilidadP = new System.Windows.Forms.Button();
             this.panelMantenimiento = new System.Windows.Forms.Panel();
             this.btnActualizaFProduccion = new System.Windows.Forms.Button();
-            this.btnImprimirCalibre = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnTerminal = new System.Windows.Forms.Button();
             this.btnProducto = new System.Windows.Forms.Button();
@@ -55,6 +54,7 @@
             this.btnBD = new System.Windows.Forms.Button();
             this.btnSistema = new System.Windows.Forms.Button();
             this.panelReportes = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
@@ -84,7 +84,7 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnImprimirCalibre = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
@@ -232,23 +232,6 @@
             this.btnActualizaFProduccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnActualizaFProduccion.UseVisualStyleBackColor = true;
             this.btnActualizaFProduccion.Click += new System.EventHandler(this.btnActualizaFProduccion_Click);
-            // 
-            // btnImprimirCalibre
-            // 
-            this.btnImprimirCalibre.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnImprimirCalibre.FlatAppearance.BorderSize = 0;
-            this.btnImprimirCalibre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimirCalibre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnImprimirCalibre.ForeColor = System.Drawing.Color.LightGray;
-            this.btnImprimirCalibre.Location = new System.Drawing.Point(0, 132);
-            this.btnImprimirCalibre.Name = "btnImprimirCalibre";
-            this.btnImprimirCalibre.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnImprimirCalibre.Size = new System.Drawing.Size(137, 33);
-            this.btnImprimirCalibre.TabIndex = 21;
-            this.btnImprimirCalibre.Text = "Imprimir Calibre";
-            this.btnImprimirCalibre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimirCalibre.UseVisualStyleBackColor = true;
-            this.btnImprimirCalibre.Click += new System.EventHandler(this.btnImprimirCalibre_Click_1);
             // 
             // btnUsuarios
             // 
@@ -533,6 +516,23 @@
             this.panelReportes.Name = "panelReportes";
             this.panelReportes.Size = new System.Drawing.Size(137, 171);
             this.panelReportes.TabIndex = 9;
+            // 
+            // button3
+            // 
+            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button3.ForeColor = System.Drawing.Color.LightGray;
+            this.button3.Location = new System.Drawing.Point(0, 132);
+            this.button3.Name = "button3";
+            this.button3.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button3.Size = new System.Drawing.Size(137, 33);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Kardex Lote";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button10
             // 
@@ -875,22 +875,22 @@
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
             // 
-            // button3
+            // btnImprimirCalibre
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button3.ForeColor = System.Drawing.Color.LightGray;
-            this.button3.Location = new System.Drawing.Point(0, 132);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button3.Size = new System.Drawing.Size(137, 33);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Kardex Lote";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnImprimirCalibre.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnImprimirCalibre.FlatAppearance.BorderSize = 0;
+            this.btnImprimirCalibre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimirCalibre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnImprimirCalibre.ForeColor = System.Drawing.Color.LightGray;
+            this.btnImprimirCalibre.Location = new System.Drawing.Point(0, 132);
+            this.btnImprimirCalibre.Name = "btnImprimirCalibre";
+            this.btnImprimirCalibre.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnImprimirCalibre.Size = new System.Drawing.Size(137, 33);
+            this.btnImprimirCalibre.TabIndex = 21;
+            this.btnImprimirCalibre.Text = "Imprimir Calibre";
+            this.btnImprimirCalibre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImprimirCalibre.UseVisualStyleBackColor = true;
+            this.btnImprimirCalibre.Click += new System.EventHandler(this.btnImprimirCalibre_Click_1);
             // 
             // FrmPrincipal
             // 
@@ -972,11 +972,11 @@
         private System.Windows.Forms.Button btnCLP;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnTerminal;
-        private System.Windows.Forms.Button btnImprimirCalibre;
         private System.Windows.Forms.Button btnImpresora;
         private System.Windows.Forms.Button btnperiodo;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnActualizaFProduccion;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnImprimirCalibre;
     }
 }

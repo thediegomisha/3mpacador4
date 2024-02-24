@@ -34,7 +34,7 @@ namespace _3mpacador4.Logica
             decimal li_rpta = 0;
             if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
-            string sql = @"select (sum(d.peso_bruto) - sum(d.tara_jaba * d.cant_jabas)) from tblticket_descarte d where  d.idlote = @idlote;";
+            string sql = @"select ifnull((sum(d.peso_bruto) - sum(d.tara_jaba * d.cant_jabas)),0) from tblticket_descarte d where  d.idlote = @idlote;";
             var cmd = new MySqlCommand(sql, ConexionGral.conexion);
             cmd.Parameters.AddWithValue("@idlote", li_idlote);
             li_rpta = Convert.ToDecimal(cmd.ExecuteScalar());

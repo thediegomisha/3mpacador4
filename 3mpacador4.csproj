@@ -166,6 +166,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidad\Lote.cs" />
     <Compile Include="Entidad\Reportes\BoletaModel.cs" />
     <Compile Include="Entidad\Calibre.cs" />
     <Compile Include="Entidad\Colaborador.cs" />
@@ -186,6 +187,7 @@
     <Compile Include="Logica\LConteo_manual.cs" />
     <Compile Include="Logica\LGrupo_turno.cs" />
     <Compile Include="Logica\LPacking_calibre.cs" />
+    <Compile Include="Logica\LPrograma_proceso.cs" />
     <Compile Include="Logica\RawPrinterHelper.cs" />
     <Compile Include="Presentacion\Mantenimiento\FActualizaFechaProduccion.cs">
       <SubType>Form</SubType>
@@ -397,11 +399,23 @@
     <Compile Include="Presentacion\Sistema\frmCampania.Designer.cs">
       <DependentUpon>frmCampania.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Trazabilidad\FBuscarLote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Trazabilidad\FBuscarLote.Designer.cs">
+      <DependentUpon>FBuscarLote.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Trazabilidad\FBuscar_proceso.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentacion\Trazabilidad\FBuscar_proceso.Designer.cs">
       <DependentUpon>FBuscar_proceso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Trazabilidad\FPalletFecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Trazabilidad\FPalletFecha.Designer.cs">
+      <DependentUpon>FPalletFecha.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Trazabilidad\FProgramaProceso.cs">
       <SubType>Form</SubType>
@@ -589,8 +603,14 @@
     <EmbeddedResource Include="Presentacion\Sistema\frmCampania.resx">
       <DependentUpon>frmCampania.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Trazabilidad\FBuscarLote.resx">
+      <DependentUpon>FBuscarLote.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Trazabilidad\FBuscar_proceso.resx">
       <DependentUpon>FBuscar_proceso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Trazabilidad\FPalletFecha.resx">
+      <DependentUpon>FPalletFecha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Trazabilidad\FProgramaProceso.resx">
       <DependentUpon>FProgramaProceso.cs</DependentUpon>

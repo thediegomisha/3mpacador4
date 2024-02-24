@@ -301,8 +301,8 @@ namespace _3mpacador4.Presentacion
      
         private void btnImprimirCalibre_Click_1(object sender, EventArgs e)
         {
-            ocultarSubMenu();
-            AbrirFormularioHijo(new FrmImprimeCalibre());
+            /*ocultarSubMenu();
+            AbrirFormularioHijo(new FrmImprimeCalibre());*/
         }
 
         private void btnImpresora_Click(object sender, EventArgs e)

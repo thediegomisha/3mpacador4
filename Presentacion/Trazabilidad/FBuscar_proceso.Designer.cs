@@ -33,6 +33,9 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.gbbuscar_por = new System.Windows.Forms.GroupBox();
+            this.dtpfilfproduccion = new System.Windows.Forms.DateTimePicker();
+            this.label20 = new System.Windows.Forms.Label();
             this.dgvlista = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,8 +48,45 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gbbuscar_por.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvlista)).BeginInit();
             this.SuspendLayout();
+            // 
+            // gbbuscar_por
+            // 
+            this.gbbuscar_por.Controls.Add(this.dtpfilfproduccion);
+            this.gbbuscar_por.Controls.Add(this.label20);
+            this.gbbuscar_por.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbbuscar_por.Location = new System.Drawing.Point(0, 0);
+            this.gbbuscar_por.Name = "gbbuscar_por";
+            this.gbbuscar_por.Size = new System.Drawing.Size(836, 53);
+            this.gbbuscar_por.TabIndex = 130;
+            this.gbbuscar_por.TabStop = false;
+            this.gbbuscar_por.Text = "BUSCAR POR :";
+            // 
+            // dtpfilfproduccion
+            // 
+            this.dtpfilfproduccion.CalendarFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpfilfproduccion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpfilfproduccion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpfilfproduccion.Location = new System.Drawing.Point(128, 17);
+            this.dtpfilfproduccion.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpfilfproduccion.Name = "dtpfilfproduccion";
+            this.dtpfilfproduccion.Size = new System.Drawing.Size(107, 25);
+            this.dtpfilfproduccion.TabIndex = 127;
+            this.dtpfilfproduccion.ValueChanged += new System.EventHandler(this.dtpfilfproduccion_ValueChanged);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(6, 22);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(115, 17);
+            this.label20.TabIndex = 126;
+            this.label20.Text = "F. PRODUCCION :";
             // 
             // dgvlista
             // 
@@ -72,15 +112,17 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.Column6,
             this.Column7,
             this.Column10,
-            this.Column11});
+            this.Column11,
+            this.Column12,
+            this.Column13});
             this.dgvlista.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvlista.Location = new System.Drawing.Point(0, 0);
+            this.dgvlista.Location = new System.Drawing.Point(0, 53);
             this.dgvlista.Name = "dgvlista";
             this.dgvlista.ReadOnly = true;
             this.dgvlista.RowHeadersVisible = false;
             this.dgvlista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvlista.Size = new System.Drawing.Size(789, 235);
-            this.dgvlista.TabIndex = 0;
+            this.dgvlista.Size = new System.Drawing.Size(836, 382);
+            this.dgvlista.TabIndex = 131;
             this.dgvlista.DoubleClick += new System.EventHandler(this.dgvlista_DoubleClick);
             // 
             // Column1
@@ -121,7 +163,6 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.Column3.HeaderText = "DESTINO";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            this.Column3.Width = 130;
             // 
             // Column4
             // 
@@ -136,7 +177,6 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.Column5.HeaderText = "CATEGORIA";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
-            this.Column5.Width = 120;
             // 
             // Column6
             // 
@@ -168,18 +208,35 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.Column11.HeaderText = "CLIENTE";
             this.Column11.Name = "Column11";
             this.Column11.ReadOnly = true;
-            this.Column11.Width = 240;
+            this.Column11.Width = 320;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "NOM. P";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.Visible = false;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "F. PRODUCCION";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            this.Column13.Visible = false;
             // 
             // FBuscar_proceso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 235);
+            this.ClientSize = new System.Drawing.Size(836, 435);
             this.Controls.Add(this.dgvlista);
+            this.Controls.Add(this.gbbuscar_por);
             this.MaximizeBox = false;
             this.Name = "FBuscar_proceso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FBuscar_proceso_Load);
+            this.gbbuscar_por.ResumeLayout(false);
+            this.gbbuscar_por.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvlista)).EndInit();
             this.ResumeLayout(false);
 
@@ -187,6 +244,9 @@ namespace _3mpacador4.Presentacion.Trazabilidad
 
         #endregion
 
+        private System.Windows.Forms.GroupBox gbbuscar_por;
+        internal System.Windows.Forms.DateTimePicker dtpfilfproduccion;
+        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.DataGridView dgvlista;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
@@ -199,5 +259,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
     }
 }
