@@ -390,7 +390,7 @@
     <Compile Include="Presentacion\Reporte\FSobrepesoLoteCliente.Designer.cs">
       <DependentUpon>FSobrepesoLoteCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Reporte\Impresion.cs">
+   
     <Compile Include="Presentacion\Reporte\ImprimirPesos.cs">
       <SubType>Form</SubType>
     </Compile>
