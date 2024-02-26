@@ -384,6 +384,13 @@
     <Compile Include="Presentacion\Reporte\FRptPackigCalibre.Designer.cs">
       <DependentUpon>FRptPackigCalibre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Reporte\FSobrepesoLoteCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\FSobrepesoLoteCliente.Designer.cs">
+      <DependentUpon>FSobrepesoLoteCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\Impresion.cs">
     <Compile Include="Presentacion\Reporte\ImprimirPesos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -620,6 +627,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\FRptPackigCalibre.resx">
       <DependentUpon>FRptPackigCalibre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Reporte\FSobrepesoLoteCliente.resx">
+      <DependentUpon>FSobrepesoLoteCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Reporte\Impresion.resx">
+      <DependentUpon>Impresion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\ImprimirPesos.resx">
       <DependentUpon>ImprimirPesos.cs</DependentUpon>

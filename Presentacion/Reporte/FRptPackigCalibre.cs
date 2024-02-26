@@ -25,10 +25,10 @@ namespace _3mpacador4.Presentacion.Reporte
             InitializeComponent();
         }
 
-        public static string ls_ruta_pdf = "";
+        public static string ls_ruta_pdf = "", ls_fecha_produccion = "", ls_desc_lote = "";
         string ls_idcliente = "" , ls_cliente = "";
 
-        int li_idlote;
+        public static int li_idlote;
         decimal ldc_kilos_descarte, ldc_kilos_muestra, ldc_porc_descarte, ldc_porc_muestra,
             ldc_porc_ingresado, ldc_porc_procesado, ldc_kilos_ingresados, ldc_kilos_procesados;
 
@@ -56,98 +56,37 @@ namespace _3mpacador4.Presentacion.Reporte
             if (dgvpacking_calibre_cab.SelectedRows.Count > 0)
             {
                 li_idlote = Convert.ToInt32(dgvpacking_calibre_cab.CurrentRow.Cells[8].Value);
-                Mostrar_detalle_resumen("%", li_idlote);
-                Mostrar_sobrepeso(li_idlote);
-                //Limpiar_descarte_resumen();
+                Mostrar_detalle_resumen("%", li_idlote);               
             }
-        }
-        void Mostrar_sobrepeso(int li_idlote) 
-        {
-            MySqlCommand comando = null;
-            try
-            {
-                dgvsobrepeso.Rows.Clear();
-
-                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
-
-                comando = new MySqlCommand("usp_tblsobrepeso_lote", ConexionGral.conexion);
-                comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("p_idlote", li_idlote);
-                comando.Parameters.AddWithValue("p_fecha_produccion", dtpf_produccion.Value.ToString("yyyy-MM-dd"));
-
-                using (var reader = comando.ExecuteReader())
-                {
-                    while (reader.Read()) 
-                        dgvsobrepeso.Rows.Add(reader["idlote"], reader["lote"], reader["idpresentacion"], 
-                                              reader["presentacion"], reader["idcategoria"], reader["categoria"], 
-                                              reader["cantidad_cajas"], reader["ult_sobrepeso"], 
-                                              (Convert.ToInt32(reader["cantidad_cajas"].ToString()) * Convert.ToDecimal(reader["ult_sobrepeso"].ToString())));
-                }
-
-                ConexionGral.desconectar();
-            }
-            catch (Exception ex)
-            {
-                ConexionGral.desconectar();
-                MessageBox.Show(ex.Message, @"Algo salio Mal en usp_tblsobrepeso_lote :( ");
-                throw;
-            }
-        }
+        }        
 
         private void btnbuscar_trab_Click(object sender, EventArgs e)
         {
             Mostrar_Cabecera();
         }
 
-        private void dgvsobrepeso_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvpacking_calibre_cab_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvsobrepeso.Columns[e.ColumnIndex].Index == 9)
+            if (dgvpacking_calibre_cab.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-                var rpta = MessageBox.Show("¿ ESTA SEGURO QUE DESEA MODIFICAR EL SOBREPESO ?", "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (rpta == DialogResult.Yes)
+                if (e.ColumnIndex == 21)
                 {
-                    int li_idlote, li_idcategoria, li_idpresentacion;
-                    string ls_fecha_produccion;
-                    decimal ldc_sobrepeso;
-                    
-
-                    li_idlote = Convert.ToInt32(dgvsobrepeso.CurrentRow.Cells[0].Value);
-                    ls_fecha_produccion = Convert.ToDateTime(dgvpacking_calibre_cab.CurrentRow.Cells[6].Value).ToString("yyyy-MM-dd");
-                    li_idcategoria = Convert.ToInt32(dgvsobrepeso.CurrentRow.Cells[4].Value);
-                    li_idpresentacion = Convert.ToInt32(dgvsobrepeso.CurrentRow.Cells[2].Value);
-                    ldc_sobrepeso = Convert.ToDecimal(dgvsobrepeso.CurrentRow.Cells[7].Value);
-
-                    if (LPacking_calibre.Sobrepeso_Insert_update(li_idlote, ls_fecha_produccion, li_idcategoria, li_idpresentacion, ldc_sobrepeso))
-                    {
-                        MessageBox.Show("SE ACTUALIZO EL SOBREPESO", "Aviso...!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    e.Value = "SobrePeso";
                 }
             }
         }
 
-        private void dgvsobrepeso_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void dgvpacking_calibre_cab_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dgvsobrepeso.Columns[7].Index)
+            if (dgvpacking_calibre_cab.Columns[e.ColumnIndex].Index == 21)
             {
-                int cantidad = Convert.ToInt32(dgvsobrepeso.Rows[e.RowIndex].Cells[6].Value);
-                decimal precio = Convert.ToDecimal(dgvsobrepeso.Rows[e.RowIndex].Cells[7].Value);
-
-                decimal total = cantidad * precio;
-                dgvsobrepeso.Rows[e.RowIndex].Cells[8].Value = total;
+                ls_fecha_produccion = dgvpacking_calibre_cab.CurrentRow.Cells[6].Value.ToString();
+                li_idlote = Convert.ToInt32(dgvpacking_calibre_cab.CurrentRow.Cells[8].Value);
+                ls_desc_lote = dgvpacking_calibre_cab.CurrentRow.Cells[9].Value.ToString() + " / N° GUIA : " + dgvpacking_calibre_cab.CurrentRow.Cells[10].Value.ToString();
+                var f = new FSobrepesoLoteCliente();
+                f.ShowDialog();
             }
         }
-
-        private void dgvsobrepeso_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (dgvsobrepeso.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
-            {
-                if (e.ColumnIndex == 9)
-                {
-                    e.Value = "Aplicar";
-                }
-            }
-        }
-
         private void cbxcliente_SelectedValueChanged(object sender, EventArgs e)
         {
             li_idlote = 0;
@@ -203,7 +142,6 @@ namespace _3mpacador4.Presentacion.Reporte
                 }
 
                 Mostrar_detalle_resumen(ls_idcliente, li_idlote);
-                Mostrar_sobrepeso(li_idlote);
             }
         }
 
