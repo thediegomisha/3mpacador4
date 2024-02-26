@@ -56,29 +56,30 @@ namespace _3mpacador4.Presentacion.Reporte
             lblclp2.Text = IngresoPesos.lblCLP.Text;
             lblproductor2.Text = IngresoPesos.cbProductor.Text.ToString();
             lblvariedad.Text = IngresoPesos.cbvariedad.Text.ToString();
-            lbljabas .Text = IngresoPesos .cbjabas .Text.ToString();
-          //  lblpesoneto.Text = IngresoPesos.lblpeso.Text;
+            lbljabas.Text = IngresoPesos.cbjabas.Text.ToString();
+            //  lblpesoneto.Text = IngresoPesos.lblpeso.Text;
             lblnumlote.Text = IngresoPesos.cboLote.Text;
+
+            //IngresoPesos.datalistado.CellDoubleClick += Datalistado_CellDoubleClick;
+
+
+            //if (IngresoPesos.datalistado.CellDoubleClick == true)
+            //{
+
+            //}
 
             // Si hay filas
             if (IngresoPesos.datalistado.Rows.Count > 0)
             {
-                // Seleccionar la última fila
-                IngresoPesos.datalistado.Rows[IngresoPesos.datalistado.Rows.Count - 1].Selected = true;
+               // Seleccionar el primer elemento de la lista
+                IngresoPesos.datalistado.Rows[0].Selected = true;
 
                 // Leer el valor de una celda específica
-                string nombre = IngresoPesos.datalistado.CurrentRow.Cells["PESO NETO"].Value.ToString();
-                lblpesoneto.Text = nombre;
-
-                // Leer todas las celdas de la fila
                 for (int i = 0; i < IngresoPesos.datalistado.ColumnCount; i++)
                 {
-                    string valor = IngresoPesos.datalistado.CurrentRow.Cells[i].Value.ToString();
-                    // Procesar el valor
-                 //   lblpesoneto.Text = valor;
+                    lblpesoneto.Text = IngresoPesos.datalistado.SelectedRows[0].Cells["PESO NETO"].Value.ToString();
                 }
             }
-
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
@@ -243,10 +244,9 @@ namespace _3mpacador4.Presentacion.Reporte
                     table.Cell().Text(lblvariedad.Text).FontSize(16).FontColor(Colors.Black).Bold();
 
                     table.Cell().Text("N° DE JABAS :").FontSize(14).FontColor(Colors.Black).Bold();
-                    table.Cell().Text(lbljabas.Text).FontSize(16).FontColor(Colors.Black).Bold();
-                   
+                    table.Cell().Text(lbljabas.Text).FontSize(16).FontColor(Colors.Black).Bold();                   
 
-                    table.Cell().Text("PESO BRUTO:").FontSize(14).FontColor(Colors.Black).Bold();
+                    table.Cell().Text("PESO NETO:").FontSize(14).FontColor(Colors.Black).Bold();
                     table.Cell().Text(lblpesoneto.Text).FontSize(16).FontColor(Colors.Black).Bold();
                    
                 });

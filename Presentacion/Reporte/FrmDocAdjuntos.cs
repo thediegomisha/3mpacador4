@@ -21,7 +21,6 @@ namespace _3mpacador4.Presentacion.Reporte
         {
         InitializeComponent();
         }
-
         private void LlenarData()
         {
             datalistado.DataSource = objDoc.ListarDocumentos();

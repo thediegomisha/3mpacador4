@@ -54,26 +54,28 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         {
             for (int i = 1; i <= 4; i++)
             {
+                string nombreArchivo = ""; // Variable para almacenar el nombre del archivo original
                 string nombre = "";
                 byte[] archivo = null;
 
                 // Obtener valores de la sección actual
                 switch (i)
                 {
-                    case 1:                       
-                        nombre = ruta;
-                        // Leer el archivo en un array de bytes
-                        using (FileStream fs = new FileStream(nombre, FileMode.Open, FileAccess.Read))
+                    case 1:
+                        nombreArchivo = Path.GetFileName(ruta); // Obtener el nombre del archivo original
+                                                                // Leer el archivo en un array de bytes
+                  
+                        using (FileStream fs = new FileStream(ruta, FileMode.Open, FileAccess.Read))
                         {
                             archivo = new byte[fs.Length];
                             fs.Read(archivo, 0, archivo.Length);
                         }
                         nombre = lblguia.Text;
                         break;
-                    case 2:                       
-                        nombre = ruta1;
+                    case 2:
+                        nombreArchivo = Path.GetFileName(ruta1);
                         // Leer el archivo en un array de bytes
-                        using (FileStream fs = new FileStream(nombre, FileMode.Open, FileAccess.Read))
+                        using (FileStream fs = new FileStream(ruta1, FileMode.Open, FileAccess.Read))
                         {
                             archivo = new byte[fs.Length];
                             fs.Read(archivo, 0, archivo.Length);
@@ -81,9 +83,9 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                         nombre = lblclp.Text;
                         break;
                     case 3:
-                        nombre = ruta2;
+                        nombreArchivo = Path.GetFileName(ruta2);
                         // Leer el archivo en un array de bytes
-                        using (FileStream fs = new FileStream(nombre, FileMode.Open, FileAccess.Read))
+                        using (FileStream fs = new FileStream(ruta2, FileMode.Open, FileAccess.Read))
                         {
                             archivo = new byte[fs.Length];
                             fs.Read(archivo, 0, archivo.Length);
@@ -91,24 +93,22 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                         nombre = lbldni.Text;
                         break;
                     case 4:
-                       
-                        nombre = ruta3;
+                        nombreArchivo = Path.GetFileName(ruta3);
                         // Leer el archivo en un array de bytes
-                        using (FileStream fs = new FileStream(nombre, FileMode.Open, FileAccess.Read))
+                        using (FileStream fs = new FileStream(ruta3, FileMode.Open, FileAccess.Read))
                         {
                             archivo = new byte[fs.Length];
                             fs.Read(archivo, 0, archivo.Length);
                         }
                         nombre = lbldj.Text;
                         break;
-
                 }
                 // Agregar registro
                 Documentos objDoc = new Documentos();
                 objDoc.Idlote = Convert.ToInt32(variableRecibida);
                 objDoc.Nombre = nombre;
                 objDoc.Documento = archivo;
-                objDoc.Extension = (nombre);
+                objDoc.Extension = (nombreArchivo); // Obtener el nombre del archivo original
                 objDoc.AgregarDocumentos();
             }
 

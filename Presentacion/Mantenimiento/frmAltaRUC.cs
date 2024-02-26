@@ -152,7 +152,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (lbltitulo.Text == "Ingreso de Usuarios")
+            if (lbltitulo.Text == "Ingreso de Clientes")
                 InsertarCliente();
             else if (lbltitulo.Text == "Ingreso de Acopiadores") InsertarAcopiador();
         }
