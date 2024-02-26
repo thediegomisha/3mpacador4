@@ -63,7 +63,7 @@ namespace _3mpacador4.Logica
             if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
             string sql = @"select ifnull(sum(x.kilos),0) from(
-                            select (count(cj.calibre) * (usf_soprepeso(pp.idlote,pp.fecha_produccion, pp.idcategoria, pp.idpresentacion)))  as kilos
+                            select (count(cj.calibre) * (usf_soprepeso(pp.idlote,pp.fecha_produccion, pp.idcategoria, pp.idpresentacion, pp.idcliente)))  as kilos
                             from tblconteo_jabas cj 
                             inner join tblprograma_proceso pp on cj.idproceso = pp.idproceso 
                             inner join tblpresentacion s on pp.idpresentacion = s.idpresentacion
@@ -121,7 +121,7 @@ namespace _3mpacador4.Logica
             return lista;
         }
 
-        public static bool Sobrepeso_Insert_update(int idlote, string fecha_produccion, int idcategoria, int idpresentacion, decimal sobrepeso)
+        public static bool Sobrepeso_Insert_update(int idlote, string fecha_produccion, int idcategoria,  int idpresentacion, int idcliente, decimal sobrepeso)
         {
             try
             {
@@ -137,6 +137,7 @@ namespace _3mpacador4.Logica
                 comando.Parameters.AddWithValue("p_fecha_produccion", fecha_produccion);
                 comando.Parameters.AddWithValue("p_idcategoria", idcategoria);                
                 comando.Parameters.AddWithValue("p_idpresentacion", idpresentacion);
+                comando.Parameters.AddWithValue("p_idcliente", idcliente);
                 comando.Parameters.AddWithValue("p_ult_sobrepeso", sobrepeso);
                 rpta = Convert.ToBoolean(comando.ExecuteNonQuery());
 
