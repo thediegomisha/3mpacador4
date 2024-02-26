@@ -1072,6 +1072,7 @@ namespace _3mpacador4
                         cbjabas.GetItemText(cbjabas.SelectedValue);
 
                     pesobrutoManual = float.Parse(txtPesoManual.Text);
+
                     if (chkPesoManual.Checked == false)
                     {
                         if (pesobruto > 0)
@@ -1341,6 +1342,15 @@ namespace _3mpacador4
             {
                 ConexionGral.desconectar();
             }
+        }
+
+        private void datalistado_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Instancio el Formulario Hijo al Padre
+            var FH = new ImprimirPesos();
+            //Indico al Formulario quien es el Propietario
+            AddOwnedForm(FH);
+            FH.ShowDialog();
         }
 
         public void contar()

@@ -540,7 +540,7 @@ namespace _3mpacador4
                 {
                     if (pesobruto > 0)
                     {
-                        comando.Parameters.AddWithValue("@peso_bruto", MySqlType.Double).Value = lblpeso.Text;
+                        comando.Parameters.AddWithValue("p_peso_bruto", MySqlType.Double).Value = pesobruto;
                     }
                     else
                     {
@@ -552,7 +552,8 @@ namespace _3mpacador4
                 {
                     if (pesobrutoManual > 0)
                     {
-                        comando.Parameters.AddWithValue("@peso_bruto", MySqlType.Double).Value = txtPesoManual.Text;
+                        comando.Parameters.AddWithValue("p_peso_bruto", MySqlType.Double).Value =
+                            pesobrutoManual;
                     }
                     else
                     {
@@ -586,9 +587,7 @@ namespace _3mpacador4
                 comando.ExecuteNonQuery();
                 MessageBox.Show(@"PESO REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
                     MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
-                // limpiarcampos()
-                //    this.chkcapturapeso.Checked = false;
-                // ConexionGral.desconectar();
+               
             }
             catch (Exception ex)
             {
@@ -614,8 +613,6 @@ namespace _3mpacador4
             {
                 Interaction.MsgBox("Error cboLote_DropDownClosed" + "Error " + ex.Message, Constants.vbCritical);
             }
-
-
         }
             private void btnCerrarLote_Click(object sender, EventArgs e)
         {
