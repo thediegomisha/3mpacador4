@@ -49,7 +49,7 @@
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(633, 41);
+            this.Panel1.Size = new System.Drawing.Size(560, 41);
             this.Panel1.TabIndex = 32;
             // 
             // Label1
@@ -69,7 +69,7 @@
             this.txtDescripcion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcion.Location = new System.Drawing.Point(31, 47);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(575, 29);
+            this.txtDescripcion.Size = new System.Drawing.Size(461, 29);
             this.txtDescripcion.TabIndex = 35;
             // 
             // Label2
@@ -137,7 +137,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.GlowColor = System.Drawing.Color.Empty;
             this.btnCancelar.Image = global::_3mpacador4.Properties.Resources.cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(466, 226);
+            this.btnCancelar.Location = new System.Drawing.Point(383, 226);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.OuterBorderColor = System.Drawing.Color.Red;
@@ -168,13 +168,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 279);
+            this.ClientSize = new System.Drawing.Size(560, 275);
             this.ControlBox = false;
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Panel1);
+            this.KeyPreview = true;
             this.Name = "frmTerminal2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmTerminal2_Load);

@@ -64,7 +64,7 @@
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel2.Location = new System.Drawing.Point(0, 53);
             this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(1000, 48);
+            this.Panel2.Size = new System.Drawing.Size(678, 48);
             this.Panel2.TabIndex = 20;
             // 
             // btnCerrar
@@ -74,7 +74,7 @@
             this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.GlowColor = System.Drawing.Color.Empty;
             this.btnCerrar.Image = global::_3mpacador4.Properties.Resources.close;
-            this.btnCerrar.Location = new System.Drawing.Point(851, 3);
+            this.btnCerrar.Location = new System.Drawing.Point(529, 3);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.OuterBorderColor = System.Drawing.Color.Red;
@@ -108,14 +108,14 @@
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(1000, 53);
+            this.Panel1.Size = new System.Drawing.Size(678, 53);
             this.Panel1.TabIndex = 19;
             // 
             // Label1
             // 
             this.Label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.White;
-            this.Label1.Location = new System.Drawing.Point(440, 9);
+            this.Label1.Location = new System.Drawing.Point(197, 9);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(231, 34);
             this.Label1.TabIndex = 0;
@@ -126,9 +126,9 @@
             // 
             this.Panel5.BackColor = System.Drawing.Color.White;
             this.Panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Panel5.Location = new System.Drawing.Point(990, 0);
+            this.Panel5.Location = new System.Drawing.Point(668, 0);
             this.Panel5.Name = "Panel5";
-            this.Panel5.Size = new System.Drawing.Size(10, 504);
+            this.Panel5.Size = new System.Drawing.Size(10, 349);
             this.Panel5.TabIndex = 2;
             // 
             // Panel3
@@ -140,7 +140,7 @@
             this.Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel3.Location = new System.Drawing.Point(0, 0);
             this.Panel3.Name = "Panel3";
-            this.Panel3.Size = new System.Drawing.Size(1000, 504);
+            this.Panel3.Size = new System.Drawing.Size(678, 349);
             this.Panel3.TabIndex = 21;
             // 
             // datalistado
@@ -172,7 +172,7 @@
             this.datalistado.ReadOnly = true;
             this.datalistado.RowHeadersVisible = false;
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datalistado.Size = new System.Drawing.Size(980, 364);
+            this.datalistado.Size = new System.Drawing.Size(658, 218);
             this.datalistado.TabIndex = 4;
             this.datalistado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datalistado_CellClick);
             // 
@@ -224,9 +224,9 @@
             this.Panel6.Controls.Add(this.lblnro_reg);
             this.Panel6.Controls.Add(this.lblContar);
             this.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Panel6.Location = new System.Drawing.Point(10, 473);
+            this.Panel6.Location = new System.Drawing.Point(10, 318);
             this.Panel6.Name = "Panel6";
-            this.Panel6.Size = new System.Drawing.Size(980, 31);
+            this.Panel6.Size = new System.Drawing.Size(658, 31);
             this.Panel6.TabIndex = 3;
             // 
             // lblnro_reg
@@ -255,7 +255,7 @@
             this.Panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.Panel4.Location = new System.Drawing.Point(0, 0);
             this.Panel4.Name = "Panel4";
-            this.Panel4.Size = new System.Drawing.Size(10, 504);
+            this.Panel4.Size = new System.Drawing.Size(10, 349);
             this.Panel4.TabIndex = 1;
             // 
             // DataGridViewImageColumn1
@@ -278,11 +278,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 504);
+            this.ClientSize = new System.Drawing.Size(678, 349);
             this.ControlBox = false;
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.Panel1);
             this.Controls.Add(this.Panel3);
+            this.KeyPreview = true;
             this.Name = "frmTerminal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Panel2.ResumeLayout(false);

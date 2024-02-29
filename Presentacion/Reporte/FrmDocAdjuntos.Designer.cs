@@ -56,7 +56,7 @@
             this.datalistado.Name = "datalistado";
             this.datalistado.ReadOnly = true;
             this.datalistado.RowHeadersVisible = false;
-            this.datalistado.Size = new System.Drawing.Size(395, 159);
+            this.datalistado.Size = new System.Drawing.Size(446, 159);
             this.datalistado.TabIndex = 0;
             this.datalistado.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datalistado_CellContentDoubleClick);
             // 
@@ -64,7 +64,7 @@
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(413, 40);
+            this.btnCancelar.Location = new System.Drawing.Point(464, 40);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(90, 38);
             this.btnCancelar.TabIndex = 7;
@@ -110,7 +110,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
-            this.ClientSize = new System.Drawing.Size(513, 233);
+            this.ClientSize = new System.Drawing.Size(560, 233);
             this.ControlBox = false;
             this.Controls.Add(this.lblcontar);
             this.Controls.Add(this.label2);

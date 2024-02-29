@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
@@ -23,8 +24,30 @@ namespace _3mpacador4.Presentacion.Reporte
         }
         private void LlenarData()
         {
-            datalistado.DataSource = objDoc.ListarDocumentos();
-            lblcontar.Text = datalistado.RowCount.ToString();
+            try
+            {
+                DataTable documentos = objDoc.ListarDocumentos();
+
+                // Verificar si la tabla de documentos es nula o está vacía
+                if (documentos != null && documentos.Rows.Count > 0)
+                {
+                    // Asignar origen de datos al DataGridView si hay documentos
+                    datalistado.DataSource = documentos;
+                    ocultar_columnas();
+                    lblcontar.Text = documentos.Rows.Count.ToString();
+                }
+                else
+                {
+                    // Limpiar el DataGridView y la etiqueta si no hay documentos
+                    datalistado.DataSource = null;
+                //    ocultar_columnas();
+                    lblcontar.Text = "0";
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         private void FrmDocAdjuntos_Load(object sender, EventArgs e)
@@ -82,6 +105,12 @@ namespace _3mpacador4.Presentacion.Reporte
         private void FrmDocAdjuntos_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape) Close();
+        }
+
+        private void ocultar_columnas()
+        {
+            datalistado.Columns[0].Visible = false;
+            
         }
     }
 }

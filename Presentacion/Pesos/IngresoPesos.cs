@@ -11,6 +11,7 @@ using _3mpacador4.Presentacion.Reporte;
 using _3mpacador4.Properties;
 using Devart.Data.MySql;
 using Microsoft.VisualBasic;
+using static QuestPDF.Helpers.Colors;
 
 namespace _3mpacador4
 {
@@ -51,21 +52,7 @@ namespace _3mpacador4
         public string VarIngresoPeso { get; set; } = "";
         public string VarNumlote { get; set; } = "";
 
-        //private void sppuerto_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        //{
-        //    string DatoInterrupcion;
-        //    try
-        //    {
-        //        DatoInterrupcion = sppuerto.ReadExisting();
-        //        PuertaAccesoInterrupcion(DatoInterrupcion);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Interaction.MsgBox("ERROR DATOS INTERRUPCION " + ex.Message, Constants.vbCritical);
-        //    }
-        //}
-
-        private void sppuerto_DataReceived(object sender, SerialDataReceivedEventArgs e)
+       private void sppuerto_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             try
             {
@@ -1351,6 +1338,11 @@ namespace _3mpacador4
             //Indico al Formulario quien es el Propietario
             AddOwnedForm(FH);
             FH.ShowDialog();
+        }
+
+        private void IngresoPesos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            sppuerto.Close();
         }
 
         public void contar()
