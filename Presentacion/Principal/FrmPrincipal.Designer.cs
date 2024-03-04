@@ -99,6 +99,7 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnPresen_cajas = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
@@ -151,7 +152,7 @@
             this.panelTrazabilidad.Controls.Add(this.btnProceso);
             this.panelTrazabilidad.Controls.Add(this.btnJornal);
             this.panelTrazabilidad.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTrazabilidad.Location = new System.Drawing.Point(0, 1169);
+            this.panelTrazabilidad.Location = new System.Drawing.Point(0, 1247);
             this.panelTrazabilidad.Name = "panelTrazabilidad";
             this.panelTrazabilidad.Size = new System.Drawing.Size(135, 80);
             this.panelTrazabilidad.TabIndex = 15;
@@ -214,7 +215,7 @@
             this.btnTrazabilidadP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrazabilidadP.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTrazabilidadP.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 1143);
+            this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 1221);
             this.btnTrazabilidadP.Name = "btnTrazabilidadP";
             this.btnTrazabilidadP.Size = new System.Drawing.Size(135, 26);
             this.btnTrazabilidadP.TabIndex = 14;
@@ -225,6 +226,7 @@
             // 
             // panelMantenimiento
             // 
+            this.panelMantenimiento.Controls.Add(this.btnPresen_cajas);
             this.panelMantenimiento.Controls.Add(this.btnActualizaFProduccion);
             this.panelMantenimiento.Controls.Add(this.btnUsuarios);
             this.panelMantenimiento.Controls.Add(this.btnTerminal);
@@ -237,7 +239,7 @@
             this.panelMantenimiento.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMantenimiento.Location = new System.Drawing.Point(0, 906);
             this.panelMantenimiento.Name = "panelMantenimiento";
-            this.panelMantenimiento.Size = new System.Drawing.Size(135, 237);
+            this.panelMantenimiento.Size = new System.Drawing.Size(135, 315);
             this.panelMantenimiento.TabIndex = 12;
             // 
             // btnActualizaFProduccion
@@ -1130,6 +1132,24 @@
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
             // 
+            // btnPresen_cajas
+            // 
+            this.btnPresen_cajas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnPresen_cajas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPresen_cajas.FlatAppearance.BorderSize = 0;
+            this.btnPresen_cajas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPresen_cajas.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPresen_cajas.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnPresen_cajas.Location = new System.Drawing.Point(0, 234);
+            this.btnPresen_cajas.Name = "btnPresen_cajas";
+            this.btnPresen_cajas.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnPresen_cajas.Size = new System.Drawing.Size(135, 26);
+            this.btnPresen_cajas.TabIndex = 23;
+            this.btnPresen_cajas.Text = "Presentacion Cajas";
+            this.btnPresen_cajas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPresen_cajas.UseVisualStyleBackColor = false;
+            this.btnPresen_cajas.Click += new System.EventHandler(this.btnPresen_cajas_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1235,5 +1255,6 @@
         private System.Windows.Forms.Button btnAutSalida;
         private System.Windows.Forms.Button btnImprimirCalibre;
         public System.Windows.Forms.ToolStripStatusLabel LBLUSUARIO;
+        private System.Windows.Forms.Button btnPresen_cajas;
     }
 }

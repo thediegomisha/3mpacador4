@@ -14,7 +14,6 @@ namespace _3mpacador4.Presentacion.Reporte
 {
     public partial class ImprimirPesos : Form
     {
-
         const string LogoPath = (@"Resources\logoagricola.png");
         public ImprimirPesos()
         {
@@ -43,9 +42,6 @@ namespace _3mpacador4.Presentacion.Reporte
         {
             try
             {
-
-            
-
             // Instanciamos el Formulario PADRE
             FrmPrincipal frmPrincipal = new FrmPrincipal();
 
@@ -62,7 +58,7 @@ namespace _3mpacador4.Presentacion.Reporte
             lblclp2.Text = IngresoPesos.lblCLP.Text;
             lblproductor2.Text = IngresoPesos.cbProductor.Text.ToString();
             lblvariedad.Text = IngresoPesos.cbvariedad.Text.ToString();
-            lbljabas.Text = IngresoPesos.cbjabas.Text.ToString();
+           // lbljabas.Text = IngresoPesos.cbjabas.Text.ToString();
             //  lblpesoneto.Text = IngresoPesos.lblpeso.Text;
             lblnumlote.Text = IngresoPesos.cboLote.Text;
             lblusuario.Text = frmPrincipal.LBLUSUARIO.Text;
@@ -70,13 +66,22 @@ namespace _3mpacador4.Presentacion.Reporte
             // Si hay filas
             if (IngresoPesos.datalistado.Rows.Count > 0)
             {
-               // Seleccionar el primer elemento de la lista
-                IngresoPesos.datalistado.Rows[0].Selected = true;
-
-                // Leer el valor de una celda específica
-                for (int i = 0; i < IngresoPesos.datalistado.ColumnCount; i++)
+                if (IngresoPesos.doubleclick == true)
                 {
+                    lbljabas.Text = IngresoPesos.Varcantjabas;
+                    lblpesoneto.Text = IngresoPesos.Varpesoneto;
+                    IngresoPesos.doubleclick = false;
+                }
+                else
+                {
+                    // Seleccionar el primer elemento de la lista
+                        IngresoPesos.datalistado.Rows[0].Selected = true;
+                    // Leer el valor de una celda específica
+                //for (int i = 0; i < IngresoPesos.datalistado.ColumnCount; i++)
+                //{
                     lblpesoneto.Text = IngresoPesos.datalistado.SelectedRows[0].Cells["PESO NETO"].Value.ToString();
+                    lbljabas.Text = IngresoPesos.datalistado.SelectedRows[0].Cells["CANT JABAS"].Value.ToString();
+                //}
                 }
             }
             }

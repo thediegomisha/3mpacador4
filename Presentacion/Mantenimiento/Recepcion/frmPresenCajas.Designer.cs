@@ -1,6 +1,6 @@
 ﻿namespace _3mpacador4.Presentacion.Mantenimiento
 {
-    partial class frmpresentacion
+    partial class frmpresen_cajas
     {
         /// <summary>
         /// Required designer variable.

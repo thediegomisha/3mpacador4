@@ -38,6 +38,11 @@ namespace _3mpacador4
 
         private readonly string w = Convert.ToString('w'); // HEXADECIMAL
 
+        public bool doubleclickdescarte { get; set; } = false;
+
+        public string Varcantjabasdesc { get; set; } = "";
+        public string Varpesonetodesc { get; set; } = "";
+
         public IngresoDescarte()
         {
             InitializeComponent();
@@ -479,12 +484,35 @@ namespace _3mpacador4
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Instancio el Formulario Hijo al Padre
-            var FH = new ImprimirPesosDescarte();
-            //Indico al Formulario quien es el Propietario
-            AddOwnedForm(FH);
-            FH.ShowDialog();
-            
+            try
+            {
+                borrarmensajeerror();
+                if (validarcampos())
+                {
+                    if (chkPesoManual.Checked == false || (chkPesoManual.Checked && txtPesoManual.Text != null))
+                    {
+                        InsertarRegistro();
+                        mostrarconsulta();
+                        //Instancio el Formulario Hijo al Padre
+                        var FH = new ImprimirPesosDescarte();
+                        //Indico al Formulario quien es el Propietario
+                        AddOwnedForm(FH);
+                        FH.ShowDialog();
+                        txtPesoManual.Focus();
+                        txtPesoManual.Text = "0.0";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error en btnguardar_Click - ", @"Error", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
         }
 
         private void InsertarRegistro()
@@ -635,6 +663,23 @@ namespace _3mpacador4
         private void IngresoDescarte_FormClosing(object sender, FormClosingEventArgs e)
         {
             sppuerto.Close();
+        }
+
+        private void datalistado_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            doubleclickdescarte = true;
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = datalistado.Rows[e.RowIndex];
+                Varpesonetodesc = selectedRow.Cells["PESO NETO"].Value.ToString();
+                Varcantjabasdesc = selectedRow.Cells["CANT JABAS"].Value.ToString();
+            }
+
+            //Instancio el Formulario Hijo al Padre
+            var FH1 = new ImprimirPesosDescarte();
+            //Indico al Formulario quien es el Propietario
+            AddOwnedForm(FH1);
+            FH1.ShowDialog();
         }
 
         private void multiplicajabas()

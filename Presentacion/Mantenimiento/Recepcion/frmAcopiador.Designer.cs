@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAcopiador));
             this.DataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Panel2 = new System.Windows.Forms.Panel();
-            this.btnCerrar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
             this.Panel1 = new System.Windows.Forms.Panel();
             this.Label1 = new System.Windows.Forms.Label();
             this.Panel5 = new System.Windows.Forms.Panel();
@@ -44,6 +42,8 @@
             this.lblContar = new System.Windows.Forms.Label();
             this.Panel4 = new System.Windows.Forms.Panel();
             this.DataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
             this.Panel2.SuspendLayout();
             this.Panel1.SuspendLayout();
             this.Panel3.SuspendLayout();
@@ -61,37 +61,13 @@
             // 
             // Panel2
             // 
-            this.Panel2.Controls.Add(this.btnCerrar);
             this.Panel2.Controls.Add(this.btnNuevo);
+            this.Panel2.Controls.Add(this.btnCerrar);
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel2.Location = new System.Drawing.Point(0, 41);
             this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(1000, 48);
+            this.Panel2.Size = new System.Drawing.Size(780, 48);
             this.Panel2.TabIndex = 20;
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.Location = new System.Drawing.Point(663, 12);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(65, 29);
-            this.btnCerrar.TabIndex = 10;
-            this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNuevo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevo.Location = new System.Drawing.Point(10, 12);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(140, 29);
-            this.btnNuevo.TabIndex = 10;
-            this.btnNuevo.Text = "Nue&vo Acopiador";
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // Panel1
             // 
@@ -100,7 +76,7 @@
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(1000, 41);
+            this.Panel1.Size = new System.Drawing.Size(780, 41);
             this.Panel1.TabIndex = 19;
             // 
             // Label1
@@ -118,7 +94,7 @@
             // 
             this.Panel5.BackColor = System.Drawing.Color.White;
             this.Panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Panel5.Location = new System.Drawing.Point(990, 0);
+            this.Panel5.Location = new System.Drawing.Point(770, 0);
             this.Panel5.Name = "Panel5";
             this.Panel5.Size = new System.Drawing.Size(10, 504);
             this.Panel5.TabIndex = 2;
@@ -132,7 +108,7 @@
             this.Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel3.Location = new System.Drawing.Point(0, 0);
             this.Panel3.Name = "Panel3";
-            this.Panel3.Size = new System.Drawing.Size(1000, 504);
+            this.Panel3.Size = new System.Drawing.Size(780, 504);
             this.Panel3.TabIndex = 21;
             // 
             // datalistado
@@ -147,12 +123,13 @@
             this.datalistado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Editar,
             this.Eliminar});
-            this.datalistado.Location = new System.Drawing.Point(10, 88);
+            this.datalistado.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.datalistado.Location = new System.Drawing.Point(10, 0);
             this.datalistado.Name = "datalistado";
             this.datalistado.ReadOnly = true;
             this.datalistado.RowHeadersVisible = false;
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datalistado.Size = new System.Drawing.Size(980, 385);
+            this.datalistado.Size = new System.Drawing.Size(760, 473);
             this.datalistado.TabIndex = 0;
             // 
             // Editar
@@ -182,7 +159,7 @@
             this.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Panel6.Location = new System.Drawing.Point(10, 473);
             this.Panel6.Name = "Panel6";
-            this.Panel6.Size = new System.Drawing.Size(980, 31);
+            this.Panel6.Size = new System.Drawing.Size(760, 31);
             this.Panel6.TabIndex = 3;
             // 
             // lblContar
@@ -212,11 +189,39 @@
             this.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1";
             this.DataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // btnCerrar
+            // 
+            this.btnCerrar.BackColor = System.Drawing.Color.Teal;
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.ForeColor = System.Drawing.Color.White;
+            this.btnCerrar.Location = new System.Drawing.Point(648, 6);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(98, 29);
+            this.btnCerrar.TabIndex = 38;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click_1);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.BackColor = System.Drawing.Color.Teal;
+            this.btnNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNuevo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevo.ForeColor = System.Drawing.Color.White;
+            this.btnNuevo.Location = new System.Drawing.Point(10, 6);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(141, 29);
+            this.btnNuevo.TabIndex = 39;
+            this.btnNuevo.Text = "Nuevo Acopiador";
+            this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click_1);
+            // 
             // frmAcopiador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 504);
+            this.ClientSize = new System.Drawing.Size(780, 504);
             this.ControlBox = false;
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.Panel1);
@@ -238,8 +243,6 @@
 
         internal System.Windows.Forms.DataGridViewImageColumn DataGridViewImageColumn2;
         internal System.Windows.Forms.Panel Panel2;
-        internal System.Windows.Forms.Button btnCerrar;
-        internal System.Windows.Forms.Button btnNuevo;
         internal System.Windows.Forms.Panel Panel1;
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.Panel Panel5;
@@ -251,5 +254,7 @@
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn Eliminar;
         public System.Windows.Forms.DataGridView datalistado;
+        internal System.Windows.Forms.Button btnNuevo;
+        internal System.Windows.Forms.Button btnCerrar;
     }
 }

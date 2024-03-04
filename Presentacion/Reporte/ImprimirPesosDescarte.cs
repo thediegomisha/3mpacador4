@@ -33,12 +33,6 @@ namespace _3mpacador4.Presentacion.Reporte
             var IngresoPesosDescarte = Owner as IngresoDescarte;
         }
 
-        private void ImprimirPesos_Load(object sender, EventArgs e)
-        {
-            cargadatos();
-        }
-
-
         private void cargadatos()
         {
             try
@@ -47,32 +41,34 @@ namespace _3mpacador4.Presentacion.Reporte
      
             var IngresoPesosDescarte = Owner as IngresoDescarte;
 
-       //     var iniciocadena = IngresoPesos.cbcliente.Text.IndexOf('-');
-
             lblcliente2.Text = IngresoPesosDescarte.lblcliente.Text;
-
-       //     DateTime fechaRecepcion = IngresoPesosDescarte.fpesaje.Value;
-
             lblfecharecepcion.Text = IngresoPesosDescarte.fpesaje.Value.ToString("dd-MM-yyyy");
         //    lblguiaremision.Text = IngresoPesosDescarte.lbl
             lblclp2.Text = IngresoPesosDescarte.lblclp.Text;
             lblproductor2.Text = IngresoPesosDescarte.lblproductor.Text;
             lblvariedad.Text = IngresoPesosDescarte.lblvariedad.Text.ToString();
-            lbljabas.Text = IngresoPesosDescarte.lblcantjabas.Text.ToString();
+           // lbljabas.Text = IngresoPesosDescarte.cbjabas.Text.ToString();
             //  lblpesoneto.Text = IngresoPesos.lblpeso.Text;
             lblnumlote.Text = IngresoPesosDescarte.cboLote.Text;
          
-
             // Si hay filas
             if (IngresoPesosDescarte.datalistado.Rows.Count > 0)
             {
-                    // Seleccionar el primer elemento de la lista
-                    IngresoPesosDescarte.datalistado.Rows[0].Selected = true;
-
-                // Leer el valor de una celda específica
-                for (int i = 0; i < IngresoPesosDescarte.datalistado.ColumnCount; i++)
+                if (IngresoPesosDescarte.doubleclickdescarte == true)
                 {
+                    lbljabas.Text = IngresoPesosDescarte.Varcantjabasdesc;
+                    lblpesoneto.Text = IngresoPesosDescarte.Varpesonetodesc;
+                    IngresoPesosDescarte.doubleclickdescarte = false;
+                }
+                else
+                {
+                        // Seleccionar el primer elemento de la lista
+                        IngresoPesosDescarte.datalistado.Rows[0].Selected = true;
+                    // Leer el valor de una celda específica
+                    //for (int i = 0; i < IngresoPesos.datalistado.ColumnCount; i++)
+                    //{
                     lblpesoneto.Text = IngresoPesosDescarte.datalistado.SelectedRows[0].Cells["PESO NETO"].Value.ToString();
+                    lbljabas.Text = IngresoPesosDescarte.datalistado.SelectedRows[0].Cells["CANT JABAS"].Value.ToString();
                 }
             }
             }
@@ -379,11 +375,6 @@ namespace _3mpacador4.Presentacion.Reporte
             });
         }
 
-        private void ImprimirPesos_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape) Close();
-        }
-
         private void CrearFooter(IContainer container)
         {
             container.Column(col =>
@@ -401,5 +392,13 @@ namespace _3mpacador4.Presentacion.Reporte
             });
         }
 
+        private void ImprimirPesos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) Close();
+        }
+        private void ImprimirPesosDescarte_Load(object sender, EventArgs e)
+        {
+            cargadatos();
+        }
     }
 }

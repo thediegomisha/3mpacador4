@@ -41,10 +41,10 @@
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Panel6 = new System.Windows.Forms.Panel();
-            this.Panel4 = new System.Windows.Forms.Panel();
-            this.DataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.lblnro_reg = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.Panel4 = new System.Windows.Forms.Panel();
+            this.DataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Panel2.SuspendLayout();
             this.Panel1.SuspendLayout();
             this.Panel3.SuspendLayout();
@@ -67,7 +67,7 @@
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel2.Location = new System.Drawing.Point(0, 41);
             this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(1000, 48);
+            this.Panel2.Size = new System.Drawing.Size(898, 48);
             this.Panel2.TabIndex = 20;
             // 
             // btnCerrar
@@ -101,7 +101,7 @@
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(1000, 41);
+            this.Panel1.Size = new System.Drawing.Size(898, 41);
             this.Panel1.TabIndex = 19;
             // 
             // Label1
@@ -119,7 +119,7 @@
             // 
             this.Panel5.BackColor = System.Drawing.Color.White;
             this.Panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Panel5.Location = new System.Drawing.Point(990, 0);
+            this.Panel5.Location = new System.Drawing.Point(888, 0);
             this.Panel5.Name = "Panel5";
             this.Panel5.Size = new System.Drawing.Size(10, 504);
             this.Panel5.TabIndex = 2;
@@ -133,7 +133,7 @@
             this.Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel3.Location = new System.Drawing.Point(0, 0);
             this.Panel3.Name = "Panel3";
-            this.Panel3.Size = new System.Drawing.Size(1000, 504);
+            this.Panel3.Size = new System.Drawing.Size(898, 504);
             this.Panel3.TabIndex = 21;
             // 
             // datalistado
@@ -153,7 +153,7 @@
             this.datalistado.ReadOnly = true;
             this.datalistado.RowHeadersVisible = false;
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datalistado.Size = new System.Drawing.Size(980, 385);
+            this.datalistado.Size = new System.Drawing.Size(878, 385);
             this.datalistado.TabIndex = 0;
             // 
             // Editar
@@ -184,25 +184,8 @@
             this.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Panel6.Location = new System.Drawing.Point(10, 473);
             this.Panel6.Name = "Panel6";
-            this.Panel6.Size = new System.Drawing.Size(980, 31);
+            this.Panel6.Size = new System.Drawing.Size(878, 31);
             this.Panel6.TabIndex = 3;
-            // 
-            // Panel4
-            // 
-            this.Panel4.BackColor = System.Drawing.Color.White;
-            this.Panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Panel4.Location = new System.Drawing.Point(0, 0);
-            this.Panel4.Name = "Panel4";
-            this.Panel4.Size = new System.Drawing.Size(10, 504);
-            this.Panel4.TabIndex = 1;
-            // 
-            // DataGridViewImageColumn1
-            // 
-            this.DataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DataGridViewImageColumn1.HeaderText = "";
-            this.DataGridViewImageColumn1.Image = ((System.Drawing.Image)(resources.GetObject("DataGridViewImageColumn1.Image")));
-            this.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1";
-            this.DataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // lblnro_reg
             // 
@@ -224,11 +207,28 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "NRO DE REGISTROS : ";
             // 
+            // Panel4
+            // 
+            this.Panel4.BackColor = System.Drawing.Color.White;
+            this.Panel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Panel4.Location = new System.Drawing.Point(0, 0);
+            this.Panel4.Name = "Panel4";
+            this.Panel4.Size = new System.Drawing.Size(10, 504);
+            this.Panel4.TabIndex = 1;
+            // 
+            // DataGridViewImageColumn1
+            // 
+            this.DataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DataGridViewImageColumn1.HeaderText = "";
+            this.DataGridViewImageColumn1.Image = ((System.Drawing.Image)(resources.GetObject("DataGridViewImageColumn1.Image")));
+            this.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1";
+            this.DataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // frmProductor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 504);
+            this.ClientSize = new System.Drawing.Size(898, 504);
             this.ControlBox = false;
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.Panel1);

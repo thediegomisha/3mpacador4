@@ -15,25 +15,6 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             mostraracopiador();
         }
 
-        private void btnNuevo_Click(object sender, EventArgs e)
-        {
-            var F = new frmAltaRUC();
-            F.CambiarTextoLabel("Ingreso de Acopiadores");
-            F.Panel1.BackColor = Color.Green;
-            F.ShowDialog();
-            mostraracopiador();
-        }
-
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void PictureBox2_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         public void mostraracopiador()
         {
             MySqlCommand comando = null;
@@ -69,6 +50,20 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             {
                 ConexionGral.desconectar();
             }
+        }
+
+        private void btnCerrar_Click_1(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnNuevo_Click_1(object sender, EventArgs e)
+        {
+            var F = new frmAltaRUC();
+            F.CambiarTextoLabel("Ingreso de Acopiadores");
+            F.Panel1.BackColor = Color.Green;
+            F.ShowDialog();
+            mostraracopiador();
         }
     }
 }

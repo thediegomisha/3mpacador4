@@ -363,7 +363,8 @@ namespace _3mpacador4.Presentacion
         }
 
         private void txtDatabase_Click(object sender, EventArgs e)
-        {         
+        {
+            ocultarSubMenu();
             FrmMod root = new FrmMod();
             root.ShowDialog();
         }
@@ -381,6 +382,13 @@ namespace _3mpacador4.Presentacion
 
             FrmAutorizacion salida = new FrmAutorizacion();
             salida.ShowDialog();
+        }
+
+        private void btnPresen_cajas_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            var form = new frmpresen_cajas();
+            form.ShowDialog();
         }
     }
 }

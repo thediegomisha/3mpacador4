@@ -335,7 +335,7 @@ namespace _3mpacador4.Presentacion.Reporte
                             columns.RelativeColumn();
                             
                         });
-                       table.Cell().AlignCenter().Text("LOTE N° " ).SemiBold().FontSize(18)
+                       table.Cell().AlignCenter().Text("LOTE N° " + lblnumlote.Text).SemiBold().FontSize(18)
                             .FontColor(Colors.Black);
                     });
                 });
@@ -349,8 +349,7 @@ namespace _3mpacador4.Presentacion.Reporte
                         columns.RelativeColumn();
                         columns.RelativeColumn();
                         columns.RelativeColumn();
-                        columns.RelativeColumn();
-                        columns.RelativeColumn();
+                        
                     });
                     table.Cell().Text("        Cliente :");
                     table.Cell().Text(lblcliente.Text).FontSize(10).FontColor(Colors.Black).Bold();
@@ -358,7 +357,7 @@ namespace _3mpacador4.Presentacion.Reporte
                     table.Cell().Text("        Guia de Remision :");
                     table.Cell().Text(lblguiaingreso.Text).FontSize(10).FontColor(Colors.Black).Bold();
 
-                    table.Cell().Text("   CLP :");
+                    table.Cell().Text("        CLP :");
                     table.Cell().Text(lblclp.Text).FontSize(10).FontColor(Colors.Black).Bold();
 
                     table.Cell().Text("        Productor :");
@@ -366,12 +365,6 @@ namespace _3mpacador4.Presentacion.Reporte
 
                     table.Cell().Text("        Variedad :");
                     table.Cell().Text(lblvariedad.Text).FontSize(10).FontColor(Colors.Black).Bold();
-
-
-
-
-
-
                 });
             });
         }

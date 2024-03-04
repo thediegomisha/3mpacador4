@@ -247,7 +247,7 @@
             this.MinimizeBox = false;
             this.Name = "ImprimirPesosDescarte";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.ImprimirPesos_Load);
+            this.Load += new System.EventHandler(this.ImprimirPesosDescarte_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ImprimirPesos_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

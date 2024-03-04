@@ -641,6 +641,7 @@
             this.datalistado.RowHeadersVisible = false;
             this.datalistado.Size = new System.Drawing.Size(307, 298);
             this.datalistado.TabIndex = 106;
+            this.datalistado.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datalistado_CellContentDoubleClick);
             // 
             // label4
             // 
