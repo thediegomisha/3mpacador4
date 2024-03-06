@@ -187,7 +187,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 // PARA DESCARTE Y MUESTREO                
                 ldc_kilos_descarte = LConteo_manual.Kilos_Descarte(li_idlote);
-                ldc_kilos_muestra = LConteo_manual.Kilos_Muestra();
+                ldc_kilos_muestra = LConteo_manual.Kilos_Muestra(li_idlote);
 
                 tbxkilos_descarte.Text = ldc_kilos_descarte.ToString("###,##0.00");
                 tbxkilos_muestra.Text = ldc_kilos_muestra.ToString("###,##0.00");
@@ -292,8 +292,8 @@ namespace _3mpacador4.Presentacion.Reporte
             try
             {
 
-            
-            var doc = new Document(PageSize.A4.Rotate(), 30, 20, 30, 20);
+                //const string LogoPath = "logoagricola.png";
+                var doc = new Document(PageSize.A4.Rotate(), 30, 20, 30, 20);
 
             ls_ruta_pdf = AppDomain.CurrentDomain.BaseDirectory + "RESUMEN_BALANCE_MASA" + dtpf_produccion.Value.ToString("ddMMyyyy") + ".pdf";
             PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(ls_ruta_pdf, FileMode.Create));
@@ -311,8 +311,8 @@ namespace _3mpacador4.Presentacion.Reporte
 
             doc.Open();
 
-            var logo = iTextSharp.text.Image.GetInstance(AppDomain.CurrentDomain.BaseDirectory + "logoagricola.png");
-            logo.SetAbsolutePosition(50, 500);
+            var logo = iTextSharp.text.Image.GetInstance("logoagricola.png"); //  AppDomain.CurrentDomain.BaseDirectory + "logoagricola.png"
+                logo.SetAbsolutePosition(50, 500);
             logo.ScaleToFit(120f, 250f);
             logo.Alignment = iTextSharp.text.Image.ALIGN_LEFT;
 

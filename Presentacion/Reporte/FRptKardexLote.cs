@@ -98,6 +98,7 @@ namespace _3mpacador4.Presentacion.Reporte
         {
             try
             {
+                //const string LogoPath = "logoagricola.png";
                 var doc = new Document(PageSize.A4, 30, 20, 30, 20);
 
                 ls_ruta_pdf = AppDomain.CurrentDomain.BaseDirectory + "KARDEX_LOTE.pdf";
@@ -116,7 +117,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 doc.Open();
 
-                var logo = iTextSharp.text.Image.GetInstance(AppDomain.CurrentDomain.BaseDirectory + "logoagricola.png");
+                var logo = iTextSharp.text.Image.GetInstance("logoagricola.png");
                 logo.SetAbsolutePosition(50, 770);
                 logo.ScaleToFit(120f, 250f);
                 logo.Alignment = iTextSharp.text.Image.ALIGN_LEFT;
