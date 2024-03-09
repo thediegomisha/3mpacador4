@@ -73,6 +73,10 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             }
         }
 
-
+        private void frmCampania_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) Close();
+        }
+    
     }
 }

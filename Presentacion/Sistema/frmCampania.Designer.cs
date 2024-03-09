@@ -115,6 +115,7 @@
             this.KeyPreview = true;
             this.Name = "frmCampania";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.frmCampania_PreviewKeyDown);
             this.Panel1.ResumeLayout(false);
             this.Panel1.PerformLayout();
             this.ResumeLayout(false);

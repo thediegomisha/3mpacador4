@@ -117,23 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="DataGridViewImageColumn2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAMJJREFUOE/tkzEKwkAQRRePZ2EhIiLiCURExEq8hYW1iFha5ChiKZLaUkQkxDfm
-        r4Zlg9hZOOTBn9n5v5q4sHLnFnCBa4Sl1qpLi3dIYCdM3yDTWnVpMVH7KmYWxBcppjNYiwzSUu85QV7q
-        57I/A/Z6/IaD7HQFlmoPUxhIT2AoPYKx9BZqhVvFYKXHHjSlu9CSbkNHeiPbuxj+A34poA/eZGFmNG1m
-        C/wYYGd8lLbz9Sdc1tGAOpwh/IVDbKdRuJx7AB6xNRggJETLAAAAAElFTkSuQmCC
-</value>
-  </data>
   <metadata name="Editar.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="Editar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAPxJREFUOE+l0z9qAkEcxfElRQhBxDKIiAQLCw/iOYJHEEtbERGxSplTiIRgYSHB
+        vAAADrwBlbxySQAAAPxJREFUOE+l0z9qAkEcxfElRQhBxDKIiAQLCw/iOYJHEEtbERGxSplTiIRgYSHB
         0sJKxCOkTCU/v292FmTdnQzkwQd213nzD0ziYw+Y4wcj+O9RsSc08QmazhT+9z9j7ziijdtJ2Ekw9pgO
         shYOyE/CcUrjtr3EHnXoCPlJFn5wPq68gsoNaCK96zmb5BVc7F0Ky9ruBNqJjvOBmi/cxpW1taKyjnBC
         6baf8YVQeYfClf9TVmwGXU5Z+RtVPzgfxqaD+t4vxogpK9aBVmR1995DVt4iVFZsgDP0/II3qLxBJR0T
@@ -146,7 +137,7 @@
   <data name="Eliminar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAMJJREFUOE/tkzEKwkAQRRePZ2EhIiLiCURExEq8hYW1iFha5ChiKZLaUkQkxDfm
+        vAAADrwBlbxySQAAAMJJREFUOE/tkzEKwkAQRRePZ2EhIiLiCURExEq8hYW1iFha5ChiKZLaUkQkxDfm
         r4Zlg9hZOOTBn9n5v5q4sHLnFnCBa4Sl1qpLi3dIYCdM3yDTWnVpMVH7KmYWxBcppjNYiwzSUu85QV7q
         57I/A/Z6/IaD7HQFlmoPUxhIT2AoPYKx9BZqhVvFYKXHHjSlu9CSbkNHeiPbuxj+A34poA/eZGFmNG1m
         C/wYYGd8lLbz9Sdc1tGAOpwh/IVDbKdRuJx7AB6xNRggJETLAAAAAElFTkSuQmCC
@@ -155,11 +146,20 @@
   <data name="DataGridViewImageColumn1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAPxJREFUOE+l0z9qAkEcxfElRQhBxDKIiAQLCw/iOYJHEEtbERGxSplTiIRgYSHB
+        vAAADrwBlbxySQAAAPxJREFUOE+l0z9qAkEcxfElRQhBxDKIiAQLCw/iOYJHEEtbERGxSplTiIRgYSHB
         0sJKxCOkTCU/v292FmTdnQzkwQd213nzD0ziYw+Y4wcj+O9RsSc08QmazhT+9z9j7ziijdtJ2Ekw9pgO
         shYOyE/CcUrjtr3EHnXoCPlJFn5wPq68gsoNaCK96zmb5BVc7F0Ky9ruBNqJjvOBmi/cxpW1taKyjnBC
         6baf8YVQeYfClf9TVmwGXU5Z+RtVPzgfxqaD+t4vxogpK9aBVmR1995DVt4iVFZsgDP0/II3qLxBJR0T
         jK2hHah0gSbTv46LjYq7PK02RBf+e0yS5ApSBNMUyxz3JgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="DataGridViewImageColumn2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAMJJREFUOE/tkzEKwkAQRRePZ2EhIiLiCURExEq8hYW1iFha5ChiKZLaUkQkxDfm
+        r4Zlg9hZOOTBn9n5v5q4sHLnFnCBa4Sl1qpLi3dIYCdM3yDTWnVpMVH7KmYWxBcppjNYiwzSUu85QV7q
+        57I/A/Z6/IaD7HQFlmoPUxhIT2AoPYKx9BZqhVvFYKXHHjSlu9CSbkNHeiPbuxj+A34poA/eZGFmNG1m
+        C/wYYGd8lLbz9Sdc1tGAOpwh/IVDbKdRuJx7AB6xNRggJETLAAAAAElFTkSuQmCC
 </value>
   </data>
 </root>

@@ -154,11 +154,11 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Maiandra GD", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(256, 1);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(260, 22);
+            this.label11.Size = new System.Drawing.Size(279, 24);
             this.label11.TabIndex = 10;
             this.label11.Text = "RECEPCION DE DESCARTE";
             this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -454,7 +454,7 @@
             // 
             // btn_cancelar
             // 
-            this.btn_cancelar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cancelar.Location = new System.Drawing.Point(787, 119);
             this.btn_cancelar.Name = "btn_cancelar";
             this.btn_cancelar.Size = new System.Drawing.Size(96, 63);
@@ -466,7 +466,7 @@
             // btnguardar
             // 
             this.btnguardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnguardar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnguardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnguardar.Location = new System.Drawing.Point(787, 43);
             this.btnguardar.Name = "btnguardar";
             this.btnguardar.Size = new System.Drawing.Size(96, 61);
@@ -641,6 +641,7 @@
             this.datalistado.RowHeadersVisible = false;
             this.datalistado.Size = new System.Drawing.Size(307, 298);
             this.datalistado.TabIndex = 106;
+            this.datalistado.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datalistado_CellContentDoubleClick);
             // 
             // label4
             // 
@@ -714,7 +715,7 @@
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(787, 197);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(96, 61);
@@ -912,6 +913,7 @@
             this.Name = "IngresoDescarte";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.IngresoDescarte_FormClosing);
             this.Load += new System.EventHandler(this.IngresoPesos_Load);
             this.GroupBox3.ResumeLayout(false);
             this.GroupBox3.PerformLayout();
@@ -970,7 +972,6 @@
         internal System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkPesoManual;
         private System.Windows.Forms.TextBox txtPesoManual;
-        private System.Windows.Forms.DataGridView datalistado;
         private System.Windows.Forms.Label label4;
         internal System.Windows.Forms.Label lblcantjabas;
         internal System.Windows.Forms.Label label5;
@@ -992,6 +993,7 @@
         internal System.Windows.Forms.Label lblcliente;
         internal System.Windows.Forms.Label label17;
         internal System.Windows.Forms.Label lblpesoneto;
+        public System.Windows.Forms.DataGridView datalistado;
     }
 }
 

@@ -38,6 +38,11 @@ namespace _3mpacador4
 
         private readonly string w = Convert.ToString('w'); // HEXADECIMAL
 
+        public bool doubleclickdescarte { get; set; } = false;
+
+        public string Varcantjabasdesc { get; set; } = "";
+        public string Varpesonetodesc { get; set; } = "";
+
         public IngresoDescarte()
         {
             InitializeComponent();
@@ -479,43 +484,75 @@ namespace _3mpacador4
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Instancio el Formulario Hijo al Padre
-            var FH = new ImprimirPesos();
-            //Indico al Formulario quien es el Propietario
-            AddOwnedForm(FH);
-            FH.ShowDialog();
+            try
+            {
+                borrarmensajeerror();
+                if (validarcampos())
+                {
+                    if (chkPesoManual.Checked == false || (chkPesoManual.Checked && txtPesoManual.Text != null))
+                    {
+                        InsertarRegistro();
+                        mostrarconsulta();
+                        //Instancio el Formulario Hijo al Padre
+                        var FH = new ImprimirPesosDescarte();
+                        //Indico al Formulario quien es el Propietario
+                        AddOwnedForm(FH);
+                        FH.ShowDialog();
+                        txtPesoManual.Focus();
+                        txtPesoManual.Text = "0.0";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error en btnguardar_Click - ", @"Error", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
         }
 
         private void InsertarRegistro()
         {
+            float tarajaba = 0;
+            float taraparihuela = 0;
+            float pesobruto = 0;
+            float pesobrutoManual = 0;
+            if (txtPesoManual.Text != string.Empty)
+                txtPesoManual.ToString();
+            else
+                txtPesoManual.Text = "0.0";
+
+            MySqlCommand comando = null;
             try
             {
                 if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
-                var comando = new MySqlCommand(
-                    "INSERT INTO tblticket_descarte (numdoc, fecha_pesaje, idmetodocultivo, idtiposervicio, idproducto, idlote, idvariedad, idcliente, tara_jaba, tara_pallet, cant_jabas, peso_bruto, peso_jabas, idturno, idclp)" +
-                    '\r'
-                    + "VALUES(@numdoc, @fecha_pesaje, @idmetodocultivo, @idtiposervicio, @idproducto, @idlote, @idvariedad, @idcliente, @tara_java, @tara_pallet, @cant_jabas, @peso_bruto, @peso_jabas, @turno, @idclp)",
-                    ConexionGral.conexion);
 
-                var tarajaba = float.Parse(txttarajaba.Text);
-                var taraparihuela = float.Parse(txttaraParihuela.Text);
-                var pesobruto = float.Parse(lblpeso.Text);
-                var pesobrutoManual = float.Parse(txtPesoManual.Text);
+                comando = new MySqlCommand("usp_tblticket_descarte_Insert", ConexionGral.conexion);
+                comando.CommandType = CommandType.StoredProcedure;
 
-                comando.Parameters.AddWithValue("@numdoc", lblcorrelativo.Text);
-                comando.Parameters.AddWithValue("@fecha_pesaje", Convert.ToDateTime(fpesaje.Text));
+                 tarajaba = float.Parse(txttarajaba.Text);
+                 taraparihuela = float.Parse(txttaraParihuela.Text);
+                 pesobruto = float.Parse(lblpeso.Text);
+                 pesobrutoManual = float.Parse(txtPesoManual.Text);
 
-                comando.Parameters.AddWithValue("@idmetodocultivo", MySqlType.Int).Value = lblconvencional.Text;
-                comando.Parameters.AddWithValue("@idtiposervicio", MySqlType.Int).Value = lblservicio.Text;
-                comando.Parameters.AddWithValue("@idproducto", MySqlType.Int).Value = lblproducto.Text;
-                comando.Parameters.AddWithValue("@idlote", MySqlType.Int).Value = cboLote.GetItemText(cboLote.SelectedValue.ToString());
-                comando.Parameters.AddWithValue("@idvariedad", MySqlType.Int).Value = lblvariedad.Text;
+                comando.Parameters.AddWithValue("p_numdoc", lblcorrelativo.Text);
+                comando.Parameters.AddWithValue("p_fecha_pesaje", Convert.ToDateTime(fpesaje.Text));
 
-                comando.Parameters.AddWithValue("@idcliente", MySqlType.Int).Value = lblcliente.Text;
+                comando.Parameters.AddWithValue("p_idmetodocultivo", MySqlType.Int).Value = lblconvencional.Text;
+                comando.Parameters.AddWithValue("p_idtiposervicio", MySqlType.Int).Value = lblservicio.Text;
+                comando.Parameters.AddWithValue("p_idproducto", MySqlType.Int).Value = lblproducto.Text;
+                comando.Parameters.AddWithValue("p_idlote", MySqlType.Int).Value = cboLote.GetItemText(cboLote.SelectedValue.ToString());
+                comando.Parameters.AddWithValue("p_idvariedad", MySqlType.Int).Value = lblvariedad.Text;
+
+                comando.Parameters.AddWithValue("p_idcliente", MySqlType.Int).Value = lblcliente.Text;
 
                 if (tarajaba > 0)
                 {
-                    comando.Parameters.AddWithValue("@tara_java", MySqlType.Double).Value = txttarajaba.Text;
+                    comando.Parameters.AddWithValue("p_tara_jaba", MySqlType.Double).Value = txttarajaba.Text;
                 }
                 else
                 {
@@ -525,7 +562,7 @@ namespace _3mpacador4
 
                 if (taraparihuela > 0)
                 {
-                    comando.Parameters.AddWithValue("@tara_pallet", MySqlType.Double).Value = txttaraParihuela.Text;
+                    comando.Parameters.AddWithValue("p_tara_pallet", MySqlType.Double).Value = txttaraParihuela.Text;
                 }
                 else
                 {
@@ -533,7 +570,7 @@ namespace _3mpacador4
                     return;
                 }
 
-                comando.Parameters.AddWithValue("@cant_jabas", MySqlType.Double).Value =
+                comando.Parameters.AddWithValue("p_cant_jabas", MySqlType.Double).Value =
                     cbjabas.GetItemText(cbjabas.SelectedValue);
 
                 if (chkPesoManual.Checked == false)
@@ -565,7 +602,7 @@ namespace _3mpacador4
 
                 if (!string.IsNullOrEmpty(cboturno.Text))
                 {
-                    comando.Parameters.AddWithValue("@turno", MySqlType.Int).Value =
+                    comando.Parameters.AddWithValue("p_turno", MySqlType.Int).Value =
                         cboturno.GetItemText(cboturno.SelectedValue);
                 }
                 else
@@ -576,7 +613,7 @@ namespace _3mpacador4
 
                 if (!string.IsNullOrEmpty(lblclp.Text))
                 {
-                    comando.Parameters.AddWithValue("@idclp", MySqlType.Int).Value = lblclp.Text;
+                    comando.Parameters.AddWithValue("p_idclp", MySqlType.Int).Value = lblclp.Text;
                 }
                 else
                 {
@@ -621,6 +658,28 @@ namespace _3mpacador4
             datalistado.DataSource = null;
             totalneto.Text = "0";
             lblcantjabas.Text = "0";
+        }
+
+        private void IngresoDescarte_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            sppuerto.Close();
+        }
+
+        private void datalistado_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            doubleclickdescarte = true;
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = datalistado.Rows[e.RowIndex];
+                Varpesonetodesc = selectedRow.Cells["PESO NETO"].Value.ToString();
+                Varcantjabasdesc = selectedRow.Cells["CANT JABAS"].Value.ToString();
+            }
+
+            //Instancio el Formulario Hijo al Padre
+            var FH1 = new ImprimirPesosDescarte();
+            //Indico al Formulario quien es el Propietario
+            AddOwnedForm(FH1);
+            FH1.ShowDialog();
         }
 
         private void multiplicajabas()
@@ -734,14 +793,19 @@ namespace _3mpacador4
 
                 foreach (DataGridViewRow row in datalistado.Rows)
                 {
-                    total += Convert.ToDouble(row.Cells["PESO NETO"].Value);
-                    cantjabas += Convert.ToDouble(row.Cells["CANT JABAS"].Value);
+                    object pesoNetoCellValue = row.Cells["PESO NETO"].Value;
+                    object cantJabasCellValue = row.Cells["CANT JABAS"].Value;
+
+                    if (pesoNetoCellValue != null && cantJabasCellValue != null)
+                    {
+                        total += Convert.ToDouble(pesoNetoCellValue);
+                        cantjabas += Convert.ToDouble(cantJabasCellValue);
+                    }
                 }
 
                 totalneto.Text = Strings.FormatNumber(total, 2);
                 lblcantjabas.Text = Strings.FormatNumber(cantjabas, 0);
             }
-
             catch (Exception ex)
             {
                 Interaction.MsgBox(ex.Message, Constants.vbCritical);
@@ -774,11 +838,8 @@ namespace _3mpacador4
 
                 comando = new MySqlCommand("usp_tbllote_Update", ConexionGral.conexion);
                 comando.CommandType = (CommandType)4;
-
                 comando.Parameters.AddWithValue("p_idlote", MySqlType.Int).Value =
                     cboLote.GetItemText(cboLote.SelectedValue.ToString());
-
-
                 var adaptador = new MySqlDataAdapter(comando);
                 var datos = new DataTable();
                 adaptador.Fill(datos);

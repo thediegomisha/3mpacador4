@@ -1,5 +1,4 @@
 ﻿using _3mpacador4.Logica;
-using _3mpacador4.Presentacion.Reporte;
 using HarfBuzzSharp;
 using System;
 using System.Collections.Generic;
@@ -16,40 +15,30 @@ namespace _3mpacador4.Presentacion.Mantenimiento
 {
     public partial class FrmAgregarDoc : Form
     {
-       
         Documentos objDoc = new Documentos();
-        int Flag = 0;
-    //    string extension = "";
+        //  private int textoLabel1;
 
-        string variableRecibida = "";
-        string numlote = "";
-        int clickcodigo;
-        string ruta;
-        string ruta1;
-        string ruta2;
-        string ruta3;
+        string variableDelPrimerFormulario;
+        //   private IngresoPesos ingresospesos;
 
         public FrmAgregarDoc()
         {
-            InitializeComponent();                       
+            InitializeComponent();
+
+            IngresoPesos primerFormulario = new IngresoPesos();
+            variableDelPrimerFormulario = primerFormulario.MiVariable;
         }
-       
+
         private void btnExaminar_Click(object sender, EventArgs e)
-        {           
-                openFileDialog1.InitialDirectory = "C:\\Documentos";
-                openFileDialog1.Filter = "Todos los Archivos(*.*)|*.*";
-                openFileDialog1.FilterIndex = 1;
+        {
+            openFileDialog1.InitialDirectory = "C:\\Documentos";
+            openFileDialog1.Filter = "Archivo PDF (*.pdf)|*.PDF";
+            openFileDialog1.FilterIndex = 1;
 
-                if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                   ruta= openFileDialog1.FileName;
-                   lblguia.Text = "LTE - " + numlote + " - " + txtguia.Text;
-            }           
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                txtruta.Text = openFileDialog1.FileName;
         }
-       
-      
 
-       
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             for (int i = 1; i <= 4; i++)
@@ -111,69 +100,13 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 objDoc.Extension = (nombreArchivo); // Obtener el nombre del archivo original
                 objDoc.AgregarDocumentos();
             }
+            }
 
-            MessageBox.Show("Los 4 registros se han guardado correctamente.");
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        private void FrmAgregarDoc_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                IngresoPesos formOrigen = (IngresoPesos)Application.OpenForms["IngresoPesos"];
-                variableRecibida = formOrigen.VarIngresoPeso;
-                numlote = formOrigen.VarNumlote;
-
-            }
-            catch (Exception)
-            {
-            }
-          
-        }
-
-            private void btnExaminar2_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.InitialDirectory = "C:\\Documentos";
-            openFileDialog1.Filter = "Todos los Archivos(*.*)|*.*";
-            openFileDialog1.FilterIndex = 1;
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                ruta2 = openFileDialog1.FileName;
-                lbldni.Text = "LTE - " + numlote + " - " + txtdni.Text;
-            }   
-        }
-
-        private void btnExaminar3_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.InitialDirectory = "C:\\Documentos";
-            openFileDialog1.Filter = "Todos los Archivos(*.*)|*.*";
-            openFileDialog1.FilterIndex = 1;
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                ruta3 = openFileDialog1.FileName;
-                lbldj.Text = "LTE - " + numlote + " - " + txtdj.Text;
-
-            }
-        }
-
-        private void btnExaminar1_Click(object sender, EventArgs e)
-     
-            {
-                openFileDialog1.InitialDirectory = "C:\\Documentos";
-                openFileDialog1.Filter = "Todos los Archivos(*.*)|*.*";
-                openFileDialog1.FilterIndex = 1;
-
-                if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                ruta1 = openFileDialog1.FileName;
-                lblclp.Text = "LTE - " + numlote + " - " + txtclp.Text;
-            }
-        }
-        }
+    }
 }

@@ -16,12 +16,16 @@ namespace _3mpacador4.Logica
         private string nombre;
         private byte[] documento;
         private string extension;
+        private string upload;
+        private string fechasubida;
 
         public int Id { get => idexpediente; set => idexpediente = value; }
         public int Idlote { get => idlote; set => idlote = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public byte[] Documento { get => documento; set => documento = value; }
         public string Extension { get => extension; set => extension = value; }
+        public string Upload { get => upload; set => upload = value; }
+        public string Fechasubida { get => fechasubida; set => fechasubida = value; }
        
 
         public string AgregarDocumentos()
@@ -38,6 +42,8 @@ namespace _3mpacador4.Logica
                 comando.Parameters.AddWithValue("p_nombre", nombre);
                 comando.Parameters.AddWithValue("p_documento", documento);
                 comando.Parameters.AddWithValue("p_extension", extension);
+                comando.Parameters.AddWithValue("p_upload", upload);
+                comando.Parameters.AddWithValue("p_fechasubida", fechasubida);
 
                 comando.ExecuteNonQuery();
 

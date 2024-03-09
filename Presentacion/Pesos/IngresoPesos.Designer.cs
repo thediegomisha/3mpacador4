@@ -1083,6 +1083,7 @@
             this.Name = "IngresoPesos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.IngresoPesos_FormClosing);
             this.Load += new System.EventHandler(this.IngresoPesos_Load);
             this.Shown += new System.EventHandler(this.IngresoPesos_Shown);
             this.GroupBox3.ResumeLayout(false);
@@ -1116,7 +1117,6 @@
         internal System.Windows.Forms.Label label18;
         internal System.Windows.Forms.DateTimePicker DateTimePicker1;
         internal System.Windows.Forms.Label label19;
-        internal System.Windows.Forms.DateTimePicker fpesaje;
         internal System.Windows.Forms.ComboBox cboturno;
         internal System.Windows.Forms.Label label20;
         internal System.Windows.Forms.Label lbllote;
@@ -1180,6 +1180,7 @@
         private System.Windows.Forms.Button button3;
         public System.Windows.Forms.Button btnDocumentos;
         public System.Windows.Forms.DataGridView datalistado;
+        public System.Windows.Forms.DateTimePicker fpesaje;
     }
 }
 

@@ -24,5 +24,10 @@ namespace _3mpacador4.Presentacion.R00t
             FrmAgregarDoc F = new FrmAgregarDoc();
             F.ShowDialog();
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

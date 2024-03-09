@@ -74,10 +74,10 @@
             // 
             // txtCLP
             // 
-            this.txtCLP.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCLP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCLP.Location = new System.Drawing.Point(31, 28);
             this.txtCLP.Name = "txtCLP";
-            this.txtCLP.Size = new System.Drawing.Size(168, 29);
+            this.txtCLP.Size = new System.Drawing.Size(168, 25);
             this.txtCLP.TabIndex = 35;
             this.txtCLP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCLP_KeyPress);
             // 
@@ -132,10 +132,10 @@
             // 
             // txtRazonSocial
             // 
-            this.txtRazonSocial.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRazonSocial.Location = new System.Drawing.Point(246, 28);
+            this.txtRazonSocial.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRazonSocial.Location = new System.Drawing.Point(246, 30);
             this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(278, 29);
+            this.txtRazonSocial.Size = new System.Drawing.Size(278, 25);
             this.txtRazonSocial.TabIndex = 111;
             this.txtRazonSocial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRazonSocial_KeyPress);
             // 
@@ -188,7 +188,7 @@
             // 
             this.LBLCONTAR.AutoSize = true;
             this.LBLCONTAR.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold);
-            this.LBLCONTAR.Location = new System.Drawing.Point(7, 387);
+            this.LBLCONTAR.Location = new System.Drawing.Point(12, 387);
             this.LBLCONTAR.Name = "LBLCONTAR";
             this.LBLCONTAR.Size = new System.Drawing.Size(20, 21);
             this.LBLCONTAR.TabIndex = 112;
@@ -219,7 +219,7 @@
             this.lblclptotal.AutoSize = true;
             this.lblclptotal.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblclptotal.ForeColor = System.Drawing.Color.Blue;
-            this.lblclptotal.Location = new System.Drawing.Point(128, 387);
+            this.lblclptotal.Location = new System.Drawing.Point(134, 386);
             this.lblclptotal.Name = "lblclptotal";
             this.lblclptotal.Size = new System.Drawing.Size(20, 21);
             this.lblclptotal.TabIndex = 115;

@@ -1,6 +1,6 @@
 ﻿namespace _3mpacador4.Presentacion.Mantenimiento
 {
-    partial class frmAcopiador
+    partial class frmProductor
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAcopiador));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProductor));
             this.DataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Panel2 = new System.Windows.Forms.Panel();
             this.btnCerrar = new System.Windows.Forms.Button();
@@ -41,7 +41,8 @@
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Panel6 = new System.Windows.Forms.Panel();
-            this.lblContar = new System.Windows.Forms.Label();
+            this.lblnro_reg = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.Panel4 = new System.Windows.Forms.Panel();
             this.DataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Panel2.SuspendLayout();
@@ -66,7 +67,7 @@
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel2.Location = new System.Drawing.Point(0, 41);
             this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(1000, 48);
+            this.Panel2.Size = new System.Drawing.Size(898, 48);
             this.Panel2.TabIndex = 20;
             // 
             // btnCerrar
@@ -89,18 +90,18 @@
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(140, 29);
             this.btnNuevo.TabIndex = 10;
-            this.btnNuevo.Text = "Nue&vo Acopiador";
+            this.btnNuevo.Text = "Nue&vo Productor";
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // Panel1
             // 
-            this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.Panel1.BackColor = System.Drawing.Color.Red;
             this.Panel1.Controls.Add(this.Label1);
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(1000, 41);
+            this.Panel1.Size = new System.Drawing.Size(898, 41);
             this.Panel1.TabIndex = 19;
             // 
             // Label1
@@ -110,15 +111,15 @@
             this.Label1.ForeColor = System.Drawing.Color.White;
             this.Label1.Location = new System.Drawing.Point(12, 9);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(187, 21);
+            this.Label1.Size = new System.Drawing.Size(184, 21);
             this.Label1.TabIndex = 0;
-            this.Label1.Text = "Listado de Acopiadores";
+            this.Label1.Text = "Listado de Productores";
             // 
             // Panel5
             // 
             this.Panel5.BackColor = System.Drawing.Color.White;
             this.Panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Panel5.Location = new System.Drawing.Point(990, 0);
+            this.Panel5.Location = new System.Drawing.Point(888, 0);
             this.Panel5.Name = "Panel5";
             this.Panel5.Size = new System.Drawing.Size(10, 504);
             this.Panel5.TabIndex = 2;
@@ -132,7 +133,7 @@
             this.Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel3.Location = new System.Drawing.Point(0, 0);
             this.Panel3.Name = "Panel3";
-            this.Panel3.Size = new System.Drawing.Size(1000, 504);
+            this.Panel3.Size = new System.Drawing.Size(898, 504);
             this.Panel3.TabIndex = 21;
             // 
             // datalistado
@@ -152,7 +153,7 @@
             this.datalistado.ReadOnly = true;
             this.datalistado.RowHeadersVisible = false;
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datalistado.Size = new System.Drawing.Size(980, 385);
+            this.datalistado.Size = new System.Drawing.Size(878, 385);
             this.datalistado.TabIndex = 0;
             // 
             // Editar
@@ -178,22 +179,33 @@
             // Panel6
             // 
             this.Panel6.BackColor = System.Drawing.Color.White;
-            this.Panel6.Controls.Add(this.lblContar);
+            this.Panel6.Controls.Add(this.lblnro_reg);
+            this.Panel6.Controls.Add(this.label2);
             this.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Panel6.Location = new System.Drawing.Point(10, 473);
             this.Panel6.Name = "Panel6";
-            this.Panel6.Size = new System.Drawing.Size(980, 31);
+            this.Panel6.Size = new System.Drawing.Size(878, 31);
             this.Panel6.TabIndex = 3;
             // 
-            // lblContar
+            // lblnro_reg
             // 
-            this.lblContar.AutoSize = true;
-            this.lblContar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContar.Location = new System.Drawing.Point(6, 9);
-            this.lblContar.Name = "lblContar";
-            this.lblContar.Size = new System.Drawing.Size(48, 17);
-            this.lblContar.TabIndex = 0;
-            this.lblContar.Text = "Label2";
+            this.lblnro_reg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblnro_reg.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnro_reg.Location = new System.Drawing.Point(151, 7);
+            this.lblnro_reg.Name = "lblnro_reg";
+            this.lblnro_reg.Size = new System.Drawing.Size(78, 17);
+            this.lblnro_reg.TabIndex = 3;
+            this.lblnro_reg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(4, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(141, 17);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "NRO DE REGISTROS : ";
             // 
             // Panel4
             // 
@@ -212,16 +224,16 @@
             this.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1";
             this.DataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // frmAcopiador
+            // frmProductor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 504);
+            this.ClientSize = new System.Drawing.Size(898, 504);
             this.ControlBox = false;
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.Panel1);
             this.Controls.Add(this.Panel3);
-            this.Name = "frmAcopiador";
+            this.Name = "frmProductor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Panel2.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);
@@ -244,12 +256,13 @@
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.Panel Panel5;
         internal System.Windows.Forms.Panel Panel3;
+        internal System.Windows.Forms.DataGridView datalistado;
         internal System.Windows.Forms.Panel Panel6;
-        internal System.Windows.Forms.Label lblContar;
         internal System.Windows.Forms.Panel Panel4;
         internal System.Windows.Forms.DataGridViewImageColumn DataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn Eliminar;
-        public System.Windows.Forms.DataGridView datalistado;
+        internal System.Windows.Forms.Label lblnro_reg;
+        internal System.Windows.Forms.Label label2;
     }
 }

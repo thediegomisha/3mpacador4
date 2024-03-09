@@ -2,6 +2,7 @@
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using _3mpacador4.Logica;
 using Microsoft.VisualBasic;
@@ -18,56 +19,39 @@ using QuestPDF.Infrastructure;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
-    public partial class RptBoletaPesadoDetalleDescarte : Form
+    public partial class RptBolPesDetalDesc : Form
 
     {
-        //  String nombreArchivo = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         private string nombreArchivo = "C:/archivo.xlsx";
+        private string[] _camptxtcadenas;
 
-        // Label[] labels = new Label[] { lblciente, label2, label3, label4, label5, label6 };
-
-
-        public RptBoletaPesadoDetalleDescarte(string[] filaConDatos, DataTable data)
+        public RptBolPesDetalDesc(string[] camptxtcadenas)
         {
             InitializeComponent();
             PrepGrid();
-            //contar();
-            //sumaneto();
 
-         //   Settings.License = LicenseType.Community;
-
-            if (filaConDatos.Length >= 5)
+            if (camptxtcadenas.Length >= 6)
             {
-                lblnumlote.Text = filaConDatos[0];
-                lblguiaingreso.Text = filaConDatos[1];
-                //   lblnumdoc.Text = filaConDatos[2];
-                lblfechaingreso.Text = filaConDatos[3];
-                lblhoraingreso.Text = filaConDatos[4];
-                lblproducto.Text = filaConDatos[4];
-                lblvariedad.Text = filaConDatos[5];
-                lblcliente.Text = filaConDatos[6];
-                lblproductor.Text = filaConDatos[7];
-                lblclp.Text = filaConDatos[8];
-                lblcantjabas.Text = filaConDatos[9];
-                totalneto.Text = Convert.ToDecimal(filaConDatos[10]).ToString("N2");
-                
-                // lblservicio  .Text = filaConDatos[4];
-                //   lblmetodo.Text = filaConDatos[2];
-
-                datalistado.DataSource = data;
-                LBLCONTAR.Text = datalistado.RowCount.ToString();
-                ocultar_columnas2();
+                _camptxtcadenas = camptxtcadenas;
+                lblcliente.Text = _camptxtcadenas[0];
+                lblproductor.Text = _camptxtcadenas[1];
+                lblclp.Text = _camptxtcadenas[2];
+                LBLCONTAR.Text = _camptxtcadenas[3];
+                lblcantjabas.Text = _camptxtcadenas[4];
+                totalneto.Text = _camptxtcadenas[5];
+                lblnumlote.Text = _camptxtcadenas[6];
+                lblvariedad.Text = _camptxtcadenas[7];
+                lblguiaingreso.Text = _camptxtcadenas[8];
             }
         }
-        
-        private void RptBoletaPesado_Load(object sender, EventArgs e)
-        {
+
+        public RptBolPesDetalDesc()
+        { InitializeComponent();
+            PrepGrid();
         }
 
-
-        private void BtnBuscar_Click(object sender, EventArgs e)
+        private void RptBoletaPesado_Load(object sender, EventArgs e)
         {
-            //  mostrarconsulta();
         }
 
         private void PrepGrid()
@@ -224,20 +208,8 @@ namespace _3mpacador4.Presentacion.Reporte
 
             // datalistado.Columns(3).Visible = False
         }
-
-       private void button1_Click(object sender, EventArgs e)
-        {
-            //  ExportarExcel( nombreArchivo);
-        }
-
-
-        private void RptBoletaPesadoDetalle_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //if (e.ke == (Char)Keys.Escape)
-            //    this.Close();
-        }
-
-        private void RptBoletaPesadoDetalle_KeyDown(object sender, KeyEventArgs e)
+      
+       private void RptBoletaPesadoDetalle_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape) Close();
         }
@@ -280,6 +252,8 @@ namespace _3mpacador4.Presentacion.Reporte
 
         void CrearCabecera(IContainer container)
         {
+            const string LogoPath = (@"Resources\logoagricola.png");
+
             container.Column(col =>
             {
 
@@ -295,7 +269,10 @@ namespace _3mpacador4.Presentacion.Reporte
                                 rowitem.RelativeItem().Padding(0).Column(column =>
                                 {
                                     column.Item().Container().Height(2);
-                                    rowitem.AutoItem().Width(160).Height(80).Image(LogoPath);
+                                    if (File.Exists(LogoPath))
+                                    {
+                                        rowitem.AutoItem().Width(160).Height(80).Image(LogoPath);
+                                    }
                                 });
                             });
 
@@ -306,18 +283,16 @@ namespace _3mpacador4.Presentacion.Reporte
                                 rowitem.AutoItem().Container().Width(4);
                                 rowitem.RelativeItem().Padding(2).Column(column =>
                                 {
-                                    column.Item().Container().Height(3);
+                                    column.Item().Container().Height(5);
                                     column.Item().Row(row2 =>
                                     {
                                         row2.Spacing(8);
-                                        row2.AutoItem().Text($"RECEPCION DE MATERIA PRIMA").SemiBold().FontSize(12)
+                                        row2.AutoItem().Text($"DESCARTE").SemiBold().FontSize(18)
                                             .FontColor(Colors.Orange.Medium);
                                     });
                                    
                                 });
                             });
-                       
-
 
                         row.RelativeItem().AlignRight().Width(150).Height(45)
 
@@ -332,7 +307,7 @@ namespace _3mpacador4.Presentacion.Reporte
                                     column.Item().Row(row2 =>
                                     {
                                         row2.Spacing(12);
-                                        row2.AutoItem().Text($"CODIGO : AGS-PRO-R-01").FontSize(9).Italic();
+                                        row2.AutoItem().Text($"CODIGO : AGS-PRO-R-02").FontSize(9).Italic();
 
                                     });
                                     column.Item().Row(row2 =>
@@ -345,10 +320,7 @@ namespace _3mpacador4.Presentacion.Reporte
                                     {
                                         row2.Spacing(12);
                                         row2.AutoItem().AlignCenter().Text($"VERSION : 02").FontSize(9).Italic();
-
                                     });
-
-
                                 });
                             });
                     });
@@ -361,12 +333,9 @@ namespace _3mpacador4.Presentacion.Reporte
                         table.ColumnsDefinition(columns =>
                         {
                             columns.RelativeColumn();
-                            //columns.RelativeColumn();
-                            //columns.RelativeColumn();
+                            
                         });
-                        //table.Cell().AlignCenter().Text(String.Empty).SemiBold().FontSize(18)
-                        //    .FontColor(Colors.Black);
-                        table.Cell().AlignCenter().Text("LOTE N° " + lblnumlote.Text).SemiBold().FontSize(18)
+                       table.Cell().AlignCenter().Text("LOTE N° " + lblnumlote.Text).SemiBold().FontSize(18)
                             .FontColor(Colors.Black);
                     });
                 });
@@ -380,36 +349,22 @@ namespace _3mpacador4.Presentacion.Reporte
                         columns.RelativeColumn();
                         columns.RelativeColumn();
                         columns.RelativeColumn();
+                        
                     });
                     table.Cell().Text("        Cliente :");
                     table.Cell().Text(lblcliente.Text).FontSize(10).FontColor(Colors.Black).Bold();
-                    table.Cell().Text("   Guia de Remision :");
+
+                    table.Cell().Text("        Guia de Remision :");
                     table.Cell().Text(lblguiaingreso.Text).FontSize(10).FontColor(Colors.Black).Bold();
 
+                    table.Cell().Text("        CLP :");
+                    table.Cell().Text(lblclp.Text).FontSize(10).FontColor(Colors.Black).Bold();
+
                     table.Cell().Text("        Productor :");
-                    table.Cell().Text(lblproductor.Text).FontSize(9).FontColor(Colors.Black).Bold();
-                    table.Cell().Text("   RUC / DNI :");
-                    table.Cell().Text(lblruc_dni.Text).FontSize(10).FontColor(Colors.Black).Bold();
+                    table.Cell().Text(lblproductor.Text).FontSize(10).FontColor(Colors.Black).Bold();
 
-                    table.Cell().Text("        Metodo :");
-                    table.Cell().Text(lblmetodo.Text).FontSize(10).FontColor(Colors.Black).Bold();
-                    table.Cell().Text("   CLP :");
-                    table.Cell().Text(lblclp.Text);
-
-                    table.Cell().Text("        Producto :");
-                    table.Cell().Text(lblproducto.Text).FontSize(10).FontColor(Colors.Black).Bold();
-                    table.Cell().Text("   Variedad :");
+                    table.Cell().Text("        Variedad :");
                     table.Cell().Text(lblvariedad.Text).FontSize(10).FontColor(Colors.Black).Bold();
-
-                    table.Cell().Text("        Tipo de Servicio :");
-                    table.Cell().Text(lblservicio.Text).FontSize(10).FontColor(Colors.Black).Bold();
-                    table.Cell().Text("   Fecha Ingreso :");
-                    table.Cell().Text(lblfechaingreso.Text).FontSize(10).FontColor(Colors.Black).Bold();
-
-                    table.Cell().Text("        Acopiador :");
-                    table.Cell().Text(lblacopiador.Text).FontSize(10).FontColor(Colors.Black).Bold();
-                    table.Cell().Text("   Hora Ingreso");
-                    table.Cell().Text(lblhoraingreso.Text).FontSize(10).FontColor(Colors.Black).Bold();
                 });
             });
         }
@@ -583,6 +538,11 @@ namespace _3mpacador4.Presentacion.Reporte
         }
 
         private void BtnExportar_Click(object sender, EventArgs e)
+        {
+            GenerarPDF2();
+        }
+
+        private void BtnImprimir_Click(object sender, EventArgs e)
         {
             GenerarPDF2();
         }

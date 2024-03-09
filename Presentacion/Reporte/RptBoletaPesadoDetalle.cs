@@ -20,11 +20,11 @@ namespace _3mpacador4.Presentacion.Reporte
     public partial class RptBoletaPesadoDetalle : Form 
 
     {
-        //  String nombreArchivo = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         private string nombreArchivo = "C:/archivo.xlsx";
-        public string VarBolPesoDetalle { get; set; } = ""; // Asigna un valor predeterminado si es necesario
+        public string VarBolPesoDetalle { get; set; } = "";
+        private string[] _camptxtcadenas;
 
-       public RptBoletaPesadoDetalle(string[] filaConDatos, DataTable data)
+        public RptBoletaPesadoDetalle(string[] filaConDatos, DataTable data)
         {
             InitializeComponent();
             PrepGrid();
@@ -43,10 +43,6 @@ namespace _3mpacador4.Presentacion.Reporte
                 lblclp.Text = filaConDatos[8];
                 lblcantjabas.Text = filaConDatos[9];
                 totalneto.Text = Convert.ToDecimal(filaConDatos[10]).ToString("N2");
-                
-                // lblservicio  .Text = filaConDatos[4];
-                //   lblmetodo.Text = filaConDatos[2];
-
                 datalistado.DataSource = data;
                 LBLCONTAR.Text = datalistado.RowCount.ToString();
                 ocultar_columnas2();
@@ -57,13 +53,11 @@ namespace _3mpacador4.Presentacion.Reporte
         {
          //   VariablePesoDetalle = lblnumlote.Text;
         }
-              
 
         public void RptBoletaPesado_Load(object sender, EventArgs e)
         {
           //
         }
-       
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
@@ -163,12 +157,7 @@ namespace _3mpacador4.Presentacion.Reporte
             try
             {
                 var withBlock = datalistado;
-
-                //withBlock.Columns["LOTE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                //withBlock.Columns["LOTE"].Width = 0;
-
-                // establecer modo de ajuste
-                // .Columns("NOMBRE_PRODUCTO").DefaultCellStyle.WrapMode = DataGridViewTriState.True
+                
                 withBlock.Columns["T. JABA"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 withBlock.Columns["T. JABA"].Width = 50;
 
@@ -225,18 +214,6 @@ namespace _3mpacador4.Presentacion.Reporte
             // datalistado.Columns(3).Visible = False
         }
 
-       private void button1_Click(object sender, EventArgs e)
-        {
-            //  ExportarExcel( nombreArchivo);
-        }
-
-
-        private void RptBoletaPesadoDetalle_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //if (e.ke == (Char)Keys.Escape)
-            //    this.Close();
-        }
-
         private void RptBoletaPesadoDetalle_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape) Close();
@@ -254,8 +231,6 @@ namespace _3mpacador4.Presentacion.Reporte
             datalistado.Columns[7].Visible = false;
             datalistado.Columns[8].Visible = false;
         }
-
-
         private void GenerarPDF2()
         {
 
@@ -277,7 +252,6 @@ namespace _3mpacador4.Presentacion.Reporte
             }).GeneratePdf("Theathoq.pdf");
             Process.Start("Theathoq.pdf");
         }
-
         void CrearCabecera(IContainer container)
         {      
         const string LogoPath = (@"Resources\logoagricola.png");
@@ -420,8 +394,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 });
             });
         }
-         
-    void CrearContenido(IContainer container)
+        void CrearContenido(IContainer container)
         {
             container.Column(col =>
             {
@@ -568,7 +541,6 @@ namespace _3mpacador4.Presentacion.Reporte
                 });
             });
         }
-
         private void CrearFooter(IContainer container)
         {
             container.Background("#8fce00").Padding(5).Row(row =>
@@ -587,12 +559,10 @@ namespace _3mpacador4.Presentacion.Reporte
                 });
             });
         }
-
         private void BtnExportar_Click(object sender, EventArgs e)
         {
             GenerarPDF2();
         }
-
         private void btnAdjuntos_Click(object sender, EventArgs e)
         {            
             VarBolPesoDetalle = lblnumlote.Text;
@@ -600,30 +570,28 @@ namespace _3mpacador4.Presentacion.Reporte
             FrmDocAdjuntos frmDocAdjuntos = new FrmDocAdjuntos();
 
             AddOwnedForm(frmDocAdjuntos);
-            frmDocAdjuntos.Show();
+            frmDocAdjuntos.ShowDialog();
         }
 
         private void btnDescarte_Click(object sender, EventArgs e)
         {
-            //{
-            //    //Hace un chequeo si se hizo click en una fila
-            //    if (e.RowIndex >= 0)
-            //    {
-            //        // EVALUA la fila que se clickeo
-            //        var filasseleccionada = datalistado.Rows[e.RowIndex];
+           
+            _camptxtcadenas = new string[9];
+            _camptxtcadenas[0] = lblcliente.Text;
+            _camptxtcadenas[1] = lblproductor.Text;
+            _camptxtcadenas[2] = lblclp.Text;
+            _camptxtcadenas[3] = LBLCONTAR.Text;
+            _camptxtcadenas[4] = lblcantjabas.Text;
+            _camptxtcadenas[5] = totalneto.Text;
+            _camptxtcadenas[6] = lblnumlote.Text;
+            _camptxtcadenas[7] = lblvariedad.Text;
+            _camptxtcadenas[8] = lblguiaingreso.Text;
 
-            //        var filaConDatos = new string[filasseleccionada.Cells.Count];
 
-            //        for (var i = 0; i < filasseleccionada.Cells.Count; i++)
-            //            filaConDatos[i] = filasseleccionada.Cells[i].Value.ToString();
+            RptBolPesDetalDesc descarte = new RptBolPesDetalDesc(_camptxtcadenas);
 
-            //        var resultados = mostrarconsulta2();
-
-            //        var FH = new RptBoletaPesadoDetalle(filaConDatos, resultados);
-
-            //        FH.ShowDialog();
-            //    }
-            //}
+            AddOwnedForm(descarte);
+            descarte.ShowDialog();
         }
     }
 }

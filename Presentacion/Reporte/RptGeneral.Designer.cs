@@ -70,7 +70,7 @@
             this.lblinfo1 = new System.Windows.Forms.Label();
             this.datalistado = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lblinfo3 = new System.Windows.Forms.Label();
+            this.lblinfo2 = new System.Windows.Forms.Label();
             this.datalistado2 = new System.Windows.Forms.DataGridView();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.lblcantjabas = new System.Windows.Forms.Label();
@@ -86,7 +86,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lblinfo2 = new System.Windows.Forms.Label();
+            this.lblinfo3 = new System.Windows.Forms.Label();
             this.datalistado3 = new System.Windows.Forms.DataGridView();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -534,24 +534,24 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.lblinfo3);
+            this.panel3.Controls.Add(this.lblinfo2);
             this.panel3.Controls.Add(this.datalistado2);
             this.panel3.Location = new System.Drawing.Point(2, 479);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(708, 156);
             this.panel3.TabIndex = 19;
             // 
-            // lblinfo3
+            // lblinfo2
             // 
-            this.lblinfo3.AutoSize = true;
-            this.lblinfo3.BackColor = System.Drawing.Color.Black;
-            this.lblinfo3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblinfo3.ForeColor = System.Drawing.Color.Yellow;
-            this.lblinfo3.Location = new System.Drawing.Point(244, 62);
-            this.lblinfo3.Name = "lblinfo3";
-            this.lblinfo3.Size = new System.Drawing.Size(234, 32);
-            this.lblinfo3.TabIndex = 94;
-            this.lblinfo3.Text = "SIN INFORMACION";
+            this.lblinfo2.AutoSize = true;
+            this.lblinfo2.BackColor = System.Drawing.Color.Black;
+            this.lblinfo2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblinfo2.ForeColor = System.Drawing.Color.Yellow;
+            this.lblinfo2.Location = new System.Drawing.Point(244, 62);
+            this.lblinfo2.Name = "lblinfo2";
+            this.lblinfo2.Size = new System.Drawing.Size(234, 32);
+            this.lblinfo2.TabIndex = 94;
+            this.lblinfo2.Text = "SIN INFORMACION";
             // 
             // datalistado2
             // 
@@ -571,7 +571,7 @@
             // btnCerrar
             // 
             this.btnCerrar.BackColor = System.Drawing.Color.Teal;
-            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.ForeColor = System.Drawing.Color.White;
             this.btnCerrar.Location = new System.Drawing.Point(138, 2);
             this.btnCerrar.Name = "btnCerrar";
@@ -703,24 +703,24 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.lblinfo2);
+            this.panel4.Controls.Add(this.lblinfo3);
             this.panel4.Controls.Add(this.datalistado3);
             this.panel4.Location = new System.Drawing.Point(722, 479);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(485, 156);
             this.panel4.TabIndex = 84;
             // 
-            // lblinfo2
+            // lblinfo3
             // 
-            this.lblinfo2.AutoSize = true;
-            this.lblinfo2.BackColor = System.Drawing.Color.Black;
-            this.lblinfo2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblinfo2.ForeColor = System.Drawing.Color.Yellow;
-            this.lblinfo2.Location = new System.Drawing.Point(118, 62);
-            this.lblinfo2.Name = "lblinfo2";
-            this.lblinfo2.Size = new System.Drawing.Size(234, 32);
-            this.lblinfo2.TabIndex = 95;
-            this.lblinfo2.Text = "SIN INFORMACION";
+            this.lblinfo3.AutoSize = true;
+            this.lblinfo3.BackColor = System.Drawing.Color.Black;
+            this.lblinfo3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblinfo3.ForeColor = System.Drawing.Color.Yellow;
+            this.lblinfo3.Location = new System.Drawing.Point(118, 62);
+            this.lblinfo3.Name = "lblinfo3";
+            this.lblinfo3.Size = new System.Drawing.Size(234, 32);
+            this.lblinfo3.TabIndex = 95;
+            this.lblinfo3.Text = "SIN INFORMACION";
             // 
             // datalistado3
             // 
@@ -792,7 +792,7 @@
             // btnBuscar
             // 
             this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
             this.btnBuscar.Location = new System.Drawing.Point(252, 2);
             this.btnBuscar.Name = "btnBuscar";
@@ -874,7 +874,7 @@
             // btnBuscarTodos
             // 
             this.btnBuscarTodos.BackColor = System.Drawing.Color.Blue;
-            this.btnBuscarTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscarTodos.ForeColor = System.Drawing.Color.White;
             this.btnBuscarTodos.Location = new System.Drawing.Point(371, 1);
             this.btnBuscarTodos.Name = "btnBuscarTodos";
@@ -1011,8 +1011,8 @@
         internal System.Windows.Forms.Label LBLLL;
         private System.Windows.Forms.Button btnBuscarTodos;
         internal System.Windows.Forms.Label lblinfo1;
-        internal System.Windows.Forms.Label lblinfo3;
         internal System.Windows.Forms.Label lblinfo2;
+        internal System.Windows.Forms.Label lblinfo3;
         private System.Windows.Forms.DateTimePicker fechaPeriodo;
         private System.Windows.Forms.Label label8;
     }

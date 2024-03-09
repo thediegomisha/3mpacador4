@@ -6,9 +6,9 @@ using Devart.Data.MySql;
 
 namespace _3mpacador4.Presentacion.Mantenimiento
 {
-    public partial class frmpresentacion : Form
+    public partial class frmpresen_cajas : Form
     {
-        public frmpresentacion()
+        public frmpresen_cajas()
         {
             InitializeComponent();
         }

@@ -456,7 +456,7 @@
             this.btnDescarte.BackColor = System.Drawing.Color.Teal;
             this.btnDescarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDescarte.ForeColor = System.Drawing.Color.White;
-            this.btnDescarte.Location = new System.Drawing.Point(666, 198);
+            this.btnDescarte.Location = new System.Drawing.Point(666, 218);
             this.btnDescarte.Name = "btnDescarte";
             this.btnDescarte.Size = new System.Drawing.Size(92, 30);
             this.btnDescarte.TabIndex = 74;

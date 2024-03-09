@@ -1,6 +1,6 @@
 ﻿namespace _3mpacador4.Presentacion.Mantenimiento
 {
-    partial class frmCliente
+    partial class frmAcopiador
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCliente));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAcopiador));
+            this.DataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Panel2 = new System.Windows.Forms.Panel();
-            this.btnCerrar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
             this.Panel1 = new System.Windows.Forms.Panel();
             this.Label1 = new System.Windows.Forms.Label();
             this.Panel5 = new System.Windows.Forms.Panel();
@@ -45,7 +42,8 @@
             this.lblContar = new System.Windows.Forms.Label();
             this.Panel4 = new System.Windows.Forms.Panel();
             this.DataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.DataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
             this.Panel2.SuspendLayout();
             this.Panel1.SuspendLayout();
             this.Panel3.SuspendLayout();
@@ -53,48 +51,32 @@
             this.Panel6.SuspendLayout();
             this.SuspendLayout();
             // 
+            // DataGridViewImageColumn2
+            // 
+            this.DataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DataGridViewImageColumn2.HeaderText = "";
+            this.DataGridViewImageColumn2.Image = ((System.Drawing.Image)(resources.GetObject("DataGridViewImageColumn2.Image")));
+            this.DataGridViewImageColumn2.Name = "DataGridViewImageColumn2";
+            this.DataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // Panel2
             // 
-            this.Panel2.Controls.Add(this.btnCerrar);
             this.Panel2.Controls.Add(this.btnNuevo);
+            this.Panel2.Controls.Add(this.btnCerrar);
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel2.Location = new System.Drawing.Point(0, 41);
             this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(1000, 48);
+            this.Panel2.Size = new System.Drawing.Size(780, 48);
             this.Panel2.TabIndex = 20;
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.Location = new System.Drawing.Point(663, 12);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(65, 29);
-            this.btnCerrar.TabIndex = 10;
-            this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNuevo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevo.Location = new System.Drawing.Point(10, 12);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(140, 29);
-            this.btnNuevo.TabIndex = 10;
-            this.btnNuevo.Text = "Nue&vo Cliente";
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // Panel1
             // 
-            this.Panel1.BackColor = System.Drawing.Color.MediumBlue;
+            this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.Panel1.Controls.Add(this.Label1);
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(1000, 41);
+            this.Panel1.Size = new System.Drawing.Size(780, 41);
             this.Panel1.TabIndex = 19;
             // 
             // Label1
@@ -104,15 +86,15 @@
             this.Label1.ForeColor = System.Drawing.Color.White;
             this.Label1.Location = new System.Drawing.Point(12, 9);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(153, 21);
+            this.Label1.Size = new System.Drawing.Size(187, 21);
             this.Label1.TabIndex = 0;
-            this.Label1.Text = "Listado de Clientes";
+            this.Label1.Text = "Listado de Acopiadores";
             // 
             // Panel5
             // 
             this.Panel5.BackColor = System.Drawing.Color.White;
             this.Panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Panel5.Location = new System.Drawing.Point(990, 0);
+            this.Panel5.Location = new System.Drawing.Point(770, 0);
             this.Panel5.Name = "Panel5";
             this.Panel5.Size = new System.Drawing.Size(10, 504);
             this.Panel5.TabIndex = 2;
@@ -126,7 +108,7 @@
             this.Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel3.Location = new System.Drawing.Point(0, 0);
             this.Panel3.Name = "Panel3";
-            this.Panel3.Size = new System.Drawing.Size(1000, 504);
+            this.Panel3.Size = new System.Drawing.Size(780, 504);
             this.Panel3.TabIndex = 21;
             // 
             // datalistado
@@ -137,32 +119,17 @@
             this.datalistado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.datalistado.BackgroundColor = System.Drawing.Color.White;
             this.datalistado.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datalistado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.datalistado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datalistado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Editar,
             this.Eliminar});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.datalistado.DefaultCellStyle = dataGridViewCellStyle2;
-            this.datalistado.Location = new System.Drawing.Point(10, 88);
+            this.datalistado.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.datalistado.Location = new System.Drawing.Point(10, 0);
             this.datalistado.Name = "datalistado";
             this.datalistado.ReadOnly = true;
             this.datalistado.RowHeadersVisible = false;
             this.datalistado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datalistado.Size = new System.Drawing.Size(980, 385);
+            this.datalistado.Size = new System.Drawing.Size(760, 473);
             this.datalistado.TabIndex = 0;
             // 
             // Editar
@@ -192,7 +159,7 @@
             this.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Panel6.Location = new System.Drawing.Point(10, 473);
             this.Panel6.Name = "Panel6";
-            this.Panel6.Size = new System.Drawing.Size(980, 31);
+            this.Panel6.Size = new System.Drawing.Size(760, 31);
             this.Panel6.TabIndex = 3;
             // 
             // lblContar
@@ -222,24 +189,44 @@
             this.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1";
             this.DataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // DataGridViewImageColumn2
+            // btnCerrar
             // 
-            this.DataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DataGridViewImageColumn2.HeaderText = "";
-            this.DataGridViewImageColumn2.Image = ((System.Drawing.Image)(resources.GetObject("DataGridViewImageColumn2.Image")));
-            this.DataGridViewImageColumn2.Name = "DataGridViewImageColumn2";
-            this.DataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnCerrar.BackColor = System.Drawing.Color.Teal;
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.ForeColor = System.Drawing.Color.White;
+            this.btnCerrar.Location = new System.Drawing.Point(648, 6);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(98, 29);
+            this.btnCerrar.TabIndex = 38;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click_1);
             // 
-            // frmCliente
+            // btnNuevo
+            // 
+            this.btnNuevo.BackColor = System.Drawing.Color.Teal;
+            this.btnNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNuevo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevo.ForeColor = System.Drawing.Color.White;
+            this.btnNuevo.Location = new System.Drawing.Point(10, 6);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(141, 29);
+            this.btnNuevo.TabIndex = 39;
+            this.btnNuevo.Text = "Nuevo Acopiador";
+            this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click_1);
+            // 
+            // frmAcopiador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 504);
+            this.ClientSize = new System.Drawing.Size(780, 504);
             this.ControlBox = false;
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.Panel1);
             this.Controls.Add(this.Panel3);
-            this.Name = "frmCliente";
+            this.Name = "frmAcopiador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Panel2.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);
@@ -256,8 +243,6 @@
 
         internal System.Windows.Forms.DataGridViewImageColumn DataGridViewImageColumn2;
         internal System.Windows.Forms.Panel Panel2;
-        internal System.Windows.Forms.Button btnCerrar;
-        internal System.Windows.Forms.Button btnNuevo;
         internal System.Windows.Forms.Panel Panel1;
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.Panel Panel5;
@@ -269,5 +254,7 @@
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn Eliminar;
         public System.Windows.Forms.DataGridView datalistado;
+        internal System.Windows.Forms.Button btnNuevo;
+        internal System.Windows.Forms.Button btnCerrar;
     }
 }

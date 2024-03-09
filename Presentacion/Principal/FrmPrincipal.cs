@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Windows.Forms;
 using _3mpacador4.Presentacion.Mantenimiento;
-using _3mpacador4.Presentacion.R00t;
+// using _3mpacador4.Presentacion.R00t;
 using _3mpacador4.Presentacion.Reporte;
 using _3mpacador4.Presentacion.Sistema;
 using _3mpacador4.Presentacion.Trazabilidad;
@@ -15,7 +15,8 @@ namespace _3mpacador4.Presentacion
     public partial class FrmPrincipal : Form
     {
         private Form FormularioActivo;
-    
+    //    public string nombreusuario { get; set; } = "";
+
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -117,7 +118,7 @@ namespace _3mpacador4.Presentacion
                     }
 
                 LBLUSUARIO.Text = NombreDesdeLogin + " " + ApaternoDesdeLogin + "  ";
-
+            
                 if (ApplicationDeployment.IsNetworkDeployed)
                 {
                     var deployment = ApplicationDeployment.CurrentDeployment;
@@ -221,15 +222,11 @@ namespace _3mpacador4.Presentacion
      private void btnClientes_Click_1(object sender, EventArgs e)
         {
             ocultarSubMenu();
-            AbrirFormularioHijo(new frmCliente());
-        }
+            var form = new frmCliente();
+            form.ShowDialog();
 
-        private void btnAcopiador_Click_1(object sender, EventArgs e)
-        {
-            ocultarSubMenu();
-            AbrirFormularioHijo(new frmAcopiador());
         }
-
+       
         private void btnProductores_Click_1(object sender, EventArgs e)
         {
             ocultarSubMenu();
@@ -247,11 +244,12 @@ namespace _3mpacador4.Presentacion
             var form = new frmProducto();
             form.ShowDialog();
         }
-
+        
         private void btnColaborador_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
-            AbrirFormularioHijo(new frmColaborador());
+            var form = new frmColaborador();
+            form.ShowDialog();
         }
 
         private void btnProductores_Click(object sender, EventArgs e)
@@ -281,7 +279,8 @@ namespace _3mpacador4.Presentacion
         private void btnTerminal_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
-            AbrirFormularioHijo(new frmTerminal());
+            var form = new frmTerminal();
+            form.ShowDialog();
         }
 
         private void btnProceso_Click(object sender, EventArgs e)
@@ -364,7 +363,8 @@ namespace _3mpacador4.Presentacion
         }
 
         private void txtDatabase_Click(object sender, EventArgs e)
-        {         
+        {
+            ocultarSubMenu();
             FrmMod root = new FrmMod();
             root.ShowDialog();
         }
@@ -382,6 +382,19 @@ namespace _3mpacador4.Presentacion
 
             FrmAutorizacion salida = new FrmAutorizacion();
             salida.ShowDialog();
+        }
+
+        private void btnPresen_cajas_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            var form = new frmpresen_cajas();
+            form.ShowDialog();
+        }
+
+        private void btnMuestreo_Click(object sender, EventArgs e)
+        {
+            var form = new FMuestreo();
+            AbrirFormularioHijo(new FMuestreo());
         }
     }
 }

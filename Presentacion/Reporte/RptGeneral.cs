@@ -782,7 +782,6 @@ namespace _3mpacador4.Presentacion.Reporte
         private DataTable mostrarconsulta2()
         {
             var datos = new DataTable();
-
             MySqlCommand comando = null;
             try
             {
@@ -810,17 +809,17 @@ namespace _3mpacador4.Presentacion.Reporte
                         //tamanio();
                         ocultar_columnas2();
                         //actualizardatos();
-                        sumaneto();
+                     //   sumaneto();
                         contar();
 
                         string resultado = (comando.Parameters["p_resultado"].Value.ToString());
                         totalneto.Text = resultado;
-                        lblinfo3.Visible = false;
+                        lblinfo2.Visible = false;
                     }
                     else
                     {
                         withBlock.DataSource = null;
-                        lblinfo2.Visible = true;
+                        lblinfo3.Visible = true;
                     }
                 }
             }
@@ -835,8 +834,10 @@ namespace _3mpacador4.Presentacion.Reporte
             return datos;
         }
 
-        private void mostrarconsulta3()
+        private DataTable mostrarconsulta3()
         {
+            var datos = new DataTable();
+
             MySqlCommand comando = null;
             try
             {
@@ -849,7 +850,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 comando.Parameters.AddWithValue("p_fechaanio", MySqlType.Int).Value = fechaPeriodo.Text;
 
                 var adaptador = new MySqlDataAdapter(comando);
-                var datos = new DataTable();
+               // var datos = new DataTable();
                 adaptador.Fill(datos);
 
                 {
@@ -860,13 +861,17 @@ namespace _3mpacador4.Presentacion.Reporte
                         withBlock.DataSource = datos;
                         sumanetodescarte();
                         contardescarte();
-                        lblinfo2.Visible = false;
+
+                        //string resultado = (comando.Parameters["p_resultado"].Value.ToString());
+                        //totalnetodescarte.Text = resultado;
+
+                        lblinfo3.Visible = false;
                     }
                     else
                     {
                         withBlock.DataSource = null;
                         contardescarte();
-                        lblinfo2.Visible = true;
+                        lblinfo3.Visible = true;
                     }
                 }
             }
@@ -878,6 +883,7 @@ namespace _3mpacador4.Presentacion.Reporte
             {
                 ConexionGral.desconectar();
             }
+            return datos;
         }
 
         private void mostrarproductor()
@@ -1243,15 +1249,23 @@ namespace _3mpacador4.Presentacion.Reporte
             {
                 // EVALUA la fila que se clickeo
                 var filasseleccionada = datalistado.Rows[e.RowIndex];
-
+              
                 var filaConDatos = new string[filasseleccionada.Cells.Count];
-
+              
                 for (var i = 0; i < filasseleccionada.Cells.Count; i++)
                     filaConDatos[i] = filasseleccionada.Cells[i].Value.ToString();
 
+
                 var resultados = mostrarconsulta2();
 
-                var FH = new RptBoletaPesadoDetalle(filaConDatos, resultados);
+                //var filasseleccionada3 = datalistado3.Rows[e.RowIndex];
+                //var filaConDatos3 = new string[filasseleccionada3.Cells.Count];
+
+                //for (var i1 = 0; i1 < filasseleccionada3.Cells.Count; i1++)
+                //    filaConDatos3[i1] = filasseleccionada3.Cells[i1].Value.ToString();
+                //var resultados3 = mostrarconsulta3();
+
+                var FH = new RptBoletaPesadoDetalle(filaConDatos,  resultados);
 
                 FH.ShowDialog();
             }

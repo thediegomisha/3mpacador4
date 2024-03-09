@@ -1,6 +1,6 @@
 ﻿namespace _3mpacador4.Presentacion.Reporte
 {
-    partial class ImprimirPesos
+    partial class ImprimirPesosDescarte
     {
         /// <summary>
         /// Required designer variable.
@@ -54,9 +54,9 @@
             this.label12.Location = new System.Drawing.Point(68, 9);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(284, 24);
+            this.label12.Size = new System.Drawing.Size(400, 24);
             this.label12.TabIndex = 38;
-            this.label12.Text = "IMPRESION TICKET PESAJE";
+            this.label12.Text = "IMPRESION TICKET PESAJE DESCARTE";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // totalneto
@@ -219,10 +219,11 @@
             this.lblusuario.TabIndex = 105;
             this.lblusuario.Text = "016-15235-01";
             // 
-            // ImprimirPesos
+            // ImprimirPesosDescarte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(600, 450);
             this.Controls.Add(this.lblusuario);
             this.Controls.Add(this.lblnumlote);
@@ -244,9 +245,9 @@
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ImprimirPesos";
+            this.Name = "ImprimirPesosDescarte";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.ImprimirPesos_Load);
+            this.Load += new System.EventHandler(this.ImprimirPesosDescarte_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ImprimirPesos_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

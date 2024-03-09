@@ -19,6 +19,7 @@ namespace _3mpacador4.Presentacion
         }
 
         public static string nombre1 { get; private set; }
+       // public static string usuario { get; private set; }
         public static string apaterno1 { get; private set; }
         public static int usuarioId1 { get; private set; }
 
@@ -76,6 +77,7 @@ namespace _3mpacador4.Presentacion
                     usuarioId1 = Convert.ToInt32(comando.Parameters["p_usuario_id"].Value);
                     nombre1 = comando.Parameters["p_nombre"].Value.ToString();
                     apaterno1 = comando.Parameters["p_apaterno"].Value.ToString();
+              //      usuario = txtlogin.Text;
                     //     MessageBox.Show("Inicio de sesión exitoso");
                     cargavalidada();
                 }
@@ -85,6 +87,7 @@ namespace _3mpacador4.Presentacion
                     txtlogin.Text = string.Empty;
                     txtpassword.Text = string.Empty;
                 }
+                
 
                 return usuarioValido;
             }

@@ -54,7 +54,7 @@
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(718, 41);
+            this.Panel1.Size = new System.Drawing.Size(658, 41);
             this.Panel1.TabIndex = 32;
             // 
             // Label1
@@ -72,7 +72,7 @@
             // 
             this.Label4.AutoSize = true;
             this.Label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.Location = new System.Drawing.Point(26, 70);
+            this.Label4.Location = new System.Drawing.Point(10, 70);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(67, 21);
             this.Label4.TabIndex = 41;
@@ -80,10 +80,10 @@
             // 
             // txtnombreLugar
             // 
-            this.txtnombreLugar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnombreLugar.Location = new System.Drawing.Point(366, 35);
+            this.txtnombreLugar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnombreLugar.Location = new System.Drawing.Point(338, 35);
             this.txtnombreLugar.Name = "txtnombreLugar";
-            this.txtnombreLugar.Size = new System.Drawing.Size(311, 29);
+            this.txtnombreLugar.Size = new System.Drawing.Size(311, 25);
             this.txtnombreLugar.TabIndex = 40;
             // 
             // btnCancelar
@@ -92,7 +92,7 @@
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(610, 258);
+            this.btnCancelar.Location = new System.Drawing.Point(556, 258);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(98, 29);
             this.btnCancelar.TabIndex = 36;
@@ -106,7 +106,7 @@
             this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(329, 258);
+            this.btnGuardar.Location = new System.Drawing.Point(285, 258);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(82, 29);
             this.btnGuardar.TabIndex = 37;
@@ -116,17 +116,17 @@
             // 
             // txtRazonSocial
             // 
-            this.txtRazonSocial.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRazonSocial.Location = new System.Drawing.Point(31, 35);
+            this.txtRazonSocial.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRazonSocial.Location = new System.Drawing.Point(15, 35);
             this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(311, 29);
+            this.txtRazonSocial.Size = new System.Drawing.Size(311, 25);
             this.txtRazonSocial.TabIndex = 35;
             // 
             // Label3
             // 
             this.Label3.AutoSize = true;
             this.Label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(362, 11);
+            this.Label3.Location = new System.Drawing.Point(334, 11);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(160, 21);
             this.Label3.TabIndex = 33;
@@ -136,7 +136,7 @@
             // 
             this.Label2.AutoSize = true;
             this.Label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(27, 11);
+            this.Label2.Location = new System.Drawing.Point(11, 11);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(120, 21);
             this.Label2.TabIndex = 34;
@@ -148,7 +148,7 @@
             this.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnActualizar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizar.ForeColor = System.Drawing.Color.White;
-            this.btnActualizar.Location = new System.Drawing.Point(449, 258);
+            this.btnActualizar.Location = new System.Drawing.Point(405, 258);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(82, 29);
             this.btnActualizar.TabIndex = 38;
@@ -170,7 +170,7 @@
             this.txtregion.CustomButton.UseSelectable = true;
             this.txtregion.CustomButton.Visible = false;
             this.txtregion.Lines = new string[0];
-            this.txtregion.Location = new System.Drawing.Point(29, 94);
+            this.txtregion.Location = new System.Drawing.Point(13, 94);
             this.txtregion.MaxLength = 32767;
             this.txtregion.Name = "txtregion";
             this.txtregion.PasswordChar = '\0';
@@ -185,7 +185,7 @@
             this.txtregion.UseSelectable = true;
             this.txtregion.WaterMark = "Ej: Jiron Santa Rosa 711";
             this.txtregion.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtregion.WaterMarkFont = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtregion.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // panel2
             // 
@@ -200,7 +200,7 @@
             this.panel2.Controls.Add(this.Label2);
             this.panel2.Location = new System.Drawing.Point(-1, 48);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(718, 204);
+            this.panel2.Size = new System.Drawing.Size(655, 204);
             this.panel2.TabIndex = 59;
             // 
             // btnBuscarCLP
@@ -209,7 +209,7 @@
             this.btnBuscarCLP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBuscarCLP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscarCLP.ForeColor = System.Drawing.Color.White;
-            this.btnBuscarCLP.Location = new System.Drawing.Point(366, 94);
+            this.btnBuscarCLP.Location = new System.Drawing.Point(350, 94);
             this.btnBuscarCLP.Name = "btnBuscarCLP";
             this.btnBuscarCLP.Size = new System.Drawing.Size(82, 29);
             this.btnBuscarCLP.TabIndex = 45;
@@ -219,17 +219,17 @@
             // 
             // txtclp
             // 
-            this.txtclp.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtclp.Location = new System.Drawing.Point(28, 155);
+            this.txtclp.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtclp.Location = new System.Drawing.Point(12, 155);
             this.txtclp.Name = "txtclp";
-            this.txtclp.Size = new System.Drawing.Size(311, 29);
+            this.txtclp.Size = new System.Drawing.Size(311, 25);
             this.txtclp.TabIndex = 44;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(24, 131);
+            this.label5.Location = new System.Drawing.Point(8, 131);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 21);
             this.label5.TabIndex = 43;
@@ -239,7 +239,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 293);
+            this.ClientSize = new System.Drawing.Size(658, 288);
             this.ControlBox = false;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Panel1);

@@ -33,7 +33,7 @@
     <MinimumRequiredVersion>1.0.0.5</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>53</ApplicationRevision>
+    <ApplicationRevision>57</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -180,154 +180,154 @@
     <Compile Include="Logica\LPacking_calibre.cs" />
     <Compile Include="Logica\LPrograma_proceso.cs" />
     <Compile Include="Logica\RawPrinterHelper.cs" />
-    <Compile Include="Presentacion\Mantenimiento\FActualizaFechaProduccion.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\FActualizaFechaProduccion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\FActualizaFechaProduccion.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\FActualizaFechaProduccion.Designer.cs">
       <DependentUpon>FActualizaFechaProduccion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmAcopiador.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmAcopiador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmAcopiador.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmAcopiador.Designer.cs">
       <DependentUpon>frmAcopiador.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\FrmAgregarDoc.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\FrmAgregarDoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\FrmAgregarDoc.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\FrmAgregarDoc.Designer.cs">
       <DependentUpon>FrmAgregarDoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmAltaDNI.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmAltaDNI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmAltaDNI.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmAltaDNI.Designer.cs">
       <DependentUpon>frmAltaDNI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmAltaRUC.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmAltaRUC.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmAltaRUC.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmAltaRUC.Designer.cs">
       <DependentUpon>frmAltaRUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\FrmAutorizacion.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\FrmAutorizacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\FrmAutorizacion.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\FrmAutorizacion.Designer.cs">
       <DependentUpon>FrmAutorizacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\FrmCalidad.cs">
+    <Compile Include="Presentacion\Mantenimiento\Calidad\FrmCalidad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\FrmCalidad.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Calidad\FrmCalidad.Designer.cs">
       <DependentUpon>FrmCalidad.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmcolaborador.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmcolaborador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmcolaborador.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmcolaborador.Designer.cs">
       <DependentUpon>frmcolaborador.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmMatCosecha.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmMatCosecha.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmMatCosecha.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmMatCosecha.Designer.cs">
       <DependentUpon>frmMatCosecha.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\FrmPrinter.cs">
+    <Compile Include="Presentacion\Mantenimiento\Sistema\FrmPrinter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\FrmPrinter.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Sistema\FrmPrinter.Designer.cs">
       <DependentUpon>FrmPrinter.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmProducto.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmProducto.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmProducto.Designer.cs">
       <DependentUpon>frmProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmServicio.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmServicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmServicio.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmServicio.Designer.cs">
       <DependentUpon>frmServicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmPresentacion.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmPresenCajas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmPresentacion.Designer.cs">
-      <DependentUpon>frmPresentacion.cs</DependentUpon>
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmPresenCajas.Designer.cs">
+      <DependentUpon>frmPresenCajas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmLote.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmLote.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmLote.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmLote.Designer.cs">
       <DependentUpon>frmLote.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmJabas.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmJabas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmJabas.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmJabas.Designer.cs">
       <DependentUpon>frmJabas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmCliente.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmCliente.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmCliente.Designer.cs">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmCultivo.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmCultivo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmCultivo.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmCultivo.Designer.cs">
       <DependentUpon>frmCultivo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmProductorCLP.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmProductorCLP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmProductorCLP.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmProductorCLP.Designer.cs">
       <DependentUpon>frmProductorCLP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmProductor2.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmProductor2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmProductor2.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmProductor2.Designer.cs">
       <DependentUpon>frmProductor2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmProductor.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmProductor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmProductor.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmProductor.Designer.cs">
       <DependentUpon>frmProductor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmTerminal.cs">
+    <Compile Include="Presentacion\Mantenimiento\Sistema\frmTerminal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmTerminal.designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Sistema\frmTerminal.designer.cs">
       <DependentUpon>frmTerminal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmTerminal2.cs">
+    <Compile Include="Presentacion\Mantenimiento\Sistema\frmTerminal2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmTerminal2.designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Sistema\frmTerminal2.designer.cs">
       <DependentUpon>frmTerminal2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmUsuarios.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\frmUsuarios.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\frmUsuarios.Designer.cs">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\MantoProductor.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\MantoProductor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\MantoProductor.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\MantoProductor.Designer.cs">
       <DependentUpon>MantoProductor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\MantoVariedad.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\MantoVariedad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\MantoVariedad.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Recepcion\MantoVariedad.Designer.cs">
       <DependentUpon>MantoVariedad.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Pesos\IngresoDescarte.cs">
@@ -360,18 +360,6 @@
     <Compile Include="Presentacion\Principal\FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\R00t\FrmMod.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentacion\R00t\FrmMod.Designer.cs">
-      <DependentUpon>FrmMod.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Presentacion\Reporte\FrmDocAdjuntos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Reporte\FrmDocAdjuntos.Designer.cs">
-      <DependentUpon>FrmDocAdjuntos.cs</DependentUpon>
-    </Compile>
     <Compile Include="Presentacion\Reporte\FRptKardexLote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -390,18 +378,23 @@
     <Compile Include="Presentacion\Reporte\FSobrepesoLoteCliente.Designer.cs">
       <DependentUpon>FSobrepesoLoteCliente.cs</DependentUpon>
     </Compile>
-   
+    <Compile Include="Presentacion\Reporte\ImprimirPesosDescarte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\ImprimirPesosDescarte.Designer.cs">
+      <DependentUpon>ImprimirPesosDescarte.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Reporte\ImprimirPesos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentacion\Reporte\ImprimirPesos.Designer.cs">
       <DependentUpon>ImprimirPesos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Reporte\RptBoletaPesadoDetalleDescarte.cs">
+    <Compile Include="Presentacion\Reporte\RptBolPesDetalDesc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Reporte\RptBoletaPesadoDetalleDescarte.Designer.cs">
-      <DependentUpon>RptBoletaPesadoDetalleDescarte.cs</DependentUpon>
+    <Compile Include="Presentacion\Reporte\RptBolPesDetalDesc.Designer.cs">
+      <DependentUpon>RptBolPesDetalDesc.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Reporte\RptBoletaPesadoDetalle.cs">
       <SubType>Form</SubType>
@@ -415,10 +408,10 @@
     <Compile Include="Presentacion\Sistema\FrmImprimeCalibre.Designer.cs">
       <DependentUpon>FrmImprimeCalibre.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\FrmReniec.cs">
+    <Compile Include="Presentacion\Mantenimiento\Sistema\FrmReniec.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\FrmReniec.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Sistema\FrmReniec.Designer.cs">
       <DependentUpon>FrmReniec.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Sistema\frmCampania.cs">
@@ -525,79 +518,79 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <EmbeddedResource Include="Presentacion\Mantenimiento\FActualizaFechaProduccion.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\FActualizaFechaProduccion.resx">
       <DependentUpon>FActualizaFechaProduccion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmAcopiador.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\frmAcopiador.resx">
       <DependentUpon>frmAcopiador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\FrmAgregarDoc.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\FrmAgregarDoc.resx">
       <DependentUpon>FrmAgregarDoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmAltaDNI.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\frmAltaDNI.resx">
       <DependentUpon>frmAltaDNI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmAltaRUC.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\frmAltaRUC.resx">
       <DependentUpon>frmAltaRUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\FrmAutorizacion.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\FrmAutorizacion.resx">
       <DependentUpon>FrmAutorizacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\FrmCalidad.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Calidad\FrmCalidad.resx">
       <DependentUpon>FrmCalidad.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmColaborador.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\frmColaborador.resx">
       <DependentUpon>frmcolaborador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmMatCosecha.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\frmMatCosecha.resx">
       <DependentUpon>frmMatCosecha.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\FrmPrinter.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Sistema\FrmPrinter.resx">
       <DependentUpon>FrmPrinter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmProducto.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\frmProducto.resx">
       <DependentUpon>frmProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmServicio.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\frmServicio.resx">
       <DependentUpon>frmServicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmPresentacion.resx">
-      <DependentUpon>frmPresentacion.cs</DependentUpon>
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\frmPresenCajas.resx">
+      <DependentUpon>frmPresenCajas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmLote.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\frmLote.resx">
       <DependentUpon>frmLote.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmJabas.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\frmJabas.resx">
       <DependentUpon>frmJabas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmCliente.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmCultivo.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\frmCultivo.resx">
       <DependentUpon>frmCultivo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmProductorCLP.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\frmProductorCLP.resx">
       <DependentUpon>frmProductorCLP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmProductor2.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\frmProductor2.resx">
       <DependentUpon>frmProductor2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmProductor.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\frmProductor.resx">
       <DependentUpon>frmProductor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmTerminal.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Sistema\frmTerminal.resx">
       <DependentUpon>frmTerminal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmTerminal2.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Sistema\frmTerminal2.resx">
       <DependentUpon>frmTerminal2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\frmUsuarios.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\frmUsuarios.resx">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\MantoProductor.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\MantoProductor.resx">
       <DependentUpon>MantoProductor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\MantoVariedad.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\MantoVariedad.resx">
       <DependentUpon>MantoVariedad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Pesos\IngresoDescarte.resx">
@@ -616,23 +609,23 @@
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\R00t\FrmMod.resx">
-      <DependentUpon>FrmMod.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Reporte\FrmDocAdjuntos.resx">
-      <DependentUpon>FrmDocAdjuntos.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\FRptKardexLote.resx">
       <DependentUpon>FRptKardexLote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\FRptPackigCalibre.resx">
       <DependentUpon>FRptPackigCalibre.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Reporte\FSobrepesoLoteCliente.resx">
+      <DependentUpon>FSobrepesoLoteCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Reporte\ImprimirPesosDescarte.resx">
+      <DependentUpon>ImprimirPesosDescarte.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\ImprimirPesos.resx">
       <DependentUpon>ImprimirPesos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Reporte\RptBoletaPesadoDetalleDescarte.resx">
-      <DependentUpon>RptBoletaPesadoDetalleDescarte.cs</DependentUpon>
+    <EmbeddedResource Include="Presentacion\Reporte\RptBolPesDetalDesc.resx">
+      <DependentUpon>RptBolPesDetalDesc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\RptBoletaPesadoDetalle.resx">
       <DependentUpon>RptBoletaPesadoDetalle.cs</DependentUpon>
@@ -640,7 +633,7 @@
     <EmbeddedResource Include="Presentacion\Sistema\FrmImprimeCalibre.resx">
       <DependentUpon>FrmImprimeCalibre.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Mantenimiento\FrmReniec.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Sistema\FrmReniec.resx">
       <DependentUpon>FrmReniec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Sistema\frmCampania.resx">

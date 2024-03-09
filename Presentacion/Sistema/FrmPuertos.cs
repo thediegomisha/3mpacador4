@@ -164,9 +164,9 @@ namespace _3mpacador4.Presentacion.Sistema
                 if (!string.IsNullOrEmpty(CBRECEPCION.Text) | !string.IsNullOrEmpty(CBDESPACHO.Text))
                 {
                     if (CBRECEPCION.SelectedItem != CBDESPACHO.SelectedItem)
-                        MessageBox.Show("Sin Problemas");
+                        MessageBox.Show(@"Sin Problemas");
                     else if(CBRECEPCION.SelectedItem == CBDESPACHO.SelectedItem)
-                        MessageBox.Show( "Atento, esta utilizando el mismo Puerto COM");
+                        MessageBox.Show( @"Atento, esta utilizando el mismo Puerto COM");
                     //else
                     //    Interaction.MsgBox("Error, no puede seleccionar el mismo puerto COM");
                 }

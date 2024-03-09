@@ -11,6 +11,7 @@ using _3mpacador4.Presentacion.Reporte;
 using _3mpacador4.Properties;
 using Devart.Data.MySql;
 using Microsoft.VisualBasic;
+using static QuestPDF.Helpers.Colors;
 
 namespace _3mpacador4
 {
@@ -51,19 +52,11 @@ namespace _3mpacador4
         public string VarIngresoPeso { get; set; } = "";
         public string VarNumlote { get; set; } = "";
 
-        //private void sppuerto_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        //{
-        //    string DatoInterrupcion;
-        //    try
-        //    {
-        //        DatoInterrupcion = sppuerto.ReadExisting();
-        //        PuertaAccesoInterrupcion(DatoInterrupcion);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Interaction.MsgBox("ERROR DATOS INTERRUPCION " + ex.Message, Constants.vbCritical);
-        //    }
-        //}
+        public bool doubleclick { get; set; } = false;
+
+        public string Varcantjabas{ get; set; } = "";
+        public string Varpesoneto { get; set; } = "";
+
 
         private void sppuerto_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
@@ -1342,6 +1335,30 @@ namespace _3mpacador4
             {
                 ConexionGral.desconectar();
             }
+        }
+
+     //   private int selectedRowIndex = -1; // Variable para almacenar el índice de la fila seleccionada
+
+        private void datalistado_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            doubleclick = true;
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = datalistado.Rows[e.RowIndex];
+                Varpesoneto= selectedRow.Cells["PESO NETO"].Value.ToString();
+                Varcantjabas = selectedRow.Cells["CANT JABAS"].Value.ToString();
+            }
+
+            //Instancio el Formulario Hijo al Padre
+            var FH1 = new ImprimirPesos();
+            //Indico al Formulario quien es el Propietario
+            AddOwnedForm(FH1);
+            FH1.ShowDialog();
+        }
+
+        private void IngresoPesos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            sppuerto.Close();
         }
 
         private void datalistado_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)

@@ -12,10 +12,11 @@ using System.IO;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
-    public partial class ImprimirPesos : Form
+    public partial class ImprimirPesosDescarte : Form
     {
+
         const string LogoPath = (@"Resources\logoagricola.png");
-        public ImprimirPesos()
+        public ImprimirPesosDescarte()
         {
             InitializeComponent();
             //  PrepGrid();
@@ -29,67 +30,45 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void ticket()
         {
-            var IngresoPesos = Owner as IngresoPesos;
+            var IngresoPesosDescarte = Owner as IngresoDescarte;
         }
-
-        private void ImprimirPesos_Load(object sender, EventArgs e)
-        {
-            cargadatos();
-        }
-
 
         private void cargadatos()
         {
             try
             {
             // Instanciamos el Formulario PADRE
-            FrmPrincipal frmPrincipal = new FrmPrincipal();
+     
+            var IngresoPesosDescarte = Owner as IngresoDescarte;
 
-            var IngresoPesos = Owner as IngresoPesos;
-
-            var iniciocadena = IngresoPesos.cbcliente.Text.IndexOf('-');
-
-            lblcliente2.Text = IngresoPesos.cbcliente.Text.Substring(iniciocadena + 1);
-
-            DateTime fechaRecepcion = IngresoPesos.DateTimePicker1.Value;
-
-            lblfecharecepcion.Text = fechaRecepcion.ToString("dd-MM-yyyy");
-            lblguiaremision.Text = IngresoPesos.txtGuiaRemision.Text;
-            lblclp2.Text = IngresoPesos.lblCLP.Text;
-            lblproductor2.Text = IngresoPesos.cbProductor.Text.ToString();
-            lblvariedad.Text = IngresoPesos.cbvariedad.Text.ToString();
-            lbljabas.Text = IngresoPesos.cbjabas.Text.ToString();
+            lblcliente2.Text = IngresoPesosDescarte.lblcliente.Text;
+            lblfecharecepcion.Text = IngresoPesosDescarte.fpesaje.Value.ToString("dd-MM-yyyy");
+        //    lblguiaremision.Text = IngresoPesosDescarte.lbl
+            lblclp2.Text = IngresoPesosDescarte.lblclp.Text;
+            lblproductor2.Text = IngresoPesosDescarte.lblproductor.Text;
+            lblvariedad.Text = IngresoPesosDescarte.lblvariedad.Text.ToString();
+           // lbljabas.Text = IngresoPesosDescarte.cbjabas.Text.ToString();
             //  lblpesoneto.Text = IngresoPesos.lblpeso.Text;
-            lblnumlote.Text = IngresoPesos.cboLote.Text;
-            lblusuario.Text = frmPrincipal.LBLUSUARIO.Text;
-
-            //IngresoPesos.datalistado.CellDoubleClick += Datalistado_CellDoubleClick;
-
-
-            //if (IngresoPesos.datalistado.CellDoubleClick == true)
-            //{
-
-            //}
-
+            lblnumlote.Text = IngresoPesosDescarte.cboLote.Text;
+         
             // Si hay filas
-            if (IngresoPesos.datalistado.Rows.Count > 0)
+            if (IngresoPesosDescarte.datalistado.Rows.Count > 0)
             {
-                if (IngresoPesos.doubleclick == true)
+                if (IngresoPesosDescarte.doubleclickdescarte == true)
                 {
-                    lbljabas.Text = IngresoPesos.Varcantjabas;
-                    lblpesoneto.Text = IngresoPesos.Varpesoneto;
-                    IngresoPesos.doubleclick = false;
+                    lbljabas.Text = IngresoPesosDescarte.Varcantjabasdesc;
+                    lblpesoneto.Text = IngresoPesosDescarte.Varpesonetodesc;
+                    IngresoPesosDescarte.doubleclickdescarte = false;
                 }
                 else
                 {
-                    // Seleccionar el primer elemento de la lista
-                        IngresoPesos.datalistado.Rows[0].Selected = true;
+                        // Seleccionar el primer elemento de la lista
+                        IngresoPesosDescarte.datalistado.Rows[0].Selected = true;
                     // Leer el valor de una celda específica
-                //for (int i = 0; i < IngresoPesos.datalistado.ColumnCount; i++)
-                //{
-                    lblpesoneto.Text = IngresoPesos.datalistado.SelectedRows[0].Cells["PESO NETO"].Value.ToString();
-                    lbljabas.Text = IngresoPesos.datalistado.SelectedRows[0].Cells["CANT JABAS"].Value.ToString();
-                //}
+                    //for (int i = 0; i < IngresoPesos.datalistado.ColumnCount; i++)
+                    //{
+                    lblpesoneto.Text = IngresoPesosDescarte.datalistado.SelectedRows[0].Cells["PESO NETO"].Value.ToString();
+                    lbljabas.Text = IngresoPesosDescarte.datalistado.SelectedRows[0].Cells["CANT JABAS"].Value.ToString();
                 }
             }
             }
@@ -218,7 +197,7 @@ namespace _3mpacador4.Presentacion.Reporte
                             {
                                 rowitem.AutoItem().Width(120).Height(50).Image(LogoPath);
                             }
-                            rowitem.AutoItem().AlignLeft().Text("RECEPCION").SemiBold().FontSize(28)
+                            rowitem.AutoItem().AlignLeft().Text("DESCARTE").SemiBold().FontSize(28)
                                 .FontColor(Colors.Blue.Medium);
                             rowitem.AutoItem().AlignRight().Text("  LT N° " + lblnumlote.Text).SemiBold().FontSize(18)
                                 .FontColor(Colors.Red.Medium);
@@ -242,10 +221,10 @@ namespace _3mpacador4.Presentacion.Reporte
                     table.Cell().Text("CLP :").FontSize(14).FontColor(Colors.Black).Bold();
                     table.Cell().Text(lblclp2.Text).FontSize(16).FontColor(Colors.Black).Bold();
 
-                    table.Cell().Text("GUIA DE REMISION:").FontSize(14).FontColor(Colors.Black).Bold();
-                    table.Cell().Text(lblguiaremision.Text).FontSize(14).FontColor(Colors.Black).Bold();
+                    //table.Cell().Text("GUIA DE REMISION:").FontSize(14).FontColor(Colors.Black).Bold();
+                    //table.Cell().Text(lblguiaremision.Text).FontSize(14).FontColor(Colors.Black).Bold();
 
-                    table.Cell().Text("FECHA DE RECEPCION:").FontSize(14).FontColor(Colors.Black).Bold();
+                    table.Cell().Text("FECHA DE PESAJE:").FontSize(14).FontColor(Colors.Black).Bold();
                     table.Cell().Text(lblfecharecepcion.Text).FontSize(14).FontColor(Colors.Black).Bold();
 
                     int cortecadena = lblproductor2.Text.IndexOf("||");
@@ -345,25 +324,7 @@ namespace _3mpacador4.Presentacion.Reporte
                             CellStyle(QuestPDF.Infrastructure.IContainer containers) =>
                             DefaultCellStyle(containers, Colors.Blue.Medium);
                         //}
-
-                    });
-
-                    //foreach (DataGridViewRow row in datalistado.Rows)
-                    //{
-
-                    //    table.Cell().Element(CellStyle2).Text(row.Cells["T. JABA"].Value).FontSize(10);
-                    //    table.Cell().Element(CellStyle2).Text(row.Cells["T.PARIH"].Value).FontSize(10);
-                    //    table.Cell().Element(CellStyle2).Text(row.Cells["CANT JABAS"].Value).FontSize(10);
-                    //    table.Cell().Element(CellStyle2).Text(row.Cells["PESO BRUTO"].Value).FontSize(10);
-                    //    table.Cell().Element(CellStyle2).Text(row.Cells["PESO JABAS"].Value).FontSize(10);
-                    //    table.Cell().Element(CellStyle2).Text(row.Cells["PESO NETO"].Value).FontSize(10);
-                    //    table.Cell().Element(CellStyle2).Text(row.Cells["PROMEDIO"].Value).FontSize(10);
-
-                    //    //   i++;
-
-                    //    QuestPDF.Infrastructure.IContainer CellStyle2(QuestPDF.Infrastructure.IContainer containers) => DefaultCellStyle2(containers, Colors.Blue.Medium);
-
-                    //}
+                    });                   
                 });
                 //col.Item().Text(string.Empty);
 
@@ -387,23 +348,9 @@ namespace _3mpacador4.Presentacion.Reporte
                     table.Cell().Text(String.Empty);
 
                     table.Cell().Text("Items");
-                //    table.Cell().Text($"{datalistado.RowCount}").FontSize(12).FontColor(Colors.Black).Bold();
-                    //   $"{TableOfContents.Contents.Count}"
-                    //;
-                    //table.Cell().Text("Cant Jabas");
-                    //table.Cell().Text(lblcantjabas.Text).FontSize(12).FontColor(Colors.Black).Bold();
-
-                    //table.Cell().Text("Total Neto");
-                    //table.Cell().Text(totalneto.Text).FontSize(12).FontColor(Colors.Black).Bold();
-                    //;
-                    //table.Cell().Text(String.Empty);
-                    //table.Cell().Text(String.Empty);
+              
                 });
-                //col.Item().AlignCenter().Text(String.Empty);
-                //col.Item().AlignCenter().Text(String.Empty);
-                //col.Item().AlignCenter().Text(String.Empty);
-                //col.Item().AlignCenter().Text(String.Empty);
-
+                
                 col.Item().Table(table =>
                 {
                     table.ColumnsDefinition(columns =>
@@ -428,27 +375,30 @@ namespace _3mpacador4.Presentacion.Reporte
             });
         }
 
+        private void CrearFooter(IContainer container)
+        {
+            container.Column(col =>
+            {                
+                col.Item().Row(row =>
+                {
+                    row.RelativeItem().AlignRight()
+                        .Row(rowitem =>
+                        {                                                      
+                            rowitem.AutoItem().AlignRight().Text("USUARIO : "  + "  " + Login.nombre1 + " " + Login.apaterno1 ).SemiBold().FontSize(10)
+                                .FontColor(Colors.Red.Medium);
+                        });
+                });
+               
+            });
+        }
 
         private void ImprimirPesos_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape) Close();
         }
-        private void CrearFooter(IContainer container)
+        private void ImprimirPesosDescarte_Load(object sender, EventArgs e)
         {
-            container.Column(col =>
-            {
-                col.Item().Row(row =>
-                {
-                    row.RelativeItem().AlignRight()
-                        .Row(rowitem =>
-                        {
-                            rowitem.AutoItem().AlignRight().Text("USER : " + Login.nombre1 + " " + Login.apaterno1).SemiBold().FontSize(10)
-                                .FontColor(Colors.Red.Medium);
-
-                        });
-                });
-
-            });
+            cargadatos();
         }
     }
 }
