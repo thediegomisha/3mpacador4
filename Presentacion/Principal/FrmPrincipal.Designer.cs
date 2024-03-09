@@ -42,7 +42,7 @@
             this.btnTerminal = new System.Windows.Forms.Button();
             this.btnProducto = new System.Windows.Forms.Button();
             this.btnImprimirCalibre = new System.Windows.Forms.Button();
-            this.btnMuestreo = new System.Windows.Forms.Button();
+    //        this.btnMuestreo = new System.Windows.Forms.Button();
             this.btnProductores = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnColaborador = new System.Windows.Forms.Button();
@@ -335,20 +335,20 @@
             // 
             // btnMuestreo
             // 
-            this.btnMuestreo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMuestreo.FlatAppearance.BorderSize = 0;
-            this.btnMuestreo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMuestreo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnMuestreo.ForeColor = System.Drawing.Color.LightGray;
-            this.btnMuestreo.Location = new System.Drawing.Point(0, 132);
-            this.btnMuestreo.Name = "btnMuestreo";
-            this.btnMuestreo.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnMuestreo.Size = new System.Drawing.Size(137, 33);
-            this.btnMuestreo.TabIndex = 21;
-            this.btnMuestreo.Text = "Muestreo";
-            this.btnMuestreo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMuestreo.UseVisualStyleBackColor = true;
-            this.btnMuestreo.Click += new System.EventHandler(this.btnMuestreo_Click);
+            //this.btnMuestreo.Dock = System.Windows.Forms.DockStyle.Top;
+            //this.btnMuestreo.FlatAppearance.BorderSize = 0;
+            //this.btnMuestreo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            //this.btnMuestreo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            //this.btnMuestreo.ForeColor = System.Drawing.Color.LightGray;
+            //this.btnMuestreo.Location = new System.Drawing.Point(0, 132);
+            //this.btnMuestreo.Name = "btnMuestreo";
+            //this.btnMuestreo.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            //this.btnMuestreo.Size = new System.Drawing.Size(137, 33);
+            //this.btnMuestreo.TabIndex = 21;
+            //this.btnMuestreo.Text = "Muestreo";
+            //this.btnMuestreo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            //this.btnMuestreo.UseVisualStyleBackColor = true;
+            //this.btnMuestreo.Click += new System.EventHandler(this.btnMuestreo_Click);
             // 
             // btnImprimirCalibre
             // 

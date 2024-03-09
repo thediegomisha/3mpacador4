@@ -567,10 +567,10 @@ namespace _3mpacador4.Presentacion.Reporte
         {            
             VarBolPesoDetalle = lblnumlote.Text;
 
-            FrmDocAdjuntos frmDocAdjuntos = new FrmDocAdjuntos();
+       //     FrmDocAdjuntos frmDocAdjuntos = new FrmDocAdjuntos();
 
-            AddOwnedForm(frmDocAdjuntos);
-            frmDocAdjuntos.ShowDialog();
+            //AddOwnedForm(frmDocAdjuntos);
+            //frmDocAdjuntos.ShowDialog();
         }
 
         private void btnDescarte_Click(object sender, EventArgs e)

@@ -393,8 +393,8 @@ namespace _3mpacador4.Presentacion
 
         private void btnMuestreo_Click(object sender, EventArgs e)
         {
-            var form = new FMuestreo();
-            AbrirFormularioHijo(new FMuestreo());
+            //var form = new FMuestreo();
+            //AbrirFormularioHijo(new FMuestreo());
         }
     }
 }
