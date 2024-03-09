@@ -364,9 +364,9 @@ namespace _3mpacador4.Presentacion
 
         private void txtDatabase_Click(object sender, EventArgs e)
         {
-            ocultarSubMenu();
-            FrmMod root = new FrmMod();
-            root.ShowDialog();
+            //ocultarSubMenu();
+            //FrmMod root = new FrmMod();
+            //root.ShowDialog();
         }
 
         private void btnCalidad_Click(object sender, EventArgs e)

@@ -1360,16 +1360,7 @@ namespace _3mpacador4
         {
             sppuerto.Close();
         }
-
-        private void datalistado_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //Instancio el Formulario Hijo al Padre
-            var FH = new ImprimirPesos();
-            //Indico al Formulario quien es el Propietario
-            AddOwnedForm(FH);
-            FH.ShowDialog();
-        }
-
+        
         public void contar()
         {
             var contarfila = datalistado.RowCount - 1;
