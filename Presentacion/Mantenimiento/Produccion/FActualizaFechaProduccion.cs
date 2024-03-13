@@ -81,8 +81,8 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             if (dgvlista.Columns[e.ColumnIndex].Index == 4)
             {
 
-                if (dgvlista.CurrentRow.Cells[3].Value.ToString() != dgvlista.CurrentRow.Cells[2].Value.ToString())
-                {
+                /*if (dgvlista.CurrentRow.Cells[3].Value.ToString() != dgvlista.CurrentRow.Cells[2].Value.ToString())
+                {*/
                     var rpta = MessageBox.Show("¿ ESTA SEGURO QUE DESEA ACTUALIZAR LA FECHA DE PRODUCCION A " + dgvlista.CurrentRow.Cells[3].Value.ToString() +" ?" , "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (rpta == DialogResult.Yes)
                     {
@@ -98,7 +98,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                             MessageBox.Show("SE ACTUALIZO LA FECHA DE PRODUCCION CORRCTAMENTE", "Aviso...!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
-                }              
+                //}              
             }
         }
 

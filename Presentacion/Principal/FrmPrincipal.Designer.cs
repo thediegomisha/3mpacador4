@@ -56,7 +56,6 @@
             this.btnBD = new System.Windows.Forms.Button();
             this.btnSistema = new System.Windows.Forms.Button();
             this.panelReportes = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
@@ -84,6 +83,7 @@
             this.rptDashBoard = new System.Windows.Forms.Button();
             this.Gerencia = new System.Windows.Forms.Button();
             this.PanelLogo = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PanelFormularioHijo = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.LblVersion = new System.Windows.Forms.ToolStripStatusLabel();
@@ -94,6 +94,7 @@
             this.lblDatabase = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnMuestreo = new System.Windows.Forms.Button();
             this.btn_DescarteGral = new System.Windows.Forms.Button();
             this.LBLUSER = new System.Windows.Forms.ToolStripStatusLabel();
             this.LblIp = new System.Windows.Forms.ToolStripStatusLabel();
@@ -231,8 +232,8 @@
             this.panelMantenimiento.Controls.Add(this.btnActualizaFProduccion);
             this.panelMantenimiento.Controls.Add(this.btnUsuarios);
             this.panelMantenimiento.Controls.Add(this.btnTerminal);
+            this.panelMantenimiento.Controls.Add(this.btnMuestreo);
             this.panelMantenimiento.Controls.Add(this.btnProducto);
-            this.panelMantenimiento.Controls.Add(this.btnImprimirCalibre);
             this.panelMantenimiento.Controls.Add(this.btnProductores);
             this.panelMantenimiento.Controls.Add(this.btnClientes);
             this.panelMantenimiento.Controls.Add(this.btnColaborador);
@@ -574,7 +575,6 @@
             // panelReportes
             // 
             this.panelReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.panelReportes.Controls.Add(this.button3);
             this.panelReportes.Controls.Add(this.button10);
             this.panelReportes.Controls.Add(this.button11);
             this.panelReportes.Controls.Add(this.btn_DescarteGral);
@@ -1015,6 +1015,17 @@
             this.PanelLogo.Size = new System.Drawing.Size(135, 53);
             this.PanelLogo.TabIndex = 1;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::_3mpacador4.Properties.Resources.logoagricola;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(135, 53);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // PanelFormularioHijo
             // 
             this.PanelFormularioHijo.Controls.Add(this.toolStrip1);
@@ -1083,6 +1094,14 @@
             this.txtServer.Name = "txtServer";
             this.txtServer.Size = new System.Drawing.Size(78, 20);
             this.txtServer.Text = "NameServer";
+            // 
+            // txtDatabase
+            // 
+            this.txtDatabase.Image = ((System.Drawing.Image)(resources.GetObject("txtDatabase.Image")));
+            this.txtDatabase.Name = "txtDatabase";
+            this.txtDatabase.Size = new System.Drawing.Size(74, 20);
+            this.txtDatabase.Text = "DataBase:";
+            this.txtDatabase.Click += new System.EventHandler(this.txtDatabase_Click);
             // 
             // lblDatabase
             // 
@@ -1160,6 +1179,21 @@
             // 
             // pictureBox1
             // 
+            this.btnMuestreo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnMuestreo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMuestreo.FlatAppearance.BorderSize = 0;
+            this.btnMuestreo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMuestreo.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMuestreo.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnMuestreo.Location = new System.Drawing.Point(0, 130);
+            this.btnMuestreo.Name = "btnMuestreo";
+            this.btnMuestreo.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnMuestreo.Size = new System.Drawing.Size(135, 26);
+            this.btnMuestreo.TabIndex = 24;
+            this.btnMuestreo.Text = "Muestreo";
+            this.btnMuestreo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMuestreo.UseVisualStyleBackColor = false;
+            this.btnMuestreo.Click += new System.EventHandler(this.btnMuestreo_Click_1);
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::_3mpacador4.Properties.Resources.logoagricola;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);

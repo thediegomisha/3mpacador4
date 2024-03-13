@@ -26,7 +26,7 @@ namespace _3mpacador4.Logica
         public string Extension { get => extension; set => extension = value; }
         public string Upload { get => upload; set => upload = value; }
         public string Fechasubida { get => fechasubida; set => fechasubida = value; }
-
+       
 
         public string AgregarDocumentos()
         {

@@ -396,5 +396,57 @@ namespace _3mpacador4.Presentacion
             ocultarSubMenu();
             AbrirFormularioHijo(new RptDescarteGeneral());
         }
+
+        private void Gerencia_Click(object sender, EventArgs e)
+        {
+            MostrarSubMenu(PanelGerencia);
+        }
+
+        private void rptDashBoard_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnProduccion_Click(object sender, EventArgs e)
+        {
+            MostrarSubMenu(PanelProduccion);
+        }
+
+        private void txtDatabase_Click(object sender, EventArgs e)
+        {
+            //ocultarSubMenu();
+            //FrmMod root = new FrmMod();
+            //root.ShowDialog();
+        }
+
+        private void btnCalidad_Click(object sender, EventArgs e)
+        {
+            MostrarSubMenu(PanelCalidad);
+        }
+
+        private void btnAutSalida_Click(object sender, EventArgs e)
+        {
+            //  ocultarSubMenu();
+            //  AbrirFormularioHijo(new FrmAutorizacion());
+
+
+            FrmAutorizacion salida = new FrmAutorizacion();
+            salida.ShowDialog();
+        }
+
+        private void btnPresen_cajas_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            var form = new frmpresen_cajas();
+            form.ShowDialog();
+        }
+
+       
+
+        private void btnMuestreo_Click_1(object sender, EventArgs e)
+        {
+            var form = new FMuestreo();
+            AbrirFormularioHijo(new FMuestreo());
+        }
     }
 }
