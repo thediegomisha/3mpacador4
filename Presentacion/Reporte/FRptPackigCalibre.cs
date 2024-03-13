@@ -42,8 +42,7 @@ namespace _3mpacador4.Presentacion.Reporte
             dgvpacking_calibre_cab.Rows.Clear();
             li_idlote = 0;
             ldc_kilos_descarte = 0; ldc_kilos_muestra = 0; ldc_porc_descarte = 0; ldc_porc_muestra = 0;
-            ldc_porc_ingresado = 0; ldc_porc_procesado = 0; ldc_kilos_ingresados = 0;
- 
+            ldc_porc_ingresado = 0; ldc_porc_procesado = 0; ldc_kilos_ingresados = 0; 
            
             var Lista_cab = LPacking_calibre.Lista_packing_calibre_cab(dtpf_produccion.Value.ToString("yyyy-MM-dd"));
             foreach (var f in Lista_cab)
@@ -187,7 +186,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 // PARA DESCARTE Y MUESTREO                
                 ldc_kilos_descarte = LConteo_manual.Kilos_Descarte(li_idlote);
-                ldc_kilos_muestra = LConteo_manual.Kilos_Muestra(li_idlote);
+           //     ldc_kilos_muestra = LConteo_manual.Kilos_Muestra(li_idlote);  ERROR EN ESTA LINEA
 
                 tbxkilos_descarte.Text = ldc_kilos_descarte.ToString("###,##0.00");
                 tbxkilos_muestra.Text = ldc_kilos_muestra.ToString("###,##0.00");

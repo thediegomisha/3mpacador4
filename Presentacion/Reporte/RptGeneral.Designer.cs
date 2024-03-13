@@ -70,9 +70,8 @@
             this.lblinfo1 = new System.Windows.Forms.Label();
             this.datalistado = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lblinfo3 = new System.Windows.Forms.Label();
+            this.lblinfo2 = new System.Windows.Forms.Label();
             this.datalistado2 = new System.Windows.Forms.DataGridView();
-            this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.lblcantjabas = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -87,7 +86,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lblinfo2 = new System.Windows.Forms.Label();
+            this.lblinfo3 = new System.Windows.Forms.Label();
             this.datalistado3 = new System.Windows.Forms.DataGridView();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -283,7 +282,7 @@
             this.panel1.Controls.Add(this.chkf_ing);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(2, 33);
+            this.panel1.Location = new System.Drawing.Point(2, 34);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1210, 86);
             this.panel1.TabIndex = 17;
@@ -535,24 +534,24 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.lblinfo3);
+            this.panel3.Controls.Add(this.lblinfo2);
             this.panel3.Controls.Add(this.datalistado2);
             this.panel3.Location = new System.Drawing.Point(2, 479);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(708, 156);
             this.panel3.TabIndex = 19;
             // 
-            // lblinfo3
+            // lblinfo2
             // 
-            this.lblinfo3.AutoSize = true;
-            this.lblinfo3.BackColor = System.Drawing.Color.Black;
-            this.lblinfo3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblinfo3.ForeColor = System.Drawing.Color.Yellow;
-            this.lblinfo3.Location = new System.Drawing.Point(244, 62);
-            this.lblinfo3.Name = "lblinfo3";
-            this.lblinfo3.Size = new System.Drawing.Size(234, 32);
-            this.lblinfo3.TabIndex = 94;
-            this.lblinfo3.Text = "SIN INFORMACION";
+            this.lblinfo2.AutoSize = true;
+            this.lblinfo2.BackColor = System.Drawing.Color.Black;
+            this.lblinfo2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblinfo2.ForeColor = System.Drawing.Color.Yellow;
+            this.lblinfo2.Location = new System.Drawing.Point(244, 62);
+            this.lblinfo2.Name = "lblinfo2";
+            this.lblinfo2.Size = new System.Drawing.Size(234, 32);
+            this.lblinfo2.TabIndex = 94;
+            this.lblinfo2.Text = "SIN INFORMACION";
             // 
             // datalistado2
             // 
@@ -569,23 +568,17 @@
             this.datalistado2.Size = new System.Drawing.Size(708, 156);
             this.datalistado2.TabIndex = 1;
             // 
-            // btnAceptar
-            // 
-            this.btnAceptar.Location = new System.Drawing.Point(30, 4);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 20;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(149, 4);
+            this.btnCerrar.BackColor = System.Drawing.Color.Teal;
+            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.ForeColor = System.Drawing.Color.White;
+            this.btnCerrar.Location = new System.Drawing.Point(138, 2);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCerrar.Size = new System.Drawing.Size(75, 31);
             this.btnCerrar.TabIndex = 21;
-            this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Text = "CERRAR";
+            this.btnCerrar.UseVisualStyleBackColor = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // lblcantjabas
@@ -710,24 +703,24 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.lblinfo2);
+            this.panel4.Controls.Add(this.lblinfo3);
             this.panel4.Controls.Add(this.datalistado3);
             this.panel4.Location = new System.Drawing.Point(722, 479);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(485, 156);
             this.panel4.TabIndex = 84;
             // 
-            // lblinfo2
+            // lblinfo3
             // 
-            this.lblinfo2.AutoSize = true;
-            this.lblinfo2.BackColor = System.Drawing.Color.Black;
-            this.lblinfo2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblinfo2.ForeColor = System.Drawing.Color.Yellow;
-            this.lblinfo2.Location = new System.Drawing.Point(118, 62);
-            this.lblinfo2.Name = "lblinfo2";
-            this.lblinfo2.Size = new System.Drawing.Size(234, 32);
-            this.lblinfo2.TabIndex = 95;
-            this.lblinfo2.Text = "SIN INFORMACION";
+            this.lblinfo3.AutoSize = true;
+            this.lblinfo3.BackColor = System.Drawing.Color.Black;
+            this.lblinfo3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblinfo3.ForeColor = System.Drawing.Color.Yellow;
+            this.lblinfo3.Location = new System.Drawing.Point(118, 62);
+            this.lblinfo3.Name = "lblinfo3";
+            this.lblinfo3.Size = new System.Drawing.Size(234, 32);
+            this.lblinfo3.TabIndex = 95;
+            this.lblinfo3.Text = "SIN INFORMACION";
             // 
             // datalistado3
             // 
@@ -799,13 +792,13 @@
             // btnBuscar
             // 
             this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(274, 2);
+            this.btnBuscar.Location = new System.Drawing.Point(252, 2);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 30);
+            this.btnBuscar.Size = new System.Drawing.Size(81, 32);
             this.btnBuscar.TabIndex = 97;
-            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.Text = "B&USCAR";
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -881,13 +874,13 @@
             // btnBuscarTodos
             // 
             this.btnBuscarTodos.BackColor = System.Drawing.Color.Blue;
-            this.btnBuscarTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscarTodos.ForeColor = System.Drawing.Color.White;
-            this.btnBuscarTodos.Location = new System.Drawing.Point(370, 0);
+            this.btnBuscarTodos.Location = new System.Drawing.Point(371, 1);
             this.btnBuscarTodos.Name = "btnBuscarTodos";
-            this.btnBuscarTodos.Size = new System.Drawing.Size(75, 34);
+            this.btnBuscarTodos.Size = new System.Drawing.Size(87, 35);
             this.btnBuscarTodos.TabIndex = 104;
-            this.btnBuscarTodos.Text = "Buscar Todos";
+            this.btnBuscarTodos.Text = "BUSCAR T&ODOS";
             this.btnBuscarTodos.UseVisualStyleBackColor = false;
             this.btnBuscarTodos.Click += new System.EventHandler(this.btnBuscarTodos_Click);
             // 
@@ -924,7 +917,6 @@
             this.Controls.Add(this.totalneto);
             this.Controls.Add(this.Label15);
             this.Controls.Add(this.btnCerrar);
-            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -986,7 +978,6 @@
         private System.Windows.Forms.DataGridView datalistado;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView datalistado2;
-        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCerrar;
         internal System.Windows.Forms.Label lblcantjabas;
         internal System.Windows.Forms.Label label17;
@@ -1020,8 +1011,8 @@
         internal System.Windows.Forms.Label LBLLL;
         private System.Windows.Forms.Button btnBuscarTodos;
         internal System.Windows.Forms.Label lblinfo1;
-        internal System.Windows.Forms.Label lblinfo3;
         internal System.Windows.Forms.Label lblinfo2;
+        internal System.Windows.Forms.Label lblinfo3;
         private System.Windows.Forms.DateTimePicker fechaPeriodo;
         private System.Windows.Forms.Label label8;
     }

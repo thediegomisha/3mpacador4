@@ -2,38 +2,33 @@
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
+using _3mpacador4.Logica;
 using Microsoft.VisualBasic;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
+using QuestPDF;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
-//using QuestPDF;
-//using QuestPDF.Infrastructure;
-//using Microsoft.Office.Interop.Excel;
-//using objExcel  = Microsoft.Office.Interop.Excel;
-//using Microsoft.Office.Interop.Excel;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
-    public partial class RptBoletaPesadoDetalle : Form
+   
+
+    public partial class RptBoletaPesadoDetalle : Form 
 
     {
-        //  String nombreArchivo = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         private string nombreArchivo = "C:/archivo.xlsx";
-
-        // Label[] labels = new Label[] { lblciente, label2, label3, label4, label5, label6 };
-
+        public string VarBolPesoDetalle { get; set; } = "";
+        private string[] _camptxtcadenas;
 
         public RptBoletaPesadoDetalle(string[] filaConDatos, DataTable data)
         {
             InitializeComponent();
             PrepGrid();
-            //contar();
-            //sumaneto();
-
-         //   Settings.License = LicenseType.Community;
-
+            
             if (filaConDatos.Length >= 5)
             {
                 lblnumlote.Text = filaConDatos[0];
@@ -47,19 +42,22 @@ namespace _3mpacador4.Presentacion.Reporte
                 lblproductor.Text = filaConDatos[7];
                 lblclp.Text = filaConDatos[8];
                 lblcantjabas.Text = filaConDatos[9];
-                totalneto.Text = filaConDatos[10];
-                // lblservicio  .Text = filaConDatos[4];
-                //   lblmetodo.Text = filaConDatos[2];
-
+                totalneto.Text = Convert.ToDecimal(filaConDatos[10]).ToString("N2");
                 datalistado.DataSource = data;
+                LBLCONTAR.Text = datalistado.RowCount.ToString();
                 ocultar_columnas2();
             }
         }
-        
-        private void RptBoletaPesado_Load(object sender, EventArgs e)
+
+        public RptBoletaPesadoDetalle()
         {
+         //   VariablePesoDetalle = lblnumlote.Text;
         }
 
+        public void RptBoletaPesado_Load(object sender, EventArgs e)
+        {
+          //
+        }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
@@ -159,12 +157,7 @@ namespace _3mpacador4.Presentacion.Reporte
             try
             {
                 var withBlock = datalistado;
-
-                //withBlock.Columns["LOTE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                //withBlock.Columns["LOTE"].Width = 0;
-
-                // establecer modo de ajuste
-                // .Columns("NOMBRE_PRODUCTO").DefaultCellStyle.WrapMode = DataGridViewTriState.True
+                
                 withBlock.Columns["T. JABA"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 withBlock.Columns["T. JABA"].Width = 50;
 
@@ -221,55 +214,6 @@ namespace _3mpacador4.Presentacion.Reporte
             // datalistado.Columns(3).Visible = False
         }
 
-        public void contar()
-        {
-            var contarfila = datalistado.RowCount - 1;
-            var contador = 0;
-            while (contarfila >= 0)
-            {
-                contador = contador + 1;
-                contarfila = contarfila - 1;
-            }
-
-            LBLCONTAR.Text = Strings.FormatNumber(contador, 0);
-        }
-
-        public void sumaneto()
-        {
-            try
-            {
-                double total = 0;
-                double cantjabas = 0;
-
-                foreach (DataGridViewRow row in datalistado.Rows)
-                {
-                    total += Convert.ToDouble(row.Cells["PESO NETO"].Value);
-                    cantjabas += Convert.ToDouble(row.Cells["CANT JABAS"].Value);
-                }
-
-                totalneto.Text = Strings.FormatNumber(total, 2);
-                lblcantjabas.Text = Strings.FormatNumber(cantjabas, 0);
-            }
-
-            catch (Exception ex)
-            {
-                Interaction.MsgBox(ex.Message, Constants.vbCritical);
-            }
-        }
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //  ExportarExcel( nombreArchivo);
-        }
-
-
-        private void RptBoletaPesadoDetalle_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //if (e.ke == (Char)Keys.Escape)
-            //    this.Close();
-        }
-
         private void RptBoletaPesadoDetalle_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape) Close();
@@ -287,8 +231,6 @@ namespace _3mpacador4.Presentacion.Reporte
             datalistado.Columns[7].Visible = false;
             datalistado.Columns[8].Visible = false;
         }
-
-        const string LogoPath = "logoagricola.png";
         private void GenerarPDF2()
         {
 
@@ -310,37 +252,107 @@ namespace _3mpacador4.Presentacion.Reporte
             }).GeneratePdf("Theathoq.pdf");
             Process.Start("Theathoq.pdf");
         }
-
         void CrearCabecera(IContainer container)
-        {
+        {      
+        const string LogoPath = (@"Resources\logoagricola.png");
+
             container.Column(col =>
             {
-                //   col.Item().Image(LogoPath);
+
+                col.Item().Row(
+                    row =>
+                    {
+                        row.RelativeItem().AlignLeft()
+
+                            .Row(rowitem =>
+                            {
+
+                                rowitem.AutoItem().Container().Width(4);
+                                rowitem.RelativeItem().Padding(0).Column(column =>
+                                {
+                                    column.Item().Container().Height(2);
+
+                                    if (File.Exists(LogoPath))
+                                    {
+                                        rowitem.AutoItem().Width(160).Height(80).Image(LogoPath);
+                                    }
+                                    
+                                });
+                            });
+
+                        row.RelativeItem().AlignCenter()
+
+                            .Row(rowitem =>
+                            {
+                                rowitem.AutoItem().Container().Width(4);
+                                rowitem.RelativeItem().Padding(2).Column(column =>
+                                {
+                                    column.Item().Container().Height(3);
+                                    column.Item().Row(row2 =>
+                                    {
+                                        row2.Spacing(8);
+                                        row2.AutoItem().Text($"RECEPCION DE MATERIA PRIMA").SemiBold().FontSize(12)
+                                            .FontColor(Colors.Orange.Medium);
+                                    });
+                                   
+                                });
+                            });
+                       
+
+
+                        row.RelativeItem().AlignRight().Width(150).Height(45)
+
+                            .Row(rowitem =>
+                            {
+                                //   rowitem.AutoItem().Width(65).Height(65).Image(QRCodeGenerator.GenerateQRCodeBytes("https://laptrinhvb.net/bai-viet/chuyen-de-csharp/---Csharp----Huong-dan-tao-ung-dung-dock-windows-giong-Taskbar/2f0a9a79ff1bafd4.html", 170, 170));
+                             //   rowitem.AutoItem().Width(65).Height(65).Image(GenerarCodigoQr.ReadImageFileToBytes(LogoPath));
+                                rowitem.AutoItem().Container().Width(4);
+                                rowitem.RelativeItem().Border(0.5f).Padding(1).Column(column =>
+                                {
+                                    column.Item().Container().Height(2);
+                                    column.Item().Row(row2 =>
+                                    {
+                                        row2.Spacing(12);
+                                        row2.AutoItem().Text($"CODIGO : AGS-PRO-R-01").FontSize(9).Italic();
+
+                                    });
+                                    column.Item().Row(row2 =>
+                                    {
+                                        row2.Spacing(12);
+                                        row2.AutoItem().Text($"FECHA: 27/10/2023").FontSize(9).Italic();
+
+                                    });
+                                    column.Item().Row(row2 =>
+                                    {
+                                        row2.Spacing(12);
+                                        row2.AutoItem().AlignCenter().Text($"VERSION : 02").FontSize(9).Italic();
+
+                                    });
+
+
+                                });
+                            });
+                    });
+
 
                 col.Item().Row(row =>
                 {
-                   
                     col.Item().Table(table =>
                     {
                         table.ColumnsDefinition(columns =>
                         {
-                         //  columns.RelativeColumn();
                             columns.RelativeColumn();
+                            //columns.RelativeColumn();
+                            //columns.RelativeColumn();
                         });
-
-                        row.RelativeItem().AlignLeft()
-                            .Row(rowitem =>
-                            {
-                                rowitem.AutoItem().Width(160).Height(80).Image(LogoPath);
-                                rowitem.AutoItem().AlignLeft().Text("    RECEPCION DE MATERIA PRIMA").SemiBold().FontSize(18)
-                                    .FontColor(Colors.Orange.Medium);
-                            });
-
+                        //table.Cell().AlignCenter().Text(String.Empty).SemiBold().FontSize(18)
+                        //    .FontColor(Colors.Black);
                         table.Cell().AlignCenter().Text("LOTE N° " + lblnumlote.Text).SemiBold().FontSize(18)
                             .FontColor(Colors.Black);
-                        // col.Spacing(10);
                     });
                 });
+
+               
                 col.Item().Table(table =>
                 {
                     table.ColumnsDefinition(columns =>
@@ -356,7 +368,7 @@ namespace _3mpacador4.Presentacion.Reporte
                     table.Cell().Text(lblguiaingreso.Text).FontSize(10).FontColor(Colors.Black).Bold();
 
                     table.Cell().Text("        Productor :");
-                    table.Cell().Text(lblproductor.Text).FontSize(10).FontColor(Colors.Black).Bold();
+                    table.Cell().Text(lblproductor.Text).FontSize(9).FontColor(Colors.Black).Bold();
                     table.Cell().Text("   RUC / DNI :");
                     table.Cell().Text(lblruc_dni.Text).FontSize(10).FontColor(Colors.Black).Bold();
 
@@ -382,8 +394,6 @@ namespace _3mpacador4.Presentacion.Reporte
                 });
             });
         }
-
-
         void CrearContenido(IContainer container)
         {
             container.Column(col =>
@@ -531,7 +541,6 @@ namespace _3mpacador4.Presentacion.Reporte
                 });
             });
         }
-
         private void CrearFooter(IContainer container)
         {
             container.Background("#8fce00").Padding(5).Row(row =>
@@ -550,10 +559,39 @@ namespace _3mpacador4.Presentacion.Reporte
                 });
             });
         }
-
         private void BtnExportar_Click(object sender, EventArgs e)
         {
             GenerarPDF2();
+        }
+        private void btnAdjuntos_Click(object sender, EventArgs e)
+        {            
+            VarBolPesoDetalle = lblnumlote.Text;
+
+       //     FrmDocAdjuntos frmDocAdjuntos = new FrmDocAdjuntos();
+
+            //AddOwnedForm(frmDocAdjuntos);
+            //frmDocAdjuntos.ShowDialog();
+        }
+
+        private void btnDescarte_Click(object sender, EventArgs e)
+        {
+           
+            _camptxtcadenas = new string[9];
+            _camptxtcadenas[0] = lblcliente.Text;
+            _camptxtcadenas[1] = lblproductor.Text;
+            _camptxtcadenas[2] = lblclp.Text;
+            _camptxtcadenas[3] = LBLCONTAR.Text;
+            _camptxtcadenas[4] = lblcantjabas.Text;
+            _camptxtcadenas[5] = totalneto.Text;
+            _camptxtcadenas[6] = lblnumlote.Text;
+            _camptxtcadenas[7] = lblvariedad.Text;
+            _camptxtcadenas[8] = lblguiaingreso.Text;
+
+
+            RptBolPesDetalDesc descarte = new RptBolPesDetalDesc(_camptxtcadenas);
+
+            AddOwnedForm(descarte);
+            descarte.ShowDialog();
         }
     }
 }

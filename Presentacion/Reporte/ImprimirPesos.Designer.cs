@@ -42,6 +42,8 @@
             this.lbljabas = new System.Windows.Forms.Label();
             this.lblpesoneto = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblnumlote = new System.Windows.Forms.Label();
+            this.lblusuario = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -195,11 +197,35 @@
             this.pictureBox1.TabIndex = 92;
             this.pictureBox1.TabStop = false;
             // 
+            // lblnumlote
+            // 
+            this.lblnumlote.AutoSize = true;
+            this.lblnumlote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblnumlote.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnumlote.Location = new System.Drawing.Point(428, 46);
+            this.lblnumlote.Name = "lblnumlote";
+            this.lblnumlote.Size = new System.Drawing.Size(79, 37);
+            this.lblnumlote.TabIndex = 104;
+            this.lblnumlote.Text = "LOTE";
+            // 
+            // lblusuario
+            // 
+            this.lblusuario.AutoSize = true;
+            this.lblusuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblusuario.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblusuario.Location = new System.Drawing.Point(379, 350);
+            this.lblusuario.Name = "lblusuario";
+            this.lblusuario.Size = new System.Drawing.Size(199, 37);
+            this.lblusuario.TabIndex = 105;
+            this.lblusuario.Text = "016-15235-01";
+            // 
             // ImprimirPesos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 450);
+            this.Controls.Add(this.lblusuario);
+            this.Controls.Add(this.lblnumlote);
             this.Controls.Add(this.lblvariedad);
             this.Controls.Add(this.lbljabas);
             this.Controls.Add(this.lblpesoneto);
@@ -221,6 +247,7 @@
             this.Name = "ImprimirPesos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.ImprimirPesos_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ImprimirPesos_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -242,5 +269,7 @@
         private System.Windows.Forms.Label lbljabas;
         private System.Windows.Forms.Label lblpesoneto;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblnumlote;
+        private System.Windows.Forms.Label lblusuario;
     }
 }

@@ -69,13 +69,15 @@
             // 
             // btnprobar
             // 
+            this.btnprobar.BackColor = System.Drawing.Color.Teal;
             this.btnprobar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnprobar.ForeColor = System.Drawing.Color.White;
             this.btnprobar.Location = new System.Drawing.Point(161, 217);
             this.btnprobar.Name = "btnprobar";
-            this.btnprobar.Size = new System.Drawing.Size(137, 24);
+            this.btnprobar.Size = new System.Drawing.Size(137, 33);
             this.btnprobar.TabIndex = 6;
             this.btnprobar.Text = "&Probar Conexion";
-            this.btnprobar.UseVisualStyleBackColor = true;
+            this.btnprobar.UseVisualStyleBackColor = false;
             this.btnprobar.Click += new System.EventHandler(this.btnprobar_Click);
             this.btnprobar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnprobar_KeyPress);
             // 
@@ -221,13 +223,15 @@
             // 
             // btnGuardar
             // 
+            this.btnGuardar.BackColor = System.Drawing.Color.Teal;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.Location = new System.Drawing.Point(112, 390);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(121, 24);
+            this.btnGuardar.Size = new System.Drawing.Size(121, 31);
             this.btnGuardar.TabIndex = 0;
             this.btnGuardar.Text = "&Guardar Conexion";
-            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // GroupBox2
@@ -274,20 +278,22 @@
             // 
             // btn_cerrar
             // 
+            this.btn_cerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cerrar.ForeColor = System.Drawing.Color.White;
             this.btn_cerrar.Location = new System.Drawing.Point(250, 390);
             this.btn_cerrar.Name = "btn_cerrar";
-            this.btn_cerrar.Size = new System.Drawing.Size(57, 24);
+            this.btn_cerrar.Size = new System.Drawing.Size(57, 31);
             this.btn_cerrar.TabIndex = 1;
             this.btn_cerrar.Text = "&Salir";
-            this.btn_cerrar.UseVisualStyleBackColor = true;
+            this.btn_cerrar.UseVisualStyleBackColor = false;
             this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
             // 
             // FrmConexion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(345, 424);
+            this.ClientSize = new System.Drawing.Size(331, 424);
             this.Controls.Add(this.PictureBox1);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.btnGuardar);

@@ -34,9 +34,7 @@ namespace _3mpacador4.Logica
             decimal li_rpta = 0;
             if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
-            string sql = @"select ifnull((sum(d.peso_bruto) - sum(d.tara_jaba * tj.numjabas + d.tara_pallet)),0) from tblticket_descarte d 
-                            inner join tbljabas tj on  tj.idjabas = d.cant_jabas
-                            where  d.idlote = @idlote";
+            string sql = @"select ifnull((sum(d.peso_bruto) - sum(d.tara_jaba * d.cant_jabas)),0) from tblticket_descarte d where  d.idlote = @idlote;";
             var cmd = new MySqlCommand(sql, ConexionGral.conexion);
             cmd.Parameters.AddWithValue("@idlote", li_idlote);
             li_rpta = Convert.ToDecimal(cmd.ExecuteScalar());
@@ -44,14 +42,14 @@ namespace _3mpacador4.Logica
             return li_rpta;
         }
 
-        public static decimal Kilos_Muestra(int li_idlote)
+        public static decimal Kilos_Muestra(/*int li_idlote*/)
         {
             decimal li_rpta = 0;
             if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
-            string sql = @"select ifnull(m.cantidad,0) from tblmuestreo m where m.idlote = @idlote";
+            string sql = @"select 8 from dual;";
             var cmd = new MySqlCommand(sql, ConexionGral.conexion);
-            cmd.Parameters.AddWithValue("@idlote", li_idlote);
+            //cmd.Parameters.AddWithValue("@idlote", li_idlote);
             li_rpta = Convert.ToDecimal(cmd.ExecuteScalar());
             ConexionGral.desconectar();
             return li_rpta;

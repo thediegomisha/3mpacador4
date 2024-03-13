@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IngresoPesos));
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -54,7 +55,7 @@
             this.cbProductor = new System.Windows.Forms.ComboBox();
             this.cboturno = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
+            this.lbllote = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.sppuerto = new System.IO.Ports.SerialPort(this.components);
@@ -101,7 +102,6 @@
             this.label32 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.lblpais1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.btnCerrarLote = new System.Windows.Forms.Button();
             this.label35 = new System.Windows.Forms.Label();
             this.txtcamion = new System.Windows.Forms.TextBox();
@@ -109,6 +109,9 @@
             this.cbMatCosecha = new System.Windows.Forms.ComboBox();
             this.label37 = new System.Windows.Forms.Label();
             this.PanelJabas = new System.Windows.Forms.Panel();
+            this.btnDocumentos = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.GroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
@@ -372,7 +375,7 @@
             this.cbProductor.Location = new System.Drawing.Point(17, 193);
             this.cbProductor.Margin = new System.Windows.Forms.Padding(4);
             this.cbProductor.Name = "cbProductor";
-            this.cbProductor.Size = new System.Drawing.Size(384, 25);
+            this.cbProductor.Size = new System.Drawing.Size(356, 25);
             this.cbProductor.TabIndex = 70;
             this.cbProductor.DropDownClosed += new System.EventHandler(this.cbProductor_DropDownClosed);
             // 
@@ -397,15 +400,15 @@
             this.label20.TabIndex = 67;
             this.label20.Text = "N° PLACA";
             // 
-            // label21
+            // lbllote
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(154, 62);
-            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(50, 17);
-            this.label21.TabIndex = 66;
-            this.label21.Text = "label21";
+            this.lbllote.AutoSize = true;
+            this.lbllote.Location = new System.Drawing.Point(154, 62);
+            this.lbllote.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbllote.Name = "lbllote";
+            this.lbllote.Size = new System.Drawing.Size(15, 17);
+            this.lbllote.TabIndex = 66;
+            this.lbllote.Text = "0";
             // 
             // label23
             // 
@@ -491,7 +494,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(442, 175);
+            this.label27.Location = new System.Drawing.Point(439, 175);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(111, 17);
@@ -791,9 +794,11 @@
             this.datalistado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datalistado.Location = new System.Drawing.Point(889, 116);
             this.datalistado.Name = "datalistado";
+            this.datalistado.ReadOnly = true;
             this.datalistado.RowHeadersVisible = false;
             this.datalistado.Size = new System.Drawing.Size(307, 298);
             this.datalistado.TabIndex = 106;
+            this.datalistado.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datalistado_CellContentDoubleClick);
             // 
             // label4
             // 
@@ -869,7 +874,7 @@
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(919, 33);
+            this.label34.Location = new System.Drawing.Point(895, 33);
             this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(125, 17);
@@ -879,26 +884,13 @@
             // lblpais1
             // 
             this.lblpais1.AutoSize = true;
-            this.lblpais1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblpais1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblpais1.ForeColor = System.Drawing.Color.Blue;
-            this.lblpais1.Location = new System.Drawing.Point(919, 55);
+            this.lblpais1.Location = new System.Drawing.Point(893, 55);
             this.lblpais1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblpais1.Name = "lblpais1";
-            this.lblpais1.Size = new System.Drawing.Size(66, 21);
+            this.lblpais1.Size = new System.Drawing.Size(0, 37);
             this.lblpais1.TabIndex = 115;
-            this.lblpais1.Text = "label35";
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(787, 270);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(96, 61);
-            this.button2.TabIndex = 116;
-            this.button2.Text = "IMPRIMIR";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnCerrarLote
             // 
@@ -979,11 +971,47 @@
             this.PanelJabas.Size = new System.Drawing.Size(333, 111);
             this.PanelJabas.TabIndex = 123;
             // 
+            // btnDocumentos
+            // 
+            this.btnDocumentos.BackColor = System.Drawing.Color.Teal;
+            this.btnDocumentos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDocumentos.ForeColor = System.Drawing.Color.White;
+            this.btnDocumentos.Location = new System.Drawing.Point(448, 420);
+            this.btnDocumentos.Name = "btnDocumentos";
+            this.btnDocumentos.Size = new System.Drawing.Size(102, 41);
+            this.btnDocumentos.TabIndex = 124;
+            this.btnDocumentos.Text = "Documentos";
+            this.btnDocumentos.UseVisualStyleBackColor = false;
+            this.btnDocumentos.Click += new System.EventHandler(this.btnDocumentos_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(392, 192);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(37, 26);
+            this.button3.TabIndex = 125;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(787, 270);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(96, 61);
+            this.button2.TabIndex = 116;
+            this.button2.Text = "IMPRIMIR";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // IngresoPesos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1208, 681);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnDocumentos);
             this.Controls.Add(this.cbMatCosecha);
             this.Controls.Add(this.PanelJabas);
             this.Controls.Add(this.label37);
@@ -1034,7 +1062,7 @@
             this.Controls.Add(this.cbProductor);
             this.Controls.Add(this.cboturno);
             this.Controls.Add(this.label20);
-            this.Controls.Add(this.label21);
+            this.Controls.Add(this.lbllote);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.cbcliente);
@@ -1055,6 +1083,7 @@
             this.Name = "IngresoPesos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.IngresoPesos_FormClosing);
             this.Load += new System.EventHandler(this.IngresoPesos_Load);
             this.Shown += new System.EventHandler(this.IngresoPesos_Shown);
             this.GroupBox3.ResumeLayout(false);
@@ -1088,10 +1117,9 @@
         internal System.Windows.Forms.Label label18;
         internal System.Windows.Forms.DateTimePicker DateTimePicker1;
         internal System.Windows.Forms.Label label19;
-        internal System.Windows.Forms.DateTimePicker fpesaje;
         internal System.Windows.Forms.ComboBox cboturno;
         internal System.Windows.Forms.Label label20;
-        internal System.Windows.Forms.Label label21;
+        internal System.Windows.Forms.Label lbllote;
         internal System.Windows.Forms.Label label23;
         internal System.Windows.Forms.Label label24;
         private System.IO.Ports.SerialPort sppuerto;
@@ -1125,7 +1153,6 @@
         internal System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkPesoManual;
         private System.Windows.Forms.TextBox txtPesoManual;
-        private System.Windows.Forms.DataGridView datalistado;
         private System.Windows.Forms.Label label4;
         internal System.Windows.Forms.Label lblcantjabas;
         internal System.Windows.Forms.Label label5;
@@ -1150,6 +1177,10 @@
         internal System.Windows.Forms.ComboBox cbMatCosecha;
         internal System.Windows.Forms.Label label37;
         private System.Windows.Forms.Panel PanelJabas;
+        private System.Windows.Forms.Button button3;
+        public System.Windows.Forms.Button btnDocumentos;
+        public System.Windows.Forms.DataGridView datalistado;
+        public System.Windows.Forms.DateTimePicker fpesaje;
     }
 }
 
