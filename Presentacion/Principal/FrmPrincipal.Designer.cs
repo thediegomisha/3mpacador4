@@ -36,13 +36,11 @@
             this.btnJornal = new System.Windows.Forms.Button();
             this.btnTrazabilidadP = new System.Windows.Forms.Button();
             this.panelMantenimiento = new System.Windows.Forms.Panel();
+            this.btnPresen_cajas = new System.Windows.Forms.Button();
             this.btnActualizaFProduccion = new System.Windows.Forms.Button();
-            this.btnImprimirCalibre = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnTerminal = new System.Windows.Forms.Button();
             this.btnProducto = new System.Windows.Forms.Button();
-            this.btnImprimirCalibre = new System.Windows.Forms.Button();
-    //        this.btnMuestreo = new System.Windows.Forms.Button();
             this.btnProductores = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnColaborador = new System.Windows.Forms.Button();
@@ -100,8 +98,7 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnImprimirCalibre = new System.Windows.Forms.Button();
-            this.btnPresen_cajas = new System.Windows.Forms.Button();
+            this.btnMuestreo = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
@@ -232,8 +229,8 @@
             this.panelMantenimiento.Controls.Add(this.btnActualizaFProduccion);
             this.panelMantenimiento.Controls.Add(this.btnUsuarios);
             this.panelMantenimiento.Controls.Add(this.btnTerminal);
+            this.panelMantenimiento.Controls.Add(this.btnMuestreo);
             this.panelMantenimiento.Controls.Add(this.btnProducto);
-            this.panelMantenimiento.Controls.Add(this.btnImprimirCalibre);
             this.panelMantenimiento.Controls.Add(this.btnProductores);
             this.panelMantenimiento.Controls.Add(this.btnClientes);
             this.panelMantenimiento.Controls.Add(this.btnColaborador);
@@ -243,6 +240,24 @@
             this.panelMantenimiento.Name = "panelMantenimiento";
             this.panelMantenimiento.Size = new System.Drawing.Size(135, 315);
             this.panelMantenimiento.TabIndex = 12;
+            // 
+            // btnPresen_cajas
+            // 
+            this.btnPresen_cajas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnPresen_cajas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPresen_cajas.FlatAppearance.BorderSize = 0;
+            this.btnPresen_cajas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPresen_cajas.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPresen_cajas.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnPresen_cajas.Location = new System.Drawing.Point(0, 234);
+            this.btnPresen_cajas.Name = "btnPresen_cajas";
+            this.btnPresen_cajas.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnPresen_cajas.Size = new System.Drawing.Size(135, 26);
+            this.btnPresen_cajas.TabIndex = 23;
+            this.btnPresen_cajas.Text = "Presentacion Cajas";
+            this.btnPresen_cajas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPresen_cajas.UseVisualStyleBackColor = false;
+            this.btnPresen_cajas.Click += new System.EventHandler(this.btnPresen_cajas_Click);
             // 
             // btnActualizaFProduccion
             // 
@@ -261,23 +276,6 @@
             this.btnActualizaFProduccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnActualizaFProduccion.UseVisualStyleBackColor = false;
             this.btnActualizaFProduccion.Click += new System.EventHandler(this.btnActualizaFProduccion_Click);
-            // 
-            // btnImprimirCalibre
-            // 
-            this.btnImprimirCalibre.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnImprimirCalibre.FlatAppearance.BorderSize = 0;
-            this.btnImprimirCalibre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimirCalibre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnImprimirCalibre.ForeColor = System.Drawing.Color.LightGray;
-            this.btnImprimirCalibre.Location = new System.Drawing.Point(0, 132);
-            this.btnImprimirCalibre.Name = "btnImprimirCalibre";
-            this.btnImprimirCalibre.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnImprimirCalibre.Size = new System.Drawing.Size(137, 33);
-            this.btnImprimirCalibre.TabIndex = 21;
-            this.btnImprimirCalibre.Text = "Imprimir Calibre";
-            this.btnImprimirCalibre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimirCalibre.UseVisualStyleBackColor = true;
-            this.btnImprimirCalibre.Click += new System.EventHandler(this.btnImprimirCalibre_Click_1);
             // 
             // btnUsuarios
             // 
@@ -323,7 +321,7 @@
             this.btnProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProducto.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProducto.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnProducto.Location = new System.Drawing.Point(0, 130);
+            this.btnProducto.Location = new System.Drawing.Point(0, 104);
             this.btnProducto.Name = "btnProducto";
             this.btnProducto.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnProducto.Size = new System.Drawing.Size(135, 26);
@@ -332,40 +330,6 @@
             this.btnProducto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProducto.UseVisualStyleBackColor = false;
             this.btnProducto.Click += new System.EventHandler(this.btnProducto_Click);
-            // 
-            // btnMuestreo
-            // 
-            //this.btnMuestreo.Dock = System.Windows.Forms.DockStyle.Top;
-            //this.btnMuestreo.FlatAppearance.BorderSize = 0;
-            //this.btnMuestreo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            //this.btnMuestreo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            //this.btnMuestreo.ForeColor = System.Drawing.Color.LightGray;
-            //this.btnMuestreo.Location = new System.Drawing.Point(0, 132);
-            //this.btnMuestreo.Name = "btnMuestreo";
-            //this.btnMuestreo.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            //this.btnMuestreo.Size = new System.Drawing.Size(137, 33);
-            //this.btnMuestreo.TabIndex = 21;
-            //this.btnMuestreo.Text = "Muestreo";
-            //this.btnMuestreo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            //this.btnMuestreo.UseVisualStyleBackColor = true;
-            //this.btnMuestreo.Click += new System.EventHandler(this.btnMuestreo_Click);
-            // 
-            // btnImprimirCalibre
-            // 
-            this.btnImprimirCalibre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.btnImprimirCalibre.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnImprimirCalibre.FlatAppearance.BorderSize = 0;
-            this.btnImprimirCalibre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimirCalibre.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimirCalibre.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnImprimirCalibre.Location = new System.Drawing.Point(0, 104);
-            this.btnImprimirCalibre.Name = "btnImprimirCalibre";
-            this.btnImprimirCalibre.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnImprimirCalibre.Size = new System.Drawing.Size(135, 26);
-            this.btnImprimirCalibre.TabIndex = 21;
-            this.btnImprimirCalibre.Text = "Imprimir Calibre";
-            this.btnImprimirCalibre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimirCalibre.UseVisualStyleBackColor = false;
             // 
             // btnProductores
             // 
@@ -591,7 +555,6 @@
             // panelReportes
             // 
             this.panelReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.panelReportes.Controls.Add(this.button3);
             this.panelReportes.Controls.Add(this.button10);
             this.panelReportes.Controls.Add(this.button11);
             this.panelReportes.Controls.Add(this.button12);
@@ -601,23 +564,6 @@
             this.panelReportes.Name = "panelReportes";
             this.panelReportes.Size = new System.Drawing.Size(135, 131);
             this.panelReportes.TabIndex = 9;
-            // 
-            // button3
-            // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.LightGray;
-            this.button3.Location = new System.Drawing.Point(0, 104);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button3.Size = new System.Drawing.Size(135, 26);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Kardex Lote";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button10
             // 
@@ -1168,40 +1114,23 @@
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
             // 
-            // btnImprimirCalibre
+            // btnMuestreo
             // 
-            this.btnImprimirCalibre.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnImprimirCalibre.FlatAppearance.BorderSize = 0;
-            this.btnImprimirCalibre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimirCalibre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnImprimirCalibre.ForeColor = System.Drawing.Color.LightGray;
-            this.btnImprimirCalibre.Location = new System.Drawing.Point(0, 132);
-            this.btnImprimirCalibre.Name = "btnImprimirCalibre";
-            this.btnImprimirCalibre.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnImprimirCalibre.Size = new System.Drawing.Size(137, 33);
-            this.btnImprimirCalibre.TabIndex = 21;
-            this.btnImprimirCalibre.Text = "Imprimir Calibre";
-            this.btnImprimirCalibre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimirCalibre.UseVisualStyleBackColor = true;
-            this.btnImprimirCalibre.Click += new System.EventHandler(this.btnImprimirCalibre_Click_1);
-            // 
-            // btnPresen_cajas
-            // 
-            this.btnPresen_cajas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.btnPresen_cajas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPresen_cajas.FlatAppearance.BorderSize = 0;
-            this.btnPresen_cajas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPresen_cajas.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPresen_cajas.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnPresen_cajas.Location = new System.Drawing.Point(0, 234);
-            this.btnPresen_cajas.Name = "btnPresen_cajas";
-            this.btnPresen_cajas.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnPresen_cajas.Size = new System.Drawing.Size(135, 26);
-            this.btnPresen_cajas.TabIndex = 23;
-            this.btnPresen_cajas.Text = "Presentacion Cajas";
-            this.btnPresen_cajas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPresen_cajas.UseVisualStyleBackColor = false;
-            this.btnPresen_cajas.Click += new System.EventHandler(this.btnPresen_cajas_Click);
+            this.btnMuestreo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnMuestreo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMuestreo.FlatAppearance.BorderSize = 0;
+            this.btnMuestreo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMuestreo.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMuestreo.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnMuestreo.Location = new System.Drawing.Point(0, 130);
+            this.btnMuestreo.Name = "btnMuestreo";
+            this.btnMuestreo.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnMuestreo.Size = new System.Drawing.Size(135, 26);
+            this.btnMuestreo.TabIndex = 24;
+            this.btnMuestreo.Text = "Muestreo";
+            this.btnMuestreo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMuestreo.UseVisualStyleBackColor = false;
+            this.btnMuestreo.Click += new System.EventHandler(this.btnMuestreo_Click_1);
             // 
             // FrmPrincipal
             // 
@@ -1306,9 +1235,9 @@
         private System.Windows.Forms.Button btnIngDocumentos;
         private System.Windows.Forms.Button btnCalidad;
         private System.Windows.Forms.Button btnAutSalida;
-        private System.Windows.Forms.Button btnImprimirCalibre;
   //      private System.Windows.Forms.Button btnImprimirCalibre;
         public System.Windows.Forms.ToolStripStatusLabel LBLUSUARIO;
         private System.Windows.Forms.Button btnPresen_cajas;
+        private System.Windows.Forms.Button btnMuestreo;
     }
 }

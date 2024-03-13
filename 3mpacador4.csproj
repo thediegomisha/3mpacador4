@@ -177,6 +177,7 @@
     <Compile Include="Logica\GenerarCodigoQr.cs" />
     <Compile Include="Logica\LConteo_manual.cs" />
     <Compile Include="Logica\LGrupo_turno.cs" />
+    <Compile Include="Logica\LMuestreo.cs" />
     <Compile Include="Logica\LPacking_calibre.cs" />
     <Compile Include="Logica\LPrograma_proceso.cs" />
     <Compile Include="Logica\RawPrinterHelper.cs" />
@@ -432,6 +433,12 @@
     <Compile Include="Presentacion\Trazabilidad\FBuscar_proceso.Designer.cs">
       <DependentUpon>FBuscar_proceso.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Trazabilidad\FMuestreo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Trazabilidad\FMuestreo.Designer.cs">
+      <DependentUpon>FMuestreo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Trazabilidad\FPalletFecha.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -644,6 +651,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Trazabilidad\FBuscar_proceso.resx">
       <DependentUpon>FBuscar_proceso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Trazabilidad\FMuestreo.resx">
+      <DependentUpon>FMuestreo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Trazabilidad\FPalletFecha.resx">
       <DependentUpon>FPalletFecha.cs</DependentUpon>
