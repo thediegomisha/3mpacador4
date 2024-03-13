@@ -23,6 +23,8 @@ namespace _3mpacador4.Presentacion.Reporte
         public FRptPackigCalibre()
         {
             InitializeComponent();
+
+            this.Load += FRptPackigCalibre_Load;
         }
 
         public static string ls_ruta_pdf = "", ls_fecha_produccion = "", ls_desc_lote = "";
@@ -63,6 +65,14 @@ namespace _3mpacador4.Presentacion.Reporte
         private void btnbuscar_trab_Click(object sender, EventArgs e)
         {
             Mostrar_Cabecera();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            frmdetallelote lote = new frmdetallelote();
+
+            AddOwnedForm(lote);
+            lote.ShowDialog();
         }
 
         private void dgvpacking_calibre_cab_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

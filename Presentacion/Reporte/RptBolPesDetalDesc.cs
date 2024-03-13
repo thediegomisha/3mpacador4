@@ -25,7 +25,7 @@ namespace _3mpacador4.Presentacion.Reporte
         private string nombreArchivo = "C:/archivo.xlsx";
         private string[] _camptxtcadenas;
 
-        public RptBolPesDetalDesc(string[] camptxtcadenas)
+        public RptBolPesDetalDesc(string[] camptxtcadenas, DataTable datosdescarte)
         {
             InitializeComponent();
             PrepGrid();
@@ -36,13 +36,20 @@ namespace _3mpacador4.Presentacion.Reporte
                 lblcliente.Text = _camptxtcadenas[0];
                 lblproductor.Text = _camptxtcadenas[1];
                 lblclp.Text = _camptxtcadenas[2];
-                LBLCONTAR.Text = _camptxtcadenas[3];
-                lblcantjabas.Text = _camptxtcadenas[4];
-                totalneto.Text = _camptxtcadenas[5];
+           //     LBLCONTAR.Text = _camptxtcadenas[3];
+          //      lblcantjabas.Text = _camptxtcadenas[4];
+         //       totalneto.Text = _camptxtcadenas[5];
                 lblnumlote.Text = _camptxtcadenas[6];
                 lblvariedad.Text = _camptxtcadenas[7];
                 lblguiaingreso.Text = _camptxtcadenas[8];
+                datalistado.DataSource = datosdescarte;
+                LBLCONTAR.Text = datalistado.RowCount.ToString();
+                //    lblcantjabas.Text = datosdescarte.Rows[0][1].ToString();
+                //  totalneto.Text = datosdescarte.Rows[0][2].ToString();
+                datalistado.Columns[0].Visible = false;
+                lblfecha.Text = datosdescarte.Rows[0][0].ToString();
             }
+            sumaneto();
         }
 
         public RptBolPesDetalDesc()
@@ -53,6 +60,28 @@ namespace _3mpacador4.Presentacion.Reporte
         private void RptBoletaPesado_Load(object sender, EventArgs e)
         {
         }
+        public void sumaneto()
+        {
+            try
+            {
+                double total = 0;
+                double cantjabas = 0;
+
+                foreach (DataGridViewRow row in datalistado.Rows)
+                {
+                    total += Convert.ToDouble(row.Cells["PESO NETO"].Value);
+                    cantjabas += Convert.ToDouble(row.Cells["CANT JABAS"].Value);
+                }
+
+                totalneto.Text = Strings.FormatNumber(total, 2);
+                lblcantjabas.Text = Strings.FormatNumber(cantjabas, 0);
+            }
+            catch (Exception ex)
+            {
+                Interaction.MsgBox(ex.Message, Constants.vbCritical);
+            }
+        }
+
 
         private void PrepGrid()
         {
@@ -351,6 +380,11 @@ namespace _3mpacador4.Presentacion.Reporte
                         columns.RelativeColumn();
                         
                     });
+                    table.Cell().Text(string.Empty);
+                    table.Cell().Text(string.Empty);
+                    table.Cell().Text(string.Empty);
+                    table.Cell().Text(string.Empty);
+
                     table.Cell().Text("        Cliente :");
                     table.Cell().Text(lblcliente.Text).FontSize(10).FontColor(Colors.Black).Bold();
 
@@ -365,6 +399,9 @@ namespace _3mpacador4.Presentacion.Reporte
 
                     table.Cell().Text("        Variedad :");
                     table.Cell().Text(lblvariedad.Text).FontSize(10).FontColor(Colors.Black).Bold();
+
+                    table.Cell().Text("        Fecha :");
+                    table.Cell().Text(lblfecha.Text).FontSize(10).FontColor(Colors.Black).Bold();
                 });
             });
         }
@@ -418,28 +455,28 @@ namespace _3mpacador4.Presentacion.Reporte
                         columns.RelativeColumn(1);
                         columns.RelativeColumn(1);
                         columns.RelativeColumn(1);
-                        columns.RelativeColumn(1);
-                        columns.RelativeColumn(1);
+                      //  columns.RelativeColumn(1);
+                        //columns.RelativeColumn(1);
 
                     });
 
                     table.Header(header =>
-                    {
-                        //foreach (DataGridViewRow row in datalistado.Rows)
-                        //{
-                        header.Cell().Element(CellStyle).Text("T. JABA").FontSize(10).FontColor(Colors.White)
-                            .Bold();
-                        header.Cell().Element(CellStyle).Text("T. PARIH").FontSize(10).FontColor(Colors.White)
-                            .Bold();
-                        header.Cell().Element(CellStyle).Text("CANT JABAS").FontSize(10).FontColor(Colors.White)
+                        {
+                            //foreach (DataGridViewRow row in datalistado.Rows)
+                            //{
+                            header.Cell().Element(CellStyle).Text("T.JABA").FontSize(10).FontColor(Colors.White)
+                                .Bold();
+                            header.Cell().Element(CellStyle).Text("T. PARIH").FontSize(10).FontColor(Colors.White)
+                                .Bold();
+                            header.Cell().Element(CellStyle).Text("CANT JABAS").FontSize(10).FontColor(Colors.White)
                             .Bold();
                         header.Cell().Element(CellStyle).Text("PESO BRUTO").FontSize(10).FontColor(Colors.White)
                             .Bold();
-                        header.Cell().Element(CellStyle).Text("PESO JABAS").FontSize(10).FontColor(Colors.White)
+                            //header.Cell().Element(CellStyle).Text("PESO JABAS").FontSize(10).FontColor(Colors.White)
+                            //    .Bold();
+                            header.Cell().Element(CellStyle).Text("PESO NETO").FontSize(10).FontColor(Colors.White)
                             .Bold();
-                        header.Cell().Element(CellStyle).Text("PESO NETO").FontSize(10).FontColor(Colors.White)
-                            .Bold();
-                        header.Cell().Element(CellStyle).Text("PROM").FontSize(10).FontColor(Colors.White).Bold();
+                        //header.Cell().Element(CellStyle).Text("PROM").FontSize(10).FontColor(Colors.White).Bold();
 
                         QuestPDF.Infrastructure.IContainer
                             CellStyle(QuestPDF.Infrastructure.IContainer containers) =>
@@ -454,9 +491,9 @@ namespace _3mpacador4.Presentacion.Reporte
                         table.Cell().Element(CellStyle2).Text(row.Cells["T.PARIH"].Value).FontSize(9);
                         table.Cell().Element(CellStyle2).Text(row.Cells["CANT JABAS"].Value).FontSize(9);
                         table.Cell().Element(CellStyle2).Text(row.Cells["PESO BRUTO"].Value).FontSize(9);
-                        table.Cell().Element(CellStyle2).Text(row.Cells["PESO JABAS"].Value).FontSize(9);
+                        //table.Cell().Element(CellStyle2).Text(row.Cells["PESO JABAS"].Value).FontSize(9);
                         table.Cell().Element(CellStyle2).Text(row.Cells["PESO NETO"].Value).FontSize(9);
-                        table.Cell().Element(CellStyle2).Text(row.Cells["PROMEDIO"].Value).FontSize(9);
+                        //table.Cell().Element(CellStyle2).Text(row.Cells["PROMEDIO"].Value).FontSize(9);
 
 
                         QuestPDF.Infrastructure.IContainer CellStyle2(QuestPDF.Infrastructure.IContainer containers) => DefaultCellStyle2(containers, Colors.Blue.Medium);
@@ -477,6 +514,13 @@ namespace _3mpacador4.Presentacion.Reporte
                         columns.RelativeColumn();
 
                     });
+
+                    table.Cell().Text(String.Empty);
+                    table.Cell().Text(String.Empty);
+                    table.Cell().Text(String.Empty);
+                    table.Cell().Text(String.Empty);
+                    table.Cell().Text(String.Empty);
+                    table.Cell().Text(String.Empty);
 
                     table.Cell().Text("Items");
                     table.Cell().Text($"{datalistado.RowCount}").FontSize(12).FontColor(Colors.Black).Bold();
@@ -539,7 +583,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void BtnExportar_Click(object sender, EventArgs e)
         {
-            GenerarPDF2();
+          //  GenerarPDF2();
         }
 
         private void BtnImprimir_Click(object sender, EventArgs e)

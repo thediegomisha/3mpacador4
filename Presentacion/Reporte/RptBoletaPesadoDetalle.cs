@@ -23,8 +23,9 @@ namespace _3mpacador4.Presentacion.Reporte
         private string nombreArchivo = "C:/archivo.xlsx";
         public string VarBolPesoDetalle { get; set; } = "";
         private string[] _camptxtcadenas;
+        public DataTable datosdescarte;
 
-        public RptBoletaPesadoDetalle(string[] filaConDatos, DataTable data)
+        public RptBoletaPesadoDetalle(string[] filaConDatos, DataTable data, DataTable datadescarte)
         {
             InitializeComponent();
             PrepGrid();
@@ -44,6 +45,7 @@ namespace _3mpacador4.Presentacion.Reporte
                 lblcantjabas.Text = filaConDatos[9];
                 totalneto.Text = Convert.ToDecimal(filaConDatos[10]).ToString("N2");
                 datalistado.DataSource = data;
+                datosdescarte = datadescarte;
                 LBLCONTAR.Text = datalistado.RowCount.ToString();
                 ocultar_columnas2();
             }
@@ -249,8 +251,8 @@ namespace _3mpacador4.Presentacion.Reporte
                     pagina.Content().Padding(20).Element(CrearContenido);
                     pagina.Footer().Element(CrearFooter);
                 });
-            }).GeneratePdf("Theathoq.pdf");
-            Process.Start("Theathoq.pdf");
+            }).GeneratePdf("RptBoletaPesadoDetalle_TheAthoq.pdf");
+            Process.Start("RptBoletaPesadoDetalle_TheAthoq.pdf");
         }
         void CrearCabecera(IContainer container)
         {      
@@ -557,8 +559,20 @@ namespace _3mpacador4.Presentacion.Reporte
                     text.Span(" / ");
                     text.TotalPages();
                 });
+
+                //row.RelativeItem().AlignRight()
+                //        .Row(rowitem =>
+                //        {
+                //            rowitem.AutoItem().AlignRight().Text("USER : " + Login.nombre1 + " " + Login.apaterno1).SemiBold().FontSize(10)
+                //                .FontColor(Colors.Red.Medium);
+
+                //        });
+             //   row.RelativeItem().AlignLeft().Text("Copyright © 2024 - Todos los derechos reservados");                
             });
+           
         }
+
+
         private void BtnExportar_Click(object sender, EventArgs e)
         {
             GenerarPDF2();
@@ -574,8 +588,7 @@ namespace _3mpacador4.Presentacion.Reporte
         }
 
         private void btnDescarte_Click(object sender, EventArgs e)
-        {
-           
+        {           
             _camptxtcadenas = new string[9];
             _camptxtcadenas[0] = lblcliente.Text;
             _camptxtcadenas[1] = lblproductor.Text;
@@ -587,8 +600,11 @@ namespace _3mpacador4.Presentacion.Reporte
             _camptxtcadenas[7] = lblvariedad.Text;
             _camptxtcadenas[8] = lblguiaingreso.Text;
 
+           var datosdescartados = datosdescarte;
 
-            RptBolPesDetalDesc descarte = new RptBolPesDetalDesc(_camptxtcadenas);
+
+
+            RptBolPesDetalDesc descarte = new RptBolPesDetalDesc(_camptxtcadenas, datosdescarte);
 
             AddOwnedForm(descarte);
             descarte.ShowDialog();

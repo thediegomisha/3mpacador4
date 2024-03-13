@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Linq;
+using QuestPDF;
+using QuestPDF.Fluent;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
@@ -93,6 +95,11 @@ namespace _3mpacador4.Presentacion.Reporte
 
                         File.WriteAllBytes(ubicacioncompleta, item.Documento);
                         Process.Start(ubicacioncompleta);
+
+                       
+
+
+
                     }
                 }
             }

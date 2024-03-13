@@ -43,6 +43,9 @@ namespace _3mpacador4
         public IngresoPesos()
         {
             InitializeComponent();
+
+            this.Load += IngresoPesos_Load;
+
             conectarserial();
             cargarinicial();
 

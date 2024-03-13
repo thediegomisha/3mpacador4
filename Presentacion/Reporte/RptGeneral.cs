@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using _3mpacador4.Logica;
 using Devart.Data.MySql;
 using Microsoft.VisualBasic;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
 using Constants = Microsoft.VisualBasic.Constants;
 using DataTable = System.Data.DataTable;
 using Font = System.Drawing.Font;
@@ -37,10 +42,10 @@ namespace _3mpacador4.Presentacion.Reporte
             mostrarclientes();
             //mostrarconsulta();
             mostrarproductor();
-            mostrarAcopiador();
-            mostrarVariedad();
-            mostrarMetodo();
-            mostrarDestino();
+        //    mostrarAcopiador();
+         //   mostrarVariedad();
+        //    mostrarMetodo();
+         //   mostrarDestino();
             lblpuntero.Visible = false;
         }
 
@@ -745,6 +750,41 @@ namespace _3mpacador4.Presentacion.Reporte
             {
             }
         }
+        private void tamanio2()
+        {
+            try
+            {
+                var withBlock = datalistado2;
+
+                withBlock.Columns["T. JABA"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                withBlock.Columns["T. JABA"].Width = 80;
+
+                withBlock.Columns["T.PARIH"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                withBlock.Columns["T.PARIH"].Width = 80;
+
+                withBlock.Columns["CANT JABAS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                withBlock.Columns["CANT JABAS"].Width = 70;
+
+                withBlock.Columns["PESO BRUTO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                withBlock.Columns["PESO BRUTO"].DefaultCellStyle.Format = "#.#0";
+                // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
+                withBlock.Columns["PESO BRUTO"].Width = 90;
+
+
+                withBlock.Columns["PESO NETO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                withBlock.Columns["PESO NETO"].DefaultCellStyle.Format = "#.#0";
+                // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
+                withBlock.Columns["PESO NETO"].Width = 80;
+
+                withBlock.Columns["PROMEDIO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
+                withBlock.Columns["PROMEDIO"].Width = 90;
+            }
+            catch (Exception)
+            {
+                //  throw;
+            }
+        }
 
         private void ocultar_columnas()
         {
@@ -806,7 +846,7 @@ namespace _3mpacador4.Presentacion.Reporte
                     {
                         var dr = datos.NewRow();
                         withBlock.DataSource = datos;
-                        //tamanio();
+                        tamanio2();
                         ocultar_columnas2();
                         //actualizardatos();
                         sumaneto();
@@ -837,7 +877,6 @@ namespace _3mpacador4.Presentacion.Reporte
         private DataTable mostrarconsulta3()
         {
             var datos = new DataTable();
-
             MySqlCommand comando = null;
             try
             {
@@ -859,6 +898,7 @@ namespace _3mpacador4.Presentacion.Reporte
                     {
                         var dr = datos.NewRow();
                         withBlock.DataSource = datos;
+                        ocultar_columnas3();
                         sumanetodescarte();
                         contardescarte();
 
@@ -1105,6 +1145,24 @@ namespace _3mpacador4.Presentacion.Reporte
             // datalistado.Columns(3).Visible = False
         }
 
+        private void ocultar_columnas3()
+        {
+            datalistado3.Columns[0].Visible = false;
+            //datalistado2.Columns[1].Visible = false;
+            //datalistado2.Columns[2].Visible = false;
+            //datalistado2.Columns[3].Visible = false;
+            //datalistado2.Columns[4].Visible = false;
+            //datalistado2.Columns[5].Visible = false;
+            //datalistado2.Columns[6].Visible = false;
+            //datalistado2.Columns[7].Visible = false;
+            //datalistado2.Columns[8].Visible = false;
+            //this.datalistado.Columns[0].Visible = false;
+            //this.datalistado.Columns[0].Visible = false;
+            //this.datalistado.Columns[0].Visible = false;
+
+            // datalistado.Columns(3).Visible = False
+        }
+
         public void contar()
         {
             var contarfila = datalistado2.RowCount - 1;
@@ -1255,22 +1313,358 @@ namespace _3mpacador4.Presentacion.Reporte
                 for (var i = 0; i < filasseleccionada.Cells.Count; i++)
                     filaConDatos[i] = filasseleccionada.Cells[i].Value.ToString();
 
+                var resultadosingresos = mostrarconsulta2();
+                var resultadosdescarte = mostrarconsulta3();                           
 
-                var resultados = mostrarconsulta2();
-
-                //var filasseleccionada3 = datalistado3.Rows[e.RowIndex];
-                //var filaConDatos3 = new string[filasseleccionada3.Cells.Count];
-
-                //for (var i1 = 0; i1 < filasseleccionada3.Cells.Count; i1++)
-                //    filaConDatos3[i1] = filasseleccionada3.Cells[i1].Value.ToString();
-                //var resultados3 = mostrarconsulta3();
-
-                var FH = new RptBoletaPesadoDetalle(filaConDatos,  resultados);
+                var FH = new RptBoletaPesadoDetalle(filaConDatos,  resultadosingresos, resultadosdescarte);
 
                 FH.ShowDialog();
             }
         }
 
-     
+        private void BtnImprimir_Click(object sender, EventArgs e)
+        {
+            GenerarPDF2();
+        }
+
+        private void GenerarPDF2()
+        {
+
+            QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+
+            Document.Create(contenedor =>
+            {
+                contenedor.Page(pagina =>
+                {
+                    pagina.Size(PageSizes.A4);
+                    pagina.Size(PageSizes.A4.Portrait());
+                    pagina.Margin(2, QuestPDF.Infrastructure.Unit.Millimetre);
+                    pagina.DefaultTextStyle(x => x.FontSize(14));
+
+                    pagina.Header().Element(CrearCabecera);
+                    pagina.Content().Padding(20).Element(CrearContenido);
+                    pagina.Footer().Element(CrearFooter);
+                });
+            }).GeneratePdf("RptGeneral_TheAthoq.pdf");
+            Process.Start("RptGeneral_TheAthoq.pdf");
+        }
+        void CrearCabecera(IContainer container)
+        {
+            const string LogoPath = (@"Resources\logoagricola.png");
+
+            container.Column(col =>
+            {
+
+                col.Item().Row(
+                    row =>
+                    {
+                        row.RelativeItem().AlignLeft()
+
+                            .Row(rowitem =>
+                            {
+
+                                rowitem.AutoItem().Container().Width(4);
+                                rowitem.RelativeItem().Padding(0).Column(column =>
+                                {
+                                    column.Item().Container().Height(2);
+
+                                    if (File.Exists(LogoPath))
+                                    {
+                                        rowitem.AutoItem().Width(160).Height(80).Image(LogoPath);
+                                    }
+
+                                });
+                            });
+
+                        row.RelativeItem().AlignCenter()
+
+                            .Row(rowitem =>
+                            {
+                                rowitem.AutoItem().Container().Width(4);
+                                rowitem.RelativeItem().Padding(2).Column(column =>
+                                {
+                                    column.Item().Container().Height(3);
+                                    column.Item().Row(row2 =>
+                                    {
+                                        row2.Spacing(8);
+                                        row2.AutoItem().Text($"RECEPCION DE MATERIA PRIMA").SemiBold().FontSize(12)
+                                            .FontColor(Colors.Orange.Medium);
+                                    });
+
+                                });
+                            });
+
+
+
+                        row.RelativeItem().AlignRight().Width(150).Height(45)
+
+                            .Row(rowitem =>
+                            {
+                                //   rowitem.AutoItem().Width(65).Height(65).Image(QRCodeGenerator.GenerateQRCodeBytes("https://laptrinhvb.net/bai-viet/chuyen-de-csharp/---Csharp----Huong-dan-tao-ung-dung-dock-windows-giong-Taskbar/2f0a9a79ff1bafd4.html", 170, 170));
+                                //   rowitem.AutoItem().Width(65).Height(65).Image(GenerarCodigoQr.ReadImageFileToBytes(LogoPath));
+                                rowitem.AutoItem().Container().Width(4);
+                                rowitem.RelativeItem().Border(0.5f).Padding(1).Column(column =>
+                                {
+                                    column.Item().Container().Height(2);
+                                    column.Item().Row(row2 =>
+                                    {
+                                        row2.Spacing(12);
+                                        row2.AutoItem().Text($"CODIGO : AGS-PRO-R-01").FontSize(9).Italic();
+
+                                    });
+                                    column.Item().Row(row2 =>
+                                    {
+                                        row2.Spacing(12);
+                                        row2.AutoItem().Text($"FECHA: 27/10/2023").FontSize(9).Italic();
+
+                                    });
+                                    column.Item().Row(row2 =>
+                                    {
+                                        row2.Spacing(12);
+                                        row2.AutoItem().AlignCenter().Text($"VERSION : 02").FontSize(9).Italic();
+
+                                    });
+
+
+                                });
+                            });
+                    });
+
+
+                col.Item().Row(row =>
+                {
+                    col.Item().Table(table =>
+                    {
+                        table.ColumnsDefinition(columns =>
+                        {
+                            columns.RelativeColumn();
+                            //columns.RelativeColumn();
+                            //columns.RelativeColumn();
+                        });
+                        //table.Cell().AlignCenter().Text(String.Empty).SemiBold().FontSize(18)
+                        //    .FontColor(Colors.Black);
+                        table.Cell().AlignCenter().Text("LOTE N° " ).SemiBold().FontSize(18)
+                            .FontColor(Colors.Black);
+                    });
+                });
+
+
+                col.Item().Table(table =>
+                {
+                    table.ColumnsDefinition(columns =>
+                    {
+                        columns.RelativeColumn();
+                        columns.RelativeColumn();
+                        columns.RelativeColumn();
+                        columns.RelativeColumn();
+                    });
+                    table.Cell().Text("        Cliente :");
+                    table.Cell().Text("").FontSize(10).FontColor(Colors.Black).Bold();
+                    table.Cell().Text("   Guia de Remision :");
+                    table.Cell().Text("").FontSize(10).FontColor(Colors.Black).Bold();
+
+                    table.Cell().Text("        Productor :");
+                    table.Cell().Text("").FontSize(9).FontColor(Colors.Black).Bold();
+                    table.Cell().Text("   RUC / DNI :");
+                    table.Cell().Text("").FontSize(10).FontColor(Colors.Black).Bold();
+
+                    table.Cell().Text("        Metodo :");
+                    table.Cell().Text("").FontSize(10).FontColor(Colors.Black).Bold();
+                    table.Cell().Text("   CLP :");
+                    table.Cell().Text("");
+
+                    table.Cell().Text("        Producto :");
+                    table.Cell().Text("").FontSize(10).FontColor(Colors.Black).Bold();
+                    table.Cell().Text("   Variedad :");
+                    table.Cell().Text("").FontSize(10).FontColor(Colors.Black).Bold();
+
+                    table.Cell().Text("        Tipo de Servicio :");
+                    table.Cell().Text("").FontSize(10).FontColor(Colors.Black).Bold();
+                    table.Cell().Text("   Fecha Ingreso :");
+                    table.Cell().Text("").FontSize(10).FontColor(Colors.Black).Bold();
+
+                    table.Cell().Text("        Acopiador :");
+                    table.Cell().Text("").FontSize(10).FontColor(Colors.Black).Bold();
+                    table.Cell().Text("   Hora Ingreso");
+                    table.Cell().Text("").FontSize(10).FontColor(Colors.Black).Bold();
+                });
+            });
+        }
+        void CrearContenido(IContainer container)
+        {
+            container.Column(col =>
+            {
+                col.Item().Table(table =>
+                {
+                    QuestPDF.Infrastructure.IContainer DefaultCellStyle(QuestPDF.Infrastructure.IContainer containers, string backgroundColor)
+                    {
+                        return containers
+                            .Border(0.5f)
+                            .BorderColor(Colors.Grey.Lighten1)
+                            .Background(backgroundColor)
+
+                            .PaddingVertical(5)
+                            .PaddingHorizontal(10)
+                            .AlignCenter()
+                            .AlignMiddle();
+                    }
+
+                    QuestPDF.Infrastructure.IContainer DefaultCellStyle2(QuestPDF.Infrastructure.IContainer containers, string backgroundColor)
+                    {
+                        return containers
+                              .Border(0.5f)
+                              .BorderColor(Colors.Grey.Lighten1)
+                              .Background(Colors.White)
+
+                              .PaddingVertical(5)
+                              .PaddingHorizontal(10);
+                    }
+
+                    QuestPDF.Infrastructure.IContainer DefaultCellStyleGroup(QuestPDF.Infrastructure.IContainer containers, string backgroundColor)
+                    {
+                        return containers
+                              .Border(0.5f)
+                                .BorderColor(Colors.Grey.Lighten1)
+                              .Background("#f0f0f0")
+
+                              .PaddingVertical(5)
+                              .PaddingHorizontal(10);
+                    }
+
+                    table.ColumnsDefinition(columns =>
+                    {
+                        columns.RelativeColumn(1);
+                        columns.RelativeColumn(1);
+                        columns.RelativeColumn(1);
+                        columns.RelativeColumn(1);
+                        columns.RelativeColumn(1);
+                        columns.RelativeColumn(1);
+                        columns.RelativeColumn(1);
+
+                    });
+
+                    table.Header(header =>
+                    {
+                        //foreach (DataGridViewRow row in datalistado.Rows)
+                        //{
+                        header.Cell().Element(CellStyle).Text("T. JABA").FontSize(10).FontColor(Colors.White)
+                            .Bold();
+                        header.Cell().Element(CellStyle).Text("T. PARIH").FontSize(10).FontColor(Colors.White)
+                            .Bold();
+                        header.Cell().Element(CellStyle).Text("CANT JABAS").FontSize(10).FontColor(Colors.White)
+                            .Bold();
+                        header.Cell().Element(CellStyle).Text("PESO BRUTO").FontSize(10).FontColor(Colors.White)
+                            .Bold();
+                        header.Cell().Element(CellStyle).Text("PESO JABAS").FontSize(10).FontColor(Colors.White)
+                            .Bold();
+                        header.Cell().Element(CellStyle).Text("PESO NETO").FontSize(10).FontColor(Colors.White)
+                            .Bold();
+                        header.Cell().Element(CellStyle).Text("PROM").FontSize(10).FontColor(Colors.White).Bold();
+
+                        QuestPDF.Infrastructure.IContainer
+                            CellStyle(QuestPDF.Infrastructure.IContainer containers) =>
+                            DefaultCellStyle(containers, Colors.Blue.Medium);
+                        //}
+
+                    });
+
+                    foreach (DataGridViewRow row in datalistado.Rows)
+                    {
+                        table.Cell().Element(CellStyle2).Text(row.Cells["T. JABA"].Value).FontSize(9);
+                        table.Cell().Element(CellStyle2).Text(row.Cells["T.PARIH"].Value).FontSize(9);
+                        table.Cell().Element(CellStyle2).Text(row.Cells["CANT JABAS"].Value).FontSize(9);
+                        table.Cell().Element(CellStyle2).Text(row.Cells["PESO BRUTO"].Value).FontSize(9);
+                        table.Cell().Element(CellStyle2).Text(row.Cells["PESO JABAS"].Value).FontSize(9);
+                        table.Cell().Element(CellStyle2).Text(row.Cells["PESO NETO"].Value).FontSize(9);
+                        table.Cell().Element(CellStyle2).Text(row.Cells["PROMEDIO"].Value).FontSize(9);
+
+
+                        QuestPDF.Infrastructure.IContainer CellStyle2(QuestPDF.Infrastructure.IContainer containers) => DefaultCellStyle2(containers, Colors.Blue.Medium);
+
+                    }
+                });
+                //col.Item().Text(string.Empty);
+
+                col.Item().Table(table =>
+                {
+                    table.ColumnsDefinition(columns =>
+                    {
+                        columns.RelativeColumn();
+                        columns.RelativeColumn();
+                        columns.RelativeColumn();
+                        columns.RelativeColumn();
+                        columns.RelativeColumn();
+                        columns.RelativeColumn();
+
+                    });
+
+                    table.Cell().Text("Items");
+                    table.Cell().Text($"{datalistado.RowCount}").FontSize(12).FontColor(Colors.Black).Bold();
+                    //   $"{TableOfContents.Contents.Count}"
+                    ;
+                    table.Cell().Text("Cant Jabas");
+                    table.Cell().Text(lblcantjabas.Text).FontSize(12).FontColor(Colors.Black).Bold();
+
+                    table.Cell().Text("Total Neto");
+                    table.Cell().Text(totalneto.Text).FontSize(12).FontColor(Colors.Black).Bold();
+                    ;
+                    table.Cell().Text(String.Empty);
+                    table.Cell().Text(String.Empty);
+                });
+                col.Item().AlignCenter().Text(String.Empty);
+
+
+                col.Item().Table(table =>
+                {
+                    table.ColumnsDefinition(columns =>
+                    {
+                        columns.RelativeColumn();
+                        columns.RelativeColumn();
+                        columns.RelativeColumn();
+                        columns.RelativeColumn();
+                        columns.RelativeColumn();
+
+                    });
+                    table.Cell().Text(String.Empty);
+                    table.Cell().Text(String.Empty);
+                    table.Cell().Text(String.Empty);
+                    table.Cell().Text(String.Empty);
+
+                    table.Cell().Text("V.B");
+
+                    //    col.Item().AlignCenter().Text("V.B");
+
+                });
+            });
+        }
+        private void CrearFooter(IContainer container)
+        {
+            container.Background("#8fce00").Padding(5).Row(row =>
+            {
+                row.RelativeItem().Padding(0).Column(col =>
+                {
+                    col.Item()
+                        .Hyperlink("https://agricoladelsurpisco.com/")
+                        .Text("www.agricoladelsurpisco.com");
+                });
+                row.RelativeItem().AlignRight().Text(text =>
+                {
+                    text.CurrentPageNumber();
+                    text.Span(" / ");
+                    text.TotalPages();
+                });
+
+                //row.RelativeItem().AlignRight()
+                //        .Row(rowitem =>
+                //        {
+                //            rowitem.AutoItem().AlignRight().Text("USER : " + Login.nombre1 + " " + Login.apaterno1).SemiBold().FontSize(10)
+                //                .FontColor(Colors.Red.Medium);
+
+                //        });
+                //   row.RelativeItem().AlignLeft().Text("Copyright © 2024 - Todos los derechos reservados");                
+            });
+
+        }
+
     }
 }

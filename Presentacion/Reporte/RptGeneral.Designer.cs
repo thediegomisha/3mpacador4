@@ -102,6 +102,7 @@
             this.totalgeneral = new System.Windows.Forms.Label();
             this.LBLLL = new System.Windows.Forms.Label();
             this.btnBuscarTodos = new System.Windows.Forms.Button();
+            this.BtnImprimir = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
@@ -538,7 +539,7 @@
             this.panel3.Controls.Add(this.datalistado2);
             this.panel3.Location = new System.Drawing.Point(2, 479);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(708, 156);
+            this.panel3.Size = new System.Drawing.Size(665, 156);
             this.panel3.TabIndex = 19;
             // 
             // lblinfo2
@@ -565,7 +566,7 @@
             this.datalistado2.Name = "datalistado2";
             this.datalistado2.ReadOnly = true;
             this.datalistado2.RowHeadersVisible = false;
-            this.datalistado2.Size = new System.Drawing.Size(708, 156);
+            this.datalistado2.Size = new System.Drawing.Size(665, 156);
             this.datalistado2.TabIndex = 1;
             // 
             // btnCerrar
@@ -585,7 +586,7 @@
             // 
             this.lblcantjabas.AutoSize = true;
             this.lblcantjabas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcantjabas.Location = new System.Drawing.Point(289, 654);
+            this.lblcantjabas.Location = new System.Drawing.Point(240, 654);
             this.lblcantjabas.Name = "lblcantjabas";
             this.lblcantjabas.Size = new System.Drawing.Size(19, 20);
             this.lblcantjabas.TabIndex = 82;
@@ -595,7 +596,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(290, 638);
+            this.label17.Location = new System.Drawing.Point(241, 638);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(78, 15);
             this.label17.TabIndex = 83;
@@ -625,7 +626,7 @@
             // 
             this.totalneto.AutoSize = true;
             this.totalneto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalneto.Location = new System.Drawing.Point(535, 654);
+            this.totalneto.Location = new System.Drawing.Point(486, 654);
             this.totalneto.Name = "totalneto";
             this.totalneto.Size = new System.Drawing.Size(19, 20);
             this.totalneto.TabIndex = 78;
@@ -635,7 +636,7 @@
             // 
             this.Label15.AutoSize = true;
             this.Label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label15.Location = new System.Drawing.Point(536, 638);
+            this.Label15.Location = new System.Drawing.Point(487, 638);
             this.Label15.Name = "Label15";
             this.Label15.Size = new System.Drawing.Size(73, 15);
             this.Label15.TabIndex = 79;
@@ -705,9 +706,9 @@
             // 
             this.panel4.Controls.Add(this.lblinfo3);
             this.panel4.Controls.Add(this.datalistado3);
-            this.panel4.Location = new System.Drawing.Point(722, 479);
+            this.panel4.Location = new System.Drawing.Point(673, 479);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(485, 156);
+            this.panel4.Size = new System.Drawing.Size(534, 156);
             this.panel4.TabIndex = 84;
             // 
             // lblinfo3
@@ -734,7 +735,7 @@
             this.datalistado3.Name = "datalistado3";
             this.datalistado3.ReadOnly = true;
             this.datalistado3.RowHeadersVisible = false;
-            this.datalistado3.Size = new System.Drawing.Size(485, 156);
+            this.datalistado3.Size = new System.Drawing.Size(534, 156);
             this.datalistado3.TabIndex = 1;
             // 
             // label21
@@ -773,7 +774,7 @@
             // 
             this.totalnetodescarte.AutoSize = true;
             this.totalnetodescarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalnetodescarte.Location = new System.Drawing.Point(1141, 654);
+            this.totalnetodescarte.Location = new System.Drawing.Point(1128, 654);
             this.totalnetodescarte.Name = "totalnetodescarte";
             this.totalnetodescarte.Size = new System.Drawing.Size(19, 20);
             this.totalnetodescarte.TabIndex = 95;
@@ -783,7 +784,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(1142, 638);
+            this.label23.Location = new System.Drawing.Point(1129, 638);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(73, 15);
             this.label23.TabIndex = 96;
@@ -805,7 +806,7 @@
             // flag
             // 
             this.flag.AutoSize = true;
-            this.flag.Location = new System.Drawing.Point(573, 9);
+            this.flag.Location = new System.Drawing.Point(742, 10);
             this.flag.Name = "flag";
             this.flag.Size = new System.Drawing.Size(59, 13);
             this.flag.TabIndex = 28;
@@ -884,11 +885,25 @@
             this.btnBuscarTodos.UseVisualStyleBackColor = false;
             this.btnBuscarTodos.Click += new System.EventHandler(this.btnBuscarTodos_Click);
             // 
+            // BtnImprimir
+            // 
+            this.BtnImprimir.BackColor = System.Drawing.Color.Teal;
+            this.BtnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnImprimir.ForeColor = System.Drawing.Color.White;
+            this.BtnImprimir.Location = new System.Drawing.Point(495, 1);
+            this.BtnImprimir.Name = "BtnImprimir";
+            this.BtnImprimir.Size = new System.Drawing.Size(93, 33);
+            this.BtnImprimir.TabIndex = 105;
+            this.BtnImprimir.Text = "IMPRIMIR";
+            this.BtnImprimir.UseVisualStyleBackColor = false;
+            this.BtnImprimir.Click += new System.EventHandler(this.BtnImprimir_Click);
+            // 
             // RptGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1213, 673);
+            this.Controls.Add(this.BtnImprimir);
             this.Controls.Add(this.btnBuscarTodos);
             this.Controls.Add(this.cantjbasgeneral);
             this.Controls.Add(this.lbll);
@@ -1015,5 +1030,6 @@
         internal System.Windows.Forms.Label lblinfo3;
         private System.Windows.Forms.DateTimePicker fechaPeriodo;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button BtnImprimir;
     }
 }

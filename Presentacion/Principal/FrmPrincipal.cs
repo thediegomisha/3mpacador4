@@ -390,5 +390,11 @@ namespace _3mpacador4.Presentacion
             var form = new frmpresen_cajas();
             form.ShowDialog();
         }
+
+        private void btn_DescarteGral_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new RptDescarteGeneral());
+        }
     }
 }

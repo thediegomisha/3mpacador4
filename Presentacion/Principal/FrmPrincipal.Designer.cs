@@ -36,6 +36,7 @@
             this.btnJornal = new System.Windows.Forms.Button();
             this.btnTrazabilidadP = new System.Windows.Forms.Button();
             this.panelMantenimiento = new System.Windows.Forms.Panel();
+            this.btnPresen_cajas = new System.Windows.Forms.Button();
             this.btnActualizaFProduccion = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnTerminal = new System.Windows.Forms.Button();
@@ -83,23 +84,23 @@
             this.rptDashBoard = new System.Windows.Forms.Button();
             this.Gerencia = new System.Windows.Forms.Button();
             this.PanelLogo = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PanelFormularioHijo = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.LblVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.TxtVersion = new System.Windows.Forms.ToolStripStatusLabel();
-            this.LBLUSER = new System.Windows.Forms.ToolStripStatusLabel();
             this.LBLUSUARIO = new System.Windows.Forms.ToolStripStatusLabel();
-            this.LblIp = new System.Windows.Forms.ToolStripStatusLabel();
             this.TxtIp = new System.Windows.Forms.ToolStripStatusLabel();
-            this.LblServer = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtServer = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtDatabase = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblDatabase = new System.Windows.Forms.ToolStripStatusLabel();
-            this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnPresen_cajas = new System.Windows.Forms.Button();
+            this.btn_DescarteGral = new System.Windows.Forms.Button();
+            this.LBLUSER = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LblIp = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LblServer = new System.Windows.Forms.ToolStripStatusLabel();
+            this.txtDatabase = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PanelLadoIzq.SuspendLayout();
             this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
@@ -111,9 +112,9 @@
             this.PanelCalidad.SuspendLayout();
             this.PanelGerencia.SuspendLayout();
             this.PanelLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelFormularioHijo.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelLadoIzq
@@ -152,7 +153,7 @@
             this.panelTrazabilidad.Controls.Add(this.btnProceso);
             this.panelTrazabilidad.Controls.Add(this.btnJornal);
             this.panelTrazabilidad.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTrazabilidad.Location = new System.Drawing.Point(0, 1247);
+            this.panelTrazabilidad.Location = new System.Drawing.Point(0, 1273);
             this.panelTrazabilidad.Name = "panelTrazabilidad";
             this.panelTrazabilidad.Size = new System.Drawing.Size(135, 80);
             this.panelTrazabilidad.TabIndex = 15;
@@ -215,7 +216,7 @@
             this.btnTrazabilidadP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrazabilidadP.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTrazabilidadP.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 1221);
+            this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 1247);
             this.btnTrazabilidadP.Name = "btnTrazabilidadP";
             this.btnTrazabilidadP.Size = new System.Drawing.Size(135, 26);
             this.btnTrazabilidadP.TabIndex = 14;
@@ -237,10 +238,28 @@
             this.panelMantenimiento.Controls.Add(this.btnColaborador);
             this.panelMantenimiento.Controls.Add(this.btnAcopiador);
             this.panelMantenimiento.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMantenimiento.Location = new System.Drawing.Point(0, 906);
+            this.panelMantenimiento.Location = new System.Drawing.Point(0, 932);
             this.panelMantenimiento.Name = "panelMantenimiento";
             this.panelMantenimiento.Size = new System.Drawing.Size(135, 315);
             this.panelMantenimiento.TabIndex = 12;
+            // 
+            // btnPresen_cajas
+            // 
+            this.btnPresen_cajas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnPresen_cajas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPresen_cajas.FlatAppearance.BorderSize = 0;
+            this.btnPresen_cajas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPresen_cajas.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPresen_cajas.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnPresen_cajas.Location = new System.Drawing.Point(0, 234);
+            this.btnPresen_cajas.Name = "btnPresen_cajas";
+            this.btnPresen_cajas.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnPresen_cajas.Size = new System.Drawing.Size(135, 26);
+            this.btnPresen_cajas.TabIndex = 23;
+            this.btnPresen_cajas.Text = "Presentacion Cajas";
+            this.btnPresen_cajas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPresen_cajas.UseVisualStyleBackColor = false;
+            this.btnPresen_cajas.Click += new System.EventHandler(this.btnPresen_cajas_Click);
             // 
             // btnActualizaFProduccion
             // 
@@ -410,7 +429,7 @@
             this.btnMantenimiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMantenimiento.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMantenimiento.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnMantenimiento.Location = new System.Drawing.Point(0, 880);
+            this.btnMantenimiento.Location = new System.Drawing.Point(0, 906);
             this.btnMantenimiento.Name = "btnMantenimiento";
             this.btnMantenimiento.Size = new System.Drawing.Size(135, 26);
             this.btnMantenimiento.TabIndex = 12;
@@ -429,7 +448,7 @@
             this.panelSistema.Controls.Add(this.btnperiodo);
             this.panelSistema.Controls.Add(this.btnBD);
             this.panelSistema.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSistema.Location = new System.Drawing.Point(0, 721);
+            this.panelSistema.Location = new System.Drawing.Point(0, 747);
             this.panelSistema.Name = "panelSistema";
             this.panelSistema.Size = new System.Drawing.Size(135, 159);
             this.panelSistema.TabIndex = 11;
@@ -543,7 +562,7 @@
             this.btnSistema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSistema.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSistema.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnSistema.Location = new System.Drawing.Point(0, 695);
+            this.btnSistema.Location = new System.Drawing.Point(0, 721);
             this.btnSistema.Name = "btnSistema";
             this.btnSistema.Size = new System.Drawing.Size(135, 26);
             this.btnSistema.TabIndex = 10;
@@ -558,12 +577,13 @@
             this.panelReportes.Controls.Add(this.button3);
             this.panelReportes.Controls.Add(this.button10);
             this.panelReportes.Controls.Add(this.button11);
+            this.panelReportes.Controls.Add(this.btn_DescarteGral);
             this.panelReportes.Controls.Add(this.button12);
             this.panelReportes.Controls.Add(this.button13);
             this.panelReportes.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelReportes.Location = new System.Drawing.Point(0, 564);
             this.panelReportes.Name = "panelReportes";
-            this.panelReportes.Size = new System.Drawing.Size(135, 131);
+            this.panelReportes.Size = new System.Drawing.Size(135, 157);
             this.panelReportes.TabIndex = 9;
             // 
             // button3
@@ -573,7 +593,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.LightGray;
-            this.button3.Location = new System.Drawing.Point(0, 104);
+            this.button3.Location = new System.Drawing.Point(0, 130);
             this.button3.Name = "button3";
             this.button3.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.button3.Size = new System.Drawing.Size(135, 26);
@@ -590,7 +610,7 @@
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.Color.LightGray;
-            this.button10.Location = new System.Drawing.Point(0, 78);
+            this.button10.Location = new System.Drawing.Point(0, 104);
             this.button10.Name = "button10";
             this.button10.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.button10.Size = new System.Drawing.Size(135, 26);
@@ -607,7 +627,7 @@
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.Color.LightGray;
-            this.button11.Location = new System.Drawing.Point(0, 52);
+            this.button11.Location = new System.Drawing.Point(0, 78);
             this.button11.Name = "button11";
             this.button11.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.button11.Size = new System.Drawing.Size(135, 26);
@@ -628,7 +648,7 @@
             this.button12.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.button12.Size = new System.Drawing.Size(135, 26);
             this.button12.TabIndex = 5;
-            this.button12.Text = "Rpt Boleta";
+            this.button12.Text = "Rpt Ingreso Indiv.";
             this.button12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
@@ -995,17 +1015,6 @@
             this.PanelLogo.Size = new System.Drawing.Size(135, 53);
             this.PanelLogo.TabIndex = 1;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::_3mpacador4.Properties.Resources.logoagricola;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(135, 53);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // PanelFormularioHijo
             // 
             this.PanelFormularioHijo.Controls.Add(this.toolStrip1);
@@ -1054,26 +1063,12 @@
             this.TxtVersion.Size = new System.Drawing.Size(48, 20);
             this.TxtVersion.Text = "Version";
             // 
-            // LBLUSER
-            // 
-            this.LBLUSER.Image = ((System.Drawing.Image)(resources.GetObject("LBLUSER.Image")));
-            this.LBLUSER.Name = "LBLUSER";
-            this.LBLUSER.Size = new System.Drawing.Size(69, 20);
-            this.LBLUSER.Text = "Usuario :";
-            // 
             // LBLUSUARIO
             // 
             this.LBLUSUARIO.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBLUSUARIO.Name = "LBLUSUARIO";
             this.LBLUSUARIO.Size = new System.Drawing.Size(55, 20);
             this.LBLUSUARIO.Text = "Usuario";
-            // 
-            // LblIp
-            // 
-            this.LblIp.Image = ((System.Drawing.Image)(resources.GetObject("LblIp.Image")));
-            this.LblIp.Name = "LblIp";
-            this.LblIp.Size = new System.Drawing.Size(36, 20);
-            this.LblIp.Text = "IP:";
             // 
             // TxtIp
             // 
@@ -1082,13 +1077,6 @@
             this.TxtIp.Size = new System.Drawing.Size(44, 20);
             this.TxtIp.Text = "0.0.0.0";
             // 
-            // LblServer
-            // 
-            this.LblServer.Image = ((System.Drawing.Image)(resources.GetObject("LblServer.Image")));
-            this.LblServer.Name = "LblServer";
-            this.LblServer.Size = new System.Drawing.Size(58, 20);
-            this.LblServer.Text = "Server:";
-            // 
             // txtServer
             // 
             this.txtServer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1096,27 +1084,12 @@
             this.txtServer.Size = new System.Drawing.Size(78, 20);
             this.txtServer.Text = "NameServer";
             // 
-            // txtDatabase
-            // 
-            this.txtDatabase.Image = ((System.Drawing.Image)(resources.GetObject("txtDatabase.Image")));
-            this.txtDatabase.Name = "txtDatabase";
-            this.txtDatabase.Size = new System.Drawing.Size(74, 20);
-            this.txtDatabase.Text = "DataBase:";
-            this.txtDatabase.Click += new System.EventHandler(this.txtDatabase_Click);
-            // 
             // lblDatabase
             // 
             this.lblDatabase.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDatabase.Name = "lblDatabase";
             this.lblDatabase.Size = new System.Drawing.Size(59, 20);
             this.lblDatabase.Text = "DataBase";
-            // 
-            // LblNombrePc
-            // 
-            this.LblNombrePc.Image = ((System.Drawing.Image)(resources.GetObject("LblNombrePc.Image")));
-            this.LblNombrePc.Name = "LblNombrePc";
-            this.LblNombrePc.Size = new System.Drawing.Size(126, 20);
-            this.LblNombrePc.Text = "Nombre de Equipo:";
             // 
             // txtNombreEquipo
             // 
@@ -1132,23 +1105,69 @@
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
             // 
-            // btnPresen_cajas
+            // btn_DescarteGral
             // 
-            this.btnPresen_cajas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.btnPresen_cajas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPresen_cajas.FlatAppearance.BorderSize = 0;
-            this.btnPresen_cajas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPresen_cajas.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPresen_cajas.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnPresen_cajas.Location = new System.Drawing.Point(0, 234);
-            this.btnPresen_cajas.Name = "btnPresen_cajas";
-            this.btnPresen_cajas.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnPresen_cajas.Size = new System.Drawing.Size(135, 26);
-            this.btnPresen_cajas.TabIndex = 23;
-            this.btnPresen_cajas.Text = "Presentacion Cajas";
-            this.btnPresen_cajas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPresen_cajas.UseVisualStyleBackColor = false;
-            this.btnPresen_cajas.Click += new System.EventHandler(this.btnPresen_cajas_Click);
+            this.btn_DescarteGral.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_DescarteGral.FlatAppearance.BorderSize = 0;
+            this.btn_DescarteGral.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_DescarteGral.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_DescarteGral.ForeColor = System.Drawing.Color.LightGray;
+            this.btn_DescarteGral.Location = new System.Drawing.Point(0, 52);
+            this.btn_DescarteGral.Name = "btn_DescarteGral";
+            this.btn_DescarteGral.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btn_DescarteGral.Size = new System.Drawing.Size(135, 26);
+            this.btn_DescarteGral.TabIndex = 9;
+            this.btn_DescarteGral.Text = "Rpt Descarte";
+            this.btn_DescarteGral.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_DescarteGral.UseVisualStyleBackColor = true;
+            this.btn_DescarteGral.Click += new System.EventHandler(this.btn_DescarteGral_Click);
+            // 
+            // LBLUSER
+            // 
+            this.LBLUSER.Image = ((System.Drawing.Image)(resources.GetObject("LBLUSER.Image")));
+            this.LBLUSER.Name = "LBLUSER";
+            this.LBLUSER.Size = new System.Drawing.Size(69, 20);
+            this.LBLUSER.Text = "Usuario :";
+            // 
+            // LblIp
+            // 
+            this.LblIp.Image = ((System.Drawing.Image)(resources.GetObject("LblIp.Image")));
+            this.LblIp.Name = "LblIp";
+            this.LblIp.Size = new System.Drawing.Size(36, 20);
+            this.LblIp.Text = "IP:";
+            // 
+            // LblServer
+            // 
+            this.LblServer.Image = ((System.Drawing.Image)(resources.GetObject("LblServer.Image")));
+            this.LblServer.Name = "LblServer";
+            this.LblServer.Size = new System.Drawing.Size(58, 20);
+            this.LblServer.Text = "Server:";
+            // 
+            // txtDatabase
+            // 
+            this.txtDatabase.Image = ((System.Drawing.Image)(resources.GetObject("txtDatabase.Image")));
+            this.txtDatabase.Name = "txtDatabase";
+            this.txtDatabase.Size = new System.Drawing.Size(74, 20);
+            this.txtDatabase.Text = "DataBase:";
+            this.txtDatabase.Click += new System.EventHandler(this.txtDatabase_Click);
+            // 
+            // LblNombrePc
+            // 
+            this.LblNombrePc.Image = ((System.Drawing.Image)(resources.GetObject("LblNombrePc.Image")));
+            this.LblNombrePc.Name = "LblNombrePc";
+            this.LblNombrePc.Size = new System.Drawing.Size(126, 20);
+            this.LblNombrePc.Text = "Nombre de Equipo:";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::_3mpacador4.Properties.Resources.logoagricola;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(135, 53);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmPrincipal
             // 
@@ -1174,11 +1193,11 @@
             this.PanelCalidad.ResumeLayout(false);
             this.PanelGerencia.ResumeLayout(false);
             this.PanelLogo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.PanelFormularioHijo.ResumeLayout(false);
             this.PanelFormularioHijo.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1256,5 +1275,6 @@
         private System.Windows.Forms.Button btnImprimirCalibre;
         public System.Windows.Forms.ToolStripStatusLabel LBLUSUARIO;
         private System.Windows.Forms.Button btnPresen_cajas;
+        private System.Windows.Forms.Button btn_DescarteGral;
     }
 }

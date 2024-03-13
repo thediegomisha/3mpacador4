@@ -33,7 +33,7 @@
     <MinimumRequiredVersion>1.0.0.5</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>57</ApplicationRevision>
+    <ApplicationRevision>59</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -180,10 +180,10 @@
     <Compile Include="Logica\LPacking_calibre.cs" />
     <Compile Include="Logica\LPrograma_proceso.cs" />
     <Compile Include="Logica\RawPrinterHelper.cs" />
-    <Compile Include="Presentacion\Mantenimiento\Recepcion\FActualizaFechaProduccion.cs">
+    <Compile Include="Presentacion\Mantenimiento\Produccion\FActualizaFechaProduccion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Mantenimiento\Recepcion\FActualizaFechaProduccion.Designer.cs">
+    <Compile Include="Presentacion\Mantenimiento\Produccion\FActualizaFechaProduccion.Designer.cs">
       <DependentUpon>FActualizaFechaProduccion.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Mantenimiento\Recepcion\frmAcopiador.cs">
@@ -366,6 +366,12 @@
     <Compile Include="Presentacion\R00t\FrmMod.Designer.cs">
       <DependentUpon>FrmMod.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Reporte\frmdetallelote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\frmdetallelote.Designer.cs">
+      <DependentUpon>frmdetallelote.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Reporte\FrmDocAdjuntos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -413,6 +419,12 @@
     </Compile>
     <Compile Include="Presentacion\Reporte\RptBoletaPesadoDetalle.Designer.cs">
       <DependentUpon>RptBoletaPesadoDetalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\RptDescarteGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Reporte\RptDescarteGeneral.Designer.cs">
+      <DependentUpon>RptDescarteGeneral.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Sistema\FrmImprimeCalibre.cs">
       <SubType>Form</SubType>
@@ -530,7 +542,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\FActualizaFechaProduccion.resx">
+    <EmbeddedResource Include="Presentacion\Mantenimiento\Produccion\FActualizaFechaProduccion.resx">
       <DependentUpon>FActualizaFechaProduccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Mantenimiento\Recepcion\frmAcopiador.resx">
@@ -624,6 +636,9 @@
     <EmbeddedResource Include="Presentacion\R00t\FrmMod.resx">
       <DependentUpon>FrmMod.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Reporte\frmdetallelote.resx">
+      <DependentUpon>frmdetallelote.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\FrmDocAdjuntos.resx">
       <DependentUpon>FrmDocAdjuntos.cs</DependentUpon>
     </EmbeddedResource>
@@ -647,6 +662,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Reporte\RptBoletaPesadoDetalle.resx">
       <DependentUpon>RptBoletaPesadoDetalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Reporte\RptDescarteGeneral.resx">
+      <DependentUpon>RptDescarteGeneral.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Sistema\FrmImprimeCalibre.resx">
       <DependentUpon>FrmImprimeCalibre.cs</DependentUpon>
