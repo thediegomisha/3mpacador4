@@ -15,6 +15,7 @@ using Devart.Data.MySql;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using _3mpacador4.Presentacion.Trazabilidad;
+using Microsoft.VisualBasic.Logging;
 
 namespace _3mpacador4.Presentacion.Reporte
 {
@@ -73,6 +74,11 @@ namespace _3mpacador4.Presentacion.Reporte
 
             AddOwnedForm(lote);
             lote.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void dgvpacking_calibre_cab_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -319,15 +325,18 @@ namespace _3mpacador4.Presentacion.Reporte
             writer.PageEvent = new CustomPdfPageEvent();
 
             doc.Open();
-
-            var logo = iTextSharp.text.Image.GetInstance("logoagricola.png"); //  AppDomain.CurrentDomain.BaseDirectory + "logoagricola.png"
+                var logoPath = "logoagricola.png"; // Path to your logo file
+                if (File.Exists(logoPath))
+                {
+                var logo = iTextSharp.text.Image.GetInstance(logoPath); //  AppDomain.CurrentDomain.BaseDirectory + "logoagricola.png"
+                
                 logo.SetAbsolutePosition(50, 500);
             logo.ScaleToFit(120f, 250f);
             logo.Alignment = iTextSharp.text.Image.ALIGN_LEFT;
 
             doc.Add(logo);
-
-            var espacio = new Paragraph("\n");
+                }
+                var espacio = new Paragraph("\n");
 
             var TTabla = new PdfPTable(2);
             var colum = new[] { 263, 300 };

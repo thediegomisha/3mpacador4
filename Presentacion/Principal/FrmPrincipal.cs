@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Windows.Forms;
 using _3mpacador4.Presentacion.Mantenimiento;
+using _3mpacador4.Presentacion.Mantenimiento.Produccion;
 using _3mpacador4.Presentacion.R00t;
 using _3mpacador4.Presentacion.Reporte;
 using _3mpacador4.Presentacion.Sistema;
@@ -353,8 +354,10 @@ namespace _3mpacador4.Presentacion
         private void txtDatabase_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
-            FrmMod root = new FrmMod();
-            root.ShowDialog();
+            formR00t rootlogin = new formR00t();
+            rootlogin.ShowDialog();
+           // this.Close();
+
         }
 
         private void btnCalidad_Click(object sender, EventArgs e)
@@ -393,6 +396,12 @@ namespace _3mpacador4.Presentacion
         {
             ocultarSubMenu();
             AbrirFormularioHijo(new FRptKardexLote());
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new frmOp());
         }
     }
 }

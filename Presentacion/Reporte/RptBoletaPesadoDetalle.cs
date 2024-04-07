@@ -39,15 +39,19 @@ namespace _3mpacador4.Presentacion.Reporte
                 lblhoraingreso.Text = filaConDatos[4];
                 lblproducto.Text = filaConDatos[4];
                 lblvariedad.Text = filaConDatos[5];
-                lblcliente.Text = filaConDatos[6];
-                lblproductor.Text = filaConDatos[7];
-                lblclp.Text = filaConDatos[8];
-                lblcantjabas.Text = filaConDatos[9];
-                totalneto.Text = Convert.ToDecimal(filaConDatos[10]).ToString("N2");
+                lblmetodo.Text = filaConDatos[6];
+                lblservicio.Text = filaConDatos[7];
+                lblcliente.Text = filaConDatos[8];
+                lblproductor.Text = filaConDatos[9];
+                lblclp.Text = filaConDatos[10];
+
+                lblcantjabas.Text = filaConDatos[11];
+                totalneto.Text = Convert.ToDecimal(filaConDatos[12]).ToString("N2");
                 datalistado.DataSource = data;
                 datosdescarte = datadescarte;
                 LBLCONTAR.Text = datalistado.RowCount.ToString();
                 ocultar_columnas2();
+                tamanio();
             }
         }
 
@@ -154,49 +158,7 @@ namespace _3mpacador4.Presentacion.Reporte
             }
         }
 
-        private void tamanio()
-        {
-            try
-            {
-                var withBlock = datalistado;
-                
-                withBlock.Columns["T. JABA"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                withBlock.Columns["T. JABA"].Width = 50;
-
-                withBlock.Columns["T.PARIH"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                withBlock.Columns["T.PARIH"].Width = 110;
-
-                withBlock.Columns["CANT JABAS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                // .Columns("PESAJE").DefaultCellStyle.Format = "#.#0"
-                withBlock.Columns["CANT JABAS"].Width = 100;
-
-
-                withBlock.Columns["PESO BRUTO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                // .Columns("TURNO").DefaultCellStyle.Format = "#.#0"
-                withBlock.Columns["PESO BRUTO"].Width = 70;
-
-
-                withBlock.Columns["PESO JABAS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
-                withBlock.Columns["PESO JABAS"].Width = 90;
-
-                withBlock.Columns["PESO NETO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                withBlock.Columns["PESO NETO"].DefaultCellStyle.Format = "#.#0";
-                // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
-                withBlock.Columns["PESO NETO"].Width = 90;
-
-                withBlock.Columns["PROMEDIO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
-                withBlock.Columns["PROMEDIO"].Width = 90;
-            }
-            catch (Exception)
-            {
-                //  throw;
-            }
-
-            {
-            }
-        }
+       
 
         private void ocultar_columnas()
         {
@@ -225,13 +187,57 @@ namespace _3mpacador4.Presentacion.Reporte
         {
             datalistado.Columns[0].Visible = false;
             datalistado.Columns[1].Visible = false;
-            datalistado.Columns[2].Visible = false;
+            datalistado.Columns[2].Visible = true;
             datalistado.Columns[3].Visible = false;
             datalistado.Columns[4].Visible = false;
             datalistado.Columns[5].Visible = false;
             datalistado.Columns[6].Visible = false;
             datalistado.Columns[7].Visible = false;
             datalistado.Columns[8].Visible = false;
+        }
+
+        private void tamanio()
+        {
+            try
+            {
+                var withBlock = datalistado;
+
+                withBlock.Columns["H PESAJE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                withBlock.Columns["H PESAJE"].Width = 90;
+
+                withBlock.Columns["T. JABA"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                withBlock.Columns["T. JABA"].Width = 40;
+
+                withBlock.Columns["T.PARIH"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                withBlock.Columns["T.PARIH"].Width = 80;
+
+                withBlock.Columns["CANT JABAS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                withBlock.Columns["CANT JABAS"].Width = 60;
+
+                withBlock.Columns["PESO BRUTO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                withBlock.Columns["PESO BRUTO"].DefaultCellStyle.Format = "#.#0";
+                // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
+                withBlock.Columns["PESO BRUTO"].Width = 90;
+
+                withBlock.Columns["PESO JABAS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                withBlock.Columns["PESO JABAS"].DefaultCellStyle.Format = "#.#0";
+                // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
+                withBlock.Columns["PESO JABAS"].Width = 60;
+
+
+                withBlock.Columns["PESO NETO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                withBlock.Columns["PESO NETO"].DefaultCellStyle.Format = "#.#0";
+                // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
+                withBlock.Columns["PESO NETO"].Width = 80;
+
+                withBlock.Columns["PROM"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
+                withBlock.Columns["PROM"].Width = 90;
+            }
+            catch (Exception)
+            {
+                //  throw;
+            }
         }
         private void GenerarPDF2()
         {
@@ -446,6 +452,7 @@ namespace _3mpacador4.Presentacion.Reporte
                         columns.RelativeColumn(1);
                         columns.RelativeColumn(1);
                         columns.RelativeColumn(1);
+                        columns.RelativeColumn(1);
 
                     });
 
@@ -453,6 +460,8 @@ namespace _3mpacador4.Presentacion.Reporte
                     {
                         //foreach (DataGridViewRow row in datalistado.Rows)
                         //{
+                        header.Cell().Element(CellStyle).Text("H PESAJE").FontSize(10).FontColor(Colors.White)
+                            .Bold();
                         header.Cell().Element(CellStyle).Text("T. JABA").FontSize(10).FontColor(Colors.White)
                             .Bold();
                         header.Cell().Element(CellStyle).Text("T. PARIH").FontSize(10).FontColor(Colors.White)
@@ -476,13 +485,14 @@ namespace _3mpacador4.Presentacion.Reporte
 
                     foreach (DataGridViewRow row in datalistado.Rows)
                     {
+                        table.Cell().Element(CellStyle2).Text(row.Cells["H PESAJE"].Value).FontSize(9);
                         table.Cell().Element(CellStyle2).Text(row.Cells["T. JABA"].Value).FontSize(9);
                         table.Cell().Element(CellStyle2).Text(row.Cells["T.PARIH"].Value).FontSize(9);
                         table.Cell().Element(CellStyle2).Text(row.Cells["CANT JABAS"].Value).FontSize(9);
                         table.Cell().Element(CellStyle2).Text(row.Cells["PESO BRUTO"].Value).FontSize(9);
                         table.Cell().Element(CellStyle2).Text(row.Cells["PESO JABAS"].Value).FontSize(9);
                         table.Cell().Element(CellStyle2).Text(row.Cells["PESO NETO"].Value).FontSize(9);
-                        table.Cell().Element(CellStyle2).Text(row.Cells["PROMEDIO"].Value).FontSize(9);
+                        table.Cell().Element(CellStyle2).Text(row.Cells["PROM"].Value).FontSize(9);
 
 
                         QuestPDF.Infrastructure.IContainer CellStyle2(QuestPDF.Infrastructure.IContainer containers) => DefaultCellStyle2(containers, Colors.Blue.Medium);
@@ -588,26 +598,35 @@ namespace _3mpacador4.Presentacion.Reporte
         }
 
         private void btnDescarte_Click(object sender, EventArgs e)
-        {           
-            _camptxtcadenas = new string[9];
-            _camptxtcadenas[0] = lblcliente.Text;
-            _camptxtcadenas[1] = lblproductor.Text;
-            _camptxtcadenas[2] = lblclp.Text;
-            _camptxtcadenas[3] = LBLCONTAR.Text;
-            _camptxtcadenas[4] = lblcantjabas.Text;
-            _camptxtcadenas[5] = totalneto.Text;
-            _camptxtcadenas[6] = lblnumlote.Text;
-            _camptxtcadenas[7] = lblvariedad.Text;
-            _camptxtcadenas[8] = lblguiaingreso.Text;
 
-           var datosdescartados = datosdescarte;
+        {
+            try
+            {
+                _camptxtcadenas = new string[9];
+                _camptxtcadenas[0] = lblcliente.Text;
+                _camptxtcadenas[1] = lblproductor.Text;
+                _camptxtcadenas[2] = lblclp.Text;
+                _camptxtcadenas[3] = LBLCONTAR.Text;
+                _camptxtcadenas[4] = lblcantjabas.Text;
+                _camptxtcadenas[5] = totalneto.Text;
+                _camptxtcadenas[6] = lblnumlote.Text;
+                _camptxtcadenas[7] = lblvariedad.Text;
+                _camptxtcadenas[8] = lblguiaingreso.Text;
+
+                var datosdescartados = datosdescarte;
 
 
 
-            RptBolPesDetalDesc descarte = new RptBolPesDetalDesc(_camptxtcadenas, datosdescarte);
+                RptBolPesDetalDesc descarte = new RptBolPesDetalDesc(_camptxtcadenas, datosdescarte);
 
-            AddOwnedForm(descarte);
-            descarte.ShowDialog();
+                AddOwnedForm(descarte);
+                descarte.ShowDialog();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

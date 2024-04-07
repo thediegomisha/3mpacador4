@@ -264,7 +264,6 @@ namespace _3mpacador4.Presentacion.Reporte
                     //     procedimientoalmacenado = "usp_tblticketpesaje_Exportador";
                     iniciocadena = cb_cliente.Text.IndexOf('-');
                     flag.Text = cb_cliente.Text.Substring(0, iniciocadena);
-                 
                                  
                 }
                 else if (chkproductor.Checked)
@@ -756,19 +755,27 @@ namespace _3mpacador4.Presentacion.Reporte
             {
                 var withBlock = datalistado2;
 
+                withBlock.Columns["H PESAJE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                withBlock.Columns["H PESAJE"].Width = 70;
+
                 withBlock.Columns["T. JABA"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                withBlock.Columns["T. JABA"].Width = 80;
+                withBlock.Columns["T. JABA"].Width = 40;
 
                 withBlock.Columns["T.PARIH"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 withBlock.Columns["T.PARIH"].Width = 80;
 
                 withBlock.Columns["CANT JABAS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                withBlock.Columns["CANT JABAS"].Width = 70;
+                withBlock.Columns["CANT JABAS"].Width = 60;
 
                 withBlock.Columns["PESO BRUTO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 withBlock.Columns["PESO BRUTO"].DefaultCellStyle.Format = "#.#0";
                 // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
                 withBlock.Columns["PESO BRUTO"].Width = 90;
+
+                withBlock.Columns["PESO JABAS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                withBlock.Columns["PESO JABAS"].DefaultCellStyle.Format = "#.#0";
+                // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
+                withBlock.Columns["PESO JABAS"].Width = 60;
 
 
                 withBlock.Columns["PESO NETO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -776,9 +783,9 @@ namespace _3mpacador4.Presentacion.Reporte
                 // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
                 withBlock.Columns["PESO NETO"].Width = 80;
 
-                withBlock.Columns["PROMEDIO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                withBlock.Columns["PROM"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 // .Columns("USUARIO").DefaultCellStyle.Format = "#.#0"
-                withBlock.Columns["PROMEDIO"].Width = 90;
+                withBlock.Columns["PROM"].Width = 90;
             }
             catch (Exception)
             {
@@ -1131,7 +1138,7 @@ namespace _3mpacador4.Presentacion.Reporte
         {
             datalistado2.Columns[0].Visible = false;
             datalistado2.Columns[1].Visible = false;
-            datalistado2.Columns[2].Visible = false;
+            datalistado2.Columns[2].Visible = true;
             datalistado2.Columns[3].Visible = false;
             datalistado2.Columns[4].Visible = false;
             datalistado2.Columns[5].Visible = false;

@@ -32,6 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.datalistado = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpfecha = new System.Windows.Forms.DateTimePicker();
             this.lblcorrelativo = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
@@ -39,9 +40,10 @@
             this.txtnombre = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.BtnAceptar = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.lblhora = new System.Windows.Forms.Label();
+            this.cb_lote = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
             this.SuspendLayout();
@@ -90,6 +92,13 @@
             this.datalistado.Size = new System.Drawing.Size(723, 214);
             this.datalistado.TabIndex = 75;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "MOTIVO DE SALIDA";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 300;
+            // 
             // dtpfecha
             // 
             this.dtpfecha.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -128,7 +137,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(60, 117);
+            this.label3.Location = new System.Drawing.Point(60, 102);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 21);
             this.label3.TabIndex = 104;
@@ -137,7 +146,7 @@
             // txtnombre
             // 
             this.txtnombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnombre.Location = new System.Drawing.Point(152, 115);
+            this.txtnombre.Location = new System.Drawing.Point(152, 100);
             this.txtnombre.Name = "txtnombre";
             this.txtnombre.Size = new System.Drawing.Size(273, 26);
             this.txtnombre.TabIndex = 105;
@@ -167,18 +176,11 @@
             this.BtnAceptar.UseVisualStyleBackColor = false;
             this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "MOTIVO DE SALIDA";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 300;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(499, 117);
+            this.label4.Location = new System.Drawing.Point(499, 102);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(140, 21);
             this.label4.TabIndex = 108;
@@ -189,18 +191,39 @@
             this.lblhora.AutoSize = true;
             this.lblhora.Font = new System.Drawing.Font("Futura Md BT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblhora.ForeColor = System.Drawing.Color.Blue;
-            this.lblhora.Location = new System.Drawing.Point(681, 119);
+            this.lblhora.Location = new System.Drawing.Point(681, 104);
             this.lblhora.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblhora.Name = "lblhora";
             this.lblhora.Size = new System.Drawing.Size(39, 19);
             this.lblhora.TabIndex = 109;
             this.lblhora.Text = "000";
             // 
+            // cb_lote
+            // 
+            this.cb_lote.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_lote.FormattingEnabled = true;
+            this.cb_lote.Location = new System.Drawing.Point(152, 132);
+            this.cb_lote.Name = "cb_lote";
+            this.cb_lote.Size = new System.Drawing.Size(85, 21);
+            this.cb_lote.TabIndex = 111;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(60, 129);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 21);
+            this.label1.TabIndex = 110;
+            this.label1.Text = "LOTE :";
+            // 
             // FrmAutorizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(777, 450);
+            this.Controls.Add(this.cb_lote);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblhora);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCancelar);
@@ -243,5 +266,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.Label label4;
         internal System.Windows.Forms.Label lblhora;
+        private System.Windows.Forms.ComboBox cb_lote;
+        private System.Windows.Forms.Label label1;
     }
 }

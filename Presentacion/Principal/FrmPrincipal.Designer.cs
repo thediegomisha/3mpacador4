@@ -40,6 +40,7 @@
             this.btnActualizaFProduccion = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnTerminal = new System.Windows.Forms.Button();
+            this.btnMuestreo = new System.Windows.Forms.Button();
             this.btnProducto = new System.Windows.Forms.Button();
             this.btnProductores = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
@@ -55,6 +56,7 @@
             this.btnBD = new System.Windows.Forms.Button();
             this.btnSistema = new System.Windows.Forms.Button();
             this.panelReportes = new System.Windows.Forms.Panel();
+            this.btnKardex = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.btn_DescarteGral = new System.Windows.Forms.Button();
@@ -100,8 +102,6 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnMuestreo = new System.Windows.Forms.Button();
-            this.btnKardex = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
@@ -315,6 +315,24 @@
             this.btnTerminal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTerminal.UseVisualStyleBackColor = false;
             this.btnTerminal.Click += new System.EventHandler(this.btnTerminal_Click);
+            // 
+            // btnMuestreo
+            // 
+            this.btnMuestreo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnMuestreo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMuestreo.FlatAppearance.BorderSize = 0;
+            this.btnMuestreo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMuestreo.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMuestreo.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnMuestreo.Location = new System.Drawing.Point(0, 130);
+            this.btnMuestreo.Name = "btnMuestreo";
+            this.btnMuestreo.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnMuestreo.Size = new System.Drawing.Size(135, 26);
+            this.btnMuestreo.TabIndex = 24;
+            this.btnMuestreo.Text = "Muestreo";
+            this.btnMuestreo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMuestreo.UseVisualStyleBackColor = false;
+            this.btnMuestreo.Click += new System.EventHandler(this.btnMuestreo_Click);
             // 
             // btnProducto
             // 
@@ -569,6 +587,23 @@
             this.panelReportes.Name = "panelReportes";
             this.panelReportes.Size = new System.Drawing.Size(135, 177);
             this.panelReportes.TabIndex = 9;
+            // 
+            // btnKardex
+            // 
+            this.btnKardex.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnKardex.FlatAppearance.BorderSize = 0;
+            this.btnKardex.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKardex.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKardex.ForeColor = System.Drawing.Color.LightGray;
+            this.btnKardex.Location = new System.Drawing.Point(0, 130);
+            this.btnKardex.Name = "btnKardex";
+            this.btnKardex.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnKardex.Size = new System.Drawing.Size(135, 26);
+            this.btnKardex.TabIndex = 10;
+            this.btnKardex.Text = "Kardex";
+            this.btnKardex.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnKardex.UseVisualStyleBackColor = true;
+            this.btnKardex.Click += new System.EventHandler(this.btnKardex_Click);
             // 
             // button10
             // 
@@ -848,9 +883,10 @@
             this.button5.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.button5.Size = new System.Drawing.Size(135, 26);
             this.button5.TabIndex = 16;
-            this.button5.Text = "Pendiente";
+            this.button5.Text = "Generar OP";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // btnProduccion
             // 
@@ -1152,41 +1188,6 @@
             this.ToolStripStatusLabel.Name = "ToolStripStatusLabel";
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
-            // 
-            // btnMuestreo
-            // 
-            this.btnMuestreo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.btnMuestreo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMuestreo.FlatAppearance.BorderSize = 0;
-            this.btnMuestreo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMuestreo.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMuestreo.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnMuestreo.Location = new System.Drawing.Point(0, 130);
-            this.btnMuestreo.Name = "btnMuestreo";
-            this.btnMuestreo.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnMuestreo.Size = new System.Drawing.Size(135, 26);
-            this.btnMuestreo.TabIndex = 24;
-            this.btnMuestreo.Text = "Muestreo";
-            this.btnMuestreo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMuestreo.UseVisualStyleBackColor = false;
-            this.btnMuestreo.Click += new System.EventHandler(this.btnMuestreo_Click);
-            // 
-            // btnKardex
-            // 
-            this.btnKardex.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnKardex.FlatAppearance.BorderSize = 0;
-            this.btnKardex.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnKardex.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKardex.ForeColor = System.Drawing.Color.LightGray;
-            this.btnKardex.Location = new System.Drawing.Point(0, 130);
-            this.btnKardex.Name = "btnKardex";
-            this.btnKardex.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnKardex.Size = new System.Drawing.Size(135, 26);
-            this.btnKardex.TabIndex = 10;
-            this.btnKardex.Text = "Kardex";
-            this.btnKardex.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnKardex.UseVisualStyleBackColor = true;
-            this.btnKardex.Click += new System.EventHandler(this.btnKardex_Click);
             // 
             // FrmPrincipal
             // 
