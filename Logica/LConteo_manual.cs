@@ -42,14 +42,14 @@ namespace _3mpacador4.Logica
             return li_rpta;
         }
 
-        public static decimal Kilos_Muestra(/*int li_idlote*/)
+        public static decimal Kilos_Muestra(int li_idlote)
         {
             decimal li_rpta = 0;
             if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
 
-            string sql = @"select 8 from dual;";
+            string sql = @"select ifnull(m.cantidad,0) from tblmuestreo m where m.idlote = @idlote";
             var cmd = new MySqlCommand(sql, ConexionGral.conexion);
-            //cmd.Parameters.AddWithValue("@idlote", li_idlote);
+            cmd.Parameters.AddWithValue("@idlote", li_idlote);
             li_rpta = Convert.ToDecimal(cmd.ExecuteScalar());
             ConexionGral.desconectar();
             return li_rpta;

@@ -11,5 +11,6 @@ namespace _3mpacador4.Entidad
         public int idcalibre { get; set; }
         public int calibre { get; set; }
         public int ultimo_nro_print { get; set; }
+        public int cajas_x_calibre { get; set; }
     }
 }

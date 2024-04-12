@@ -29,11 +29,10 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvlista1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.lblnrotrab1 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,8 +43,6 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.btnpasar = new Glass.GlassButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvlista2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.lblnrotrab2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -55,6 +52,11 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.lblgrupo = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btntrasladar = new Glass.GlassButton();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvlista1)).BeginInit();
             this.groupBox5.SuspendLayout();
@@ -91,33 +93,9 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.dgvlista1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvlista1.Location = new System.Drawing.Point(3, 87);
             this.dgvlista1.Name = "dgvlista1";
-            this.dgvlista1.ReadOnly = true;
             this.dgvlista1.RowHeadersVisible = false;
             this.dgvlista1.Size = new System.Drawing.Size(340, 400);
             this.dgvlista1.TabIndex = 3;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "DNI";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 80;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "TRABAJADOR";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 220;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "SEL";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column3.Width = 35;
             // 
             // groupBox5
             // 
@@ -236,20 +214,6 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.dgvlista2.Size = new System.Drawing.Size(373, 400);
             this.dgvlista2.TabIndex = 4;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "DNI";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "TRABAJADOR";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 220;
-            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.lblnrotrab2);
@@ -350,6 +314,46 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             this.btntrasladar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btntrasladar.Click += new System.EventHandler(this.btntrasladar_Click);
             // 
+            // Column1
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Column1.HeaderText = "DNI";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 80;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "TRABAJADOR";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 220;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "SEL";
+            this.Column3.Name = "Column3";
+            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column3.Width = 35;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTextBoxColumn1.HeaderText = "DNI";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "TRABAJADOR";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 270;
+            // 
             // FTraslado_trabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,15 +389,10 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dgvlista1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column3;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox4;
         private Glass.GlassButton btnpasar;
         private System.Windows.Forms.DataGridView dgvlista2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox6;
         internal System.Windows.Forms.Label label3;
@@ -407,5 +406,10 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         internal System.Windows.Forms.Label label6;
         internal System.Windows.Forms.Label lblgrupo;
         internal System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }

@@ -64,8 +64,17 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         {
             if (dgvlista.SelectedRows.Count > 0)
             {
-                FProgramaProceso.l.idlote = Convert.ToInt32(dgvlista.CurrentRow.Cells[0].Value.ToString());
-                FProgramaProceso.l.lote = dgvlista.CurrentRow.Cells[1].Value.ToString();
+                if (FPrecioCalibre.b_estado)
+                {
+                    FPrecioCalibre.l.idlote = Convert.ToInt32(dgvlista.CurrentRow.Cells[0].Value.ToString());
+                    FPrecioCalibre.l.lote = dgvlista.CurrentRow.Cells[1].Value.ToString();
+                }
+                else 
+                {
+                    FProgramaProceso.l.idlote = Convert.ToInt32(dgvlista.CurrentRow.Cells[0].Value.ToString());
+                    FProgramaProceso.l.lote = dgvlista.CurrentRow.Cells[1].Value.ToString();
+                }
+                
                 Close();
             }
         }

@@ -34,6 +34,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnProceso = new System.Windows.Forms.Button();
             this.btnJornal = new System.Windows.Forms.Button();
+            this.btnPrecioCalire = new System.Windows.Forms.Button();
             this.btnTrazabilidadP = new System.Windows.Forms.Button();
             this.panelMantenimiento = new System.Windows.Forms.Panel();
             this.btnPresen_cajas = new System.Windows.Forms.Button();
@@ -102,6 +103,7 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnAvancePersonal = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
@@ -144,19 +146,21 @@
             this.PanelLadoIzq.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelLadoIzq.Location = new System.Drawing.Point(0, 0);
             this.PanelLadoIzq.Name = "PanelLadoIzq";
-            this.PanelLadoIzq.Size = new System.Drawing.Size(152, 749);
+            this.PanelLadoIzq.Size = new System.Drawing.Size(152, 487);
             this.PanelLadoIzq.TabIndex = 0;
             // 
             // panelTrazabilidad
             // 
             this.panelTrazabilidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panelTrazabilidad.Controls.Add(this.btnAvancePersonal);
             this.panelTrazabilidad.Controls.Add(this.button2);
             this.panelTrazabilidad.Controls.Add(this.btnProceso);
             this.panelTrazabilidad.Controls.Add(this.btnJornal);
+            this.panelTrazabilidad.Controls.Add(this.btnPrecioCalire);
             this.panelTrazabilidad.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTrazabilidad.Location = new System.Drawing.Point(0, 1293);
+            this.panelTrazabilidad.Location = new System.Drawing.Point(0, 1252);
             this.panelTrazabilidad.Name = "panelTrazabilidad";
-            this.panelTrazabilidad.Size = new System.Drawing.Size(135, 80);
+            this.panelTrazabilidad.Size = new System.Drawing.Size(135, 133);
             this.panelTrazabilidad.TabIndex = 15;
             // 
             // button2
@@ -166,7 +170,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.LightGray;
-            this.button2.Location = new System.Drawing.Point(0, 52);
+            this.button2.Location = new System.Drawing.Point(0, 78);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.button2.Size = new System.Drawing.Size(135, 26);
@@ -183,7 +187,7 @@
             this.btnProceso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProceso.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProceso.ForeColor = System.Drawing.Color.LightGray;
-            this.btnProceso.Location = new System.Drawing.Point(0, 26);
+            this.btnProceso.Location = new System.Drawing.Point(0, 52);
             this.btnProceso.Name = "btnProceso";
             this.btnProceso.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnProceso.Size = new System.Drawing.Size(135, 26);
@@ -200,7 +204,7 @@
             this.btnJornal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJornal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnJornal.ForeColor = System.Drawing.Color.LightGray;
-            this.btnJornal.Location = new System.Drawing.Point(0, 0);
+            this.btnJornal.Location = new System.Drawing.Point(0, 26);
             this.btnJornal.Name = "btnJornal";
             this.btnJornal.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnJornal.Size = new System.Drawing.Size(135, 26);
@@ -210,6 +214,23 @@
             this.btnJornal.UseVisualStyleBackColor = true;
             this.btnJornal.Click += new System.EventHandler(this.btnJornal_Click);
             // 
+            // btnPrecioCalire
+            // 
+            this.btnPrecioCalire.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPrecioCalire.FlatAppearance.BorderSize = 0;
+            this.btnPrecioCalire.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrecioCalire.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrecioCalire.ForeColor = System.Drawing.Color.LightGray;
+            this.btnPrecioCalire.Location = new System.Drawing.Point(0, 0);
+            this.btnPrecioCalire.Name = "btnPrecioCalire";
+            this.btnPrecioCalire.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnPrecioCalire.Size = new System.Drawing.Size(135, 26);
+            this.btnPrecioCalire.TabIndex = 18;
+            this.btnPrecioCalire.Text = "Precio Calibre";
+            this.btnPrecioCalire.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrecioCalire.UseVisualStyleBackColor = true;
+            this.btnPrecioCalire.Click += new System.EventHandler(this.btnPrecioCalire_Click);
+            // 
             // btnTrazabilidadP
             // 
             this.btnTrazabilidadP.Dock = System.Windows.Forms.DockStyle.Top;
@@ -217,7 +238,7 @@
             this.btnTrazabilidadP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrazabilidadP.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTrazabilidadP.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 1267);
+            this.btnTrazabilidadP.Location = new System.Drawing.Point(0, 1226);
             this.btnTrazabilidadP.Name = "btnTrazabilidadP";
             this.btnTrazabilidadP.Size = new System.Drawing.Size(135, 26);
             this.btnTrazabilidadP.TabIndex = 14;
@@ -241,7 +262,7 @@
             this.panelMantenimiento.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMantenimiento.Location = new System.Drawing.Point(0, 952);
             this.panelMantenimiento.Name = "panelMantenimiento";
-            this.panelMantenimiento.Size = new System.Drawing.Size(135, 315);
+            this.panelMantenimiento.Size = new System.Drawing.Size(135, 274);
             this.panelMantenimiento.TabIndex = 12;
             // 
             // btnPresen_cajas
@@ -1070,7 +1091,7 @@
             this.PanelFormularioHijo.Location = new System.Drawing.Point(152, 0);
             this.PanelFormularioHijo.MinimumSize = new System.Drawing.Size(206, 600);
             this.PanelFormularioHijo.Name = "PanelFormularioHijo";
-            this.PanelFormularioHijo.Size = new System.Drawing.Size(1065, 749);
+            this.PanelFormularioHijo.Size = new System.Drawing.Size(1065, 600);
             this.PanelFormularioHijo.TabIndex = 1;
             // 
             // toolStrip1
@@ -1090,7 +1111,7 @@
             this.LblNombrePc,
             this.txtNombreEquipo,
             this.ToolStripStatusLabel});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 724);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 575);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1065, 25);
             this.toolStrip1.TabIndex = 2;
@@ -1189,11 +1210,28 @@
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
             // 
+            // btnAvancePersonal
+            // 
+            this.btnAvancePersonal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAvancePersonal.FlatAppearance.BorderSize = 0;
+            this.btnAvancePersonal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAvancePersonal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAvancePersonal.ForeColor = System.Drawing.Color.LightGray;
+            this.btnAvancePersonal.Location = new System.Drawing.Point(0, 104);
+            this.btnAvancePersonal.Name = "btnAvancePersonal";
+            this.btnAvancePersonal.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnAvancePersonal.Size = new System.Drawing.Size(135, 26);
+            this.btnAvancePersonal.TabIndex = 19;
+            this.btnAvancePersonal.Text = "Avance Personal";
+            this.btnAvancePersonal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAvancePersonal.UseVisualStyleBackColor = true;
+            this.btnAvancePersonal.Click += new System.EventHandler(this.btnAvancePersonal_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1217, 749);
+            this.ClientSize = new System.Drawing.Size(1217, 487);
             this.Controls.Add(this.PanelFormularioHijo);
             this.Controls.Add(this.PanelLadoIzq);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1297,6 +1335,8 @@
         private System.Windows.Forms.Button btn_DescarteGral;
         private System.Windows.Forms.Button btnMuestreo;
         private System.Windows.Forms.Button btnKardex;
+        private System.Windows.Forms.Button btnPrecioCalire;
+        private System.Windows.Forms.Button btnAvancePersonal;
         public System.Windows.Forms.ToolStripStatusLabel txtDatabase;
     }
 }
