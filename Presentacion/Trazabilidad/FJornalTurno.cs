@@ -79,7 +79,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             foreach (var f in Lista)
             {
                 dgvgrupo_turno_cab.Rows.Add(null, null, f.idgrupo, f.descripcion, f.idusuario, f.nom_usuario, f.idturno, f.nom_turno,
-                                            f.fecha_produccion, f.fecha_inicio, f.fecha_fin, f.flag_tercero == "1" ? true : false,
+                                            f.fecha_produccion.ToShortDateString(), f.fecha_inicio.ToString("dd/MM/yyyy HH:mm"), f.fecha_fin.ToString("dd/MM/yyyy HH:mm"), f.flag_tercero == "1" ? true : false,
                                             f.flag_estado == "1" ? true : false);
             }
         }
@@ -190,7 +190,6 @@ namespace _3mpacador4.Presentacion.Trazabilidad
         {
             try
             {
-
                 if (dgvlista_trab.RowCount <= 0)
                 {
                     MessageBox.Show(@"No Hay Ningun Trabajador para Asignar al Grupo", @"Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -220,7 +219,6 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                 Lista_Grupo_turno_det(Convert.ToInt32(lblidgrupo.Text.ToString()));
                 ConexionGral.desconectar();
                 return;
-
             }
             catch (MySqlException ex)
             {
@@ -239,7 +237,6 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                 e.Handled = true;
             }
         }
-
 
         private void dgvgrupo_turno_cab_CellClick(object sender, DataGridViewCellEventArgs e)
         {

@@ -37,5 +37,33 @@ namespace _3mpacador4.Logica
                 throw;
             }
         }
+
+        public static bool Precio_x_calibre_insert_update(int idlote, int idcliente, int calibre, decimal precio)
+        {
+            try
+            {
+                bool rpta = false;
+
+                if (ConexionGral.conexion.State == ConnectionState.Closed)
+                    ConexionGral.conectar();
+
+                var comando = new MySqlCommand("usp_actualizar_precio_x_calibre", ConexionGral.conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.AddWithValue("p_idlote", idlote);
+                comando.Parameters.AddWithValue("p_idcliente", idcliente);
+                comando.Parameters.AddWithValue("p_calibre", calibre);
+                comando.Parameters.AddWithValue("p_precio", precio);
+                rpta = Convert.ToBoolean(comando.ExecuteNonQuery());
+
+                ConexionGral.desconectar();
+                return rpta;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(@"OCURRIO UN ERROR EN usp_actualizar_precio_x_calibre " + ex.Message, @"ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
     }
 }

@@ -101,5 +101,36 @@ namespace _3mpacador4.Logica
             ConexionGral.desconectar();
             return lista;
         }
+
+        public static List<Grupo_turno_detalle> Lista_Avance_x_grupo(int li_idgrupo)
+        {
+            var lista = new List<Grupo_turno_detalle>();
+            if (ConexionGral.conexion.State == ConnectionState.Closed)
+            {
+                ConexionGral.conectar();
+            }
+
+            var comando = new MySqlCommand(@"select c.dni, usf_nombre_trabajador(c.dni) as trabajador, count(d.cod_dni) as cantidad from tblgrupo_turno g 
+                                            inner join tblconteo_new d on g.idgrupo_turno = cast(substr(d.cod_dni,1,6) as int)
+                                            inner join tblcolaborador c on cast(substr(d.cod_dni,11) as int) = c.dni
+                                            where g.idgrupo_turno = @idgrupo", ConexionGral.conexion);
+            //comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@idgrupo", li_idgrupo);
+
+            using (MySqlDataReader reader = comando.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Grupo_turno_detalle c = new Grupo_turno_detalle();
+                    //c.idgrupo = Convert.ToInt32(reader["idgrupo_turno"]);
+                    c.dni = Convert.ToString(reader["dni"]);
+                    c.trabajador = Convert.ToString(reader["trabajador"]);
+                    c.ult_cantidad = Convert.ToInt32(reader["cantidad"]);
+                    lista.Add(c);
+                }
+            }
+            ConexionGral.desconectar();
+            return lista;
+        }
     }
 }

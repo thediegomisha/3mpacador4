@@ -27,7 +27,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
 
         private int li_idgrupo;
         public Numerador_trab n_trab = null;
-        private List<Numerador_trab> Lista_num_trab = new List<Numerador_trab>();
+        private List<string> Lista_num_trab = new List<string>();
         private string ls_dni = "";
 
         public FImprimirQR()
@@ -49,12 +49,14 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                 comando.Parameters.AddWithValue("p_dni", ls_dni);
                 comando.Parameters.AddWithValue("p_idgrupo_turno", li_idgrupo_turno);
 
-                Lista_num_trab = new List<Numerador_trab>();
+                Lista_num_trab = new List<string>();//Lista_num_trab = new List<Numerador_trab>();
 
                 using (var reader = comando.ExecuteReader())
                 {
                     while (reader.Read())
                     {
+                        Lista_num_trab.Add(Convert.ToString(reader["codigo"]));
+                        /*
                         n_trab = new Numerador_trab();
                         n_trab.codigo = Convert.ToString(reader["codigo"]);
                         n_trab.fecha_produccion = Convert.ToDateTime(reader["fecha_produccion"]);
@@ -63,6 +65,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                         n_trab.item = Convert.ToInt32(reader["item"]);
                         n_trab.idgrupo_turno = Convert.ToInt32(reader["idgrupo_turno"]);
                         Lista_num_trab.Add(n_trab);
+                        */
                     }
                 }
 
@@ -201,12 +204,40 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             var nro_etiquetas = Convert.ToInt32(lblcantidad_tikects.Text.ToString());
             if (nro_etiquetas > 0)
             {
-
                 
                 if (Generar_Numeradores(li_idgrupo, ls_dni, nro_etiquetas))
                 {
                     Lista_Num_trab(ls_dni, li_idgrupo);
-                    Impresion_ZPL(/*Convert.ToInt32(nudacantidad_filas.Value)*/);
+
+                    List<List<string>> filasSeparadas = SepararEnFilas(Lista_num_trab, 4);
+                    
+                    string cadena;
+
+                    for (var i = 0; i <= filasSeparadas.Count - 1; i++)
+                    {
+                        cadena = "^XA" + Environment.NewLine;
+
+                        cadena = cadena + "^FO20^BQN,2,6^FDMA," + filasSeparadas[i][0].ToString() + "^FS" + Environment.NewLine;
+                        cadena = cadena + "^CF0,25^FO30,128^FD" + filasSeparadas[i][0].ToString().Substring(10) + "^FS" + Environment.NewLine;
+
+                        cadena = cadena + "^FO235^BQN,2,6^FDMA," + filasSeparadas[i][1].ToString() + "^FS" + Environment.NewLine;
+                        cadena = cadena + "^CF0,25^FO245,128^FD" + filasSeparadas[i][1].ToString().Substring(10) + "^FS" + Environment.NewLine;
+
+                        cadena = cadena + "^FO450^BQN,2,6^FDMA," + filasSeparadas[i][2].ToString() + "^FS" + Environment.NewLine;
+                        cadena = cadena + "^CF0,25^FO460,128^FD" + filasSeparadas[i][2].ToString().Substring(10) + "^FS" + Environment.NewLine;
+
+                        cadena = cadena + "^FO665^BQN,2,6^FDMA," + filasSeparadas[i][3].ToString() + "^FS" + Environment.NewLine;
+                        cadena = cadena + "^CF0,25^FO675,128^FD" + filasSeparadas[i][3].ToString().Substring(10) + "^FS" + Environment.NewLine;
+
+                        // FIN
+                        cadena = cadena + "^XZ" + Environment.NewLine;
+                        RawPrinterHelper.EnviarCadenaToImpresora(cbximpresora.Text.Trim(), cadena);
+                        cadena = "";
+                    }
+
+                    MessageBox.Show("IMPRESION DE TICKETS ", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //Impresion_ZPL(/*Convert.ToInt32(nudacantidad_filas.Value)*/);
                 }   
             }
         }
@@ -226,11 +257,13 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                 // AGREGO LOS VALORES AL ARREGLO
                 for (int i = 0; i < filas; i++)
                 {
-                    Arreglo[i, 0] = Lista_num_trab[i].codigo;
+                    //Arreglo[i, 0] = Lista_num_trab[i].codigo;
                     /*Arreglo[i, 1] = Lista_num_trab[i].codigo;
                     Arreglo[i, 2] = Lista_num_trab[i].codigo;
                     Arreglo[i, 3] = Lista_num_trab[i].codigo;*/
                 }
+
+                
 
                 //int fila = 0;
                 // RECORRO LAS FILAS
@@ -243,14 +276,14 @@ namespace _3mpacador4.Presentacion.Trazabilidad
                     cadena = cadena + "^FO20^BQN,2,6^FDMA," + Arreglo[i, 0].ToString() + "^FS" + Environment.NewLine;
                     cadena = cadena + "^CF0,25^FO30,128^FD" + Arreglo[i, 0].ToString().Trim().Substring(12) + "^FS" + Environment.NewLine;
 
-                    cadena = cadena + "^FO235^BQN,2,6^FDMA," + Arreglo[i, 0].ToString().Trim() + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,25^FO245,128^FD" + Arreglo[i, 0].ToString().Trim().Substring(12) + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO235^BQN,2,6^FDMA," + Arreglo[i, 1].ToString().Trim() + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,25^FO245,128^FD" + Arreglo[i, 1].ToString().Trim().Substring(12) + "^FS" + Environment.NewLine;
                                                                        
-                    cadena = cadena + "^FO450^BQN,2,6^FDMA," + Arreglo[i, 0].ToString().Trim() + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,25^FO460,128^FD" + Arreglo[i, 0].ToString().Trim().Substring(12) + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO450^BQN,2,6^FDMA," + Arreglo[i, 2].ToString().Trim() + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,25^FO460,128^FD" + Arreglo[i, 3].ToString().Trim().Substring(12) + "^FS" + Environment.NewLine;
                                                                        
-                    cadena = cadena + "^FO665^BQN,2,6^FDMA," + Arreglo[i, 0].ToString().Trim() + "^FS" + Environment.NewLine;
-                    cadena = cadena + "^CF0,25^FO675,128^FD" + Arreglo[i, 0].ToString().Trim().Substring(12) + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^FO665^BQN,2,6^FDMA," + Arreglo[i, 4].ToString().Trim() + "^FS" + Environment.NewLine;
+                    cadena = cadena + "^CF0,25^FO675,128^FD" + Arreglo[i, 4].ToString().Trim().Substring(12) + "^FS" + Environment.NewLine;
 
                     // FIN
                     cadena = cadena + "^XZ" + Environment.NewLine;
@@ -262,6 +295,22 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             {
                 MessageBox.Show(ex.Message, "ERROR...");
             }
+        }
+
+        static List<List<string>> SepararEnFilas(List<string> listaOriginal, int columnasPorFila)
+        {
+            List<List<string>> filasSeparadas = new List<List<string>>();
+
+            for (int i = 0; i < listaOriginal.Count; i += columnasPorFila)
+            {
+                // Obtiene una porción de la lista con el número de columnas especificado
+                List<string> fila = listaOriginal.GetRange(i, Math.Min(columnasPorFila, listaOriginal.Count - i));
+
+                // Agrega la fila a la lista de filas separadas
+                filasSeparadas.Add(fila);
+            }
+
+            return filasSeparadas;
         }
 
         private void LlenarComboBoxImpresoras()
@@ -310,6 +359,7 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             ls_dni = FJornalTurno.ls_dni;
             lbltrabajador.Text = FJornalTurno.ls_trabajador;
             LlenarComboBoxImpresoras();
+            lblcantidad_tikects.Text = Convert.ToString(Convert.ToInt32(nudacantidad_filas.Value) * Convert.ToInt32(lblcolumnas.Text.Trim()));
         }
 
         private void nudacantidad_filas_ValueChanged(object sender, EventArgs e)

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using _3mpacador4.Entidad;
 using _3mpacador4.Logica;
 using _3mpacador4.Properties;
+using _3mpacador4.Presentacion.Trazabilidad;
 using Devart.Data.MySql;
 using Newtonsoft.Json;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -252,6 +253,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 cbxestado.Text = "INACTIVO";
 
             if (frmColaborador.editar)
+            {
                 if (frmColaborador.cl.idcolaborador > 0)
                 {
                     id = frmColaborador.cl.idcolaborador;
@@ -264,6 +266,12 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     else
                         cbxestado.Checked = false;
                 }
+            }
+            else if (FTraslado_trabajador.buscar_dni)
+            {
+                txtdni.Text = FTraslado_trabajador.ls_nro_dni;
+            }
+
         }
 
         private void cbxestado_CheckedChanged(object sender, EventArgs e)

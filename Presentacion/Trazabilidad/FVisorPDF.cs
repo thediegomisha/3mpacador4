@@ -23,6 +23,10 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             {
                 pvvisor.LoadFromFile(FRptKardexLote.ls_ruta_pdf);
             }
+            else if (FRptAvancePersonal.ls_ruta_pdf.Length > 0)
+            {
+                pvvisor.LoadFromFile(FRptAvancePersonal.ls_ruta_pdf);
+            }
                               
         }
 
@@ -35,6 +39,10 @@ namespace _3mpacador4.Presentacion.Trazabilidad
             else if (File.Exists(FRptKardexLote.ls_ruta_pdf))
             {
                 File.Delete(FRptKardexLote.ls_ruta_pdf);
+            }
+            else if (File.Exists(FRptAvancePersonal.ls_ruta_pdf))
+            {
+                File.Delete(FRptAvancePersonal.ls_ruta_pdf);
             }
         }
     }

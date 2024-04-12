@@ -17,8 +17,8 @@ namespace _3mpacador4.Presentacion.Reporte
             InitializeComponent();
         }
 
-        public static int li_idproceso = 0;
-        public static string ls_fecha_produccion = "", ls_dec_programacion = "";
+        public static int li_idlote = 0, li_calibre = 0, li_idprogramacion = 0;
+        public static string ls_fecha_produccion = "", ls_desc_lote = "", ls_desc_programacion = "";
         public static bool lb_ver_prog_manual = false;
 
         public static Lote l = null;
@@ -633,7 +633,7 @@ namespace _3mpacador4.Presentacion.Reporte
             var Lista = LPrograma_proceso.Lista_lotes_x_fecha(dtpfilfproduccion.Value.ToString("yyyy-MM-dd"));
             foreach (var f in Lista)
             {
-                dgvlote_x_fec.Rows.Add(f.idlote, f.numlote, f.cantidad_jabas, f.kilos);
+                dgvlote_x_fec.Rows.Add(f.fecha_proceso.ToShortDateString(), f.idlote, f.numlote, f.cantidad_jabas, f.kilos);
             }
             if (dgvlote_x_fec.RowCount <= 0)
             {
@@ -641,13 +641,26 @@ namespace _3mpacador4.Presentacion.Reporte
             }
         }
 
-        void Cargar_programacion_x_lote(int li_idlote)
+        void Cargar_Programacion_x_lote(int li_idlote) 
         {
             dgvprog_x_lote.Rows.Clear();
             var Lista = LPrograma_proceso.Lista_programacion_x_lote(li_idlote);
             foreach (var f in Lista)
             {
                 dgvprog_x_lote.Rows.Add(f.idproceso, f.fecha_proceso.ToShortDateString(), f.numlote, f.cliente, f.destino, f.categoria, f.presentacion);
+            }         
+
+        }
+
+        
+
+        void Cargar_calibres_x_lote(int li_idlote)
+        {
+            dgvcajas_x_calibre.Rows.Clear();
+            var Lista = LPrograma_proceso.Lista_cajas_x_lote(li_idlote);
+            foreach (var f in Lista)
+            {
+                dgvcajas_x_calibre.Rows.Add(f.calibre, f.cajas_x_calibre);
             }
         }
 
@@ -658,7 +671,8 @@ namespace _3mpacador4.Presentacion.Reporte
 
         private void dgvlote_x_fec_SelectionChanged(object sender, EventArgs e)
         {
-            Cargar_programacion_x_lote(Convert.ToInt32(dgvlote_x_fec.CurrentRow.Cells[0].Value));
+            Cargar_calibres_x_lote(Convert.ToInt32(dgvlote_x_fec.CurrentRow.Cells[1].Value));
+            Cargar_Programacion_x_lote(Convert.ToInt32(dgvlote_x_fec.CurrentRow.Cells[1].Value));
         }
 
         private void btnlista_programaciones_Click(object sender, EventArgs e)
@@ -702,17 +716,34 @@ namespace _3mpacador4.Presentacion.Reporte
             f.ShowDialog();
         }
 
+        private void dgvcajas_x_calibre_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvcajas_x_calibre.Columns[2].Index && e.RowIndex >= 0)
+            {
+                ls_fecha_produccion = dgvlote_x_fec.CurrentRow.Cells[0].Value.ToString();
+                li_idlote = Convert.ToInt32(dgvlote_x_fec.CurrentRow.Cells[1].Value);                
+                ls_desc_lote = dgvlote_x_fec.CurrentRow.Cells[2].Value.ToString();
+                li_calibre = Convert.ToInt32(dgvcajas_x_calibre.CurrentRow.Cells[0].Value);
+
+                var f = new FrmImprimeCalibre();
+                f.ShowDialog();
+            }
+        }
+
         private void dgvprog_x_lote_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvprog_x_lote.Columns[7].Index && e.RowIndex >= 0)
             {
-                li_idproceso = Convert.ToInt32(dgvprog_x_lote.CurrentRow.Cells[0].Value);
+                li_idprogramacion = Convert.ToInt32(dgvprog_x_lote.CurrentRow.Cells[0].Value);
                 ls_fecha_produccion = dgvprog_x_lote.CurrentRow.Cells[1].Value.ToString();
-                ls_dec_programacion = dgvprog_x_lote.CurrentRow.Cells[2].Value.ToString() + " (" +
-                                      dgvprog_x_lote.CurrentRow.Cells[3].Value.ToString() + ", " +
-                                      dgvprog_x_lote.CurrentRow.Cells[4].Value.ToString() + ", " +
-                                      dgvprog_x_lote.CurrentRow.Cells[5].Value.ToString() + ", " +
-                                      dgvprog_x_lote.CurrentRow.Cells[6].Value.ToString() + ")";
+                //li_idlote = Convert.ToInt32(dgvlote_x_fec.CurrentRow.Cells[1].Value);
+                ls_desc_programacion = dgvprog_x_lote.CurrentRow.Cells[2].Value.ToString() + " / " +
+                                       dgvprog_x_lote.CurrentRow.Cells[3].Value.ToString() + " / " +
+                                       dgvprog_x_lote.CurrentRow.Cells[4].Value.ToString() + " / " +
+                                       dgvprog_x_lote.CurrentRow.Cells[5].Value.ToString() + " / " +
+                                       dgvprog_x_lote.CurrentRow.Cells[6].Value.ToString();
+                //li_calibre = Convert.ToInt32(dgvcajas_x_calibre.CurrentRow.Cells[0].Value);
+
                 var f = new FrmImprimeCalibre();
                 f.ShowDialog();
             }

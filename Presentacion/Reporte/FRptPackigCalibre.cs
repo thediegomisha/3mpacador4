@@ -196,7 +196,7 @@ namespace _3mpacador4.Presentacion.Reporte
 
                 // PARA DESCARTE Y MUESTREO                
                 ldc_kilos_descarte = LConteo_manual.Kilos_Descarte(li_idlote);
-           //     ldc_kilos_muestra = LConteo_manual.Kilos_Muestra(li_idlote);  ERROR EN ESTA LINEA
+                ldc_kilos_muestra = LConteo_manual.Kilos_Muestra(li_idlote);  //ERROR EN ESTA LINEA
 
                 tbxkilos_descarte.Text = ldc_kilos_descarte.ToString("###,##0.00");
                 tbxkilos_muestra.Text = ldc_kilos_muestra.ToString("###,##0.00");

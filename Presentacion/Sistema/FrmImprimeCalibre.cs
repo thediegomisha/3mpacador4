@@ -119,13 +119,14 @@ namespace _3mpacador4.Presentacion.Sistema
             LlenarComboBoxImpresoras();
 
             lblfproduccion.Text = FProgramaProceso.ls_fecha_produccion;
-            lblidproceso.Text = FProgramaProceso.li_idproceso.ToString();
-            lbldesc_programacion.Text = FProgramaProceso.ls_dec_programacion;
+            lbllote.Text = FProgramaProceso.ls_desc_programacion.ToString();
+            lblidprogramacion.Text = FProgramaProceso.li_idprogramacion.ToString();
+            //lblcalibre.Text = FProgramaProceso.li_calibre.ToString();
 
             lblcantidad_tikects.Text = Convert.ToString(Convert.ToInt32(nudacantidad_filas.Value) * 4);
         }
 
-        void Numeror_x_Calibre(int li_calibre, int li_cantidad, int li_idproceso, string ls_fecha_produccion) {
+        void Numeror_x_Calibre(int li_calibre, int li_cantidad, int li_idprogramacion, string ls_fecha_produccion) {
 
             try
             {
@@ -138,7 +139,7 @@ namespace _3mpacador4.Presentacion.Sistema
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.AddWithValue("p_calibre", li_calibre);
                 comando.Parameters.AddWithValue("p_cantidad", li_cantidad);
-                comando.Parameters.AddWithValue("p_idproceso", li_idproceso);
+                comando.Parameters.AddWithValue("p_idprogramacion", li_idprogramacion);
                 comando.Parameters.AddWithValue("p_fecha_produccion", ls_fecha_produccion);
                 comando.ExecuteNonQuery();
                 ConexionGral.desconectar();
@@ -262,18 +263,20 @@ namespace _3mpacador4.Presentacion.Sistema
         private void btngenerar_Click(object sender, EventArgs e)
         {
 
-            int li_calibre = 0, li_cantidad = 0, li_idproceso = 0;
+            int li_calibre = 0, li_cantidad = 0, li_idprogramacion = 0;
             string ls_fecha_produccion = "";
 
-            li_calibre = Convert.ToInt32(nudcalibre.Value);
+            li_calibre = Convert.ToInt32(nudcalibre.Value.ToString());
             li_cantidad = Convert.ToInt32(lblcantidad_tikects.Text.Trim());
-            li_idproceso = Convert.ToInt32(lblidproceso.Text.Trim());
+            li_idprogramacion = Convert.ToInt32(lblidprogramacion.Text.Trim());
             ls_fecha_produccion = Convert.ToDateTime(lblfproduccion.Text).ToString("yyyy-MM-dd");
 
             var rpta = MessageBox.Show("¿ ESTA SEGURO DE GENERAR " + li_cantidad.ToString() + " TICKETS DEL CALIBRE "+ li_calibre.ToString() + " DE FECHA : " + lblfproduccion.Text.Trim() + " ?", "Aviso...!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (rpta == DialogResult.Yes)
             {
-                Numeror_x_Calibre(li_calibre, li_cantidad, li_idproceso, ls_fecha_produccion);
+                dgvlista.Rows.Clear();
+
+                Numeror_x_Calibre(li_calibre, li_cantidad, li_idprogramacion, ls_fecha_produccion);
 
                 Lista_codigos(li_calibre, ls_fecha_produccion);
 

@@ -394,5 +394,17 @@ namespace _3mpacador4.Presentacion
             ocultarSubMenu();
             AbrirFormularioHijo(new FRptKardexLote());
         }
+
+        private void btnPrecioCalire_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new FPrecioCalibre());
+        }
+
+        private void btnAvancePersonal_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new FRptAvancePersonal());
+        }
     }
 }
