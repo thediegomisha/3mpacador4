@@ -6,7 +6,9 @@ using System.IO.Ports;
 using System.Text;
 using System.Windows.Forms;
 using _3mpacador4.Logica;
+using _3mpacador4.Presentacion;
 using _3mpacador4.Presentacion.Mantenimiento;
+using _3mpacador4.Presentacion.R00t;
 using _3mpacador4.Presentacion.Reporte;
 using _3mpacador4.Properties;
 using Devart.Data.MySql;
@@ -39,6 +41,8 @@ namespace _3mpacador4
         private string POSICION_INICIAL;
         private string salidacontrol;
         private string stringinicio;
+
+      //  private FrmPrincipal form1;  ///
 
         public IngresoPesos()
         {
@@ -711,7 +715,13 @@ namespace _3mpacador4
         private void chkPesoManual_CheckedChanged(object sender, EventArgs e)
         {
             if (chkPesoManual.Checked)
+            {
+                formR00t rootlogin = new formR00t();
+                rootlogin.ShowDialog();
+
+                this.Close();
                 txtPesoManual.Visible = true;
+            }               
             else
                 txtPesoManual.Visible = false;
         }
@@ -1695,7 +1705,12 @@ namespace _3mpacador4
             }
         }
 
-     
+        //public void CambiarTextoLabel(string nuevoTexto, string nuevotexto2)
+        //{
+        //    lbltitulo.Text = nuevoTexto;
+        //    btnGuardar.Text = nuevotexto2;
+        //}
+
         private delegate void DelegadoAcceso(string Adicionartexto);
     }
 }

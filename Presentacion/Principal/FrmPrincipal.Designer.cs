@@ -1252,7 +1252,6 @@
         internal System.Windows.Forms.ToolStripStatusLabel LblNombrePc;
         internal System.Windows.Forms.ToolStripStatusLabel txtNombreEquipo;
         internal System.Windows.Forms.ToolStripStatusLabel ToolStripStatusLabel;
-        internal System.Windows.Forms.ToolStripStatusLabel txtDatabase;
         internal System.Windows.Forms.ToolStripStatusLabel lblDatabase;
         public System.Windows.Forms.ToolStripStatusLabel TxtVersion;
         private System.Windows.Forms.Panel panelPesos;
@@ -1298,5 +1297,6 @@
         private System.Windows.Forms.Button btn_DescarteGral;
         private System.Windows.Forms.Button btnMuestreo;
         private System.Windows.Forms.Button btnKardex;
+        public System.Windows.Forms.ToolStripStatusLabel txtDatabase;
     }
 }

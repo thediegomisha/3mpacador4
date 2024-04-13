@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Deployment.Application;
+using System.Diagnostics;
 using System.Windows.Forms;
 using _3mpacador4.Logica;
 using _3mpacador4.Presentacion.Principal;
@@ -15,7 +16,16 @@ namespace _3mpacador4.Presentacion
         {
             InitializeComponent();
             // info();
-            lblversion.Text = Application.ProductVersion + "   ";
+
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+                var deployment = ApplicationDeployment.CurrentDeployment;
+                lblversion.Text = deployment.CurrentVersion.ToString() + "   ";
+            }
+            else
+            {
+                lblversion.Text = Application.ProductVersion + "   ";
+            }
         }
 
         public static string nombre1 { get; private set; }
@@ -87,8 +97,6 @@ namespace _3mpacador4.Presentacion
                     txtlogin.Text = string.Empty;
                     txtpassword.Text = string.Empty;
                 }
-                
-
                 return usuarioValido;
             }
 
@@ -100,7 +108,6 @@ namespace _3mpacador4.Presentacion
             finally
             {
                 if (comando != null) comando.Dispose();
-
                 ConexionGral.desconectar();
             }
         }
@@ -167,8 +174,12 @@ namespace _3mpacador4.Presentacion
         private void label1_Click(object sender, EventArgs e)
         {
             var conexion = new FrmConexion();
-
             conexion.Show();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

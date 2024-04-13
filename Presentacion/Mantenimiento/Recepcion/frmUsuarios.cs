@@ -24,7 +24,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
         public frmUsuarios()
         {
             InitializeComponent();
-            mostrarUsuarios();
+          //  mostrarUsuarios();
             mostrarTipoUsuario();
         }
 
@@ -53,18 +53,22 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 if (datos.ContainsKey("txtnombres"))
                 {
                     string contenidoForm2 = datos["txtnombres"];
-                    txtnombres.Text = contenidoForm2;
+                    txtnombres.Text = contenidoForm2.ToLower();
+                    txtnombres.Text = CapitalizarPrimeraLetra(txtnombres.Text);
+                   
                 }
                 if (datos.ContainsKey("txtapellidop"))
                 {
                     string contenidoForm2 = datos["txtapellidop"];
-                    txtAPaterno.Text = contenidoForm2;
+                    txtAPaterno.Text = contenidoForm2.ToLower();
+                    txtAPaterno.Text = CapitalizarPrimeraLetra(txtAPaterno.Text);
                 }
 
                 if (datos.ContainsKey("txtapellidom"))
                 {
                     string contenidoForm2 = datos["txtapellidom"];
-                    txtAMaterno.Text = contenidoForm2;
+                    txtAMaterno.Text = contenidoForm2.ToLower();
+                    txtAMaterno.Text = CapitalizarPrimeraLetra(txtAMaterno.Text);
                 }
                 // Puedes agregar más comprobaciones para otros TextBox
             };
@@ -73,42 +77,53 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             // MostrarColaborador();
         }
 
-        public void mostrarUsuarios()
+        static string CapitalizarPrimeraLetra(string input)
         {
-            MySqlCommand comando = null;
-            try
+            if (string.IsNullOrEmpty(input))
             {
-                if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
-
-                comando = new MySqlCommand("usp_tblusuarios_Select1", ConexionGral.conexion);
-                comando.CommandType = (CommandType)4;
-
-                var adaptador = new MySqlDataAdapter(comando);
-                var datos = new DataTable();
-                adaptador.Fill(datos);
-
-                {
-                    var withBlock = datalistado;
-                    if (datos != null && datos.Rows.Count > 0)
-                    {
-                        var dr = datos.NewRow();
-                        withBlock.DataSource = datos;
-                    }
-                    else
-                    {
-                        withBlock.DataSource = null;
-                    }
-                }
+                return input;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                ConexionGral.desconectar();
-            }
+
+            // Convertir la primera letra a mayúscula
+            return char.ToUpper(input[0]) + input.Substring(1);
         }
+
+        //public void mostrarUsuarios()
+        //{
+        //    MySqlCommand comando = null;
+        //    try
+        //    {
+        //        if (ConexionGral.conexion.State == ConnectionState.Closed) ConexionGral.conectar();
+
+        //        comando = new MySqlCommand("usp_tblusuarios_Select1", ConexionGral.conexion);
+        //        comando.CommandType = (CommandType)4;
+
+        //        var adaptador = new MySqlDataAdapter(comando);
+        //        var datos = new DataTable();
+        //        adaptador.Fill(datos);
+
+        //        {
+        //            var withBlock = datalistado;
+        //            if (datos != null && datos.Rows.Count > 0)
+        //            {
+        //                var dr = datos.NewRow();
+        //                withBlock.DataSource = datos;
+        //            }
+        //            else
+        //            {
+        //                withBlock.DataSource = null;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error " + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    finally
+        //    {
+        //        ConexionGral.desconectar();
+        //    }
+        //}
         private void mostrarTipoUsuario()
         {
             MySqlCommand comando = null;
@@ -254,7 +269,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                         MessageBox.Show(@"Error, Ingrese el Tipo de Usuario", @"Informacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    if (!string.IsNullOrEmpty(txtclave1.Text) && (txtclave1.Text == txtclave2.Text))
+                    if (!string.IsNullOrEmpty(txtclave1.Text))
                     {
                         comando.Parameters.AddWithValue("p_clave", MySqlType.Text).Value = txtclave1.Text;
                     }
@@ -269,7 +284,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     comando.ExecuteNonQuery();
                     MessageBox.Show(@"USUARIO REGISTRADO SATISFACTORIAMENTE.", @"Mensaje", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
-                    mostrarUsuarios();
+                //    mostrarUsuarios();
 
                     if (MessageBox.Show(@"Desea ingresar otro Usuario?", @"Atención", MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question) == DialogResult.No) Close();

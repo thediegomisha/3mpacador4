@@ -16,7 +16,9 @@ namespace _3mpacador4.Presentacion
     public partial class FrmPrincipal : Form
     {
         private Form FormularioActivo;
-    //    public string nombreusuario { get; set; } = "";
+
+        public event EventHandler TextBoxClicked;
+        //    public string nombreusuario { get; set; } = "";
 
         public FrmPrincipal()
         {
@@ -123,7 +125,7 @@ namespace _3mpacador4.Presentacion
                 if (ApplicationDeployment.IsNetworkDeployed)
                 {
                     var deployment = ApplicationDeployment.CurrentDeployment;
-                    TxtVersion.Text = deployment.CurrentVersion + "   ";
+                    TxtVersion.Text = deployment.CurrentVersion.ToString() + "   ";
                     lblDatabase.Text = nombress[4].Substring(9) + "   ";
                 }
                 else
@@ -354,11 +356,15 @@ namespace _3mpacador4.Presentacion
         private void txtDatabase_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
+            TextBoxClicked?.Invoke(this, EventArgs.Empty);
+
             formR00t rootlogin = new formR00t();
             rootlogin.ShowDialog();
            // this.Close();
 
         }
+
+
 
         private void btnCalidad_Click(object sender, EventArgs e)
         {
@@ -403,5 +409,7 @@ namespace _3mpacador4.Presentacion
             ocultarSubMenu();
             AbrirFormularioHijo(new frmOp());
         }
+
+     
     }
 }
