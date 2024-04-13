@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Windows.Forms;
 using _3mpacador4.Presentacion.Mantenimiento;
+using _3mpacador4.Presentacion.Mantenimiento.Produccion;
 using _3mpacador4.Presentacion.R00t;
 using _3mpacador4.Presentacion.Reporte;
 using _3mpacador4.Presentacion.Sistema;
@@ -15,7 +16,9 @@ namespace _3mpacador4.Presentacion
     public partial class FrmPrincipal : Form
     {
         private Form FormularioActivo;
-    //    public string nombreusuario { get; set; } = "";
+
+        public event EventHandler TextBoxClicked;
+        //    public string nombreusuario { get; set; } = "";
 
         public FrmPrincipal()
         {
@@ -122,7 +125,7 @@ namespace _3mpacador4.Presentacion
                 if (ApplicationDeployment.IsNetworkDeployed)
                 {
                     var deployment = ApplicationDeployment.CurrentDeployment;
-                    TxtVersion.Text = deployment.CurrentVersion + "   ";
+                    TxtVersion.Text = deployment.CurrentVersion.ToString() + "   ";
                     lblDatabase.Text = nombress[4].Substring(9) + "   ";
                 }
                 else
@@ -353,9 +356,15 @@ namespace _3mpacador4.Presentacion
         private void txtDatabase_Click(object sender, EventArgs e)
         {
             ocultarSubMenu();
-            FrmMod root = new FrmMod();
-            root.ShowDialog();
+            TextBoxClicked?.Invoke(this, EventArgs.Empty);
+
+            formR00t rootlogin = new formR00t();
+            rootlogin.ShowDialog();
+           // this.Close();
+
         }
+
+
 
         private void btnCalidad_Click(object sender, EventArgs e)
         {
@@ -394,6 +403,14 @@ namespace _3mpacador4.Presentacion
             ocultarSubMenu();
             AbrirFormularioHijo(new FRptKardexLote());
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ocultarSubMenu();
+            AbrirFormularioHijo(new frmOp());
+        }
+
+     
 
         private void btnPrecioCalire_Click(object sender, EventArgs e)
         {

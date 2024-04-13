@@ -35,7 +35,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lblestado = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lbltitulo = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.cbvariedad = new System.Windows.Forms.ComboBox();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
@@ -112,6 +112,8 @@
             this.btnDocumentos = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.GroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
@@ -132,7 +134,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(505, 192);
+            this.label6.Location = new System.Drawing.Point(505, 170);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 17);
@@ -143,7 +145,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(439, 143);
+            this.label7.Location = new System.Drawing.Point(439, 127);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(111, 17);
@@ -167,17 +169,17 @@
             this.label10.Size = new System.Drawing.Size(100, 23);
             this.label10.TabIndex = 74;
             // 
-            // label11
+            // lbltitulo
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(256, 1);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(329, 24);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "RECEPCION DE MATERIA PRIMA";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbltitulo.AutoSize = true;
+            this.lbltitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltitulo.Location = new System.Drawing.Point(256, 1);
+            this.lbltitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbltitulo.Name = "lbltitulo";
+            this.lbltitulo.Size = new System.Drawing.Size(329, 24);
+            this.lbltitulo.TabIndex = 10;
+            this.lbltitulo.Text = "RECEPCION DE MATERIA PRIMA";
+            this.lbltitulo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label12
             // 
@@ -318,7 +320,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(443, 326);
+            this.label17.Location = new System.Drawing.Point(439, 253);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(222, 17);
@@ -383,7 +385,7 @@
             // 
             this.cboturno.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboturno.FormattingEnabled = true;
-            this.cboturno.Location = new System.Drawing.Point(445, 288);
+            this.cboturno.Location = new System.Drawing.Point(442, 219);
             this.cboturno.Margin = new System.Windows.Forms.Padding(4);
             this.cboturno.Name = "cboturno";
             this.cboturno.Size = new System.Drawing.Size(140, 25);
@@ -414,7 +416,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(442, 264);
+            this.label23.Location = new System.Drawing.Point(441, 195);
             this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(53, 17);
@@ -494,7 +496,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(439, 175);
+            this.label27.Location = new System.Drawing.Point(439, 146);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(111, 17);
@@ -503,7 +505,7 @@
             // 
             // txtGuiaRemision
             // 
-            this.txtGuiaRemision.Location = new System.Drawing.Point(485, 352);
+            this.txtGuiaRemision.Location = new System.Drawing.Point(479, 274);
             this.txtGuiaRemision.Name = "txtGuiaRemision";
             this.txtGuiaRemision.Size = new System.Drawing.Size(144, 25);
             this.txtGuiaRemision.TabIndex = 81;
@@ -744,7 +746,7 @@
             // 
             this.lblGE.AutoSize = true;
             this.lblGE.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGE.Location = new System.Drawing.Point(445, 356);
+            this.lblGE.Location = new System.Drawing.Point(439, 277);
             this.lblGE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGE.Name = "lblGE";
             this.lblGE.Size = new System.Drawing.Size(33, 17);
@@ -803,7 +805,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(452, 229);
+            this.label4.Location = new System.Drawing.Point(443, 170);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 17);
@@ -976,9 +978,9 @@
             this.btnDocumentos.BackColor = System.Drawing.Color.Teal;
             this.btnDocumentos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDocumentos.ForeColor = System.Drawing.Color.White;
-            this.btnDocumentos.Location = new System.Drawing.Point(448, 420);
+            this.btnDocumentos.Location = new System.Drawing.Point(440, 304);
             this.btnDocumentos.Name = "btnDocumentos";
-            this.btnDocumentos.Size = new System.Drawing.Size(102, 41);
+            this.btnDocumentos.Size = new System.Drawing.Size(102, 36);
             this.btnDocumentos.TabIndex = 124;
             this.btnDocumentos.Text = "Documentos";
             this.btnDocumentos.UseVisualStyleBackColor = false;
@@ -1005,11 +1007,32 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(437, 346);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(98, 17);
+            this.label2.TabIndex = 126;
+            this.label2.Text = "Observaciones";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(440, 367);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(335, 89);
+            this.textBox2.TabIndex = 127;
+            // 
             // IngresoPesos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1208, 681);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnDocumentos);
             this.Controls.Add(this.cbMatCosecha);
@@ -1071,7 +1094,7 @@
             this.Controls.Add(this.GroupBox3);
             this.Controls.Add(this.cbvariedad);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.lbltitulo);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.lblestado);
             this.Controls.Add(this.label7);
@@ -1104,7 +1127,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblestado;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         internal System.Windows.Forms.GroupBox GroupBox3;
         internal System.Windows.Forms.Label label13;
@@ -1181,6 +1203,9 @@
         public System.Windows.Forms.Button btnDocumentos;
         public System.Windows.Forms.DataGridView datalistado;
         public System.Windows.Forms.DateTimePicker fpesaje;
+        public System.Windows.Forms.TextBox textBox2;
+        internal System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label lbltitulo;
     }
 }
 

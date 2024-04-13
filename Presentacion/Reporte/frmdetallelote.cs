@@ -187,5 +187,10 @@ namespace _3mpacador4.Presentacion.Reporte
                 ConexionGral.desconectar();
             }
         }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

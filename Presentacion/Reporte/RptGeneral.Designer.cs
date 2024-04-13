@@ -539,7 +539,7 @@
             this.panel3.Controls.Add(this.datalistado2);
             this.panel3.Location = new System.Drawing.Point(2, 479);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(665, 156);
+            this.panel3.Size = new System.Drawing.Size(602, 156);
             this.panel3.TabIndex = 19;
             // 
             // lblinfo2
@@ -566,7 +566,7 @@
             this.datalistado2.Name = "datalistado2";
             this.datalistado2.ReadOnly = true;
             this.datalistado2.RowHeadersVisible = false;
-            this.datalistado2.Size = new System.Drawing.Size(665, 156);
+            this.datalistado2.Size = new System.Drawing.Size(602, 156);
             this.datalistado2.TabIndex = 1;
             // 
             // btnCerrar
@@ -706,9 +706,9 @@
             // 
             this.panel4.Controls.Add(this.lblinfo3);
             this.panel4.Controls.Add(this.datalistado3);
-            this.panel4.Location = new System.Drawing.Point(673, 479);
+            this.panel4.Location = new System.Drawing.Point(620, 479);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(534, 156);
+            this.panel4.Size = new System.Drawing.Size(587, 156);
             this.panel4.TabIndex = 84;
             // 
             // lblinfo3
@@ -735,7 +735,7 @@
             this.datalistado3.Name = "datalistado3";
             this.datalistado3.ReadOnly = true;
             this.datalistado3.RowHeadersVisible = false;
-            this.datalistado3.Size = new System.Drawing.Size(534, 156);
+            this.datalistado3.Size = new System.Drawing.Size(587, 156);
             this.datalistado3.TabIndex = 1;
             // 
             // label21

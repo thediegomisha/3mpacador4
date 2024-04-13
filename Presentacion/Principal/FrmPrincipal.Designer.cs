@@ -904,9 +904,10 @@
             this.button5.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.button5.Size = new System.Drawing.Size(135, 26);
             this.button5.TabIndex = 16;
-            this.button5.Text = "Pendiente";
+            this.button5.Text = "Generar OP";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // btnProduccion
             // 
@@ -1289,7 +1290,6 @@
         internal System.Windows.Forms.ToolStripStatusLabel LblNombrePc;
         internal System.Windows.Forms.ToolStripStatusLabel txtNombreEquipo;
         internal System.Windows.Forms.ToolStripStatusLabel ToolStripStatusLabel;
-        internal System.Windows.Forms.ToolStripStatusLabel txtDatabase;
         internal System.Windows.Forms.ToolStripStatusLabel lblDatabase;
         public System.Windows.Forms.ToolStripStatusLabel TxtVersion;
         private System.Windows.Forms.Panel panelPesos;
@@ -1337,5 +1337,6 @@
         private System.Windows.Forms.Button btnKardex;
         private System.Windows.Forms.Button btnPrecioCalire;
         private System.Windows.Forms.Button btnAvancePersonal;
+        public System.Windows.Forms.ToolStripStatusLabel txtDatabase;
     }
 }

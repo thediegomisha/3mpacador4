@@ -541,6 +541,7 @@ namespace _3mpacador4
 
                 comando.Parameters.AddWithValue("p_numdoc", lblcorrelativo.Text);
                 comando.Parameters.AddWithValue("p_fecha_pesaje", Convert.ToDateTime(fpesaje.Text));
+                comando.Parameters.AddWithValue("p_h_pesaje", DateTime.Now);
 
                 comando.Parameters.AddWithValue("p_idmetodocultivo", MySqlType.Int).Value = lblconvencional.Text;
                 comando.Parameters.AddWithValue("p_idtiposervicio", MySqlType.Int).Value = lblservicio.Text;
