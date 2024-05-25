@@ -325,7 +325,7 @@ namespace _3mpacador4.Presentacion.Reporte
             writer.PageEvent = new CustomPdfPageEvent();
 
             doc.Open();
-                var logoPath = "logoagricola.png"; // Path to your logo file
+                var logoPath = @"Resources\logoagricola.png"; // Path to your logo file
                 if (File.Exists(logoPath))
                 {
                 var logo = iTextSharp.text.Image.GetInstance(logoPath); //  AppDomain.CurrentDomain.BaseDirectory + "logoagricola.png"

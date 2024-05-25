@@ -41,11 +41,13 @@
             this.txtclave.PasswordChar = '*';
             this.txtclave.Size = new System.Drawing.Size(219, 22);
             this.txtclave.TabIndex = 2;
+            this.txtclave.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtclave_KeyDown);
             // 
             // Lbl_Usuario
             // 
             this.Lbl_Usuario.AutoSize = true;
             this.Lbl_Usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Usuario.ForeColor = System.Drawing.Color.Yellow;
             this.Lbl_Usuario.Location = new System.Drawing.Point(40, 14);
             this.Lbl_Usuario.Name = "Lbl_Usuario";
             this.Lbl_Usuario.Size = new System.Drawing.Size(178, 16);
@@ -67,6 +69,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(255, 108);
             this.Controls.Add(this.cmd_Aceptar);
             this.Controls.Add(this.txtclave);
@@ -75,6 +78,7 @@
             this.KeyPreview = true;
             this.Name = "formR00t";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.formR00t_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

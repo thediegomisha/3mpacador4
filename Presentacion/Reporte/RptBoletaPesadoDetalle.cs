@@ -11,6 +11,7 @@ using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 using QuestPDF;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using Color = System.Drawing.Color;
 
 
 namespace _3mpacador4.Presentacion.Reporte

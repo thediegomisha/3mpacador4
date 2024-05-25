@@ -17,8 +17,13 @@ using static QuestPDF.Helpers.Colors;
 
 namespace _3mpacador4
 {
-    public partial class IngresoPesos : Form
+   public partial class IngresoPesos : Form
     {
+        private formR00t formRoot;
+        private int intentosErroneos = 0;
+        private const int MAX_INTENTOS_ERRONEOS = 3;
+        public event EventHandler CheckBoxClicked;
+
         private readonly string cero = Convert.ToString('0'); // HEXADECIMAL
         private readonly string n = Convert.ToString('n'); // HEXADECIMAL
         private readonly string PUNTO = Convert.ToString('.');
@@ -716,14 +721,37 @@ namespace _3mpacador4
         {
             if (chkPesoManual.Checked)
             {
-                formR00t rootlogin = new formR00t();
-                rootlogin.ShowDialog();
+                CheckBoxClicked?.Invoke(this, EventArgs.Empty);
 
-                this.Close();
-                txtPesoManual.Visible = true;
+                formRoot = new formR00t(FuncionDespuesValidacion, IncrementarIntentosErroneos);
+                formRoot.Show();              
             }               
             else
                 txtPesoManual.Visible = false;
+        }
+
+        private void FuncionDespuesValidacion()
+        {
+            // Lógica a ejecutar después de que la contraseña sea válida
+            txtPesoManual.Visible = true;
+
+            intentosErroneos = 0;
+
+            if (formRoot != null)
+            {
+                formRoot.Close();
+                formRoot.Dispose();
+            }
+        }
+
+        private void IncrementarIntentosErroneos()
+        {
+            intentosErroneos++;
+            if (intentosErroneos >= MAX_INTENTOS_ERRONEOS)
+            {
+                MessageBox.Show("Se ha alcanzado el número máximo de intentos erróneos. Se contactará al administrador.");
+                // Aquí puedes agregar lógica adicional si lo deseas
+            }
         }
 
         private void mostrarlistadovariedad()

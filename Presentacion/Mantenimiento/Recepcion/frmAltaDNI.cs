@@ -236,9 +236,9 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 // Cerrar el formulario actual después de enviar los datos
                 this.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                MessageBox.Show("Ocurrió un error al enviar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
         }

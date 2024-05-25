@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Windows.Forms;
 using _3mpacador4.Properties;
 using Devart.Data.MySql;
 using Microsoft.VisualBasic;
@@ -28,7 +29,7 @@ namespace _3mpacador4.Logica
 
             catch (Exception ex)
             {
-                Interaction.MsgBox(ex.Message, Constants.vbCritical);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -44,7 +45,7 @@ namespace _3mpacador4.Logica
             }
             catch (Exception ex)
             {
-                Interaction.MsgBox(ex.Message, Constants.vbCritical);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

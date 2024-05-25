@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using _3mpacador4.Logica;
 using _3mpacador4.Presentacion.Mantenimiento;
+using _3mpacador4.Presentacion.R00t;
 using _3mpacador4.Presentacion.Reporte;
 using _3mpacador4.Properties;
 using Devart.Data.MySql;
@@ -15,6 +16,8 @@ namespace _3mpacador4
 {
     public partial class IngresoDescarte : Form
     {
+        private formR00t formRoot;
+        private int intentosErroneos = 0;
         private int a, b, c, d;
 
         private int a1, b1, c1, d1, e2, f1, g1, h1;
@@ -423,11 +426,31 @@ namespace _3mpacador4
         private void chkPesoManual_CheckedChanged(object sender, EventArgs e)
         {
             if (chkPesoManual.Checked)
-                txtPesoManual.Visible = true;
+            {
+                formRoot = new formR00t(FuncionDespuesValidacion, IncrementarIntentosErroneos);
+                formRoot.Show();
+            }
             else
+            {
                 txtPesoManual.Visible = false;
+            }               
         }
 
+        private void IncrementarIntentosErroneos()
+        {
+            intentosErroneos++;
+        }
+        private void FuncionDespuesValidacion()
+        {
+            // Lógica a ejecutar después de que la contraseña sea válida
+            txtPesoManual.Visible = true;
+
+            if (formRoot != null)
+            {
+                formRoot.Close();
+                formRoot.Dispose();
+            }
+        }
 
         private void mostrarturno()
         {

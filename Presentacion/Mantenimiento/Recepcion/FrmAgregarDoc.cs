@@ -1,6 +1,6 @@
 ﻿using _3mpacador4.Logica;
 using _3mpacador4.Presentacion.Reporte;
-using HarfBuzzSharp;
+// using HarfBuzzSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,6 +55,7 @@ namespace _3mpacador4.Presentacion.Mantenimiento
             {
                 string nombreArchivo = ""; // Variable para almacenar el nombre del archivo original
                 string nombre = "";
+                long capacidad = 200 * 1024;
                 byte[] archivo = null;
 
                 // Obtener valores de la sección actual
@@ -64,7 +65,19 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                         if (!string.IsNullOrEmpty(ruta) && File.Exists(ruta))
                         {
 
-                            nombreArchivo = Path.GetFileName(ruta); // Obtener el nombre del archivo original
+                                // Verificar el tamaño del archivo
+                                long fileSize = new FileInfo(ruta).Length; // Obtener el tamaño del archivo en bytes
+
+                                // Definir el tamaño máximo permitido en bytes (200 KB)
+                                long maxFileSize = capacidad; // 200 KB
+
+                                if (fileSize > maxFileSize)
+                                {
+                                    MessageBox.Show("El tamaño del archivo excede el límite permitido (200 KB). - GUIA");
+                                    return; // Salir del método o detener el proceso según sea necesario
+                                }
+
+                                nombreArchivo = Path.GetFileName(ruta); // Obtener el nombre del archivo original
                             // Leer el archivo en un array de bytes
 
                             using (FileStream fs = new FileStream(ruta, FileMode.Open, FileAccess.Read))
@@ -85,8 +98,19 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     case 2:
                         if (!string.IsNullOrEmpty(ruta1) && File.Exists(ruta1))
                         {
+                                // Verificar el tamaño del archivo
+                                long fileSize = new FileInfo(ruta1).Length; // Obtener el tamaño del archivo en bytes
 
-                            nombreArchivo = Path.GetFileName(ruta1);
+                                // Definir el tamaño máximo permitido en bytes (200 KB)
+                                long maxFileSize = capacidad; // 200 KB
+
+                                if (fileSize > maxFileSize)
+                                {
+                                    MessageBox.Show("El tamaño del archivo excede el límite permitido (200 KB). - CLP");
+                                    return; // Salir del método o detener el proceso según sea necesario
+                                }
+
+                                nombreArchivo = Path.GetFileName(ruta1);
                             // Leer el archivo en un array de bytes
                             using (FileStream fs = new FileStream(ruta1, FileMode.Open, FileAccess.Read))
                             {
@@ -107,7 +131,19 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     case 3:
                         if (!string.IsNullOrEmpty(ruta2) && File.Exists(ruta2))
                         {
-                            nombreArchivo = Path.GetFileName(ruta2);
+
+                                // Verificar el tamaño del archivo
+                                long fileSize = new FileInfo(ruta2).Length; // Obtener el tamaño del archivo en bytes
+
+                                // Definir el tamaño máximo permitido en bytes (200 KB)
+                                long maxFileSize = capacidad; // 200 KB
+
+                                if (fileSize > maxFileSize)
+                                {
+                                    MessageBox.Show("El tamaño del archivo excede el límite permitido (200 KB). - DNI");
+                                    return; // Salir del método o detener el proceso según sea necesario
+                                }
+                                nombreArchivo = Path.GetFileName(ruta2);
                             // Leer el archivo en un array de bytes
                             using (FileStream fs = new FileStream(ruta2, FileMode.Open, FileAccess.Read))
                             {
@@ -128,7 +164,19 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     case 4:
                         if (!string.IsNullOrEmpty(ruta3) && File.Exists(ruta3))
                         {
-                            nombreArchivo = Path.GetFileName(ruta3);
+                                // Verificar el tamaño del archivo
+                                long fileSize = new FileInfo(ruta3).Length; // Obtener el tamaño del archivo en bytes
+
+                                // Definir el tamaño máximo permitido en bytes (200 KB)
+                                long maxFileSize = capacidad; // 200 KB
+
+                                if (fileSize > maxFileSize)
+                                {
+                                    MessageBox.Show("El tamaño del archivo excede el límite permitido (200 KB). - DDJJ");
+                                    return; // Salir del método o detener el proceso según sea necesario
+                                }
+
+                                nombreArchivo = Path.GetFileName(ruta3);
                             // Leer el archivo en un array de bytes
                             using (FileStream fs = new FileStream(ruta3, FileMode.Open, FileAccess.Read))
                             {
@@ -180,7 +228,6 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                 IngresoPesos formOrigen = (IngresoPesos)Application.OpenForms["IngresoPesos"];
                 variableRecibida = formOrigen.VarIngresoPeso;
                 numlote = formOrigen.VarNumlote;
-
             }
             catch (Exception)
             {

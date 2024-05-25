@@ -10,6 +10,7 @@ using Microsoft.VisualBasic;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
+using Color = System.Drawing.Color;
 using Constants = Microsoft.VisualBasic.Constants;
 using DataTable = System.Data.DataTable;
 using Font = System.Drawing.Font;
@@ -229,7 +230,6 @@ namespace _3mpacador4.Presentacion.Reporte
             }
         }
 
-
         private void mostrarconsulta()
         {
             try
@@ -354,7 +354,6 @@ namespace _3mpacador4.Presentacion.Reporte
             }
         }
 
-
         private string DeterminarProcedimientoAlmacenado()
         {
             if (chkcliente.Checked && chkf_ing.Checked)
@@ -397,14 +396,14 @@ namespace _3mpacador4.Presentacion.Reporte
                 // propiedades que establecen el color de fondo del control DataGridView,
                 // 'color del texto y tipo de fuente (tipo, tamaño y estilo)
                 // 
-                withBlock.BackgroundColor = Color.Black;
+                withBlock.BackgroundColor = System.Drawing.Color.Black;
                 withBlock.ForeColor = Color.Maroon;
                 withBlock.Font = new Font("Tahoma", 9.0f, FontStyle.Regular, GraphicsUnit.Point, 0);
 
                 // 
                 // establecer color de resaltado (opcional)
                 // 
-                withBlock.DefaultCellStyle.SelectionBackColor = Color.Red;
+                withBlock.DefaultCellStyle.SelectionBackColor = Color.Blue;
                 withBlock.DefaultCellStyle.SelectionForeColor = Color.Yellow;
 
                 // 

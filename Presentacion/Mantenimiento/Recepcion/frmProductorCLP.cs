@@ -54,7 +54,6 @@ namespace _3mpacador4.Presentacion.Mantenimiento
                     ConexionGral.conectar();
                 }
                
-
                 if (chkclp.Checked == true)
                 {
                     comando = new MySqlCommand("usp_tblclp_Select", ConexionGral.conexion);

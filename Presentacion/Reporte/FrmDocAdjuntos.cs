@@ -95,11 +95,6 @@ namespace _3mpacador4.Presentacion.Reporte
 
                         File.WriteAllBytes(ubicacioncompleta, item.Documento);
                         Process.Start(ubicacioncompleta);
-
-                       
-
-
-
                     }
                 }
             }

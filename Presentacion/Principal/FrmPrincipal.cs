@@ -16,8 +16,12 @@ namespace _3mpacador4.Presentacion
     public partial class FrmPrincipal : Form
     {
         private Form FormularioActivo;
-
+        private int intentosErroneos = 0;
+        private const int MAX_INTENTOS_ERRONEOS = 3;
         public event EventHandler TextBoxClicked;
+        //   private string nombreObjetoClicleado;
+        private formR00t formRoot;
+
         //    public string nombreusuario { get; set; } = "";
 
         public FrmPrincipal()
@@ -358,13 +362,35 @@ namespace _3mpacador4.Presentacion
             ocultarSubMenu();
             TextBoxClicked?.Invoke(this, EventArgs.Empty);
 
-            formR00t rootlogin = new formR00t();
-            rootlogin.ShowDialog();
-           // this.Close();
-
+            formRoot = new formR00t(FuncionDespuesValidacion, IncrementarIntentosErroneos);
+            formRoot.Show();
         }
 
+        private void IncrementarIntentosErroneos()
+        {
+            intentosErroneos++;
+            if (intentosErroneos >= MAX_INTENTOS_ERRONEOS)
+            {
+                MessageBox.Show("Se ha alcanzado el número máximo de intentos erróneos. Se reportará al administrador.");
+                // Aquí puedes agregar lógica adicional si lo deseas
+            }
+        }
+        private void FuncionDespuesValidacion()
+        {
+            // Lógica a ejecutar después de que la contraseña sea válida
+            formRoot.Hide();
+            FrmMod root = new FrmMod();
+            root.ShowDialog();
+            root.Dispose(); // Liberar los recursos asociados al formulario FrmMod
+                            // Si deseas cerrar formRoot después de abrir FrmMod, puedes hacerlo aquí
+            intentosErroneos = 0;
 
+            if (formRoot != null)
+            {
+                formRoot.Close();
+                formRoot.Dispose();
+            }
+        }
 
         private void btnCalidad_Click(object sender, EventArgs e)
         {

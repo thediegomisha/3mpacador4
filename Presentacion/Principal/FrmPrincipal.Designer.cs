@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.PanelLadoIzq = new System.Windows.Forms.Panel();
             this.panelTrazabilidad = new System.Windows.Forms.Panel();
+            this.btnAvancePersonal = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnProceso = new System.Windows.Forms.Button();
             this.btnJornal = new System.Windows.Forms.Button();
@@ -103,7 +104,6 @@
             this.LblNombrePc = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtNombreEquipo = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnAvancePersonal = new System.Windows.Forms.Button();
             this.PanelLadoIzq.SuspendLayout();
             this.panelTrazabilidad.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
@@ -146,7 +146,7 @@
             this.PanelLadoIzq.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelLadoIzq.Location = new System.Drawing.Point(0, 0);
             this.PanelLadoIzq.Name = "PanelLadoIzq";
-            this.PanelLadoIzq.Size = new System.Drawing.Size(152, 487);
+            this.PanelLadoIzq.Size = new System.Drawing.Size(152, 640);
             this.PanelLadoIzq.TabIndex = 0;
             // 
             // panelTrazabilidad
@@ -162,6 +162,23 @@
             this.panelTrazabilidad.Name = "panelTrazabilidad";
             this.panelTrazabilidad.Size = new System.Drawing.Size(135, 133);
             this.panelTrazabilidad.TabIndex = 15;
+            // 
+            // btnAvancePersonal
+            // 
+            this.btnAvancePersonal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAvancePersonal.FlatAppearance.BorderSize = 0;
+            this.btnAvancePersonal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAvancePersonal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAvancePersonal.ForeColor = System.Drawing.Color.LightGray;
+            this.btnAvancePersonal.Location = new System.Drawing.Point(0, 104);
+            this.btnAvancePersonal.Name = "btnAvancePersonal";
+            this.btnAvancePersonal.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnAvancePersonal.Size = new System.Drawing.Size(135, 26);
+            this.btnAvancePersonal.TabIndex = 19;
+            this.btnAvancePersonal.Text = "Avance Personal";
+            this.btnAvancePersonal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAvancePersonal.UseVisualStyleBackColor = true;
+            this.btnAvancePersonal.Click += new System.EventHandler(this.btnAvancePersonal_Click);
             // 
             // button2
             // 
@@ -1091,7 +1108,7 @@
             this.PanelFormularioHijo.Location = new System.Drawing.Point(152, 0);
             this.PanelFormularioHijo.MinimumSize = new System.Drawing.Size(206, 600);
             this.PanelFormularioHijo.Name = "PanelFormularioHijo";
-            this.PanelFormularioHijo.Size = new System.Drawing.Size(1065, 600);
+            this.PanelFormularioHijo.Size = new System.Drawing.Size(1065, 640);
             this.PanelFormularioHijo.TabIndex = 1;
             // 
             // toolStrip1
@@ -1111,7 +1128,7 @@
             this.LblNombrePc,
             this.txtNombreEquipo,
             this.ToolStripStatusLabel});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 575);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 615);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1065, 25);
             this.toolStrip1.TabIndex = 2;
@@ -1210,28 +1227,11 @@
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(42, 20);
             this.ToolStripStatusLabel.Text = "Estado";
             // 
-            // btnAvancePersonal
-            // 
-            this.btnAvancePersonal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAvancePersonal.FlatAppearance.BorderSize = 0;
-            this.btnAvancePersonal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAvancePersonal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAvancePersonal.ForeColor = System.Drawing.Color.LightGray;
-            this.btnAvancePersonal.Location = new System.Drawing.Point(0, 104);
-            this.btnAvancePersonal.Name = "btnAvancePersonal";
-            this.btnAvancePersonal.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnAvancePersonal.Size = new System.Drawing.Size(135, 26);
-            this.btnAvancePersonal.TabIndex = 19;
-            this.btnAvancePersonal.Text = "Avance Personal";
-            this.btnAvancePersonal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAvancePersonal.UseVisualStyleBackColor = true;
-            this.btnAvancePersonal.Click += new System.EventHandler(this.btnAvancePersonal_Click);
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1217, 487);
+            this.ClientSize = new System.Drawing.Size(1217, 640);
             this.Controls.Add(this.PanelFormularioHijo);
             this.Controls.Add(this.PanelLadoIzq);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
